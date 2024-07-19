@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "DEAPack"
+version = "0.1.0"
+description = "A Data Envelopment Analysis Package"
+authors = [
+  { name = "Dr Daoping Wang", email = "daopingwang@outlook.com" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.9"
+dependencies = [
+  "pulp>=2.6.0",
+  "numpy<2.0.0,>=1.26.0",
+  "pandas>=2.2.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/daopingw/DEAPack"
+"Bug Tracker" = "https://github.com/daopingw/DEAPack/issues"
