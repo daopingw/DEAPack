@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "DEAPack"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Data Envelopment Analysis Package"
 authors = [
   { name = "Dr Daoping Wang", email = "daopingwang@outlook.com" },

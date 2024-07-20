@@ -1,5 +1,6 @@
 
 import pandas as pd
+from typing import Optional, Literal
 from .dea import DEA
 
 class CCR(DEA):
@@ -42,12 +43,13 @@ class CCR(DEA):
         Calculate the efficiency score, based on the distance to the frontier.
     '''
     def __init__(self, 
-                 DMUs=None, 
-                 x_vars=None, y_vars=None,
-                 orientation=None,
-                 time=None, 
-                 ref_type=None,
-                 window=None
+                 DMUs: Optional[pd.Series] = None,
+                 x_vars: Optional[pd.DataFrame] = None, 
+                 y_vars: Optional[pd.DataFrame] = None, 
+                 orientation: Literal['input', 'output'] = None,
+                 time: Optional[pd.Series] = None, 
+                 ref_type: Literal['Contemporaneous', 'Global', 'Sequential', 'Window', 'Biennial'] = None,
+                 window: int = None
                  ):
         super().__init__(DMUs=DMUs, 
                          x_vars=x_vars, 
@@ -79,7 +81,7 @@ class CCR(DEA):
 
 
     # get the efficiency
-    def get_efficiency(self):
+    def get_efficiency(self) -> pd.Series:
         '''
         Calculate the CCR efficiency of the DMUs.
         '''

@@ -1,5 +1,6 @@
 
 import pandas as pd
+from typing import Optional, Literal
 from .ddf import DDF
 from .solver import solve_lp_prob
 
@@ -55,17 +56,21 @@ class DEA(DDF):
         Calculate the efficiency score, based on the distance to the frontier.
     '''
     def __init__(self, 
-                 DMUs=None, 
-                 x_vars=None, y_vars=None, b_vars=None,
-                 return_to_scale=None,
-                 g_x=None, g_y=None, g_b=None,
-                 radial=None,
-                 weight_x=None,
-                 weight_y=None,
-                 weight_b=None,
-                 time=None, 
-                 ref_type=None,
-                 window=None
+                 DMUs: Optional[pd.Series] = None,
+                 x_vars: Optional[pd.DataFrame] = None, 
+                 y_vars: Optional[pd.DataFrame] = None, 
+                 b_vars: Optional[pd.DataFrame] = None,
+                 return_to_scale: Literal['CRS', 'VRS'] = None,
+                 g_x: Optional[pd.DataFrame] = None, 
+                 g_y: Optional[pd.DataFrame] = None, 
+                 g_b: Optional[pd.DataFrame] = None,
+                 radial: Optional[bool] = None,
+                 weight_x: Optional[list] = None,
+                 weight_y: Optional[list] = None,
+                 weight_b: Optional[list] = None,
+                 time: Optional[pd.Series] = None, 
+                 ref_type: Literal['Contemporaneous', 'Global', 'Sequential', 'Window', 'Biennial'] = None,
+                 window: int = None
                  ):
         super().__init__(DMUs=DMUs, 
                          x_vars=x_vars, 
@@ -95,7 +100,7 @@ class DEA(DDF):
 
 
     # create a list of LP problems
-    def create_problem_list(self):
+    def create_problem_list(self) -> list:
         problem_list = []
 
         # the reference index
@@ -122,7 +127,7 @@ class DEA(DDF):
 
 
     # solve the DEA model, calculate the distance to the frontier
-    def solve(self, parallel=False, n_jobs=None):
+    def solve(self, parallel: bool = False, n_jobs: int = None):
         '''
         Solve the DEA model, calculate the distance to the frontier.
 
@@ -153,13 +158,13 @@ class DEA(DDF):
 
         
     # calculate the efficiency score, based on the distance to the frontier
-    def get_efficiency(self):
+    def get_efficiency(self) -> pd.Series:
         '''
         Calculate the efficiency score, based on the distance to the frontier.
         
         Standardized the score to be between 0 and 1. The higher the score, the more efficient the DMU.
         '''
         if self.radial:
-            return 1-pd.Series(self.obj)
+            return 1-pd.Series(self.distance)
         else:
-            return 1/(pd.Series(self.obj)+1)
+            return 1/(pd.Series(self.distance)+1)

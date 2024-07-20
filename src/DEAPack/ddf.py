@@ -1,5 +1,7 @@
 
 import pulp
+import pandas as pd
+from typing import Optional, Literal
 from .utilities import dict_to_list
 
 class DDF:
@@ -46,14 +48,18 @@ class DDF:
         Calculate the distance.
     '''
     def __init__(self,
-                 DMUs=None,
-                 x_vars=None, y_vars=None, b_vars=None,
-                 return_to_scale=None,
-                 g_x=None, g_y=None, g_b=None,
-                 radial=None,
-                 weight_x=None,
-                 weight_y=None,
-                 weight_b=None,
+                 DMUs: Optional[pd.Series] = None,
+                 x_vars: Optional[pd.DataFrame] = None, 
+                 y_vars: Optional[pd.DataFrame] = None, 
+                 b_vars: Optional[pd.DataFrame] = None,
+                 return_to_scale: Literal['CRS', 'VRS'] = None,
+                 g_x: Optional[pd.DataFrame] = None, 
+                 g_y: Optional[pd.DataFrame] = None, 
+                 g_b: Optional[pd.DataFrame] = None,
+                 radial: Optional[bool] = None,
+                 weight_x: Optional[list] = None,
+                 weight_y: Optional[list] = None,
+                 weight_b: Optional[list] = None,
                  ):
         self.DMUs = DMUs
         self.x_vars = x_vars
@@ -92,7 +98,7 @@ class DDF:
                 
 
     # define a LP problem
-    def define_lp_problem(self, DMU_index, ref_index):
+    def define_lp_problem(self, DMU_index: int, ref_index: list) -> pulp.LpProblem:
         lp_problem = pulp.LpProblem('lp_problem', pulp.LpMaximize)
 
         if self.radial:
@@ -149,9 +155,9 @@ class DDF:
         return lp_problem
     
     
-    def calc_distance(self, DMU_index, ref_index):
+    def calc_distance(self, DMU_index: int, ref_index: list) -> float:
         self.patch_parameters()
         lp_problem = self.define_lp_problem(DMU_index, ref_index)
-        lp_problem.solve()
-        self.distance = pulp.value(lp_problem.objective)
+        lp_problem.solve(pulp.PULP_CBC_CMD(msg=False))
+        self.distance = lp_problem.objective.value()
         return self.distance
