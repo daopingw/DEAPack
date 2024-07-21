@@ -32,6 +32,8 @@ class CCR(DEA):
     ----------
     distance : list
         The list of objective values from the linear programming problems.
+    efficiency : pandas.Series
+        The estimated efficiency score, based on the distance to the frontier.
     
     all prameters is also stored as attributes.
 

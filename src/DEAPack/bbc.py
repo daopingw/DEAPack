@@ -32,6 +32,8 @@ class BBC(DEA):
     ----------
     distance : list
         The list of objective values from the linear programming problems.
+    efficiency : pandas.Series
+        The estimated efficiency score, based on the distance to the frontier.
     
     all prameters is also stored as attributes.
 
@@ -83,7 +85,7 @@ class BBC(DEA):
     # get the efficiency
     def get_efficiency(self) -> pd.Series:
         '''
-        Calculate the CCR efficiency of the DMUs.
+        Calculate the BBC efficiency of the DMUs.
         '''
         if self.orientation == 'input':
             return pd.Series(self.distance)

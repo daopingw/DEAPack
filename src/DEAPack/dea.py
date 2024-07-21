@@ -45,6 +45,8 @@ class DEA(DDF):
     ----------
     distance : list
         The list of objective values from the linear programming problems.
+    efficiency : pandas.Series
+        The estimated efficiency score, based on the distance to the frontier.
     
     all prameters is also stored as attributes.
 
@@ -88,6 +90,7 @@ class DEA(DDF):
         self.ref_type = ref_type
         self.window = window
         self.distance = None
+        self.efficiency = None
 
 
     # patch the parameters
@@ -155,6 +158,8 @@ class DEA(DDF):
             pool.join()
         else:
             self.distance = [solve_lp_prob(prob) for prob in prob_list]
+    
+        self.efficiency = self.get_efficiency()
 
         
     # calculate the efficiency score, based on the distance to the frontier

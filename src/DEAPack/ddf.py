@@ -159,5 +159,8 @@ class DDF:
         self.patch_parameters()
         lp_problem = self.define_lp_problem(DMU_index, ref_index)
         lp_problem.solve(pulp.PULP_CBC_CMD(msg=False))
-        self.distance = lp_problem.objective.value()
+        if lp_problem.status == 1:
+            self.distance = lp_problem.objective.value()
+        else:
+            self.distance = None
         return self.distance
