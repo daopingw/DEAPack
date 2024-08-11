@@ -40,4 +40,5 @@ coverage.xml
 *.py,cover
 
 tests/
+test.py
 .DS_Store

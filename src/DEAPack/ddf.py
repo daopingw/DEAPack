@@ -27,20 +27,17 @@ class DDF:
     g_b : pandas.DataFrame, optional
         The data frame of direction components for undesirable output adjustment, where the rows are the DMUs and the columns are the undesirable variables. The default is -b_vars.
     radial : bool, optional
-        The type of DEA model, either radial or non-radial. The default is True.
+        The type of DEA model, either radial (True) or non-radial (False). The default is True.
     weight_x : list, optional
-        The list of weights for the input variables. The default is [1]*x_vars.shape[1].
+        The list of weights for the input variables. The default is [1/x_vars.shape[1]/2]*x_vars.shape[1] if no b_vars is provided, otherwise [1/x_vars.shape[1]/3]*x_vars.shape[1].
     weight_y : list, optional
-        The list of weights for the output variables. The default is [1]*y_vars.shape[1].
+        The list of weights for the output variables. The default is [1/y_vars.shape[1]/2]*y_vars.shape[1] if no b_vars is provided, otherwise [1/y_vars.shape[1]/3]*y_vars.shape[1].
     weight_b : list, optional
-        The list of weights for the non-discretionary variables. The default is [1]*b_vars.shape[1].
+        The list of weights for the non-discretionary variables. The default is [1/b_vars.shape[1]/2]*b_vars.shape[1] if no b_vars is provided, otherwise [1/b_vars.shape[1]/3]*b_vars.shape[1].
 
     Attributes
     ----------
-    distance : float
-        The estimated distance: objective values from the linear programming problem.
-    
-    all prameters is also stored as attributes.
+    all prameters is stored as attributes.
 
     Methods
     -------
@@ -73,7 +70,6 @@ class DDF:
         self.weight_x = weight_x
         self.weight_y = weight_y
         self.weight_b = weight_b
-        self.distance = None
 
 
     # patch the parameters
@@ -89,12 +85,13 @@ class DDF:
         if self.b_vars is not None and self.g_b is None:
             self.g_b = -self.b_vars
         if not self.radial:
-            if self.weight_x is None:
-                self.weight_x = [1]*self.x_vars.shape[1]
-            if self.weight_y is None:
-                self.weight_y = [1]*self.y_vars.shape[1]
-            if self.b_vars is not None and self.weight_b is None:
-                self.weight_b = [1]*self.b_vars.shape[1]
+            if self.b_vars is None and self.weight_x is None:
+                self.weight_x = [1/self.x_vars.shape[1]/2]*self.x_vars.shape[1]
+                self.weight_y = [1/self.y_vars.shape[1]/2]*self.y_vars.shape[1]
+            if self.b_vars is not None and self.weight_x is None:
+                self.weight_x = [1/self.x_vars.shape[1]/3]*self.x_vars.shape[1]
+                self.weight_y = [1/self.y_vars.shape[1]/3]*self.y_vars.shape[1]
+                self.weight_b = [1/self.b_vars.shape[1]/3]*self.b_vars.shape[1]
                 
 
     # define a LP problem

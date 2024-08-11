@@ -29,11 +29,11 @@ class DEA(DDF):
     radial : bool, optional
         The type of DEA model, either radial or non-radial. The default is True.
     weight_x : list, optional
-        The list of weights for the input variables. The default is [1]*x_vars.shape[1].
+        The list of weights for the input variables. The default is [1/x_vars.shape[1]/2]*x_vars.shape[1] if no b_vars is provided, otherwise [1/x_vars.shape[1]/3]*x_vars.shape[1].
     weight_y : list, optional
-        The list of weights for the output variables. The default is [1]*y_vars.shape[1].
+        The list of weights for the output variables. The default is [1/y_vars.shape[1]/2]*y_vars.shape[1] if no b_vars is provided, otherwise [1/y_vars.shape[1]/3]*y_vars.shape[1].
     weight_b : list, optional
-        The list of weights for the non-discretionary variables. The default is [1]*b_vars.shape[1].
+        The list of weights for the non-discretionary variables. The default is [1/b_vars.shape[1]/2]*b_vars.shape[1] if no b_vars is provided, otherwise [1/b_vars.shape[1]/3]*b_vars.shape[1].
     time : pandas.Series, optional
         The series of time index for panel data.
     ref_type : str, optional
@@ -47,7 +47,6 @@ class DEA(DDF):
         The list of objective values from the linear programming problems.
     efficiency : pandas.Series
         The estimated efficiency score, based on the distance to the frontier.
-    
     all prameters is also stored as attributes.
 
     Methods
