@@ -1,8 +1,8 @@
 
 import pandas as pd
-from typing import Optional, Literal
 from .ddf import DDF
-from .solver import solve_lp_prob
+from .solver import solve_lp_problem
+from typing import Optional, Literal
 
 class DEA(DDF):
     '''
@@ -15,7 +15,7 @@ class DEA(DDF):
     x_vars : pandas.DataFrame
         The data frame of input variables, where the rows are the DMUs and the columns are the input variables.
     y_vars : pandas.DataFrame
-        The data frame of desirable variables, where the rows are the DMUs and the columns are the output variables.
+        The data frame of desirable variables, where the rows are the DMUs and the columns are the desirable variables.
     b_vars : pandas.DataFrame, optional
         The data frame of undesirable variables, where the rows are the DMUs and the columns are the undesirable variables.
     return_to_scale : str, optional
@@ -23,15 +23,15 @@ class DEA(DDF):
     g_x : pandas.DataFrame, optional
         The data frame of direction components for input adjustment, where the rows are the DMUs and the columns are the input variables. The default is -x_vars.
     g_y : pandas.DataFrame, optional
-        The data frame of direction components for desirable output adjustment, where the rows are the DMUs and the columns are the output variables. The default is y_vars.
+        The data frame of direction components for desirable output adjustment, where the rows are the DMUs and the columns are the desirable variables. The default is y_vars.
     g_b : pandas.DataFrame, optional
         The data frame of direction components for undesirable output adjustment, where the rows are the DMUs and the columns are the undesirable variables. The default is -b_vars.
     radial : bool, optional
-        The type of DEA model, either radial or non-radial. The default is True.
+        The type of DEA model, either radial (True) or non-radial (False). The default is True.
     weight_x : list, optional
         The list of weights for the input variables. The default is [1/x_vars.shape[1]/2]*x_vars.shape[1] if no b_vars is provided, otherwise [1/x_vars.shape[1]/3]*x_vars.shape[1].
     weight_y : list, optional
-        The list of weights for the output variables. The default is [1/y_vars.shape[1]/2]*y_vars.shape[1] if no b_vars is provided, otherwise [1/y_vars.shape[1]/3]*y_vars.shape[1].
+        The list of weights for the desirable variables. The default is [1/y_vars.shape[1]/2]*y_vars.shape[1] if no b_vars is provided, otherwise [1/y_vars.shape[1]/3]*y_vars.shape[1].
     weight_b : list, optional
         The list of weights for the non-discretionary variables. The default is [1/b_vars.shape[1]/2]*b_vars.shape[1] if no b_vars is provided, otherwise [1/b_vars.shape[1]/3]*b_vars.shape[1].
     time : pandas.Series, optional
@@ -51,10 +51,10 @@ class DEA(DDF):
 
     Methods
     -------
-    solve(parallel=True, n_jobs=None)
+    solve(parallel = False, n_jobs = None)
         Solve the DEA model, calculate the distance to the frontier.
     get_efficiency()
-        Calculate the efficiency score, based on the distance to the frontier.
+        Calculate the efficiency score based on the distance to the frontier.
     '''
     def __init__(self, 
                  DMUs: Optional[pd.Series] = None,
@@ -145,18 +145,18 @@ class DEA(DDF):
         '''
         self.patch_parameters()
 
-        prob_list = self.create_problem_list()
-            
+        problem_list = self.create_problem_list()
+        
         if parallel:
             import multiprocessing
             if n_jobs is None:
                 n_jobs = multiprocessing.cpu_count()
             pool = multiprocessing.Pool(n_jobs)        
-            self.distance = pool.map(solve_lp_prob, prob_list)
+            self.distance = pool.map(solve_lp_problem, problem_list)
             pool.close()
             pool.join()
         else:
-            self.distance = [solve_lp_prob(prob) for prob in prob_list]
+            self.distance = [solve_lp_problem(problem) for problem in problem_list]
     
         self.efficiency = self.get_efficiency()
 

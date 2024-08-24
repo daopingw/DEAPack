@@ -1,7 +1,7 @@
 
 import pandas as pd
-from typing import Optional, Literal
 from .dea import DEA
+from typing import Optional, Literal
 
 class CCR(DEA):
     '''
