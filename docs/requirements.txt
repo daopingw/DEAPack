@@ -1,2 +1,2 @@
 -c ../constraints/release-python312.txt
--e .[docs]
+-e .[docs,viz]
