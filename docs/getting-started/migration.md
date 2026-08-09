@@ -6,10 +6,11 @@ ideas, but their mutable objects and generic distance interface are not the
 2.x numerical contract. There is no automatic converter and no promise that
 an old script can be made correct by renaming imports.
 
-The uppercase `DEAPack/` directory retained in the repository is historical
-audit source. The 2.x build configuration packages only `src/deapack`, so a
-built wheel does not provide `import DEAPack` or forwarding wrappers. Manual
-migration to the lowercase `deapack` API is required.
+The historical uppercase runtime is available through the repository's Git
+history but is not retained in the current 2.x source tree. The 2.x build
+configuration packages only `src/deapack`, so a built wheel does not provide
+`import DEAPack` or forwarding wrappers. Manual migration to the lowercase
+`deapack` API is required.
 
 Migration should preserve the **empirical question** before it preserves the
 old call shape. Record the inputs, desirable and undesirable outputs, DMU and

@@ -6,8 +6,9 @@ data. They are not the specification for the new numerical kernel.
 
 ## Audited sources
 
-- the historical `DEAPack/` source retained in this repository at base commit
-  `e2cb37f509496f130ebe0a4f51caf5805839e7c1`, dated 2024-08-24;
+- the historical `DEAPack/` source at base commit
+  `e2cb37f509496f130ebe0a4f51caf5805839e7c1`, dated 2024-08-24 and retained in
+  Git history rather than the current 2.x tree;
 - `daopingw/ProdPack` at commit
   `f4763f810d616851bbe0deb5f8f66a7b869fd773`, dated 2024-08-24;
 - the provincial capital, labour, energy, output, and carbon-dioxide panel
@@ -92,22 +93,18 @@ release tests. The provincial panel remains only a migration question in this
 audit, not a releasable continuity dataset or an unquestioned empirical
 benchmark.
 
-### RC1 release disposition of the tracked CSV
+### RC1 disposition of the historical source tree
 
-The current historical asset `DEAPack/data/example_data.csv` has the audit
-identity `legacy_provincial_panel`. It is a repository source asset, not an
-installed DEAPack 2.0 dataset: it is absent from `src/deapack/datasets`, is not
-returned by `list_datasets()`, and does not change the 35-row package catalog.
-Its source, variable-level construction chain, and redistribution license are
-unknown. This audit does not infer that the maintainer lacks rights; it records
-that the evidence required for public redistribution is not yet present.
+The base commit contained `DEAPack/data/example_data.csv`, with audit identity
+`legacy_provincial_panel`, alongside the uppercase 0.1.x runtime. Neither the
+CSV nor the old runtime is retained in the current 2.x tree. The current
+package uses only `src/deapack`, and the historical data is not returned by
+`list_datasets()` or exposed through a renamed alias.
 
-The proposed rc1 route is to delete this one CSV from the current 2.0 tree,
-not to delete the tracked historical `DEAPack/` directory and not to publish a
-renamed copy. The payload inventory binds the path, identity, content hash,
-and `legacy_source_asset` risk. The protected HMAC catalog independently binds
-its numerical and label streams as source family `legacy_provincial_panel`.
-Consequently, a release can pass only after the file and detected propagation
-are absent from the sanitized tree. A later version may restore an empirical
-panel only after a maintainer-approved source/license record, or replace it
-with a genuinely project-created teaching panel under separate provenance.
+The former panel's source, variable-level construction chain, and
+redistribution license were not established for this release, so removing it
+from the current public tree is the fail-closed disposition. The old source
+remains recoverable from Git history for audit and migration research. A later
+version may introduce an empirical panel only after an approved source and
+license record, or use a genuinely project-created teaching panel under
+separate provenance.

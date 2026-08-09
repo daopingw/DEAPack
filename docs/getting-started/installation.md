@@ -39,11 +39,11 @@ the repository checks:
 python -m pip install -e '.[dev,docs,viz]'
 ```
 
-The historical `DEAPack/` directory in the source checkout is audit material,
-not an installed compatibility package. A built 2.x wheel contains the
-lowercase `deapack` package only. Existing 0.1.x and ProdPack studies therefore
-require the manual review in {doc}`migration`; do not rely on
-`import DEAPack` forwarding to the new API.
+The current source checkout and built 2.x wheel contain the lowercase
+`deapack` package only. The historical uppercase runtime remains available in
+Git history, not in the current source tree. Existing 0.1.x and ProdPack
+studies therefore require the manual review in {doc}`migration`; do not rely
+on `import DEAPack` forwarding to the new API.
 
 The base numerical installation uses NumPy, pandas, SciPy, and the HiGHS LP
 solver bundled through SciPy. It does not require users to locate a separate

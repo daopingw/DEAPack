@@ -193,9 +193,6 @@ See [COMPONENT_LICENSES.md](COMPONENT_LICENSES.md),
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the precise component
 boundaries and attribution requirements.
 
-The preserved uppercase `DEAPack/*.py` 0.1.x compatibility source retains its
-original 2024 MIT terms and is excluded from the 2.x package archives.
-
 ## Release status
 
 `2.0.0rc1` is a pre-release and is not a drop-in replacement for DEAPack

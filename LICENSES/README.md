@@ -14,10 +14,7 @@ DEAPack component map:
   `DataEnvelopmentAnalysis.jl`, Copyright © 2019 Javier Barbero; and
 - `MIT-BenchmarkingEconomicEfficiency.jl.txt` — the exact upstream MIT notice
   for `BenchmarkingEconomicEfficiency.jl`, Copyright © 2021 Javier Barbero and
-  contributors; and
-- `MIT-DEAPack-0.1.x.txt` — the original MIT notice for the preserved
-  uppercase `DEAPack/*.py` 0.1.x compatibility source, Copyright © 2024
-  Dr Daoping Wang.
+  contributors.
 
 The presence of a license text does not apply that license to every repository
 file. Consult [`COMPONENT_LICENSES.md`](../COMPONENT_LICENSES.md), file-level

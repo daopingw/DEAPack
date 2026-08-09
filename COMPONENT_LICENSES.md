@@ -10,7 +10,6 @@ third-party material.
 | Component | Repository scope | Adopted terms | Current boundary |
 |---|---|---|---|
 | Software | Project-owned Python source, software build and validation code, and software-distribution metadata | `GPL-3.0-only` | Daoping Wang confirmed publication authority; separately marked material is excluded |
-| Historical 0.1.x runtime | Preserved uppercase compatibility source under `DEAPack/*.py` | `MIT` | Retains the original 2024 Daoping Wang notice in `LICENSES/MIT-DEAPack-0.1.x.txt`; it is not part of the 2.x wheel or sdist |
 | Package Documentation prose | Project-owned original prose and original visual expression under `docs/` | `CC-BY-NC-SA-4.0` | Embedded code is software, not CC-licensed; third-party quotations, logos, fonts, and assets retain their own terms |
 | Documentation code | Executable examples, code blocks, snippets, and API signatures | `GPL-3.0-only` | Same authority and third-party exclusions as the software component |
 | Bilingual Handbook Preview 1 | English manuscript, Chinese rendering, and Handbook-original expression under `book/` | All Rights Reserved; `Copyright © 2026 Daoping Wang` | Named third-party material retains its own terms |

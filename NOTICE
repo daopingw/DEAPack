@@ -12,11 +12,6 @@ GPL-3.0-only. Bilingual Handbook Preview 1 carries the notice
 "Copyright © 2026 Daoping Wang. All Rights Reserved." Named third-party
 material retains its recorded terms.
 
-The preserved uppercase `DEAPack/*.py` 0.1.x compatibility source remains
-under its original MIT license and 2024 Dr Daoping Wang copyright notice in
-`LICENSES/MIT-DEAPack-0.1.x.txt`. It is excluded from the 2.x wheel and source
-distribution and does not acquire GPL merely by remaining in the Git tree.
-
 All 33 current dataset fingerprints have item-level mappings in
 DATA_LICENSES.md. Thirty project-created or independently selected fixtures
 and the Ren dataset use CC-BY-4.0 with their stated attribution; the two
