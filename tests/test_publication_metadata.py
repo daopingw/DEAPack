@@ -140,7 +140,7 @@ def test_read_the_docs_projects_are_separate_strict_sphinx_builds() -> None:
     expected = {
         ROOT / "book" / ".readthedocs.yaml": "book/conf.py",
         ROOT / "book" / ".readthedocs-zh.yaml": "book/conf_zh.py",
-        ROOT / "docs" / ".readthedocs.yaml": "docs/conf.py",
+        ROOT / ".readthedocs.yaml": "docs/conf.py",
     }
 
     for path, configuration in expected.items():

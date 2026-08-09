@@ -13,15 +13,15 @@ repository:
 
 | Hosted project | Source | Configuration file | Role |
 |---|---|---|---|
-| `deapack` | `book/` | `book/.readthedocs.yaml` | parent and English reader-facing Handbook |
-| `deapack-zh` | `book/` | `book/.readthedocs-zh.yaml` | Chinese translation of the Handbook |
-| `deapack-reference` | `docs/` | `docs/.readthedocs.yaml` | English package reference subproject |
+| `deapack` | `docs/` | `.readthedocs.yaml` | primary English package Documentation |
+| `deapack-handbook` | `book/` | `book/.readthedocs.yaml` | English Handbook |
+| `deapack-handbook-zh` | `book/` | `book/.readthedocs-zh.yaml` | Chinese Handbook |
 
-In the parent project, add `deapack-reference` as a subproject with the alias
-`reference`, and connect `deapack-zh` as the `zh_CN` translation. This gives
-the reference site a stable path beneath the Handbook domain and lets readers
-switch Handbook language without presenting the English-only API reference as
-a partial Chinese translation.
+The root configuration makes the primary Documentation project discoverable
+during the initial Read the Docs import. The two Handbook projects can be
+added later with their explicit subdirectory configuration paths. They remain
+separate because the package reference is English-only while both Handbook
+languages are maintained publications.
 
 The repository configuration pins the build operating system and Python
 minor version, installs the package with its documentation extra, and treats
@@ -38,11 +38,11 @@ Docs projects. A project maintainer must:
 
 1. install or authorize the Read the Docs GitHub App;
 2. import this repository as each of the three projects above;
-3. set each project's configuration-file path to the corresponding file in
-   the table;
-4. add the reference project to the Handbook as alias `reference`;
-5. connect the Chinese Handbook project as the `zh_CN` translation;
-6. enable pull-request builds for all three projects.
+3. let the primary `deapack` project discover `.readthedocs.yaml` at the
+   repository root;
+4. set each Handbook project's configuration-file path to the corresponding
+   file in the table;
+5. enable pull-request builds for all three projects.
 
 Until those actions have been completed and verified, repository links must
 not claim that a public Read the Docs URL is live.
