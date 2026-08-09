@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title description">
+<title id="title">Ordinary and game cross-appraisal institutions</title>
+<desc id="description">The left panel carries one appraiser's selected resource and service valuations across all organizations. The right panel shows a protected organization, a focal organization, pair-specific valuations, and a synchronous equal-mean update.</desc>
+<defs>
+  <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#176b73"/></marker>
+  <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d97732"/></marker>
+</defs>
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="38" text-anchor="middle" font-size="25" font-weight="700" fill="#24323d">Two different institutions for peer appraisal</text>
+
+<rect x="35" y="67" width="420" height="395" rx="15" fill="#f4f9f9" stroke="#176b73" stroke-width="2"/>
+<text x="245" y="101" text-anchor="middle" font-size="20" font-weight="700" fill="#176b73">Ordinary cross-efficiency</text>
+<text x="245" y="126" text-anchor="middle" font-size="15" fill="#43525d">One evaluator’s admissible values travel across a row</text>
+
+<rect x="63" y="157" width="142" height="64" rx="10" fill="#176b73"/>
+<text x="134" y="181" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Appraiser A</text>
+<text x="134" y="203" text-anchor="middle" font-size="14" fill="#ffffff">selected values (uₐ, vₐ)</text>
+<path d="M207 189 H246" stroke="#176b73" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+
+<rect x="255" y="149" width="170" height="160" rx="9" fill="#ffffff" stroke="#9bbfc2" stroke-width="2"/>
+<text x="340" y="174" text-anchor="middle" font-size="14" font-weight="700" fill="#24323d">A’s appraisal row</text>
+<line x1="270" y1="188" x2="410" y2="188" stroke="#dce5e7" stroke-width="2"/>
+<text x="281" y="213" font-size="14" fill="#43525d">A judges A</text><text x="395" y="213" text-anchor="end" font-size="14" font-weight="700" fill="#176b73">eₐₐ</text>
+<text x="281" y="248" font-size="14" fill="#43525d">A judges B</text><text x="395" y="248" text-anchor="end" font-size="14" font-weight="700" fill="#176b73">eₐᵦ</text>
+<text x="281" y="283" font-size="14" fill="#43525d">A judges C</text><text x="395" y="283" text-anchor="end" font-size="14" font-weight="700" fill="#176b73">eₐ𝚌</text>
+
+<path d="M340 311 V345" stroke="#176b73" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+<rect x="92" y="354" width="306" height="72" rx="10" fill="#dceff0" stroke="#9bbfc2"/>
+<text x="245" y="380" text-anchor="middle" font-size="15" font-weight="700" fill="#24323d">Repeat for every appraiser</text>
+<text x="245" y="403" text-anchor="middle" font-size="14" fill="#43525d">Then summarize each evaluatee’s column</text>
+
+<rect x="505" y="67" width="420" height="395" rx="15" fill="#fff8f1" stroke="#d97732" stroke-width="2"/>
+<text x="715" y="101" text-anchor="middle" font-size="20" font-weight="700" fill="#b65c20">Liang–Wu–Cook–Zhu game</text>
+<text x="715" y="126" text-anchor="middle" font-size="15" fill="#43525d">Each cell is a new protected–focal negotiation</text>
+
+<rect x="530" y="153" width="145" height="65" rx="10" fill="#f3d9c5" stroke="#d97732"/>
+<text x="602" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#7a3c16">Protect d</text>
+<text x="602" y="199" text-anchor="middle" font-size="13" fill="#7a3c16">preserve floor ηᵈᵗ</text>
+
+<rect x="755" y="153" width="145" height="65" rx="10" fill="#dceff0" stroke="#176b73"/>
+<text x="827" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#155a61">Focal j</text>
+<text x="827" y="199" text-anchor="middle" font-size="13" fill="#155a61">improve own appraisal</text>
+
+<path d="M676 185 H720" stroke="#d97732" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+<path d="M754 185 H735" stroke="#176b73" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+<rect x="675" y="235" width="180" height="83" rx="10" fill="#ffffff" stroke="#d4b59c" stroke-width="2"/>
+<text x="765" y="260" text-anchor="middle" font-size="14" font-weight="700" fill="#24323d">Pair-specific values</text>
+<text x="765" y="282" text-anchor="middle" font-size="13" fill="#43525d">valid for every organization</text>
+<text x="765" y="302" text-anchor="middle" font-size="13" fill="#43525d">and respecting d’s floor</text>
+<path d="M602 219 C602 260 625 276 674 276" fill="none" stroke="#d97732" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+<path d="M827 219 C827 225 817 230 810 234" fill="none" stroke="#176b73" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+
+<path d="M765 319 V344" stroke="#d97732" stroke-width="2.5" marker-end="url(#arrow-orange)"/>
+<rect x="548" y="352" width="334" height="74" rx="10" fill="#f8e7d8" stroke="#d4b59c"/>
+<text x="715" y="378" text-anchor="middle" font-size="15" font-weight="700" fill="#24323d">Solve all n protected cases for focal j</text>
+<text x="715" y="401" text-anchor="middle" font-size="14" fill="#43525d">Update ηⱼ simultaneously by the fixed equal mean</text>
+
+<rect x="82" y="488" width="796" height="48" rx="10" fill="#f0f3f5" stroke="#c7d0d5"/>
+<text x="480" y="508" text-anchor="middle" font-size="14" font-weight="700" fill="#24323d">The tables answer different governance questions.</text>
+<text x="480" y="527" text-anchor="middle" font-size="13" fill="#43525d">Appraiser × evaluatee is not interchangeable with protected × focal.</text>
+</svg>

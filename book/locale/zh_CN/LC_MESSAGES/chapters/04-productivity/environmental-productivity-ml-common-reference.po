@@ -1,0 +1,1218 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:1
+#: 24615fe9b3bf48e197c0a4b55deda5e0
+msgid "Environmental Productivity over Time with Adjacent-Period ML"
+msgstr "使用相邻期 ML 衡量跨期环境生产率"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:3
+#: 1c489541d52d4439a0556250e99b4aac
+msgid ""
+"An electricity producer reports more power and less carbon dioxide than it "
+"did last year. A water utility treats more water while discharging fewer "
+"residuals. A farm raises marketable output while reducing nutrient loss. "
+"Each sounds like an environmental productivity improvement, but none can be "
+"assessed from the raw changes alone. Inputs may also have changed, the "
+"attainable production--pollution trade-off may have improved, and each "
+"annual plan must be assessed against the production and pollution-control "
+"opportunities observed at both dates."
+msgstr "一家发电企业报告其发电量高于上年而二氧化碳排放更少；供水企业处理更多水量却排放更少残余物；农场增加可销售产出并减少养分流失。这些现象听起来都像环境生产率改善，但仅凭原始变化无法判断。投入也可能发生变化，可实现的生产—污染权衡可能改善，而且必须把每年的完整方案分别放到两个日期观测到的生产与污染控制机会下评价。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:11
+#: a6e1c94a4d5743d48bbc955042004375
+#, python-brace-format
+msgid ""
+"The Malmquist--Luenberger (ML) index organizes these issues within one model"
+" of production and pollution. It treats desirable and undesirable outputs as"
+" joint consequences of production and asks how an environmental improvement "
+"programme changes over time {cite:p}`chung1997`. Its classic adjacent-period"
+" formulation evaluates the two operating plans against both period-specific "
+"technologies."
+msgstr ""
+"Malmquist--"
+"Luenberger（ML）指数把这些问题组织到一个生产与污染联合模型中。它把合意产出和非合意产出视为生产的联合结果，并考察一套环境改进方案如何随时间变化"
+" {cite:p}`chung1997`。经典相邻期形式把两个经营方案分别放到两个时期特定技术下评价。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:17
+#: 641484a8dd054d418957c3434d8d73f9
+#, python-brace-format
+msgid ""
+"These are not ordinary productivity indexes with a pollution penalty "
+"attached after estimation. The undesirable-output technology, the assumed "
+"possibilities for pollution reduction, and the improvement programme all "
+"determine what “environmental productivity” means. That is why the ML index "
+"remains distinct from a conventional Malmquist index with a pollution column"
+" appended after the fact {cite:p}`fare1994`."
+msgstr ""
+"这不是普通生产率指数估计完毕后再附加一项污染惩罚。非合意产出技术、污染削减可能性的假设以及改进方案共同决定“环境生产率”的含义。因此，ML "
+"指数不同于事后向普通 Malmquist 指数增加一列污染数据 {cite:p}`fare1994`。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:24
+#: a64c05c1385b48febf1b74f091e0aa9f
+msgid "The central questions are economic and managerial:"
+msgstr "核心问题具有明确的经济与管理含义："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:26
+#: a3ab28cc461a4279a62f2335d57cf211
+msgid ""
+"Has an organization reduced the environmental performance shortfall visible "
+"in its own period?"
+msgstr "组织是否缩小了本期可见的环境绩效缺口？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:28
+#: d1ae3f7dae28440a9aeac11514f0cc34
+msgid ""
+"Has the best-observed opportunity for producing useful output with fewer "
+"undesirable consequences become more favorable?"
+msgstr "以更少非合意后果生产有用产出的最佳观测机会是否变得更有利？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:30
+#: 75f65417e314439497a987a13aaafe1d
+msgid ""
+"Can both annual operating plans be supported by the opportunities observed "
+"at the other date?"
+msgstr "两个年度的经营方案能否分别由另一日期所观测到的生产与污染控制机会支持？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:33
+#: 8d279b99fdae4c519dee67fb55ff80f1
+msgid ""
+"The answers are conditional on the data and production assumptions. They "
+"describe benchmark-relative change; identifying the effects of management, "
+"investment, or regulation requires additional evidence."
+msgstr "答案都以数据和生产假设为条件，描述的是相对标杆变化；识别管理、投资或监管的作用还需要额外证据。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:37
+#: c96276f9c02441cea8a5fe8c6ea48941
+msgid ""
+"Environmental productivity begins by modeling production and pollution "
+"together"
+msgstr "环境生产率始于对生产与污染的联合建模"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:39
+#: ce974a97ac4d419a810157711ac232e4
+msgid "Let an operating plan in period $\\sigma$ be"
+msgstr "设时期 $\\sigma$ 的经营方案为"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:41
+#: db105f1b1db74cab9f3f59f2b260cb0a
+msgid ""
+"\n"
+"z^\\sigma=(x^\\sigma,y^\\sigma,b^\\sigma),\n"
+msgstr ""
+"\n"
+"z^\\sigma=(x^\\sigma,y^\\sigma,b^\\sigma),\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:45
+#: 2f2d97f7deb24f419d0991dc680a1d08
+msgid ""
+"where $x$ is a vector of inputs, $y$ a vector of desirable outputs, and $b$ "
+"a vector of undesirable outputs. The period-$\\tau$ environmental technology"
+" $\\mathcal T^\\tau$ contains the input--output--residual plans treated as "
+"attainable by the observations admitted to reference period $\\tau$. Thus "
+"$\\sigma$ identifies when the plant operated, whereas $\\tau$ identifies the"
+" body of evidence used to judge that operation. The distinction matters "
+"whenever one year's plan is appraised using another year's production and "
+"pollution-control opportunities."
+msgstr ""
+"其中，$x$ 是投入向量，$y$ 是合意产出向量，$b$ 是非合意产出向量。时期 $\\tau$ 的环境技术 $\\mathcal T^\\tau$ "
+"包含获准进入参照期 $\\tau$ 的观测所支持的可实现投入—产出—残余物方案。因此，$\\sigma$ 标识工厂实际经营的时期，$\\tau$ "
+"标识用于评价该经营活动的证据集合。当某一年度方案使用另一年度的生产与污染控制机会评价时，这一区分至关重要。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:53
+#: fba553fc2ce94cbda9664b3a772a0162
+msgid ""
+"The label $b$ is not merely a minus sign attached to an ordinary output. The"
+" technology must describe why the residual accompanies useful production and"
+" under what conditions it can be reduced. Three choices are especially "
+"important."
+msgstr "标识 $b$ 不是简单给普通产出加上负号。技术必须说明为什么残余物伴随有用生产产生，以及在何种条件下能够减少。以下三项选择尤其重要。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:57
+#: c6a518515ddc478eb967a2045d1caf43
+msgid ""
+"First, desirable output and pollution are treated as **joint products**. In "
+"the classic formulation, null jointness rules out positive desirable "
+"production with no associated undesirable output. This prevents the frontier"
+" from offering pollution- free production merely because zero emissions "
+"would look preferable."
+msgstr "第一，把合意产出与污染视为**联合产品**。在经典形式中，零结合性排除有正的合意生产却没有相应非合意产出的情形，从而避免仅仅因为零排放看起来更好，前沿就提供实际并不存在的无污染生产。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:62
+#: 436fcb14b6be4130a1def2f8ae16c9fb
+msgid ""
+"Second, undesirable outputs are **weakly disposable**. A producer cannot "
+"freely delete pollution from an otherwise unchanged activity. Under the "
+"common-factor representation used here, curtailing the joint activity "
+"reduces desirable and undesirable outputs together. This encodes the idea "
+"that pollution reduction is technologically costly unless a cleaner "
+"production or abatement activity is actually observed in the data."
+msgstr "第二，非合意产出具有**弱可处置性**。生产者不能在其他活动不变时免费删除污染。本章使用共同因子表示：联合活动收缩时，合意产出和非合意产出同时减少。这体现了污染削减在技术上有成本，除非数据中实际观测到更清洁的生产或治理活动。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:69
+#: c1cc90c0c3484225abdc6d6837180820
+msgid ""
+"Third, the analyst declares what one unit of environmental improvement "
+"means. For the classic ML programme, inputs remain fixed, desirable outputs "
+"expand in their observed proportions, and undesirable outputs contract in "
+"their observed proportions. Starting from $(x,y,b)$, a programme of size "
+"$\\beta$ requests"
+msgstr ""
+"第三，分析者声明一个单位的环境改善具体表示什么。在经典 ML 方案中，投入保持不变，合意产出按观测比例扩张，非合意产出按观测比例收缩。从 "
+"$(x,y,b)$ 出发，规模为 $\\beta$ 的方案要求"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:74
+#: 4e564fb85b9944588e081f80bdcda071
+msgid ""
+"\n"
+"\\bigl(x,(1+\\beta)y,(1-\\beta)b\\bigr).\n"
+msgstr ""
+"\n"
+"\\bigl(x,(1+\\beta)y,(1-\\beta)b\\bigr).\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:78
+#: a933d6c18c0f4f77b0a927fd9ff76652
+msgid ""
+"For a plant, $\\beta=0.05$ therefore means a simultaneous 5 percent "
+"expansion of each desirable output and a 5 percent contraction of each "
+"undesirable output, without increasing the input vector. This is a demanding"
+" joint performance programme. It is not equivalent to reducing emissions "
+"intensity, reducing total emissions regardless of output, or attaching a "
+"monetary damage value to pollution."
+msgstr ""
+"因此，对一家工厂而言，$\\beta=0.05$ 表示投入向量不增加时，每项合意产出同时扩张 5%，每项非合意产出同时收缩 "
+"5%。这是一项要求严格的联合绩效方案，不等同于降低排放强度、不考虑产出而只减少总排放，也不等同于给污染附加货币损害价值。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:84
+#: e196770f2eed48638f5b0611ea7e737c
+#, python-brace-format
+msgid ""
+"More generally, collect the nonnegative direction magnitudes for the "
+"period-$\\sigma$ plan in $g^\\sigma=(0,g^{y,\\sigma},g^{b,\\sigma})$, where "
+"the leading zero holds inputs fixed. Its directional appraisal against "
+"reference technology $\\mathcal T^\\tau$ is"
+msgstr ""
+"更一般地，把时期 $\\sigma$ 方案的非负方向幅度写为 "
+"$g^\\sigma=(0,g^{y,\\sigma},g^{b,\\sigma})$，开头的 0 表示投入不变。它相对于参照技术 $\\mathcal"
+" T^\\tau$ 的方向性评价为"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:88
+#: 50eb7319f2f146e7ba9bbd6955aae180
+#, python-brace-format
+msgid ""
+"\n"
+"D^\\tau(z^\\sigma;g^\\sigma)\n"
+"=\\sup\\left\\{\\beta:\n"
+"\\bigl(x^\\sigma,y^\\sigma+\\beta g^{y,\\sigma},\n"
+"b^\\sigma-\\beta g^{b,\\sigma}\\bigr)\\in\\mathcal T^\\tau\n"
+"\\right\\}.\n"
+msgstr ""
+"\n"
+"D^\\tau(z^\\sigma;g^\\sigma)\n"
+"=\\sup\\left\\{\\beta:\n"
+"\\bigl(x^\\sigma,y^\\sigma+\\beta g^{y,\\sigma},\n"
+"b^\\sigma-\\beta g^{b,\\sigma}\\bigr)\\in\\mathcal T^\\tau\n"
+"\\right\\}.\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:96
+#: be5e57c374c447d4be4a9cbbde53e263
+msgid ""
+"For a plan observed in period $\\sigma$, the classic observation-scaled "
+"choice is $g^\\sigma=(0,y^\\sigma,b^\\sigma)$. DEAPack stores the desirable-"
+" and undesirable-output components as nonnegative magnitudes; the "
+"contraction of bad outputs is supplied by the model. Entering negative bad-"
+"output directions would reverse that meaning a second time."
+msgstr ""
+"对时期 $\\sigma$ 观测到的方案，经典的观测尺度选择为 $g^\\sigma=(0,y^\\sigma,b^\\sigma)$。DEAPack "
+"把合意与非合意产出方向分量存为非负幅度；非合意产出的收缩符号由模型提供。输入负的非合意产出方向会再次反转其含义。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:102
+#: eecf5b634f7847a1aac13eb09b77c5bb
+msgid ""
+"A positive distance says that some of the chosen improvement remains "
+"attainable relative to the reference technology. A value near zero says that"
+" the plan is already a benchmark for this programme. Neither statement "
+"establishes efficiency under every possible mix change or every "
+"environmental technology."
+msgstr ""
+"正的距离表示相对于参照技术，所选改进方案仍有一部分可以实现；接近 0 "
+"表示该方案已是这套改进方案的标杆。两者都不能证明该方案在所有组合变化或所有环境技术下均有效率。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:107
+#: 2fb7886cb0cf464da0b77a61e5816cd6
+msgid "Why the assumptions change the estimand"
+msgstr "为什么假设会改变估计对象"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:109
+#: 0cedc2d6e82d47a7a65bd3ddbca83871
+msgid ""
+"The classic ML formulation used here adopts a constant-returns-to-scale "
+"(CRS), common-factor weak-disposal technology with null jointness and the "
+"observation-scaled programme $(0,y,b)$. These choices give the index a "
+"precise meaning:"
+msgstr "本章经典 ML 形式采用规模报酬不变（CRS）、共同因子弱可处置技术、零结合性以及观测尺度方案 $(0,y,b)$。这些选择赋予指数明确含义："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 980e5abf56d64c5181b417c8533ba252
+msgid "Modeling choice"
+msgstr "建模选择"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: a3c633b889544403a2963be84a2927a2
+msgid "Meaning of the comparison"
+msgstr "比较含义"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: d8fb448596634c2fb39521dec3bcad6a
+msgid "Inputs held fixed"
+msgstr "投入保持不变"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 1a1937e6b6704ac8920d7ea83b0be0e6
+msgid "Improvement is sought without expanding the stated resource commitment"
+msgstr "在不扩大既定资源承诺的情况下寻求改进"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 99e05ff9bb244cdcb4318fc8def88eb2
+msgid "Desirable direction $g^y=y$"
+msgstr "合意方向 $g^y=y$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 110d34babecb429a84d672fc96ce42fd
+msgid "All desirable outputs expand in their observed proportions"
+msgstr "全部合意产出按观测比例扩张"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 718e3c8442be49bcb57fbac614107ad8
+msgid "Undesirable direction $g^b=b$"
+msgstr "非合意方向 $g^b=b$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 7cf4abb8ffc14035a13847fa7f0777fa
+msgid "All undesirable outputs contract in their observed proportions"
+msgstr "全部非合意产出按观测比例收缩"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 7b84b8ced024422c9985bbe0beff75b5
+msgid "Weak disposal and joint production"
+msgstr "弱可处置性与联合生产"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 76dea94c6cbb4511b9ebadc47b38d4c9
+msgid "Pollution cannot be erased independently of observed production activity"
+msgstr "污染不能独立于观测生产活动被删除"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 0007b0066f244ee6b6b178759d582132
+msgid "CRS"
+msgstr "CRS"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: cade356dad8a4d89be52d948cd4c45b6
+msgid ""
+"Activities may be proportionally replicated; the index does not isolate "
+"scale effects"
+msgstr "活动可以同比例复制；指数不单独识别规模效应"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:121
+#: dbd7e45c35294dea914950d57f1321a8
+msgid ""
+"Changing any row changes the question, not merely the numerical technique. "
+"If a facility has a separately observed scrubber, recycling process, or "
+"treatment stage, common-factor weak disposal may be too restrictive. If "
+"physical material balance is central, a mass-conserving technology may be "
+"needed. If reducing one pollutant while another increases is a realistic "
+"programme, the proportional direction may be inappropriate. Those production"
+" accounts belong in the environmental-efficiency analysis that precedes the "
+"temporal index; they should not be selected after seeing which specification"
+" gives a preferred trend."
+msgstr "改变任一行都会改变研究问题，而不只是改变数值技术。如果设施另有观测到的洗涤、回收或处理阶段，共同因子弱可处置性可能过于严格；若物质平衡是核心，可能需要守恒质量的技术；若现实方案允许一种污染物减少而另一种增加，比例方向可能不适用。这些生产账户应在时间指数之前的环境效率分析中决定，不能看到哪种设定趋势更合意后再选择。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:130
+#: 077ab71c786842f485519813cbb74d52
+#, python-brace-format
+msgid ""
+"The practical lesson is simple: define the pollution-generating process "
+"before measuring its change. The chapter on {doc}`../03-environmental/06"
+"-undesirable-outputs-ddf` develops the underlying technology choices in more"
+" detail."
+msgstr ""
+"实践原则很简单：先定义污染生成过程，再度量其变化。{doc}`../03-environmental/06-undesirable-outputs-"
+"ddf` 章节更详细地讨论底层技术选择。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:135
+#: f952e2a9b9db41feb7cc7c1f5d1ad12a
+msgid "Adjacent-period ML uses four evaluations"
+msgstr "相邻期 ML 使用四次评价"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:137
+#: 481acbeb19a24e7f94d1e570bd2b79b6
+msgid ""
+"Suppose an organization is observed in adjacent periods $t$ and $t+1$. Write"
+" $D_\\sigma^\\tau=D^\\tau(z^\\sigma;g^\\sigma)$ for the directional distance"
+" of the plan observed in period $\\sigma$ when it is evaluated against the "
+"technology supported by reference period $\\tau$. Four questions are "
+"required:"
+msgstr ""
+"设同一组织在相邻时期 $t$ 和 $t+1$ 被观测。记 "
+"$D_\\sigma^\\tau=D^\\tau(z^\\sigma;g^\\sigma)$，表示时期 $\\sigma$ 的方案相对于参照期 "
+"$\\tau$ 所支持技术的方向性距离。需要回答四个问题："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 2394d09a12044deda4a57673070f1b9e
+msgid "Evaluation"
+msgstr "评价"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 632454353d0046ffb88986f1a7b60a01
+msgid "Management question"
+msgstr "管理问题"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: aceee54ee79a4152af4e352a03c59df2
+msgid "$D_t^t$"
+msgstr "$D_t^t$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 399a9989f9fb4190ba15a1a37c1b59b9
+msgid ""
+"How much of the old plan's improvement programme remains attainable under "
+"old-period opportunities?"
+msgstr "在旧时期生产机会下，旧方案还有多少改进方案可以实现？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: f30fb3de0b574b7697022473d61141f2
+#, python-brace-format
+msgid "$D_{t+1}^{t+1}$"
+msgstr "$D_{t+1}^{t+1}$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 321b9e68bcc04202a040b01419edfad4
+msgid "How much remains attainable for the new plan under new-period opportunities?"
+msgstr "在新时期生产机会下，新方案还有多少改进方案可以实现？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 42728a03817f469596ecda0312ec874f
+#, python-brace-format
+msgid "$D_{t+1}^t$"
+msgstr "$D_{t+1}^t$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: 13a25d7d25e24c8cb0530eace7f8670d
+msgid ""
+"How would the new plan compare with the opportunities observed in the old "
+"period?"
+msgstr "新方案相对于旧时期观测生产机会有怎样的表现？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: a81077fde2b6408c89b001c73837def7
+#, python-brace-format
+msgid "$D_t^{t+1}$"
+msgstr "$D_t^{t+1}$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md
+#: c3cb95c247a94f4f9e939ae90a4b86cb
+msgid ""
+"How would the old plan compare with the opportunities observed in the new "
+"period?"
+msgstr "旧方案相对于新时期观测生产机会有怎样的表现？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:149
+#: 97fdaeb1f7fa433eaa6d525c91c26da2
+msgid ""
+"The diagonal comparisons describe each plan relative to its contemporaneous "
+"environment. The off-diagonal comparisons ask whether one period's operation"
+" can be supported by the other period's production and emissions "
+"opportunities."
+msgstr "两个对角线比较描述每个方案相对于同期环境的表现；两个非对角线比较考察某一时期经营活动能否由另一时期的生产与排放机会支持。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:153
+#: 0cb4138ae8b1456c96ecd4aeb23c9687
+msgid ""
+"A two-by-two matrix crosses old and new operating plans with old and new "
+"environmental production opportunities, producing two contemporaneous and "
+"two cross-period evaluations"
+msgstr "一个 2×2 矩阵把新旧经营方案与新旧环境生产机会交叉，形成两次同期评价和两次跨期评价"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:158
+#: 339b694101124c14ae226ac9c7de7401
+msgid ""
+"The four evaluations behind adjacent-period ML. Using both period "
+"technologies avoids making the measured transition depend solely on choosing"
+" the old or the new benchmark."
+msgstr "相邻期 ML 背后的四次评价。使用两个时期的技术，避免让测得转变完全取决于只选旧标杆或只选新标杆。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:162
+#: c0e5d3c6957c43f9b23edbe65f29572b
+msgid "Two change ratios can be formed, one under each reference period:"
+msgstr "可以在每个参照期下分别构造一个变化比率："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:164
+#: ba52b3d349cd4fcc85e542a5ec58b44a
+msgid ""
+"\n"
+"R^t\n"
+"=\\frac{1+D_t^t}{1+D_{t+1}^t},\n"
+"\\qquad\n"
+"R^{t+1}\n"
+"=\\frac{1+D_t^{t+1}}{1+D_{t+1}^{t+1}}.\n"
+msgstr ""
+"\n"
+"R^t\n"
+"=\\frac{1+D_t^t}{1+D_{t+1}^t},\n"
+"\\qquad\n"
+"R^{t+1}\n"
+"=\\frac{1+D_t^{t+1}}{1+D_{t+1}^{t+1}}.\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:172
+#: f3a01f0ba9cb40809f65286b268e33ad
+msgid "The adjacent-period ML index takes their geometric mean:"
+msgstr "相邻期 ML 指数取二者的几何平均："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:174
+#: 768b4855f7a640d7a1f70d31d31da162
+msgid ""
+"\n"
+"ML^{t,t+1}\n"
+"=\\left[\n"
+"\\frac{1+D_t^t}{1+D_{t+1}^t}\n"
+"\\frac{1+D_t^{t+1}}{1+D_{t+1}^{t+1}}\n"
+"\\right]^{1/2}.\n"
+msgstr ""
+"\n"
+"ML^{t,t+1}\n"
+"=\\left[\n"
+"\\frac{1+D_t^t}{1+D_{t+1}^t}\n"
+"\\frac{1+D_t^{t+1}}{1+D_{t+1}^{t+1}}\n"
+"\\right]^{1/2}.\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:182
+#: fff276a25de7417b8624b6e3489c74cc
+msgid ""
+"Under this convention, $ML>1$ denotes environmental productivity "
+"improvement, $ML=1$ no measured change, and $ML<1$ decline. “Improvement” "
+"means that the later plan performs better under the specified useful-output-"
+"expansion and bad-output-contraction programme, averaged over the two "
+"period-specific reference policies."
+msgstr ""
+"按本章约定，$ML>1$ 表示环境生产率改善，$ML=1$ 表示未测得变化，$ML<1$ "
+"表示下降。“改善”是指后期方案在既定的有用产出扩张—非合意产出收缩方案下表现更好，并对两个时期特定参照政策取平均。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:187
+#: 43a4102cdeb04c8eb68c37d433c97a80
+msgid ""
+"The added 1 is part of the classic multiplicative construction. Because the "
+"direction determines the units and scale of $D$, changing the improvement "
+"programme can change the index. Direction choice is therefore an empirical "
+"commitment, not a harmless normalization."
+msgstr "加上的 1 是经典乘法构造的一部分。由于方向决定 $D$ 的单位和尺度，改变改进方案可能改变指数。因此，方向选择是一项实证承诺，而不是无关紧要的标准化。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:192
+#: e0f0a9a5332c44fea8f52a33a3f14802
+msgid "Two change stories inside the ML index"
+msgstr "ML 指数中的两个变化叙事"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:194
+#: 1c19324a2fee4b4d89343e91113a35d4
+msgid ""
+"The index can be decomposed into a change in contemporaneous operating "
+"performance and a change in best-observed production opportunity."
+msgstr "该指数可分解为同期经营绩效变化与最佳观测生产机会变化。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:197
+#: 18db67a15b494c5ea270de7af6d6e4e0
+msgid "The operating-performance component is"
+msgstr "经营绩效分量为"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:199
+#: 84eab20f1980404b8e099e89905209dc
+msgid ""
+"\n"
+"EC_{ML}\n"
+"=\\frac{1+D_t^t}{1+D_{t+1}^{t+1}}.\n"
+msgstr ""
+"\n"
+"EC_{ML}\n"
+"=\\frac{1+D_t^t}{1+D_{t+1}^{t+1}}.\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:204
+#: 3574a4460cce41f0aa576bbce92ca33e
+#, python-brace-format
+msgid ""
+"When $EC_{ML}>1$, the later operation leaves a smaller shortfall relative to"
+" its own period's benchmark. When it is below one, the contemporaneous "
+"shortfall has widened. This is often called efficiency change. In management"
+" language, it records whether the organization realizes more or less of the "
+"environmental production potential observed around it at each date."
+msgstr ""
+"$EC_{ML}>1$ 时，后期经营相对于自身时期标杆的缺口更小；低于 1 "
+"时，同期缺口扩大。这通常称为技术效率变化。用管理语言说，它记录组织在各日期实现了周围所观测环境生产潜力的更多还是更少。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:210
+#: 2b6fd99d8e4045aa964cfb9340147fc7
+msgid "The best-practice-opportunity component is"
+msgstr "最佳实践机会分量为"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:212
+#: 4a6e86ba82744a5eaa98d96dad9d38cc
+msgid ""
+"\n"
+"TC_{ML}\n"
+"=\\left[\n"
+"\\frac{1+D_t^{t+1}}{1+D_t^t}\n"
+"\\frac{1+D_{t+1}^{t+1}}{1+D_{t+1}^t}\n"
+"\\right]^{1/2},\n"
+msgstr ""
+"\n"
+"TC_{ML}\n"
+"=\\left[\n"
+"\\frac{1+D_t^{t+1}}{1+D_t^t}\n"
+"\\frac{1+D_{t+1}^{t+1}}{1+D_{t+1}^t}\n"
+"\\right]^{1/2},\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:220
+#: 9e44ea25fe324580ace35b1334f062b1
+msgid "with the exact identity"
+msgstr "并满足精确恒等式"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:222
+#: 7609c498a0a346daade609a1b8644046
+#, python-brace-format
+msgid ""
+"\n"
+"ML=EC_{ML}\\times TC_{ML}.\n"
+msgstr ""
+"\n"
+"ML=EC_{ML}\\times TC_{ML}.\n"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:226
+#: 67cc3d22dd3143fcba9a95fc0be6d083
+#, python-brace-format
+msgid ""
+"$TC_{ML}>1$ means that the best-observed trade-off among inputs, desirable "
+"outputs, and undesirable outputs became more favorable for the two plans "
+"being compared. A value below one records a less favorable observed "
+"opportunity. Although software often calls this technical change, it is "
+"safer to report it as **best-practice-opportunity change**. The component "
+"does not reveal why the benchmark changed."
+msgstr ""
+"$TC_{ML}>1$ 表示在所比较两个方案附近，投入、合意产出与非合意产出之间的最佳观测权衡变得更有利；低于 1 "
+"表示观测机会变得更不利。软件通常把它称为技术变动，但报告时使用**最佳实践机会变化**更稳妥。该分量不能揭示标杆为什么改变。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 680da5ec27c74617b63f5849b273cb4b
+msgid ""
+"Two environmental productivity stories contrast an organization narrowing "
+"its contemporaneous operating shortfall with a change in the best-observed "
+"useful-output and undesirable-output opportunity"
+msgstr "两个环境生产率叙事：组织缩小同期经营缺口，与最佳观测有用产出—非合意产出机会发生变化"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:238
+#: 5d91de4f16d24a2caf4092f498fdcf97
+msgid ""
+"Environmental productivity can grow because an organization realizes more of"
+" the opportunity observed in its period, because the best-observed "
+"opportunity improves, or because both occur. It is an accounting description"
+" rather than a causal allocation of responsibility."
+msgstr "环境生产率可能因为组织更多地实现本期所观测机会、最佳观测机会改善，或二者同时发生而增长。这是会计描述，不是责任的因果分配。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:244
+#: 134699843864461c956973d3fe04e9ec
+msgid ""
+"The distinction matters for management. A narrowing contemporaneous "
+"shortfall may be consistent with better maintenance, fuel management, "
+"capacity use, or operating discipline. A favorable opportunity change may be"
+" consistent with cleaner equipment, learning, altered production mix, or new"
+" environmental practice among benchmark units. But the index does not "
+"observe those mechanisms directly. Data revisions, weather, case mix, fuel "
+"quality, regulation, and changes in measurement can produce similar "
+"patterns."
+msgstr "该区别对管理很重要。同期缺口缩小可能与维护、燃料管理、产能利用或经营纪律改善一致；有利的机会变化可能与更清洁设备、学习、生产组合调整或标杆单元采用新的环境实践一致。但指数不直接观测这些机制，数据修订、天气、业务组合、燃料质量、监管和测量变化都可能产生相似模式。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:252
+#: 3fa7c3a125484d3ab87174b53f172b83
+msgid ""
+"The two components can also move in opposite directions. A plant may improve"
+" relative to its contemporaries while the system's best-observed opportunity"
+" becomes less favorable, or lose relative ground while best practice "
+"improves. Reporting only the headline ML value can hide that strategically "
+"important difference."
+msgstr "两个分量也可能反向移动。工厂可以在系统最佳观测机会变差时相对同业改善，也可以在最佳实践改善时相对落后。只报告 ML 核心值可能掩盖这一具有战略意义的差异。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:257
+#: 2ea37cb7656545d58ef4b5e3e6a59335
+msgid "A signed cross-technology distance can carry economic information"
+msgstr "带符号跨技术距离可以承载经济信息"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:259
+#: d533f2f33fb34acc846ee656bde27247
+msgid ""
+"The evaluated plan is always included in its own-period technology in an "
+"ordinary self-inclusive analysis, so a zero contemporaneous improvement is "
+"feasible and the diagonal distance is nonnegative. A cross-period plan need "
+"not belong to the other period's technology. Its optimal directional "
+"distance can therefore be negative."
+msgstr "在普通自包含分析中，被评价方案总是纳入自身时期技术，因此同期评价至少可以选择零改进，对角线距离非负。跨期方案则不一定属于另一时期技术，其最优方向性距离因而可能为负。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:264
+#: 9d96abb1d08242299aade57b97d3dd21
+#, python-brace-format
+msgid ""
+"A negative $D_{t+1}^t$ says that the later plan is beyond what the old "
+"technology can represent in the declared favorable programme. To make it "
+"compatible with the old reference, the comparison would have to move in the "
+"unfavorable direction—less desirable output, more undesirable output, or the"
+" corresponding combination defined by the programme. This can be evidence of"
+" a meaningful change in represented opportunity."
+msgstr ""
+"负的 $D_{t+1}^t$ "
+"表示在既定有利改进方案下，后期方案超出了旧技术能够表示的范围。若要使其与旧参照兼容，比较必须向不利方向调整——减少合意产出、增加非合意产出，或按方案定义作相应组合。这可能是所代表生产机会发生实质变化的证据。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:271
+#: 0f1d15b37b5a4c6280ba58e0ed0cdb2f
+msgid "Three empirical outcomes must remain separate:"
+msgstr "必须区分三类实证结果："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 07cfbf198a544f7e808a4bdafc6ab080
+msgid "Outcome"
+msgstr "结果"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: e62832223f5444d693b19a2e5d455e6c
+msgid "Interpretation"
+msgstr "解释"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 827757e29a414ff780983d8deae26e71
+msgid "Appropriate treatment"
+msgstr "适当处理"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: d5a4b21fe2ff4dd084b63cef15096e01
+msgid "A valid comparison gives $D<0$ and $1+D>0$"
+msgstr "有效比较得到 $D<0$ 且 $1+D>0$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 16bdab77014b40ea9b17842a968cbf56
+msgid "The plan lies beyond the other period's opportunity in the declared programme"
+msgstr "方案在既定改进方向上超出另一时期生产机会"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 9777b0991ad948769102a71bac4be3fd
+msgid "Retain the signed distance in ML"
+msgstr "在 ML 中保留带符号距离"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 4b6cf3d2b26f405ebc3a2579ba5a9c33
+msgid "No feasible comparison exists"
+msgstr "不存在可行比较"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 282fd17cae6b4731b24bfeb86d620348
+msgid ""
+"No admissible reference activity represents the plan under the maintained "
+"environmental technology"
+msgstr "在维持的环境技术下，没有合格参照活动能够表示该方案"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: d558c0cb19a342508eb9effb6e9fadd7
+msgid "Leave the transition undefined and investigate the technology and data"
+msgstr "把该转变保留为未定义，并检查技术和数据"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 3771cdf289724c798ff46ff852504ff4
+msgid "A valid comparison gives $1+D\\le0$"
+msgstr "有效比较得到 $1+D\\le0$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: d88041b1db644957935e03331714799d
+msgid "The multiplicative factor needed by ML is not admissible"
+msgstr "ML 所需乘法因子不可接受"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: d2c91975849f4d9d8041a1145116e887
+msgid "Preserve the appraisal record but do not report a finite index"
+msgstr "保留评价记录，但不报告有限指数"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:279
+#: be5106c38e9446e686a6c07646ca4287
+msgid ""
+"Truncating a valid negative distance to zero removes information and changes"
+" the index. Infeasibility, by contrast, means that no solution exists under "
+"the maintained joint-production and bad-output constraints. It cannot be "
+"repaired by assigning a large or zero distance."
+msgstr "把有效负距离截断为 0 会删除信息并改变指数。不可行则意味着在维持的联合生产和非合意产出约束下不存在解，不能用赋予一个很大距离或零距离来修复。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:284
+#: 0f67a2fcaa4743328aa0663d7ca11951
+msgid ""
+"Cross-period infeasibility is often economically informative. A bad-output "
+"equality or weak-disposal relation may be unable to reproduce a plan from "
+"another year because the observed pollution mix has changed sharply. Before "
+"changing the estimator, ask whether pollutant definitions, measurement "
+"methods, treatment activities, or the assumed disposal relation changed. If "
+"a different environmental technology is substantively justified, all four "
+"evaluations should be recomputed under that one coherent production account."
+msgstr "跨期不可行往往具有经济信息。由于观测污染组合明显改变，非合意产出等式或弱可处置关系可能无法再现另一年度方案。在更换估计器前，应先询问污染物定义、测量方法、治理活动或所假设处置关系是否改变。如果另一种环境技术在实质上更合理，就应在同一个连贯生产账户下重算四次评价。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:292
+#: 1c8696f7e50b4876af44498322d432f1
+msgid "One plant transition, with one benchmark sensitivity check"
+msgstr "一个工厂转变，以及一项标杆敏感性检查"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:294
+#: 6633adb4a3cc40e393520168df148906
+msgid ""
+"The bundled `environmental_panel` follows six electricity producers from "
+"2020 to 2023. Inputs are energy and labor, electricity is desirable output, "
+"and carbon dioxide is undesirable output. Consider Central between 2020 and "
+"2021:"
+msgstr ""
+"内置 `environmental_panel` 跟踪 2020—2023 年六家发电企业。投入是能源和劳动，电力为合意产出，二氧化碳为非合意产出。考察"
+" Central 在 2020—2021 年的变化："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: d702278486d14aaba8e7533eda85f743
+msgid "Year"
+msgstr "年份"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: c26140b0bf16468f8357933f3a86746c
+msgid "Energy"
+msgstr "能源"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 25ee8d3fc19548c292ed9cfbc5820fdc
+msgid "Labor"
+msgstr "劳动"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: c68d7a37b31546098df993e67806bdc2
+msgid "Electricity"
+msgstr "电力"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 6651c477a74440f3a7f95e82345093d3
+msgid "CO$_2$"
+msgstr "CO$_2$"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 5c3920fa6e8540c5a9e30bc8df022490
+msgid "2020"
+msgstr "2020"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 440b81fdc4bb4f67b7980624a07d1f3b
+msgid "110.0"
+msgstr "110.0"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 72ba3ce7ef9f4b2cbc272ccec86de10d
+msgid "55.00"
+msgstr "55.00"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: b3b9e5d131864386a05deec8d1922a46
+msgid "79.376"
+msgstr "79.376"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: a4602aad4ab04159a53043058cbd8db0
+msgid "285.120"
+msgstr "285.120"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 7aba8771846547e59a0a094ed37a3c95
+msgid "2021"
+msgstr "2021"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: c75b86ed2c2441c5a8d7895713a5fcbf
+msgid "112.2"
+msgstr "112.2"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: ad033c2a8130421299063a5985521042
+msgid "54.45"
+msgstr "54.45"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 99cc0d7a01674ffb9bbecd1bd8870e8b
+msgid "83.742"
+msgstr "83.742"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 96ed9bf706de45c9924c36a90590c7d5
+msgid "270.465"
+msgstr "270.465"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:303
+#: a780cb56a8b744a1856e8ce290dbf99d
+msgid ""
+"Electricity rises and carbon dioxide falls, while the two inputs move in "
+"different directions. The index evaluates the complete plan rather than "
+"declaring improvement from either raw output change alone."
+msgstr "发电量增加、二氧化碳减少，而两项投入朝不同方向变化。指数评价完整方案，不会仅凭任何一项原始产出变化就断言改善。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:307
+#: 1b45b596f35e415fba1b97976fb7abc5
+msgid "Fit the adjacent-period ML account first:"
+msgstr "先拟合相邻期 ML 账户："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:338
+#: c074b6715caf4e75a82ef36face4b9dc
+msgid ""
+"The same fitted result provides one screen of every reportable 2020--2021 "
+"transition:"
+msgstr "同一拟合结果可以筛查所有可报告的 2020—2021 年转变："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: f5d041ebeb134edf9094f67d6dd274bf
+msgid "Plant"
+msgstr "工厂"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: 06621a06961a4c44aab7a809dd287993 c2bd1d8211494c4183ea1c8e0532414f
+msgid "Environmental productivity change"
+msgstr "环境生产率变化"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 6fad678bd0474d29b1081dea665a6f07
+msgid "Operating-performance change"
+msgstr "经营绩效变化"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 25e7134740974b83aef6437ab9d9bbe2
+msgid "Best-observed-opportunity change"
+msgstr "最佳观测机会变化"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: 16c41abae72d40248fbb25967a3cb5ed
+msgid "Central"
+msgstr "Central"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: 4be8d33825c2442282b7a34851699514 d66a6ed6fb8c418fa8bdea85633a5792
+msgid "1.045057"
+msgstr "1.045057"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: c30aefa699774689aefbb1bd7ec4dd68
+msgid "1.000014"
+msgstr "1.000014"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:233
+#: f7be7fb9ebc54240a51dc9a3c4bddbc1
+msgid "1.045043"
+msgstr "1.045043"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:354
+#: b36baac8a34045568d1fc631c4a36785
+msgid ""
+"Central's contemporaneous operating shortfall is essentially unchanged. "
+"Adjacent ML records about 4.51 percent environmental productivity growth. "
+"The decomposition places that change in a more favorable opportunity across "
+"the two period-specific technologies."
+msgstr "Central 的同期经营缺口基本不变。相邻 ML 记录约 4.51% 的环境生产率增长，分解把这一变化归入两个时期特定技术之间更有利的生产机会。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:358
+#: fa55d1513e614c2abfd466469989a638
+#, python-brace-format
+msgid ""
+"The adjacent result also illustrates a valid signed cross-period distance. "
+"The underlying comparison is feasible and "
+"$D_{2021}^{2020}\\approx-0.004534$, so $1+D_{2021}^{2020}>0$. Central's 2021"
+" plan is slightly beyond the opportunity supported by the 2020 reference "
+"under the chosen programme. The negative value is retained as part of the "
+"period-specific opportunity change."
+msgstr ""
+"相邻期结果还展示了有效的带符号跨期距离。底层比较可行且 $D_{2021}^{2020}\\approx-0.004534$，所以 "
+"$1+D_{2021}^{2020}>0$。在所选方案下，Central 的 2021 年方案略微超出 2020 "
+"年参照所支持的生产机会。该负值作为时期特定机会变化的一部分予以保留。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: a6f5f95451e94f41828ff7c63a0d84c5
+msgid ""
+"Four available 2020 to 2021 adjacent-period environmental productivity "
+"changes are plotted for South, East, Central, and Coastal, while North and "
+"West are listed separately because their required cross-period comparisons "
+"are infeasible"
+msgstr ""
+"绘出 South、East、Central 和 Coastal 四个可得的 2020—2021 年相邻期环境生产率变化；North 与 West "
+"单列，因为其必要跨期比较不可行"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:369
+#: 22ac6bdb01bb46dbbf3214b206312791
+msgid ""
+"Four plants have all four appraisals needed for an adjacent-period "
+"comparison. Each point therefore compares operating performance and observed"
+" production opportunities under the weak common-factor CRS technology. North"
+" and West are listed separately because at least one required cross-period "
+"comparison is infeasible. Their absence is not zero productivity change or "
+"evidence of poor management. The reported differences remain conditional "
+"production comparisons, not causal ratings of management, investment, or "
+"regulation."
+msgstr ""
+"四家工厂拥有相邻期比较所需的全部四次评价，因此每个点都在弱共同因子 CRS 技术下比较经营绩效与观测生产机会。North 和 West "
+"因至少一次必要跨期比较不可行而单独列出。未显示不表示生产率变化为零，也不是管理不佳的证据。报告差异仍是条件性生产比较，不是对管理、投资或监管的因果评级。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:378
+#: a597d11b85e5407a916e04aa09c17ea5
+msgid ""
+"The two unavailable transitions have different reference boundaries. North's"
+" 2020 plan cannot be represented by the 2021 technology under the maintained"
+" production assumptions. For West, neither period's plan can be represented "
+"by the other period's technology. Both transitions therefore remain "
+"unavailable rather than being turned into zero change or a poor-performance "
+"score."
+msgstr ""
+"两个不可得转变具有不同的参照边界。在维持的生产假设下，North 的 2020 年方案无法由 2021 年技术表示；West "
+"的两个时期方案都无法由另一时期技术表示。因此，两项转变都保持不可得，而不会被改成零变化或低绩效得分。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:384
+#: 09fc2c2c55ee4f1aaaa9b4d54a395516
+#, python-brace-format
+msgid ""
+"As a robustness check, the same transition can be re-evaluated against one "
+"full-horizon technology, often called GML {cite:p}`oh2010`. This changes the"
+" admitted reference information rather than repairing missing adjacent "
+"comparisons:"
+msgstr ""
+"作为稳健性检查，可以把同一转变放到覆盖全时段的一个技术下重新评价，这通常称为 GML "
+"{cite:p}`oh2010`。这改变了获准使用的参照信息，而不是修复缺失的相邻期比较："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: 6f5cbe6e26a74f8f9598576dd0c07167
+msgid "Reference-information policy"
+msgstr "参照信息政策"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: 27f5132b56d34010a42cc89702ddb7f9
+msgid "Two contemporaneous technologies"
+msgstr "两个同期技术"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: 7f1244ea5cce4912ba9a4dcc296f9c64
+msgid "One full-horizon technology"
+msgstr "一个覆盖全时段的技术"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:364
+#: df639b4abb7d465d8b43491ea34ab7a4
+msgid "1.004603"
+msgstr "1.004603"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:401
+#: 2af0e54c9d9a4a0e8ca17c2794dd052c
+msgid ""
+"Central's full-horizon value remains above one but is smaller; it is only a "
+"sensitivity result, not a replacement for adjacent-period ML, and it must be"
+" recomputed when the admitted information horizon changes."
+msgstr "Central 的全时段数值仍大于 1，但更小；它只是一项敏感性结果，不能替代相邻期 ML，而且在获准信息时段变化后必须重新计算。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:405
+#: ceed3f4d008941349a92d4e800f58264
+msgid ""
+"The common benchmark also lets a decision maker ask a direct longer-horizon "
+"question. Suppose the plant's transition plan spans 2020 to 2023. A GML "
+"endpoint compares those two complete production-and-emissions plans against "
+"the same retrospective opportunity set. It does not assume that the annual "
+"path was smooth, nor does it identify which investment, operating decision, "
+"or regulation produced the change. It simply makes the start and end of the "
+"declared management horizon comparable under one fixed information vintage."
+msgstr ""
+"共同标杆还让决策者能够提出直接的长期问题。假设工厂转变方案覆盖 2020—2023 年，GML "
+"端点比较把两个完整生产—排放方案放到同一个回溯性机会集下评价。它不假定年度路径平滑，也不识别哪项投资、经营决策或监管造成变化，只是使既定管理时段的起点和终点在一个固定信息版本下可比。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:413
+#: be44ae197bbe40b2b615c50bd97ece9c
+msgid ""
+"Consecutive reporting remains the default. A study can request every forward"
+" pair or name only the horizon it needs:"
+msgstr "连续期报告仍是默认选择。研究可以请求所有正序日期对，也可以只指定所需时段："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:426
+#: c3bf5be394764aa2b26a2097f9abfe2b
+msgid ""
+"The all-horizon table has $DP(P-1)/2$ rows for $D$ plants and $P$ periods, "
+"so its results, diagnostics, and disclosed peers grow quadratically with the"
+" number of dates. The production appraisals do not: each plant-period plan "
+"needs at most one contemporaneous and one global solve, and those appraisals"
+" are reused across horizons. This distinction makes a complete research "
+"table computationally disciplined while still too large to treat as a "
+"default management display."
+msgstr ""
+"全时段表对 $D$ 家工厂、$P$ 个时期包含 $DP(P-1)/2$ "
+"行，因此结果、诊断和披露参照单元数量随日期数平方增长。生产评价本身不会如此增长：每个工厂—时期方案最多只需一次同期求解和一次全局求解，并在各时段间复用。这使完整研究表在计算上仍有纪律，但规模过大，不适合作为默认管理展示。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:433
+#: 28e91f174fbd47ed89c71e863a65387a
+msgid ""
+"If a plant is absent from one selected date, matching is handled for that "
+"pair alone. Dropping the unavailable change does not erase its other "
+"observations from the global environmental benchmark. Raising on the "
+"mismatch instead forces the researcher to resolve the missing institutional "
+"history. In either case, pair selection changes the reported horizons, not "
+"the full-sample technology."
+msgstr "若工厂在所选某一日期缺失，只对该日期对处理匹配。删除不可得变化不会从全局环境标杆中抹去它的其他观测；因不匹配而报错则迫使研究者处理缺失的机构历史。无论哪种方式，日期对选择只改变报告时段，不改变完整样本技术。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:439
+#: 5cddef636f224cd086cdb7388df3e689
+msgid "For a figure, fit the one endpoint that the caption will name:"
+msgstr "绘图时，只拟合图注所说明的一个端点："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:450
+#: 10df54eefd5d4039a2a5432154a251a2
+msgid ""
+"Plotting all pairs under the ending year alone would hide whether each point"
+" began in 2020, 2021, or 2022. A reader should never have to infer the base "
+"year of an environmental productivity statement from context."
+msgstr "若只按结束年份绘制所有日期对，就会掩盖每个点始于 2020、2021 还是 2022 年。读者绝不应从上下文猜测环境生产率陈述的基年。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:454
+#: 2a4ff8e3d3f94c95bfb02921a5413c86
+msgid ""
+"The adjacent interpretation requires four meaningful appraisals that "
+"reconstruct the headline change and its two components under one consistent "
+"treatment of resources, services, residuals, and reference periods. If a "
+"comparison is unavailable or the decomposition does not close, the "
+"transition has no defensible productivity statement. Detailed numerical "
+"diagnostics are available in the DEAPack Documentation; substantive "
+"production assumptions still require economic and institutional "
+"justification."
+msgstr ""
+"相邻期解释要求四次评价都具有实质含义，并且在资源、服务、残余物和参照时期处理一致时，能够重构核心变化及其两个分量。比较不可得或分解不能闭合时，该转变就没有可辩护的生产率陈述。详细数值诊断见"
+" DEAPack Documentation；实质生产假设仍需经济与制度依据。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:461
+#: 829abab105ef4b95b8513628e49e7ac0
+msgid "What should a decision maker be told?"
+msgstr "应向决策者说明什么？"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:463
+#: c458708cc23447ee8a63270b048f0bef
+msgid ""
+"Adjacent-period ML should be reported only when both neighboring operating "
+"environments deserve symmetric standing and all four evaluations are "
+"substantively meaningful. A missing cross-period comparison is part of that "
+"evidence and must remain visible rather than being replaced with a "
+"convenient finite number."
+msgstr ""
+"只有当两个相邻经营环境都应得到对称地位，且四次评价都具有实质含义时，才应报告相邻期 "
+"ML。缺失的跨期比较是证据的一部分，必须保持可见，不能替换为一个方便的有限数值。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:468
+#: 1f5de69ee09e4adab386b8f0481e9525
+msgid "A defensible report should state:"
+msgstr "有根据的报告应说明："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:470
+#: 451b540988b347d2a108b5fe8ea94263
+msgid "which variables are inputs, desirable outputs, and undesirable outputs;"
+msgstr "哪些变量是投入、合意产出和非合意产出；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:471
+#: b5a06dddb00248e7a0e13c5222f4c9e8
+msgid "how joint production and undesirable-output disposability are modeled;"
+msgstr "如何建模联合生产与非合意产出可处置性；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:472
+#: 95a6f085c6aa4eef99791541b9465a42
+msgid "what one unit of the environmental improvement programme means;"
+msgstr "一个环境改进方案单位具体表示什么；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:473
+#: 7b8a1cbef4ca44a49b0066fb7118e5bf
+msgid "which returns-to-scale assumption defines the opportunity set;"
+msgstr "哪一项规模报酬假设界定生产机会集；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:474
+#: 269f73ec467f42ba80c9cb7c6223503d
+msgid "which two annual technologies define the four benchmark evaluations; and"
+msgstr "哪两个年度技术界定四次标杆评价；以及"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:475
+#: 7f01d6e4b5b8438f92f0a364858269ed
+msgid ""
+"whether negative distances, infeasibilities, or inadmissible factors "
+"occurred."
+msgstr "是否出现负距离、不可行或不可接受因子。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:477
+#: 74c55a6f78804483a6f2d2913cc8fb9b
+msgid ""
+"Results near one need numerical tolerances and honest recognition of "
+"uncertainty in pollution measurement. ML can describe a change in "
+"contemporaneous environmental shortfall, a change in best-observed "
+"opportunity, or a plan lying beyond another period's technology. Without "
+"further evidence, the following remain outside its claim:"
+msgstr ""
+"接近 1 的结果需要数值容差，也要诚实承认污染测量的不确定性。ML "
+"可以描述同期环境缺口变化、最佳观测机会变化，或某方案超出另一时期技术。没有进一步证据时，下列主张都超出其范围："
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:483
+#: bd0e6d460d434f9394c06b0a1fdcce02
+msgid ""
+"the causal effect of regulation, innovation, investment, ownership, or "
+"management;"
+msgstr "监管、创新、投资、所有制或管理的因果效应；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:484
+#: a6f9690c01ae4bb499433a7df9f84993
+msgid ""
+"the monetary value of pollution damage, abatement expenditure, profit, or "
+"social welfare;"
+msgstr "污染损害、治理支出、利润或社会福利的货币价值；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:486
+#: 019dcdf05e9a4ae8b4918cb714b38278
+msgid ""
+"whether the benchmark can be adopted given engineering, finance, demand, and"
+" local regulatory constraints;"
+msgstr "在工程、财务、需求和地方监管约束下能否采用标杆；"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:488
+#: 151c63a1deeb412cb04a68f55fe8cc90
+msgid "that observed prices or preferences favor the same improvement programme; or"
+msgstr "观测价格或偏好是否支持同一改进方案；或"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:489
+#: bb1ec438a051425b8c2ad33d66515de2
+msgid ""
+"that another defensible environmental technology or direction would preserve"
+" the ranking."
+msgstr "另一种有依据的环境技术或方向是否会保持排序。"
+
+#: ../../chapters/04-productivity/environmental-productivity-ml-common-reference.md:492
+#: 6e339e612f2e457f8c66e7ab94b9bcc9
+msgid ""
+"Environmental productivity is a production comparison, not a complete policy"
+" evaluation. Once joint production, undesirable-output disposability, and "
+"the improvement programme are explicit, adjacent-period ML offers an "
+"intelligible view of changing operating performance, best-observed practice,"
+" and the evidence behind the benchmark. A causal or welfare evaluation "
+"requires a different research design."
+msgstr ""
+"环境生产率是一项生产比较，不是完整政策评价。只要明确联合生产、非合意产出可处置性和改进方案，相邻期 ML "
+"就能清楚展示经营绩效变化、最佳观测实践变化以及标杆背后的证据。因果或福利评价需要另一种研究设计。"
+

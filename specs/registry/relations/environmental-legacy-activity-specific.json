@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.ddf.joint_production",
+  "target": "environmental.ddf.weak_disposal.activity_specific",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.legacy_weak_selector_compared_with_kuosmanen_vrs",
+      "arguments": {
+        "legacy_selector": "bad_output_directional_equality_only",
+        "legacy_disposability_identity": "not_identified",
+        "activity_specific_technology": "X_mu_plus_tau_le_x_Y_mu_ge_y_B_mu_eq_b_sum_mu_plus_tau_eq_one",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1111/j.1467-8276.2005.00788.x",
+      "doi:10.1016/j.ejor.2018.09.019"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental.py",
+      "tests/test_weak_disposal.py::test_activity_specific_vrs_differs_from_legacy_bad_output_equality"
+    ]
+  }
+}

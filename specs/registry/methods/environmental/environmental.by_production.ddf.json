@@ -1,0 +1,382 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.by_production.ddf",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Conventional directional distance on a by-production technology",
+  "decision_question": "What common directional service expansion and residual contraction is supported by both by-production accounts, and which account limits that declared programme?",
+  "names": {
+    "display": "By-production directional distance",
+    "historical": [
+      {
+        "label": "Directional-distance-function index under by-production",
+        "spellings": [
+          "BP-DDF",
+          "directional efficiency under by-production"
+        ],
+        "sources": [
+          "doi:10.1016/j.jeem.2012.02.005",
+          "doi:10.1016/j.ejor.2015.07.024"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ByProductionDirectionalDistanceDEA",
+      "aliases": [
+        {
+          "symbol": "ByProductionDDF"
+        }
+      ]
+    },
+    "spellings": [
+      "by-production DDF",
+      "BP directional distance"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_production_and_residual_generation_appraisal",
+        "managerial_plan": "common_directional_improvement_supported_by_both_accounts",
+        "source_interpretation": "criticized_conventional_index_not_the_authors_proposed_preferred_measure"
+      }
+    },
+    "graph": {
+      "fixed": {
+        "kind": "by_production",
+        "subtechnologies": [
+          "intended_production",
+          "residual_generation"
+        ],
+        "intensity_policy": "separate"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "polluting_inputs": "declared_residual_generating_resource_subset",
+        "outputs": "desirable_services_to_expand",
+        "bad_outputs": "undesirable_residuals_to_contract",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.by_production.declared_polluting_inputs",
+        "domain.by_production.declared_bad_outputs",
+        "domain.by_production.nonnegative_quantities"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.by_production",
+        "environmental.costly_disposal"
+      ],
+      "fixed": {
+        "family": "intersection_of_intended_and_residual_subtechnologies",
+        "intended_disposal": "ordinary_free",
+        "residual_disposal": "costly",
+        "component_intensities": "independent"
+      },
+      "defaults": {
+        "intended_returns_to_scale": "crs",
+        "residual_returns_to_scale": "crs"
+      },
+      "exposed": [
+        "intended_returns_to_scale",
+        "residual_returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "componentwise_dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_by_production_sample",
+          "membership_rule": "same_population_for_both_subtechnologies",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "directional_distance",
+        "orientation": "output",
+        "joint_aggregation": "minimum_of_component_distances",
+        "native_distance_interpretation": "higher_is_farther",
+        "performance_ordering": "lower_is_better"
+      },
+      "defaults": {
+        "output_direction": "ones",
+        "bad_output_direction": "ones",
+        "direction_scope": "fixed_across_observations"
+      },
+      "exposed": [
+        "output_direction",
+        "bad_output_direction"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_conditioned_componentwise_appraisal",
+        "fitted_kind": "derived_as_componentwise_self_mixed_or_external_from_reference_plan",
+        "primary_programmes_per_observation": 2,
+        "component_target_policy": "solver_selected",
+        "membership_assessment": "self_inclusion_or_both_certified_nonnegative_component_accounts",
+        "efficiency_classification_domain": "evaluated_plan_within_both_reference_subtechnologies"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "limiting_account": "minimum_component_distance"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.by_production",
+    "canonical_symbol": "ByProductionDirectionalDistanceDEA",
+    "registry_dependencies": [
+      "environmental.by_production",
+      "environmental.costly_disposal",
+      "estimator.full.dea",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "two_subtechnology_sparse_linear_programming",
+      "shared_reference_compilation",
+      "component_quantity_row_scaling",
+      "solver_neutral_component_lp_and_economic_certification",
+      "atomic_joint_score_and_target_release",
+      "thresholded_component_peer_certification",
+      "complete_original_unit_component_dual_reporting",
+      "reference_membership_from_certified_component_accounts",
+      "zero_additional_certificate_solves"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "joint_beta",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.feasible_nonnegative_by_production_directions"
+          ]
+        }
+      },
+      {
+        "id": "efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.feasible_nonnegative_by_production_directions",
+            "condition.certified_reference_technology_membership"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "intended_distance",
+      "environmental_distance",
+      "limiting_subtechnology",
+      "separate_component_intensities",
+      "joint_directional_targets",
+      "component_targets",
+      "component_duals",
+      "directional_efficiency_status",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "classification_domain",
+      "native_distance_interpretation_and_performance_ordering",
+      "score_validity_and_status",
+      "component_score_validity_and_status",
+      "target_validity_and_status",
+      "peer_validity_and_status",
+      "dual_validity_and_status"
+    ],
+    "transformations": [
+      "joint_beta_equals_minimum_of_component_distances",
+      "deapack_display_efficiency_equals_one_over_one_plus_joint_beta"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.by_production.declared_polluting_inputs",
+        "domain.by_production.declared_bad_outputs",
+        "domain.by_production.nonnegative_quantities"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_rescaling_under_co_rescaled_or_observed_directions",
+        "co_transform": [
+          "directions",
+          "targets"
+        ],
+        "conditions": [
+          "condition.direction_co_transforms_with_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "joint_directional_target_supported_by_both_subtechnologies",
+      "efficiency": "directional_only_and_may_leave_component_improvement_potential",
+      "selection": "component_targets_and_peers_are_solver_selected_independently",
+      "conditions": [
+        "condition.both_component_programmes_lp_and_economic_certified"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.jeem.2012.02.005"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2015.07.024"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jeth.1996.0096"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "specs/source_protocols/by_production_ddf_reference.md",
+        "specs/oracles/by-production-ddf-project-case.md",
+        "src/deapack/datasets/_replacement_cases.py::_by_production_component_bottleneck",
+        "tests/test_by_production_source_oracle.py::test_bp_ddf_matches_independent_compiler_on_project_case"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+                "component_decomposition",
+                "external_reference_membership_and_appraisal",
+        "component_lp_kkt_and_economic_account_certification",
+        "atomic_joint_failure_isolation",
+        "direction_validation",
+        "extreme_unit_scale_invariance",
+        "fixed_direction_source_scope",
+        "independent_dense_crs_compiler",
+        "joint_and_component_efficiency_separation",
+        "murty_russell_levkoff_equation_5_6_reproduction",
+        "panel_reference_reuse",
+        "required_data_roles",
+        "source_profile_boundaries",
+        "target_contract",
+        "thresholded_peer_release_gate",
+        "complete_original_unit_dual_release_gate",
+        "malicious_solver_fail_closed",
+        "two_primary_solves_per_observation_and_zero_additional_solves",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_by_production.py",
+        "tests/test_by_production_postsolve_certification.py",
+        "tests/test_by_production_source_oracle.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.environmental.ddf",
+        "path": "book/chapters/03-environmental/06-undesirable-outputs-ddf.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.by_production",
+        "path": "docs/models/by-production.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.returns_to_scale.local.banker_thrall_1992",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "scale",
+  "title": "Banker--Thrall selected-projection local returns to scale",
+  "decision_question": "At the selected Pareto-efficient VRS operating plan, do all admissible normalized supports imply increasing or decreasing returns, or is a constant-returns support admissible?",
+  "names": {
+    "display": "Banker--Thrall local returns to scale",
+    "historical": [
+      {
+        "label": "Banker--Thrall returns-to-scale characterization",
+        "spellings": [
+          "Banker--Thrall RTS test",
+          "supporting-hyperplane RTS interval"
+        ],
+        "sources": [
+          "doi:10.1016/0377-2217(92)90178-C"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "local_returns_to_scale",
+      "aliases": []
+    },
+    "spellings": [
+      "local returns to scale",
+      "local RTS classification"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "diagnose_local_scale_response"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "local_returns_to_scale",
+        "native_result": "support_intercept_interval"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "selected_projection_support_interval",
+        "projection_completion": "maximize_row_scaled_slacks",
+        "projection_uniqueness": "not_assessed",
+        "alternate_support_policy": "report_full_interval_at_selected_target"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "local_returns_to_scale",
+        "rule": "banker_thrall_1992",
+        "scope": "selected_projection",
+        "sign_convention": "v'x-u'y+delta>=0",
+        "projection_invariance_claimed": false
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.analysis.local_rts",
+    "canonical_symbol": "local_returns_to_scale",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "lexicographic_slack_completion",
+      "support_intercept_interval"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "local_rts_classification",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": null,
+          "upper": null,
+          "conditions": [
+            "condition.selected_pareto_efficient_projection"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "rts_classification",
+      "support_rts_set",
+      "support_intercept_lower",
+      "support_intercept_upper",
+      "selected_projection",
+      "endpoint_diagnostics",
+      "projection_component_certificates",
+      "finite_endpoint_lp_dual_and_economic_certificates",
+      "unbounded_endpoint_ray_certificate",
+      "interval_and_economic_classification_certificates",
+      "semantic_backend_and_raw_status",
+      "stable_success_and_failure_schema",
+      "solve_and_compilation_accounting"
+    ],
+    "transformations": [
+      "input_and_output_normalized_intercepts_are_orientation_specific",
+      "finite_endpoints_require_lp_dual_and_original_unit_economic_accounts",
+      "unbounded_endpoints_require_an_independently_verified_recession_ray",
+      "interval_and_classification_release_requires_both_certified_endpoints",
+      "postsolve_certification_adds_zero_optimization_solves"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.selected_pareto_efficient_projection"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_and_projection_policy"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "conditional_on_optimal_vrs_projection_and_support_solves",
+      "efficiency": "pareto_efficient_after_successful_slack_completion",
+      "selection": "solver_selected_projection_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.successful_lexicographic_slack_completion",
+        "condition.resolved_support_endpoints"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0377-2217(92)90178-C"
+      },
+      {
+        "role": "review",
+        "id": "https://www.deafrontier.net/papers/EJORRTSreview.pdf"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "Banker et al. (2004), Equation (7), pages 349--351"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "classification",
+        "backend_raw_status_preservation",
+        "endpoint_interval",
+        "failure_isolation",
+        "finite_endpoint_lp_dual_economic_certificates",
+        "orientation",
+        "published_oracle",
+        "projection_score_target_peer_certificate_consumption",
+        "selected_projection",
+        "sign_convention",
+        "stable_success_failure_schema",
+        "unbounded_endpoint_ray_certificate",
+        "unit_invariance",
+        "zero_additional_solve_and_compilation_accounting"
+      ],
+      "locators": [
+        "tests/test_local_rts.py",
+        "tests/test_benchmark_local_rts.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_local_rts.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.scale_performance_management",
+        "path": "book/chapters/02-classical/scale-performance-management.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.local_returns_to_scale",
+        "path": "docs/analysis/local-returns-to-scale.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

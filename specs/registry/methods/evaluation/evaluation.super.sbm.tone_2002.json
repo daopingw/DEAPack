@@ -1,0 +1,366 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "evaluation.super.sbm.tone_2002",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": "protocol",
+  "category": "evaluation",
+  "title": "Tone (2002) super-SBM",
+  "decision_question": "Which strongly SBM-efficient organizations remain most difficult for the otherwise eligible peer population to replace when resource and service pressures may differ by variable?",
+  "names": {
+    "display": "Tone (2002) super-SBM",
+    "historical": [
+      {
+        "label": "A slacks-based measure of super-efficiency in data envelopment analysis",
+        "spellings": [
+          "super-SBM",
+          "slacks-based super-efficiency",
+          "Tone super-efficiency SBM"
+        ],
+        "sources": [
+          "doi:10.1016/S0377-2217(01)00324-1"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ToneSuperSBM",
+      "aliases": [
+        {
+          "symbol": "SuperSBM"
+        }
+      ]
+    },
+    "spellings": [
+      "non-oriented CRS super-SBM",
+      "input-oriented CRS super-SBM",
+      "output-oriented CRS super-SBM",
+      "non-oriented VRS super-SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "frontier_discrimination_and_stability_appraisal",
+        "managerial_interpretation": "measure_variable_specific_peer_replaceability_after_strong_sbm_screening_and_row_level_self_exclusion",
+        "score_above_one_claim": "remaining_organizations_face_more_replacement_pressure_not_more_than_one_hundred_percent_efficiency",
+        "normative_quality_claim": "none",
+        "statistical_outlier_claim": "none"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_controllable_resource_quantities",
+        "outputs": "strictly_positive_desirable_service_quantities",
+        "bad_outputs": "excluded",
+        "sample": "cross_section_or_panel_under_declared_reference_policy",
+        "representation": {
+          "measurement_scale": "cardinal_ratio",
+          "sign_domain": "strictly_positive",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "exclusion_unit": "one_row"
+        },
+        "automatic_zero_semantics": "unsupported",
+        "signed_data_extension": "unsupported"
+      },
+      "constraints": [
+        "domain.super_sbm.strictly_positive_desirable_quantities",
+        "condition.desirable_outputs_only",
+        "condition.at_least_two_observations"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "super_sbm_peer_replacement_2002",
+        "disposal": "ordinary_free",
+        "supported_profiles": [
+          "crs_non_oriented",
+          "crs_input",
+          "crs_output",
+          "vrs_non_oriented"
+        ],
+        "unsupported_profiles": [
+          "vrs_input",
+          "vrs_output",
+          "nirs_any_orientation",
+          "ndrs_any_orientation"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "ordinary_non_oriented_sbm_screen_then_source_transformed_super_sbm",
+        "fractional_transformation": "charnes_cooper_for_non_oriented_program"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.leave_one_out"
+      ],
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "otherwise_eligible_reference_rows",
+          "membership_rule": "require_evaluated_row_in_base_reference_then_remove_exactly_that_row",
+          "self_membership": "required_for_screen_and_excluded_for_super_program"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.evaluated_row_present_in_base_reference",
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "super_sbm_peer_replacement",
+        "normalization": "equal_dimension_average_of_evaluated_dmu_ratios",
+        "eligibility_screen": "same_returns_to_scale_ordinary_non_oriented_sbm_strong_efficiency",
+        "ineligible_score_policy": "missing_not_applicable",
+        "score_direction": "higher_is_more_exposed",
+        "efficient_value": 1.0
+      },
+      "defaults": {
+        "orientation": "non-oriented"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_dimension_weights",
+        "price_interpretation": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.super"
+      ],
+      "fixed": {
+        "kind": "tone_2002_super_sbm",
+        "exclusion_unit": "evaluated_row",
+        "self_exclusion": "required_after_same_rts_strong_sbm_screen",
+        "applicability_policy": "solve_super_program_only_for_strongly_sbm_efficient_rows",
+        "infeasibility_policy": "report_original_solver_status_without_repair",
+        "zero_policy": "reject_without_automatic_structural_or_incidental_classification",
+        "slack_account": "separate_replacement_adjustments_from_technology_slacks",
+        "slack_completion": "source_program_only"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "frontier_ranking_and_stability_appraisal",
+        "peer_plan": "solver_selected_source_program_optimum",
+        "peer_plan_interpretation": "replacement_plan_not_improvement_target",
+        "peer_plan_uniqueness": "not_assessed",
+        "pareto_koopmans_classification": "screen_retained_in_dedicated_fields_generic_is_efficient_missing"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.evaluation.super_sbm",
+    "canonical_symbol": "ToneSuperSBM",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "evaluation.super",
+      "graph.black_box",
+      "reference.leave_one_out",
+      "static.sbm.nonoriented.tone2001",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "same_rts_ordinary_sbm_applicability_screen",
+      "charnes_cooper_transformation",
+      "sparse_linear_programming",
+      "row_level_self_exclusion",
+      "explicit_applicability_and_solver_failure_states",
+      "tidy_replacement_target_slack_intensity_and_diagnostic_tables"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "super_sbm_peer_replacement_score",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.strong_sbm_screen_passed",
+            "condition.certified_source_super_sbm_optimum"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "super_sbm_score",
+      "sbm_screen_score",
+      "is_sbm_eligible",
+      "is_super_efficient",
+      "score_valid",
+      "applicability_status",
+      "generic_is_efficient_missing",
+      "reference_size_before_exclusion",
+      "reference_size_after_exclusion",
+      "self_exclusion_status",
+      "solver_selected_peer_intensities",
+      "solver_selected_peer_replacement_targets",
+      "replacement_adjustments",
+      "technology_slacks",
+      "screen_and_super_program_diagnostics"
+    ],
+    "transformations": [
+      "non_oriented_fractional_program_to_charnes_cooper_linear_program_and_back_transform"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.super_sbm.strictly_positive_desirable_quantities",
+        "condition.desirable_outputs_only",
+        "condition.supported_orientation_returns_to_scale_profile",
+        "condition.evaluated_row_present_in_base_reference",
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [
+          "peer_replacement_targets",
+          "replacement_adjustments",
+          "technology_slacks"
+        ],
+        "conditions": [
+          "condition.same_reference_membership",
+          "condition.same_orientation_and_returns_to_scale",
+          "condition.strictly_positive_rescaling_factors"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "A peer-replacement plan is released only after the ordinary strong-efficiency screen and source super-SBM program both certify the required state; inapplicable or failed rows retain diagnostics and no super target.",
+      "efficiency": "The dedicated is_sbm_eligible and is_super_efficient fields retain applicability and peer-replacement exposure; generic is_efficient is missing and the super score is not an efficiency percentage.",
+      "selection": "Targets, adjustments, slacks, and intensities use one solver-selected source-program optimum and are not claimed to be unique or prescriptive.",
+      "conditions": [
+        "condition.strong_sbm_screen_passed",
+        "condition.certified_source_super_sbm_optimum",
+        "condition.valid_transformed_normalization_and_back_transform"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0377-2217(01)00324-1"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_super_sbm.py"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "public_alias_and_method_metadata",
+        "source_table_one_non_oriented_crs_scores_and_targets",
+        "source_input_crs_scores",
+        "vrs_non_oriented_analytic_oracle",
+        "ordinary_strong_sbm_applicability_screen",
+        "strict_positive_desirable_quantity_domain",
+        "supported_orientation_returns_to_scale_matrix",
+        "unit_invariance",
+        "reference_membership_and_self_exclusion",
+        "failure_and_applicability_closure"
+      ],
+      "locators": [
+        "tests/test_super_sbm.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_super_sbm.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.evaluation.super_sbm",
+        "path": "docs/evaluation/super-sbm.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.evaluation",
+        "path": "docs/api/evaluation.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.radial.fdh",
+  "identifier_role": "method_id",
+  "kind": "variant",
+  "component_type": null,
+  "category": "static",
+  "title": "Radial free disposal hull",
+  "decision_question": "By what common proportion could controllable resources be saved, or desirable services be expanded, when an evaluated organization may learn from one observed operating template at a time but neither average nor replicate templates?",
+  "names": {
+    "display": "Radial free disposal hull",
+    "historical": [
+      {
+        "label": "Free disposal hull",
+        "spellings": [
+          "FDH",
+          "free-disposal-hull efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/BF01073473"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "FreeDisposalHullDEA",
+      "aliases": [
+        {
+          "symbol": "FDH"
+        }
+      ]
+    },
+    "spellings": [
+      "input-oriented radial FDH",
+      "output-oriented radial FDH",
+      "non-convex free-disposal-hull efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.fdh"
+      ],
+      "fixed": {
+        "family": "free_disposal_hull",
+        "convex": false,
+        "activity_combination": "single_observation",
+        "scale_extrapolation": "none",
+        "returns_to_scale": "not_parameterized",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.fdh"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "direct_dominance_scan"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_efficiency"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "alternate_radial_optima": "all_tied_single_observation_peers_reported",
+        "peer_and_target_uniqueness": "not_asserted"
+      },
+      "defaults": {
+        "secondary_objective": "maximize_unweighted_disposal_residuals"
+      },
+      "exposed": [
+        "slack_completion"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.fdh",
+    "canonical_symbol": "FreeDisposalHullDEA",
+    "registry_dependencies": [
+      "estimator.full.fdh",
+      "graph.black_box",
+      "technology.fdh"
+    ],
+    "backend_capabilities": [
+      "bounded_memory_chunked_dominance_scan",
+      "direct_nonconvex_radial_evaluation",
+      "single_activity_slack_completion"
+    ],
+    "default_backend": "direct_dominance_ratio_scan",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "radial_efficiency",
+      "input_slacks",
+      "output_slacks",
+      "alternate_single_observation_peers",
+      "solver_selected_primary_target",
+      "candidate_count"
+    ],
+    "transformations": [
+      "output_display_efficiency_equals_one_over_phi"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.matched_reference_population"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The selected observed activity weakly dominates the reported radial target under ordinary free disposal after the direct scan resolves.",
+      "efficiency": "Generic strong efficiency is claimed only after the optional residual-slack completion succeeds; score-only fits report radial efficiency without a strong-efficiency claim.",
+      "selection": "All tied radial single-activity peers are reported, while one primary peer and target may be selected and are not asserted unique.",
+      "conditions": [
+        "condition.optimal_primary_scan",
+        "condition.successful_single_activity_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/BF01073473"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/fdh-analytical.md",
+        "tests/test_fdh_independent_oracle.py::test_exact_fdh_certificate_exhausts_observed_activities",
+        "tests/test_fdh_independent_oracle.py::test_public_fdh_matches_exact_finite_activity_certificate"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/fdh-analytical.md",
+        "public_api_test_locator": "tests/test_fdh_independent_oracle.py::test_public_fdh_matches_exact_finite_activity_certificate",
+        "claims": [
+          {
+            "claim_id": "static.radial.fdh.exact_finite_activity_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_fdh_independent_oracle.py::test_exact_fdh_certificate_exhausts_observed_activities",
+              "tests/test_fdh_independent_oracle.py::test_public_fdh_matches_exact_finite_activity_certificate"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "not_parameterized"
+              ],
+              "evaluation_protocol": [
+                "single_observed_activity_with_residual_slack_completion"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency",
+              "candidate_count",
+              "radial_efficiency_status",
+              "strong_efficiency_status",
+              "single_activity_peer",
+              "targets",
+              "slacks"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 5,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_scores",
+        "bounded_memory_scan",
+        "domain",
+        "external_reference",
+        "exact_finite_activity_certificate",
+        "failure",
+        "fdh_vrs_ordering",
+        "slack_and_tie_semantics",
+        "unit_invariance",
+        "zero_denominator_policy"
+      ],
+      "locators": [
+        "tests/test_fdh.py",
+        "tests/test_fdh_independent_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.radial",
+        "path": "book/chapters/02-classical/03-classical-radial.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.fdh",
+        "path": "docs/models/fdh.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

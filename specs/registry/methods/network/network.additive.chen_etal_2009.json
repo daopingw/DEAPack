@@ -1,0 +1,358 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.additive.chen_etal_2009",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Chen--Cook--Li--Zhu additive two-stage DEA",
+  "decision_question": "How should overall performance and process responsibility be combined when the organization wants a virtual-resource-share-weighted arithmetic rather than multiplicative stage account?",
+  "names": {
+    "display": "Chen--Cook--Li--Zhu additive two-stage DEA",
+    "historical": [
+      {
+        "label": "Additive efficiency decomposition in two-stage DEA",
+        "spellings": [
+          "Chen et al. additive model"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2008.05.011"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ChenCookLiZhuAdditiveDEA",
+      "aliases": [
+        {
+          "symbol": "TwoStageAdditiveDecompositionDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "weighted additive two-stage decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "two_stage_system_and_divisional_accountability",
+        "managerial_control": "coordinated_series_process"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.series"
+      ],
+      "fixed": {
+        "kind": "series",
+        "stages": 2,
+        "intermediate_direction": "stage_one_to_stage_two",
+        "intermediate_quantity": "observed_once",
+        "multiplier_policy": "shared",
+        "intensity_policy": "process_specific",
+        "projection_link_account": "upstream_and_downstream_targets_retained"
+      },
+      "constraints": [
+        "condition.network.one_valid_series_link"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "stage_one_resources",
+        "intermediates": "stage_one_output_and_stage_two_input",
+        "final_outputs": "stage_two_desirable_services"
+      },
+      "exposed": [
+        "stage_variable_assignments"
+      ],
+      "constraints": [
+        "domain.additive_network.valid_stage_normalizers"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "closed_two_stage_series",
+        "multiplier_coupling": "common_intermediate_account"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.source_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "additive_stage_decomposition"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_two_stage_dmus",
+          "membership_rule": "all_series_compatible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "weighted_additive_stage_efficiency",
+        "orientation": "input_system",
+        "system_stage_identity": "system_equals_endogenous_stage_share_weighted_sum"
+      },
+      "exposed": [
+        "stage_priority_policy"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "endogenous_virtual_resource_share",
+        "intermediate_multiplier": "shared_across_stage_boundary"
+      },
+      "defaults": {
+        "minimum_stage_share": 0.0
+      },
+      "exposed": [
+        "minimum_stage_share"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_and_stage_appraisal",
+        "strong_slack_completion": false
+      },
+      "defaults": {
+        "alternate_stage_score_policy": "both_priorities_with_lexicographic_tie_break",
+        "projection_policy": "lim_zhu_split_link"
+      },
+      "exposed": [
+        "alternate_stage_score_policy",
+        "projection_policy"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "system_stage_weighted_additive_decomposition"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.network.chen_additive",
+    "canonical_symbol": "ChenCookLiZhuAdditiveDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.series"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_multiplier_compilation",
+      "primal_dual_projection",
+      "crs_and_vrs_process_intercepts",
+      "secondary_stage_priorities"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_additive_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.additive_network.valid_stage_normalizers"
+          ]
+        }
+      },
+      {
+        "id": "stage_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.source_normalization",
+            "domain.additive_network.valid_stage_normalizers"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_efficiency",
+      "stage_efficiencies",
+      "endogenous_stage_shares",
+      "process_intercepts",
+            "shared_intermediate_multipliers",
+            "process_specific_intensities",
+            "split_link_targets",
+            "score_process_target_link_and_peer_validity_status",
+            "backend_and_raw_solver_status_preservation",
+            "solver_neutral_lp_optimality_certificate",
+            "raw_and_published_original_quantity_additive_account_certificate",
+            "reference_process_constraint_slack_certificate",
+            "thresholded_peer_target_reconstruction_certificate",
+            "per_dmu_atomic_fail_closed_release",
+            "stable_all_failure_result_schema",
+            "primary_secondary_projection_and_total_solve_count_contract",
+            "zero_certificate_additional_solve_contract"
+    ],
+    "transformations": [
+      "system_efficiency_equals_stage_share_weighted_sum"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.network.one_valid_series_link",
+        "domain.additive_network.valid_stage_normalizers",
+        "condition.source_crs_or_vrs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "ratio_units_with_corresponding_multiplier_rescaling",
+        "co_transform": [
+          "input_multipliers",
+          "intermediate_multiplier",
+          "output_multipliers"
+        ],
+        "conditions": [
+          "condition.source_normalization"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "certified_by_lim_zhu_additive_envelopment_dual",
+      "efficiency": "source_frontier_projection_without_strong_slack_completion",
+      "selection": "upstream_and_downstream_intermediate_targets_remain_distinct",
+      "conditions": [
+        "condition.source_normalization",
+        "condition.successful_projection_certificate",
+        "condition.no_additional_stage_share_restriction"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2008.05.011"
+      },
+      {
+        "role": "implementation",
+        "id": "doi:10.1016/j.omega.2018.06.005"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2014.02.039"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_chen_additive_network.py::test_lim_zhu_24_insurer_score_oracles_and_additive_identity",
+        "tests/test_chen_additive_network.py::test_lim_zhu_split_link_projection_oracles"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "crs_and_vrs_oracles",
+        "weighted_additive_identity",
+        "stage_priority",
+        "split_link_projection",
+                "unit_behavior",
+                "process_order_independence",
+                "reference_cache",
+                "malicious_solver_rejection",
+                "primary_and_secondary_failure_isolation",
+                "raw_and_published_original_quantity_account_reconstruction",
+                "target_and_thresholded_peer_separate_release",
+                "peer_leakage_prevention",
+                "stable_all_failure_schema",
+                "primary_secondary_projection_and_total_solve_counts",
+                "zero_certificate_additional_solves",
+                "benchmark_fail_closed_certificate_and_residual_gate"
+            ],
+            "locators": [
+                "tests/test_chen_additive_network.py",
+                "tests/test_network_additive_postsolve_certification.py",
+                "tests/test_benchmark_network_additive.py"
+            ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_additive.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.network.core_organizations_links_responsibility",
+        "path": "book/chapters/05-network/network-dea-organizations-links-responsibility.md",
+        "state": "present",
+        "role": "mention"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.additive_two_stage",
+        "path": "docs/models/chen-additive-network.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

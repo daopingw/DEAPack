@@ -1,0 +1,334 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.ebm.input.tone_tsutsui_2010.crs.declared",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "static",
+  "title": "Declared-calibration Tone--Tsutsui input-oriented CRS EBM",
+  "decision_question": "What input-oriented performance remains when management jointly chooses a proportional resource factor and a declared-importance input mix under one CRS peer plan?",
+  "names": {
+    "display": "Declared-calibration input-oriented EBM",
+    "historical": [
+      {
+        "label": "Input-oriented epsilon-based measure",
+        "spellings": [
+          "EBM-I-C",
+          "input-oriented EBM",
+          "epsilon-based measure"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2010.07.014"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "InputOrientedEpsilonBasedDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "declared-calibration EBM",
+      "input-oriented CRS EBM evaluator"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "resource_and_input_mix_benchmarking",
+        "managerial_plan": "joint_proportional_and_variable_specific_input_adjustment"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_controllable_resources",
+        "outputs": "strictly_positive_maintained_desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.ebm.declared_input_calibration",
+        "domain.ebm.strictly_positive_cross_section"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "crs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "declared_cross_section",
+          "membership_rule": "all_observations",
+          "self_membership": "required"
+        },
+        "temporal_information_set": {
+          "policy": "single_cross_section",
+          "availability_cutoff": "declared_validity_period",
+          "vintage_required": true,
+          "historical_revision": "refit_if_population_or_calibration_vintage_changes"
+        }
+      },
+      "fixed": {
+        "kind": "global",
+        "comparison_population": "full_self_inclusive_sample",
+        "temporal_information_set": "cross_section_only"
+      }
+    },
+    "performance": {
+      "fixed": {
+        "family": "epsilon_based_measure",
+        "orientation": "input",
+        "native_score": "gamma",
+        "source_programme": "tone_tsutsui_2010_equations_6_8",
+        "theta_bound": "free"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "declared_resource_importance_calibration",
+        "calibration_mode": "declared",
+        "automatic_affinity_pca_run": false
+      },
+      "exposed": [
+        "DeclaredEBMCalibration"
+      ],
+      "constraints": [
+        "condition.ebm.epsilon_in_closed_unit_interval",
+        "condition.ebm.exact_name_keyed_weights_sum_to_one",
+        "condition.ebm.declared_provenance_required"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "alternate_target_policy": "solver_selected_primary_optimum",
+        "epsilon_one_theta_completion": "package_defined_minimum_feasible_theta_given_selected_lambda",
+        "secondary_optimization": "none"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "automatic_full_identity": "static.ebm.input.tone_tsutsui_2010.crs",
+        "automatic_full_identity_status": "deferred_to_next_version"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.ebm",
+    "canonical_symbol": "InputOrientedEpsilonBasedDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "one_global_sparse_reference_compilation",
+      "one_primary_sparse_linear_program_per_observation",
+      "no_secondary_optimization",
+      "free_theta_source_programme",
+      "zero_solve_epsilon_one_theta_completion",
+      "solver_neutral_primal_dual_kkt_and_strong_duality_certificate",
+      "original_quantity_two_form_score_certificate",
+      "source_multiplier_dual_certificate",
+      "thresholded_peer_target_reconstruction_certificate"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "gamma",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.ebm.self_inclusive_full_sample",
+            "condition.ebm.certified_declared_programme"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "declared_calibration_and_fingerprint",
+      "radial_factor",
+      "weighted_normalized_input_excess",
+      "weighted_input_mix_ratio",
+      "input_slacks",
+      "derived_unscored_output_surplus",
+      "solver_selected_targets",
+      "peers",
+      "source_multiplier_duals",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "solver_neutral_lp_optimality_certificate",
+      "ebm_original_quantity_score_certificate",
+      "ebm_quantity_balance_certificate",
+      "ebm_source_dual_certificate",
+      "thresholded_peer_account_certificate",
+      "claim_specific_fail_closed_release",
+      "execution_accounting"
+    ],
+    "transformations": [
+      "distance_equals_one_minus_gamma",
+      "epsilon_zero_gamma_equals_ccr_input_score_under_matched_source_profile"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.ebm.declared_input_calibration",
+        "domain.ebm.strictly_positive_cross_section"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_input_and_output_factor_rescaling",
+        "co_transform": [
+          "keep_declared_name_keyed_weights_fixed"
+        ],
+        "conditions": [
+          "condition.ebm.same_declared_calibration"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_certified_primary_programme_and_original_quantity_reconstruction",
+      "efficiency": "tone_tsutsui_definition_one_ebm_input_efficiency_only_not_pareto_koopmans_efficiency",
+      "selection": "solver_selected_primary_optimum_and_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.ebm.certified_declared_programme"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2010.07.014"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "specs/oracles/tone_tsutsui_2010_ebm_ic.md",
+        "tests/test_tone_tsutsui_2010_ebm_ic_source.py",
+        "tests/test_ebm.py::test_published_hospital_example_and_d_management_account"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "declared_calibration_provenance_and_fingerprint",
+        "published_input_oriented_examples",
+        "epsilon_zero_ccr_score_endpoint",
+        "epsilon_one_free_theta_not_sbm",
+        "free_theta_input_mix_substitution",
+        "fixed_weight_epsilon_monotonicity",
+        "strict_positive_cross_section_domain",
+        "input_output_unit_invariance",
+        "name_keyed_weight_alignment",
+        "one_input_identification_boundary",
+        "solver_neutral_lp_score_quantity_and_dual_certificates",
+        "claim_specific_fail_closed_release",
+        "one_reference_one_primary_solve_per_observation_no_secondary_solve",
+        "sparse_formulation_no_dense_observation_allocation",
+        "automatic_affinity_pca_not_run"
+      ],
+      "locators": [
+        "tests/test_ebm.py",
+        "tests/test_tone_tsutsui_2010_ebm_ic_source.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_ebm.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.sbm",
+        "path": "book/chapters/02-classical/04-sbm.md",
+        "state": "present",
+        "role": "mention"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.ebm",
+        "path": "docs/models/ebm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

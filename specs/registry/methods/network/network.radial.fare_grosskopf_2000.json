@@ -1,0 +1,425 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.radial.fare_grosskopf_2000",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Färe--Grosskopf two-stage intermediate-products radial DEA",
+  "decision_question": "How far can an organization reduce its external resource commitment while preserving final services, or expand final services within its current resource commitment, through one jointly attainable two-process plan?",
+  "names": {
+    "display": "Färe--Grosskopf two-stage intermediate-products radial DEA",
+    "historical": [
+      {
+        "label": "Färe--Grosskopf intermediate-products network technology",
+        "spellings": [
+          "Färe-Grosskopf network DEA",
+          "connected two-stage network envelopment"
+        ],
+        "sources": [
+          "doi:10.1016/S0038-0121(99)00012-9",
+          "doi:10.1016/0165-1765(95)00729-6"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "FareGrosskopfNetworkRadialDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "Färe--Grosskopf two-stage radial model",
+      "FG network radial DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "system_performance_with_internal_flow",
+        "managerial_control": "coordinated_series_process"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.series"
+      ],
+      "fixed": {
+        "kind": "series",
+        "stages": 2,
+        "intermediate_direction": "stage_one_to_stage_two",
+        "intermediate_quantity": "observed_once",
+        "evaluated_intermediate_policy": "endogenous_not_conditioned_on_observed",
+        "intensity_policy": "process_specific",
+        "envelopment_balance": "upstream_supply_greater_than_or_equal_to_downstream_requirement"
+      },
+      "constraints": [
+        "condition.network.one_valid_series_link"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "stage_one_resources",
+        "intermediates": "stage_one_output_and_stage_two_input",
+        "final_outputs": "stage_two_desirable_services",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "exposed": [
+        "stage_variable_assignments"
+      ],
+      "constraints": [
+        "domain.network_radial.positive_aggregate_external_input_and_final_output",
+        "domain.network_radial.positive_reference_column_support"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "connected_two_stage_series",
+        "process_relationship": "series",
+        "link_disposal": "upstream_surplus_allowed",
+        "process_intensities": "separate"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.crs_fare_grosskopf_2000_or_vrs_podinovski_bouzdine_chameeva_2021"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "network_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_two_stage_dmus",
+          "membership_rule": "all_series_compatible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "components": [
+        "network.radial_ratio"
+      ],
+      "fixed": {
+        "family": "fare_grosskopf_network_radial_system_efficiency",
+        "native_system_score": "theta_if_input_phi_if_output",
+        "reported_system_efficiency": "theta_if_input_reciprocal_phi_if_output",
+        "stage_efficiencies": "not_defined",
+        "evaluated_intermediate": "endogenous_not_conditioned_on_observed"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none",
+        "intermediate_multiplier_account": "not_part_of_result_contract"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_self_appraisal",
+        "primary_programmes_per_observation": 1,
+        "secondary_stage_selection": "none",
+        "strong_slack_completion": false,
+        "intensity_display_rule": "strictly_above_peer_tolerance",
+        "targets_use_unthresholded_intensities": true
+      },
+      "defaults": {
+        "projection_policy": "solver_selected_primary_system_optimum"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_network_fit",
+        "stage_attribution": "not_defined"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.network.fare_grosskopf",
+    "canonical_symbol": "FareGrosskopfNetworkRadialDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.series",
+      "network.radial_ratio"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_envelopment_compilation",
+      "primal_dual_certification",
+      "shared_solver_neutral_lp_certification",
+      "raw_and_published_network_account_certification",
+      "independent_thresholded_peer_account_certification",
+      "crs_and_vrs_process_convexity"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_radial_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.network_radial.valid_nonnegative_quantities"
+          ]
+        }
+      },
+      {
+        "id": "system_input_theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.orientation.input",
+            "condition.self_inclusive_reference",
+            "domain.network_radial.valid_nonnegative_quantities"
+          ]
+        }
+      },
+      {
+        "id": "system_output_phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.orientation.output",
+            "condition.self_inclusive_reference",
+            "domain.network_radial.valid_nonnegative_quantities"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_native_radial_factor",
+      "system_efficiency",
+      "process_specific_intensities",
+      "external_input_targets",
+      "final_output_targets",
+      "upstream_link_supply",
+      "downstream_link_requirement",
+      "disposable_link_surplus",
+      "observed_intermediate_conditioning_flag",
+      "upstream_omitted_intensity_sum",
+      "downstream_omitted_intensity_sum",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "solver_neutral_lp_optimality_certificate",
+      "raw_network_account_reconstruction_certificate",
+      "published_target_account_reconstruction_certificate",
+      "published_peer_account_reconstruction_certificate",
+      "atomic_score_target_link_release",
+      "raw_backend_status_preservation",
+      "certification_diagnostics"
+    ],
+    "transformations": [
+      "input_system_efficiency_equals_theta",
+      "output_system_efficiency_equals_reciprocal_phi",
+      "crs_harmonized_system_efficiency_equals_kao_hwang_primary_system_score_under_matched_domain"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.network.one_valid_series_link",
+        "domain.network_radial.valid_nonnegative_quantities",
+        "condition.crs_fare_grosskopf_2000_or_vrs_podinovski_bouzdine_chameeva_2021"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_quantity_column",
+        "co_transform": [
+          "reported_targets",
+          "link_supply",
+          "link_requirement",
+          "link_surplus"
+        ],
+        "conditions": [
+          "domain.network_radial.positive_reference_column_support"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "certified_in_the_same_two_process_network_technology",
+      "efficiency": "orientation_qualified_radial_only_without_residual_slack_completion",
+      "selection": "solver_selected_primary_system_optimum_reconstructed_from_complete_unthresholded_process_intensities",
+      "conditions": [
+        "condition.successful_primal_dual_certificate",
+        "condition.network.one_valid_series_link"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0038-0121(99)00012-9"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0165-1765(95)00729-6"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s11123-021-00610-3"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1016/j.ejor.2006.11.041"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1016/j.ejor.2015.06.050"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "tests/test_fare_grosskopf_network_radial.py::test_crs_system_scores_equal_kao_hwang_primary_on_published_data",
+        "tests/test_fare_grosskopf_network_radial.py::test_output_matches_independent_dense_source_equation_compiler",
+        "tests/test_fare_grosskopf_network_radial.py::test_output_vrs_hand_oracle_is_not_the_reciprocal_input_programme"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "conditional_crs_system_score_duality",
+        "source_equation_12_output_distance_reduction",
+        "output_native_phi_and_reciprocal_efficiency",
+        "independent_dense_output_compiler_under_crs_and_vrs",
+        "analytic_vrs_input_output_nonreciprocity",
+        "orientation_qualified_external_targets",
+        "positive_link_disposal",
+        "separate_process_intensities",
+        "separate_vrs_convexity",
+        "analytic_vrs_score",
+        "evaluated_observed_intermediate_invariance_under_fixed_custom_reference",
+        "thresholded_intensity_omission_disclosure",
+        "targets_reconstructed_from_unthresholded_intensities",
+        "unit_invariance",
+        "declaration_order_invariance",
+        "sparse_compilation",
+        "one_primary_solve_per_observation_and_no_certification_solve",
+        "shared_solver_neutral_lp_optimality_certificate",
+        "raw_and_published_network_account_release_gates",
+        "independent_thresholded_peer_account_release_gate",
+        "malicious_solver_response_rejection",
+        "raw_backend_status_preservation",
+        "per_observation_failure_isolation",
+        "strictly_positive_external_output_factor_preservation",
+        "bounded_input_factor_negative_zero_cleanup",
+        "primal_dual_failure_closure",
+        "unbounded_output_failure_closure",
+        "graph_and_domain_validation",
+        "metadata_immutability"
+      ],
+      "locators": [
+        "tests/test_fare_grosskopf_network_radial.py",
+        "tests/test_fare_grosskopf_network_radial.py::test_one_solve_per_dmu_and_one_compilation_per_reference_set",
+        "tests/test_fare_grosskopf_network_radial.py::test_malicious_solver_claims_fail_closed_without_semantic_tables",
+        "tests/test_fare_grosskopf_network_radial.py::test_one_corrupt_dmu_is_isolated_and_raw_backend_status_is_preserved",
+        "tests/test_fare_grosskopf_network_radial.py::test_raw_and_published_economic_accounts_gate_atomic_release",
+        "tests/test_fare_grosskopf_network_radial.py::test_external_output_reference_accepts_strictly_positive_tiny_factor",
+        "tests/test_fare_grosskopf_network_radial.py::test_input_publication_cleans_only_bounded_near_zero_negative_factor"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_radial.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.network.core_organizations_links_responsibility",
+        "path": "book/chapters/05-network/network-dea-organizations-links-responsibility.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.fare_grosskopf_network_radial",
+        "path": "docs/models/fare-grosskopf-network-radial.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

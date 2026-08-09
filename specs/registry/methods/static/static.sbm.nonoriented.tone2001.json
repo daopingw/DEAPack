@@ -1,0 +1,350 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.sbm.nonoriented.tone2001",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "static",
+  "title": "Standard non-oriented ERG/SBM",
+  "decision_question": "How much average proportional resource excess and service shortfall remains when every input and output may improve non-radially?",
+  "names": {
+    "display": "Standard non-oriented ERG/SBM",
+    "historical": [
+      {
+        "alias_id": "static.erg",
+        "label": "Enhanced Russell graph",
+        "spellings": [
+          "ERG",
+          "ERGM"
+        ],
+        "sources": [
+          "doi:10.1016/S0377-2217(98)00098-8"
+        ]
+      },
+      {
+        "label": "Slacks-based measure",
+        "spellings": [
+          "SBM"
+        ],
+        "sources": [
+          "doi:10.1016/S0377-2217(99)00407-5"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "SlacksBasedDEA",
+      "aliases": [
+        {
+          "symbol": "SBM"
+        },
+        {
+          "symbol": "ERG",
+          "alias_id": "static.erg"
+        }
+      ]
+    },
+    "spellings": [
+      "non-oriented SBM",
+      "standard SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "variable_specific_operating_performance_benchmarking",
+        "managerial_plan": "joint_resource_and_service_improvement"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.sbm.strictly_positive_io_denominators"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "source_documented_returns_to_scale": [
+          "crs",
+          "vrs"
+        ],
+        "package_returns_to_scale_variants": [
+          "nirs",
+          "ndrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "slacks_based_measure",
+        "orientation": "non_oriented",
+        "normalization": "evaluated_dmu_values"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_dimension_weights"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "fractional_transformation": "charnes_cooper"
+      },
+      "defaults": {
+        "alternate_target_policy": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.sbm",
+    "canonical_symbol": "SlacksBasedDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "charnes_cooper_transformation",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "rho",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_inefficiency",
+      "output_inefficiency",
+      "slacks",
+      "peers",
+      "targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "score_valid",
+      "score_status",
+      "solver_neutral_lp_optimality_certificate",
+      "sbm_account_reconstruction_certificate",
+      "atomic_fail_closed_result_release"
+    ],
+    "transformations": []
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.sbm.strictly_positive_io_denominators"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": []
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_certified_transformed_solve_and_sbm_account_reconstruction",
+      "efficiency": "conditional_on_exact_formulation_and_alternate_optimum",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.valid_charnes_cooper_normalization",
+        "condition.optimal_primary_solve",
+        "condition.successful_primal_dual_certificate",
+        "condition.successful_sbm_account_reconstruction_certificate"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0377-2217(98)00098-8"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0377-2217(99)00407-5"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1007/s10957-023-02188-2"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "src/deapack/datasets/__init__.py::_sbm_slack_contrast",
+        "tests/test_sbm.py::test_tone_table_2_non_oriented_crs_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alias_identity",
+        "domain",
+        "failure",
+        "published_score_and_slack_oracle",
+        "score",
+        "target",
+        "unit_invariance",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "sbm_account_reconstruction_certificate",
+        "peer_eligibility_reference_policy_intersection",
+        "peer_eligibility_manual_custom_reference_equivalence",
+        "peer_eligibility_compact_provenance_and_fail_closed_frequency",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "single_bad_dmu_failure_isolation"
+      ],
+      "locators": [
+        "tests/test_catalog.py::test_erg_is_a_discoverability_alias_not_a_second_method",
+        "tests/test_sbm.py",
+        "tests/test_sbm_postsolve_certification.py",
+        "tests/test_sbm_postsolve_certification.py::test_uncertified_optimal_solution_withholds_every_semantic_table",
+        "tests/test_sbm_postsolve_certification.py::test_economic_account_corruption_fails_closed",
+        "tests/test_sbm_postsolve_certification.py::test_one_bad_dmu_does_not_abort_or_contaminate_the_next_dmu",
+        "tests/test_sbm_postsolve_certification.py::test_default_highs_certifies_all_classic_orientations_and_rts",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_lp_certificates.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_sbm_orientations.py",
+      "benchmarks/benchmark_core_peer_eligibility.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.slack_based_efficiency",
+        "path": "book/chapters/02-classical/04-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.sbm",
+        "path": "docs/models/sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

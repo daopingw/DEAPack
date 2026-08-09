@@ -1,0 +1,400 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "panel.multiperiod_aggregative.park_park_2009",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "panel",
+  "title": "Park--Park multiperiod aggregative radial DEA",
+  "decision_question": "How well did one organization perform over the complete observation horizon when management is judged by one common proportional improvement factor, each period retains its own contemporaneous benchmark technology, and any remaining period-specific resource excesses or service shortfalls are disclosed?",
+  "names": {
+    "display": "Park--Park multiperiod aggregative radial DEA",
+    "historical": [
+      {
+        "label": "Multiperiod aggregative efficiency",
+        "spellings": [
+          "multiperiod aggregative efficiency measure",
+          "multiperiod aggregative DEA"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2007.11.028"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ParkParkMultiperiodAggregativeDEA",
+      "aliases": [
+        {
+          "symbol": "MultiperiodAggregativeDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "Park-Park multiperiod DEA",
+      "Park and Park multiperiod aggregative efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "horizon_wide_operating_performance_benchmarking",
+        "managerial_unit": "complete_organization_trajectory",
+        "interpretation": "one_organization_judged_over_repeated_period_operations",
+        "productivity_change": "not_measured"
+      },
+      "constraints": [
+        "condition.panel.same_organizations_repeated_over_time"
+      ]
+    },
+    "graph": {
+      "fixed": {
+        "kind": "parallel_period_accounts",
+        "period_blocks": "separate_contemporaneous_production_activities",
+        "interperiod_links": "none",
+        "carryovers": "none",
+        "future_output_from_current_input": "not_modelled",
+        "trajectory_coupling": "common_radial_factor_only"
+      },
+      "exposed": [
+        "period_order"
+      ],
+      "constraints": [
+        "condition.panel.complete_balanced_trajectory"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "same_period_controllable_resources",
+        "outputs": "same_period_desirable_services",
+        "bad_outputs": "excluded",
+        "polluting_inputs": "excluded",
+        "groups": "excluded",
+        "representation": {
+          "measurement_scale": "quantity",
+          "sign_domain": "nonnegative",
+          "observation_key": "unique_dmu_period_pair"
+        }
+      },
+      "exposed": [
+        "input_columns",
+        "output_columns",
+        "dmu_identifier",
+        "period_identifier"
+      ],
+      "constraints": [
+        "domain.multiperiod_aggregative.nonnegative_good_output_quantities",
+        "domain.multiperiod_aggregative.positive_aggregate_input_and_output_per_dmu_period",
+        "condition.panel.complete_balanced_trajectory"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "period_block_sparse_contemporaneous_envelopment",
+        "period_specific_intensities": true,
+        "cross_period_intensity_reuse": false,
+        "disposal": "ordinary_free",
+        "vrs_convexity": "one_separate_convexity_equation_per_period",
+        "crs_convexity": "none",
+        "interperiod_feasibility_equalities": "none"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.returns_to_scale.crs_or_vrs",
+        "condition.contemporaneous_reference_per_period"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_block_envelopment",
+        "solver_programmes_per_certified_organization": 2,
+        "phase_one": "common_radial_factor_programme",
+        "phase_two": "fixed_factor_raw_total_slack_programme",
+        "lexicographic_order": "strict"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "contemporaneous",
+        "comparison_population": {
+          "scope": "same_balanced_organization_cohort_in_each_period",
+          "membership_rule": "all_organizations_observed_in_every_period",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "period_contemporaneous",
+          "availability_cutoff": "same_period",
+          "vintage_required": true,
+          "historical_revision": "fixed_input_dataset"
+        }
+      },
+      "constraints": [
+        "condition.contemporaneous_reference_per_period",
+        "condition.panel.same_reference_membership_every_period"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "multiperiod_aggregative_radial",
+        "radial_factor": "one_common_factor_for_all_periods",
+        "input_native_factor": "theta",
+        "output_native_factor": "phi",
+        "input_efficiency": "theta",
+        "output_efficiency": "reciprocal_phi",
+        "radial_aggregation": "input_theta_is_the_maximum_of_period_input_efficiencies_and_output_phi_is_the_minimum_of_period_output_expansion_factors",
+        "period_efficiencies": "not_defined_by_the_joint_programme",
+        "classification": "full_weak_or_inefficient_after_certified_phase_two"
+      },
+      "defaults": {
+        "orientation": "output"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "no_exogenous_user_valuation",
+        "source_multiplier_interpretation": "endogenous_positive_composite_time_factors",
+        "user_time_weights": "not_part_of_the_2009_model",
+        "time_preferences_or_assurance_regions": "not_part_of_the_implemented_method"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "trajectory_self_appraisal",
+        "optimization": "strict_lexicographic_two_phase",
+        "primary_objective": "optimize_common_radial_factor",
+        "secondary_objective": "fix_certified_factor_and_maximize_unweighted_raw_total_input_and_output_slack_over_all_periods",
+        "target_selection": "solver_selected_secondary_optimum",
+        "target_uniqueness": "not_tested",
+        "multiple_optima": "preserved_without_basis_lock",
+        "phase_one_failure": "all_scores_targets_slacks_and_efficiency_claims_missing",
+        "phase_two_failure": "retain_certified_radial_score_but_withhold_targets_slacks_intensities_components_and_generic_is_efficient"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_multiperiod_aggregative_fit",
+        "radial_status": "common_factor_equal_to_one",
+        "full_efficiency": "radial_status_and_all_normalized_phase_two_slacks_zero",
+        "weak_efficiency": "radial_status_and_some_normalized_phase_two_slack_positive",
+        "inefficiency": "common_factor_differs_from_one",
+        "period_accounts": "diagnostic_decomposition_of_one_joint_score_not_separate_period_scores",
+        "productivity_growth_decomposition": "not_defined",
+        "dynamic_carryover_analysis": "not_defined"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.panel.multiperiod_aggregative",
+    "canonical_symbol": "ParkParkMultiperiodAggregativeDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_period_block_compilation",
+      "strict_two_phase_lexicographic_optimization",
+      "period_specific_reference_intensities",
+      "crs_and_period_specific_vrs",
+      "primal_dual_solution_certification",
+      "raw_total_slack_secondary_objective"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "multiperiod_aggregative_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.phase_one_solution_certified",
+            "domain.multiperiod_aggregative.valid_balanced_panel"
+          ]
+        }
+      },
+      {
+        "id": "input_common_theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.orientation.input",
+            "condition.self_inclusive_reference",
+            "condition.phase_one_solution_certified"
+          ]
+        }
+      },
+      {
+        "id": "output_common_phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.orientation.output",
+            "condition.self_inclusive_reference",
+            "condition.phase_one_solution_certified"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "common_native_factor",
+      "standard_efficiency",
+      "radial_efficiency_status",
+      "full_weak_inefficient_classification",
+      "strong_completion_certification",
+      "period_accounts_repeating_the_common_factor_not_period_efficiencies",
+      "period_input_and_output_slacks",
+      "normalized_slack_accounts",
+      "solver_selected_period_targets",
+      "period_specific_reference_intensities",
+      "phase_one_and_phase_two_diagnostics",
+      "target_selection_and_uniqueness_disclosure",
+      "phase_two_failure_retains_only_certified_radial_performance"
+    ],
+    "transformations": [
+      "input_efficiency_equals_common_theta",
+      "output_efficiency_equals_reciprocal_common_phi",
+      "full_efficiency_requires_common_factor_one_and_zero_normalized_total_slack"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.panel.complete_balanced_trajectory",
+        "condition.panel.same_reference_membership_every_period",
+        "domain.multiperiod_aggregative.nonnegative_good_output_quantities",
+        "domain.multiperiod_aggregative.positive_aggregate_input_and_output_per_dmu_period",
+        "condition.returns_to_scale.crs_or_vrs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_rescaling_preserves_the_common_radial_factor_and_full_weak_inefficient_classification_but_need_not_preserve_the_solver_selected_raw_total_slack_maximizer_or_target",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_variable_units_used_consistently_across_periods",
+          "condition.strong_status_uses_normalized_slack_zero_tests"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "After both programmes are certified, every period target belongs to that period's contemporaneous technology under the declared CRS or period-specific VRS assumption and satisfies the fixed common radial requirement.",
+      "efficiency": "The generic is_efficient flag is reported only after certified phase-two completion and is true only when the common radial factor equals one and every normalized input and output slack is zero.",
+      "selection": "The phase-two target, peer intensities, and individual raw slacks are solver-selected members of a possibly non-unique raw-total-slack optimum and can change with variable units without changing the radial factor or zero-versus-positive slack classification.",
+      "conditions": [
+        "condition.phase_one_solution_certified",
+        "condition.phase_two_solution_certified",
+        "condition.fixed_common_factor_in_phase_two",
+        "condition.period_specific_crs_or_vrs_feasibility"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2007.11.028"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "Park and Park (2009), defining multiperiod aggregative equations and classification semantics",
+        "tests/test_multiperiod_aggregative_project_case.py::test_project_panel_exercises_all_efficiency_classes_and_sparse_phases",
+        "tests/test_multiperiod_aggregative_project_case.py::test_result_accounts_are_complete_and_respect_projection_identities"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "project_case_factors_and_efficiency_classes",
+        "project_case_period_slack_accounts",
+        "strict_two_programmes_per_successful_organization",
+        "sparse_period_block_programmes",
+        "crs_without_convexity_and_vrs_with_period_specific_convexity",
+        "row_and_period_order_invariance",
+        "input_and_output_native_score_conventions",
+        "factor_and_strong_classification_unit_invariance",
+        "multiple_optimum_without_basis_lock",
+        "balanced_good_output_domain_rejections",
+        "phase_one_and_phase_two_failure_closure",
+        "canonical_alias_and_eleven_axis_result_metadata"
+      ],
+      "locators": [
+        "tests/test_multiperiod_aggregative_project_case.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_multiperiod_aggregative.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.multiperiod_aggregative",
+        "path": "docs/panel/multiperiod-aggregative.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.panel",
+        "path": "docs/api/panel.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

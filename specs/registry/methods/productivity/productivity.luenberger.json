@@ -1,0 +1,560 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.luenberger",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Adjacent-period Luenberger productivity indicator",
+  "decision_question": "By how much did benchmark-relative productive performance change in the units of one declared and temporally comparable resource-saving and service-expansion programme?",
+  "names": {
+    "display": "Adjacent-period Luenberger productivity indicator",
+    "historical": [
+      {
+        "label": "Luenberger productivity indicator",
+        "spellings": [
+          "Luenberger productivity change indicator",
+          "Luenberger indicator"
+        ],
+        "sources": [
+          "doi:10.1111/j.1468-0106.1996.tb00184.x",
+          "doi:10.1007/s001990100231"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "LuenbergerProductivityIndicator",
+      "aliases": [
+        {
+          "symbol": "LuenbergerDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "adjacent additive directional productivity indicator",
+      "directional Luenberger productivity"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "additive_productivity_change_accounting",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "change_in_attainable_progress_along_one_declared_operating_programme"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resource_quantities",
+        "outputs": "desirable_service_or_product_quantities",
+        "bad_outputs": "excluded",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "cardinal_with_directional_units",
+          "sign_domain": "nonnegative_quantities_with_positive_observation_aggregates",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "declared_by_direction"
+        }
+      },
+      "constraints": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.direction_units_comparable_across_observations_and_periods"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "two_contemporaneous_convex_envelopment_technologies",
+        "free_disposal": true,
+        "source_returns_to_scale": "crs",
+        "non_crs_interpretation": "sensitivity_specification_not_automatically_the_classic_productivity_indicator_contract"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "period_specific_directional_distance_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.contemporaneous"
+      ],
+      "fixed": {
+        "kind": "adjacent_contemporaneous_cross_evaluation",
+        "distance_tasks_per_pair": [
+          "base_on_base",
+          "comparison_on_base",
+          "base_on_comparison",
+          "comparison_on_comparison"
+        ]
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "one_contemporaneous_technology_per_period",
+          "membership_rule": "all_eligible_observations_from_the_technology_period",
+          "self_membership": "allowed_for_own_period_tasks"
+        },
+        "temporal_information_set": {
+          "policy": "adjacent_contemporaneous",
+          "availability_cutoff": "each_evaluated_technology_period",
+          "vintage_required": true,
+          "historical_revision": "period_technology_recomputed_when_its_sample_changes"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "directional_distance",
+        "cross_period_negative_distance": "retained",
+        "source_direction_domain": "one_direction_fixed_across_dmus_periods_and_all_four_distance_tasks",
+        "observation_specific_directions": "sensitivity_extension_outside_the_classic_source_guarantee"
+      },
+      "defaults": {
+        "input_direction": "full_sample_variable_mean",
+        "output_direction": "full_sample_variable_mean"
+      },
+      "exposed": [
+        "input_direction",
+        "output_direction"
+      ],
+      "constraints": [
+        "condition.nonzero_active_direction",
+        "condition.common_directional_scale"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_adjacent_period_identifiers",
+        "first_period_rows": "omitted_no_predecessor",
+        "failure_policy": "per_transition_atomic_withholding_of_distances_components_peers_and_headline_with_raw_distance_diagnostics_preserved"
+      },
+      "defaults": {
+        "unbalanced": "drop"
+      },
+      "exposed": [
+        "unbalanced"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "luenberger_arithmetic_productivity",
+        "productivity_identity": "one_half_times_base_reference_change_plus_comparison_reference_change",
+        "decomposition": "productivity_change_equals_efficiency_change_plus_technical_change",
+        "completeness": "technical_performance_indicator_not_complete_total_factor_productivity",
+        "source_interpretation_domain": "crs_with_one_common_direction",
+        "causal_interpretation": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.analysis.luenberger",
+    "canonical_symbol": "LuenbergerProductivityIndicator",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "reference.contemporaneous",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "compiled_period_references",
+      "deduplicated_four_distance_task_cache",
+      "sparse_linear_programming",
+      "signed_cross_period_directional_distance",
+      "direction_aware_quantity_row_scaling",
+      "original_physical_unit_economic_reconstruction",
+      "solver_neutral_lp_postsolve_certificates",
+      "independent_thresholded_peer_account_certificate",
+      "sparse_cached_peer_intensities",
+      "compact_cached_certificate_evidence",
+      "no_extra_solve_additive_account_certificate",
+      "per_transition_atomic_release"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "productivity_change",
+        "direction": "positive_is_improvement",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": null,
+          "upper": null,
+          "conditions": [
+            "condition.all_directional_distance_tasks_optimal",
+            "condition.common_directional_scale"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "efficiency_change",
+      "technical_change",
+      "base_reference_change",
+      "comparison_reference_change",
+      "distance_base_on_base",
+      "distance_comparison_on_base",
+      "distance_base_on_comparison",
+      "distance_comparison_on_comparison",
+      "decomposition_residual",
+      "score_valid_and_score_status",
+      "four_distance_lp_certificate_summary",
+      "raw_published_and_thresholded_peer_physical_account_certificates",
+      "additive_account_certificate_and_residuals",
+      "peer_valid_and_peer_status",
+      "reported_peer_intensities_above_peer_tolerance",
+      "direction_policy_labels_and_custom_parameter_signatures"
+    ],
+    "transformations": [
+      "base_reference_change_equals_distance_base_on_base_minus_distance_comparison_on_base",
+      "comparison_reference_change_equals_distance_base_on_comparison_minus_distance_comparison_on_comparison",
+      "productivity_change_equals_one_half_times_base_reference_change_plus_comparison_reference_change",
+      "productivity_change_equals_efficiency_change_plus_technical_change"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.nonzero_active_direction",
+        "condition.common_directional_scale"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "quantity_units_and_direction_components_must_co_transform_while_scalar_directional_distances_remain_invariant",
+        "co_transform": [
+          "input_direction",
+          "output_direction"
+        ],
+        "conditions": [
+          "condition.direction_units_co_transform_with_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation_without_direction_and_technology_proof",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each directional task must pass solver-neutral primal, bound, objective, KKT, complementarity, and strong-duality checks plus raw and published reconstruction in original physical units before a distance is released",
+      "efficiency": "not_applicable_to_the_additive_productivity_change_indicator",
+      "selection": "reported peer intensities are solver-selected coefficients above peer_tolerance; all four distance and additive-account certificates release the score independently, while peers additionally require all four thresholded physical accounts to reconstruct and do not constitute one joint projection",
+      "conditions": [
+        "condition.all_directional_distance_tasks_optimal",
+        "condition.common_directional_scale"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1111/j.1468-0106.1996.tb00184.x"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s001990100231"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jeth.1996.0096"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.1007/s10957-008-9503-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/chambers_fare_grosskopf_1996_luenberger.md",
+        "tests/test_luenberger_independent_oracle.py::test_exact_pure_opportunity_change_retains_negative_cross_period_distance",
+        "tests/test_luenberger_independent_oracle.py::test_exact_pure_relative_operating_improvement_has_zero_technical_change",
+        "tests/test_luenberger_postsolve_certification.py::test_clean_four_distance_certificate_adds_no_solve_and_retains_signed_distance",
+        "tests/test_luenberger.py::test_mean_direction_is_stable_under_extreme_independent_column_units",
+        "tests/test_luenberger_postsolve_certification.py::test_optimal_but_failed_original_unit_economic_certificate_is_numerical_error",
+        "tests/test_luenberger_postsolve_certification.py::test_peer_threshold_has_an_independent_all_four_release_gate"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/chambers_fare_grosskopf_1996_luenberger.md",
+        "public_api_test_locator": "tests/test_luenberger_independent_oracle.py::test_exact_pure_opportunity_change_retains_negative_cross_period_distance",
+        "claims": [
+          {
+            "claim_id": "productivity.luenberger.exact_opportunity_change",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_luenberger_independent_oracle.py::test_exact_pure_opportunity_change_retains_negative_cross_period_distance"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "common_directional_translation"
+              ],
+              "direction_policy": [
+                "zero_input_unit_output_common_across_all_tasks"
+              ],
+              "negative_distance_policy": [
+                "unrestricted_beta_retained"
+              ],
+              "time_aggregation": [
+                "four_distance_arithmetic_mean"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "productivity.luenberger.fixture.opportunity_change",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "Hospital",
+                  "expected": {
+                    "distance_base_on_base": 0.0,
+                    "distance_comparison_on_base": -1.0,
+                    "distance_base_on_comparison": 1.0,
+                    "distance_comparison_on_comparison": 0.0,
+                    "productivity_change": 1.0,
+                    "efficiency_change": 0.0,
+                    "technical_change": 1.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "four_directional_distances",
+              "negative_cross_period_distance",
+              "productivity_change",
+              "efficiency_change",
+              "technical_change",
+              "additive_decomposition_identity"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.luenberger.exact_operating_improvement",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_luenberger_independent_oracle.py::test_exact_pure_relative_operating_improvement_has_zero_technical_change"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "common_directional_translation"
+              ],
+              "direction_policy": [
+                "zero_input_unit_output_common_across_all_tasks"
+              ],
+              "negative_distance_policy": [
+                "unrestricted_beta_retained"
+              ],
+              "time_aggregation": [
+                "four_distance_arithmetic_mean"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "productivity.luenberger.fixture.operating_improvement",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "distance_base_on_base": 0.5,
+                    "distance_comparison_on_base": 0.0,
+                    "distance_base_on_comparison": 0.5,
+                    "distance_comparison_on_comparison": 0.0,
+                    "productivity_change": 0.5,
+                    "efficiency_change": 0.5,
+                    "technical_change": 0.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "four_directional_distances",
+              "productivity_change",
+              "efficiency_change",
+              "technical_change",
+              "additive_decomposition_identity"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_frontier_shift_property",
+        "analytic_catch_up_property",
+        "independent_dense_crs_four_task_compiler",
+        "exact_pure_opportunity_change",
+        "exact_pure_relative_operating_improvement",
+        "additive_decomposition_identity",
+        "negative_cross_period_distance_retention",
+        "mean_direction_unit_invariance",
+        "built_in_panel",
+        "unbalanced_panel_drop_membership",
+        "zero_direction_failure",
+        "environmental_data_rejection",
+        "solver_neutral_four_distance_postsolve_certificate",
+        "signed_distance_objective_reconstruction",
+        "additive_account_runtime_certificate",
+        "per_transition_atomic_failure_release",
+        "no_additional_solver_calls_for_certification",
+        "metadata_identity"
+      ],
+      "locators": [
+        "tests/test_luenberger.py",
+        "tests/test_luenberger_postsolve_certification.py",
+        "tests/test_luenberger_independent_oracle.py::test_exact_pure_opportunity_change_retains_negative_cross_period_distance",
+        "tests/test_luenberger_independent_oracle.py::test_exact_pure_relative_operating_improvement_has_zero_technical_change",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_productivity_operators.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.productivity.luenberger",
+        "path": "book/chapters/04-productivity/12-luenberger.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.luenberger",
+        "path": "docs/analysis/luenberger.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

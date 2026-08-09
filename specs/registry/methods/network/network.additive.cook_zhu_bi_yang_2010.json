@@ -1,0 +1,367 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.additive.cook_zhu_bi_yang_2010",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Cook--Zhu--Bi--Yang general additive network DEA",
+  "decision_question": "How should overall and process performance be accounted for when an organization has an open acyclic production network in which processes may receive outside resources, release final services, and exchange internal products?",
+  "names": {
+    "display": "Cook--Zhu--Bi--Yang general additive network DEA",
+    "historical": [
+      {
+        "label": "Additive efficiency decomposition for network DEA",
+        "spellings": [
+          "general network DEA additive decomposition",
+          "Cook et al. additive network model"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2010.05.006"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "CookZhuBiYangAdditiveDEA",
+      "aliases": [
+        {
+          "symbol": "GeneralAdditiveNetworkDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "general additive network DEA",
+      "weighted additive process-efficiency decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_system_and_process_accountability",
+        "managerial_control": "coordinated_open_production_network"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.general_network"
+      ],
+      "fixed": {
+        "kind": "directed_acyclic_network",
+        "external_resources": "allowed_at_any_process",
+        "final_services": "allowed_at_any_process",
+        "parallel_branches": "allowed",
+        "skip_links": "allowed",
+        "link_quantity": "observed_once",
+        "link_multiplier_policy": "shared_between_supplier_and_recipient",
+        "cycles": "excluded"
+      },
+      "constraints": [
+        "condition.source_compatible_open_dag"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "process_specific_outside_resources",
+        "links": "internal_products_serving_as_supplier_outputs_and_recipient_inputs",
+        "external_outputs": "process_specific_final_services"
+      },
+      "exposed": [
+        "process_variable_assignments",
+        "link_endpoints"
+      ],
+      "constraints": [
+        "domain.general_additive_network.positive_reference_support",
+        "domain.general_additive_network.nonnegative_quantities"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "cook_etal_general_additive_network",
+        "returns_to_scale": "crs",
+        "process_constraints": "one_multiplier_frontier_inequality_per_process_and_reference_observation",
+        "link_coupling": "common_internal_product_valuation"
+      },
+      "constraints": [
+        "condition.source_equation_complete_crs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "sparse_multiplier_network_programme"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_graph_compatible_dmus",
+          "membership_rule": "all_observations_with_the_declared_network_roles",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "weighted_additive_process_efficiency",
+        "orientation": "total_process_input_normalized",
+        "system_process_identity": "system_equals_endogenous_virtual_process_input_share_weighted_sum"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "endogenous_multiplier",
+        "process_weight_origin": "virtual_process_input_share",
+        "link_multiplier": "shared_across_each_process_boundary"
+      },
+      "defaults": {
+        "minimum_process_share": 0.0
+      },
+      "exposed": [
+        "minimum_process_share"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_and_process_appraisal",
+        "process_account_selection": "solver_selected_primary_optimum",
+        "decomposition_uniqueness": "not_certified",
+        "projection": "not_available_in_source_contract",
+        "strong_slack_completion": false
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "system_process_weighted_additive_decomposition",
+        "reconstruction_check": true
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.network.cook_additive",
+    "canonical_symbol": "CookZhuBiYangAdditiveDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.general_network"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_multiplier_compilation",
+      "compiled_graph_layout",
+      "open_dag_process_accounting",
+      "minimum_virtual_process_input_shares"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_additive_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.general_additive_network.positive_reference_support"
+          ]
+        }
+      },
+      {
+        "id": "process_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.positive_virtual_process_input",
+            "condition.source_equation_complete_crs"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_efficiency",
+      "process_efficiencies",
+      "endogenous_process_input_shares",
+      "shared_link_multipliers",
+      "observed_link_valuations",
+            "decomposition_status",
+            "score_valid",
+            "score_status",
+            "process_and_link_account_validity_status",
+            "target_and_peer_source_boundary_status",
+            "backend_and_raw_solver_status_preservation",
+            "solver_neutral_lp_optimality_certificate",
+            "raw_and_published_original_quantity_system_process_link_certificate",
+            "reference_process_constraint_slack_certificate",
+            "normalization_objective_share_and_additive_identity_certificate",
+            "atomic_fail_closed_result_release",
+            "stable_all_failure_result_schema",
+            "primary_secondary_projection_and_total_solve_count_contract",
+            "zero_certificate_additional_solve_contract"
+    ],
+    "transformations": [
+      "system_efficiency_equals_process_input_share_weighted_sum"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.source_compatible_open_dag",
+        "domain.general_additive_network.nonnegative_quantities",
+        "domain.general_additive_network.positive_reference_support",
+        "condition.source_equation_complete_crs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "quantity_units_with_corresponding_multiplier_rescaling",
+        "co_transform": [
+          "external_input_multipliers",
+          "link_multipliers",
+          "external_output_multipliers"
+        ],
+        "conditions": [
+          "condition.positive_rescaling"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "not_provided",
+      "efficiency": "not_provided",
+      "selection": "no_projection_or_peer_contract_in_the_source_checked_crs_multiplier_model",
+      "conditions": [
+        "condition.source_contract_has_no_projection"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2010.05.006"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1016/j.ejor.2008.05.011"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2014.02.039"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_cook_general_additive.py::test_seller_buyer_table_2_oracle_and_additive_identity",
+        "tests/test_cook_general_additive.py::test_seller_buyer_table_3_equal_share_oracle",
+        "tests/test_cook_general_additive.py::test_three_stage_tables_6_and_7_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_two_stage_oracles",
+        "published_three_stage_oracles",
+        "weighted_additive_identity",
+        "graph_and_column_order_independence",
+        "unit_invariance",
+        "open_branch_and_skip_link_graph",
+        "external_reference_evaluation",
+        "compile_and_solve_counts",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+                "raw_solver_status_preserved_on_certificate_failure",
+                "normalization_objective_and_additive_identity_reconstruction",
+                "semantic_subtables_withheld_for_uncertified_solution",
+                "raw_and_published_original_quantity_process_link_and_slack_accounts",
+                "per_dmu_failure_isolation",
+                "stable_all_failure_schema",
+                "primary_secondary_projection_and_total_solve_counts",
+                "zero_certificate_additional_solves",
+                "benchmark_fail_closed_certificate_and_residual_gate"
+            ],
+            "locators": [
+                "tests/test_cook_general_additive.py",
+                "tests/test_cook_general_additive.py::test_uncertified_primary_programme_fails_closed",
+                "tests/test_lp_certificates.py",
+                "tests/test_general_additive_compiler.py",
+                "tests/test_network_layout.py",
+                "tests/test_network_additive_postsolve_certification.py",
+                "tests/test_benchmark_network_additive.py"
+            ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_general_additive.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.network.core_organizations_links_responsibility",
+        "path": "book/chapters/05-network/network-dea-organizations-links-responsibility.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.general_additive_network",
+        "path": "docs/models/cook-general-additive-network.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

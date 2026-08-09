@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title description">
+<title id="title">Two exact Malmquist-Luenberger change accounts</title>
+<desc id="description">The first account holds the relevant best-practice opportunity fixed while an organization narrows its operating shortfall. The second contrasts old and new environmental opportunities while both observed plans remain contemporaneous benchmarks.</desc>
+<defs>
+<marker id="mlc-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#d97732"/></marker>
+<filter id="mlc-shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#24323d" flood-opacity="0.10"/></filter>
+</defs>
+<rect width="900" height="650" fill="#ffffff"/>
+<g font-family="Arial, sans-serif">
+<text x="32" y="38" font-size="24" font-weight="700" fill="#24323d">What changed in measured environmental productivity?</text>
+<text x="32" y="66" font-size="15" fill="#5c6b73">Same resources · more service and less residual define improvement</text>
+<rect x="28" y="91" width="414" height="464" rx="15" fill="#f8fafb" stroke="#d5dee2" filter="url(#mlc-shadow)"/>
+<rect x="458" y="91" width="414" height="464" rx="15" fill="#f8fafb" stroke="#d5dee2" filter="url(#mlc-shadow)"/>
+<text x="52" y="122" font-size="18" font-weight="700" fill="#176b73">A · operating shortfall narrows</text>
+<text x="482" y="122" font-size="18" font-weight="700" fill="#76528f">B · represented opportunity improves</text>
+<line x1="78" y1="414" x2="410" y2="414" stroke="#24323d" stroke-width="2"/>
+<line x1="78" y1="414" x2="78" y2="154" stroke="#24323d" stroke-width="2"/>
+<text x="244" y="440" text-anchor="middle" font-size="14" fill="#24323d">undesirable residual · less is better &#x2190;</text>
+<text x="51" y="288" text-anchor="middle" font-size="14" fill="#24323d" transform="rotate(-90 51 288)">desirable service · more is better &#x2191;</text>
+<line x1="84" y1="404" x2="236" y2="174" stroke="#176b73" stroke-width="4"/>
+<text x="112" y="174" font-size="14" fill="#176b73">Reference unit F</text>
+<line x1="355" y1="360" x2="202" y2="286" stroke="#687780" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="300" y1="288" x2="224" y2="194" stroke="#687780" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="355" y1="360" x2="305" y2="292" stroke="#d97732" stroke-width="3" marker-end="url(#mlc-arrow)"/>
+<circle cx="355" cy="360" r="7" fill="#24323d" stroke="#ffffff" stroke-width="2"/>
+<circle cx="300" cy="288" r="7" fill="#d97732" stroke="#ffffff" stroke-width="2"/>
+<text x="276" y="382" font-size="15" fill="#24323d">A(t) · D = 3/5</text>
+<text x="266" y="272" font-size="15" fill="#d97732">A(t+1) · D = 1/3</text>
+<text x="247" y="333" font-size="14" fill="#d97732">more favorable plan</text>
+<rect x="52" y="458" width="366" height="76" rx="11" fill="#dceff0" stroke="#b7d7d9"/>
+<text x="235" y="489" text-anchor="middle" font-size="19" font-weight="700" fill="#176b73">ML = 6/5 = EC 6/5 &#xD7; TC 1</text>
+<text x="235" y="516" text-anchor="middle" font-size="14" fill="#24323d">The same relevant opportunity determines all four comparisons.</text>
+<line x1="508" y1="414" x2="840" y2="414" stroke="#24323d" stroke-width="2"/>
+<line x1="508" y1="414" x2="508" y2="154" stroke="#24323d" stroke-width="2"/>
+<text x="674" y="440" text-anchor="middle" font-size="14" fill="#24323d">undesirable residual · less is better &#x2190;</text>
+<text x="481" y="288" text-anchor="middle" font-size="14" fill="#24323d" transform="rotate(-90 481 288)">desirable service · more is better &#x2191;</text>
+<line x1="514" y1="404" x2="682" y2="174" stroke="#76528f" stroke-width="4"/>
+<line x1="514" y1="404" x2="823" y2="360" stroke="#176b73" stroke-width="4" stroke-dasharray="8 6"/>
+<text x="713" y="395" font-size="14" fill="#176b73">period-t opportunity</text>
+<text x="526" y="205" font-size="14" fill="#76528f">period-(t+1) opportunity</text>
+<line x1="823" y1="360" x2="648" y2="221" stroke="#76528f" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="536" y="250" font-size="14" fill="#76528f">new-opportunity projection · D = 3/5</text>
+<line x1="682" y1="174" x2="758" y2="369" stroke="#d97732" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#mlc-arrow)"/>
+<text x="692" y="282" font-size="14" fill="#d97732">old-opportunity replay</text>
+<text x="714" y="306" font-size="14" fill="#d97732">D = &#x2212;3/5</text>
+<circle cx="823" cy="360" r="7" fill="#176b73" stroke="#ffffff" stroke-width="2"/>
+<circle cx="682" cy="174" r="7" fill="#76528f" stroke="#ffffff" stroke-width="2"/>
+<text x="718" y="350" font-size="14" fill="#176b73">Plant(t) · D(t) = 0</text>
+<text x="692" y="164" font-size="14" fill="#76528f">Plant(t+1) · D(t+1) = 0</text>
+<rect x="482" y="458" width="366" height="76" rx="11" fill="#eee8f3" stroke="#c6b2d3"/>
+<text x="665" y="489" text-anchor="middle" font-size="19" font-weight="700" fill="#76528f">ML = 2 = EC 1 &#xD7; TC 2</text>
+<text x="665" y="516" text-anchor="middle" font-size="14" fill="#24323d">Both plans are contemporaneous benchmarks.</text>
+<rect x="28" y="581" width="844" height="42" rx="10" fill="#24323d"/>
+<text x="450" y="608" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">EC and TC allocate benchmark change; neither identifies the cause of change.</text>
+</g>
+</svg>

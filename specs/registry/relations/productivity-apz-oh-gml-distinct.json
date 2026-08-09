@@ -1,0 +1,46 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.malmquist_luenberger.aparicio_pastor_zofio_2013",
+  "target": "productivity.global_malmquist_luenberger.oh_2010",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "data_roles",
+    "technology",
+    "reference",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.apz.oh_global_distinct_task_graph_and_technology",
+      "arguments": {
+        "shared_direction": "fixed_input_observed_good_and_bad_output",
+        "apz_technology": "contemporaneous_crs_capped_bad_output_inequality",
+        "apz_operator": "four_period_specific_own_and_cross_distance_geometric_mean",
+        "oh_technology": "pooled_global_crs_common_factor_bad_output_equality",
+        "oh_operator": "two_global_distance_factor_ratio_with_contemporaneous_gap_decomposition",
+        "apz_cross_period_solves_per_transition": 2,
+        "oh_cross_period_solves_per_transition": 0,
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.ejor.2013.03.031",
+      "doi:10.1016/j.jenvman.2017.03.007",
+      "doi:10.1007/s11123-010-0178-y"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_apz_malmquist_luenberger.py::test_apz_is_neither_cfg_postprocessing_nor_oh_global_index"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "network.radial.fare_grosskopf_2000",
+  "target": "network.relational.kao_hwang_2008",
+  "type": "exact_score_transform",
+  "equivalence_level": "B",
+  "difference_axes": [
+    "performance",
+    "valuation",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_closed_crs_two_stage_graph",
+      "arguments": {
+        "returns_to_scale": "crs",
+        "external_inputs": "stage_one_only",
+        "intermediates": "same_reference_intermediate_quantity_columns",
+        "evaluated_intermediate_policy": "endogenous_not_conditioned_on_observed",
+        "final_outputs": "stage_two_only",
+        "process_intensities": "separate",
+        "link_balance": "upstream_supply_greater_than_or_equal_to_downstream_requirement",
+        "comparison_population": "matched",
+        "claim_scope": "primary_system_optimum_only",
+        "score_transform": "identity"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/S0038-0121(99)00012-9",
+      "doi:10.1016/j.ejor.2006.11.041",
+      "doi:10.1016/j.ejor.2015.06.050"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_fare_grosskopf_network_radial.py::test_crs_system_scores_equal_kao_hwang_primary_on_published_data"
+    ]
+  }
+}

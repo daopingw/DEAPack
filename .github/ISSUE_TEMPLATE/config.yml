@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution guide
+    url: https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md
+    about: Read the evidence, testing, and attribution expectations before a substantial contribution.
+  - name: Developer Certificate of Origin 1.1
+    url: https://github.com/daopingw/DEAPack/blob/main/DCO.txt
+    about: Software commits require a DCO Signed-off-by line and use GPL-3.0-only inbound and outbound.
+  - name: Private security report
+    url: https://github.com/daopingw/DEAPack/security/advisories/new
+    about: Report vulnerabilities or result-integrity risks privately.

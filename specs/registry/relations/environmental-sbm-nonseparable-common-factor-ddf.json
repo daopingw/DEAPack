@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.sbm.nonseparable_hybrid.tone_2003",
+  "target": "environmental.ddf.weak_disposal.common_factor",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology",
+    "performance",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.tone_2003_nonseparability_compared_with_common_factor_weak_disposal_ddf",
+      "arguments": {
+        "tone_alpha": "source_projection_and_measure_path_for_a_declared_good_bad_output_block",
+        "tone_bad_output_disposability": "partition_specific_separable_strong_balance_and_nonseparable_joint_alpha_relation",
+        "ddf_common_factor": "technology_and_disposal_construction_with_a_directional_distance_task",
+        "shared_symbol_or_proportional_wording": "does_not_establish_equivalence",
+        "whole_method_alias": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.24545/00000955",
+      "doi:10.1006/jema.1997.0146"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental_disposability_contrast.py",
+      "tests/test_weak_disposal.py"
+    ]
+  }
+}

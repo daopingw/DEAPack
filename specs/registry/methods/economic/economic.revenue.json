@@ -1,0 +1,342 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "economic.revenue",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "economic",
+  "title": "Maximum-revenue efficiency",
+  "decision_question": "With the organization's observed input capacity and output prices, what is the greatest revenue attainable from the declared technology, and how much output value is being left unrealized?",
+  "names": {
+    "display": "Maximum-revenue efficiency",
+    "historical": [
+      {
+        "label": "Revenue efficiency",
+        "spellings": [
+          "overall revenue efficiency",
+          "economic output efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/978-94-015-7721-2"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RevenueEfficiency",
+      "aliases": []
+    },
+    "spellings": [
+      "maximum-revenue DEA",
+      "output revenue efficiency",
+      "revenue DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "maximum_revenue_from_input_capacity",
+        "managerial_interpretation": "unrealized_output_value_at_observed_resource_capacity"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "fixed_resource_capacity",
+        "outputs": "priced_desirable_choices",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_output_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_output_prices",
+        "condition.positive_maximum_revenue",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "convex_envelopment",
+        "disposal": "ordinary_free"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.rts_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "economic_value",
+        "measure": "revenue_efficiency",
+        "orientation": "output_choice_for_fixed_inputs",
+        "native_score": "observed_revenue_over_maximum_revenue",
+        "direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_output_prices",
+        "price_side": "outputs"
+      },
+      "exposed": [
+        "output_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "target": "revenue_maximizing_activity",
+        "external_reference_score_policy": "retain_unclipped_and_withhold_internal_efficiency_claim",
+        "target_uniqueness": "not_assessed",
+        "pareto_completion": "not_claimed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_maximum_revenue_program",
+        "decomposition": "not_reported_by_this_family"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.revenue",
+    "canonical_symbol": "RevenueEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "sparse_linear_programming",
+      "shared_price_pattern_reuse"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "revenue_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_maximum_revenue_program",
+            "condition.positive_maximum_revenue"
+          ]
+        }
+      },
+      {
+        "id": "revenue_expansion_ratio",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.positive_observed_revenue"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "observed_revenue",
+      "maximum_revenue",
+      "revenue_gap",
+      "is_revenue_efficient",
+      "revenue_maximizing_targets",
+      "revenue_maximizing_intensities",
+      "revenue_duals",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "peer_valid",
+      "dual_valid",
+      "postsolve_certification",
+      "diagnostics"
+    ],
+    "transformations": [
+      "revenue_efficiency_equals_observed_revenue_over_maximum_revenue",
+      "revenue_expansion_ratio_equals_maximum_revenue_over_observed_revenue",
+      "revenue_gap_equals_maximum_revenue_minus_observed_revenue"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_output_prices",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_rescaling_preserves_revenue_efficiency",
+        "co_transform": [
+          "output_prices",
+          "reported_output_revenues"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.same_reference_comparison"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The reported revenue-maximizing activity respects the observed input limits and declared technology only after the source LP and reconstructed revenue account are certified.",
+      "efficiency": "The target maximizes output revenue at the supplied prices; it is not asserted to be strongly or Pareto efficient because unpriced slack completion is not performed.",
+      "selection": "Intensities and a revenue-maximizing target are solver selected and may be non-unique.",
+      "conditions": [
+        "condition.optimal_maximum_revenue_program",
+        "condition.complete_strictly_positive_output_prices"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/978-94-015-7721-2"
+      },
+      {
+        "role": "implementation",
+        "id": "https://javierbarbero.github.io/BenchmarkingEconomicEfficiency.jl/stable/revenue/revenue/"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://javierbarbero.github.io/BenchmarkingEconomicEfficiency.jl/stable/revenue/revenue/",
+        "tests/test_revenue.py::test_revenue_efficiency_reproduces_the_eight_unit_vrs_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "cross_implementation_oracle",
+        "revenue_identity",
+        "crs_and_vrs",
+        "price_and_quantity_unit_invariance",
+        "external_reference_unclipped_score",
+        "zero_denominator_status",
+        "solver_neutral_lp_certificate",
+        "atomic_revenue_account_release",
+        "raw_denominator_classification",
+        "tiny_monetary_identity_preservation",
+        "independent_target_peer_and_dual_validity",
+        "zero_additional_certificate_solves",
+        "domain_validation",
+        "compiled_reference_reuse",
+        "metadata_contract"
+      ],
+      "locators": [
+        "tests/test_revenue.py",
+        "tests/test_revenue_postsolve_certification.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_economic_allocative.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.economic_efficiency_prices",
+        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.revenue",
+        "path": "docs/models/revenue.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.economics",
+        "path": "docs/api/economics.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

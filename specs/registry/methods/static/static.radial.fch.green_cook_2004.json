@@ -1,0 +1,426 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.radial.fch.green_cook_2004",
+  "identifier_role": "method_id",
+  "kind": "variant",
+  "component_type": null,
+  "category": "static",
+  "title": "Green--Cook free coordination hull",
+  "decision_question": "By what common proportion could controllable resources be saved, or desirable services be expanded, when several distinct observed organizations may coordinate once each but may be neither replicated nor fractionally divided?",
+  "names": {
+    "display": "Green--Cook free coordination hull",
+    "historical": [
+      {
+        "label": "Free coordination hull",
+        "spellings": [
+          "FCH",
+          "free-coordination-hull efficiency",
+          "binary-subset coordination hull"
+        ],
+        "sources": [
+          "doi:10.1057/palgrave.jors.2601773"
+        ]
+      },
+      {
+        "label": "Free aggregation hull",
+        "spellings": [
+          "FAH",
+          "free-aggregation-hull efficiency"
+        ],
+        "sources": [
+          "doi:10.1287/opre.2022.2348"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "FreeCoordinationHullDEA",
+      "aliases": [
+        {
+          "symbol": "FCH"
+        }
+      ]
+    },
+    "spellings": [
+      "input-oriented radial FCH",
+      "output-oriented radial FCH",
+      "Green--Cook binary-subset radial efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "operating_interpretation": "distinct_observed_organizations_may_coordinate_at_most_once_each",
+        "coalition_interpretation": "technically_admissible_benchmark_not_organizational_merger_recommendation",
+        "historical_fah_policy": "free_aggregation_hull_is_an_exact_historical_name_but_fah_is_not_a_python_alias_because_ray_1997_uses_it_for_the_distinct_free_affordability_hull"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_additive_resources",
+        "outputs": "desirable_additive_services",
+        "bad_outputs": "excluded",
+        "panel": "excluded",
+        "zero_input_component": "hard_zero_resource_budget_for_the_evaluated_observation",
+        "zero_output_component": "no_proportional_expansion_requirement_but_retained_in_reference_activity_and_output_slack_accounting"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.additive_across_distinct_organizations",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.fch.binary_subset_aggregation"
+      ],
+      "fixed": {
+        "family": "free_coordination_hull",
+        "convex": false,
+        "activity_combination": "binary_subset_aggregation",
+        "selection_domain": "binary",
+        "selection_bounds": "zero_or_one",
+        "nonempty_subset": true,
+        "scale_extrapolation": "none",
+        "returns_to_scale": "not_parameterized",
+        "disposal": "ordinary_free",
+        "continuous_relaxation": "koopmans_bounded_intensity_with_nonempty_constraint",
+        "continuous_relaxation_is_ccr": false
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.fch"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "binary_mixed_integer_envelopment",
+        "reference_compilation": "one_matched_cross_sectional_comparison_population"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_cross_section",
+          "membership_rule": "all_eligible_distinct_organizations",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "cross_section_only",
+          "availability_cutoff": "single_declared_vintage",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_efficiency",
+        "same_technology_across_orientations": true
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "selection_indicator_semantics": "one_if_distinct_reference_organization_is_in_the_coalition",
+        "coalition_uniqueness": "not_assessed",
+        "target_uniqueness": "not_assessed",
+        "merger_recommendation": "not_implied"
+      },
+      "defaults": {
+        "secondary_objective": "maximize_row_scaled_free_disposal_residuals"
+      },
+      "exposed": [
+        "slack_completion"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "binary_solution_certificate": "solver_optimum_with_componentwise_binary_bound_and_constraint_checks_and_certified_mip_gap"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.fch",
+    "canonical_symbol": "FreeCoordinationHullDEA",
+    "registry_dependencies": [
+      "estimator.full.fch",
+      "graph.black_box",
+      "technology.fch.binary_subset_aggregation"
+    ],
+    "backend_capabilities": [
+      "binary_nonempty_subset_enforcement",
+      "compiled_reference_reuse",
+      "componentwise_binary_bound_and_constraint_certification",
+      "lexicographic_mixed_integer_slack_completion",
+      "mixed_integer_optimality_and_gap_diagnostics",
+      "sparse_mixed_integer_programming"
+    ],
+    "default_backend": "scipy_highs_milp",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "radial_efficiency",
+      "selection_indicator",
+      "coalition_size",
+      "binary_subset_reference_activity",
+      "radial_target",
+      "free_disposal_residuals",
+      "mip_gap",
+      "binary_solution_certified",
+      "strong_completion_certified",
+      "solver_status"
+    ],
+    "transformations": [
+      "output_display_efficiency_equals_one_over_phi"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.additive_across_distinct_organizations",
+        "condition.desirable_outputs_only",
+        "condition.cross_section_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.matched_reference_population",
+          "condition.matched_binary_selection_domain"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "A reported binary-subset reference activity satisfies the selected radial target under ordinary free disposal only after the mixed-integer solve and every binary, bound, constraint, and gap check are certified.",
+      "efficiency": "Generic strong efficiency is claimed only after the optional fixed-radial-factor mixed-integer slack completion is certified; score-only fits retain a missing strong-efficiency classification.",
+      "selection": "The selected coalition and target are solver selected among alternate binary optima, are not asserted unique, and identify a technically admissible benchmark rather than a recommendation to merge organizations.",
+      "conditions": [
+        "condition.solver_certified_binary_optimum",
+        "condition.nonempty_binary_subset",
+        "condition.successful_mixed_integer_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1057/palgrave.jors.2601773"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1287/opre.2022.2348"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.1023/A:1007747407212"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/green-cook-2004-fch-analytical.md",
+        "tests/test_fch_independent_oracle.py::test_exact_binary_subset_oracle_exhausts_all_nonempty_coalitions",
+        "tests/test_fch_independent_oracle.py::test_public_fch_matches_exact_binary_subset_certificate",
+        "tests/test_fch_independent_oracle.py::test_exact_oracle_derivation_has_no_production_or_solver_dependency"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/green-cook-2004-fch-analytical.md",
+        "public_api_test_locator": "tests/test_fch_independent_oracle.py::test_public_fch_matches_exact_binary_subset_certificate",
+        "claims": [
+          {
+            "claim_id": "static.radial.fch.green_cook_2004.exact_binary_subset_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_fch_independent_oracle.py::test_exact_binary_subset_oracle_exhausts_all_nonempty_coalitions",
+              "tests/test_fch_independent_oracle.py::test_public_fch_matches_exact_binary_subset_certificate",
+              "tests/test_fch_independent_oracle.py::test_exact_oracle_derivation_has_no_production_or_solver_dependency"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "not_parameterized"
+              ],
+              "evaluation_protocol": [
+                "nonempty_binary_subset_radial_fit_with_unique_fixture_completion"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "fixed_radial_factor_free_disposal_residual_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "theta",
+              "phi",
+              "harmonized_efficiency",
+              "feasible_subset_count",
+              "unique_optimal_binary_subset",
+              "coalition_size",
+              "radial_target",
+              "binary_subset_reference_activity",
+              "free_disposal_residuals"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "binary_nonempty_subset_formulation",
+        "componentwise_binary_and_gap_certification",
+        "cross_section_and_data_domain_failure",
+        "external_reference_semantics",
+        "fdh_fch_frh_ccr_nesting",
+        "fch_vrs_non_nesting",
+        "four_organization_exact_binary_subset_certificate",
+        "four_organization_analytic_distinguishing_oracle",
+        "independent_fraction_enumeration_without_production_compiler",
+        "phase_two_failure_closure",
+        "selected_coalition_and_target_accounting",
+        "unit_invariance",
+        "zero_input_hard_budget_semantics",
+        "zero_output_reference_activity_and_slack_semantics"
+      ],
+      "locators": [
+        "tests/test_fch.py",
+        "tests/test_fch_independent_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_fch.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.fch",
+        "path": "docs/models/fch.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

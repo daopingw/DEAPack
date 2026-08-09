@@ -1,0 +1,1000 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:1
+#: 0d328895412b4d64b60c9f15a2a5e592
+msgid "Slacks-Based Efficiency with Undesirable Outputs"
+msgstr "含非合意产出的基于松弛变量效率测度"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:3
+#: 2a142e5aff974683b06188d09d930437
+msgid ""
+"A power plant can use too much fuel, generate too little electricity, and "
+"emit too much carbon dioxide at the same time. A radial environmental model "
+"summarizes a declared joint improvement programme—for example, increase "
+"electricity and reduce emissions by the same percentage. That is useful when"
+" management has adopted such a programme. It is less informative when the "
+"operating gaps differ sharply across resources, desirable outputs, and "
+"pollutants."
+msgstr "一家发电厂可能同时使用过多燃料、生产过少电力并排放过多二氧化碳。径向环境模型汇总一套既定联合改进方案，例如让电力增加与排放减少采用同一百分比。这在管理层已经采用相应方案时很有用；当资源、合意产出和污染物之间的经营缺口差异很大时，则提供的信息有限。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:10
+#: 74aa2d0fef334b42892e161ab2b18e4b
+msgid ""
+"Undesirable-output SBM separates these sources of underperformance. It "
+"allows fuel excess, missing electricity, and avoidable emissions to differ "
+"rather than forcing them into one common percentage, and normalizes each gap"
+" by the organization's observed quantity. The result answers a direct "
+"management question:"
+msgstr ""
+"非合意产出 SBM "
+"把这些绩效不足来源分开。它允许燃料过量、缺少的电力与可避免排放具有不同幅度，而不强迫它们使用同一百分比，并以组织自身观测数量标准化各项缺口。所得结果回答一个直接管理问题："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:15
+#: ecc85f59f37e458692c2980c3eb0efee
+msgid ""
+"How large are the variable-specific resource, service, and residual gaps in "
+"one attainable operating plan, when lower inputs and undesirable outputs and"
+" higher desirable outputs are all preferred?"
+msgstr "当投入与非合意产出越少越好、合意产出越多越好时，在一个可实现经营方案中，各变量特定的资源、服务和残余物缺口有多大？"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:19
+#: 1c8701d77b4e4dad884cb5afb152d7df
+#, python-brace-format
+msgid ""
+"This model extends the slacks-based logic of ordinary SBM {cite:p}`tone2001`"
+" to a standard separable undesirable-output account {cite:p}`tone2003bad`. "
+"It is a core environmental DEA model, but its apparent simplicity should not"
+" hide the production assumption it makes: undesirable outputs can be reduced"
+" independently of desirable outputs within the represented technology. That "
+"assumption is suitable for some abatement settings and unsuitable for "
+"others."
+msgstr ""
+"该模型把普通 SBM 的松弛逻辑 {cite:p}`tone2001` 扩展到标准可分离非合意产出账户 "
+"{cite:p}`tone2003bad`。它是核心环境 DEA "
+"模型，但表面简洁不能掩盖其生产假设：在所代表技术中，非合意产出可以独立于合意产出减少。这一假设适合某些治理情形，不适合另一些情形。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:26
+#: 735f4a4f32ad4a2cb55e8f3725133ee3
+msgid "Three kinds of operating gap, one feasible benchmark"
+msgstr "三类经营缺口，一个可行标杆"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:28
+#: 3e665e5702b14a5cacb4feb411311180
+msgid "For organization $o$, let"
+msgstr "对组织 $o$，令"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:30
+#: 88b6f704f50c42a6877fdacd494580b5
+#, python-brace-format
+msgid "$x_o\\in\\mathbb R_{++}^m$ contain inputs;"
+msgstr "$x_o\\in\\mathbb R_{++}^m$ 表示投入；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:31
+#: bca15d53f0774ed7920b22756796317b
+#, python-brace-format
+msgid "$y_o\\in\\mathbb R_{++}^s$ contain desirable outputs; and"
+msgstr "$y_o\\in\\mathbb R_{++}^s$ 表示合意产出；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:32
+#: 0a834d2dd3d34686b5997268e2bf3b44
+#, python-brace-format
+msgid "$b_o\\in\\mathbb R_{++}^q$ contain undesirable outputs."
+msgstr "$b_o\\in\\mathbb R_{++}^q$ 表示非合意产出。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:34
+#: ec4b05cc1a6f4069ae0e643277726af3
+msgid ""
+"The reference observations are stored in $X$, $Y$, and $B$. A benchmark "
+"assembled with nonnegative intensities $\\lambda$ satisfies"
+msgstr "参照观测存储在 $X$、$Y$ 和 $B$ 中。用非负强度 $\\lambda$ 构造的标杆满足"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:37
+#: fe33c7ac46a44cbba03c38b00c37560d
+msgid ""
+"\n"
+"X\\lambda+s^-=x_o,\n"
+msgstr ""
+"\n"
+"X\\lambda+s^-=x_o,\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:41
+#: 37550365637647038e2465f2eb75c296
+msgid ""
+"\n"
+"Y\\lambda-s^+=y_o,\n"
+msgstr ""
+"\n"
+"Y\\lambda-s^+=y_o,\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:45
+#: 6dfdd04879214eeebcd77d6e4e93c5e1
+msgid "and"
+msgstr "以及"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:47
+#: 2da337f82ebf47f39dfac78c2ec5ed0b
+msgid ""
+"\n"
+"B\\lambda+s^b=b_o,\n"
+msgstr ""
+"\n"
+"B\\lambda+s^b=b_o,\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:51
+#: 718dbe8acaa442198fe92adf7a31439f
+msgid ""
+"where $s^-\\ge0$ is input excess, $s^+\\ge0$ is desirable-output shortfall, "
+"and $s^b\\ge0$ is undesirable-output excess."
+msgstr "其中，$s^-\\ge0$ 是投入冗余，$s^+\\ge0$ 是合意产出不足，$s^b\\ge0$ 是非合意产出过量。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:54
+#: 267ebfad284c46d288812bd45393d09d
+msgid "These balances produce an operating target"
+msgstr "这些平衡关系给出经营目标"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:56
+#: d48b43039df04ead891bf2181533129a
+msgid ""
+"\n"
+"\\widehat x_o=x_o-s^-,\n"
+"\\qquad\n"
+"\\widehat y_o=y_o+s^+,\n"
+"\\qquad\n"
+"\\widehat b_o=b_o-s^b.\n"
+msgstr ""
+"\n"
+"\\widehat x_o=x_o-s^-,\n"
+"\\qquad\n"
+"\\widehat y_o=y_o+s^+,\n"
+"\\qquad\n"
+"\\widehat b_o=b_o-s^b.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:64
+#: 80bf861b83b140858edda947f7f32d96
+msgid ""
+"All three target vectors come from the same reference activity $\\lambda$. "
+"The model does not independently choose the most attractive input plan, "
+"desirable-output plan, and emissions plan. It searches for one attainable "
+"operation that simultaneously uses no more inputs, supplies no less "
+"desirable output, and generates no more undesirable output than the "
+"evaluated organization."
+msgstr ""
+"三个目标向量都来自同一个参照活动 "
+"$\\lambda$。模型不会分别选择最有吸引力的投入方案、合意产出方案和排放方案，而是寻找一个同时满足投入不更多、合意产出不少于、非合意产出不高于被评价组织的可实现经营方案。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 1cec8fc22d7348a585a5a3e2f19aa1d3
+msgid ""
+"An undesirable-output SBM account shows input excess, desirable-output "
+"shortfall, and undesirable-output excess as separate normalized operating "
+"gaps leading to one feasible benchmark"
+msgstr "非合意产出 SBM 账户把投入冗余、合意产出不足和非合意产出过量作为三类独立标准化经营缺口，并形成一个可行标杆"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:75
+#: c8d68010b2104753a93f93cd9f674b9e
+msgid ""
+"The standard undesirable-output SBM does not force every quantity to change "
+"by a common percentage. Each resource excess, missing desirable output, and "
+"avoidable undesirable output remains visible in its own physical unit. The "
+"diagram is schematic: its three rows do not share a physical scale."
+msgstr ""
+"标准非合意产出 SBM "
+"不强制全部数量按同一百分比变化。每项资源冗余、缺少的合意产出和可避免的非合意产出都以自身实际单位保持可见。图只是示意，三行并不共享同一个实际尺度。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:81
+#: 9a4058a365404fbca777377ca702981e
+msgid ""
+"The distinction among variable roles matters. Treating pollution as an "
+"ordinary desirable output rewards larger emissions. Treating it as an "
+"ordinary input suggests that pollution is chosen before production and "
+"substitutes for labor, fuel, or capital. The bad-output balance instead says"
+" that the evaluated residual can contain an excess relative to a feasible "
+"production plan."
+msgstr "变量角色的区别十分重要。把污染作为普通合意产出，会奖励更多排放；把它作为普通投入，则暗示污染在生产前被选择，并与劳动、燃料或资本相互替代。非合意产出平衡式表达的是：相对于一个可行生产方案，被评价残余物可能包含过量。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:87
+#: 0cee49c360294955a54d53dd34ce6d5a
+msgid "The non-radial environmental ratio"
+msgstr "非径向环境比率"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:89
+#: ae8540caee7c44fc8cb309f25fc53a1c
+msgid "Define the average normalized input excess as"
+msgstr "将平均标准化投入冗余定义为"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:91
+#: 7029b4bdcbee48b38e917042eefd5562
+msgid ""
+"\n"
+"I_o^x\n"
+"=\\frac{1}{m}\\sum_{i=1}^{m}\\frac{s_{io}^-}{x_{io}}.\n"
+msgstr ""
+"\n"
+"I_o^x\n"
+"=\\frac{1}{m}\\sum_{i=1}^{m}\\frac{s_{io}^-}{x_{io}}.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:96
+#: 4ab99df3b765411abf23694ce08c3045
+msgid ""
+"The retained-resource account is $1-I_o^x$. If $I_o^x=0.20$, the selected "
+"benchmark removes an average of 20 percent across the input dimensions. This"
+" does not mean that every input falls by 20 percent; one may remain "
+"unchanged while another falls much more."
+msgstr ""
+"保留资源账户为 $1-I_o^x$。若 $I_o^x=0.20$，选定标杆在各投入维度上平均消除 20% 的投入冗余。这不表示每项投入都减少 "
+"20%；一项可以保持不变，另一项可以减少更多。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:101
+#: d747a42bff1147a19032b862be6df753
+msgid ""
+"Desirable-output shortfalls and undesirable-output excesses enter one "
+"output-side account:"
+msgstr "合意产出不足与非合意产出过量共同进入产出侧账户："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:104
+#: af7c97c0fb67470d9be54c73cbefacc2
+msgid ""
+"\n"
+"I_o^{yb}\n"
+"=\\frac{1}{s+q}\n"
+"\\left(\n"
+"\\sum_{r=1}^{s}\\frac{s_{ro}^+}{y_{ro}}\n"
+"+\n"
+"\\sum_{h=1}^{q}\\frac{s_{ho}^b}{b_{ho}}\n"
+"\\right).\n"
+msgstr ""
+"\n"
+"I_o^{yb}\n"
+"=\\frac{1}{s+q}\n"
+"\\left(\n"
+"\\sum_{r=1}^{s}\\frac{s_{ro}^+}{y_{ro}}\n"
+"+\n"
+"\\sum_{h=1}^{q}\\frac{s_{ho}^b}{b_{ho}}\n"
+"\\right).\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:114
+#: fb87466aad10493883e7eeb29bd5719e
+#, python-brace-format
+msgid ""
+"An additional desirable service and a reduction in an undesirable residual "
+"both count as favorable changes. Their normalized gaps enter symmetrically, "
+"one term per declared output dimension. The expansion account is "
+"$1+I_o^{yb}$."
+msgstr "增加一项合意服务和减少一项非合意残余物都属于有利变化。二者的标准化缺口对称进入账户，每个声明产出维度对应一项。扩张账户为 $1+I_o^{yb}$。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:118
+#: 73234d48397f42d4b4eb25f3593d14fd
+msgid ""
+"It is often clearer in a results table to retain the desirable and "
+"undesirable subaccounts separately:"
+msgstr "结果表通常把合意与非合意子账户分别保留会更清楚："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:121
+#: 878257900091462ba2a16e1f517ce925
+msgid ""
+"\n"
+"I_o^y=\\frac{1}{s}\\sum_{r=1}^{s}\\frac{s_{ro}^+}{y_{ro}},\n"
+"\\qquad\n"
+"I_o^b=\\frac{1}{q}\\sum_{h=1}^{q}\\frac{s_{ho}^b}{b_{ho}}.\n"
+msgstr ""
+"\n"
+"I_o^y=\\frac{1}{s}\\sum_{r=1}^{s}\\frac{s_{ro}^+}{y_{ro}},\n"
+"\\qquad\n"
+"I_o^b=\\frac{1}{q}\\sum_{h=1}^{q}\\frac{s_{ho}^b}{b_{ho}}.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:127
+#: 663a1794a31241178bd6cfb4d2cdabff
+msgid "The combined account is a dimension-weighted average,"
+msgstr "合并账户是按维度数加权的平均，"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:129
+#: 95e632f414d941858f0c234331e180b0
+#, python-brace-format
+msgid ""
+"\n"
+"I_o^{yb}=\\frac{sI_o^y+qI_o^b}{s+q},\n"
+msgstr ""
+"\n"
+"I_o^{yb}=\\frac{sI_o^y+qI_o^b}{s+q},\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:133
+#: 15c44fb23362406f8a0d745671dbcba5
+#, python-brace-format
+msgid ""
+"not the unweighted average of the two subaccount means unless $s=q$. DEAPack"
+" reports the three means as `desirable_output_inefficiency`, "
+"`bad_output_inefficiency`, and `output_inefficiency`; "
+"`output_account_factor` is the denominator term $1+I_o^{yb}$."
+msgstr ""
+"除非 $s=q$，否则它不是两个子账户均值的简单平均。DEAPack 分别以 "
+"`desirable_output_inefficiency`、`bad_output_inefficiency` 和 "
+"`output_inefficiency` 报告三个均值；`output_account_factor` 是分母项 $1+I_o^{yb}$。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:138
+#: f5c60a3115164d23a922e0add8e270b3
+msgid "The standard non-oriented undesirable-output SBM score is"
+msgstr "标准非导向非合意产出 SBM 得分为"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:140
+#: c2cab767b80c4935b0d2b722fbfbe16a
+msgid ""
+"\n"
+"\\rho_o^B\n"
+"=\\frac{1-I_o^x}{1+I_o^{yb}}.\n"
+msgstr ""
+"\n"
+"\\rho_o^B\n"
+"=\\frac{1-I_o^x}{1+I_o^{yb}}.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:145
+#: 245eb4ddb40448bdb3785b2ca01af70a
+msgid ""
+"Higher is better. With certified membership in the reference technology and "
+"the standard positive data domain,"
+msgstr "得分越高越好。在参照技术成员资格得到认证且使用标准正值数据域时，"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:148
+#: d6feced0553b4234b1af45a906cd68cf
+msgid ""
+"\n"
+"0<\\rho_o^B\\le1.\n"
+msgstr ""
+"\n"
+"0<\\rho_o^B\\le1.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:152
+#: 846ed70938b94804b0c1c05a084940f6
+msgid ""
+"A score of one requires every scored input, desirable-output, and "
+"undesirable-output slack to be zero. It therefore certifies strong "
+"efficiency under this particular separable technology. A score below one "
+"combines resource retention and output-side improvement in a fractional "
+"account."
+msgstr ""
+"得分等于 1 要求所有计分的投入、合意产出和非合意产出松弛量都为零，因此在这一特定可分离技术下认证强有效。得分低于 1 "
+"则用一个分式账户综合资源保留与产出侧改进。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:157
+#: 012d9a89e5964473a82914c82b7b1a71
+msgid ""
+"The score is not an emissions-reduction percentage, a cost-benefit ratio, or"
+" a measure of social welfare. For example, $\\rho^B=0.60$ does not imply "
+"that emissions can fall by 40 percent. The variable-level target and slack "
+"tables contain that information. Nor does the equal-dimension average say "
+"that a tonne of carbon dioxide causes the same damage as a tonne of another "
+"pollutant. The model has normalized technical gaps, not monetized "
+"environmental consequences."
+msgstr ""
+"该得分不是减排百分比、成本收益比或社会福利测度。例如，$\\rho^B=0.60$ 不表示排放可以减少 "
+"40%。各变量目标与松弛量表才包含这些信息。等维平均也不表示 1 吨二氧化碳与 1 "
+"吨其他污染物造成同等损害。模型标准化的是技术缺口，而没有给环境后果赋予货币价值。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:164
+#: e608f9a1b1054c55926b8bd24e47e8ab
+msgid "What separability and strong disposability mean"
+msgstr "可分离性与强可处置性的含义"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:166
+#: dfe97cfd83f547479b58b9070adc5042
+msgid "The bad-output equation implies"
+msgstr "非合意产出方程意味着"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:168
+#: 487de0dac1a64e1c853c8bdbee48812d
+msgid ""
+"\n"
+"B\\lambda\\le b_o.\n"
+msgstr ""
+"\n"
+"B\\lambda\\le b_o.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:172
+#: 0a847217504b494297b2359a97a2f7c1
+msgid ""
+"It permits the comparison plan to generate less undesirable output while "
+"maintaining or expanding desirable outputs. In this sense the standard model"
+" treats undesirable outputs as separable and strongly disposable. A lower "
+"residual can be represented without requiring a proportional reduction in "
+"the desirable outputs of the same operation."
+msgstr "它允许比较方案在维持或扩张合意产出时生成更少非合意产出。从这个意义上说，标准模型把非合意产出视为可分离且具有强可处置性。较少的残余物可以在不要求同一经营活动的合意产出同比例减少时表示。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:178
+#: 8f5588d944ef4483aa2a7e3bff124b76
+msgid ""
+"This can be credible when the sample contains independently adjustable "
+"abatement: better sorting, verified capture, an end-of-pipe treatment unit, "
+"improved leakage control, or a production practice that lowers a residual "
+"without sacrificing the recorded service. The observed reference activities "
+"then provide evidence for the cleaner plan."
+msgstr "当样本包含可以独立调整的治理活动时，这一假设可能可信，例如更好的分类、经核实的捕集、末端处理装置、泄漏控制改善，或在不牺牲所记录服务的情况下减少残余物的生产实践。此时，观测参照活动为更清洁方案提供证据。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:184
+#: 3fa8e64dad9149bc839911e5e5f132f1
+#, python-brace-format
+msgid ""
+"The assumption is not credible merely because lower pollution is preferred. "
+"If an undesirable output is an unavoidable joint product and reducing it "
+"requires curtailing the associated desirable output, the standard SBM can "
+"overstate environmental improvement opportunity. A weak-disposal "
+"environmental technology or another explicit joint-production model is then "
+"needed {cite:p}`chung1997`. Changing the word `strong` to `weak` while "
+"retaining the same balance equations would not change the technology."
+msgstr ""
+"仅仅因为偏好更少污染，不能证明这一假设可信。如果非合意产出是不可避免的联合产品，减少它必须伴随相关合意产出收缩，标准 SBM "
+"就可能夸大环境改进机会。此时需要弱可处置环境技术或其他显式联合生产模型 {cite:p}`chung1997`。保留同样平衡方程而把 `strong` "
+"改写为 `weak`，并不会改变技术。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:192
+#: 5309ca3be9444d44aa7b7a4dd40dae31
+msgid ""
+"Null jointness is also not imposed by this model. The estimated technology "
+"does not state that zero undesirable output necessarily implies zero "
+"desirable output. If the research question requires that physical "
+"relationship, it must be represented by an environmental technology designed"
+" for joint production."
+msgstr "该模型也没有施加零结合性。估计技术没有规定非合意产出为零时合意产出必定为零。若研究问题需要这种物理关系，必须使用为联合生产设计的环境技术表示。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:197
+#: 6f224d53d06748069a7358dd0d2c195f
+msgid "The decision should be made from engineering and institutional knowledge:"
+msgstr "选择应依据工程与制度知识："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: b7f6aad4589d404dbd5cc2b132eedaae
+msgid "Operational evidence"
+msgstr "经营证据"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 8fe16aaa3b734e82b3c8ea1a3557efb2
+msgid "More defensible starting point"
+msgstr "更有根据的起始模型"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: fcdd641ccb8547b69503049e280d99bb
+msgid "Pollutants or residuals can be reduced independently within the study horizon"
+msgstr "在研究时段内，污染物或残余物可以独立减少"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 5f841e9a5fcc4499a1f4a62faf37db15
+msgid "Standard undesirable-output SBM"
+msgstr "标准非合意产出 SBM"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 9cbb418185964d54b08f9023a3000d78
+msgid "Pollution reduction necessarily curtails a jointly produced desirable output"
+msgstr "污染削减必然使联合生产的合意产出收缩"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 9b3e108f1dd3475ab7194fffcef3e5ed
+msgid "Weak-disposal environmental DDF"
+msgstr "弱可处置环境 DDF"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: e62d575b3b6b4b1baf0f276883953a72
+msgid ""
+"A regulator has declared one specific combination of output expansion and "
+"pollution reduction"
+msgstr "监管者已经声明一套特定的产出扩张与污染削减组合"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: ccf99484f926407fba8484cad2cff539
+msgid "Environmental DDF with that direction"
+msgstr "采用该方向的环境 DDF"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:205
+#: bac60c693ceb4355ae48f3f45e4665ed
+msgid ""
+"These choices define different estimands. They should not be treated as "
+"robustness switches chosen after examining which model gives the preferred "
+"ranking."
+msgstr "这些选择定义不同估计对象，不能看到哪个模型给出更合意排序后，再把它们当作稳健性开关。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:208
+#: 9ae49fe8be664a32a9aaccda8bac0ca1
+msgid "Positive normalization is part of the model"
+msgstr "正值标准化是模型的一部分"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:210
+#: 3542a3d37aa44c8e9efaf586a96e62ce
+msgid ""
+"Every term in $\\rho_o^B$ divides a slack by the evaluated organization's "
+"observed quantity. Inputs, desirable outputs, and undesirable outputs must "
+"therefore be finite and strictly positive."
+msgstr "$\\rho_o^B$ 的每一项都用松弛量除以被评价组织的观测数量，因此投入、合意产出和非合意产出都必须有限且严格为正。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:214
+#: 69770910d1474a6facdbb3ed18aac424
+msgid ""
+"A genuine zero does not mean “perfect performance” in that dimension. It "
+"makes the relative gap undefined. Replacing zero with an arbitrarily small "
+"epsilon can give that variable enormous influence and make rankings depend "
+"on a number with no economic meaning. Negative quantities are equally "
+"outside the standard ratio account. When zeros or signed data are "
+"substantively real, the analyst needs a measure whose normalization is "
+"defined on that domain."
+msgstr ""
+"真实零值不表示该维度“绩效完美”，而是使相对缺口未定义。用任意小的 epsilon "
+"替换零，可能赋予该变量巨大影响，使排序依赖一个没有经济含义的数值。负数量同样超出标准比率账户。当零或带符号数据具有真实含义时，分析者需要使用在该数据域上定义了标准化的测度。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:221
+#: 2c2d804e7f98491a838d3e2bfecfe10b
+msgid ""
+"The ratio is invariant to coherent positive changes of measurement units. If"
+" every carbon-dioxide observation is changed from tonnes to kilograms, both "
+"the bad-output slack and its denominator are multiplied by 1,000, leaving "
+"their ratio and the score unchanged. The same holds for inputs and desirable"
+" outputs."
+msgstr ""
+"该比率对一致的正计量单位转换保持不变。若把所有二氧化碳观测从吨改为千克，非合意产出松弛量及其分母都乘以 "
+"1,000，因此二者之比与得分不变。投入和合意产出同理。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:226
+#: 14d75c9c0bcd4535a898b8bc3dca4253
+msgid ""
+"Translation is different. Adding a constant to every observation changes the"
+" denominators without preserving proportional gaps. A shift used merely to "
+"eliminate zeros or negative values therefore changes the estimand. Unit "
+"invariance should not be confused with translation invariance."
+msgstr "平移则不同。给所有观测加同一常数会改变分母，却不能保持比例缺口。仅为消除零值或负值而平移数据会改变估计对象。单位不变性不能与平移不变性混淆。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:231
+#: fd07e9656a3c4aeb80d4950e0201dd65
+msgid ""
+"The equal averages also embed a value judgment. Each input receives weight "
+"$1/m$ in the resource account, and every desirable and undesirable output "
+"receives weight $1/(s+q)$ in the output-side account. Adding a second "
+"measure of the same pollutant can double-count one environmental burden. "
+"Combining many pollutants can also reduce the relative influence of each "
+"desirable output. Variable selection and aggregation must therefore follow "
+"the production question, not data availability alone."
+msgstr ""
+"等权平均也嵌入价值判断。资源账户中每项投入权重为 $1/m$，产出侧账户中每项合意与非合意产出权重为 "
+"$1/(s+q)$。给同一污染物增加第二项测量可能重复计算一种环境负担；合并许多污染物也可能降低每项合意产出的相对影响。因此，变量选择与汇总必须服从生产问题，而不能只看数据是否可得。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:238
+#: f76f3af9d9854e579b3f2b23fd8cf337
+msgid "Returns to scale and the comparison population"
+msgstr "规模报酬与比较总体"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:240
+#: 6b84dd6d57d549d29cd46834a16d5703
+msgid "Under variable returns to scale, the benchmark intensities satisfy"
+msgstr "规模报酬可变下，标杆强度满足"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:242
+#: b24d97b7318f4d2cb0aaad41827f5c25
+msgid ""
+"\n"
+"\\mathbf1^\\top\\lambda=1.\n"
+msgstr ""
+"\n"
+"\\mathbf1^\\top\\lambda=1.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:246
+#: cb0d32dac1a74fd787f2f8ad72523948
+msgid ""
+"The target is a convex combination of represented operations. Under constant"
+" returns to scale this restriction is omitted, allowing proportional "
+"replication of reference activities. The two technologies can support "
+"different slack patterns and scores, so returns to scale must be chosen from"
+" the operating context."
+msgstr "目标是所代表经营活动的凸组合。规模报酬不变时省略该约束，允许参照活动同比例复制。两个技术可以支持不同松弛模式与得分，因此必须根据经营情境选择规模报酬。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:251
+#: 79fb7a77bd7440c3916e66f1c3d71181
+msgid ""
+"VRS is often a natural starting point when plants, hospitals, or "
+"municipalities cannot freely replicate their full operation. CRS can be "
+"useful when the production account supports proportional scaling or when the"
+" study deliberately combines scale and operating performance. Neither is a "
+"numerical repair for an inconvenient result."
+msgstr ""
+"当工厂、医院或地区不能自由复制完整经营活动时，VRS 往往是自然起点；当生产账户支持同比例缩放，或研究有意综合规模与经营绩效时，CRS "
+"可能有用。二者都不是对不方便结果的数值修复。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:256
+#: 1ea9e66eb2164b7d9b4eed3576f37cd6
+msgid ""
+"Reference membership is equally substantive. A contemporaneous comparison "
+"asks what the organizations observed in the same period demonstrate. A "
+"pooled retrospective comparison may allow later, cleaner practices to "
+"benchmark earlier operations. A group restriction can protect mission or "
+"regulatory comparability. In every case, the score describes the "
+"opportunities admitted by that reference policy."
+msgstr "参照成员资格同样具有实质含义。同期比较询问同一时期观测到的组织展示了哪些机会；合并的回溯比较可以让后期更清洁实践评价早期经营活动；群组限制可以保护服务使命或监管可比性。每种情形下，得分都描述相应参照政策允许的机会。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:262
+#: 9e4e1b176928441d9bfe071e1acb5510
+msgid ""
+"For the separable strong-disposal SBM, an analyst can make that "
+"comparability rule observation-specific: a plant may be benchmarked only by "
+"facilities under the same permit, service obligation, or reporting boundary."
+" DEAPack intersects this declared population with the chosen time/reference "
+"policy before it solves the SBM account. The restriction changes the "
+"evidence available to the plant; it does not change the model's "
+"interpretation of independently adjustable desirable service and residual "
+"gaps. A careful report therefore gives the eligible population alongside the"
+" base and effective reference sizes, rather than calling a restricted score "
+"an unconditional environmental ranking."
+msgstr ""
+"对可分离强可处置 SBM，分析者可以使可比性规则因观测而异：工厂只能由具有同一许可证、服务义务或报告边界的设施评价。DEAPack 在求解 SBM "
+"账户前，把声明总体与所选时间/参照政策取交集。限制改变工厂可用的证据，却不改变模型对可独立调整的合意服务与残余物缺口的解释。因此，审慎报告会同时给出合格总体、基础参照规模和有效参照规模，而不会把受限得分称为无条件环境排名。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:272
+#: 2f623b1d39814c188073a5aaf7bc3f13
+msgid ""
+"Self-inclusion normally guarantees that the observed plan is feasible with "
+"zero slacks. An external reference set may fail to represent it under the "
+"maintained input, desirable-output, and bad-output inequalities. Such "
+"infeasibility is evidence about the chosen benchmark; it should not be "
+"hidden by changing the disposal assumption after estimation."
+msgstr "自包含通常保证观测方案以零松弛量可行。外部参考集可能无法在维持的投入、合意产出和非合意产出不等式下表示它。这种不可行是关于所选标杆的证据，不应在估计后通过改变处置性假设加以掩盖。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:278
+#: 8b318d024aa4446e93b5cd8379d1cbbd
+msgid ""
+"DEAPack records this distinction rather than treating every fit as self-"
+"appraisal. For an externally evaluated plant, the fitted SBM balances must "
+"establish that its recorded operation belongs to the comparison technology. "
+"If they do, the plant can receive an interpretable score even though it was "
+"not allowed to benchmark itself. If the external technology cannot represent"
+" the operation, no efficiency classification is reported. The package "
+"Documentation gives the corresponding diagnostic fields for researchers "
+"auditing that distinction."
+msgstr ""
+"DEAPack 记录这一区别，而不把每次拟合都视为自我评价。对外部评价工厂，拟合的 SBM "
+"平衡关系必须证明其记录活动属于比较技术。若成立，即使工厂不允许把自身作为参照，也可以得到可解释得分；若外部技术无法表示该活动，则不报告效率分类。用于审计这一区别的诊断字段见"
+" package Documentation。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:286
+#: 1afad997cda54974a47af36654bedad7
+msgid "A two-plant operating account"
+msgstr "一个包含两家工厂的经营账户"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:288
+#: e3f596fcbc3b4154b11c3a43afff9b31
+msgid ""
+"Consider two plants using one resource to produce one desirable service with"
+" one undesirable residual:"
+msgstr "考虑两家工厂使用一项资源生产一项合意服务，并伴随一种非合意残余物："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 69c6c0848dfe42839f92f779c9a7e913 bf9ea86449d64919a1bdca83320d891f
+msgid "Plant"
+msgstr "工厂"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: c7bfa3757980440c8d3c97b14bf53c6a
+msgid "Resource $x$"
+msgstr "资源 $x$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 8ae0b98860a242b084accbe95ef8f020
+msgid "Service $y$"
+msgstr "服务 $y$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 851d3b5c1b224bd9a091c7309f513158
+msgid "Residual $b$"
+msgstr "残余物 $b$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 9b79a1c1192f4b6aa59378d55076cf3b f5152594c1e64ea49dbbcbc176262b7c
+msgid "A"
+msgstr "A"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 06e44de71d0c48b391047b5b8ad1eac4 5473d9a8d25548d4ba0ed8e8b168fc27
+#: e7772b67009646d6b50f5001c8c1ce76 eef3610cad224cb6b05f17264aab2496
+msgid "1"
+msgstr "1"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: 8f639895e48247baac2942da70f0b5fe e15175a90f104ee4acad7a545b114209
+#: e537e21086ea4a89b7c075f24622c1f3
+msgid "2"
+msgstr "2"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:70
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 5fe6aeaa80aa44419174413adff01709 c558692aa8af423e954a118154e49ce8
+msgid "C"
+msgstr "C"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:296
+#: 8a6fc93c8dc249099c7fe466122c4e6f
+msgid ""
+"Plant A uses less resource, supplies more service, and generates less "
+"residual than C. Under the VRS separable technology, A is a feasible "
+"benchmark for C. The complete calculation is:"
+msgstr "工厂 A 比 C 使用更少资源、提供更多服务并产生更少残余物。在 VRS 可分离技术下，A 是 C 的可行标杆。完整计算为："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 98c13a9f6e804d6892fb727a588966bb
+msgid ""
+"Plant C's environmental SBM improvement account separates resource saving, "
+"desirable service gain, and undesirable residual reduction, then reports "
+"their observed and target quantities"
+msgstr "工厂 C 的环境 SBM 改进账户把资源节约、合意服务增加和非合意残余物减少分开，并报告其观测值与目标值"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:353
+#: a26a541b63114c9ba0fc2b8060e9f51f
+msgid ""
+"Plant C's selected environmental improvement account under the maintained "
+"technology. The display keeps the 50 percent resource saving, 100 percent "
+"desirable-service gain, and 50 percent undesirable-residual reduction in "
+"distinct operational rows. Together they reconstruct $2/7=(1-1/2)/(1+3/4)$. "
+"This opportunity is conditional on the separable, strong-disposal "
+"technology: the figure neither identifies what caused the gaps, assigns a "
+"damage value to the residual, nor says that this is the only feasible "
+"improvement plan."
+msgstr ""
+"工厂 C 在维持技术下选定的环境改进账户。图中把 50% 的资源节约、100% 的合意服务增加和 50% "
+"的非合意残余物减少保留在不同经营行中，三者共同重构 "
+"$2/7=(1-1/2)/(1+3/4)$。这一机会以可分离强可处置技术为条件；图既不识别缺口成因、不为残余物赋予损害价值，也不表示这是唯一可行改进方案。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:363
+#: fc2f6e371b1c4df29741e0cb7ac23717
+msgid "The results are:"
+msgstr "结果为："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 6c792a81fe5d4de3a263384f616210a0
+msgid "Efficiency"
+msgstr "效率"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 14e4ee6b9fbd4298bd0d446a9b20c0b6
+msgid "Input excess account"
+msgstr "投入冗余账户"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: e169e65290f34bfba64f47d791a33646
+msgid "Desirable-output shortfall account"
+msgstr "合意产出不足账户"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 621360ed812645448d803edc1a40f924
+msgid "Bad-output excess account"
+msgstr "非合意产出过量账户"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 5d1c0806768947c2a76f27761cc173da 6db2304a0b364bd6bc8e65fbd170afbd
+#: fb1fe2623e68491fa99d0af17a057ccc
+msgid "0"
+msgstr "0"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 732329647caa429cb04c5db3cce36ef8
+msgid "$2/7\\approx0.286$"
+msgstr "$2/7\\approx0.286$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: c71f356869644b59b0f7bfca452a003b fbb4e1a73b12417ea369b77ba3d10952
+msgid "$1/2$"
+msgstr "$1/2$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:348
+#: 83d6f416754e4a4e846645513fba7d75
+msgid "$1$"
+msgstr "$1$"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:370
+#: 6aebc824264e44338ef7d587b773df5e
+msgid ""
+"For C, the target is $(\\widehat x,\\widehat y,\\widehat b)=(1,2,1)$. In "
+"original units, it releases one resource unit, adds one service unit, and "
+"reduces the residual by one unit."
+msgstr ""
+"对 C，目标为 $(\\widehat x,\\widehat y,\\widehat b)=(1,2,1)$。按原始单位，它释放 1 单位资源、增加 "
+"1 单位服务，并减少 1 单位残余物。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:374
+#: 84d6fe3e32ad4715873b4beabd27f5c3
+msgid "The normalized resource account is"
+msgstr "标准化资源账户为"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:376
+#: d629aae75bd546bb86779bef26bd0e7d
+#, python-brace-format
+msgid ""
+"\n"
+"I_C^x=\\frac{2-1}{2}=\\frac12.\n"
+msgstr ""
+"\n"
+"I_C^x=\\frac{2-1}{2}=\\frac12.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:380
+#: 14747dcd1e27446bba98078375b2f9d8
+msgid ""
+"The output-side account averages a 100 percent desirable-output shortfall "
+"and a 50 percent undesirable-output excess:"
+msgstr "产出侧账户平均一个 100% 的合意产出不足和一个 50% 的非合意产出过量："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:383
+#: fde921fa303742828bce233e46ec1133
+#, python-brace-format
+msgid ""
+"\n"
+"I_C^{yb}\n"
+"=\\frac12\\left(\\frac{2-1}{1}+\\frac{2-1}{2}\\right)\n"
+"=\\frac34.\n"
+msgstr ""
+"\n"
+"I_C^{yb}\n"
+"=\\frac12\\left(\\frac{2-1}{1}+\\frac{2-1}{2}\\right)\n"
+"=\\frac34.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:389
+#: 36e78603c48d4fd689de76a2df99fd59
+msgid "Consequently,"
+msgstr "因此，"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:391
+#: 5a83f18349ad4daaabcf05b38308b985
+#, python-brace-format
+msgid ""
+"\n"
+"\\rho_C^B\n"
+"=\\frac{1-1/2}{1+3/4}\n"
+"=\\frac{2}{7}.\n"
+msgstr ""
+"\n"
+"\\rho_C^B\n"
+"=\\frac{1-1/2}{1+3/4}\n"
+"=\\frac{2}{7}.\n"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:397
+#: 2237c9efb16849e2b84ff0dde374232e
+msgid ""
+"The low score is not itself a recommendation to cut every variable by $5/7$."
+" It is a fractional summary of three different gaps. The target table gives "
+"the actionable quantities, while the peer evidence shows that Plant A "
+"supports the comparison."
+msgstr "低得分本身并不建议把每项变量都削减 $5/7$。它是三个不同缺口的分式汇总。目标表给出可操作数量，参照单元证据则表明工厂 A 支持该比较。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:401
+#: 2f50a4413b1c428ab6b3568298f065d7
+msgid ""
+"The case is intentionally transparent. In a larger dataset, a target can be "
+"a convex combination of several plants, and multiple peer combinations can "
+"generate the same optimal score. A stable efficiency value does not "
+"guarantee a unique operational recipe."
+msgstr "该案例有意保持透明。在更大数据集中，目标可能是多家工厂的凸组合，多种参照组合也可能得到同一个最优得分。稳定的效率数值不保证唯一经营方案。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:406
+#: 3fb5bdbe048a4a01ba07b21df17a4814
+msgid "From score to environmental management evidence"
+msgstr "从得分到环境管理证据"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:408
+#: 9ed88cf78fe241c6850dd6e97cb75311
+msgid ""
+"A useful result table begins with the efficiency score but does not end "
+"there. It should retain the three component accounts and the important "
+"physical targets. For a plant with several fuels, services, and pollutants, "
+"management needs to know whether the selected opportunity is concentrated in"
+" fuel use, service capacity, carbon dioxide, local air pollution, or several"
+" dimensions together."
+msgstr "有用的结果表从效率得分开始，却不能止于得分。它应保留三个分量账户与重要实际目标。面对多种燃料、服务和污染物，管理层需要知道选定机会集中在燃料使用、服务能力、二氧化碳、地方空气污染，还是多个维度共同作用。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:414
+#: 491ef832505e4f8cb4115478b7bc9d11
+msgid ""
+"Peers provide comparative evidence, not engineering instructions. A cleaner "
+"peer may use different equipment, fuel quality, weather conditions, product "
+"mix, or regulatory technology. Before a target becomes an investment or "
+"operating plan, specialists must assess whether those omitted differences "
+"make the comparison transferable."
+msgstr "参照单元提供比较证据，而不是工程说明。更清洁的参照单元可能使用不同设备、燃料质量、天气条件、产品组合或监管技术。在目标成为投资或经营方案前，专业人员必须判断这些遗漏差异是否使比较可迁移。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:419
+#: 4d2683da164a4bd99ccb1bfe5f6a6973
+msgid ""
+"Alternate optima deserve the same caution. The fractional objective can "
+"support more than one peer combination or slack allocation with the same "
+"score. If a decision depends on one exact emissions target, the analyst "
+"should investigate target ranges or apply a justified secondary selection "
+"rule rather than treating the first optimal solution as uniquely optimal."
+msgstr "替代最优解也需同样谨慎。分式目标可以支持得分相同的多种参照组合或松弛量分配。若决策依赖某个确切排放目标，分析者应研究目标范围或采用有根据的二级选择规则，不能把第一个最优解视为唯一最优。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:425
+#: 243c8037860949258816ef3b5e987ae4
+msgid "A concise empirical report should state:"
+msgstr "简明实证报告应说明："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:427
+#: 69134bda7a65472da9decfbd28434481
+msgid "which variables are inputs, desirable outputs, and undesirable outputs;"
+msgstr "哪些变量属于投入、合意产出和非合意产出；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:428
+#: 49af1934284940b1ba30b91d3e877121
+msgid ""
+"why independent reduction of the undesirable outputs is technologically "
+"credible;"
+msgstr "为什么在技术上可以独立减少这些非合意产出；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:429
+#: a25bb61384584bf3a6bcd2aaa2f70dfd
+msgid "the returns-to-scale and reference-population assumptions;"
+msgstr "规模报酬和参照总体假设；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:430
+#: 1980f171699e44ef98ed479e81f06d05
+msgid ""
+"the score together with resource, desirable-output, and bad-output gap "
+"accounts;"
+msgstr "效率得分以及资源、合意产出和非合意产出缺口账户；"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:431
+#: c6216dd6f7e54b73a2afc69148a86bde
+msgid "key targets in their original units and the peers supporting them; and"
+msgstr "原始单位下的关键目标及其参照单元；以及"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:432
+#: 94bc9c6b203843a8bc7ec2b8f28d5c0b
+msgid "the treatment of infeasible observations, zeros, and alternate optima."
+msgstr "如何处理不可行观测、零值和替代最优解。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:434
+#: 3e884216195e443db857f084bba9f1e5
+msgid "The analysis can support a statement such as:"
+msgstr "分析可以支持如下陈述："
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:436
+#: 389f5212b7894d8eb490d117bde185c9
+msgid ""
+"Relative to the VRS comparison technology, Plant C has an undesirable-output"
+" SBM score of $2/7$. One optimal plan uses one less resource unit, supplies "
+"one additional service unit, and generates one less residual unit."
+msgstr ""
+"相对于 VRS 比较技术，工厂 C 的非合意产出 SBM 得分为 $2/7$。一个最优方案少用 1 单位资源，多提供 1 单位服务，并少产生 1 "
+"单位残余物。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:440
+#: f70851ff8b074c5c9140a58ba662232b
+msgid ""
+"It cannot, without further evidence, establish that management caused the "
+"gap, that adopting a peer's practice will cause the predicted improvement, "
+"or that the environmental benefit exceeds its implementation cost. It does "
+"not attach damage values to pollutants, measure profit, or estimate the "
+"effect of regulation."
+msgstr "没有进一步证据时，它不能证明管理造成缺口、采用参照单元实践会产生预测改进，也不能证明环境收益超过实施成本。它不为污染物赋予损害价值，不度量利润，也不估计监管效应。"
+
+#: ../../chapters/03-environmental/07-undesirable-output-sbm.md:445
+#: ac1fcaa10c4e41098186ef5f8d03e6ef
+msgid ""
+"The standard undesirable-output SBM is powerful precisely because its claim "
+"is focused. It converts a feasible environmental comparison into a "
+"transparent account of variable-specific resource excesses, desirable-output"
+" shortfalls, and undesirable- output excesses. When its separability and "
+"positivity assumptions match the operating system, that account is more "
+"informative than a single proportional adjustment. When they do not, a "
+"different environmental technology—not a relabeled option—is required."
+msgstr ""
+"标准非合意产出 SBM "
+"的力量正来自其结论边界清晰：它把可行环境比较转化为各变量投入冗余、合意产出不足和非合意产出过量的透明账户。当可分离性与正值假设符合经营系统时，该账户比单一比例调整更有信息；不符合时，需要的是另一种环境技术，而不是更换标签的选项。"
+

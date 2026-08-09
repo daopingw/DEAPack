@@ -1,0 +1,95 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../project-contributions.md:1 013e9f5758e04031b89b9e5bc545e9e4
+msgid "Contributing to This Open Handbook"
+msgstr "参与建设这本开放手册"
+
+#: ../../project-contributions.md:3 b9b631fbd1d64130a337ba991a1aab17
+msgid ""
+"This Handbook is meant to improve through scrutiny and use. Readers are "
+"welcome to report an unclear explanation, challenge an assumption, supply a "
+"counterexample, locate a defining source, propose a teaching case or figure,"
+" or improve the Chinese translation. A useful contribution may be a "
+"carefully stated question; it does not have to arrive as finished code."
+msgstr "本手册将在检验与使用中不断完善。我们欢迎读者指出表述不清之处、质疑某项假设、提供反例、补充奠基文献、提出教学案例或图示，也欢迎改进中文译文。一条措辞严谨的问题本身就是有价值的贡献；贡献不必以完整代码的形式提交。"
+
+#: ../../project-contributions.md:9 871a6d9461984f858feb6d18df3706c2
+msgid ""
+"The Handbook and DEAPack have different admission thresholds. The package "
+"can document a source-qualified specialization without giving it a separate "
+"place in the teaching route. A new Handbook section is reserved for a "
+"transferable idea that changes the production, performance, organizational, "
+"temporal, valuation, environmental, or inferential question. Different "
+"acronyms for the same substantive mechanism are explained together."
+msgstr ""
+"Handbook 与 DEAPack "
+"采用不同的内容准入标准。包可以收录具有明确来源依据的专门化模型，但不一定在教学主线中为其单设章节。只有能够迁移到其他问题、并实质改变生产、绩效、组织、时间、价值评价、环境或推断问题的思想，才会进入"
+" Handbook 的新章节。对于实质机制相同而缩写不同的方法，本书将合并讲解。"
+
+#: ../../project-contributions.md:16 75637cfede4c42f3b8dfeca90ff2c0c9
+msgid ""
+"Use the repository's [contribution "
+"guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md) or "
+"open a structured [model "
+"proposal](https://github.com/daopingw/DEAPack/issues/new?template=model-"
+"proposal.yml), [editorial or translation "
+"suggestion](https://github.com/daopingw/DEAPack/issues/new?template"
+"=documentation-translation.yml), or [bug "
+"report](https://github.com/daopingw/DEAPack/issues/new?template=bug-"
+"report.yml). Package code, formulas, computed results, figures, English "
+"prose, and Chinese prose are reviewed as one scholarly record even though "
+"they are published in different forms."
+msgstr ""
+"请参阅代码库的[贡献指南](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md)，也可以提交结构化的[模型提案](https://github.com/daopingw/DEAPack/issues/new?template"
+"=model-"
+"proposal.yml)、[编辑或翻译建议](https://github.com/daopingw/DEAPack/issues/new?template"
+"=documentation-"
+"translation.yml)或[缺陷报告](https://github.com/daopingw/DEAPack/issues/new?template"
+"=bug-report.yml)。包代码、公式、计算结果、图形、英文正文和中文正文虽然以不同形式发布，但会作为同一份学术记录接受审查。"
+
+#: ../../project-contributions.md:27 0ac427be0d18477fafb32ad7d68f0017
+msgid ""
+"For Bilingual Handbook Preview 1, these routes currently accept issue-based "
+"corrections and suggestions rather than contributed manuscript or "
+"translation text. Substantive Handbook pull requests remain closed until a "
+"professionally reviewed copyright-assignment instrument has been executed "
+"by every required party. Opening an issue, commit, or pull request is not an"
+" assignment; see the [Handbook contribution rights policy](https://github.c"
+"om/daopingw/DEAPack/blob/main/book/HANDBOOK_CONTRIBUTION_POLICY.md)."
+msgstr ""
+"对于双语手册预览版 1，这些渠道目前只接受通过议题提出的更正与建议，不接受直"
+"接贡献的手册正文或译文。在经专业审查的版权转让文书由所有必要当事方签署之"
+"前，实质性手册拉取请求继续保持关闭。创建议题、提交 commit 或发起 pull "
+"request 均不构成版权转让；参见[手册贡献权利政策](https://github.com/daopingw"
+"/DEAPack/blob/main/book/HANDBOOK_CONTRIBUTION_POLICY.md)。"
+
+#: ../../project-contributions.md:34 4aeb684cbfd84d8994fd0ec362d1f28f
+msgid ""
+"Accepted contributions remain visible in version history and are credited in"
+" the place that best preserves their provenance. Handbook authorship and DOI"
+" metadata are separate editorial decisions and are not assigned "
+"automatically by a pull request. Data, figures, and substantial third-party "
+"material must also carry a clear source and redistribution license before "
+"publication."
+msgstr ""
+"获采纳的贡献会保留在版本历史中，并在最有利于追溯来源的位置致谢。Handbook 的作者署名与 DOI 元数据属于独立的编辑决定，不会因一个 pull "
+"request 获得接纳而自动授予。数据、图形以及篇幅较大的第三方材料在发布前还必须注明清晰的来源和再分发许可。"

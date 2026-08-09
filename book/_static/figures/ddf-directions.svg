@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title description">
+<title id="title">Directional distance paths</title>
+<desc id="description">Input-only, output-only, and joint directional paths from DMU E to a VRS frontier.</desc>
+<defs>
+<marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#176b73"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d97732"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#76528f"/></marker>
+<marker id="axis-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#24323d"/></marker>
+</defs>
+<rect width="760" height="500" fill="white"/>
+<line x1="220.22" y1="48" x2="220.22" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="220.22" y="463" text-anchor="middle" font-size="14" fill="#687780">1</text>
+<line x1="358.44" y1="48" x2="358.44" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="358.44" y="463" text-anchor="middle" font-size="14" fill="#687780">2</text>
+<line x1="496.67" y1="48" x2="496.67" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="496.67" y="463" text-anchor="middle" font-size="14" fill="#687780">3</text>
+<line x1="634.89" y1="48" x2="634.89" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="634.89" y="463" text-anchor="middle" font-size="14" fill="#687780">4</text>
+<line x1="82" y1="345.14" x2="704" y2="345.14" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="350.14" text-anchor="end" font-size="14" fill="#687780">1</text>
+<line x1="82" y1="252.29" x2="704" y2="252.29" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="257.29" text-anchor="end" font-size="14" fill="#687780">2</text>
+<line x1="82" y1="159.43" x2="704" y2="159.43" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="164.43" text-anchor="end" font-size="14" fill="#687780">3</text>
+<line x1="82" y1="66.57" x2="704" y2="66.57" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="71.57" text-anchor="end" font-size="14" fill="#687780">4</text>
+<line x1="82" y1="438" x2="716" y2="438" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow)"/>
+<line x1="82" y1="438" x2="82" y2="36" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow)"/>
+<text x="724" y="444" font-size="18" font-style="italic" fill="#24323d">x</text>
+<text x="77" y="26" font-size="18" font-style="italic" fill="#24323d">y</text>
+<path d="M 220.22 345.14 L 358.44 205.86 L 496.67 131.57 L 634.89 85.14" fill="none" stroke="#24323d" stroke-width="4" stroke-linejoin="round"/>
+<line x1="358.44" y1="298.71" x2="266.30" y2="298.71" stroke="#176b73" stroke-width="3" marker-end="url(#arrow-teal)"/>
+<circle cx="266.30" cy="298.71" r="6" fill="white" stroke="#176b73" stroke-width="3"/>
+<text x="300.37" y="323.71" font-size="15" fill="#176b73">g = (x, 0)</text>
+<line x1="358.44" y1="298.71" x2="358.44" y2="205.86" stroke="#d97732" stroke-width="3" marker-end="url(#arrow-orange)"/>
+<circle cx="358.44" cy="205.86" r="6" fill="white" stroke="#d97732" stroke-width="3"/>
+<text x="373.44" y="260.29" font-size="15" fill="#d97732">g = (0, y)</text>
+<line x1="358.44" y1="298.71" x2="297.01" y2="267.76" stroke="#76528f" stroke-width="3" marker-end="url(#arrow-purple)"/>
+<circle cx="297.01" cy="267.76" r="6" fill="white" stroke="#76528f" stroke-width="3"/>
+<text x="307.73" y="268.24" font-size="15" fill="#76528f">g = (x, y)</text>
+<circle cx="358.44" cy="298.71" r="8" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="367.44" y="289.71" font-size="16" font-weight="600" fill="#24323d">E</text>
+<circle cx="220.22" cy="345.14" r="5" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="229.22" y="336.14" font-size="16" font-weight="600" fill="#24323d">A</text>
+<circle cx="358.44" cy="205.86" r="5" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="367.44" y="196.86" font-size="16" font-weight="600" fill="#24323d">B</text>
+<circle cx="496.67" cy="131.57" r="5" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="505.67" y="122.57" font-size="16" font-weight="600" fill="#24323d">C</text>
+<circle cx="634.89" cy="85.14" r="5" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="643.89" y="76.14" font-size="16" font-weight="600" fill="#24323d">D</text>
+</svg>

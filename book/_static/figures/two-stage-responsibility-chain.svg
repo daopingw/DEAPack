@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" viewBox="0 0 1080 650" role="img" aria-labelledby="title description">
+  <title id="title">Two-stage organizational performance chain</title>
+  <desc id="description">External expenses support premium acquisition, premium measures are handed to profit generation under one shared internal value account, and final profits leave the system. Upstream and downstream stages may use different peer practices while their intermediate targets remain coordinated.</desc>
+  <defs>
+    <marker id="network-arrow" markerWidth="10" markerHeight="10" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L9,4 z" fill="#176b73"/>
+    </marker>
+    <filter id="shadow-network" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#24323d" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="1080" height="650" fill="#ffffff"/>
+  <g font-family="Arial, sans-serif">
+    <text x="40" y="42" font-size="23" font-weight="700" fill="#24323d">One organization, one connected production account</text>
+    <text x="40" y="70" font-size="15" fill="#5c6b73">The handoff is observed once, valued consistently, and benchmarked jointly.</text>
+    <rect x="40" y="91" width="1000" height="52" rx="10" fill="#24323d"/>
+    <text x="540" y="124" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">System account: E = E₁ &#215; E₂</text>
+    <g filter="url(#shadow-network)">
+      <rect x="40" y="176" width="174" height="135" rx="12" fill="#eef3f4" stroke="#cfdadd"/>
+      <rect x="254" y="176" width="178" height="135" rx="12" fill="#eef7f7" stroke="#9fc8cb"/>
+      <rect x="472" y="176" width="176" height="135" rx="12" fill="#fff4e9" stroke="#e5b58f"/>
+      <rect x="688" y="176" width="178" height="135" rx="12" fill="#f3eef7" stroke="#c6b2d3"/>
+      <rect x="906" y="176" width="134" height="135" rx="12" fill="#eef3f4" stroke="#cfdadd"/>
+    </g>
+    <text x="127" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#687780">EXTERNAL RESOURCES</text>
+    <text x="62" y="239" font-size="15" fill="#24323d">Operation expenses</text>
+    <text x="62" y="270" font-size="15" fill="#24323d">Insurance expenses</text>
+    <text x="343" y="207" text-anchor="middle" font-size="12" font-weight="700" fill="#176b73">STAGE 1 · E₁</text>
+    <text x="343" y="247" text-anchor="middle" font-size="19" font-weight="700" fill="#176b73">Premium</text>
+    <text x="343" y="272" text-anchor="middle" font-size="19" font-weight="700" fill="#176b73">acquisition</text>
+    <text x="560" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#d97732">ONE HANDOFF · z</text>
+    <text x="494" y="239" font-size="15" fill="#24323d">Written premiums</text>
+    <text x="494" y="270" font-size="15" fill="#24323d">Reinsurance premiums</text>
+    <text x="777" y="207" text-anchor="middle" font-size="12" font-weight="700" fill="#76528f">STAGE 2 · E₂</text>
+    <text x="777" y="247" text-anchor="middle" font-size="19" font-weight="700" fill="#76528f">Profit</text>
+    <text x="777" y="272" text-anchor="middle" font-size="19" font-weight="700" fill="#76528f">generation</text>
+    <text x="973" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#687780">FINAL OUTCOMES</text>
+    <text x="925" y="239" font-size="14" fill="#24323d">Underwriting</text>
+    <text x="925" y="258" font-size="14" fill="#24323d">profit</text>
+    <text x="925" y="289" font-size="14" fill="#24323d">Investment profit</text>
+    <line x1="214" y1="244" x2="246" y2="244" stroke="#176b73" stroke-width="3" marker-end="url(#network-arrow)"/>
+    <line x1="432" y1="244" x2="464" y2="244" stroke="#176b73" stroke-width="3" marker-end="url(#network-arrow)"/>
+    <line x1="648" y1="244" x2="680" y2="244" stroke="#176b73" stroke-width="3" marker-end="url(#network-arrow)"/>
+    <line x1="866" y1="244" x2="898" y2="244" stroke="#176b73" stroke-width="3" marker-end="url(#network-arrow)"/>
+    <rect x="218" y="346" width="644" height="94" rx="12" fill="#fffaf5" stroke="#e5b58f"/>
+    <text x="540" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#d97732">SHARED INTERMEDIATE ACCOUNT</text>
+    <text x="540" y="407" text-anchor="middle" font-size="20" font-weight="700" fill="#24323d">the same wᵀz records the upstream result and downstream commitment</text>
+    <text x="540" y="428" text-anchor="middle" font-size="13" fill="#687780">Shared valuation coordinates the two accounts; it is not a market price.</text>
+    <g filter="url(#shadow-network)">
+      <rect x="98" y="480" width="350" height="82" rx="11" fill="#eef7f7" stroke="#9fc8cb"/>
+      <rect x="632" y="480" width="350" height="82" rx="11" fill="#f3eef7" stroke="#c6b2d3"/>
+    </g>
+    <text x="273" y="510" text-anchor="middle" font-size="17" font-weight="700" fill="#176b73">λ · upstream peer practices</text>
+    <text x="273" y="539" text-anchor="middle" font-size="14" fill="#24323d">What the acquisition process can supply: Zλ</text>
+    <text x="807" y="510" text-anchor="middle" font-size="17" font-weight="700" fill="#76528f">μ · downstream peer practices</text>
+    <text x="807" y="539" text-anchor="middle" font-size="14" fill="#24323d">What the profit process requires: Zμ</text>
+    <line x1="448" y1="521" x2="622" y2="521" stroke="#d97732" stroke-width="3" marker-end="url(#network-arrow)"/>
+    <rect x="476" y="498" width="128" height="46" rx="23" fill="#fff4e9" stroke="#e5b58f"/>
+    <text x="540" y="527" text-anchor="middle" font-size="17" font-weight="700" fill="#d97732">Zλ ≥ Zμ</text>
+    <rect x="40" y="590" width="1000" height="38" rx="9" fill="#24323d"/>
+    <text x="540" y="614" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Common accounting does not require common peers, and stage attribution is not causal attribution.</text>
+  </g>
+</svg>

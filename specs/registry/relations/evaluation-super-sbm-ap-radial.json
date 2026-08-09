@@ -1,0 +1,46 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "evaluation.super.sbm.tone_2002",
+  "target": "evaluation.super.ap_radial",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "data_roles",
+    "technology",
+    "estimator",
+    "reference",
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_positive_crs_desirable_quantity_data_and_row_exclusion",
+      "arguments": {
+        "data_roles": "same_strictly_positive_inputs_and_desirable_outputs",
+        "returns_to_scale": "crs",
+        "base_reference_population": "matched_and_self_inclusive_before_exclusion",
+        "ap_applicability": "all_rows_with_a_nonempty_peer_only_reference",
+        "ap_measure": "one_common_radial_peer_replacement_factor",
+        "super_sbm_applicability": "only_same_rts_ordinary_non_oriented_sbm_strongly_efficient_rows",
+        "super_sbm_measure": "equal_dimension_variable_specific_resource_and_service_replacement_pressure",
+        "target_correspondence": "not_guaranteed",
+        "ranking_identity": "not_guaranteed",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "review_supported",
+    "sources": [
+      "doi:10.1287/mnsc.39.10.1261",
+      "doi:10.1016/S0377-2217(01)00324-1"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_super_efficiency.py",
+      "tests/test_super_sbm.py"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.sbm.nonseparable_hybrid.tone_2003",
+  "target": "environmental.sbm.separable_strong",
+  "type": "variant_of",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "data_roles",
+    "performance",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.tone_2003_nonseparable_compared_with_separable_strong_sbm",
+      "arguments": {
+        "input_account": "ordinary_input_slacks_in_both_methods",
+        "nonseparable_partition": "declared_good_and_bad_outputs_only",
+        "common_output_adjustment": "one_alpha_for_the_declared_joint_output_block",
+        "separable_adjustment": "variable_specific_good_and_bad_output_slacks",
+        "nonseparable_reference_residuals": "reported_but_not_scored",
+        "target_contract": "alpha_times_source_is_distinct_from_reference_activity",
+        "whole_method_alias": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.24545/00000955"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental_disposability_contrast.py"
+    ]
+  }
+}

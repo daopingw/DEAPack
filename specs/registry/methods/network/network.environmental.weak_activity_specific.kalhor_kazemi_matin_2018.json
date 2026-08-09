@@ -1,0 +1,349 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Kalhor--Kazemi Matin environmental general-network radial DEA",
+  "decision_question": "How much external resource commitment could a coordinated multi-process organization save while preserving its final desirable and undesirable outcomes and honoring every internal production commitment?",
+  "names": {
+    "display": "Kalhor--Kazemi Matin environmental general-network radial DEA",
+    "historical": [
+      {
+        "label": "General network DEA with undesirable outputs",
+        "spellings": [
+          "general-network DEA with undesirable outputs",
+          "activity-specific weak-disposal network DEA"
+        ],
+        "sources": [
+          "doi:10.1051/ro/2017022"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "KalhorKazemiMatinNetworkDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "Kalhor-Kazemi Matin environmental network DEA",
+      "KKM environmental network radial model"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "system_resource_performance_with_internal_production_and_undesirable_outputs",
+        "managerial_control": "coordinated_multi_process_system",
+        "environmental_commitment": "final_bad_outcomes_held_at_observed_levels"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.general_network"
+      ],
+      "fixed": {
+        "kind": "general_network",
+        "cycles": "permitted",
+        "processes_solved_jointly": true,
+        "ordinary_intermediate_balance": "producer_specific_supply_covers_all_recipient_requirements",
+        "desirable_and_undesirable_internal_products": "netted_within_economic_product_accounts"
+      },
+      "exposed": [
+        "processes",
+        "directed_internal_flows",
+        "economic_product_accounts"
+      ],
+      "constraints": [
+        "condition.environmental_network.complete_process_incidence",
+        "condition.environmental_network.one_declared_account_per_quantity"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "process_resources_grouped_by_economic_input_product",
+        "desirable_outputs": "final_and_internal_desirable_product_parts",
+        "undesirable_outputs": "final_and_internal_undesirable_product_parts",
+        "ordinary_intermediates": "producer_recipient_specific_internal_products",
+        "final_support_gate": "each_declared_producer_process_by_desirable_or_undesirable_product_pair_has_positive_final_support_for_at_least_one_dmu_without_cross_producer_pooling",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "exposed": [
+        "input_accounts",
+        "desirable_output_accounts",
+        "undesirable_output_accounts",
+        "intermediate_accounts"
+      ],
+      "constraints": [
+        "domain.environmental_network.nonnegative_quantities",
+        "domain.environmental_network.positive_aggregate_external_input",
+        "domain.environmental_network.each_producer_process_output_account_has_positive_final_support_across_dmus"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.weak_disposal.activity_specific"
+      ],
+      "fixed": {
+        "family": "general_network_activity_specific_weak_disposal",
+        "active_component": "alpha",
+        "weak_disposal_component": "beta",
+        "beta_availability": "only_processes_producing_undesirable_output",
+        "input_and_ordinary_intermediate_commitment": "alpha_plus_beta",
+        "desirable_and_undesirable_output_generation": "alpha",
+        "process_intensities": "separate",
+        "returns_to_scale_evidence": {
+          "vrs": "source_primary_programme_and_published_numerical_reproduction",
+          "crs": "source_described_restriction_and_published_numerical_reproduction",
+          "nirs": "source_described_restriction_and_package_verified_without_published_numerical_reproduction",
+          "ndrs": "source_described_restriction_and_package_verified_without_published_numerical_reproduction"
+        }
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.environmental_network.corrected_kalhor_kazemi_matin_balance"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "network_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_environmental_network_dmus",
+          "membership_rule": "same_graph_and_account_semantics",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "components": [
+        "network.radial_ratio"
+      ],
+      "fixed": {
+        "family": "input_radial_system_efficiency",
+        "orientation": "input",
+        "system_score": "h",
+        "process_efficiencies": "not_defined",
+        "final_desirable_outputs": "held_at_observed_levels",
+        "final_undesirable_outputs": "held_at_observed_levels"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_self_appraisal",
+        "primary_programmes_per_observation": 1,
+        "secondary_slack_completion": false,
+        "intensity_display_rule": "strictly_above_peer_tolerance",
+        "targets_use_unthresholded_intensities": true
+      },
+      "defaults": {
+        "projection_policy": "solver_selected_primary_optimum"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_network_fit",
+        "process_efficiency_attribution": "not_defined"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.network.environmental",
+    "canonical_symbol": "KalhorKazemiMatinNetworkDEA",
+    "registry_dependencies": [
+      "environmental.weak_disposal.activity_specific",
+      "estimator.full.dea",
+      "graph.general_network",
+      "network.radial_ratio"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_envelopment_compilation",
+      "compiled_reference_reuse",
+      "primal_dual_certification",
+      "activity_specific_alpha_beta_blocks",
+      "crs_vrs_nirs_ndrs_process_restrictions"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_input_radial_environmental_network_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.environmental_network.valid_nonnegative_quantities"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_efficiency",
+      "process_specific_alpha_and_beta_intensities",
+      "economic_account_targets",
+      "ordinary_intermediate_supply_and_requirement",
+      "internal_desirable_and_undesirable_flow_accounts",
+      "retained_operating_rate",
+      "thresholded_intensity_omission_disclosure",
+      "certification_diagnostics"
+    ],
+    "transformations": []
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.environmental_network.complete_process_incidence",
+        "condition.environmental_network.corrected_kalhor_kazemi_matin_balance",
+        "domain.environmental_network.each_producer_process_output_account_has_positive_final_support_across_dmus",
+        "domain.environmental_network.valid_nonnegative_quantities"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_complete_economic_product_account",
+        "co_transform": [
+          "reported_account_targets",
+          "internal_flow_supply",
+          "internal_flow_requirement"
+        ],
+        "conditions": [
+          "condition.all_process_specific_parts_of_one_product_are_co_rescaled"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "certified_in_the_same_corrected_environmental_network_technology",
+      "efficiency": "input_radial_only_without_residual_slack_completion",
+      "selection": "solver_selected_primary_optimum_reconstructed_from_complete_unthresholded_alpha_and_beta_intensities",
+      "conditions": [
+        "condition.successful_primal_dual_certificate",
+        "condition.environmental_network.complete_process_incidence"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1051/ro/2017022"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_table_1_published_vrs_solution_and_public_sparse_model",
+        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_table_3_published_crs_scores_match_independent_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "independent_dense_equation_compiler",
+        "published_table_1_and_table_2_reproduction",
+        "published_table_3_and_table_4_reproduction",
+        "internal_desirable_and_undesirable_products",
+        "published_vrs_primary_programme_reproduction",
+        "published_crs_score_reproduction",
+        "source_described_package_verified_nirs_ndrs_without_published_numerical_reproduction",
+        "economic_account_unit_invariance",
+        "custom_reference_semantics",
+        "sparse_compilation",
+        "compiled_reference_reuse",
+        "solver_certificate_failure_closure",
+        "graph_account_and_domain_validation",
+        "metadata_source_boundary",
+        "ddf_and_spanish_airport_data_result_closure_deferred_to_next_version"
+      ],
+      "locators": [
+        "tests/test_kalhor_matin_environmental_network_2018_oracle.py",
+        "tests/test_environmental_network_data.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_network.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.kalhor_kazemi_matin_environmental_network",
+        "path": "docs/models/kalhor-kazemi-matin-environmental-network.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

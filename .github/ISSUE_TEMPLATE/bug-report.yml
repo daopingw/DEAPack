@@ -1,0 +1,48 @@
+name: Bug or numerical discrepancy
+description: Report incorrect behavior, a numerical disagreement, or a misleading public result.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed score, target, peer, diagnostic, error, or presentation problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproducible example
+      description: Include data or a small synthetic substitute, code, exact DEAPack version, Python version, and solver status. Remove confidential data.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result and evidence
+      description: Give the expected behavior and any equation, source table, analytical calculation, or cross-implementation comparison.
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Affected contract
+      options:
+        - Score or validity status
+        - Targets or slacks
+        - Peers or weights
+        - Decomposition or diagnostics
+        - API or compatibility
+        - Visualization or report
+        - Documentation only
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: DEAPack version/commit, Python, operating system, installation route
+    validations:
+      required: true

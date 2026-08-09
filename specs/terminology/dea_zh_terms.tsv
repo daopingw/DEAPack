@@ -1,0 +1,86 @@
+term_id	english_term	abbreviation	preferred_zh	accepted_aliases	avoid_or_restrict	first_mention	source_ids	economic_management_note
+data_envelopment_analysis	data envelopment analysis	DEA	数据包络分析	DEA;数据包络分析法	数据包络法（仅作非正式简称）	数据包络分析（data envelopment analysis，DEA）	S01;S03;S04	比较多投入、多产出组织相对绩效的非参数方法。
+decision_making_unit	decision-making unit	DMU	决策单元	决策单位	决策者	决策单元（decision-making unit，DMU）	S01;S06	DMU 可以是组织、地区、网点或单位—时期观测；案例中优先使用具体实体名。
+input	input		投入	投入要素	输入（经济学叙述中慎用；代码角色除外）	投入（input）	S01;S03;S06	组织为生产产品或服务而承诺的资源。
+desirable_output	desirable output		合意产出	期望产出;好产出（通俗括注）	将合意与非期望混配	合意产出（desirable output）	S07;S16	更多通常被组织或社会评价为更好；必须与非合意成对使用。
+undesirable_output	undesirable output		非合意产出	非期望产出;坏产出（通俗括注）	负产出;负面产出;将非合意与期望混配	非合意产出（undesirable output，中文文献亦称“非期望产出”）	S07;S08;S16	生产伴随产生而通常希望减少的负担；不是统计意义上的意外值。
+efficiency	efficiency		效率	相对效率（明确参照时）	效能（除非原概念为 effectiveness）	效率（efficiency）	S01;S03;S06	在声明的技术、比较对象和目标下衡量资源使用与产出责任的相对表现。
+productivity	productivity		生产率		生产力	生产率（productivity）	S02;S03;S19	产出数量相对于投入数量的关系；不要与生产力或效率自动等同。
+total_factor_productivity	total factor productivity	TFP	全要素生产率	总要素生产率	把 TFP 无条件解释为技术进步	全要素生产率（total factor productivity，TFP）	S02;S19	综合多个投入与产出的生产率账户。
+performance	performance		绩效	表现（一般叙述）	一律译为效率	绩效（performance）	S05;S06	上位概念；可包含效率、生产率、盈利能力、质量与目标实现程度。
+profitability	profitability		盈利能力	获利能力	生产率;利润效率（未定义模型时）	盈利能力（profitability）	S03	价值收入相对于价值成本的经营结果，不是纯数量生产率。
+technical_efficiency	technical efficiency	TE	技术效率		技术有效性（除正式引文）	技术效率（technical efficiency，TE）	S03;S06;S19	相对于声明生产技术的经营表现；应注明 CRS/VRS 等技术假设。
+pure_technical_efficiency	pure technical efficiency	PTE	纯技术效率	VRS 技术效率（在匹配语境中）	综合效率	纯技术效率（pure technical efficiency，PTE）	S06	只在匹配的经典规模分解语境中使用，不能给所有 VRS 得分贴此标签。
+allocative_efficiency	allocative efficiency	AE	配置效率	分配效率;分配有效（正式旧译）	把任何宏观资源配置结果称为 Farrell AE	配置效率（allocative efficiency，AE）	S02;S03;S06	需要观测价格和成本、收益或利润目标，用于区分技术改进与要素组合改进。
+economic_efficiency	economic efficiency	EE	经济效率		综合效率（含义不清）	经济效率（economic efficiency，EE）	S03;S06	技术效率与价格条件下配置表现共同形成的价值账户。
+scale_efficiency	scale efficiency	SE	规模效率		规模报酬;规模弹性	规模效率（scale efficiency，SE）	S03;S06	匹配技术与导向下 CRS/VRS 技术效率之比；不等同于局部规模报酬状态。
+input_orientation	input orientation		投入导向	投入导向型;输入导向（正式译法别名）	投入方向;把经济投入译成数据输入	投入导向（input orientation）	S03;S04;S06	在不降低既有产出责任的条件下考察可支持的投入压缩。
+output_orientation	output orientation		产出导向	产出导向型;输出导向（正式译法别名）	产出方向;把经济产出译成程序输出	产出导向（output orientation）	S03;S04;S06	在不增加既有投入承诺的条件下考察可支持的产出扩张。
+non_orientation	non-oriented		非导向	非角度	无方向;方向不明确	非导向（non-oriented）	S10;S17	不预先只选择投入或产出一侧；不表示模型没有改进规则。
+returns_to_scale	returns to scale	RTS	规模报酬	规模收益	规模回报;把收益理解为营业收入	规模报酬（returns to scale，RTS）	S01;S02;S06;S07	全部投入按比例变化时可支持产出的局部或技术集合反应。
+constant_returns_to_scale	constant returns to scale	CRS	规模报酬不变	规模收益不变	固定规模;固定规模收益	规模报酬不变（constant returns to scale，CRS）	S02;S06;S07	活动同比例复制时产出责任同比例变化的技术假设。
+variable_returns_to_scale	variable returns to scale	VRS	规模报酬可变	规模收益可变	可变规模	规模报酬可变（variable returns to scale，VRS）	S02;S06;S07	允许不同经营规模具有不同平均生产率的凸技术假设。
+increasing_returns_to_scale	increasing returns to scale	IRS	规模报酬递增	规模收益递增	规模效率递增	规模报酬递增（increasing returns to scale，IRS）	S02;S06	局部状态；不自动构成扩大规模的管理处方。
+decreasing_returns_to_scale	decreasing returns to scale	DRS	规模报酬递减	规模收益递减	规模效率递减	规模报酬递减（decreasing returns to scale，DRS）	S02;S06	局部状态；不自动构成缩小规模的管理处方。
+non_increasing_returns_to_scale	non-increasing returns to scale	NIRS	规模报酬非递增	规模收益非递增	规模报酬递减（两者不是同一约束）	规模报酬非递增（non-increasing returns to scale，NIRS）	S06	集合级限制；不要与评价点的 DRS 状态互换。
+non_decreasing_returns_to_scale	non-decreasing returns to scale	NDRS	规模报酬非递减	规模收益非递减	规模报酬递增（两者不是同一约束）	规模报酬非递减（non-decreasing returns to scale，NDRS）	S06	集合级限制；不要与评价点的 IRS 状态互换。
+production_technology	production technology		生产技术	生产机会集合（解释性表述）	工艺技术;设备技术（除非语境确指）	生产技术（production technology）	S01;S03	在既定资源、知识与制度条件下可实现的投入—产出组合集合。
+production_possibility_set	production possibility set	PPS	生产可能集	生产可能性集	生产概率集	生产可能集（production possibility set，PPS）	S01;S07	模型认为可行的生产方案集合。
+production_frontier	production frontier		生产前沿	生产前沿面	几何边界（作为唯一解释）	生产前沿（production frontier）	S01;S07	声明技术下可支持的最佳实践边界。
+best_practice_frontier	best-practice frontier		最佳实践前沿	标杆前沿	把最佳实践理解为可直接照搬的管理做法	最佳实践前沿（best-practice frontier）	S05;S07	观测与技术假设支持的比较边界，不保证实践可移植。
+reference_technology	reference technology		参照技术	参考技术	基准技术（未定义时）	参照技术（reference technology）	S02;S03	用于评价某个活动或时期的生产机会集合。
+reference_population	reference population		参照总体	比较总体	样本（当资格筛选改变比较总体时）	参照总体（reference population）	S06	经研究设计规则允许进入技术构造的组织或观测集合。
+eligible_comparator	eligible comparator		合格比较对象	合格参照对象	标杆;同伴（尚未拟合前）	合格比较对象（eligible comparator）	S05;S06	通过制度、职责和数据可比性规则后有资格参与技术构造的对象。
+reference_set	reference set		参考集	参照集	标杆集合（未定义权重时）	参考集（reference set）	S18	拟合表示中具有非零强度的参照观测集合，须遵守方法的报告约定。
+active_peer	active peer		活跃参照单元	参照单元;同伴单元	同类单位;标杆（未说明非零强度时）	活跃参照单元（active peer）	S05;S18	拟合强度非零的个体参照观测；不自动代表可复制实践。
+benchmark	benchmark		标杆	基准（统计语境）	榜样;最优组织（未经证据支持）	标杆（benchmark）	S05	条件性比较方案或标准，不必是一个真实组织。
+intensity_variable	intensity variable		强度变量	参照组合系数	市场权重;价格权重	强度变量（intensity variable）	S01;S03	构造参照生产方案的组合系数；与观测价格和乘数权重不同。
+envelopment_form	envelopment form		包络形式	包络模型	包络法	包络形式（envelopment form）	S01;S03	以活动组合和可行性约束直接构造参照技术的规划形式。
+multiplier_form	multiplier form		乘数形式	乘数模型;权重形式	价格模型（除非对偶解释已成立）	乘数形式（multiplier form）	S01;S03	以内生乘数评价加权投入与产出；乘数不自动等于市场价格。
+efficiency_score	efficiency score		效率得分	效率值	把原生扩张因子直接称为有界效率	效率得分（efficiency score）	S01;S03	必须随方法说明方向、界限、中性值和是否标准化。
+output_expansion_factor	output expansion factor		产出扩张因子	扩张系数	产出效率（未经倒数标准化）	产出扩张因子（output expansion factor）	S03	产出径向模型的原生因子通常以 1 为中性值且越大代表可扩张空间越大。
+radial_measure	radial measure		径向测度	径向效率测度	射线测度（作为主词）	径向测度（radial measure）	S03;S07	按共同比例调整一侧数量，可能在径向步骤后仍留下个别投入或产出缺口。
+nonradial_measure	non-radial measure		非径向测度	非经向测度（文献异体）	非线性测度	非径向测度（non-radial measure）	S07;S08;S17	允许不同投入或产出具有不同改进幅度。
+slack_variable	slack variable		松弛变量		松驰变量（错字）	松弛变量（slack variable）	S17	优化模型中的变量；与求解后报告的具体松弛量区分。
+slack_amount	slack amount		松弛量	松弛值	松弛变量（当指已报告缺口时慎用）	松弛量（slack amount）	S07;S17	某项资源冗余或产出不足的已报告数量。
+input_excess	input excess		投入冗余	投入过量	投入浪费（未经管理审查）	投入冗余（input excess）	S07;S17	模型支持的投入缺口；未必能在现实中无成本消除。
+output_shortfall	output shortfall		产出不足	产出缺口	产出损失（未经反事实依据）	产出不足（output shortfall）	S07;S17	相对于目标方案尚未实现的合意产出数量。
+projection	projection		投影	投影方案	投射点;管理目标	投影（projection）	S01;S03	数学上由技术和目标选择器支持的生产方案。
+target_plan	target		目标方案	模型目标;目标值	管理命令;实施处方	目标方案（target）	S05	条件性、模型支持的可行方案，不是预测或强制要求。
+distance_function	distance function		距离函数		欧氏距离函数	距离函数（distance function）	S02;S03	相对于可行生产技术定义的函数性测度，不是普通几何距离。
+input_distance_function	input distance function	IDF	投入距离函数		输入距离函数（经济学正文慎用）	投入距离函数（input distance function，IDF）	S02;S09	用投入收缩尺度表示生产方案相对技术的位置。
+output_distance_function	output distance function	ODF	产出距离函数		输出距离函数（经济学正文慎用）	产出距离函数（output distance function，ODF）	S02;S03	用产出扩张尺度表示生产方案相对技术的位置。
+directional_distance_function	directional distance function	DDF	方向性距离函数	方向距离函数	箭头距离函数	方向性距离函数（directional distance function，DDF）	S07;S09;S16	按预先声明且有单位的联合改进方案衡量可支持改进。
+direction_vector	direction vector		方向向量	改进方向（管理解释）	箭头（作为正式定义）;价格向量	方向向量（direction vector）	S07;S09;S16	规定一单位改进包含多少投入节约、合意产出扩张或非合意产出削减。
+slacks_based_measure	slacks-based measure	SBM	基于松弛变量的效率测度	松弛型测度;基于松弛测度	Slack-Based Model;松弛基础模型	基于松弛变量的效率测度（slacks-based measure，SBM）	S07;S17	非径向地汇总逐项缺口；须说明导向、归一化和非合意产出处理。
+free_disposability	free disposability		自由处置性	随意处置性（旧译）	免费处置;自由处理	自由处置性（free disposability）	S07	在技术假设允许时，可以多用投入或少产出而保持可行。
+strong_disposability	strong disposability		强可处置性	强处置性	强处理性	强可处置性（strong disposability）	S08;S16	数量可独立处置的技术假设；对污染并非总是经济上可信。
+weak_disposability	weak disposability		弱可处置性	弱处置性;弱自由处置性（文献用法）	弱处理性	弱可处置性（weak disposability）	S08;S16;S20	减少非合意产出需要付出资源或合意产出代价的联合约束。
+null_jointness	null jointness		零结合性	零联合性;零效应	零相关性	零结合性（null jointness）	S20	在声明的环境技术中，无非合意副产物通常意味着相应合意生产活动也为零。
+malmquist_productivity_index	Malmquist productivity index	MPI	Malmquist 生产率指数		曼奎斯特指数;马尔姆奎斯特指数	Malmquist 生产率指数（Malmquist productivity index，MPI）	S02;S16;S19	乘法生产率变化账户；必须声明参照时期政策和得分方向。
+luenberger_productivity_indicator	Luenberger productivity indicator	LPI	Luenberger 生产率指标	卢恩伯格生产率指标	Luenberger 生产率指数（除非特定方法正式命名为 index）	Luenberger 生产率指标（Luenberger productivity indicator，LPI）	S15;S17	基于方向性距离的加法变化账户，中性值通常为零。
+malmquist_luenberger_index	Malmquist–Luenberger productivity index	ML	Malmquist–Luenberger 生产率指数	ML 指数	把 ML 与任意环境生产率指标互换	Malmquist–Luenberger 生产率指数（ML 指数）	S16	把合意与非合意产出纳入乘法跨期生产率账户。
+global_reference_technology	global reference technology		全局参照技术	全局技术	全球技术	全局参照技术（global reference technology）	S16	由声明时期范围的合并生产机会构造；“全局”不是地理含义。
+efficiency_change	efficiency change	EC	技术效率变化	效率变化	追赶效应（作为唯一正式组件名）	技术效率变化（efficiency change，EC）	S02;S12;S16;S19	衡量活动相对于各期参照技术的经营位置如何变化。
+catch_up	catch-up effect		追赶效应	追赶变化	把负向变化仍表述为成功追赶	追赶效应（catch-up effect）	S12;S16;S19	技术效率变化的解释性名称；必须结合数值和指标方向判断改善或退步。
+technical_change	technical change	TC	技术变动	技术变化	技术进步（作为无条件组件名）	技术变动（technical change，TC）	S02;S16;S19	衡量参照生产机会如何移动；可表现为进步或退步。
+frontier_shift	frontier shift		前沿移动效应	前沿移动	增长效应（作为唯一术语）;技术创新（未经证据）	前沿移动效应（frontier-shift effect）	S02;S12;S16	技术变动的解释性表述，不自行提供因果机制。
+network_dea	network data envelopment analysis	NDEA	网络数据包络分析	网络 DEA	网络法	网络数据包络分析（network data envelopment analysis，network DEA）	S10;S11	显式表示组织内部过程和中间产品，以定位系统瓶颈。
+two_stage_network_dea	two-stage network DEA		两阶段网络 DEA	二阶段网络 DEA	两阶段 DEA（可能与 DEA 后回归或 bootstrap 混淆）	两阶段网络 DEA（two-stage network DEA）	S10;S11	指具有两个内部生产过程的网络技术，标题中保留“网络”。
+process	process		过程	子过程;阶段;节点（结构允许时）	部门（除非确为组织部门）	过程（process）	S10;S11	网络技术中的内部生产活动；过程边界必须对应组织责任和数据流。
+intermediate_product	intermediate product		中间产品	中间产出;中间投入	最终产出	中间产品（intermediate product）	S11	上游过程的产出并同时成为下游过程的投入。
+network_link	link		联结变量	连接变量;内部联结	链接（技术名词）	联结变量（link）	S10;S11	在过程间传递的数量；必须保留发送方和接收方角色。
+dynamic_dea	dynamic data envelopment analysis	DDEA	动态数据包络分析	动态 DEA	把面板 DEA、窗口 DEA 或 Malmquist 自动称为动态 DEA	动态数据包络分析（dynamic data envelopment analysis，dynamic DEA）	S12;S13	通过跨期状态或结转约束把相邻时期的生产决策连接起来。
+carry_over	carry-over variable		结转变量	跨期联结变量;承转变量（检索别名）	滞后项（若模型并非统计滞后）	结转变量（carry-over variable，亦称跨期联结变量）	S13	本期形成并约束下一期生产机会的存量、积压或承诺。
+dynamic_network_dea	dynamic network DEA		动态网络 DEA	动态网络数据包络分析	动态两阶段 DEA（含义不清）	动态网络 DEA（dynamic network DEA）	S12;S13	同时表示期内内部过程和期际结转关系。
+metafrontier	metafrontier		共同前沿	元前沿;meta-frontier	总前沿;元边界	共同前沿（metafrontier，亦称元前沿）	S14;S20	全部已声明群组可用的共同生产机会基准。
+group_frontier	group frontier		群组前沿	组别前沿;组前沿	局部前沿（可能与局部 RTS 混淆）	群组前沿（group frontier）	S14;S20	某个已知技术群组内部可用的生产机会基准。
+metatechnology_ratio	metatechnology ratio	MTR	共同技术比率	共同技术率	元技术率	共同技术比率（metatechnology ratio，MTR）	S14;S20	须按具体模型说明分子分母和中性值；不可与 TGR 名称无条件互换。
+technology_gap_ratio	technology gap ratio	TGR	技术差距比	技术差距比率;技术落差比率	技术缺口（未说明比率）	技术差距比（technology gap ratio，TGR）	S14;S20	比较群组前沿与共同前沿支持的生产机会；不是因果环境效应。
+technology_heterogeneity	technology heterogeneity		技术异质性	生产技术异质性	技术差异（未说明机会集合）	技术异质性（technology heterogeneity）	S14;S20	不同群组面对不同生产机会集合；分组通常由研究设计给定而非 DEA 自动聚类。
+cost_efficiency	cost efficiency	CE	成本效率	成本有效性（旧译）	成本节约率（除非定义一致）	成本效率（cost efficiency，CE）	S03;S06	在投入价格和产出责任下比较观测成本与技术支持的最低成本。
+revenue_efficiency	revenue efficiency	RE	收益效率	收入效率	利润效率	收益效率（revenue efficiency，RE）	S03	在产出价格和投入约束下比较观测收益与技术支持的最大收益。
+profit_efficiency	profit efficiency	PE	利润效率	盈利效率	盈利能力（两者不是同一量）	利润效率（profit efficiency，PE）	S03	在投入与产出价格下比较观测利润与技术支持的最大利润。
+observed_price	observed price		观测价格	市场价格（数据确为市场价格时）	DEA 权重	观测价格（observed price）	S03;S06	价值账户的外生数据，不等同于乘数模型内生权重。
+multiplier_weight	multiplier weight		乘数权重	内生权重	市场价格;观测价格	乘数权重（multiplier weight）	S01;S03	由 DEA 乘数形式内生选择的评价权重。
+shadow_price	shadow price		影子价格	影子价值	市场价格（未经对偶解释）	影子价格（shadow price）	S03;S09	约束边际价值的对偶解释，依赖模型、单位与正则条件。

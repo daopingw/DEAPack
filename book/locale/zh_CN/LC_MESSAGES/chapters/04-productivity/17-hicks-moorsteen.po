@@ -1,0 +1,811 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:1
+#: 39bb16b46d344417a176b2fe5efcc159
+msgid "Hicks--Moorsteen Productivity: Output Growth Relative to Resource Growth"
+msgstr "Hicks--Moorsteen 生产率：产出增长相对于资源增长"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:3
+#: 1eee712883ec41629098b588a2d164f5
+msgid ""
+"A hospital that treats 8 percent more patients after hiring 10 percent more "
+"staff has expanded, but it has not necessarily become more productive. A "
+"manufacturer that reduces output by 2 percent while reducing materials, "
+"labor, and capital services by 10 percent may have contracted and still "
+"improved productivity. In both cases the economic question is the same: "
+"**did aggregate output quantity change faster or slower than aggregate input"
+" quantity?**"
+msgstr ""
+"一家医院增加 10% 的员工后多诊疗 8% 的患者，说明经营规模扩大了，却不一定意味着生产率提高。制造企业若产出减少 "
+"2%，同时把材料、劳动和资本服务减少 "
+"10%，虽然经营收缩，生产率仍可能改善。两种情形面对同一个经济问题：**综合产出数量变化得比综合投入数量更快还是更慢？**"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:10
+#: e70150a3ef8444b281616284cd4c747b
+msgid ""
+"The Hicks--Moorsteen index answers that question through a complete quantity"
+" account:"
+msgstr "Hicks--Moorsteen 指数通过一个完整数量账户回答这个问题："
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:12
+#: 0a4de999adcc48019654a298e0dc6d29
+msgid ""
+"\n"
+"HM^{t,t+1}\n"
+"=\\frac{Q_y^{t,t+1}}{Q_x^{t,t+1}},\n"
+msgstr ""
+"\n"
+"HM^{t,t+1}\n"
+"=\\frac{Q_y^{t,t+1}}{Q_x^{t,t+1}},\n"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:17
+#: 475cec8c957641febaea5e19efcd6413
+#, python-brace-format
+msgid ""
+"where $Q_y^{t,t+1}$ is an aggregate output quantity index and $Q_x^{t,t+1}$ "
+"is an aggregate input quantity index between periods $t$ and $t+1$. Values "
+"above one indicate total-factor-productivity growth, one indicates no "
+"change, and values below one indicate decline."
+msgstr ""
+"其中，$Q_y^{t,t+1}$ 是时期 $t$ 到 $t+1$ 的综合产出数量指数，$Q_x^{t,t+1}$ 是综合投入数量指数。指数大于 1 "
+"表示全要素生产率增长，等于 1 表示没有变化，小于 1 表示下降。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:22
+#: cb0df39965964958a3a15e7ff7674493
+msgid ""
+"“Complete” has a precise and limited meaning here. The index compares the "
+"aggregate change in every desirable output included in the study with the "
+"aggregate change in every included productive input. It therefore answers "
+"whether output quantity grew faster than resource use within the chosen "
+"organizational boundary. It does not recover omitted quality, environmental "
+"effects, unpaid labor, or unmeasured capital services. Those omissions "
+"narrow the economic meaning of the resulting productivity change even when "
+"the formula is internally complete."
+msgstr "这里的“完整”具有精确且有限的含义：该指数把研究纳入的全部合意产出的综合变化，与全部生产性投入的综合变化相比较。因此，它回答的是：在既定组织边界内，产出数量是否比资源使用增长得更快。它不能恢复未纳入的质量、环境影响、无偿劳动或未测量的资本服务。即使公式在内部是完整的，这些遗漏仍会缩窄生产率变化的经济含义。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:30
+#: 18e8dd1f54684411b9107cf92cdf7c4e
+#, python-brace-format
+msgid ""
+"This construction belongs beside, rather than underneath, the conventional "
+"Malmquist index. It uses both output- and input-oriented quantity "
+"comparisons so that the final measure remains visibly “aggregate outputs "
+"divided by aggregate inputs.” The production technology supplies the "
+"aggregation rule when observed prices are absent or unsuitable "
+"{cite:p}`bjurek1996`. That makes Hicks--Moorsteen a distinct mainstream "
+"productivity family, not a renamed orientation or a special decomposition of"
+" another index."
+msgstr ""
+"这一构造与传统 Malmquist "
+"指数并列，而不是从属于后者。它同时使用产出导向和投入导向的数量比较，使最终测度仍然清楚呈现为“综合产出除以综合投入”。在观测价格缺失或不适用时，生产技术提供数量汇总规则"
+" {cite:p}`bjurek1996`。因此，Hicks--Moorsteen "
+"是独立的主流生产率模型族，不是某种导向的新名称，也不是另一指数的特殊分解。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 7d7b65663388475ba19f8ad7a6e7ae16
+msgid ""
+"Hicks-Moorsteen total-factor-productivity change from t to t plus 1 is "
+"output quantity growth divided by input quantity growth, with both period "
+"technologies contributing symmetrically"
+msgstr "从时期 t 到时期 t+1 的 Hicks-Moorsteen 全要素生产率变化等于产出数量增长除以投入数量增长，两个时期的技术对比较作对称贡献"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:43
+#: 3b935899738245af8881f9845a095fd9
+#, python-brace-format
+msgid ""
+"The Hicks--Moorsteen production account. Technologies $\\mathcal T^t$ and "
+"$\\mathcal T^{t+1}$ each provide an output quantity comparison and an input "
+"quantity comparison. The two period views are reconciled symmetrically "
+"before total-factor- productivity change is calculated as "
+"$Q_y^{t,t+1}/Q_x^{t,t+1}$."
+msgstr ""
+"Hicks--Moorsteen 生产账户。技术 $\\mathcal T^t$ 与 $\\mathcal T^{t+1}$ "
+"各自提供一次产出数量比较和一次投入数量比较；先对称协调两个时期的视角，再以 $Q_y^{t,t+1}/Q_x^{t,t+1}$ 计算全要素生产率变化。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:49
+#: 689828f94d8745a9aaa54d337ec37e3f
+msgid "Why are separate output and input quantity indexes needed?"
+msgstr "为什么需要分别构造产出和投入数量指数？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:51
+#: 0e2c8599e0b3477db1a851efe9ea166a
+msgid ""
+"With one output and one input, productivity change can be described "
+"informally as the change in output divided by the change in input. Real "
+"organizations rarely have that simple a production account. A hospital "
+"combines physicians, nurses, beds, equipment, and purchased services to "
+"deliver several kinds of care. Adding those resources or services in their "
+"physical units would be meaningless. Market prices might aggregate them, but"
+" prices may be regulated, missing, endogenous, or unrelated to the public "
+"value of a service."
+msgstr "只有一种产出和一种投入时，可以把生产率变化通俗描述为产出变化除以投入变化。真实组织很少如此简单。医院把医生、护士、床位、设备和外购服务结合起来，提供多类医疗服务；直接把这些资源或服务的实际单位相加没有意义。市场价格也许可以汇总它们，但价格可能受监管、缺失、内生，或者与公共服务价值无关。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:59
+#: 99d0d4669f61447482d463e345852c5e
+#, python-brace-format
+msgid ""
+"Hicks--Moorsteen uses the production possibilities represented by comparable"
+" organizations to aggregate these multidimensional quantities. Let "
+"$z^t=(x^t,y^t)$ and $z^{t+1}=(x^{t+1},y^{t+1})$ denote one organization's "
+"operating plans. The input vectors $x^t$ and $x^{t+1}$ record resource "
+"quantities; the output vectors $y^t$ and $y^{t+1}$ record desirable products"
+" or services. Let $\\mathcal T^t$ and $\\mathcal T^{t+1}$ be the "
+"technologies represented by the two period-specific reference populations."
+msgstr ""
+"Hicks--Moorsteen 利用可比组织所代表的生产可能性来汇总这些多维数量。设 $z^t=(x^t,y^t)$ 和 "
+"$z^{t+1}=(x^{t+1},y^{t+1})$ 为同一组织的两个时期经营方案。投入向量 $x^t$ 与 $x^{t+1}$ "
+"记录资源数量，产出向量 $y^t$ 与 $y^{t+1}$ 记录合意产品或服务。$\\mathcal T^t$ 与 $\\mathcal "
+"T^{t+1}$ 分别表示两个时期参照总体所代表的技术。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:67
+#: b936e7374a4e40b49469aa06627059ba
+msgid ""
+"For a technology $\\mathcal T^\\tau$, the Shephard output distance "
+"$D_O^\\tau(x,y)$ asks how the output bundle compares with producible output "
+"while inputs are held fixed. The Shephard input distance $D_I^\\tau(x,y)$ "
+"asks how the input bundle compares with required input while outputs are "
+"held fixed. Formally,"
+msgstr ""
+"对于技术 $\\mathcal T^\\tau$，Shephard 产出距离 $D_O^\\tau(x,y)$ "
+"在投入保持不变时比较产出组合与可生产产出；Shephard 投入距离 $D_I^\\tau(x,y)$ "
+"则在产出保持不变时比较投入组合与所需投入。形式上，"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:72
+#: ff1412845bec4dad9ffcc66482f4fc8e
+#, python-brace-format
+msgid ""
+"\n"
+"D_O^\\tau(x,y)=\\inf\\{\\delta>0:(x,y/\\delta)\\in\\mathcal T^\\tau\\},\n"
+"\\qquad\n"
+"D_I^\\tau(x,y)=\\sup\\{\\delta>0:(x/\\delta,y)\\in\\mathcal T^\\tau\\}.\n"
+msgstr ""
+"\n"
+"D_O^\\tau(x,y)=\\inf\\{\\delta>0:(x,y/\\delta)\\in\\mathcal T^\\tau\\},\n"
+"\\qquad\n"
+"D_I^\\tau(x,y)=\\sup\\{\\delta>0:(x/\\delta,y)\\in\\mathcal T^\\tau\\}.\n"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:78
+#: a1fbd60631b74cf2885cd4d849837921
+msgid ""
+"These distances do not assign a monetary value to a nurse, a machine, or a "
+"treatment. They aggregate quantities through the trade-offs represented by "
+"the reference technology. The resulting indexes are therefore production-"
+"based quantity measures, not cost, revenue, profit, utility, or welfare "
+"indexes."
+msgstr "这些距离不会给护士、机器或一次诊疗赋予货币价值，而是利用参照技术所代表的权衡关系汇总数量。因此，所得指数是基于生产的数量测度，不是成本、收益、利润、效用或福利指数。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:83
+#: 5b9cd2a4f42941d79049ae81104555fe
+msgid ""
+"Their ratio form also protects the substantive result from a coherent change"
+" of measurement units. Recording labor in hours rather than thousands of "
+"hours, or energy in megawatt-hours rather than kilowatt-hours, should not "
+"change the productivity comparison when the conversion is applied "
+"consistently to every relevant observation. This useful invariance does not "
+"excuse inconsistent definitions. Reclassifying agency staff as purchased "
+"services in one year, changing the boundary of capital services, or "
+"broadening output coverage alters the production account itself. Unit "
+"conversion and concept revision are economically different operations."
+msgstr "比率形式还使实质结论不受一致计量单位转换的影响。例如，只要对所有相关观测一致换算，把劳动从千小时改记为小时，或把能源从千瓦时改记为兆瓦时，都不应改变生产率比较。这种有用的不变性不能为定义不一致开脱。若某一年把派遣人员重新归类为外购服务、改变资本服务边界或扩大产出覆盖范围，就改变了生产账户本身。单位转换与概念修订是经济含义不同的操作。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:92
+#: 8dc0e0637acb4517a30e69cf293243e4
+msgid "Why does each period get its own view of quantity change?"
+msgstr "为什么每个时期都要对数量变化作出自己的评价？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:94
+#: 8ebb23a696c1484c8e48c5a7fcd761ab
+#, python-brace-format
+msgid ""
+"Using only $\\mathcal T^t$ would make the earlier production possibilities "
+"the sole judge of both periods. Using only $\\mathcal T^{t+1}$ would "
+"privilege the later possibilities. Hicks--Moorsteen treats the comparison "
+"bilaterally: each technology supplies one view of output quantity change and"
+" one view of input quantity change."
+msgstr ""
+"若只使用 $\\mathcal T^t$，就让早期生产可能性成为两个时期的唯一裁判；若只使用 $\\mathcal "
+"T^{t+1}$，则偏向后期生产可能性。Hicks--Moorsteen "
+"采用双边比较：每个时期的技术都分别提供一种产出数量变化视角和一种投入数量变化视角。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:99
+#: 3dcb49b5b373443a8dfcfe555df82bc4
+msgid ""
+"The four constituent comparisons are compactly summarized below. Each is a "
+"ratio of two distances, so together they require four output-distance and "
+"four input-distance evaluations."
+msgstr "下表概括四项构成比较。每项都是两个距离之比，因此合计需要四次产出距离评价和四次投入距离评价。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: fc3de79363f846799485569f689a8041
+msgid "Quantity view"
+msgstr "数量视角"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: d52d853991624630adfb986077c35a54
+msgid "What is held fixed?"
+msgstr "保持什么不变？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 9ff5f2efb63d4be99705357bc695c28e
+msgid "Distance comparison"
+msgstr "距离比较"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 8bfdb74e4ee34ae6b66ff5db9336fcf8
+msgid "$Q_y^t$"
+msgstr "$Q_y^t$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 5eccb5a992314eca98e65cb6eae83667
+msgid "Base-period inputs $x^t$"
+msgstr "基期投入 $x^t$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: a8efafe2a3ee467a9319a2dccf1241c3
+#, python-brace-format
+msgid "$D_O^t(x^t,y^{t+1})/D_O^t(x^t,y^t)$"
+msgstr "$D_O^t(x^t,y^{t+1})/D_O^t(x^t,y^t)$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: a8458b129a694edcb7bd0fe19bc62fd0
+#, python-brace-format
+msgid "$Q_y^{t+1}$"
+msgstr "$Q_y^{t+1}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 3d4988089dd34722a27965545f64e04d
+#, python-brace-format
+msgid "Comparison-period inputs $x^{t+1}$"
+msgstr "比较期投入 $x^{t+1}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 0b188eaf94f840cca76a3b6b27eacfe4
+#, python-brace-format
+msgid "$D_O^{t+1}(x^{t+1},y^{t+1})/D_O^{t+1}(x^{t+1},y^t)$"
+msgstr "$D_O^{t+1}(x^{t+1},y^{t+1})/D_O^{t+1}(x^{t+1},y^t)$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: c029632317d24dcd95d7c6a774d59ed4
+msgid "$Q_x^t$"
+msgstr "$Q_x^t$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 5bdcdad630e4443abf8209c70bc7abc1
+msgid "Base-period outputs $y^t$"
+msgstr "基期产出 $y^t$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: f7d20889d6ab4d5f9cb6e3d8d35e9cc0
+#, python-brace-format
+msgid "$D_I^t(x^{t+1},y^t)/D_I^t(x^t,y^t)$"
+msgstr "$D_I^t(x^{t+1},y^t)/D_I^t(x^t,y^t)$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 863d4cc79bcd4f23bc534bcaa90b8b83
+#, python-brace-format
+msgid "$Q_x^{t+1}$"
+msgstr "$Q_x^{t+1}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 1b0fc81ca86b46848f553a140233ca63
+#, python-brace-format
+msgid "Comparison-period outputs $y^{t+1}$"
+msgstr "比较期产出 $y^{t+1}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 42a53db8ca174b788ee8fcef765c3149
+#, python-brace-format
+msgid "$D_I^{t+1}(x^{t+1},y^{t+1})/D_I^{t+1}(x^t,y^{t+1})$"
+msgstr "$D_I^{t+1}(x^{t+1},y^{t+1})/D_I^{t+1}(x^t,y^{t+1})$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:110
+#: b603a4e91946435483374c0f69b5a751
+msgid ""
+"The first two rows ask how the output bundle changed when each period's own "
+"input bundle and technology provide the basis for comparison. The next two "
+"ask how the input bundle changed when each period's own output bundle and "
+"technology provide the basis. This pairing is why the eight evaluations are "
+"economically necessary. They are not eight unrelated efficiency exercises: "
+"they build two independent quantity accounts, each seen from both periods."
+msgstr "前两行考察分别以各时期自身的投入组合和技术为比较基础时，产出组合如何变化；后两行考察分别以各时期自身的产出组合和技术为基础时，投入组合如何变化。这种配对说明八次评价在经济上为何必要。它们不是八次互不相关的效率练习，而是在两个时期视角下分别构造产出和投入两个独立数量账户。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:117
+#: 37dbbd01efb849729d263bb0c5a380ea
+msgid ""
+"Neither period view is given final authority. Their geometric means form the"
+" bilateral output and input quantity indexes:"
+msgstr "两个时期的视角都不拥有最终权威。分别取几何平均，得到双边产出和投入数量指数："
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:120
+#: 23d1d582f04f44698b110bdc3183dd2a
+#, python-brace-format
+msgid ""
+"\n"
+"Q_y^{t,t+1}=\\left(Q_y^tQ_y^{t+1}\\right)^{1/2},\n"
+"\\qquad\n"
+"Q_x^{t,t+1}=\\left(Q_x^tQ_x^{t+1}\\right)^{1/2}.\n"
+msgstr ""
+"\n"
+"Q_y^{t,t+1}=\\left(Q_y^tQ_y^{t+1}\\right)^{1/2},\n"
+"\\qquad\n"
+"Q_x^{t,t+1}=\\left(Q_x^tQ_x^{t+1}\\right)^{1/2}.\n"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:126
+#: 08fe413190984c9d930cb365a02b82f1
+msgid ""
+"The geometric mean reconciles two proportional comparisons and treats the "
+"dates symmetrically. It also gives the index its time-reversal property: if "
+"the same two periods are compared in reverse order, $Q_y$, $Q_x$, and $HM$ "
+"become the reciprocals of their forward values. A measured 10 percent "
+"forward increase is therefore undone by the corresponding reverse "
+"comparison. This is what “bilateral” means here; it does not imply that the "
+"index is automatically consistent across three or more periods."
+msgstr ""
+"几何平均协调两个比例比较，并对称对待两个日期。它还赋予指数时间反转性质：把同两个时期倒序比较，$Q_y$、$Q_x$ 和 $HM$ "
+"都变为正序数值的倒数。因此，正序测得的 10% "
+"增长会被相应倒序比较抵消。这就是此处“双边”的含义；它并不表示指数在三个或更多时期之间自动满足循环一致性。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:133
+#: 1137afadc46740d0a5de98e4199efbb1
+msgid "How should the three headline numbers be read together?"
+msgstr "如何联合解读三个核心数值？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:135
+#: 12a0f48f2dee409da217a5805d7319ba
+#, python-brace-format
+msgid ""
+"The output quantity index describes the proportional change in the aggregate"
+" desirable output bundle. Thus $Q_y^{t,t+1}>1$ indicates output quantity "
+"growth and a value below one indicates contraction. The input quantity index"
+" has the analogous meaning for the aggregate resource bundle. A value "
+"$Q_x^{t,t+1}>1$ means that resource quantity increased; it is not an "
+"efficiency score and should not be described as “better.”"
+msgstr ""
+"产出数量指数描述综合合意产出组合的比例变化。因此，$Q_y^{t,t+1}>1$ 表示产出数量增长，小于 1 "
+"表示收缩。投入数量指数对综合资源组合具有类似含义。$Q_x^{t,t+1}>1$ 表示资源数量增加；它不是效率得分，不能描述为“更好”。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:141
+#: 5b34d694e2ab46f18ae6e5a2af25a25e
+msgid ""
+"The productivity conclusion comes from their ratio. Several combinations are"
+" possible:"
+msgstr "生产率结论来自二者之比，可能出现多种组合："
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: e0c6d28795d34dde8c3e56f6d13f6fb1
+msgid "Output account"
+msgstr "产出账户"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: a162ff0c8e584822baf22c19c58ffcf1
+msgid "Input account"
+msgstr "投入账户"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 0921ea02c9244257b302899df3c17af3
+msgid "Productivity reading"
+msgstr "生产率解释"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 5abbd242ac5242358b54beb021883e02
+msgid "$Q_y>1$ and $Q_x=1$"
+msgstr "$Q_y>1$ 且 $Q_x=1$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 118424e942bb45aeb93e8667f7248a25
+msgid "More output, unchanged aggregate input"
+msgstr "产出增加，综合投入不变"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 0416ecb266c14a1aabd795465e63fd00 440968112ab740c6b5d31ef5877d7c11
+#: d60531ba9d1c4b4a959a15956435866e
+msgid "Productivity rises"
+msgstr "生产率上升"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 165acfe19da64b2187000e5beabc5395
+msgid "$Q_y>1$ and $1<Q_x<Q_y$"
+msgstr "$Q_y>1$ 且 $1<Q_x<Q_y$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: fe0bfc4f71df4b638ac803561778b8fa
+msgid "Output and input both grow, but output grows faster"
+msgstr "产出和投入都增加，但产出增长更快"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 7068ac3089934bb2985a17bf3cb4597a
+msgid "$Q_y<1$ and $Q_x<Q_y$"
+msgstr "$Q_y<1$ 且 $Q_x<Q_y$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 25dcfd2fec774fef9089a8443e95de16
+msgid "Output contracts, but input contracts more"
+msgstr "产出收缩，但投入收缩更多"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 695af80b7eab4543afe84bf69811916f
+msgid "$Q_y>1$ and $Q_x>Q_y$"
+msgstr "$Q_y>1$ 且 $Q_x>Q_y$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 01cbdf72474c4a91a16b66b4f3c57fbd
+msgid "Expansion requires proportionally more input"
+msgstr "扩张所需投入的比例增长更大"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 6430a9ac35914216bf3def2e99ee4c20
+msgid "Productivity falls"
+msgstr "生产率下降"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:150
+#: 0bf27ec463ae44b993db181e2c6c61e6
+msgid ""
+"This table prevents a common managerial error: equating expansion with "
+"productivity. An organization can grow by consuming resources faster than it"
+" expands services. It can also become more productive while deliberately "
+"reducing its scale of operation. The output and input indexes reveal which "
+"economic pattern lies behind the headline ratio."
+msgstr "该表可以避免一种常见管理误区：把经营扩张等同于生产率提高。组织可能以比服务扩张更快的速度消耗资源，也可能在有意缩小经营规模时提高生产率。产出与投入指数揭示了核心比率背后的经济模式。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:156
+#: 5531c0f6b57842ca9c7e479f9ed00fe2
+msgid ""
+"Because the account is multiplicative, percentage-point subtraction is only "
+"an approximation. If output quantity rises by 15.33 percent and input "
+"quantity rises by 2.00 percent, productivity change is "
+"$1.1533/1.0200=1.1307$, or about 13.07 percent. The exact statement is a "
+"ratio of quantity indexes."
+msgstr ""
+"由于这是乘法账户，用百分点相减只能近似计算。若产出数量增加 15.33%，投入数量增加 2.00%，则生产率变化为 "
+"$1.1533/1.0200=1.1307$，约增长 13.07%。准确表述是两个数量指数之比。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:161
+#: 4eb73ff9a82c4df5bb98fd0f6f879692
+msgid "What does the account say about Unit D?"
+msgstr "该账户如何解释单元 D？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:163
+#: 24d50254b9c14f2fa4be75d4ce7d1d56
+msgid ""
+"The `productivity_panel` dataset follows five organizations using capital "
+"and labor to produce one desirable service. The following case estimates the"
+" adjacent-period Hicks--Moorsteen account under variable returns to scale, "
+"so the reference technology does not presume that every observed activity "
+"can be proportionally replicated at any size."
+msgstr ""
+"`productivity_panel` 数据集记录五个组织使用资本和劳动生产一项合意服务。以下案例在规模报酬可变假设下估计相邻期 Hicks--"
+"Moorsteen 账户，因此参照技术不预设每项观测活动都能在任意经营规模上同比例复制。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 1189ea814ff3455eb6a237be09576373
+msgid "Unit D, 2020--2021"
+msgstr "单元 D，2020--2021 年"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: b4944a762bdb468fade4ed636703e667
+msgid "Value"
+msgstr "数值"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 09c8378673554bc8960a55ae3d45d2a7
+msgid "Production-account interpretation"
+msgstr "生产账户解释"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 99d8b0d3fa6847b0abdd821cd9f29b56
+#, python-brace-format
+msgid "$Q_y^{2020,2021}$"
+msgstr "$Q_y^{2020,2021}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 3e3b758d30724ae89222d8a260e950b7
+msgid "1.1533"
+msgstr "1.1533"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: b3ab94928b7c4382a25610966b4881b6
+msgid "Aggregate output quantity increased by about 15.33 percent"
+msgstr "综合产出数量约增加 15.33%"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 5b86a24e743844cd921d712350cd35aa
+#, python-brace-format
+msgid "$Q_x^{2020,2021}$"
+msgstr "$Q_x^{2020,2021}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 1b3b8432027c4f458a6634c14807d0d4
+msgid "1.0200"
+msgstr "1.0200"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 70804df5b30642f1901e8792311ea34e
+msgid "Aggregate input quantity increased by about 2.00 percent"
+msgstr "综合投入数量约增加 2.00%"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: 4121e3eb53f3483d9d378cb643867f08
+#, python-brace-format
+msgid "$HM^{2020,2021}$"
+msgstr "$HM^{2020,2021}$"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: bb9e123e0c514ccdacc0ce0a894f419d
+msgid "1.1307"
+msgstr "1.1307"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:38
+#: c054803ebcd7479caa23ed9c894d4945
+msgid "Output quantity grew about 13.07 percent faster per unit of aggregate input"
+msgstr "每单位综合投入对应的产出数量约快增 13.07%"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:206
+#: cf78b7e4d7a54cfa946896c7e70255ec
+msgid ""
+"Hicks-Moorsteen productivity change from 2020 to 2021 for five "
+"organizations, with a vertical line at one indicating no productivity change"
+" and Unit D reported at approximately 1.1307"
+msgstr "五个组织 2020—2021 年的 Hicks-Moorsteen 生产率变化；竖线 1 表示生产率没有变化，单元 D 约为 1.1307"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:211
+#: 362f3937758446bc9de4891b5d772588
+msgid ""
+"The fitted 2020--2021 Hicks--Moorsteen changes across the five "
+"organizations. The points are a screening view of the headline ratio: Unit "
+"D's position at about 1.1307 is meaningful only together with its output-"
+"quantity index 1.1533 and input-quantity index 1.0200. A point is displayed "
+"only when its complete eight-distance quantity account is internally "
+"consistent. The figure is not a ranking of causes or managerial merit."
+msgstr ""
+"图中给出五个组织拟合的 2020—2021 年 Hicks--Moorsteen 变化。各点只是核心比率的筛查视图：只有把单元 D 约 1.1307 "
+"的位置与产出数量指数 1.1533、投入数量指数 1.0200 "
+"放在一起，才有完整含义。只有完整的八距离数量账户内部一致时才显示数据点。该图不是对成因或管理优劣的排名。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:219
+#: 5b12334ce1f04edd8ec21dcc39c55472
+msgid ""
+"Unit D expanded rather than economized on total resource quantity. Its "
+"productivity improvement comes from output quantity increasing "
+"proportionally more than input quantity. That is a useful management "
+"statement: growth was not achieved simply by a still larger proportional "
+"expansion of the measured resource bundle."
+msgstr ""
+"单元 D "
+"扩大了经营规模，而不是减少总资源数量。它的生产率改善来自产出数量的比例增长大于投入数量。这是一项有用的管理结论：增长并非仅靠以更大比例扩张所测量的资源组合实现。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:224
+#: d98c7b3ca4804edc911e97f7400813d9
+msgid ""
+"It is not yet a causal statement. The account does not establish whether the"
+" change came from scheduling, staff skills, capital renewal, case mix, "
+"demand, regulation, or measurement revision. Those explanations require "
+"institutional evidence and, where appropriate, a separate causal design. The"
+" DEA result supplies a structured outcome to explain; it does not identify "
+"the explanation."
+msgstr ""
+"但这还不是因果结论。该账户不能确认变化来自排班、员工技能、资本更新、病例组合、需求、监管还是测量修订。这些解释需要制度证据，并在适当时采用独立因果研究设计。DEA"
+" 结果提供一个有结构、需要进一步解释的结果，而不会自动识别解释本身。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:230
+#: 1d0245941e6a4e04b299e2f7d4137b08
+msgid "Why is this not the usual Malmquist decomposition?"
+msgstr "为什么这不是通常的 Malmquist 分解？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:232
+#: 6068590f84a747589e612b31d9463512
+msgid ""
+"The conventional Malmquist index builds one oriented productivity comparison"
+" and is often expressed as efficiency change multiplied by technical change."
+" Hicks--Moorsteen instead builds a complete output quantity index and a "
+"complete input quantity index, then divides the former by the latter. Its "
+"eight distance evaluations serve that quantity-accounting identity."
+msgstr ""
+"传统 Malmquist 指数构造一项有导向的生产率比较，并常写成技术效率变化乘以技术变动。Hicks--Moorsteen "
+"则分别构造完整的产出数量指数与投入数量指数，再以前者除以后者。八次距离评价服务于这一数量核算恒等式。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:238
+#: f6e6272dc0864379acd79e3e44728692
+#, python-brace-format
+msgid ""
+"It is therefore invalid to copy “efficiency change,” “technical change,” or "
+"“catch-up” from a conventional Malmquist result and attach them to "
+"$HM^{t,t+1}$. Those components need not reconstruct the Hicks--Moorsteen "
+"index and do not inherit an interpretation merely because both families use "
+"distance functions. A study that requires scale, mix, or technical-"
+"efficiency components must adopt a decomposition defined for its own native "
+"productivity measure and state the additional assumptions. The residual from"
+" $HM-Q_y/Q_x$ is not an undiscovered economic component; the identity "
+"already defines HM exactly."
+msgstr ""
+"因此，不能把传统 Malmquist 结果中的“技术效率变化”“技术变动”或“追赶效应”直接附到 $HM^{t,t+1}$ 上。这些分量不一定能够重构 "
+"Hicks--Moorsteen "
+"指数，也不会仅仅因为两个模型族都使用距离函数就继承同一解释。若研究需要规模、组合或技术效率分量，必须采用为其原生生产率测度定义的分解，并说明新增假设"
+"。$HM-Q_y/Q_x$ 的残差不是尚未发现的经济分量；这条恒等式已经精确定义 HM。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:247
+#: 96d2430ab1dd403eb0a2b1b186219d65
+msgid ""
+"The distinction matters even when two indexes happen to produce the same "
+"number in a simple dataset. Numerical agreement can arise under special "
+"technologies or data patterns. It does not make the underlying production "
+"questions equivalent."
+msgstr "即使两个指数在简单数据集中恰好得到相同数值，这一区别仍然重要。特殊技术或数据形态可能造成数值一致，但不会使背后的生产问题等价。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:251
+#: 89d72a75da7c432a86a39fc87fc5af64
+msgid "Can bilateral changes be chained into a long-run history?"
+msgstr "能否把双边变化链接成长时期历史？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:253
+#: 1d6bc585678d45a1837e219da3c910b9
+msgid ""
+"Not without qualification. Hicks--Moorsteen is symmetric for a pair of "
+"periods, but bilateral symmetry is different from circularity. With three "
+"periods, it is generally possible that"
+msgstr "不能不加限定。Hicks--Moorsteen 对一对时期是对称的，但双边对称不同于循环一致性。三个时期下通常可能出现"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:257
+#: c24a41fecf744a8f97953eebf4b31118
+#, python-brace-format
+msgid ""
+"\n"
+"HM^{t,t+1}HM^{t+1,t+2}\\neq HM^{t,t+2}.\n"
+msgstr ""
+"\n"
+"HM^{t,t+1}HM^{t+1,t+2}\\neq HM^{t,t+2}.\n"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:261
+#: c5bf31037af04691866c13f26bd75bbd
+msgid ""
+"The adjacent changes use different pairs of technologies, while the direct "
+"comparison uses the first and last technologies. The cumulative result can "
+"therefore depend on the path through time. This is not a computational "
+"defect; it follows from allowing each bilateral comparison to use its own "
+"two-period information."
+msgstr "相邻期变化使用不同的技术配对，而直接比较使用首末两个时期的技术，因此累计结果可能依赖时间路径。这不是计算缺陷，而是每项双边比较允许使用自身两期信息的自然结果。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:266
+#: 6e6af6bfb00c4d8aa907b3a44e3201ce
+msgid ""
+"For year-to-year operational reporting, that local bilateral interpretation "
+"may be exactly what is wanted. For a long historical series in which every "
+"date must share a fixed basis and adjacent changes must multiply to a unique"
+" first-to-last result, the research design needs a multilateral or fixed-"
+"reference quantity index. That is a different information policy, not a "
+"switch to be applied after seeing that a chain is inconvenient. Reports "
+"should say whether a displayed cumulative value is a chain of bilateral "
+"indexes or a comparison under a common multilateral reference."
+msgstr "对逐年经营报告而言，这种局部双边解释可能正合需要。若长期历史序列要求每个日期共享固定基础，并要求相邻变化相乘得到唯一的首末结果，研究设计就需要多边或固定参照数量指数。这是不同的信息政策，不能看到链式结果不方便后才临时切换。报告应明确累计值究竟是双边指数链，还是共同多边参照下的比较。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:274
+#: 940f177d69f3440f8b6387246d6442ca
+msgid "What assumptions limit the management interpretation?"
+msgstr "哪些假设限制管理解释？"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:276
+#: 00c54445e89d4822ad68d9efc94c5f12
+#, python-brace-format
+msgid ""
+"The quantity indexes inherit every substantive choice used to construct "
+"$\\mathcal T^t$ and $\\mathcal T^{t+1}$. Under constant returns to scale, "
+"observed activities can be proportionally replicated; under variable returns"
+" to scale, comparisons remain within a convex scale range represented by the"
+" data. The choice can change both $Q_y$ and $Q_x$, especially when "
+"organizations operate at very different sizes. Returns to scale is therefore"
+" part of the economic specification, not an afterthought."
+msgstr ""
+"数量指数继承构造 $\\mathcal T^t$ 与 $\\mathcal T^{t+1}$ "
+"的全部实质选择。规模报酬不变时，观测活动可以同比例复制；规模报酬可变时，比较局限于数据所代表的凸规模范围。特别当组织经营规模差异很大时，这一选择会同时改变"
+" $Q_y$ 与 $Q_x$。因此，规模报酬是经济设定的一部分，不是事后附加项。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:284
+#: 5c8db60b50b7443dba4d84f9f65674e9
+msgid ""
+"The reference population must also represent feasible comparison "
+"opportunities. A national teaching hospital, a rural clinic, and an "
+"outpatient center may not belong in one unrestricted technology. Changes in "
+"sample composition can move the quantity indexes even when an organization's"
+" own records do not change. Organizations must be matched by identity across"
+" the two periods, while observations that lack a match may still contain "
+"information relevant to a period's production possibilities. The study "
+"should distinguish the population receiving change estimates from the "
+"population allowed to define the benchmark."
+msgstr "参照总体也必须代表可行比较机会。全国性教学医院、乡村诊所与门诊中心未必适合放入同一个不受限制的技术。即使组织自身记录不变，样本构成变化也可能移动数量指数。接受变化估计的组织必须按身份跨期匹配；没有匹配的观测仍可能包含界定某期生产可能性所需的信息。研究应区分接受变化估计的总体和获准界定标杆的总体。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:293
+#: 860af80b2df64030a3321a4ef7661310
+msgid ""
+"Data definitions must be stable over time. A reported increase in treatments"
+" is not a genuine output quantity increase if coding coverage changed. "
+"Capital expenditure is not automatically a capital-service quantity, and "
+"headcount is not always an adequate measure of labor input. Quality changes "
+"require explicit representation rather than a verbal adjustment after "
+"estimation."
+msgstr "数据定义必须跨期稳定。如果编码覆盖范围改变，报告诊疗量上升就不是真实产出数量增长。资本支出不自动等于资本服务数量，员工人数也不总能充分度量劳动投入。质量变化应显式表示，不能在估计后用文字补充调整。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:299
+#: 5bf06bc5eeb542e2860630187dc310c5
+msgid ""
+"The account developed here uses desirable outputs. If pollution, "
+"complications, or other undesirable outcomes are central to the production "
+"question, their treatment requires an environmental technology with declared"
+" assumptions about joint production and disposability. They should not be "
+"inserted as ordinary desirable outputs merely to retain the same formula."
+msgstr "本章账户使用合意产出。若污染、并发症或其他非合意结果是生产问题的核心，就需要使用环境技术，并声明联合生产与可处置性假设。不能为了保留同一公式，把它们当作普通合意产出直接加入。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:305
+#: 7f173f9c847d4637a20c7098dd6885ea
+#, python-brace-format
+msgid ""
+"Finally, Hicks--Moorsteen is a quantity productivity index, not a "
+"profitability or welfare measure. It does not show whether output growth was"
+" valuable enough to justify its cost, whether an input mix minimized "
+"expenditure, or whether social benefits exceeded environmental harm. Prices,"
+" preferences, and policy objectives answer those questions. The aggregate-"
+"quantity interpretation should remain separate from them "
+"{cite:p}`odonnell2008quantity`. An organization can become more productive "
+"yet less profitable when output prices move against it or input prices rise;"
+" favorable price movements can likewise improve profitability without a "
+"physical productivity gain. In a quantity-price account, profitability "
+"change combines total-factor-productivity change with relative-price "
+"recovery. Hicks--Moorsteen supplies the quantity part of that management "
+"account, not the price part {cite:p}`odonnell2010profitability`."
+msgstr ""
+"最后，Hicks--Moorsteen "
+"是数量生产率指数，不是盈利能力或福利测度。它不能说明产出增长的价值是否足以补偿成本、投入组合是否使支出最小，也不能说明社会收益是否超过环境损害。这些问题要由价格、偏好和政策目标回答。综合数量解释必须与它们分开"
+" "
+"{cite:p}`odonnell2008quantity`。当产出价格不利变化或投入价格上涨时，组织可能生产率提高但盈利能力下降；有利价格变化也可能在没有实际生产率增益时改善盈利能力。在数量—价格账户中，盈利能力变化由全要素生产率变化与相对价格回收共同构成。Hicks"
+"--Moorsteen 提供这一管理账户的数量部分，而不是价格部分 {cite:p}`odonnell2010profitability`。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:317
+#: 61f29b69aee44c65be7effed28b2aeb6
+msgid "The production account to carry forward"
+msgstr "应当延续的生产账户"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:319
+#: 8bf2ae5ffbf94d3ab7edc95a4643d749
+#, python-brace-format
+msgid ""
+"A clear Hicks--Moorsteen report keeps three numbers together: $Q_y^{t,t+1}$,"
+" $Q_x^{t,t+1}$, and $HM^{t,t+1}$. It identifies the two period technologies,"
+" returns-to-scale assumption, input and output definitions, reference "
+"populations, and period pairing. It describes the result as a bilateral "
+"quantity account and does not promise circularity for a chain of adjacent "
+"comparisons."
+msgstr ""
+"清晰的 Hicks--Moorsteen 报告会把三个数值放在一起：$Q_y^{t,t+1}$、$Q_x^{t,t+1}$ 和 "
+"$HM^{t,t+1}$。报告应说明两个时期的技术、规模报酬假设、投入与产出定义、参照总体和时期配对，将结果表述为双边数量账户，并且不承诺相邻期链式比较具有循环一致性。"
+
+#: ../../chapters/04-productivity/17-hicks-moorsteen.md:325
+#: 7b44e06ab1fb40298a5c67d22d100eef
+msgid ""
+"The economic message is then simple without being simplistic. Output "
+"quantity may grow or contract; input quantity may grow or contract; "
+"productivity rises when the first changes more favorably than the second. "
+"The eight distance evaluations make that multidimensional comparison "
+"possible, but the conclusion remains a transparent ratio of aggregate "
+"outputs to aggregate inputs. That transparency is the reason to treat Hicks"
+"--Moorsteen as an independent total-factor-productivity family."
+msgstr ""
+"由此得到的经济信息简明却不简单：产出数量可以增加或收缩，投入数量也可以增加或收缩；当前者的变化比后者更有利时，生产率上升。八次距离评价使这种多维比较成为可能，但结论仍是透明的综合产出与综合投入之比。正是这种透明性，使"
+" Hicks--Moorsteen 应被视为一个独立的全要素生产率模型族。"
+

@@ -1,0 +1,39 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.ddf.joint_production",
+  "target": "environmental.ddf.weak_disposal.common_factor",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.legacy_weak_selector_compared_with_named_common_factor",
+      "arguments": {
+        "legacy_selector": "bad_output_directional_equality_only_with_exposed_rts",
+        "legacy_disposability_identity": "not_identified",
+        "named_technology": "crs_common_factor_fixed",
+        "matched_crs_numerical_special_case": "does_not_create_a_global_alias",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1006/jema.1997.0146",
+      "doi:10.1111/j.1467-8276.2005.00788.x"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental.py::test_common_factor_weak_disposal_is_a_crs_named_technology",
+      "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+    ]
+  }
+}

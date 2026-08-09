@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="680" viewBox="0 0 1180 680" role="img" aria-labelledby="title description">
+<title id="title">Radial and slack-based peer-replacement pressure</title>
+<desc id="description">A later radial leave-self-out reconstruction applies one common proportional pressure to the resource or service bundle. It is shown as a conceptual contrast and is not a released Andersen--Petersen recipe. Tone super-SBM first admits only strongly SBM-efficient leaders and then records separate replacement pressure for individual resources and services.</desc>
+<defs>
+  <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#176b73"/>
+  </marker>
+  <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L9,3 z" fill="#d97732"/>
+  </marker>
+</defs>
+<rect width="1180" height="680" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#24323d">
+  <text x="590" y="40" text-anchor="middle" font-size="27" font-weight="700">Two ways to ask whether peers can replace a leader</text>
+  <text x="590" y="69" text-anchor="middle" font-size="16" fill="#53646e">Both remove the focal row. They differ in who is eligible and how replacement pressure is counted.</text>
+
+  <rect x="120" y="96" width="264" height="66" rx="13" fill="#edf5f6" stroke="#176b73" stroke-width="2"/>
+  <text x="252" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#176b73">Ordinary performance check</text>
+  <text x="252" y="146" text-anchor="middle" font-size="14" fill="#53646e">Who is on the maintained frontier?</text>
+  <path d="M386 129 H470" stroke="#176b73" stroke-width="3" marker-end="url(#arrow-teal)"/>
+  <rect x="480" y="96" width="220" height="66" rx="13" fill="#173f4f"/>
+  <text x="590" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">Remove the focal row</text>
+  <text x="590" y="146" text-anchor="middle" font-size="14" fill="#ffffff">Can the remaining system replace it?</text>
+  <path d="M702 129 H786" stroke="#176b73" stroke-width="3" marker-end="url(#arrow-teal)"/>
+  <rect x="796" y="96" width="264" height="66" rx="13" fill="#fff4e9" stroke="#d97732" stroke-width="2"/>
+  <text x="928" y="122" text-anchor="middle" font-size="17" font-weight="700" fill="#b65c20">Tone adds a stricter gate</text>
+  <text x="928" y="146" text-anchor="middle" font-size="14" fill="#53646e">Only strongly SBM-efficient rows continue</text>
+
+  <rect x="38" y="190" width="530" height="388" rx="18" fill="#f2f8f8" stroke="#176b73" stroke-width="2"/>
+  <circle cx="78" cy="230" r="21" fill="#176b73"/>
+  <text x="78" y="237" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">A</text>
+  <text x="112" y="229" font-size="22" font-weight="700" fill="#176b73">Later radial reconstruction</text>
+  <text x="112" y="253" font-size="15" fill="#53646e">One common proportion for the protected bundle</text>
+
+  <text x="72" y="300" font-size="14" font-weight="700" fill="#53646e">INPUT-ORIENTED REPLACEMENT EXAMPLE</text>
+  <text x="72" y="332" font-size="16">Protect the leader’s service commitments.</text>
+
+  <text x="72" y="379" font-size="16" font-weight="700">Staff</text>
+  <rect x="178" y="358" width="250" height="28" rx="7" fill="#d8e7e9"/>
+  <rect x="178" y="358" width="208" height="28" rx="7" fill="#176b73"/>
+  <rect x="386" y="358" width="42" height="28" rx="4" fill="#76a4b1"/>
+  <text x="448" y="379" font-size="16" font-weight="700" fill="#176b73">× 1.20</text>
+
+  <text x="72" y="429" font-size="16" font-weight="700">Facilities</text>
+  <rect x="178" y="408" width="250" height="28" rx="7" fill="#d8e7e9"/>
+  <rect x="178" y="408" width="208" height="28" rx="7" fill="#176b73"/>
+  <rect x="386" y="408" width="42" height="28" rx="4" fill="#76a4b1"/>
+  <text x="448" y="429" font-size="16" font-weight="700" fill="#176b73">× 1.20</text>
+
+  <rect x="72" y="473" width="450" height="74" rx="12" fill="#176b73"/>
+  <text x="297" y="501" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">Common-proportion replacement pressure</text>
+  <text x="297" y="526" text-anchor="middle" font-size="15" fill="#ffffff">“How much must the whole resource bundle scale?”</text>
+
+  <rect x="612" y="190" width="530" height="388" rx="18" fill="#fff8f1" stroke="#d97732" stroke-width="2"/>
+  <circle cx="652" cy="230" r="21" fill="#d97732"/>
+  <text x="652" y="237" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">B</text>
+  <text x="686" y="229" font-size="22" font-weight="700" fill="#b65c20">Tone super-SBM</text>
+  <text x="686" y="253" font-size="15" fill="#53646e">Separate pressure for each resource and service</text>
+
+  <text x="646" y="300" font-size="14" font-weight="700" fill="#53646e">NON-ORIENTED REPLACEMENT EXAMPLE</text>
+  <text x="646" y="332" font-size="16">Let the evidence reveal where replacement is difficult.</text>
+
+  <text x="646" y="378" font-size="16" font-weight="700">Staff</text>
+  <rect x="754" y="357" width="250" height="28" rx="7" fill="#f0ded0"/>
+  <rect x="754" y="357" width="179" height="28" rx="7" fill="#d97732"/>
+  <rect x="933" y="357" width="71" height="28" rx="4" fill="#e4a16e"/>
+  <text x="1024" y="378" font-size="16" font-weight="700" fill="#b65c20">× 1.40</text>
+
+  <text x="646" y="423" font-size="16" font-weight="700">Facilities</text>
+  <rect x="754" y="402" width="250" height="28" rx="7" fill="#f0ded0"/>
+  <rect x="754" y="402" width="250" height="28" rx="7" fill="#d97732"/>
+  <text x="1024" y="423" font-size="16" font-weight="700" fill="#b65c20">× 1.00</text>
+
+  <text x="646" y="468" font-size="16" font-weight="700">Services</text>
+  <rect x="754" y="447" width="250" height="28" rx="7" fill="#eadff0"/>
+  <rect x="754" y="447" width="225" height="28" rx="7" fill="#76528f"/>
+  <text x="1024" y="468" font-size="16" font-weight="700" fill="#76528f">× 0.90</text>
+
+  <rect x="646" y="495" width="450" height="52" rx="12" fill="#d97732"/>
+  <text x="871" y="518" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">Item-specific replacement pressure</text>
+  <text x="871" y="539" text-anchor="middle" font-size="14" fill="#ffffff">“Which resources or services make this leader hard to replace?”</text>
+
+  <rect x="104" y="607" width="972" height="50" rx="13" fill="#173f4f"/>
+  <text x="590" y="629" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">A score above one ranks peer-replacement exposure—not percentage efficiency.</text>
+  <text x="590" y="648" text-anchor="middle" font-size="14" fill="#ffffff">Only Tone’s source-qualified programme is a public recipe in this edition.</text>
+</g>
+</svg>

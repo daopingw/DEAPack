@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.mpss.banker_1984",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "scale",
+  "title": "Banker fixed-mix most productive scale size",
+  "decision_question": "Holding the evaluated organization's input and output proportions fixed, which technically attainable operating-size interval maximizes service scale relative to resource scale?",
+  "names": {
+    "display": "Banker fixed-mix most productive scale size",
+    "historical": [
+      {
+        "label": "Most productive scale size",
+        "spellings": [
+          "MPSS",
+          "most productive scale size"
+        ],
+        "sources": [
+          "doi:10.1016/0377-2217(84)90006-7"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": null,
+      "aliases": []
+    },
+    "spellings": [
+      "Banker MPSS",
+      "fixed-mix MPSS",
+      "most productive scale size"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "locate_technically_most_productive_scale",
+        "decision_horizon": "long_run_technical_benchmark"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs_with_crs_scale_envelope",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "fixed_mix_average_productivity",
+        "mix_policy": "observed_input_and_output_proportions",
+        "native_result": "maximum_productivity_ratio_and_mpss_interval"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "banker_fixed_mix_global_ratio",
+        "computational_normalization": "output_crs_charnes_cooper",
+        "orientation_parameter": "not_applicable",
+        "endpoint_rule": "fixed_optimum_crs_intensity_sum_extrema",
+        "pareto_completion": "not_claimed",
+        "endpoint_peer_uniqueness": "not_assessed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "most_productive_scale_size",
+        "scope": "global_along_observed_mix",
+        "target_set": "smallest_to_largest_mpss",
+        "distinguished_from": [
+          "capacity",
+          "local_returns_to_scale",
+          "scale_efficiency",
+          "scale_elasticity"
+        ]
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "prototype",
+    "api": "none"
+  },
+  "implementation": {
+    "module": "deapack.analysis.mpss",
+    "canonical_symbol": "most_productive_scale_size",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "fixed_optimum_endpoint_programs",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "maximum_productivity_ratio",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology"
+          ]
+        }
+      },
+      {
+        "id": "crs_output_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "attains_maximum_average_productivity",
+      "current_scale_position",
+      "endpoint_solver_statuses",
+      "largest_mpss_proportional_plan",
+      "maximum_productivity_ratio_status",
+      "mpss_scale_interval_uniqueness",
+      "mpss_scale_target_uniqueness",
+      "normalized_vrs_endpoint_weights",
+      "raw_crs_endpoint_intensities",
+      "reference_self_inclusion_status",
+      "smallest_mpss_proportional_plan"
+    ],
+    "transformations": [
+      "alpha_equals_inverse_crs_intensity_sum",
+      "beta_equals_maximum_productivity_ratio_over_crs_intensity_sum",
+      "crs_output_efficiency_equals_inverse_maximum_productivity_ratio",
+      "normalized_vrs_weight_equals_crs_intensity_over_intensity_sum"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_and_fixed_mix_policy"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "mix_preserving_proportional_plans_are_attainable_under_the_declared_convex_free_disposal_reference_technology_after_all_three_programs_resolve",
+      "efficiency": "maximizes_fixed_mix_average_productivity_without_a_pareto_koopmans_completion_claim",
+      "selection": "smallest_and_largest_scale_endpoints_are_identified_but_endpoint_peer_mixtures_are_solver_selected_and_not_asserted_unique",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.resolved_intensity_sum_endpoints",
+        "condition.matched_reference_across_primary_and_endpoints"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "review_supported",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0377-2217(84)90006-7"
+      },
+      {
+        "role": "implementation",
+        "id": "https://media.economics.uconn.edu/working/2010-07.pdf"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1057/palgrave.jors.2600893"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/0377-2217(95)00044-5"
+      }
+    ],
+    "oracle": {
+      "status": "candidate",
+      "locators": [
+        "release_disposition=deferred_to_next_version; defining full text was not obtained in the audited environment; source boundary and reopening requirements: specs/source_protocols/banker_1984_mpss.md",
+        "A--E exact check derived analytically from source production-set data; the MPSS values are not transcribed from a published output table",
+        "Førsund--Hjalmarsson seven-DMU exact check is derived property evidence whose source provenance has not yet been frozen",
+        "Internal tests exercise the prototype implementation and are not an independent source-native numerical oracle",
+        "tests/test_mpss.py::test_banker_fixed_mix_oracle_recovers_smallest_and_largest_mpss",
+        "tests/test_mpss.py::test_unique_mpss_is_distinguished_from_peer_uniqueness"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alias_identity",
+        "derived_exact_checks",
+        "endpoint_interval_and_targets",
+        "external_reference_policy",
+        "failure",
+        "fixed_mix_contract",
+        "multi_input_multi_output_feasibility",
+        "panel_reference_policy",
+        "three_solve_workload",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_mpss.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_mpss.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.mpss",
+        "path": "docs/analysis/mpss.md",
+        "state": "present",
+        "role": "analysis"
+      }
+    ]
+  }
+}

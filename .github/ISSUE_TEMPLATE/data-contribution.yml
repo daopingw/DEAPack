@@ -1,0 +1,57 @@
+name: Dataset or teaching-fixture proposal
+description: Propose project-created, source-derived, or external data without assuming redistribution rights.
+title: "[Data]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        No current dataset is cleared merely by appearing in the repository. Wholly project-created data may use CC-BY-4.0 only after origin, authority, attribution, and exact content are approved and mapped. External or source-derived data follow their own terms.
+  - type: input
+    id: dataset_id
+    attributes:
+      label: Proposed dataset ID
+      description: Give a stable, descriptive identifier; this does not reserve or approve it.
+    validations:
+      required: true
+  - type: dropdown
+    id: origin
+    attributes:
+      label: Origin classification
+      options:
+        - Wholly project-created synthetic or theoretical data
+        - Source-derived theoretical fixture
+        - Published numerical reproduction
+        - External open dataset
+        - Origin not yet established
+    validations:
+      required: true
+  - type: textarea
+    id: recipe
+    attributes:
+      label: Origin and construction recipe
+      description: Identify who created the values, how they were generated or transformed, and every source used. Do not infer authorship from Git history.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Licensing authority and evidence
+      description: State the factual rightsholder, your authority to contribute, the exact upstream license or permission, and any employment or co-owner clearance. It is acceptable to say this is pending.
+    validations:
+      required: true
+  - type: textarea
+    id: attribution
+    attributes:
+      label: Attribution, citation, and notices
+      description: Supply required credit, source links, recommended citation, modification statement, and the license or permission notice that would need to ship.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Rights checks
+      options:
+        - label: I have not treated citation, public readability, or inclusion in an article as redistribution permission.
+          required: true
+        - label: I understand that CC-BY-4.0 is only a conditional default for confirmed project-created content and is not yet an active mapping for this proposal.
+          required: true

@@ -1,0 +1,425 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "heterogeneity.metafrontier.radial.odonnell_rao_battese_2008",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "heterogeneity",
+  "title": "O'Donnell--Rao--Battese radial DEA metafrontier",
+  "decision_question": "How much of an organization's shortfall is performance relative to the opportunities available within its declared group, and how close is that group's opportunity frontier to the broader opportunity set represented by all declared groups?",
+  "names": {
+    "display": "O'Donnell--Rao--Battese radial DEA metafrontier",
+    "historical": [
+      {
+        "label": "Metafrontier framework",
+        "spellings": [
+          "DEA metafrontier"
+        ],
+        "sources": [
+          "doi:10.1007/s00181-007-0119-4"
+        ]
+      },
+      {
+        "label": "Metatechnology ratio",
+        "spellings": [
+          "MTR",
+          "technology gap ratio",
+          "TGR"
+        ],
+        "sources": [
+          "doi:10.1007/s00181-007-0119-4"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RadialMetafrontierDEA",
+      "aliases": [
+        {
+          "symbol": "MetafrontierDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "radial DEA metafrontier",
+      "group and metafrontier radial DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "separate_within_group_operating_performance_from_opportunity_proximity",
+        "group_assignment": "declared_ex_ante",
+        "causal_interpretation": "not_identified"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "group": "exactly_one_declared_group_per_observation",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.metafrontier.nonnegative_positive_aggregates",
+        "domain.metafrontier.at_least_two_nonempty_groups",
+        "condition.metafrontier.common_mission_and_quantity_meanings"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "group_and_meta_rts": "matched",
+        "meta_construction": {
+          "vrs": "pooled_convex",
+          "crs": "pooled_conic"
+        },
+        "nonconvex_union": "non_equivalent_and_unsupported"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "matched_group_and_pooled_radial_dea"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "matched_group_and_pooled_meta",
+        "comparison_population": {
+          "group_frontier": "same_declared_group",
+          "metafrontier": "all_declared_groups",
+          "self_membership": "allowed_at_both_levels"
+        },
+        "temporal_information_set": {
+          "policy": "all_study_periods_pooled_at_both_levels",
+          "availability_cutoff": "full_declared_study_sample",
+          "vintage_required": true,
+          "historical_revision": "same_vintage_at_both_levels"
+        }
+      },
+      "exposed": [
+        "group_labels"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_metafrontier_efficiency",
+        "canonical_ratio": "metatechnology_ratio",
+        "canonical_abbreviation": "MTR",
+        "aliases": {
+          "technology_gap_ratio": "metatechnology_ratio",
+          "TGR": "MTR"
+        },
+        "reconstruction_identity": "metafrontier_efficiency_equals_group_efficiency_times_metatechnology_ratio"
+      },
+      "defaults": {
+        "orientation": "output"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_group_and_meta_self_appraisal",
+        "failure_policy": "componentwise_fail_closed"
+      },
+      "defaults": {
+        "slack_completion": false,
+        "secondary_objective": "none"
+      },
+      "exposed": [
+        "slack_completion"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "multiplicative_group_meta_decomposition",
+        "within_group_efficiency_meaning": "operating_performance_relative_to_opportunities_available_within_the_declared_group",
+        "metatechnology_ratio_meaning": "proximity_of_the_declared_group_frontier_to_the_broader_meta_opportunity_frontier_at_the_evaluated_mix",
+        "causal_interpretation": "not_identified",
+        "reconstruction_identity": "metafrontier_efficiency_equals_group_efficiency_times_metatechnology_ratio"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.analysis.metafrontier",
+    "canonical_symbol": "RadialMetafrontierDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.radial",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "matched_group_meta_orchestration",
+      "pooled_convex_vrs_metafrontier",
+      "pooled_conic_crs_metafrontier",
+      "optional_lexicographic_slack_completion",
+      "componentwise_failure_certificates",
+      "componentwise_claim_validity_and_status",
+      "metadata_derived_exact_solver_call_ledger",
+      "zero_extra_solve_certification"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "group_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.metafrontier.certified_self_inclusive_group_solve"
+          ]
+        }
+      },
+      {
+        "id": "metafrontier_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.metafrontier.certified_self_inclusive_meta_solve"
+          ]
+        }
+      },
+      {
+        "id": "metatechnology_ratio",
+        "direction": "higher_is_closer",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.metafrontier.certified_nested_matched_solves"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "group_efficiency",
+      "metafrontier_efficiency",
+      "metatechnology_ratio",
+      "score_valid",
+      "score_status",
+      "group_radial_factor",
+      "metafrontier_radial_factor",
+      "group_targets",
+      "metafrontier_targets",
+      "group_peers",
+      "metafrontier_peers",
+      "group_solver_status",
+      "metafrontier_solver_status",
+      "solver_status",
+      "group_backend_solver_status",
+      "group_raw_solver_status",
+      "metafrontier_backend_solver_status",
+      "metafrontier_raw_solver_status",
+      "meta_backend_solver_status",
+      "meta_raw_solver_status",
+      "group_score_valid",
+      "group_score_status",
+      "metafrontier_score_valid",
+      "metafrontier_score_status",
+      "meta_score_valid",
+      "meta_score_status",
+      "group_completion_valid",
+      "group_completion_status",
+      "metafrontier_completion_valid",
+      "metafrontier_completion_status",
+      "meta_completion_valid",
+      "meta_completion_status",
+      "group_target_valid",
+      "group_target_status",
+      "metafrontier_target_valid",
+      "metafrontier_target_status",
+      "meta_target_valid",
+      "meta_target_status",
+      "group_peer_valid",
+      "group_peer_status",
+      "metafrontier_peer_valid",
+      "metafrontier_peer_status",
+      "meta_peer_valid",
+      "meta_peer_status",
+      "group_dual_valid",
+      "group_dual_status",
+      "metafrontier_dual_valid",
+      "metafrontier_dual_status",
+      "meta_dual_valid",
+      "meta_dual_status",
+      "reconstruction_residual",
+      "nesting_violation",
+      "decomposition_certified",
+      "metadata_derived_solver_call_ledger",
+      "zero_extra_solve_certificate"
+    ],
+    "transformations": [
+      "metafrontier_efficiency_equals_group_efficiency_times_metatechnology_ratio",
+      "technology_gap_ratio_and_tgr_are_exact_aliases_of_metatechnology_ratio",
+      "output_efficiency_equals_one_over_phi",
+      "input_efficiency_equals_theta"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.metafrontier.nonnegative_positive_aggregates",
+        "domain.metafrontier.at_least_two_nonempty_groups",
+        "condition.metafrontier.common_mission_and_quantity_meanings",
+        "condition.metafrontier.matched_group_meta_profiles"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling_common_across_groups",
+        "co_transform": [],
+        "conditions": []
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "certified_separately_by_optimal_group_and_meta_solves",
+      "efficiency": "radial_or_conditional_strong_after_slack_completion_at_each_level",
+      "selection": "group_and_meta_accounts_are_solver_selected_independently",
+      "conditions": [
+        "condition.metafrontier.optimal_group_and_meta_primary_solves",
+        "condition.metafrontier.successful_requested_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s00181-007-0119-4"
+      },
+      {
+        "role": "implementation",
+        "id": "specs/source_protocols/odonnell_rao_battese_2008_metafrontier.md"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "tests/test_metafrontier.py::test_exact_six_dmu_oracle_and_independent_equation_compiler",
+        "tests/test_metafrontier.py::test_public_alias_defaults_and_source_scalar_checkpoint"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_score_and_identity_oracle",
+        "component_failure_closure",
+        "component_primary_score_certificate_propagation",
+        "component_score_completion_target_peer_and_dual_gate_propagation",
+        "component_backend_and_raw_status_preservation",
+        "completion_and_target_validity_propagation",
+        "crs_input_output_equivalence",
+        "ex_ante_group_domain",
+        "independent_direct_lp_compiler",
+        "matched_group_meta_target_and_peer_accounts",
+        "metadata_derived_exact_solver_call_account",
+        "panel_pooling_policy",
+        "pooled_convex_and_conic_metadata",
+        "score_aliases",
+        "source_scalar_checkpoint",
+        "strictly_positive_tiny_efficiency_and_mtr_preservation",
+        "identical_group_frontiers_unit_mtr",
+        "symmetric_group_and_meta_component_failure_closure",
+        "mixed_unit_extreme_scale_certification",
+        "zero_extra_solve_certification",
+        "unit_and_row_order_invariance"
+      ],
+      "locators": [
+        "tests/test_metafrontier.py",
+        "tests/test_metafrontier.py::test_failed_meta_and_ratio_certificates_exclude_even_finite_stale_values"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_metafrontier.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.heterogeneity.metafrontier",
+        "path": "book/chapters/07-heterogeneity/23-metafrontier.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.metafrontier",
+        "path": "docs/analysis/metafrontier.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,432 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.multiplicative",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "Charnes--Cooper--Seiford--Stutz multiplicative DEA",
+  "decision_question": "How far is an organization's resource-and-service mix from a piecewise multiplicative best-practice boundary when proportional excesses and shortfalls are valued through strictly positive exponents?",
+  "names": {
+    "display": "Multiplicative DEA",
+    "historical": [
+      {
+        "label": "C2S2 multiplicative model",
+        "spellings": [
+          "C²S² multiplicative model",
+          "original multiplicative efficiency model"
+        ],
+        "sources": [
+          "doi:10.1016/0038-0121(82)90029-5"
+        ]
+      },
+      {
+        "label": "Invariant multiplicative efficiency",
+        "spellings": [
+          "piecewise Cobb-Douglas envelopment",
+          "unit-invariant multiplicative DEA"
+        ],
+        "sources": [
+          "doi:10.1016/0167-6377(83)90014-7"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "MultiplicativeDEA",
+      "aliases": [
+        {
+          "symbol": "C2S2MultiplicativeDEA"
+        },
+        {
+          "symbol": "InvariantMultiplicativeDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "multiplicative efficiency analysis",
+      "log-conic DEA",
+      "log-convex DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "managerial_plan": "joint_proportional_resource_saving_and_service_expansion_account"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_controllable_resources",
+        "outputs": "strictly_positive_desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.multiplicative.strictly_positive",
+        "condition.multiplicative.original_1982.strictly_greater_than_one"
+      ]
+    },
+    "technology": {
+      "defaults": {
+        "variant": "invariant_1983",
+        "returns_to_scale_label": "log_convex"
+      },
+      "exposed": [
+        "variant"
+      ],
+      "fixed": {
+        "quantity_space": "logarithmic",
+        "ordinary_crs_vrs_labels": "not_applicable",
+        "disposal": "source_log_slack_envelopment",
+        "original_1982": "log_conic_without_convexity_identity",
+        "invariant_1983": "log_convex_with_sum_lambda_equals_one"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.multiplicative.source_profile.global_cross_section"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "multiplicative_efficiency",
+        "orientation": "non_oriented",
+        "native_distance": "log_inefficiency",
+        "native_score": "multiplicative_efficiency"
+      },
+      "defaults": {
+        "exponent_floor": 1.0
+      },
+      "exposed": [
+        "exponent_floor"
+      ],
+      "constraints": [
+        "condition.multiplicative.original_1982.exponent_floor_equals_one",
+        "condition.multiplicative.invariant_1983.exponent_floor_positive"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "multiplicative_virtual_exponents",
+        "lower_bound": "common_positive_exponent_floor"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "target_selection": "solver_selected_optimal_log_plan"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.multiplicative",
+    "canonical_symbol": "MultiplicativeDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "immutable_sparse_log_space_template",
+      "log_coordinate_anchoring_for_invariant_variant",
+      "postsolve_primal_and_multiplier_certification",
+      "safe_original_unit_target_reconstruction",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "multiplicative_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_certified_solve"
+          ]
+        }
+      },
+      {
+        "id": "log_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_certified_solve"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_log_slacks",
+      "output_log_slacks",
+      "original_unit_quantity_changes",
+      "original_unit_targets",
+      "log_targets",
+      "peer_intensities",
+      "multiplicative_exponents",
+      "invariant_variant_log_intercept"
+    ],
+    "transformations": [
+      "multiplicative_efficiency_equals_exp_negative_log_inefficiency",
+      "invariant_delta_score_equals_delta_one_score_to_power_delta",
+      "invariant_targets_equal_peer_weighted_geometric_means"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.multiplicative.strictly_positive",
+        "condition.multiplicative.original_1982.strictly_greater_than_one",
+        "condition.multiplicative.no_undesirable_outputs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_coordinate_rescaling_supported_only_by_invariant_1983",
+        "co_transform": [
+          "original_unit_targets",
+          "original_unit_quantity_changes"
+        ],
+        "conditions": [
+          "condition.multiplicative.variant.invariant_1983"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "ordinary_additive_translation_of_positive_quantities_changes_the_maintained_log_technology",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_in_the_source_log_technology_after_an_optimal_certified_solve",
+      "efficiency": "all_source_log_slacks_are_zero_if_and_only_if_the_evaluated_plan_is_multiplicatively_efficient",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_certified_solve",
+        "condition.multiplicative.source_domain"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0038-0121(82)90029-5"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0167-6377(83)90014-7"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/source_protocols/charnes_etal_1982_1983_multiplicative.md",
+        "specs/oracles/multiplicative-analytical.md",
+        "tests/test_multiplicative_source_oracle.py::test_exact_two_dmu_source_variants"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/multiplicative-analytical.md",
+        "public_api_test_locator": "tests/test_multiplicative_source_oracle.py::test_exact_two_dmu_source_variants",
+        "claims": [
+          {
+            "claim_id": "multiplicative.exact_two_dmu_source_variants",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_multiplicative_source_oracle.py::test_exact_two_dmu_source_variants"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "log_conic_original_1982",
+                "log_convex_invariant_1983"
+              ],
+              "valuation_policy": [
+                "common_exponent_floor_one_and_invariant_power_two"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "multiplicative.invariant_1983_b",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "efficiency": "1/2",
+                    "log_inefficiency": "log(2)",
+                    "input_log_slack": "log(2)",
+                    "output_log_slack": 0,
+                    "target": "2;4",
+                    "peer_a_intensity": 1
+                  }
+                },
+                {
+                  "case_id": "multiplicative.original_1982_b",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "efficiency": "1/4",
+                    "log_inefficiency": "2log(2)",
+                    "input_log_slack": 0,
+                    "output_log_slack": "2log(2)",
+                    "target": "4;16",
+                    "peer_a_intensity": 2
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "multiplicative_efficiency",
+              "log_inefficiency",
+              "log_slacks",
+              "targets",
+              "peer_intensities",
+              "multipliers",
+              "source_profile_metadata"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytical_optimality_certificate",
+        "corrupted_incumbent_fail_closed",
+        "exponent_floor_float_range_fail_closed",
+        "exponent_floor_power_convention",
+        "geometric_and_log_conic_target_reconstruction",
+        "independent_dense_source_compiler",
+        "log_target_overflow_preserves_native_solution",
+        "malformed_marginals_withheld",
+        "multiplier_coordinate_restoration_and_certificate",
+        "one_click_performance_visualization_contract",
+        "panel_and_reference_extension_disclosure",
+        "source_configuration_boundary",
+        "sparse_template_immutability",
+        "strict_positive_and_greater_than_one_domains",
+        "unit_invariance_and_noninvariance"
+      ],
+      "locators": [
+        "tests/test_multiplicative.py",
+        "tests/test_multiplicative_source_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.multiplicative",
+        "path": "docs/models/multiplicative.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

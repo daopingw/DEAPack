@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "deapack-release-benchmarks",
+  "description": "Frozen deterministic smoke and release workloads for every maintained benchmark script.",
+  "cases": [
+    {
+      "id": "bam",
+      "script": "benchmarks/benchmark_bam.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--rts", "vrs"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100", "--rts", "all"], "timeout_seconds": 600}
+    },
+    {
+      "id": "classical-foundations",
+      "script": "benchmarks/benchmark_classical_foundations.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--method", "all", "--orientation", "input", "--score-only", "--chunk-size", "32"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "50", "--method", "all", "--orientation", "input", "--chunk-size", "256"], "timeout_seconds": 900}
+    },
+    {
+      "id": "core-peer-eligibility",
+      "script": "benchmarks/benchmark_core_peer_eligibility.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "24", "--eligibility-cohorts", "4"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000", "--eligibility-cohorts", "20"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "cross-appraisal",
+      "script": "benchmarks/benchmark_cross_appraisal.py",
+      "blocking": true,
+      "smoke": {"args": ["--ordinary-n", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--ordinary-n", "100"], "timeout_seconds": 900}
+    },
+    {
+      "id": "directional-scale-elasticity",
+      "script": "benchmarks/benchmark_directional_scale_elasticity.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--projection-orientation", "input"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100", "--projection-orientation", "both"], "timeout_seconds": 900}
+    },
+    {
+      "id": "directional-super-efficiency",
+      "script": "benchmarks/benchmark_directional_super_efficiency.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100"], "timeout_seconds": 600}
+    },
+    {
+      "id": "dynamic-network-sbm",
+      "script": "benchmarks/benchmark_dynamic_network_sbm.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--periods", "3", "--orientation", "input", "--returns-to-scale", "vrs"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--periods", "4", "--orientation", "all", "--returns-to-scale", "mixed"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "dynamic-sbm",
+      "script": "benchmarks/benchmark_dynamic_sbm.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--periods", "3", "--orientation", "input", "--returns-to-scale", "vrs", "--score-variant", "base"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000", "--periods", "4", "--orientation", "all", "--returns-to-scale", "vrs", "--score-variant", "base"], "timeout_seconds": 3600}
+    },
+    {
+      "id": "ebm",
+      "script": "benchmarks/benchmark_ebm.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "economic-allocative",
+      "script": "benchmarks/benchmark_economic_allocative.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--prices", "common", "--objective", "both", "--mode", "all"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--prices", "common", "--objective", "both", "--mode", "all"], "timeout_seconds": 900}
+    },
+    {
+      "id": "environmental-foundations",
+      "script": "benchmarks/benchmark_environmental_foundations.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--method", "all", "--ddf-mode", "score"], "timeout_seconds": 300},
+      "release": {"args": ["--n-dmus", "100", "--method", "all", "--ddf-mode", "both"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "environmental-peer-eligibility",
+      "script": "benchmarks/benchmark_environmental_foundations.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--method", "peer-eligibility", "--peer-eligibility-cohorts", "4"], "timeout_seconds": 300},
+      "release": {"args": ["--n-dmus", "100", "--method", "peer-eligibility", "--peer-eligibility-cohorts", "20"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "environmental-network",
+      "script": "benchmarks/benchmark_environmental_network.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--returns-to-scale", "vrs"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "500", "--returns-to-scale", "vrs"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "environmental-productivity",
+      "script": "benchmarks/benchmark_environmental_productivity.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--periods", "3", "--operator", "all", "--include-gml-all-pairs"], "timeout_seconds": 300},
+      "release": {"args": ["--n-dmus", "100", "--periods", "4", "--operator", "all", "--include-gml-all-pairs"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "fch",
+      "script": "benchmarks/benchmark_fch.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--orientation", "both"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "20", "--orientation", "both", "--full"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "frh",
+      "script": "benchmarks/benchmark_frh.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--orientation", "both"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "16", "--orientation", "both", "--full"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "generalized-distance",
+      "script": "benchmarks/benchmark_generalized_distance.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--alpha", "0.5", "--rts", "crs", "--search-tolerance", "1e-7"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--alpha", "0.5", "--rts", "both", "--search-tolerance", "1e-7"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "hicks-moorsteen",
+      "script": "benchmarks/benchmark_hicks_moorsteen.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--returns-to-scale", "crs"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--returns-to-scale", "crs"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "local-rts",
+      "script": "benchmarks/benchmark_local_rts.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "--operator", "local-rts"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--orientation", "both", "--operator", "local-rts"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "scale-elasticity",
+      "script": "benchmarks/benchmark_local_rts.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "--operator", "scale-elasticity"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--orientation", "both", "--operator", "scale-elasticity"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "metafrontier",
+      "script": "benchmarks/benchmark_metafrontier.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "20", "--n-groups", "4"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000", "--n-groups", "10"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "mpss-prototype",
+      "script": "benchmarks/benchmark_mpss.py",
+      "blocking": false,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100"], "timeout_seconds": 600}
+    },
+    {
+      "id": "multiperiod-aggregative",
+      "script": "benchmarks/benchmark_multiperiod_aggregative.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "8", "--n-periods", "3", "--orientation", "output", "--returns-to-scale", "vrs"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--n-periods", "4", "--orientation", "output", "--returns-to-scale", "vrs"], "timeout_seconds": 900}
+    },
+    {
+      "id": "network-additive",
+      "script": "benchmarks/benchmark_network_additive.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--returns-to-scale", "crs", "--decomposition", "both_priorities", "--projection", "none"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--returns-to-scale", "crs", "--decomposition", "both_priorities", "--projection", "source"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "network-general-additive",
+      "script": "benchmarks/benchmark_network_general_additive.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "network-radial",
+      "script": "benchmarks/benchmark_network_radial.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "--returns-to-scale", "crs"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000", "--orientation", "input", "--returns-to-scale", "crs"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "network-relational",
+      "script": "benchmarks/benchmark_network_relational.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--decomposition", "maximize_stage_1", "--projection", "none"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000", "--decomposition", "maximize_stage_1", "--projection", "source_midpoint"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "network-sbm",
+      "script": "benchmarks/benchmark_network_sbm.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "--link-policy", "free"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--orientation", "all", "--link-policy", "all"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "network-sequential",
+      "script": "benchmarks/benchmark_network_sequential.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "output", "--returns-to-scale", "crs"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "100", "--orientation", "output", "--returns-to-scale", "crs"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "physical-capacity-prototype",
+      "script": "benchmarks/benchmark_physical_capacity.py",
+      "blocking": false,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100"], "timeout_seconds": 600}
+    },
+    {
+      "id": "polyhedral-cone-ratio",
+      "script": "benchmarks/benchmark_polyhedral_cone_ratio.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "productivity-operators",
+      "script": "benchmarks/benchmark_productivity_operators.py",
+      "blocking": true,
+      "smoke": {"args": ["--operator", "all", "--n-dmus", "8", "--periods", "3", "--include-global-all-pairs"], "timeout_seconds": 300},
+      "release": {"args": ["--operator", "all", "--n-dmus", "100", "--periods", "4", "--include-global-all-pairs"], "timeout_seconds": 2400}
+    },
+    {
+      "id": "profit",
+      "script": "benchmarks/benchmark_profit.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--mode", "both"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000", "--mode", "both", "--full"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "profitability",
+      "script": "benchmarks/benchmark_profitability.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--price-scope", "common", "--returns-to-scale", "crs"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000", "--price-scope", "common", "--returns-to-scale", "crs"], "timeout_seconds": 600}
+    },
+    {
+      "id": "profitability-decomposition",
+      "script": "benchmarks/benchmark_profitability_decomposition.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "50", "--prices", "common"], "timeout_seconds": 300},
+      "release": {"args": ["--n-dmus", "100", "--prices", "both"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "radial",
+      "script": "benchmarks/benchmark_radial.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000", "--full"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "radial-peer-eligibility",
+      "script": "benchmarks/benchmark_radial.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "24", "--eligibility-cohorts", "4"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "1000", "--eligibility-cohorts", "20"], "timeout_seconds": 900}
+    },
+    {
+      "id": "range-directional",
+      "script": "benchmarks/benchmark_range_directional.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "20", "--orientation", "non-oriented"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "200", "--orientation", "non-oriented"], "timeout_seconds": 900}
+    },
+    {
+      "id": "reference-frequency",
+      "script": "benchmarks/benchmark_reference_frequency.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "100", "--peers-per-dmu", "8"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "5000", "--peers-per-dmu", "20"], "timeout_seconds": 600}
+    },
+    {
+      "id": "sbm-orientations",
+      "script": "benchmarks/benchmark_sbm_orientations.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "output", "non-oriented"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "1000", "--orientation", "input", "output", "non-oriented"], "timeout_seconds": 1800}
+    },
+    {
+      "id": "super-efficiency-prototype",
+      "script": "benchmarks/benchmark_super_efficiency.py",
+      "blocking": false,
+      "smoke": {"args": ["--n-dmus", "12", "--orientation", "input", "--returns-to-scale", "crs"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100", "--orientation", "input", "--returns-to-scale", "crs"], "timeout_seconds": 600}
+    },
+    {
+      "id": "super-sbm",
+      "script": "benchmarks/benchmark_super_sbm.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "20"], "timeout_seconds": 180},
+      "release": {"args": ["--n-dmus", "200"], "timeout_seconds": 1200}
+    },
+    {
+      "id": "zhou-ang-wang-non-chp",
+      "script": "benchmarks/benchmark_zhou_ang_wang_non_chp.py",
+      "blocking": true,
+      "smoke": {"args": ["--n-dmus", "12", "--account", "integrated_energy_carbon"], "timeout_seconds": 120},
+      "release": {"args": ["--n-dmus", "100", "--account", "integrated_energy_carbon", "--diagnose-multiplicity"], "timeout_seconds": 1200}
+    }
+  ]
+}

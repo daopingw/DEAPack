@@ -1,0 +1,44 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "static.radial.frh",
+  "target": "static.radial",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology",
+    "estimator",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_frh_and_crs_radial_programmes",
+      "arguments": {
+        "data_roles": "matched_nonnegative_desirable_output_data",
+        "comparison_population": "matched",
+        "temporal_information_set": "matched",
+        "orientation": "matched",
+        "disposal": "ordinary_free",
+        "returns_to_scale": "crs",
+        "frh_intensity_domain": "nonnegative_integer",
+        "crs_intensity_domain": "nonnegative_real",
+        "continuous_relaxation": "crs_is_the_lp_relaxation_of_the_matched_frh_programme",
+        "exact_alias_or_score_transform": false
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.omega.2008.08.003",
+      "doi:10.1016/0377-2217(78)90138-8"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_frh.py::test_analytic_check_orders_ccr_frh_and_fdh",
+      "tests/test_frh.py::test_fdh_frh_ccr_efficiency_nesting",
+      "tests/test_frh.py::test_official_benchmarking_input_oracle",
+      "tests/test_frh.py::test_official_benchmarking_output_oracle_and_score_convention"
+    ]
+  }
+}

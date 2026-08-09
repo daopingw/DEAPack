@@ -1,0 +1,47 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "dynamic.network_sbm.tone_tsutsui_2014",
+  "target": "network.sbm.tone_tsutsui_2009",
+  "type": "exact_reduction",
+  "equivalence_level": null,
+  "difference_axes": [
+    "graph",
+    "technology",
+    "reference"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.dynamic_network.single_period_reduction",
+      "arguments": {
+        "periods": 1,
+        "carryovers": 0,
+        "link_kinds": [
+          "all_free",
+          "all_fixed"
+        ],
+        "division_weights": "matched",
+        "returns_to_scale": "common_crs_or_vrs"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "registry_provisional",
+    "sources": [
+      "doi:10.1016/j.omega.2013.04.002",
+      "doi:10.1016/j.ejor.2008.05.027",
+      "doi:10.24545/00000978"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_dynamic_network_sbm_compiler.py::test_t1_reduces_exactly_to_tone_tsutsui_2009_network_compiler",
+      "tests/test_dynamic_network_sbm_project_case.py::test_t1_scores_reduce_to_tone_tsutsui_2009"
+    ]
+  }
+}

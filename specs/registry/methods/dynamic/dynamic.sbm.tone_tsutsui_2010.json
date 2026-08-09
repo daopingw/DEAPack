@@ -1,0 +1,431 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "dynamic.sbm.tone_tsutsui_2010",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "dynamic",
+  "title": "Tone--Tsutsui dynamic SBM",
+  "decision_question": "How much horizon-wide operating performance is lost through resource excesses, service shortfalls, and the intertemporal management of assets or liabilities carried from one period into the next?",
+  "names": {
+    "display": "Tone--Tsutsui dynamic SBM",
+    "historical": [
+      {
+        "label": "Dynamic slacks-based measure",
+        "spellings": [
+          "dynamic SBM",
+          "DSBM"
+        ],
+        "sources": [
+          "doi:10.1016/j.omega.2009.07.003"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ToneTsutsuiDynamicSBM",
+      "aliases": [
+        {
+          "symbol": "DynamicSBM"
+        }
+      ]
+    },
+    "spellings": [
+      "Tone-Tsutsui dynamic SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "intertemporal_operating_plan_performance",
+        "managerial_unit": "complete_organization_trajectory"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.dynamic_carryover"
+      ],
+      "fixed": {
+        "kind": "time_expanded_carryover_graph",
+        "adjacent_period_continuity": "same_transition_account_on_both_sides",
+        "trajectory_solved_jointly": true
+      },
+      "exposed": [
+        "carryover_roles",
+        "period_order"
+      ],
+      "constraints": [
+        "condition.dynamic.complete_balanced_trajectory",
+        "condition.dynamic.same_reference_membership_every_period"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_period_resources",
+        "nondiscretionary_inputs": "fixed_period_resource_accounts",
+        "outputs": "desirable_period_services",
+        "nondiscretionary_outputs": "fixed_period_service_accounts",
+        "good_carryovers": "future_capacity_or_benefit",
+        "bad_carryovers": "future_burden_or_liability",
+        "free_carryovers": "replannable_intertemporal_accounts",
+        "fixed_carryovers": "inherited_intertemporal_commitments"
+      },
+      "exposed": [
+        "variable_assignments"
+      ],
+      "constraints": [
+        "domain.dynamic_sbm.strictly_positive_observed_accounts"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "dynamic_carryover_portfolio_envelopment",
+        "period_specific_intensities": true,
+        "continuity": "Z_t_lambda_t_equals_Z_t_lambda_t_plus_1",
+        "boundary_policy": "tone_tsutsui_2010"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dynamic_dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global_complete_trajectory_cohort",
+        "comparison_population": {
+          "scope": "complete_eligible_trajectories",
+          "membership_rule": "same_membership_every_period",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "joint_full_horizon",
+          "availability_cutoff": "declared_horizon_end",
+          "vintage_required": true,
+          "historical_revision": "fixed_input_dataset"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "dynamic_slacks_based_measure",
+        "normalization": "evaluated_trajectory_period_accounts",
+        "aggregation": "orientation_specific_period_weighted_accounts"
+      },
+      "defaults": {
+        "orientation": "non_oriented",
+        "score_variant": "base"
+      },
+      "exposed": [
+        "orientation",
+        "score_variant"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "exogenous_relative_importance_weights",
+        "normalization": "source_dimension_and_period_sums",
+        "carryover_item_weights": "source_implicit_unit_weights"
+      },
+      "exposed": [
+        "period_weights",
+        "input_weights",
+        "output_weights"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_horizon_self_appraisal",
+        "period_accounts": "conditional_components_of_one_horizon_solution"
+      },
+      "defaults": {
+        "alternate_target_policy": "solver_selected",
+        "free_carryover_adjustment": "base_unscored"
+      },
+      "exposed": [
+        "free_carryover_adjustment"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_dynamic_fit_with_period_accounts"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.dynamic.tone_tsutsui_sbm",
+    "canonical_symbol": "ToneTsutsuiDynamicSBM",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.dynamic_carryover"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "source_compatible_charnes_cooper_transformation",
+      "sparse_block_linear_programming",
+      "compiled_trajectory_reference_reuse",
+      "period_specific_intensities",
+      "typed_carryover_continuity"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "overall_dynamic_sbm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.dynamic_sbm.strictly_positive_observed_accounts",
+            "condition.dynamic_sbm.valid_positive_weights"
+          ]
+        }
+      },
+      {
+        "id": "period_dynamic_sbm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.dynamic_sbm.strictly_positive_observed_accounts"
+          ]
+        }
+      },
+      {
+        "id": "free_carryover_adjusted_post_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.dynamic_sbm.free_carryover_present",
+            "condition.dynamic_sbm.selected_primary_optimum_disclosed"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "orientation",
+      "returns_to_scale",
+      "boundary_policy",
+      "carryover_roles",
+      "period_input_accounts",
+      "period_output_expansion_accounts",
+      "overall_input_account",
+      "overall_output_expansion_account",
+      "period_efficiencies",
+      "resource_and_service_slacks",
+      "carryover_slacks",
+      "period_reference_intensities",
+      "period_targets",
+      "carryover_continuity_residuals",
+      "alternate_optimum_diagnostics",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "carryover_valid",
+      "carryover_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "semantic_solver_status",
+      "backend_and_raw_solver_status",
+      "solver_neutral_lp_optimality_certificate",
+      "dynamic_trajectory_account_reconstruction_certificate",
+      "original_unit_normalized_trajectory_account_certificate",
+      "thresholded_peer_target_rts_and_continuity_certificate",
+      "complete_finite_transformed_dual_row_gate",
+      "zero_extra_solve_certificate_accounting",
+      "atomic_fail_closed_result_release"
+    ],
+    "transformations": [
+      "source_compatible_charnes_cooper_linearization_for_nonoriented",
+      "reciprocal_output_efficiency_reporting",
+      "free_carryover_ex_post_adjustment_for_selected_primary_solution"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.dynamic.complete_balanced_trajectory",
+        "condition.dynamic.same_reference_membership_every_period",
+        "domain.dynamic_sbm.strictly_positive_observed_accounts",
+        "condition.dynamic_sbm.valid_positive_weights"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_period_account_variable",
+        "co_transform": [],
+        "conditions": [
+          "domain.dynamic_sbm.strictly_positive_observed_accounts",
+          "condition.dynamic_sbm.fixed_dimensionless_relative_weights"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "source_dynamic_feasible_joint_trajectory_projection",
+      "efficiency": "overall_score_is_source_optimal_for_the_declared_horizon_and_scored_accounts",
+      "selection": "period_accounts_slacks_targets_intensities_and_ex_post_free_adjustment_may_depend_on_the_selected_primary_optimum",
+      "conditions": [
+        "condition.dynamic.same_z_t_continuity",
+        "condition.dynamic.fixed_accounts_reproduce_observations",
+        "condition.dynamic.period_specific_vrs_when_selected",
+        "condition.valid_charnes_cooper_normalization_when_nonoriented"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.omega.2009.07.003"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.3934/jimo.2018043"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1111/itor.12468"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_project_portfolio_free_carryover_scores_are_certified",
+        "specs/oracles/dynamic-sbm-scored-carryover-analytical.md",
+        "tests/test_dynamic_sbm_scored_carryover_case.py::test_exact_horizon_and_period_accounts_for_scored_carryovers",
+        "tests/test_dynamic_sbm_scored_carryover_case.py::test_good_and_bad_carryovers_reconstruct_the_exact_management_account"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_crs_input_base_and_ex_post_adjusted_oracles",
+        "all_three_source_orientations_exact_hand_oracles",
+        "orientation_specific_horizon_period_reconstruction",
+        "all_four_carryover_types",
+        "fixed_period_accounts",
+        "same_transition_account_continuity",
+        "crs_and_period_specific_vrs",
+        "unit_row_and_spec_order_invariance",
+        "sparse_compile_and_solve_counts",
+        "invalid_normalizer_variant_and_weight_failures",
+        "public_alias_and_registry_metadata",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "dynamic_trajectory_account_reconstruction_certificate",
+        "exact_nonoriented_vrs_scored_good_and_bad_carryover_account",
+        "role_specific_carryover_trajectory_with_complete_period_accounts",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "semantic_numerical_error_for_rejected_backend_optimum",
+        "independent_target_peer_dual_and_carryover_claim_gates",
+        "thresholded_peer_failure_preserves_score_target_and_carryover",
+        "original_unit_balance_continuity_and_fixed_account_reconstruction",
+        "extreme_1e_minus_12_to_1e_plus_12_unit_invariance",
+        "strictly_positive_transform_scale_independent_of_residual_tolerance",
+        "complete_solver_call_and_zero_extra_solve_contract"
+      ],
+      "locators": [
+        "tests/test_dynamic_carryover_portfolio_sbm.py",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_uncertified_optimal_results_fail_closed_without_semantic_tables",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_independently_forged_optimal_result_fails_closed",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_failed_backend_with_bogus_marginals_cannot_leak_duals",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_failed_economic_reconstruction_certificate_is_atomic",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_incomplete_target_rows_are_withheld_without_killing_other_claims",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_peer_reporting_threshold_only_withholds_uncertified_peer_rows",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_incomplete_dual_rows_do_not_leak_or_kill_quantity_accounts",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_incomplete_carryover_rows_are_withheld_independently",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_variable_unit_scaling_preserves_scores_and_normalized_accounts",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_tiny_positive_transform_scale_remains_a_valid_trajectory_score",
+        "tests/test_dynamic_carryover_portfolio_sbm.py::test_fit_compiles_once_and_runs_one_primary_solve_per_dmu",
+        "tests/test_dynamic_sbm_scored_carryover_case.py",
+        "tests/test_lp_certificates.py",
+        "tests/test_dynamic_data.py",
+        "tests/test_registry_metadata.py",
+        "tests/test_catalog.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_dynamic_sbm.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.dynamic.carryovers_trajectories",
+        "path": "book/chapters/06-dynamic/dynamic-dea-carryovers-trajectories.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.dynamic_sbm",
+        "path": "docs/models/tone-tsutsui-dynamic-sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.dynamic",
+        "path": "docs/api/dynamic.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.directional_distance",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "Directional distance function",
+  "decision_question": "How far can a declared management programme reduce selected resources and expand selected desirable services while remaining attainable under the chosen technology?",
+  "names": {
+    "display": "Directional distance function",
+    "historical": [
+      {
+        "label": "Directional distance function",
+        "spellings": [
+          "DDF",
+          "directional input distance",
+          "directional output distance"
+        ],
+        "sources": [
+          "doi:10.1006/jeth.1996.0096"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "DirectionalDistanceDEA",
+      "aliases": [
+        {
+          "symbol": "DDF"
+        }
+      ]
+    },
+    "spellings": [
+      "directional DEA",
+      "input-contraction output-expansion DDF"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "managerial_plan": "follow_a_declared_input_contraction_output_expansion_programme"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources_to_contract",
+        "outputs": "desirable_services_to_expand",
+        "bad_outputs": "excluded",
+        "sign_domain": "nonnegative"
+      },
+      "constraints": [
+        "domain.ddf.nonnegative_inputs_and_desirable_outputs",
+        "condition.ddf.positive_active_direction"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "supported_returns_to_scale": [
+          "crs",
+          "vrs",
+          "nirs",
+          "ndrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "components": [
+        "direction.exogenous"
+      ],
+      "fixed": {
+        "family": "directional_distance",
+        "input_sign": "contract",
+        "output_sign": "expand",
+        "direction_components": "finite_nonnegative"
+      },
+      "defaults": {
+        "input_direction": "observed",
+        "output_direction": "observed"
+      },
+      "exposed": [
+        "input_direction",
+        "output_direction"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.target_completion.pareto_koopmans"
+      ],
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "target_completion_scale_anchor": "evaluated_observation"
+      },
+      "defaults": {
+        "allow_negative_distance": false,
+        "slack_completion": true
+      },
+      "exposed": [
+        "allow_negative_distance",
+        "compute_slacks"
+      ],
+      "constraints": [
+        "condition.pareto_koopmans.ordinary_all_discretionary_domain",
+        "condition.pareto_koopmans.same_primary_optimal_face",
+        "condition.pareto_koopmans.positive_row_scale_weights",
+        "condition.pareto_koopmans.evaluated_observation_scale_anchor",
+        "condition.pareto_koopmans.nonnegative_directional_distance_policy"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.directional",
+    "canonical_symbol": "DirectionalDistanceDEA",
+    "registry_dependencies": [
+      "direction.exogenous",
+      "evaluation.target_completion.pareto_koopmans",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "observation_specific_directions",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "optional_lexicographic_slack_completion",
+      "solver_neutral_lp_and_directional_account_certification",
+      "unit_stable_row_scaled_slack_completion",
+      "unit_stable_row_scaled_primary_constraints",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "beta",
+        "direction": "mixed",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.ddf.nonnegative_distance_policy",
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.ddf.nonnegative_distance_policy",
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "directional_distance",
+      "input_slacks",
+      "output_slacks",
+      "scaled_slacks",
+      "maximum_scaled_slack",
+      "peers",
+      "targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "score_valid",
+      "score_status",
+      "completion_valid",
+      "completion_status",
+      "target_valid",
+      "peer_valid",
+      "dual_valid",
+      "postsolve_certification",
+      "diagnostics"
+    ],
+    "transformations": [
+      "efficiency_equals_one_over_one_plus_beta_when_beta_is_nonnegative"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.ddf.nonnegative_inputs_and_desirable_outputs",
+        "condition.ddf.positive_active_direction"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_factor_rescaling_with_direction_co_transformation",
+        "co_transform": [
+          "directions",
+          "targets"
+        ],
+        "conditions": [
+          "condition.direction_tracks_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "conditional",
+        "rule": "common_coordinate_translation_under_vrs_with_translation_invariant_direction_policy",
+        "co_transform": [
+          "targets"
+        ],
+        "conditions": [
+          "condition.vrs_convexity",
+          "condition.translation_invariant_direction_policy"
+        ]
+      }
+    },
+    "target": {
+      "feasibility": "The directional score is released only after the primary LP and reconstructed direction-production account certify; requested targets require a separately certified slack-completion account.",
+      "efficiency": "directional_only_unless_the_optional_slack_completion_succeeds",
+      "selection": "row_scaled_slack_sum_solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1006/jeth.1996.0096"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1016/0304-4076(85)90133-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/directional-distance-analytical.md",
+        "tests/test_directional_independent_oracle.py::test_exact_directional_scores_for_three_economic_programmes",
+        "tests/test_directional_independent_oracle.py::test_exact_joint_completion_for_all_returns_to_scale",
+        "tests/test_directional_independent_oracle.py::test_public_directional_result_matches_an_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/directional-distance-analytical.md",
+        "public_api_test_locator": "tests/test_directional_independent_oracle.py::test_public_directional_result_matches_an_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "directional.phase_one.exact_scores",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_directional_independent_oracle.py::test_exact_directional_scores_for_three_economic_programmes"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs",
+                "vrs",
+                "nirs",
+                "ndrs"
+              ],
+              "evaluation_protocol": [
+                "score_only"
+              ],
+              "direction_policy": [
+                "observed_joint",
+                "observed_input_only",
+                "observed_output_only"
+              ],
+              "negative_distance_policy": [
+                false
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "directional_distance",
+              "compatibility_efficiency",
+              "directional_efficiency_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "directional.phase_two.exact_slack_semantics",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_directional_independent_oracle.py::test_exact_joint_completion_for_all_returns_to_scale"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs",
+                "vrs",
+                "nirs",
+                "ndrs"
+              ],
+              "evaluation_protocol": [
+                "lexicographic_slack_completion"
+              ],
+              "direction_policy": [
+                "observed_joint"
+              ],
+              "negative_distance_policy": [
+                false
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "strong_efficiency_status",
+              "slacks",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "directional.two_phase.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_directional_independent_oracle.py::test_public_directional_result_matches_an_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs",
+                "vrs",
+                "nirs",
+                "ndrs"
+              ],
+              "evaluation_protocol": [
+                "score_only",
+                "lexicographic_slack_completion"
+              ],
+              "direction_policy": [
+                "observed_joint",
+                "observed_input_only",
+                "observed_output_only",
+                "fixed_two_input_two_output_vector"
+              ],
+              "negative_distance_policy": [
+                false
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "directional_distance",
+              "compatibility_efficiency",
+              "directional_efficiency_status",
+              "strong_efficiency_status",
+              "optimal_row_scaled_slack_sum",
+              "max_scaled_slack",
+              "targets",
+              "intensity_target_reconstruction",
+              "returns_to_scale_intensity_restriction"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytical_optimality_certificate",
+        "direction_domain",
+        "independent_dense_two_phase_compiler",
+        "input_output_orientations",
+        "reference_policy",
+        "score_and_target_contract",
+        "solver_neutral_lp_certificate",
+        "directional_production_account_certificate",
+        "atomic_score_target_peer_and_dual_release",
+        "signed_negative_distance_release",
+        "per_observation_failure_isolation",
+        "zero_additional_certificate_solves",
+        "peer_eligibility_reference_policy_intersection",
+        "peer_eligibility_manual_custom_reference_equivalence",
+        "peer_eligibility_signed_external_appraisal_and_provenance",
+        "peer_eligibility_fail_closed_reference_frequency",
+        "shared_pareto_koopmans_phase_two_composition",
+        "slack_completion",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_directional.py",
+        "tests/test_directional_independent_oracle.py",
+        "tests/test_directional_postsolve_certification.py",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_target_completion_protocol.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py",
+      "benchmarks/benchmark_core_peer_eligibility.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.directional_distance",
+        "path": "book/chapters/02-classical/05-directional-distance.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.directional",
+        "path": "docs/models/directional.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

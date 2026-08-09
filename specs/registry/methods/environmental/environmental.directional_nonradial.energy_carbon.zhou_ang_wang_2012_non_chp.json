@@ -1,0 +1,640 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.directional_nonradial.energy_carbon.zhou_ang_wang_2012_non_chp",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Zhou--Ang--Wang non-CHP energy--carbon source preset",
+  "decision_question": "How much fossil energy can a non-CHP electricity system save, electricity can it expand, or CO2 can it reduce through the source's three component-specific non-radial performance accounts?",
+  "names": {
+    "display": "Zhou--Ang--Wang non-CHP energy--carbon source preset",
+    "historical": [
+      {
+        "label": "Non-radial directional energy and CO2 performance",
+        "spellings": [
+          "energy performance index",
+          "carbon performance index",
+          "integrated energy-carbon performance index"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2012.04.022"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ZhouAngWangNonCHPEnergyCarbonDEA",
+      "aliases": [
+        {
+          "symbol": "NonCHPEnergyCarbonDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "Zhou-Ang-Wang non-CHP DEA",
+      "non-CHP energy-carbon DEA",
+      "ZAW non-radial environmental performance"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_non_chp_electricity_performance",
+        "managerial_plan": "component_specific_fossil_saving_electricity_expansion_and_co2_reduction",
+        "system_boundary": "electricity_generation_without_combined_heat_and_power",
+        "classification": "specialized_electricity_application_preset_not_foundational_method_family"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box_joint_production"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "exactly_one_strictly_positive_fossil_fuel_input_F",
+        "outputs": "exactly_one_strictly_positive_electricity_output_E",
+        "bad_outputs": "exactly_one_strictly_positive_co2_output_C",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "strictly_positive",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "source_component_specific"
+        }
+      },
+      "constraints": [
+        "domain.zhou_ang_wang_2012_non_chp.exactly_one_f_e_c",
+        "domain.zhou_ang_wang_2012_non_chp.strictly_positive",
+        "condition.zhou_ang_wang_2012_non_chp.no_chp_observations"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997",
+        "environmental.null_jointness"
+      ],
+      "fixed": {
+        "returns_to_scale": "crs",
+        "weak_disposal": "common_factor_bad_output_equality",
+        "null_jointness": true,
+        "envelopment": "F_lambda_le_F_E_lambda_ge_E_C_lambda_eq_C",
+        "chp_branch": "excluded_printed_programme_unbounded"
+      },
+      "constraints": [
+        "condition.common_factor_weak_disposal_requires_crs",
+        "condition.zhou_ang_wang_2012_non_chp.bad_output_equality",
+        "condition.zhou_ang_wang_2012_non_chp.null_jointness"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment",
+        "programme": "zhou_ang_wang_2012_equations_4_and_6_10_non_chp"
+      }
+    },
+    "reference": {
+      "fixed": {
+        "kind": "global",
+        "time_structure": "one_cross_sectional_vintage",
+        "focal_membership": "required",
+        "chp_population": "excluded"
+      },
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "all_eligible_non_chp_observations",
+          "membership_rule": "all_eligible",
+          "self_membership": "required"
+        },
+        "temporal_information_set": {
+          "policy": "single_cross_sectional_vintage",
+          "availability_cutoff": "declared_study_vintage",
+          "vintage_required": true,
+          "historical_revision": "refit_if_population_or_vintage_changes"
+        }
+      },
+      "constraints": [
+        "condition.zhou_ang_wang_2012_non_chp.global_self_inclusive_cross_section"
+      ]
+    },
+    "performance": {
+      "components": [
+        "environmental.directional_nonradial"
+      ],
+      "fixed": {
+        "family": "component_specific_nonradial_directional_distance",
+        "account_selector": "explicit_required_keyword",
+        "allowed_source_presets": [
+          "energy",
+          "carbon",
+          "integrated_energy_carbon"
+        ],
+        "energy_direction": "minus_F_plus_E_zero_C",
+        "carbon_direction": "zero_F_plus_E_minus_C",
+        "integrated_direction": "minus_F_plus_E_minus_C",
+        "native_distance": "source_weighted_sum_of_active_component_steps",
+        "distance_direction": "higher_is_more_unrealized_opportunity",
+        "ranking_order": "lower_is_better_current_performance",
+        "inactive_components": "fixed_at_zero",
+        "arbitrary_direction": "forbidden"
+      },
+      "exposed": [
+        "account"
+      ],
+      "constraints": [
+        "condition.zhou_ang_wang_2012_non_chp.account_is_one_of_three_source_presets"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "source_block_normalization_weights",
+        "energy_weights": "one_half_fossil_one_half_electricity_zero_carbon",
+        "carbon_weights": "zero_fossil_one_half_electricity_one_half_carbon",
+        "integrated_weights": "one_third_each_component",
+        "economic_role": "normalization_not_price_damage_or_preference",
+        "user_supplied_weights": "forbidden"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "component_plan": "solver_selected_on_the_optimal_weighted_distance_face",
+        "target_selection": "source_component_target_from_selected_beta_vector",
+        "multiplicity": "raw_objective_identified_component_steps_targets_and_peers_may_not_be_unique"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "source_indexes": {
+          "energy": "one_minus_beta_F_over_one_plus_beta_E",
+          "carbon": "one_minus_beta_C_over_one_plus_beta_E",
+          "integrated_energy_carbon": "one_minus_half_beta_F_plus_beta_C_over_one_plus_beta_E"
+        },
+        "source_evidence_boundary": {
+          "certified": "three_non_chp_accounts_one_positive_F_E_C_crs_global_self_inclusive_cross_section",
+          "deferred_to_next_version": [
+            "chp_branch_pending_first_hand_equation_correction",
+            "published_126_country_application_reproduction",
+            "arbitrary_directions_and_weights",
+            "multiple_inputs_outputs_or_bad_outputs",
+            "vrs_nirs_ndrs",
+            "custom_external_panel_window_sequential_and_biennial_references",
+            "zero_signed_translated_interval_and_missing_data",
+            "strong_activity_specific_by_production_material_balance_network_and_treatment_technologies",
+            "unique_component_target_and_peer_claims",
+            "inference_shadow_price_damage_welfare_and_causal_claims"
+          ]
+        }
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.zhou_ang_wang",
+    "canonical_symbol": "ZhouAngWangNonCHPEnergyCarbonDEA",
+    "registry_dependencies": [
+      "environmental.directional_nonradial",
+      "environmental.null_jointness",
+      "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997",
+      "estimator.full.dea",
+      "graph.black_box"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "component_specific_nonradial_linear_programming",
+      "postsolve_primal_and_target_certification",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "directional_nonradial_distance",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.zhou_ang_wang_2012_non_chp.source_domain"
+          ]
+        }
+      },
+      {
+        "id": "performance_index",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.zhou_ang_wang_2012_non_chp.source_domain"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "account",
+      "directional_nonradial_distance",
+      "distance",
+      "distance_direction",
+      "ranking_order",
+      "ranking_value_valid",
+      "score_direction",
+      "performance_index_name",
+      "performance_index_identified",
+      "beta_fossil",
+      "beta_electricity",
+      "beta_carbon",
+      "component_step_identified_ranges",
+      "active_component_weights",
+      "peer_intensities",
+      "targets",
+      "primal_residuals",
+      "component_plan_unique",
+      "target_unique",
+      "peer_plan_unique"
+    ],
+    "transformations": [
+      "energy_performance_index_equals_one_minus_beta_fossil_over_one_plus_beta_electricity",
+      "carbon_performance_index_equals_one_minus_beta_carbon_over_one_plus_beta_electricity",
+      "integrated_performance_index_equals_one_minus_half_the_sum_of_beta_fossil_and_beta_carbon_over_one_plus_beta_electricity",
+      "distance_equals_directional_nonradial_distance",
+      "component_specific_transformations_are_not_aliases_of_one_over_one_plus_a_radial_beta",
+      "larger_distance_means_more_unrealized_opportunity_not_better_current_performance"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.zhou_ang_wang_2012_non_chp.exactly_one_f_e_c",
+        "domain.zhou_ang_wang_2012_non_chp.strictly_positive",
+        "condition.zhou_ang_wang_2012_non_chp.global_self_inclusive_cross_section",
+        "condition.zhou_ang_wang_2012_non_chp.no_chp_observations"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_coordinate_rescaling_under_observed_value_source_directions",
+        "co_transform": [
+          "directions",
+          "targets"
+        ],
+        "conditions": [
+          "condition.zhou_ang_wang_2012_non_chp.observed_directions_track_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "additive_translation_changes_the_source_observed_value_directions_and_crs_technology",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_in_the_source_non_chp_crs_common_factor_technology_after_an_optimal_certified_solve",
+      "efficiency": "source_directional_only_and_not_a_generic_pareto_koopmans_certificate",
+      "selection": "solver_selected_component_steps_targets_and_peers_may_be_nonunique",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.zhou_ang_wang_2012_non_chp.source_domain"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2012.04.022"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jema.1997.0146"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/source_protocols/zhou_ang_wang_2012_non_chp_energy_carbon.md",
+        "specs/oracles/zhou_ang_wang_2012_non_chp_energy_carbon.md",
+        "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_exact_analytical_oracle",
+        "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_independent_dense_source_programmes",
+        "tests/test_zhou_ang_wang_non_chp.py::test_non_chp_source_accounts_are_unit_invariant"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/zhou_ang_wang_2012_non_chp_energy_carbon.md",
+        "public_api_test_locator": "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_exact_analytical_oracle",
+        "claims": [
+          {
+            "claim_id": "environmental.zhou_ang_wang_2012_non_chp.exact_three_account_fixture",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_exact_analytical_oracle"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "explicit_required_three_account_source_selector"
+              ],
+              "disposability": [
+                "common_factor_weak_bad_output_equality_with_null_jointness"
+              ],
+              "direction_policy": [
+                "observed_value_component_specific_source_presets"
+              ],
+              "negative_distance_policy": [
+                false
+              ],
+              "valuation_policy": [
+                "fixed_source_block_normalization_weights_not_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "environmental.zhou_ang_wang_2012_non_chp.energy_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "beta_fossil": 0,
+                    "beta_electricity": "3/5",
+                    "beta_carbon": 0,
+                    "distance": "3/10",
+                    "performance_index": "5/8",
+                    "target": "2;8/5;4"
+                  }
+                },
+                {
+                  "case_id": "environmental.zhou_ang_wang_2012_non_chp.carbon_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "beta_fossil": 0,
+                    "beta_electricity": 1,
+                    "beta_carbon": "1/2",
+                    "distance": "3/4",
+                    "performance_index": "1/4",
+                    "target": "2;2;2"
+                  }
+                },
+                {
+                  "case_id": "environmental.zhou_ang_wang_2012_non_chp.integrated_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "beta_fossil": 0,
+                    "beta_electricity": 1,
+                    "beta_carbon": "1/2",
+                    "distance": "1/2",
+                    "performance_index": "3/8",
+                    "target": "2;2;2"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "component_steps",
+              "directional_nonradial_distance",
+              "performance_index",
+              "peer_intensities",
+              "targets",
+              "source_account_metadata"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.zhou_ang_wang_2012_non_chp.independent_dense_programmes",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_independent_dense_source_programmes"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "explicit_required_three_account_source_selector"
+              ],
+              "disposability": [
+                "common_factor_weak_bad_output_equality_with_null_jointness"
+              ],
+              "direction_policy": [
+                "observed_value_component_specific_source_presets"
+              ],
+              "negative_distance_policy": [
+                false
+              ],
+              "valuation_policy": [
+                "fixed_source_block_normalization_weights_not_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "component_steps",
+              "directional_nonradial_distance",
+              "performance_index",
+              "targets",
+              "primal_residuals"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.zhou_ang_wang_2012_non_chp.unit_invariance",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_zhou_ang_wang_non_chp.py::test_non_chp_source_accounts_are_unit_invariant"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "explicit_required_three_account_source_selector"
+              ],
+              "disposability": [
+                "common_factor_weak_bad_output_equality_with_null_jointness"
+              ],
+              "direction_policy": [
+                "observed_value_component_specific_source_presets"
+              ],
+              "negative_distance_policy": [
+                false
+              ],
+              "valuation_policy": [
+                "fixed_source_block_normalization_weights_not_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "environmental.zhou_ang_wang_2012_non_chp.unit_recoding_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "component_steps_invariant": true,
+                    "distance_invariant": true,
+                    "performance_index_invariant": true,
+                    "targets_coscale": true
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "unit_invariance",
+              "component_steps",
+              "directional_nonradial_distance",
+              "performance_index",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "account_selector_required_and_fail_closed",
+        "analytical_three_account_fixture",
+        "chp_and_generalized_switches_rejected",
+        "component_steps_and_source_index_transformations",
+        "independent_dense_source_compilation",
+        "metadata_identity_and_source_boundary",
+        "strictly_positive_exactly_one_f_e_c_domain",
+        "target_and_primal_certification",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_zhou_ang_wang_non_chp.py",
+        "tests/test_zhou_ang_wang_non_chp_source_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_zhou_ang_wang_non_chp.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.environmental_directional",
+        "path": "docs/models/environmental-directional.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

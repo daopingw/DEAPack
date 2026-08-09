@@ -1,0 +1,37 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "network.additive.chen_etal_2009",
+  "target": "network.relational.kao_hwang_2008",
+  "type": "contrasts_with",
+  "equivalence_level": "B",
+  "difference_axes": [
+    "performance",
+    "valuation",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_closed_crs_two_stage_graph",
+      "arguments": {
+        "returns_to_scale": "crs",
+        "intermediate_multiplier": "shared",
+        "comparison_population": "matched"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.ejor.2008.05.011",
+      "doi:10.1016/j.ejor.2006.11.041",
+      "doi:10.1016/j.omega.2018.06.005"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_chen_additive_network.py",
+      "tests/test_kao_hwang.py"
+    ]
+  }
+}

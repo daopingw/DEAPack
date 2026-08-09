@@ -1,0 +1,47 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.malmquist.decomposition.fgnz_pure_scale_extension",
+  "target": "productivity.malmquist.decomposition.ray_desli",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "data_roles",
+    "technology",
+    "reference",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.fgnz_enhanced.ray_desli_distinct_allocation",
+      "arguments": {
+        "common_headline": "same_output_oriented_crs_geometric_malmquist_index",
+        "common_pure_efficiency": "same_own_period_vrs_pure_efficiency_change_on_the_matched_domain",
+        "fgnz_additional_tasks": "two_own_period_vrs_distances",
+        "ray_desli_additional_tasks": "four_own_and_cross_period_vrs_distances",
+        "fgnz_technical_change": "crs_opportunity_change_factor",
+        "ray_desli_technical_change": "vrs_opportunity_change_factor",
+        "fgnz_scale_change": "ratio_of_two_own_period_scale_efficiencies",
+        "ray_desli_scale_change": "geometric_cross_period_scale_factor",
+        "component_alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.2307/2117971",
+      "jstor:2951340"
+    ],
+    "proof_obligations": [
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_same_exact_fixture_proves_fgnz_and_ray_allocations_are_not_aliases",
+      "tests/test_fgnz_enhanced_productivity.py::test_public_enhanced_fgnz_matches_independent_six_task_source_oracle"
+    ]
+  }
+}

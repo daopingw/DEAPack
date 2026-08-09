@@ -1,0 +1,63 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "panel.multiperiod_aggregative.park_park_2009",
+  "target": "dynamic.sbm.tone_tsutsui_2010",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "context",
+    "graph",
+    "data_roles",
+    "technology",
+    "estimator",
+    "reference",
+    "performance",
+    "valuation",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_balanced_organization_trajectory_panel",
+      "arguments": {
+        "organizations_and_periods": "matched_complete_balanced_panel",
+        "ordinary_inputs_and_outputs": "matched_nonnegative_period_accounts",
+        "park_park_graph": "parallel_contemporaneous_period_accounts_with_no_interperiod_links_or_carryovers",
+        "tone_tsutsui_graph": "time_expanded_trajectory_with_typed_carryover_continuity",
+        "park_park_technology": "separate_period_frontiers_coupled_only_by_one_common_radial_factor",
+        "tone_tsutsui_technology": "one_joint_dynamic_envelopment_with_adjacent_period_carryover_equalities",
+        "park_park_estimator": "strict_two_phase_linear_programme_with_a_fixed_factor_raw_total_slack_completion",
+        "tone_tsutsui_estimator": "source_compatible_joint_dynamic_sbm_programme_with_charnes_cooper_transformation_when_required",
+        "park_park_reference": "one_contemporaneous_cohort_per_period",
+        "tone_tsutsui_reference": "global_complete_trajectory_cohort_over_the_joint_horizon",
+        "park_park_performance": "input_or_output_common_radial_factor_followed_by_raw_total_slack_completion",
+        "tone_tsutsui_performance": "orientation_specific_weighted_dynamic_slacks_based_measure",
+        "park_park_valuation": "no_user_time_or_variable_weights_in_the_implemented_source_model",
+        "tone_tsutsui_valuation": "exogenous_period_input_and_output_relative_weights_with_source_implicit_unit_carryover_item_weights",
+        "park_park_evaluation_protocol": "one_common_factor_then_a_lexicographically_separate_slack_maximization",
+        "tone_tsutsui_evaluation_protocol": "one_joint_horizon_self_appraisal_with_conditional_period_accounts",
+        "park_park_analysis": "aggregative_operating_efficiency_with_full_weak_inefficient_classification_and_no_period_efficiencies",
+        "tone_tsutsui_analysis": "intertemporal_operating_plan_efficiency_with_conditional_period_accounts_and_carryover_management",
+        "carryover_free_data": "does_not_make_the_objectives_feasible_sets_or_scores_identical",
+        "alias_claim": "forbidden",
+        "exact_reduction_claim": "forbidden",
+        "exact_score_transform_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.ejor.2007.11.028",
+      "doi:10.1016/j.omega.2009.07.003"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_multiperiod_aggregative_project_case.py::test_project_panel_exercises_all_efficiency_classes_and_sparse_phases",
+      "tests/test_multiperiod_aggregative_project_case.py::test_result_accounts_are_complete_and_respect_projection_identities",
+      "tests/test_dynamic_carryover_portfolio_sbm.py::test_project_portfolio_free_carryover_scores_are_certified",
+      "tests/test_dynamic_carryover_portfolio_sbm.py::test_all_carryover_slacks_targets_fixed_accounts_and_continuity"
+    ]
+  }
+}

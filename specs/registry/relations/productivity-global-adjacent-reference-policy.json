@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.global_malmquist",
+  "target": "productivity.malmquist.adjacent_geometric",
+  "type": "variant_of",
+  "equivalence_level": "C",
+  "difference_axes": [
+    "technology",
+    "reference",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.malmquist.reference_policy_comparison",
+      "arguments": {
+        "shared_family": "radial_malmquist_productivity_change",
+        "shared_transition_protocol": "matched_adjacent_period_identifiers",
+        "source_reference": "one_full_sample_retrospective_global_benchmark_plus_own_period_benchmarks",
+        "target_reference": "two_period_specific_contemporaneous_benchmarks_with_cross_evaluation",
+        "source_publication_role": "supporting_reference_policy",
+        "independent_handbook_family_claim": "forbidden",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.2307/2117971",
+      "doi:10.1016/j.econlet.2005.02.013"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_method_ontology.py::test_productivity_publication_scope_and_reference_policy_relations"
+    ]
+  }
+}

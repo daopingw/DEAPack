@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >-
+  If you use DEAPack in research, please cite the software version you used.
+  The companion book, Data Envelopment Analysis: Efficiency, Productivity,
+  and Environmental Performance with Python, is a separate scholarly work
+  and will receive its own citation after archival publication.
+title: DEAPack
+type: software
+authors:
+  - family-names: Wang
+    given-names: Daoping
+    email: daopingwang@outlook.com
+abstract: >-
+  A Python toolkit for DEA-based efficiency, productivity, environmental,
+  network, dynamic, and related production-performance analysis.
+keywords:
+  - data envelopment analysis
+  - efficiency analysis
+  - productivity analysis
+  - environmental performance
+  - production economics
+license: GPL-3.0-only
+repository-code: https://github.com/daopingw/DEAPack
+url: https://github.com/daopingw/DEAPack
+version: 2.0.0rc1

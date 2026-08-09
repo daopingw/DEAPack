@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.scale_elasticity.directional.relative_vrs.ren_etal_2021",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "scale",
+  "title": "Ren et al. relative-directional VRS scale elasticity",
+  "decision_question": "At a selected Pareto-efficient VRS operating plan, how strongly can a declared service mix respond on the scale-up and scale-down sides when a declared resource mix changes by one percent on average?",
+  "names": {
+    "display": "Relative-directional scale elasticity",
+    "historical": [
+      {
+        "label": "Directional scale elasticity under variable returns to scale",
+        "spellings": [
+          "directional scale elasticity",
+          "right- and left-hand directional scale elasticity"
+        ],
+        "sources": [
+          "doi:10.1051/ro/2021131"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "relative_directional_scale_elasticity",
+      "aliases": []
+    },
+    "spellings": [
+      "relative directional scale elasticity",
+      "one-sided relative-rate scale response"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "quantify_declared_directional_scale_response"
+      },
+      "exposed": [
+        "direction_provenance"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.relative_direction.nonnegative_mean_one",
+        "domain.relative_direction.positive_aggregate_rate_base"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_multiplier"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "relative_directional_scale_elasticity",
+        "native_result": "right_and_left_elasticity"
+      },
+      "defaults": {
+        "projection_orientation": "input"
+      },
+      "exposed": [
+        "input_relative_direction",
+        "output_relative_direction",
+        "projection_orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "selected_projection_directional_support_extrema",
+        "projection_completion": "maximize_row_scaled_slacks",
+        "projection_uniqueness": "not_assessed",
+        "support_extrema": "all_normalized_supports_at_target"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "one_sided_relative_directional_scale_elasticity",
+        "rule": "ren_etal_2021",
+        "scope": "selected_projection",
+        "direction_semantics": "declared_operating_counterfactual",
+        "direction_normalization": "validated_mean_one_not_rescaled",
+        "support_sign_convention": "v'x-u'y+u0>=0",
+        "endpoint_formula": "epsilon_right=min_v_vprime_omega_xstar;epsilon_left=max_v_vprime_omega_xstar;uprime_delta_ystar=1",
+        "endpoint_order": "epsilon_right_le_epsilon_left",
+        "projection_invariance_claimed": false
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.analysis.directional_scale_elasticity",
+    "canonical_symbol": "relative_directional_scale_elasticity",
+    "registry_dependencies": [
+      "direction.exogenous",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "lexicographic_slack_completion",
+      "sparse_linear_programming",
+      "support_multiplier_extrema"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "scale_elasticity_right",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.selected_pareto_efficient_projection",
+            "condition.positive_directional_rate_bases"
+          ]
+        }
+      },
+      {
+        "id": "scale_elasticity_left",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.selected_pareto_efficient_projection",
+            "condition.positive_directional_rate_bases"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "declared_relative_direction_provenance",
+      "inactive_zero_rate_components",
+      "left_endpoint_existence_and_extended_flag",
+      "normalized_support_multipliers",
+      "one_sided_response_labels",
+      "right_endpoint_existence_and_extended_flag",
+      "selected_projection"
+    ],
+    "transformations": [
+      "all_one_directions_exactly_reduce_to_matched_radial_scale_elasticity",
+      "direction_vectors_are_validated_but_never_silently_normalized",
+      "one_sided_rts_labels_are_thresholds_not_separate_solvers"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.nonnegative_data",
+        "condition.nonnegative_mean_one_relative_directions",
+        "condition.positive_aggregate_directional_rate_bases",
+        "condition.selected_pareto_efficient_projection"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling_with_unchanged_relative_rates",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_and_projection_policy"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "conditional_on_optimal_vrs_projection_and_resolved_support_endpoints",
+      "efficiency": "pareto_efficient_after_successful_slack_completion",
+      "selection": "solver_selected_radial_projection_then_row_scaled_slack_completion",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.resolved_support_endpoints",
+        "condition.successful_lexicographic_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1051/ro/2021131"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1016/0377-2217(92)90178-C"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "Ren et al. (2021), Table 4, DMU 2, all three output-direction scenarios",
+        "tests/test_directional_scale_elasticity.py::test_ren_table_4_dmu2_matches_primary_literature_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "all_one_radial_exact_reduction",
+        "direction_alignment_and_normalization",
+        "endpoint_failure",
+        "external_reference",
+        "inactive_zero_target_component",
+        "projection_failure",
+        "published_oracle",
+        "sparse_solver_workload",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_directional_scale_elasticity.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_directional_scale_elasticity.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.relative_directional_scale_elasticity",
+        "path": "docs/analysis/relative-directional-scale-elasticity.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

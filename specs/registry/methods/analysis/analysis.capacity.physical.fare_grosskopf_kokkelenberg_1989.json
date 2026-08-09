@@ -1,0 +1,346 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.capacity.physical.fare_grosskopf_kokkelenberg_1989",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "capacity",
+  "title": "Färe--Grosskopf--Kokkelenberg physical capacity utilization",
+  "decision_question": "With the organization's existing plant and other quasi-fixed resources held at their observed availability, how much output could be produced if variable resources were no longer binding, and how much of the observed shortfall reflects operating performance rather than unused physical capacity?",
+  "names": {
+    "display": "Färe--Grosskopf--Kokkelenberg physical capacity utilization",
+    "historical": [
+      {
+        "label": "Physical capacity utilization",
+        "spellings": [
+          "capacity utilization",
+          "physical capacity",
+          "technically adjusted capacity utilization"
+        ],
+        "sources": [
+          "doi:10.2307/2526781"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": null,
+      "aliases": []
+    },
+    "spellings": [
+      "classical physical capacity",
+      "FGK capacity utilization",
+      "physical capacity utilization"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "separate_output_technical_performance_from_physical_capacity_use",
+        "decision_horizon": "short_run_existing_quasi_fixed_assets"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": {
+          "partition": "declared_fixed_and_variable",
+          "fixed": "quasi_fixed_resources",
+          "variable": "adjustable_operating_resources"
+        },
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.complete_nonempty_fixed_variable_input_partition"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "crs",
+        "disposal": "ordinary_free",
+        "technical_program_input_limits": "all_observed_inputs",
+        "capacity_program_input_limits": "observed_fixed_inputs_only",
+        "capacity_program_variable_inputs": "unrestricted_by_evaluated_observation"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "physical_capacity_utilization",
+        "output_mix": "observed_proportions",
+        "native_result": "technical_and_capacity_output_factors_with_utilization_decomposition"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_two_program_decomposition",
+        "technical_program": "all_input_limits",
+        "capacity_program": "fixed_input_limits_only",
+        "computational_normalization": "output_crs",
+        "orientation_parameter": "not_applicable",
+        "pareto_completion": "not_claimed",
+        "peer_and_variable_requirement_uniqueness": "not_assessed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "physical_capacity",
+        "scope": "short_run_existing_quasi_fixed_assets",
+        "identity": "observed_output_capacity_utilization_equals_output_technical_efficiency_times_technically_adjusted_capacity_utilization",
+        "distinguished_from": [
+          "congestion",
+          "economic_capacity",
+          "most_productive_scale_size",
+          "scale_efficiency"
+        ]
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "prototype",
+    "api": "none"
+  },
+  "implementation": {
+    "module": "deapack.analysis.physical_capacity",
+    "canonical_symbol": "physical_capacity",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "matched_two_program_decomposition",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "technically_adjusted_capacity_utilization",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.optimal_matched_capacity_programs"
+          ]
+        }
+      },
+      {
+        "id": "observed_output_capacity_utilization",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology"
+          ]
+        }
+      },
+      {
+        "id": "output_technical_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology"
+          ]
+        }
+      },
+      {
+        "id": "capacity_output_factor",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "capacity_gap_after_technical_adjustment_detected",
+      "capacity_status",
+      "capacity_utilization_identity_holds",
+      "fixed_resource_limit",
+      "is_at_full_physical_capacity",
+      "is_at_technically_adjusted_full_capacity",
+      "proportional_output_plan",
+      "raw_crs_intensities",
+      "reference_self_inclusion_status",
+      "solver_selected_reference_activity",
+      "solver_selected_variable_input_requirement",
+      "technical_output_factor",
+      "technical_output_gap_detected"
+    ],
+    "transformations": [
+      "observed_output_capacity_utilization_equals_inverse_capacity_output_factor",
+      "output_technical_efficiency_equals_inverse_technical_output_factor",
+      "technically_adjusted_capacity_utilization_equals_technical_output_factor_over_capacity_output_factor",
+      "observed_capacity_utilization_equals_output_technical_efficiency_times_technically_adjusted_capacity_utilization"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.complete_nonempty_fixed_variable_input_partition",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_and_input_partition"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The technical proportional output plan is attainable under all observed input limits and the capacity plan is attainable under the observed fixed-input limits after both matched programs resolve.",
+      "efficiency": "The two output factors maximize the declared observed output mix under, respectively, all observed input limits and the fixed-resource limits only; no demand, cost, profit, or investment optimum is claimed.",
+      "selection": "Reference activities and the variable-input requirement supporting a capacity plan are solver selected and are not asserted unique.",
+      "conditions": [
+        "condition.optimal_matched_capacity_programs",
+        "condition.complete_nonempty_fixed_variable_input_partition",
+        "condition.matched_reference_across_capacity_components"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "review_supported",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.2307/2526781"
+      },
+      {
+        "role": "review",
+        "id": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9150390/"
+      },
+      {
+        "role": "review",
+        "id": "https://mirrors.vcea.wsu.edu/r-cran/web/packages/deaR/deaR.pdf"
+      }
+    ],
+    "oracle": {
+      "status": "candidate",
+      "locators": [
+        "release_disposition=deferred_to_next_version; defining full text was not obtained in the audited environment; source boundary and reopening requirements: specs/source_protocols/fare_grosskopf_kokkelenberg_1989_capacity.md",
+        "The defining electric-utility illustration has been identified, but its published numerical outputs have not been reproduced in repository tests",
+        "The four-unit exact check is analytically derived property evidence rather than values transcribed from a published output table",
+        "The deaR manual is secondary package documentation, not independently audited source-equation implementation or numerical-oracle evidence",
+        "Internal tests exercise the prototype implementation and decomposition identity and are not an independent source-native numerical oracle",
+        "tests/test_physical_capacity.py::test_four_unit_fixture_recovers_classical_capacity_decomposition"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_decomposition_identity",
+        "compiled_reference_reuse",
+        "external_reference_nullable_claims",
+        "input_partition_contract",
+        "management_statuses",
+        "panel_reference_policy",
+        "target_and_uniqueness_contract",
+        "two_program_failure",
+        "unit_invariance",
+        "undesirable_output_rejection"
+      ],
+      "locators": [
+        "tests/test_physical_capacity.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_physical_capacity.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.physical_capacity",
+        "path": "docs/analysis/physical-capacity.md",
+        "state": "present",
+        "role": "analysis"
+      }
+    ]
+  }
+}

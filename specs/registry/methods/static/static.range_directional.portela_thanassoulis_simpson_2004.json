@@ -1,0 +1,354 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.range_directional.portela_thanassoulis_simpson_2004",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "static",
+  "title": "Portela--Thanassoulis--Simpson range-directional measure",
+  "decision_question": "What common share of an organization's remaining observed resource-saving and service-expansion opportunities can be realized against the exact self-inclusive VRS comparison population?",
+  "names": {
+    "display": "Portela--Thanassoulis--Simpson range-directional measure",
+    "historical": [
+      {
+        "label": "Range directional measure",
+        "spellings": [
+          "RDM",
+          "range directional model"
+        ],
+        "sources": [
+          "doi:10.1057/palgrave.jors.2601768"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RangeDirectionalDEA",
+      "aliases": [
+        {
+          "symbol": "RDM"
+        }
+      ]
+    },
+    "spellings": [
+      "range-directional DEA",
+      "Portela--Thanassoulis--Simpson RDM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "signed_data_operating_performance_benchmarking",
+        "managerial_plan": "realize_a_common_share_of_remaining_observed_improvement_opportunities"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "components": [
+        "data.negative"
+      ],
+      "fixed": {
+        "inputs": "finite_signed_resources_to_contract",
+        "outputs": "finite_signed_desirable_services_to_expand",
+        "bad_outputs": "excluded",
+        "sign_domain": "signed_finite",
+        "preference_direction": {
+          "inputs": "less_is_better",
+          "outputs": "more_is_better"
+        }
+      },
+      "constraints": [
+        "domain.rdm.finite_signed_inputs_and_desirable_outputs",
+        "condition.rdm.positive_active_range"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free",
+        "convexity_identity": "sum_lambda_equals_one"
+      },
+      "constraints": [
+        "condition.rdm.vrs_source_contract"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment",
+        "programme": "portela_thanassoulis_simpson_2004_equation_3"
+      }
+    },
+    "reference": {
+      "fixed": {
+        "extrema_population": "identical_to_technology_population",
+        "focal_membership": "required"
+      },
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "declared_reference_plan",
+          "membership_rule": "all_declared_eligible",
+          "self_membership": "required"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent_but_extrema_and_technology_matched"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.rdm.extrema_technology_reference_match",
+        "condition.rdm.self_inclusive_reference"
+      ]
+    },
+    "performance": {
+      "components": [
+        "direction.range_ideal",
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "range_directional_measure",
+        "direction_policy": "focal_to_reference_coordinatewise_ideal",
+        "input_direction": "x_focal_minus_reference_coordinatewise_minimum",
+        "output_direction": "reference_coordinatewise_maximum_minus_y_focal",
+        "supported_orientations": [
+          "non-oriented",
+          "input",
+          "output"
+        ],
+        "native_score": "beta",
+        "reported_efficiency": "one_minus_beta"
+      },
+      "defaults": {
+        "orientation": "non-oriented"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "phase": "source_phase_one_only",
+        "secondary_objective": "none",
+        "target_status": "directional_not_pareto_certified",
+        "zero_active_direction": "fail_with_unbounded_direction_diagnostic"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "causal_interpretation": "not_identified",
+        "strong_efficiency": "not_certified_when_beta_equals_zero"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.range_directional",
+    "canonical_symbol": "RangeDirectionalDEA",
+    "registry_dependencies": [
+      "data.negative",
+      "direction.range_ideal",
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.directional_distance",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "focal_range_direction_compilation",
+      "postsolve_score_and_primal_certification",
+      "shared_directional_distance_compiler",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "beta",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.rdm.positive_active_range",
+            "condition.rdm.extrema_technology_reference_match",
+            "condition.rdm.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "rdm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.rdm.positive_active_range",
+            "condition.rdm.extrema_technology_reference_match",
+            "condition.rdm.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "focal_input_ranges",
+      "focal_output_ranges",
+      "directional_targets",
+      "peer_activities",
+      "residual_input_slacks",
+      "residual_output_slacks",
+      "peers",
+      "score_certificate"
+    ],
+    "transformations": [
+      "rdm_efficiency_equals_one_minus_beta"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.rdm.finite_signed_inputs_and_desirable_outputs",
+        "condition.rdm.positive_active_range",
+        "condition.rdm.extrema_technology_reference_match",
+        "condition.rdm.self_inclusive_reference"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [
+          "coordinatewise_ideal",
+          "range_directions",
+          "directional_targets",
+          "peer_activities"
+        ],
+        "conditions": [
+          "condition.rdm.same_reference_population"
+        ]
+      },
+      "translation": {
+        "status": "supported",
+        "rule": "common_coordinate_translation_under_source_vrs_contract",
+        "co_transform": [
+          "coordinatewise_ideal",
+          "directional_targets",
+          "peer_activities"
+        ],
+        "conditions": [
+          "condition.rdm.vrs_source_contract",
+          "condition.rdm.same_reference_population"
+        ]
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_an_optimal_source_phase_one_solve",
+      "efficiency": "directional_only_and_not_pareto_certified",
+      "selection": "beta_is_unique_but_solver_selected_intensities_and_peer_activities_may_differ",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.rdm.positive_active_range",
+        "condition.rdm.extrema_technology_reference_match"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1057/palgrave.jors.2601768"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "specs/source_protocols/portela_thanassoulis_simpson_2004_rdm.md, Section 10 exact rational LP oracle and published target transcription",
+        "tests/test_range_directional.py, independent equation compiler and source-transcription checks"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "exact_signed_rational_oracle",
+        "independent_equation_compiler",
+        "input_output_nonoriented_orientations",
+        "reference_extrema_matching",
+        "score_and_target_contract",
+        "source_target_transcription",
+        "translation_invariance",
+        "unit_invariance",
+        "zero_active_direction_failure"
+      ],
+      "locators": [
+        "tests/test_range_directional.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_range_directional.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.range_directional",
+        "path": "docs/models/range-directional.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

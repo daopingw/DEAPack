@@ -1,0 +1,9 @@
+:root {
+  --pst-color-primary: #175d63;
+  --pst-color-secondary: #a15c38;
+}
+
+.bd-main .bd-content .bd-article-container {
+  max-width: 58rem;
+}
+

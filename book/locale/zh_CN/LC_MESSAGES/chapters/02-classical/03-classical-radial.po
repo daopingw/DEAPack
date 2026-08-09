@@ -1,0 +1,1131 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/02-classical/03-classical-radial.md:1
+#: 42ae4f5bd4234aaba47d69017a5e8333
+msgid "Classical Radial DEA: Resource Stewardship and Service Expansion"
+msgstr "经典径向 DEA：资源使用责任与服务扩张"
+
+#: ../../chapters/02-classical/03-classical-radial.md:3
+#: 2b8a109b6d1545b887b4dc5d0c710063
+msgid ""
+"A service authority enters its annual planning round with two legitimate but"
+" different responsibilities. The finance team must protect agreed service "
+"levels while testing whether branches need all of their present resources. "
+"The operations team must respect the approved resource envelope while asking"
+" whether citizens could receive more service. A single number cannot answer "
+"both questions unless the report first says which commitment is being held "
+"fixed."
+msgstr "公共服务主管机构进入年度规划时，承担着两项都合理、却并不相同的责任。财务团队既要保障已经约定的服务水平，又要检验各分支机构是否确实需要当前全部资源。运营团队则要遵守获批的资源限额，同时考察公众能否获得更多服务。除非报告先说明哪一项责任必须保持不变，否则一个数字无法同时回答这两个问题。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:10
+#: fd1d775b0205440fb25de6a33efacc4b
+msgid ""
+"Classical radial DEA turns those responsibilities into two transparent "
+"performance questions. One asks what common share of each controllable "
+"resource would have been enough to preserve current services. The other asks"
+" how far all desirable services could rise within the current resource "
+"envelope. These questions give boards a readable first indication of "
+"resource stewardship or service capacity without pretending to diagnose "
+"every individual shortfall. Their simplicity is useful only when a common "
+"percentage is plausible for the organization being studied."
+msgstr ""
+"经典径向 DEA "
+"把上述责任转化为两个清晰的绩效问题。第一个问题是：在维持现有服务的前提下，每项可控资源共同保留多大比例便已足够？第二个问题是：在当前资源限额内，所有合意服务还能共同增加多少？这两个问题可以为决策机构提供易于理解的资源使用责任或服务能力初步判断，却不假称已经诊断出每一项具体缺口。只有当共同百分比调整符合被研究组织的经营实际时，这种简洁性才有意义。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:18
+#: 963716e43e914d5299b0227583dc360a
+#, python-brace-format
+msgid ""
+"The study-design and production-technology chapters have already established"
+" the production story, variable roles, eligible peers, and permissible scale"
+" comparisons; see {doc}`../01-foundations/02-study-design` and "
+"{doc}`../01-foundations/02-production-frontier`. The present question is how"
+" large an operating shortfall those opportunities reveal. What matters is "
+"not the shape of a diagram but the responsibility assigned to management and"
+" the commitment that the benchmark must protect."
+msgstr ""
+"研究设计章和生产技术章已经确定了生产过程、变量角色、合格比较对象以及允许采用的规模比较；参见 {doc}`../01-foundations/02"
+"-study-design` 和 {doc}`../01-foundations/02-production-"
+"frontier`。本章要回答的是：这些生产机会揭示了多大的经营缺口。关键不在图形的形状，而在管理层承担什么责任，以及标杆必须保障哪项承诺。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:27
+#: 6b117aa496cc4b1d8f22a8ea2b91e0af
+msgid "Orientation begins with what management must protect"
+msgstr "导向取决于管理层必须保障什么"
+
+#: ../../chapters/02-classical/03-classical-radial.md:29
+#: 0ea04bfe3b344cf38e792a59fddc38ce
+msgid ""
+"Orientation identifies the side of the operation that is treated as a "
+"commitment."
+msgstr "导向规定把经营活动的哪一侧视为必须履行的承诺。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:31
+#: b52b79d5b57a400d83fd8cf57942ed1c
+msgid ""
+"Input orientation protects the represented output commitments and asks how "
+"much of every controllable input could be saved."
+msgstr "投入导向保障既定产出责任，并考察每项可控投入可以节约多少。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:33
+#: f65ab00fd6454e3b9697fb7956c977fa
+msgid ""
+"Output orientation holds the represented input limits fixed and asks how "
+"much every desirable output could expand."
+msgstr "产出导向保持既定投入限额不变，并考察每项合意产出可以扩张多少。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:36
+#: 1adbc798b79d48ccb3ee9ee79812d899
+msgid "Returns to scale records which resizing comparisons the benchmark may use."
+msgstr "规模报酬规定标杆可以采用哪些经营规模调整比较。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:38
+#: 8f8c1a60e7374c4ca529b5005c276030
+msgid ""
+"Constant returns to scale (CRS) admits proportional replication of observed "
+"operating patterns. The performance comparison therefore includes whether "
+"the organization is operating at a productive scale."
+msgstr "规模报酬不变（CRS）允许按比例复制观测到的经营模式。因此，绩效比较也包含组织是否处在具有生产率优势的经营规模这一问题。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:41
+#: 2c242d4e42434706aaa76583c5b5c5e2
+msgid ""
+"Variable returns to scale (VRS) forms convex combinations without granting "
+"unrestricted proportional replication. It asks how well resources are used "
+"under the maintained locally scaled opportunity set."
+msgstr "规模报酬可变（VRS）允许形成凸组合，但不赋予不受限制的同比例复制权。它考察在所设定的、随局部经营规模变化的生产机会集合下，资源使用得如何。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:45
+#: a5534629e1e8498f832bf6bf81fbac18
+#, python-brace-format
+msgid ""
+"Crossing these two decisions gives four familiar specifications, all "
+"belonging to the same Farrell radial family "
+"{cite:p}`farrell1957,charnes1978,banker1984`:"
+msgstr ""
+"把导向与规模报酬这两项选择交叉起来，就得到四种熟悉的设定；它们都属于同一个 Farrell 径向模型族 "
+"{cite:p}`farrell1957,charnes1978,banker1984`："
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 08ed7ddb6225453c862808264298fbf0
+msgid "Protected commitment and allowed change"
+msgstr "受到保障的承诺与允许发生的变化"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 438491d3b0f045469b33bb928009e461
+msgid "Benchmark right"
+msgstr "标杆构造权"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: a0a1123dd23643528beea0ef5c2fb588
+msgid "Familiar shorthand"
+msgstr "常用简称"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 22c5d2c547c34b63933d055562a4c4ea
+msgid "Complete DEAPack preset"
+msgstr "完整的 DEAPack 预设"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 6e6bccb4c05047c3ac0b0896833fdf15
+msgid "Native result"
+msgstr "原生结果"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 04855a2e0303442cb3081b8fa1e30588 74df354feff640bbb015ed782ca58830
+msgid "Protect outputs; reduce all inputs proportionally"
+msgstr "保障产出；所有投入按同比例减少"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 4bc5f5ab362c42f98391a1208d1c0112 f5099284e50641a1abf70bbb32e5b3f8
+msgid "CRS"
+msgstr "CRS"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 8ddfe83b55db4e8c8279c86aacb27629 e667a675ea1245c4b6ff430ef7d93df6
+msgid "CCR-I"
+msgstr "CCR-I"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ae7d7d3f5a3c467fa35effde93492b91
+msgid "`CCRInput`"
+msgstr "`CCRInput`"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 60597c61e1d742d29fb30885f1983322 a62de9385a324357832ca1f2c9b647ef
+msgid "input contraction $\\theta$"
+msgstr "投入压缩因子 $\\theta$"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ba5f440cd2d94351967204292307e9bf bedbe308a63e4859a49e5fda5d373e02
+msgid "Hold inputs; expand all outputs proportionally"
+msgstr "保持投入不变；所有产出按同比例扩张"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: c94ef3fa34554d4a92cd7f6347add45c eb5aeef4a02d49d3aee9e515100729eb
+msgid "CCR-O"
+msgstr "CCR-O"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: b919e13ce2a842c6a299f46217aa1c54
+msgid "`CCROutput`"
+msgstr "`CCROutput`"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 9d31f7eda47147d79c3743fc276a93ba f20b57aabf6946e581f0dea9a73cd3ae
+msgid "output expansion $\\phi$"
+msgstr "产出扩张因子 $\\phi$"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 8b7f199aa1f8462ea937b246f07bfcce a9ad9e1cffbe4686ba5593ee8bb322ff
+msgid "VRS"
+msgstr "VRS"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 5af6663ef4084b10bd3cd94f45ad2b9b b0ae8fc4965c4f7ab6b7dd235d43367c
+msgid "BCC-I"
+msgstr "BCC-I"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: 947a41868cc14c70b8372fa5af19ad40
+msgid "`BCCInput`"
+msgstr "`BCCInput`"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 4c220c14b4fc4cf7a1457a894bccb93a 782d73abd99948a7aa90955dd7f9b0d8
+msgid "BCC-O"
+msgstr "BCC-O"
+
+#: ../../chapters/02-classical/03-classical-radial.md
+#: f4983cee9961457492981e962bc81911
+msgid "`BCCOutput`"
+msgstr "`BCCOutput`"
+
+#: ../../chapters/02-classical/03-classical-radial.md:55
+#: 060cdf006d974f99887c87bdb3519d05
+msgid ""
+"CCR and BCC are historically important names, but neither acronym settles "
+"the orientation. CCR identifies the CRS specialization of the parent family;"
+" BCC identifies its VRS specialization. The suffixes I and O complete the "
+"contract by stating which side of the production account management is "
+"allowed to change. Names such as *CCR model*, *BCC model*, *Farrell input "
+"measure*, and *radial envelopment model* therefore describe closely related "
+"views or specializations, not a catalogue of unrelated algorithms."
+msgstr ""
+"CCR 和 BCC 是具有重要历史意义的名称，但任何一个缩写都没有确定导向。CCR 表示母模型族在 CRS 下的专门形式，BCC 表示其 VRS "
+"专门形式。后缀 I 和 O 说明允许管理层改变生产账户的哪一侧，从而补全模型契约。因此，*CCR 模型*、*BCC 模型*、*Farrell "
+"投入测度*和*径向包络模型*等名称描述的是关系紧密的不同表示或专门形式，而不是一系列彼此无关的算法。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:63
+#: a304b79fb7ee4d1d858d8f10f57deaf9
+msgid ""
+"This unification does not make the choices interchangeable. BCC-I and BCC-O "
+"protect different commitments. CCR-I and BCC-I grant the benchmark different"
+" resizing rights. A defensible study selects both choices before looking at "
+"the ranking and reports them as part of the result's meaning."
+msgstr ""
+"这样的统一并不意味着各项选择可以互换。BCC-I 与 BCC-O 保障不同的承诺；CCR-I 与 BCC-I "
+"则赋予标杆不同的经营规模调整权。可信的研究应在查看排序之前就确定这两项选择，并把它们作为结果含义的一部分加以报告。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:68
+#: 1c209e5c46654b3c82d410b262277258
+msgid "Translate the management question into a benchmark programme"
+msgstr "把管理问题写成标杆方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:70
+#: 1bf1ab38c89947a9825657d09479478f
+msgid "For organization $o$, the input-oriented CRS programme is"
+msgstr "对于组织 $o$，投入导向的 CRS 规划为"
+
+#: ../../chapters/02-classical/03-classical-radial.md:72
+#: 6b5709b0ea3b421d919d89e81d67e549
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\min_{\\theta,\\lambda}\\quad &\\theta\\\\\n"
+"\\text{subject to}\\quad\n"
+"&X\\lambda\\leq\\theta x_o,\\\\\n"
+"&Y\\lambda\\geq y_o,\\\\\n"
+"&\\lambda\\geq0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\min_{\\theta,\\lambda}\\quad &\\theta\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X\\lambda\\leq\\theta x_o,\\\\\n"
+"&Y\\lambda\\geq y_o,\\\\\n"
+"&\\lambda\\geq0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/03-classical-radial.md:82
+#: 58b4b211b94146cbae35e992ae400f59
+msgid ""
+"The reference activity must protect the organization's service commitments "
+"while using no more than the common proportion $\\theta$ of every "
+"represented input. Minimizing $\\theta$ finds the smallest supported "
+"resource-retention factor. When the observed operation belongs to the "
+"reference technology, $\\theta\\leq1$ and $1-\\theta$ is the supported "
+"common proportional saving. Adding $\\mathbf 1^\\top\\lambda=1$ changes the "
+"benchmark from CRS to VRS without changing the resource-stewardship "
+"question."
+msgstr ""
+"参照生产活动必须保障该组织的服务承诺，同时每项代表性投入的使用量不得超过原值的共同份额 $\\theta$。最小化 "
+"$\\theta$，得到证据能够支持的最小资源保留系数。当观测经营方案属于参照技术时，$\\theta\\leq1$，而 $1-\\theta$ "
+"就是可以支持的共同投入节约比例。加入 $\\mathbf 1^\\top\\lambda=1$，便把标杆从 CRS 改为 "
+"VRS，但资源使用责任问题本身没有改变。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:90
+#: 317bb140b0134fb6aa7e88ff45c04f49
+msgid "The output-oriented counterpart is"
+msgstr "相应的产出导向规划为"
+
+#: ../../chapters/02-classical/03-classical-radial.md:92
+#: fd22a557fdf24181b50259927999f09e
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{subject to}\\quad\n"
+"&X\\lambda\\leq x_o,\\\\\n"
+"&Y\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\lambda\\geq0,\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X\\lambda\\leq x_o,\\\\\n"
+"&Y\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\lambda\\geq0,\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/03-classical-radial.md:102
+#: 63f9e8aa33674625ab0240535d2c9588
+msgid ""
+"again with $\\mathbf 1^\\top\\lambda=1$ for VRS. Here the resource limits "
+"are protected and $\\phi$ is the largest common service-expansion factor; "
+"$\\phi-1$ is the supported proportional increase when the observed operation"
+" belongs to the reference technology. The two programmes use the same "
+"production account but hold different quantities fixed. In the ordinary "
+"self-inclusive appraisal, their native values therefore run in opposite "
+"numerical directions: $\\theta\\leq1$ is better when closer to one, whereas "
+"$\\phi\\geq1$ is better when closer to one. DEAPack's standardized output "
+"efficiency $1/\\phi$ is a reporting transform, not a second performance "
+"model."
+msgstr ""
+"VRS 情形同样加入 $\\mathbf 1^\\top\\lambda=1$。此时资源限额受到保障，$\\phi$ "
+"是最大的共同服务扩张因子；当观测经营方案属于参照技术时，$\\phi-1$ "
+"是证据能够支持的产出增长比例。两个规划采用同一个生产账户，但固定的数量不同。因此，在通常包含被评价单元自身的评价中，两种原生值的数值方向相反：$\\theta\\leq1$"
+" 时越接近 1 越好，而 $\\phi\\geq1$ 时同样越接近 1 越好。DEAPack 报告的标准化产出效率 $1/\\phi$ "
+"只是结果变换，并不是第二个绩效模型。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:112
+#: ac7dc21ea372479f9344b6c423031300
+msgid ""
+"An external or leave-group-out reference may not contain the evaluated "
+"operation. Then $\\theta$ can exceed one or $\\phi$ can fall below one: "
+"reaching the external benchmark requires a reverse adjustment rather than "
+"revealing an ordinary saving or expansion from the observed plan. Such "
+"values should remain visible as benchmark-relative comparisons, but they do "
+"not inherit the usual $[0,1]$ efficiency interpretation or a self-inclusive "
+"efficiency classification."
+msgstr ""
+"外部参照或留组外参照可能不包含被评价的经营方案。此时，$\\theta$ 可能大于 1，$\\phi$ 也可能小于 "
+"1：要达到外部标杆，需要作反向调整，而不是从观测方案中识别通常意义上的投入节约或产出扩张。这些数值仍应作为相对于标杆的比较如实呈现，但不能沿用通常的 "
+"$[0,1]$ 效率解释，也不能据此作出自包含效率分类。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:119
+#: 0aa131590e4b4759b7457d395991cedd
+msgid "The CRS input programme has an equivalent multiplier account:"
+msgstr "CRS 投入规划具有如下等价的乘数核算形式："
+
+#: ../../chapters/02-classical/03-classical-radial.md:121
+#: d139bb1471254a29893581bbdf87b849
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{u,v}\\quad &u^\\top y_o\\\\\n"
+"\\text{subject to}\\quad\n"
+"&v^\\top x_o=1,\\\\\n"
+"&u^\\top Y-v^\\top X\\leq0,\\\\\n"
+"&u,v\\geq0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{u,v}\\quad &u^\\top y_o\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&v^\\top x_o=1,\\\\\n"
+"&u^\\top Y-v^\\top X\\leq0,\\\\\n"
+"&u,v\\geq0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/03-classical-radial.md:131
+#: 63c56ea87c7f4bd0821186183c6ba2fc
+msgid ""
+"The normalization fixes the unit of account. Organization $o$ receives the "
+"most favorable nonnegative input and output valuations that remain "
+"admissible for every organization in the comparison population. Linear-"
+"programming duality makes this optimum equal to the envelopment score. These"
+" multipliers are endogenous shadow valuations under the model, not observed "
+"prices or estimates of social value. Under VRS, a free intercept accompanies"
+" the convexity constraint and permits local increasing, constant, or "
+"decreasing returns."
+msgstr ""
+"归一化确定了核算单位。组织 $o$ "
+"获得对自己最有利的非负投入与产出价值权重，但这些权重对比较总体中的每个组织都必须可接受。线性规划对偶性使这一最优值等于包络形式的效率得分。这些乘数是模型内生的影子价值，并非观测价格，也不是社会价值的估计。在"
+" VRS 下，凸性约束对应一个自由截距，从而允许局部规模报酬递增、不变或递减。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:140
+#: 452fc1a8cdf7493db900fdd357c7bdb6
+msgid ""
+"The programme is now formally complete, but two institutional questions "
+"still decide whether its benchmark is credible. First, may a favorable "
+"valuation give almost no recognition to a mandated service? Second, may "
+"several observed practices be combined into one attainable operating plan? "
+"Both questions qualify the evidence admitted to the same radial account."
+msgstr "至此，规划在形式上已经完整，但其标杆是否可信仍取决于两个制度问题。第一，最有利的价值评价能否几乎不考虑某项法定服务？第二，能否把多个观测实践组合成一个可实现的经营方案？这两个问题都会限定同一径向账户所接纳的证据。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:146
+#: f8f9f4ae0d51477abe114eb318352bc4
+msgid "Ask whether the favorable valuation respects public commitments"
+msgstr "检验最有利的价值评价是否尊重公共服务责任"
+
+#: ../../chapters/02-classical/03-classical-radial.md:148
+#: d4f38bbf43484a47a1c7fc572d7d8b50
+#, python-brace-format
+msgid ""
+"Allowing each organization to choose its own multipliers is deliberate. It "
+"lets a hospital, school, or branch be assessed under the most favorable "
+"relative valuation that the observed production evidence will support, "
+"without pretending that reliable market prices exist. The resulting score "
+"therefore answers a conditional question: *can this organization be shown to"
+" perform well under any admissible valuation of the represented resources "
+"and services?* {cite:p}`ray2004`."
+msgstr ""
+"允许每个组织选择自己的乘数是有意的设计。它使医院、学校或分支机构可以在观测生产证据能够支持的最有利相对价值评价下接受考察，而不必假定存在可靠的市场价格。因此，得分回答的是一个条件性问题：*在对所列资源和服务的任一可接受价值评价下，能否说明这个组织表现良好？*"
+" {cite:p}`ray2004`。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:156
+#: 5e13930f9bea4d70abdc457b5e0dfc61
+msgid ""
+"That freedom can also expose a weak performance story. A multiplier may be "
+"zero or extremely small because the corresponding variable does not help the"
+" organization's most favorable account. This does not establish that a "
+"service is worthless or that a resource is costless. For example, a hospital"
+" might look strong only when emergency-care quality receives almost no "
+"recognition. The numerical result is then valid for the unrestricted DEA "
+"question, but it may be too narrow for an authority that has an explicit "
+"duty to protect both access and quality."
+msgstr ""
+"这种自由也可能暴露出薄弱的绩效叙事。某个乘数可能为零或极小，只因为相应变量无助于形成该组织最有利的评价账户。这并不能说明某项服务没有价值，或某项资源没有成本。例如，一家医院可能只有在急诊服务质量几乎不受重视时才显得表现突出。对于不受限的"
+" DEA 问题，这一数值结果仍然有效；但对负有同时保障可及性与质量明确责任的主管机构而言，这种评价可能过于狭窄。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:165
+#: f25e46f3374c418eb988ee09ab676fc3
+#, python-brace-format
+msgid ""
+"When credible institutional knowledge exists, the comparison can admit only "
+"valuations consistent with it. Management might require every mandated "
+"service to receive material recognition, bound the relative importance of "
+"two outcomes, or state a feasible production trade-off such as how much "
+"additional staff is normally required to protect an extra unit of service. "
+"Such restrictions should express prior policy, engineering, or professional "
+"knowledge—not be selected after inspecting which bounds produce a preferred "
+"ranking. They can change scores, peers, and targets because they change the "
+"valuation or production statements under which performance is judged "
+"{cite:p}`allen1997,dyson2001,cooper2011handbook`."
+msgstr ""
+"如果存在可信的制度知识，比较就可以只允许与之相符的价值权重。管理层可以要求每项法定服务都获得实质性权重，限制两项结果的相对重要性，或者声明一种可行的生产权衡，例如通常需要增加多少员工才能保障额外一单位服务。这些限制应反映事先掌握的政策、工程或专业知识，而不能在看过哪些界限会产生偏好排序之后再作选择。它们会改变得分、活跃参照单元和目标方案，因为它们改变了绩效判断所依据的价值或生产命题"
+" {cite:p}`allen1997,dyson2001,cooper2011handbook`。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:176
+#: 88920e8bba44414a853a9cbaec138f9a
+msgid ""
+"Assurance-region and cone-ratio formulations are established ways to encode "
+"these admissible weights or trade-offs. They are governance qualifications "
+"to the parent radial account, not new efficiency families. A defensible "
+"report still names its orientation and scale assumption, states the added "
+"value judgement in substantive units, and shows how the conclusion differs "
+"from the unrestricted appraisal."
+msgstr "保证域和锥比形式是表达这些可接受权重或权衡关系的成熟方法。它们是对母径向账户的治理性限定，并不是新的效率模型族。可信的报告仍须说明导向和规模报酬假设，以有实质意义的单位表述新增的价值判断，并展示结论相对于不受限评价发生了什么变化。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:183
+#: 93500648c8f74fdcb78e2a90446b3361
+msgid ""
+"DEAPack's package Documentation gives one source-qualified implementation of"
+" that idea: the [finite input-oriented CRS polyhedral cone-ratio "
+"leaf](https://deapack.readthedocs.io/en/latest/models/polyhedral-cone-"
+"ratio.html). It requires declared generator provenance and keeps transformed"
+" cone residuals separate from ordinary input excesses, output shortfalls, "
+"and managerial targets. That technical leaf supports an audit of a valuation"
+" policy; it does not turn every historical weight restriction into another "
+"option of the classical radial model developed here."
+msgstr ""
+"DEAPack 的包 Documentation 给出了这一思想的一种经过来源核验的实现：[有限投入导向 CRS "
+"多面锥比叶模型](https://deapack.readthedocs.io/en/latest/models/polyhedral-cone-"
+"ratio.html)。它要求声明生成锥的来源，并把变换后的锥残差与通常的投入冗余、产出不足和管理目标方案分开。这一技术叶模型可用于审计某项价值权重政策，但并不会把历史上的每一种权重限制都变成本章经典径向模型的另一个选项。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:192
+#: 77440d66053140bebe11db52c569acd3
+msgid "Ask whether complete practices or mixtures can teach"
+msgstr "检验完整实践还是实践组合更适合作为学习依据"
+
+#: ../../chapters/02-classical/03-classical-radial.md:194
+#: 60ec2e33f008448eb4442f172ca130ba
+#, python-brace-format
+msgid ""
+"The same radial performance question can rest on a different learning right."
+" Convex VRS treats mixtures of observed organizations as attainable when "
+"capacity is divisible, service designs can be combined, or portfolios can be"
+" rebalanced. The free-disposal hull (FDH) withholds that averaging right and"
+" lets one complete observed practice support a benchmark at a time "
+"{cite:p}`deprins1984`. This may be more credible when a municipality must "
+"adopt a whole waste-treatment design or a hospital must compare indivisible "
+"care pathways."
+msgstr ""
+"同一个径向绩效问题可以建立在不同的学习权利之上。当生产能力可以分割、服务设计能够组合或业务组合可以重新配置时，凸 VRS "
+"把观测组织的组合视为可实现方案。自由处置包络（free-disposal "
+"hull，FDH）不赋予这种平均组合权，而是每次只允许一个完整的观测实践支持标杆 "
+"{cite:p}`deprins1984`。当市政机构必须采用一整套垃圾处理设计，或者医院只能比较不可分割的诊疗路径时，这种设定可能更可信。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:202
+#: bc904f88fa9a4c62bc32ea88a892efff
+msgid ""
+"Nothing about this choice changes what input or output orientation protects."
+" It changes the evidence allowed to support the operating comparison. Under "
+"FDH the focal organization must be dominated by a complete observed "
+"practice; under convex VRS it may also be dominated by a supported mixture. "
+"That is why FDH belongs in the same classical radial discussion without "
+"being relabelled as another BCC option."
+msgstr ""
+"这一选择并不改变投入导向或产出导向所保障的对象；它改变的是哪些证据可以支持经营比较。在 FDH 下，被评价组织必须受到一个完整观测实践的支配；在凸 "
+"VRS 下，也可以受到一个有证据支持的实践组合支配。因此，FDH 应归入同一个经典径向讨论，却不能被重新命名为 BCC 的又一个选项。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 90eb2e21fe96467eafb680ab3bba0620
+msgid ""
+"FDH follows observed-practice steps while convex VRS joins observations and "
+"can support a more demanding synthetic target"
+msgstr "FDH 沿观测实践形成阶梯，而凸 VRS 连接观测值，并可能支持要求更高的合成目标方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:214
+#: f0230352b1274cd1a5c83af902418c24
+msgid ""
+"The same evidence under two learning assumptions. FDH asks whether a "
+"complete observed practice dominates the focal operation. Convex VRS also "
+"admits intermediate mixtures and can therefore set a more demanding "
+"benchmark."
+msgstr "同一组证据下的两种学习假设。FDH 检验一个完整观测实践是否支配被评价经营方案；凸 VRS 还允许中间组合，因此可能设定要求更高的标杆。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:219
+#: b4ee6bd1a53540fc9f8afb447bbcf422
+msgid ""
+"The distinction is easy to reproduce on the one-input, one-output teaching "
+"data:"
+msgstr "这一差别可以在单投入、单产出的教学数据上直接复现："
+
+#: ../../chapters/02-classical/03-classical-radial.md:242
+#: 15d50a05b2344f7d861bc6a8278eafe7
+msgid ""
+"For branch H, output efficiency is about 0.909 under FDH and 0.845 under "
+"convex VRS. H is compared with a less demanding observed-practice step under"
+" FDH; VRS additionally treats a mixture of observed practices as attainable."
+" The difference is not evidence that one calculation is wrong. It measures "
+"how much of H's assessed shortfall depends on the claim that practices can "
+"be combined."
+msgstr ""
+"对于分支机构 H，FDH 下的产出效率约为 0.909，凸 VRS 下约为 0.845。FDH 把 H 与要求较低的观测实践阶梯比较；VRS "
+"还把观测实践的组合视为可实现方案。这种差异并不说明其中一个计算有误，而是衡量 H 的被评估缺口有多少取决于“实践可以组合”这一命题。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:249
+#: 4ff5182547764df1a7c602b51fc0a338
+msgid ""
+"FDH is thus a principal alternative benchmark technology inside the "
+"classical radial family, not a new orientation and not “BCC with an option "
+"switched off.” It has no ordinary CRS/VRS toggle: removing convexification "
+"is the point of the comparison. If several observations tie, they are "
+"alternative observed comparators rather than weights in one synthetic peer. "
+"A credible study should say why complete observed practices or convex "
+"mixtures provide the more defensible evidence and use the other construction"
+" as a sensitivity check when both are plausible."
+msgstr ""
+"因此，FDH 是经典径向模型族内部一种主要的替代性标杆技术，而不是新的导向，也不是“关闭某个选项的 BCC”。它不存在通常的 CRS/VRS "
+"开关；不进行凸化正是这一比较的要点。若多个观测值并列，它们是可替代的观测比较对象，而不是同一个合成参照方案中的权重。可信的研究应说明为何完整观测实践或凸组合能够提供更可靠的证据；当两者都合理时，还应把另一种构造作为敏感性检验。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:258
+#: 6f0982e5801e46c4a4dd474b95649c0f
+msgid "Read the movement as an operating comparison"
+msgstr "把调整理解为经营比较"
+
+#: ../../chapters/02-classical/03-classical-radial.md:260
+#: c4b579d4aa45454f9a4fc5d7408d5577
+msgid ""
+"Consider eight branches using one standardized measure of staff capacity to "
+"deliver one standardized service. Under an input-oriented VRS comparison, "
+"branches inside the best-practice boundary are connected to operating plans "
+"that protect their recorded service while using less staff capacity."
+msgstr ""
+"设想八个分支机构使用一项标准化的人员能力指标来提供一项标准化服务。在投入导向 VRS "
+"比较中，最佳实践边界以内的分支机构会与这样的经营方案相联系：既保障其记录的服务，又使用更少的人员能力。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:265
+#: 2f8fafe9f12e44a29448ed4537145d3f
+msgid ""
+"A complete radial fit carries two claims even when a two-dimensional picture"
+" makes them look like one movement. Phase one reports the common "
+"proportional commitment: use at most $\\theta x_o$ under input orientation, "
+"or supply at least $\\phi y_o$ under output orientation. Phase two holds "
+"that fitted factor fixed and asks whether any individual resource can still "
+"be saved or any individual service can still be added. Thus `score` and "
+"`is_radially_efficient` describe the proportional claim; `slacks`, "
+"`targets`, and `is_efficient` describe the selected completed plan. "
+"Completion may change the reported target, but it never revises $\\theta$ or"
+" $\\phi$."
+msgstr ""
+"一次完整的径向拟合包含两项主张，即使二维图形看起来只有一次移动。第一阶段报告共同的比例承诺：投入导向下最多使用 $\\theta "
+"x_o$，产出导向下至少提供 $\\phi "
+"y_o$。第二阶段保持该因子不变，再检验某项具体资源能否进一步节约，或某项具体服务能否进一步增加。因此，`score` 和 "
+"`is_radially_efficient` 描述比例主张；`slacks`、`targets` 和 `is_efficient` "
+"描述选定的完整方案。补全步骤可能改变报告的目标方案，但绝不会改写 $\\theta$ 或 $\\phi$。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:275
+#: 41e86f12687b40d49f62e37bf33b6224
+msgid "The result is easiest to govern as a layered operating account:"
+msgstr "最便于治理的做法，是把结果整理成分层的经营账户："
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 3c91b7d49a594b3c882ef1180ad10cc3
+msgid "Evidence"
+msgstr "证据"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 18bd8a2320bd4df499b724803478ba71
+msgid "What it can support"
+msgstr "能够支持什么"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 6d886b204dd543aa8f48f2fbf93247f1
+msgid "What it cannot establish by itself"
+msgstr "仅凭自身不能说明什么"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 7d66461b04844266806f38b918339531
+msgid "Native $\\theta$ or $\\phi$"
+msgstr "原生 $\\theta$ 或 $\\phi$"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 747f10c1c69b4234933589cdc19c7861
+msgid ""
+"the minimized retained-input share or maximized output multiple under the "
+"declared orientation"
+msgstr "在所声明导向下，最小化的投入保留份额或最大化的产出倍数"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 8f36a56d97d24ff180e10d4ff4e75dd4
+msgid "variable-specific gaps, a causal explanation, or an implementation order"
+msgstr "逐项缺口、因果解释或实施顺序"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 6c5488b9ffe043808724c45e13916beb
+msgid "Phase-one radial plan"
+msgstr "第一阶段径向方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 44be40a157474e268d9c15d8070d6642
+msgid "the quantities implied by that common movement"
+msgstr "由共同调整所得到的数量"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: e900c97ea47246b4af79f745ea0b17a5
+msgid "a Pareto--Koopmans complete plan when slacks remain"
+msgstr "存在松弛量时的 Pareto--Koopmans 完整方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 23951a77d0c14ae7a0bfe43e0f661e46
+msgid "Slacks and completed target"
+msgstr "松弛量与补全后的目标方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 725ae13ebb614ceea321cc2b1723f21a
+msgid ""
+"additional represented input savings or service gains after the radial "
+"optimum is held fixed"
+msgstr "保持径向最优值不变后，仍可支持的额外投入节约或服务增加"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: e7f5c3a0954c44cc9a0601fca4385ae7
+msgid "the unique, cheapest, or politically feasible transition plan"
+msgstr "唯一、成本最低或政治上可行的转型方案"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: f636b39e08354cb294f1cef44bb4d0d7
+msgid "Peer intensities"
+msgstr "参照强度"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: dce86adb4e8e48f6a67b7c69cc452599
+msgid "the observed activities that support the selected comparison"
+msgstr "支持所选比较的观测生产活动"
+
+#: ../../chapters/02-classical/03-classical-radial.md:209
+#: 9b8d58caf94c4d65b39b969718d860db
+msgid "proof that peer management caused the result or should be copied literally"
+msgstr "活跃参照单元的管理行为造成结果或应当被原样照搬的证明"
+
+#: ../../chapters/02-classical/03-classical-radial.md:284
+#: 27eb70f18f9c44b5b0b47a7fca1ca8b2
+msgid ""
+"This hierarchy prevents a concise score from being asked to carry evidence "
+"that only the completion and peer accounts contain."
+msgstr "这一层级避免让一个简洁得分承担只有补全账户和参照账户才能提供的证据。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:287
+#: 9ea589c18a254e06a5cb7f62e0edd12d
+msgid ""
+"The public peer rows belong to the selected slack-completed target when that"
+" completion is requested. The phase-one score establishes that at least one "
+"radial comparison supports $\\theta$ or $\\phi$; it does not make the peers "
+"of a later selected target the unique intensity solution to the phase-one "
+"programme."
+msgstr ""
+"如果请求了松弛量补全，公开的活跃参照单元记录属于所选的松弛量补全目标。第一阶段得分说明至少存在一个径向比较能够支持 $\\theta$ 或 "
+"$\\phi$；它并不意味着后来所选目标方案的活跃参照单元就是第一阶段规划唯一的强度变量解。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: a11ce5f503734e9caae8078951b25dc6
+msgid ""
+"Eight service branches are compared under a variable-returns technology, "
+"with input-oriented plans for interior branches preserving recorded service "
+"while requiring less staff capacity"
+msgstr "八个服务分支机构在规模报酬可变技术下接受比较；对于边界内部的分支机构，投入导向方案既保障其记录的服务，又要求更少的人员能力"
+
+#: ../../chapters/02-classical/03-classical-radial.md:297
+#: 04980377d1344e82b8c31e8cfe61e7ce
+msgid ""
+"An input-oriented BCC comparison. Each interior branch is compared with a "
+"feasible operating plan that preserves its recorded service while requiring "
+"less staff capacity. The plan is a benchmark opportunity, not a causal "
+"diagnosis or an implementation order. In this scalar case no additional "
+"variable-specific improvement remains after the proportional resource "
+"saving, so the proportional and completed plans happen to coincide."
+msgstr ""
+"投入导向 BCC "
+"比较。每个边界内部的分支机构都与一个可行经营方案比较；该方案保障其记录的服务，同时需要较少人员能力。这个方案代表一种标杆机会，不是因果诊断或实施命令。在这个单变量案例中，共同比例节约资源后不再存在额外的逐项改进，因此比例方案与补全方案恰好一致。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:305
+#: 3a046e7c08e44c1a90b9cedbbaed18c2
+msgid ""
+"For branch E, input orientation asks what resource commitment is sufficient "
+"for its recorded service. Output orientation instead keeps E's resource "
+"budget and asks what service level that budget could support. Changing the "
+"orientation changes what is protected and what is allowed to move; it is not"
+" a robustness switch to be chosen after inspecting the scores."
+msgstr ""
+"对于分支机构 E，投入导向问的是：要履行其记录的服务责任，多少资源承诺已经足够？产出导向则保持 E "
+"的资源预算不变，考察该预算能够支持何种服务水平。改变导向会改变所保障的对象和允许变化的对象；它不是查看得分后再选择的稳健性开关。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:311
+#: a5a0f620bed14d1fbe5af4e2c4a6f321
+#, python-brace-format
+msgid ""
+"Changing CRS to VRS asks a different question. CRS treats a productive "
+"operating pattern as proportionally replicable at other scales. VRS does not"
+" grant that right. A lower CRS than VRS efficiency can therefore reflect the"
+" additional scale comparison admitted by CRS. It does not by itself reveal "
+"whether an organization should expand or contract. The dedicated {doc"
+"}`scale-performance-management` chapter separates scale efficiency, local "
+"returns to scale, and radial elasticity. The first compares matched CRS and "
+"VRS performance accounts; the latter two describe the response near a "
+"selected efficient plan. Those quantities should not be collapsed into one "
+"interpretation."
+msgstr ""
+"把 CRS 改为 VRS 回答的是另一个问题。CRS 认为具有生产率优势的经营模式可以在其他规模上按比例复制，VRS 则不赋予这种权利。因此，CRS "
+"效率低于 VRS 效率可能反映 CRS 所增加的规模比较。仅凭这一点，无法判断组织应当扩张还是收缩。专门的 {doc}`scale-"
+"performance-management` 一章区分了规模效率、局部规模报酬和径向弹性。第一项比较匹配的 CRS 与 VRS "
+"绩效账户，后两项描述所选有效方案附近的反应。这些数量不能合并成一种解释。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:321
+#: b0ea24f1ac5a47d5a04489e82746dea8
+msgid "Fit the four complete contracts"
+msgstr "拟合四种完整契约"
+
+#: ../../chapters/02-classical/03-classical-radial.md:323
+#: 4a1999fc42564b24a5c216b982968a24
+msgid ""
+"The deterministic `frontier_1x1` data make the two decisions visible without"
+" hiding them inside a large application:"
+msgstr "确定性的 `frontier_1x1` 数据把这两项选择清楚展示出来，而不会让它们隐藏在大型应用中："
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 4dcb789b950f4bddba742d6b5b01a4a2
+msgid "Contract"
+msgstr "契约"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: a43bb0ca412545afb6db8800bb54dd71
+msgid "Native score"
+msgstr "原生得分"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: c9a5964d298b4bf482efcdbe92b24075
+msgid "Standardized efficiency"
+msgstr "标准化效率"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 0811e217fbfb4137b66a7a8ecdda0854
+msgid "Radially efficient?"
+msgstr "径向有效？"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 7636b18504bc4f6999f8a263189907b9
+msgid "Strongly efficient?"
+msgstr "强有效？"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: ab74863bcd7c4256937585c0df3f84e4 b770ca46478e4c1f95dcbcfbbed7df72
+#: bb90826b51104c63b12f8d01d081c922 f82df0df4cc44dfc91e6738ae70a345d
+msgid "0.6000"
+msgstr "0.6000"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 27b56c5713e94856a0dbb79974c7039c 28be8e35f12840539b2178272dea1ab3
+#: 2bf68cf6f96d482c9958c0a488c8ed99 2d80ce7f53a149b68dd7ba13ec6974cc
+#: 6667eb2cf21e4720a1a2ef59c92c38c7 8af8c4eed00c4ff6b9319c7e2a1b5ada
+#: ac5d9003646b4e31842ff4940d4815ce baada96c0178424080ad3161e39e2589
+msgid "no"
+msgstr "否"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: 28a64baaf71848ef8a48aa48c834fa2d 896bd0c031914d9792653f2f2484857f
+msgid "1.6667"
+msgstr "1.6667"
+
+#: ../../chapters/02-classical/03-classical-radial.md:292
+#: acbcb522024740f5942de3884d9c8dd1 bc3661eca4b84f4290c045845f930546
+msgid "0.6667"
+msgstr "0.6667"
+
+#: ../../chapters/02-classical/03-classical-radial.md:381
+#: 4d6563307fc646e8a3ad8345722c7540
+msgid ""
+"For the two input-oriented contracts, `score` is the retained resource "
+"factor $\\theta$. Thus $\\theta_E=0.60$ under CCR-I means that the CRS "
+"benchmark uses 60 percent of E's represented inputs while protecting its "
+"outputs: the proportional resource-saving opportunity is 40 percent. Input-"
+"oriented `efficiency` reports the same $\\theta$."
+msgstr ""
+"对于两个投入导向契约，`score` 是资源保留因子 $\\theta$。因此，CCR-I 下的 $\\theta_E=0.60$ 表示：CRS "
+"标杆在保障 E 的产出的同时，只使用其代表性投入的 60%；共同的资源节约机会为 40%。投入导向的 `efficiency` 报告同一个 "
+"$\\theta$。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:387
+#: abae8681560a41509144bbecf2fee2ac
+msgid ""
+"For the two output-oriented contracts, `score` is the native expansion "
+"factor $\\phi$. A value $\\phi_E=1.6667$ means that the benchmark supports "
+"about 1.667 times E's represented outputs with its inputs held fixed. "
+"DEAPack reports the reciprocal $1/\\phi_E=0.60$ in `efficiency`, so the "
+"standardized efficiency field remains higher-is-better in both orientations."
+msgstr ""
+"对于两个产出导向契约，`score` 是原生扩张因子 $\\phi$。$\\phi_E=1.6667$ 表示：在投入保持不变时，标杆能够支持约为 E "
+"当前代表性产出 1.667 倍的产出。DEAPack 在 `efficiency` 中报告其倒数 "
+"$1/\\phi_E=0.60$，因而两个导向下的标准化效率字段都保持越高越好的方向。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:393
+#: 4b3e334d444140468bd7f3a4f51f6ad7
+msgid ""
+"The distinction between `score` and `efficiency` should remain visible in an"
+" audit trail. Comparing the native `score` columns across orientations would"
+" mix a contraction factor with an expansion factor. In this scalar case the "
+"harmonized CRS efficiencies coincide, but the input- and output-oriented "
+"experiments still protect different quantities."
+msgstr ""
+"审计记录应当保留 `score` 与 `efficiency` 的区别。直接跨导向比较原生 `score` "
+"列，会把压缩因子与扩张因子混在一起。本例只有单项投入和单项产出，因此协调后的 CRS 效率恰好相同；但投入导向与产出导向实验所保障的数量仍然不同。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:399
+#: 13bef09505804b1997ff1a34ca205013
+msgid "When a score of one does not close the operating account"
+msgstr "得分为 1 时，经营账户仍可能没有闭合"
+
+#: ../../chapters/02-classical/03-classical-radial.md:401
+#: 9c0248cf78644fd0ae8498a9bdbe7917
+msgid ""
+"A radial score tests one deliberately simple operating rule: change every "
+"represented input, or every represented output, by the same percentage. That"
+" rule can be exhausted because one protected quantity prevents a further "
+"common movement, even though another resource or service still has a "
+"separately attainable improvement."
+msgstr "径向得分检验一条有意保持简单的经营规则：所有代表性投入，或者所有代表性产出，按同一百分比变化。某项受到保障的数量可能阻止进一步的共同调整，使这一规则已经用尽；但另一项资源或服务仍可能存在可以单独实现的改进。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:407
+#: 959acd8e252e46d9be82515baa173855
+msgid ""
+"Three branches make the distinction exact. A uses one resource unit to "
+"supply one service unit. B uses two resource units for the same service. C "
+"uses one resource unit but supplies only one half unit of service. The "
+"input-oriented VRS question for C asks whether its *resource* can fall while"
+" its recorded service is protected. It does not initially ask whether "
+"service could rise."
+msgstr ""
+"三个分支机构可以准确展示这一差别。A 用 1 单位资源提供 1 单位服务；B 用 2 单位资源提供同样服务；C 用 1 单位资源却只提供 0.5 "
+"单位服务。对 C 的投入导向 VRS 问题是：在保障其记录服务的前提下，*资源*能否减少。第一阶段并不询问服务能否增加。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:413
+#: 1cff716328444177b9922faa55e53d35
+msgid ""
+"Branch C uses one resource unit to provide half a service unit. Its input-"
+"oriented VRS radial factor is theta equal to one, so the phase-one "
+"proportional target remains one resource and one-half service. A separately "
+"supported completion holds theta fixed and raises service by one-half to the"
+" selected final target of one resource and one service. C is radially "
+"efficient but not strongly efficient."
+msgstr ""
+"分支机构 C 使用 1 单位资源提供 0.5 单位服务。其投入导向 VRS 径向因子 theta 等于 1，因此第一阶段的比例目标仍为 1 单位资源和 "
+"0.5 单位服务。另一个有证据支持的补全方案保持 theta 不变，把服务增加 0.5，得到所选最终目标：1 单位资源、1 单位服务。C "
+"径向有效，但并非强有效。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:418
+#: 7b12c5da13f342a39c8902ce3a83144b
+msgid ""
+"One observed operation, two supported conclusions. The proportional "
+"programme finds no common resource saving for C; the completion account "
+"still finds a service opportunity of 0.5. The final target is conditional on"
+" the fitted technology and completion rule, not an implementation sequence "
+"or management order."
+msgstr ""
+"同一个观测经营方案得到两项有证据支持的结论。比例规划没有为 C 找到共同资源节约；补全账户仍识别出 0.5 "
+"单位的服务机会。最终目标取决于拟合技术和补全规则，不是实施顺序或管理命令。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:424
+#: b111a8f0823f41e283129ff61e4846fc
+msgid ""
+"For C, $\\theta_C=1$ leaves the phase-one plan at resource $1$ and service "
+"$0.5$. The statement is precise but narrow: no common input contraction is "
+"represented as feasible. Branch A nevertheless shows that the same resource "
+"can support service $1$. Holding the radial optimum fixed, phase two "
+"therefore records zero additional resource saving, a service slack of $0.5$,"
+" and the completed target $(1,1)$. C is radially efficient but not strongly "
+"efficient."
+msgstr ""
+"对 C 而言，$\\theta_C=1$ 使第一阶段方案保持为资源 $1$、服务 "
+"$0.5$。这个结论准确但范围有限：生产证据不支持共同压缩投入。然而，分支机构 A 表明同样的资源可以支持服务 "
+"$1$。因此，第二阶段在保持径向最优值不变时，记录到额外资源节约为零、服务松弛量为 $0.5$，补全目标为 $(1,1)$。C 径向有效，但并非强有效。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:431
+#: 1c535c338e154f38961d51cf50e8502f
+msgid "The operating account for a general input-oriented fit is"
+msgstr "一般投入导向拟合的经营账户为"
+
+#: ../../chapters/02-classical/03-classical-radial.md:433
+#: c3a4092ec3b745e19a54b1605b9039b4
+#, python-brace-format
+msgid ""
+"\n"
+"x_o^{R}=\\theta_o x_o,\n"
+"\\qquad y_o^{R}=y_o,\n"
+"\\qquad\n"
+"\\widehat x_o=x_o^{R}-s_o^-,\n"
+"\\qquad \\widehat y_o=y_o^{R}+s_o^+.\n"
+msgstr ""
+"\n"
+"x_o^{R}=\\theta_o x_o,\n"
+"\\qquad y_o^{R}=y_o,\n"
+"\\qquad\n"
+"\\widehat x_o=x_o^{R}-s_o^-,\n"
+"\\qquad \\widehat y_o=y_o^{R}+s_o^+.\n"
+
+#: ../../chapters/02-classical/03-classical-radial.md:441
+#: 4a11cf6c5d684e8191ea0c96a13b943a
+msgid ""
+"The superscript $R$ denotes the phase-one proportional plan; a hat denotes "
+"the selected completed plan. The `targets` table reports the hatted plan, "
+"not an unlabeled copy of $\\theta_o x_o,y_o$. The accompanying operating "
+"ledger reconstructs and labels the intermediate radial plan so that a reader"
+" cannot silently attribute the later service gain to the radial percentage."
+msgstr ""
+"上标 $R$ 表示第一阶段比例方案，帽号表示所选的补全方案。`targets` 表报告带帽号的方案，而不是未加说明地复制 $\\theta_o "
+"x_o,y_o$。配套的经营明细表会重构并标明中间径向方案，避免读者把后来增加的服务错误归因于径向百分比。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:447
+#: cbb862bd237c42ce9ddf2ae7075bec81
+msgid "The exact account is reproducible through the complete BCC-I preset:"
+msgstr "完整的 BCC-I 预设可以精确复现这一账户："
+
+#: ../../chapters/02-classical/03-classical-radial.md:471
+#: e4d7e6cc00304880943483604d278fad
+msgid ""
+"Under output orientation the same accounting logic reverses roles: phase one"
+" holds the input caps and scales every represented output by $\\phi$; "
+"completion may then expose an additional input saving or output gain without"
+" changing $\\phi$."
+msgstr ""
+"产出导向采用相同的核算逻辑，但两侧角色互换：第一阶段保持投入上限不变，并按 $\\phi$ "
+"放大每项代表性产出；补全步骤随后可能识别额外的投入节约或产出增加，却不改变 $\\phi$。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:476
+#: 5398fc152d3449819eb9d05a33de2a01
+#, python-brace-format
+msgid ""
+"This is the distinction between radial efficiency and Pareto--Koopmans "
+"strong efficiency {cite:p}`koopmans1951,charnes1985`. A plan is strongly "
+"efficient under the declared technology when no other feasible plan uses no "
+"more of every eligible input and supplies no less of every desirable output,"
+" with a strict improvement in at least one quantity. Thus $\\theta=1$ "
+"establishes only that no common input reduction remains; it does not "
+"establish that every individual resource excess and service shortfall is "
+"zero. The analogous warning applies when an output-oriented expansion factor"
+" reaches one."
+msgstr ""
+"这正是径向效率与 Pareto--Koopmans 强效率之间的区别 "
+"{cite:p}`koopmans1951,charnes1985`。在所声明技术下，如果不存在另一个可行方案能够使用不多于每项合格投入的数量、提供不少于每项合意产出的数量，并至少严格改善其中一项，则该方案为强有效。因此，$\\theta=1$"
+" 只说明不存在进一步的共同投入压缩，并不能说明每项资源冗余和服务不足都已为零。产出导向扩张因子达到 1 时，同样需要这一提醒。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:485
+#: 2f53aedbf01c46a19280e24290573e1a
+msgid ""
+"DEAPack's complete radial presets preserve the common-percentage result and,"
+" when the evidence supports it, supply a slack-completed target such as C's "
+"$(1,1)$ plan. The completion does not revise the radial score or create a "
+"different efficiency model; it makes the remaining operating gaps visible. "
+"If the evidence does not support a completed target, only the radial "
+"conclusion has been established. An absent target or slack ledger is not "
+"evidence that every remaining improvement is zero."
+msgstr ""
+"DEAPack 的完整径向预设会保留共同比例结果，并在证据支持时提供松弛量补全目标，例如 C 的 $(1,1)$ "
+"方案。补全步骤既不修改径向得分，也不创造另一个效率模型；它只是把剩余经营缺口显示出来。如果证据不支持补全目标，则只能认为径向结论已经成立。目标或松弛量明细缺失，不代表所有剩余改进均为零。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:493
+#: 358565e0c917481f89fcc0565edd1120
+msgid "What a slack-completed target does—and does not—mean"
+msgstr "松弛量补全目标能够说明什么，又不能说明什么"
+
+#: ../../chapters/02-classical/03-classical-radial.md:495
+#: 50b02fafe444435a811f25e4732519e1
+msgid ""
+"A slack-completed target is one strongly efficient operating plan under the "
+"declared technology and completion rule. It is not necessarily the closest "
+"target, the cheapest transition, or the only optimal target. “Strong” refers"
+" to the absence of a further represented input saving or desirable-output "
+"gain; it does not mean that the plan is uniquely best for management."
+msgstr "松弛量补全目标是所声明技术和补全规则下的一个强有效经营方案。它不一定是最近的目标、成本最低的转型方案或唯一的最优目标。“强”指不存在可进一步实现的投入节约或合意产出增加，并不表示该方案对管理层而言具有唯一最优性。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:501
+#: d8768ab02cd74b208fc5492e137cd37b
+msgid ""
+"Peer intensities have the same boundary. They show which observed activities"
+" support the selected benchmark. A positive intensity is evidence used by "
+"the model, not a finding that the peer's management practice caused its "
+"performance or that the evaluated organization should imitate it literally. "
+"Convex combinations are operationally persuasive only when divisible "
+"capacity, time sharing, or portfolio mixing makes those combinations "
+"credible."
+msgstr "参照强度也有同样的解释边界。它们表明哪些观测生产活动支持所选标杆。正的强度是模型采用了相应证据，并不能说明活跃参照单元的管理实践造成了其绩效，也不能说明被评价组织应当原样模仿。只有当可分割产能、分时安排或业务组合能够使凸组合具有现实意义时，这种组合在经营上才有说服力。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:509
+#: e8be7a144df74a48ac3f96a2810466c9
+msgid ""
+"The presets do not settle other parts of the study. The analyst must still "
+"declare the variables, eligible reference observations, period policy, "
+"measurement quality, and whether CRS or VRS is economically defensible. "
+"Ordinary radial DEA also does not guess how an undesirable output may be "
+"reduced. A study containing pollution, adverse events, or another jointly "
+"produced burden must move to an explicit environmental production account."
+msgstr ""
+"这些预设并没有解决研究的其他部分。分析者仍须声明变量、合格参照观测、时期政策、测量质量，以及 CRS 或 VRS 在经济上是否可信。普通径向 DEA "
+"也不会猜测非合意产出应如何减少。包含污染、不良事件或其他联合生产负担的研究，必须转向明确的环境生产账户。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:516
+#: aa226718aedd45b091eccff27d4c26fa
+msgid ""
+"This completion claim is deliberately narrow: ordinary adjustable inputs and"
+" desirable outputs in the declared convex free-disposal technology. "
+"Pollution, fixed commitments, and non-convex benchmark rights require their "
+"own production accounts; the existence of a quantity called a target does "
+"not make their dominance conditions identical."
+msgstr "这里的补全主张刻意保持狭窄：它只适用于所声明凸自由处置技术中的普通可调整投入和合意产出。污染、固定承诺与非凸标杆构造权需要各自的生产账户；一个数量被称为目标，并不意味着这些账户具有相同的支配条件。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:522
+#: a60ab53b9bc34859a6ce3f8baa69e012
+msgid "Report the question, not only the percentage"
+msgstr "报告绩效问题，而不只是百分比"
+
+#: ../../chapters/02-classical/03-classical-radial.md:524
+#: df2ed8e19d734f17ae01945f13c4bb2a
+msgid ""
+"A responsible finding keeps the comparison contract attached. CCR and BCC "
+"remain useful shorthand for CRS and VRS, and the I or O suffix states what "
+"management protects. The software constructors preserve those complete "
+"historical labels, but the report should lead with the operating meaning. "
+"For example:"
+msgstr ""
+"负责任的研究结论应始终附带比较契约。CCR 和 BCC 仍是 CRS 与 VRS 的实用简称，I 或 O "
+"后缀则说明管理层保障什么。软件构造器保留这些完整的历史标签，但报告应首先说明其经营含义。例如："
+
+#: ../../chapters/02-classical/03-classical-radial.md:529
+#: 1892ce2bd9ad4f82a6e91965daa4758d
+msgid ""
+"Relative to the eligible branches and the declared convex VRS technology, "
+"branch E has an input-oriented radial efficiency of 0.667. The fitted "
+"benchmark preserves E's recorded service while using two-thirds of its "
+"represented controllable resource. This is a model-supported operating "
+"opportunity, not a causal estimate or an instruction to remove one-third of "
+"the branch's budget."
+msgstr ""
+"相对于合格分支机构和所声明的凸 VRS 技术，分支机构 E 的投入导向径向效率为 0.667。拟合标杆保障 E "
+"记录的服务，同时只使用其代表性可控资源的三分之二。这是模型支持的经营机会，不是因果估计，也不是要求削减该分支机构三分之一预算的指令。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:536
+#: 4c325e3990f84ef99da1ae8fb13200b1
+msgid ""
+"That sentence names the reference population, scale assumption, orientation,"
+" score meaning, and conclusion boundary. Targets, slacks, and peers can then"
+" show why the model supports the comparison."
+msgstr "这句话说明了参照总体、规模报酬假设、导向、得分含义和结论边界。随后可以通过目标方案、松弛量和活跃参照单元解释模型为何支持这一比较。"
+
+#: ../../chapters/02-classical/03-classical-radial.md:540
+#: 2621201d3abc47cdb09d09983d9eed6d
+#, python-brace-format
+msgid ""
+"The FDH section above changes benchmark rights while retaining the radial "
+"performance question. The following {doc}`scale-performance-management` "
+"chapter separates a CRS--VRS scale gap from local operating response. "
+"Readers interested in variable-specific resource excesses and output "
+"shortfalls can continue directly to {doc}`04-sbm`. When desirable production"
+" is inseparable from an undesirable outcome, begin instead with the "
+"environmental production question in {doc}`../03-environmental/06"
+"-undesirable-outputs-ddf`."
+msgstr ""
+"上面的 FDH 部分改变了标杆构造权，但保留径向绩效问题。接下来的 {doc}`scale-performance-management` 一章把 "
+"CRS--VRS 规模差距与局部经营反应区分开来。关注逐项资源冗余和产出不足的读者，可以直接阅读 "
+"{doc}`04-sbm`。如果合意生产与某项非合意结果不可分割，则应从 {doc}`../03-environmental/06"
+"-undesirable-outputs-ddf` 的环境生产问题入手。"

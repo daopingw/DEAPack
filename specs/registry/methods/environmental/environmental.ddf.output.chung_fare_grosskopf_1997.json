@@ -1,0 +1,598 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.ddf.output.chung_fare_grosskopf_1997",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Chung--Färe--Grosskopf environmental output DDF",
+  "decision_question": "How much can desirable output rise and undesirable output fall in their observed proportions while inputs remain fixed under the source's CRS common-factor environmental technology?",
+  "names": {
+    "display": "Chung--Färe--Grosskopf environmental output DDF",
+    "historical": [
+      {
+        "label": "Directional environmental output distance",
+        "spellings": [
+          "Chung-Färe-Grosskopf DDF",
+          "CFG environmental DDF"
+        ],
+        "sources": [
+          "doi:10.1006/jema.1997.0146"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ChungFareGrosskopfDDF",
+      "aliases": []
+    },
+    "spellings": [
+      "CFG output DDF",
+      "observed-direction environmental DDF"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_environmental_performance",
+        "managerial_plan": "hold_resources_fixed_expand_services_and_contract_residuals_proportionally"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box_joint_production"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "fixed_resources",
+        "outputs": "desirable_services_to_expand",
+        "bad_outputs": "jointly_produced_residuals_to_contract",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.environmental_ddf.declared_bad_outputs",
+        "domain.environmental_ddf.nonnegative_quantities",
+        "condition.null_jointness_observed_sample"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997",
+        "environmental.null_jointness"
+      ],
+      "fixed": {
+        "returns_to_scale": "crs",
+        "weak_disposal": "one_common_proportional_factor",
+        "null_jointness": true,
+        "envelopment": "X_lambda_le_x_Y_lambda_ge_y_B_lambda_eq_b"
+      },
+      "constraints": [
+        "condition.common_factor_weak_disposal_requires_crs",
+        "condition.null_jointness_observed_sample"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_environmental_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "environmental_directional_distance",
+        "input_direction": "zeros",
+        "output_direction": "observed",
+        "bad_output_direction": "observed",
+        "sign_convention": {
+          "input": "held_fixed",
+          "output": "expand",
+          "bad_output": "contract"
+        }
+      },
+      "defaults": {
+        "allow_negative_distance": true
+      },
+      "exposed": [
+        "allow_negative_distance"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_conditioned_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "bad_output_slack": "not_allowed",
+        "target_selection": "row_scaled_input_and_good_output_slack_completion",
+        "membership_assessment": "structural_self_inclusion_or_negative_beta_exclusion_or_beta_zero_feasibility_program",
+        "efficiency_classification_domain": "evaluated_plan_within_reference_technology"
+      },
+      "defaults": {
+      "secondary_objective": "maximize_row_scaled_slacks"
+      },
+      "exposed": [
+        "compute_slacks"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.environmental",
+    "canonical_symbol": "ChungFareGrosskopfDDF",
+    "registry_dependencies": [
+      "environmental.null_jointness",
+      "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997",
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "optional_lexicographic_slack_completion",
+      "shared_reference_compilation",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "row_scaled_primary_environmental_accounts",
+      "solver_neutral_postsolve_certification",
+      "solver_neutral_reference_membership_certification",
+      "conditional_external_reference_beta_zero_membership_lp",
+      "negative_beta_exclusion_without_solver_call",
+      "explicit_certificate_and_membership_solver_call_accounts",
+      "zero_additional_score_and_projection_release_certificate_solves"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "beta",
+        "direction": "mixed",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.certified_reference_technology_membership"
+          ]
+        }
+      },
+      {
+        "id": "efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": null,
+          "upper": null,
+          "conditions": [
+            "condition.cfg_source_direction"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "directional_distance",
+      "directional_efficiency_status",
+      "permitted_slacks",
+      "scaled_slacks",
+      "common_activity_intensities",
+      "peers",
+      "targets",
+      "execution_account",
+      "source_preset_identity",
+      "score_valid",
+      "score_status",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "efficiency_denominator_valid",
+      "completion_valid",
+      "completion_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "solver_neutral_lp_optimality_certificate",
+      "environmental_account_reconstruction_certificate",
+      "solver_neutral_reference_membership_certificate",
+      "membership_solver_call_account",
+      "certificate_solver_call_account",
+      "peer_eligibility_provenance_when_supplied",
+      "published_peer_account_certificate",
+      "published_dual_account_certificate"
+    ],
+    "transformations": [
+      "efficiency_equals_one_over_one_plus_beta_when_reference_technology_membership_is_certified"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.environmental_ddf.declared_bad_outputs",
+        "domain.environmental_ddf.nonnegative_quantities",
+        "condition.common_factor_weak_disposal_requires_crs",
+        "condition.null_jointness_observed_sample"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_under_observed_directions",
+        "co_transform": [
+          "targets"
+        ],
+        "conditions": [
+          "condition.observed_direction_tracks_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_in_the_cfg_crs_common_factor_technology_after_certified_primary_and_completion_solves",
+      "efficiency": "directional_only_common_factor_bad_output_equality_does_not_certify_generic_pareto_koopmans_efficiency",
+      "selection": "row_scaled_slack_sum_solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.certified_primary_solve",
+        "condition.certified_lexicographic_slack_completion",
+        "condition.cfg_source_direction",
+        "condition.null_jointness_observed_sample"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1006/jema.1997.0146"
+      },
+      {
+        "role": "predecessor",
+        "id": "repec:wpa:wuwpmi:9511002"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jeth.1996.0096"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/cfg-environmental-ddf-analytical.md",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_exact_pooled_cfg_distances_and_management_targets",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_negative_external_reference_distance_is_not_reported_as_efficiency",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_public_full_and_score_only_runs_match_independent_dense_lp",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_observed_cfg_direction_and_slack_completion_are_units_invariant"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/cfg-environmental-ddf-analytical.md",
+        "public_api_test_locator": "tests/test_cfg_environmental_ddf_independent_oracle.py::test_public_full_and_score_only_runs_match_independent_dense_lp",
+        "claims": [
+          {
+            "claim_id": "environmental.cfg.pooled.exact_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_cfg_environmental_ddf_independent_oracle.py::test_exact_pooled_cfg_distances_and_management_targets"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "row_scaled_slack_completion"
+              ],
+              "disposability": [
+                "common_factor_weak"
+              ],
+              "direction_policy": [
+                "cfg_observed_good_and_bad_fixed_input"
+              ],
+              "negative_distance_policy": [
+                true
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "compatibility_efficiency",
+              "directional_efficiency_status",
+              "slacks",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.cfg.external.negative_distance",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_cfg_environmental_ddf_independent_oracle.py::test_negative_external_reference_distance_is_not_reported_as_efficiency"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "row_scaled_slack_completion"
+              ],
+              "disposability": [
+                "common_factor_weak"
+              ],
+              "direction_policy": [
+                "cfg_observed_good_and_bad_fixed_input"
+              ],
+              "negative_distance_policy": [
+                true
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "environmental.cfg.new_against_old",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "New",
+                  "expected": {
+                    "beta": "-3/5",
+                    "efficiency": null,
+                    "target_service": "4/5",
+                    "target_residual": "8/5"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_score",
+              "negative_distance_semantics",
+              "missing_compatibility_efficiency",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "custom",
+              "resolved_kind": "custom",
+              "comparison_population": "declared_subset",
+              "self_membership": "excluded"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.cfg.global.independent_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_cfg_environmental_ddf_independent_oracle.py::test_public_full_and_score_only_runs_match_independent_dense_lp",
+              "tests/test_cfg_environmental_ddf_independent_oracle.py::test_observed_cfg_direction_and_slack_completion_are_units_invariant"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "score_only",
+                "row_scaled_slack_completion"
+              ],
+              "disposability": [
+                "common_factor_weak"
+              ],
+              "direction_policy": [
+                "cfg_observed_good_and_bad_fixed_input"
+              ],
+              "negative_distance_policy": [
+                true
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "scaled_slacks",
+              "unit_invariance",
+              "execution_account"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "crs_lock",
+        "null_jointness_lock",
+        "observed_direction_lock",
+        "preset_identity",
+        "source_technology_identity",
+        "exact_pooled_score_and_target_account",
+        "exact_negative_external_reference_account",
+        "negative_distance_disabled_infeasibility",
+        "independent_dense_problem_compilation",
+        "row_scaled_unit_invariance",
+        "full_and_score_only_execution_budgets",
+        "primary_and_completion_fail_closed_certificates",
+        "raw_and_published_primary_release_gates",
+        "thresholded_peer_and_complete_dual_release_gates",
+        "extreme_unit_scale_invariance",
+        "malicious_solver_response_rejection",
+        "raw_solver_status_preservation",
+        "dynamic_reference_appraisal_identity",
+        "positive_external_distance_without_reference_membership",
+        "conditional_beta_zero_membership_solver_account",
+        "signed_visual_semantics"
+      ],
+      "locators": [
+        "tests/test_environmental.py::test_chung_fare_grosskopf_preset_locks_source_direction_and_identity",
+        "tests/test_environmental_ddf_certificates.py",
+        "tests/test_environmental_directional_postsolve_certification.py",
+        "tests/test_m13_environmental_peer_eligibility.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_exact_pooled_cfg_distances_and_management_targets",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_negative_external_reference_distance_is_not_reported_as_efficiency",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_positive_cfg_distance_does_not_imply_external_technology_membership",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_disallowing_negative_distance_reports_external_infeasibility",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_public_full_and_score_only_runs_match_independent_dense_lp",
+        "tests/test_cfg_environmental_ddf_independent_oracle.py::test_observed_cfg_direction_and_slack_completion_are_units_invariant",
+        "tests/test_visualization.py::test_negative_cfg_distance_has_zero_centred_nonmonotone_plot_semantics"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.environmental.ddf",
+        "path": "book/chapters/03-environmental/06-undesirable-outputs-ddf.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.environmental_directional",
+        "path": "docs/models/environmental-directional.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,567 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.malmquist_luenberger.aparicio_pastor_zofio_2013",
+  "identifier_role": "preset_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Aparicio--Pastor--Zofío consistent Malmquist--Luenberger index",
+  "decision_question": "Did environmental productivity improve between adjacent periods when production opportunities satisfy the APZ bounded bad-output postulate rather than the conventional bad-output equality?",
+  "names": {
+    "display": "Aparicio--Pastor--Zofío consistent Malmquist--Luenberger index",
+    "historical": [
+      {
+        "label": "APZ Malmquist--Luenberger index",
+        "spellings": [
+          "consistent Malmquist-Luenberger index",
+          "A2 Malmquist-Luenberger index",
+          "A7 Malmquist-Luenberger index"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2013.03.031",
+          "doi:10.1016/j.jenvman.2017.03.007"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "APZMalmquistLuenbergerProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "APZMalmquistLuenbergerDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "APZ consistent ML",
+      "APZ bounded-bad environmental productivity account",
+      "capped bad-output Malmquist--Luenberger preset"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_consistency_aware_environmental_productivity_change",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "operating_performance_and_represented_environmental_opportunity_change_under_a_bounded_pollution_account",
+        "theory_source": "aparicio_pastor_zofio_2013_a7",
+        "operational_source": "aparicio_barbero_kapelko_pastor_zofio_2017_equations_5_6_a2"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box_joint_production",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_productive_resources_held_fixed_by_direction",
+        "outputs": "nonnegative_desirable_services_expanded_in_observed_proportions",
+        "bad_outputs": "strictly_positive_undesirable_joint_products_contracted_in_observed_proportions",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "strictly_positive_inputs_and_bad_outputs_with_nonnegative_desirable_outputs",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.environmental_productivity.declared_bad_outputs",
+        "domain.environmental_productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.apz.strictly_positive_inputs_and_bad_outputs"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.null_jointness"
+      ],
+      "fixed": {
+        "family": "apz_bounded_bad_output_environmental_technology",
+        "source_formulation": "aparicio_etal_2017_equations_5_6",
+        "returns_to_scale": "crs",
+        "bad_output_envelopment": "B_lambda_le_directional_bad_target_le_reference_period_componentwise_maximum",
+        "bad_output_cap": "componentwise_contemporaneous_reference_period_observed_maximum",
+        "good_output_envelopment": "Y_lambda_ge_directional_good_target",
+        "input_envelopment": "X_lambda_le_observed_input",
+        "null_jointness": true,
+        "convexity_row": "absent",
+        "cfg_bad_output_equality": "not_used",
+        "unrestricted_bad_output_free_disposal": "not_used"
+      },
+      "constraints": [
+        "condition.apz.reference_period_specific_componentwise_bad_output_cap",
+        "condition.apz.no_vrs_convexity_row",
+        "condition.apz.not_cfg_common_factor_equality"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "period_specific_sparse_dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.contemporaneous"
+      ],
+      "fixed": {
+        "kind": "adjacent_contemporaneous_cross_evaluation",
+        "distance_tasks_per_pair": [
+          "base_on_base",
+          "comparison_on_base",
+          "base_on_comparison",
+          "comparison_on_comparison"
+        ],
+        "cap_reference": "same_contemporaneous_period_as_peer_technology",
+        "sequential_global_biennial_or_pooled_reference": "excluded"
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "one_contemporaneous_apz_environmental_technology_per_period",
+          "membership_rule": "all_eligible_observations_from_the_technology_period",
+          "self_membership": "allowed_for_own_period_tasks"
+        },
+        "temporal_information_set": {
+          "policy": "adjacent_contemporaneous",
+          "availability_cutoff": "each_evaluated_technology_period",
+          "vintage_required": true,
+          "historical_revision": "period_technology_and_its_cap_recomputed_when_its_sample_changes"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "environmental_output_directional_distance",
+        "input_direction": "zeros",
+        "output_direction": "observed",
+        "bad_output_direction": "observed",
+        "signed_literature_direction": "zero_y_negative_b",
+        "distance_variable": "unrestricted",
+        "cross_period_distance": "may_be_negative_when_feasible"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_adjacent_period_identifiers",
+        "first_period_rows": "omitted_no_predecessor",
+        "distance_solve_cache": "evaluated_row_and_contemporaneous_technology_period",
+        "complete_account_requirement": "all_four_distance_tasks_optimal_and_all_one_plus_distance_factors_positive",
+        "infeasible_cross_task": "retained_as_a_legitimate_failure_and_never_imputed"
+      },
+      "defaults": {
+        "unbalanced": "drop"
+      },
+      "exposed": [
+        "unbalanced"
+      ],
+      "constraints": [
+        "condition.apz.no_distance_or_component_imputation",
+        "condition.apz.all_four_tasks_required_for_complete_index"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "apz_consistent_malmquist_luenberger_geometric_productivity",
+        "composition_identity": "apz_2017_capped_bad_inequality_technology_plus_standard_four_distance_malmquist_luenberger_accounting",
+        "accounting_operator": "standard_adjacent_four_distance_malmquist_luenberger_geometric_mean",
+        "technology_component": "aparicio_etal_2017_equations_5_6_capped_bad_output_inequality",
+        "aggregation": "four_distance_geometric_mean",
+        "decomposition": "productivity_change_equals_efficiency_change_times_technical_change",
+        "all_distances_recompiled": true,
+        "cfg_postprocessing_or_alias": false,
+        "oh_global_malmquist_luenberger_alias": false,
+        "published_application_reproduction": false,
+        "component_causality_welfare_and_damage_valuation": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.analysis.apz_malmquist_luenberger",
+    "canonical_symbol": "APZMalmquistLuenbergerProductivityIndex",
+    "registry_dependencies": [
+      "environmental.null_jointness",
+      "estimator.full.dea",
+      "graph.black_box",
+      "productivity.malmquist_luenberger.chung_fare_grosskopf_1997",
+      "reference.contemporaneous",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_period_references",
+      "componentwise_reference_period_bad_output_caps",
+      "deduplicated_four_distance_task_cache",
+      "row_scaled_quantity_and_bad_output_cap_constraints",
+      "original_unit_raw_published_and_peer_account_certification",
+      "sparse_distance_peer_cache",
+      "unrestricted_directional_distance_variable",
+      "multi_input_multi_desirable_output_multi_bad_output",
+      "solver_neutral_distance_task_certification",
+      "source_specific_apz_account_certification",
+      "requested_unique_and_solver_call_accounting",
+      "task_diagnostic_peer_valid_alias",
+      "atomic_transition_release_without_extra_solves"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "malmquist_luenberger_productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.apz.all_one_plus_directional_distance_factors_positive",
+            "condition.apz.all_four_distance_tasks_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "efficiency_change",
+      "technical_change",
+      "four_apz_directional_distances",
+      "decomposition_residual",
+      "distance_task_intensities",
+      "bad_output_caps_by_period",
+      "directional_bad_target",
+      "peer_bad_output",
+      "bad_output_surplus",
+      "bad_output_cap_slack",
+      "bad_output_cap_binding",
+      "unmatched_adjacent_periods",
+      "apz_source_identity",
+      "score_valid",
+      "score_status",
+      "peer_valid",
+      "peer_status",
+      "four_distance_lp_certificates",
+      "apz_distance_account_certificates",
+      "multiplicative_account_certificate",
+      "task_diagnostic_published_peer_account_certified_and_peer_valid",
+      "requested_distance_tasks",
+      "unique_distance_solves",
+      "solver_calls",
+      "additional_solver_calls"
+    ],
+    "transformations": [
+      "productivity_change_equals_geometric_mean_of_two_apz_reference_period_ratios",
+      "productivity_change_equals_efficiency_change_times_technical_change",
+      "every_component_requires_new_apz_distance_solves_not_cfg_postprocessing"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.environmental_productivity.declared_bad_outputs",
+        "domain.environmental_productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.apz.strictly_positive_inputs_and_bad_outputs",
+        "condition.apz.all_one_plus_directional_distance_factors_positive"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_with_observed_directions_and_each_reference_period_cap_rescaled_in_the_same_bad_output_units",
+        "co_transform": [],
+        "conditions": [
+          "condition.observed_direction_tracks_quantity_units",
+          "condition.apz.cap_tracks_reference_bad_output_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each distance is certified only in its declared contemporaneous APZ technology and a cross-period task may remain infeasible",
+      "efficiency": "not_applicable_to_the_multiplicative_productivity_change_index",
+      "selection": "each distance task has solver-selected peers and the four-distance decomposition has no single joint projection",
+      "conditions": [
+        "condition.apz.all_four_distance_tasks_optimal",
+        "condition.apz.reference_period_specific_componentwise_bad_output_cap"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2013.03.031"
+      },
+      {
+        "role": "implementation",
+        "id": "doi:10.1016/j.jenvman.2017.03.007"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/aparicio_pastor_zofio_2013.md",
+        "tests/test_aparicio_pastor_zofio_2013_source.py::test_2017_apz_lp_recompiles_four_tasks_and_closes_the_exact_account",
+        "tests/test_aparicio_pastor_zofio_2013_source.py::test_exact_fraction_certificate_proves_optima_and_ordinary_infeasibility",
+        "tests/test_aparicio_pastor_zofio_2013_source.py::test_apz_certificate_is_not_a_standard_ml_postprocessing_alias",
+        "tests/test_apz_malmquist_luenberger.py::test_apz_table_one_matches_exact_four_distance_certificate_and_diagnostics",
+        "tests/test_apz_malmquist_luenberger.py::test_apz_is_neither_cfg_postprocessing_nor_oh_global_index"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/aparicio_pastor_zofio_2013.md",
+        "public_api_test_locator": "tests/test_apz_malmquist_luenberger.py::test_apz_table_one_matches_exact_four_distance_certificate_and_diagnostics",
+        "claims": [
+          {
+            "claim_id": "productivity.apz.malmquist_luenberger.table_one.exact_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_aparicio_pastor_zofio_2013_source.py::test_2017_apz_lp_recompiles_four_tasks_and_closes_the_exact_account",
+              "tests/test_aparicio_pastor_zofio_2013_source.py::test_exact_fraction_certificate_proves_optima_and_ordinary_infeasibility",
+              "tests/test_apz_malmquist_luenberger.py::test_apz_table_one_matches_exact_four_distance_certificate_and_diagnostics"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "apz_capped_bad_output_inequality"
+              ],
+              "direction_policy": [
+                "fixed_input_observed_good_and_bad_output"
+              ],
+              "negative_distance_policy": [
+                true
+              ],
+              "time_aggregation": [
+                "four_distance_geometric_malmquist_luenberger"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "table_one_unit_b_apz_account",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "distance_base_on_base": "2/5",
+                    "distance_comparison_on_base": "3/11",
+                    "distance_base_on_comparison": "3/5",
+                    "distance_comparison_on_comparison": "5/11",
+                    "efficiency_change": "77/80",
+                    "technical_change": "8/7",
+                    "productivity_change": "11/10",
+                    "decomposition_residual": 0.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "four_apz_directional_distances",
+              "efficiency_change",
+              "technical_change",
+              "productivity_change",
+              "decomposition_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.apz.malmquist_luenberger.cfg_non_equivalence",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_aparicio_pastor_zofio_2013_source.py::test_apz_certificate_is_not_a_standard_ml_postprocessing_alias",
+              "tests/test_apz_malmquist_luenberger.py::test_apz_is_neither_cfg_postprocessing_nor_oh_global_index"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "apz_capped_bad_output_inequality",
+                "cfg_common_factor_bad_output_equality"
+              ],
+              "direction_policy": [
+                "fixed_input_observed_good_and_bad_output"
+              ],
+              "negative_distance_policy": [
+                true
+              ],
+              "time_aggregation": [
+                "four_distance_geometric_malmquist_luenberger"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "table_one_unit_b_cfg_non_equivalence",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "apz_productivity_change": "11/10",
+                    "apz_technical_change": "8/7",
+                    "cfg_reverse_cross_task_feasible": false,
+                    "cfg_finite_technical_change_factor": "21/26",
+                    "alias": false
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "apz_four_task_feasibility",
+              "cfg_reverse_cross_task_infeasibility",
+              "apz_technical_change",
+              "cfg_finite_technical_change_factor",
+              "non_equivalence"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "2013_sign_and_failure_example",
+        "2017_equations_5_6_independent_dense_compilation",
+        "exact_four_distance_and_component_certificate",
+        "solver_neutral_distance_task_certificates",
+        "source_specific_bad_output_inequality_and_cap_certificate",
+        "atomic_transition_failure_isolation",
+        "malicious_solver_response_rejection",
+        "non_equivalence_to_cfg_postprocessing_and_oh_global_index",
+        "multi_input_multi_desirable_output_multi_bad_output_domain",
+        "strictly_positive_input_and_bad_output_validation",
+        "unit_invariance",
+        "extreme_coherent_unit_invariance_1e10_and_1e12",
+        "semantic_numerical_error_after_backend_optimal_certificate_rejection",
+        "sparse_distance_peer_cache",
+        "unbalanced_drop_and_raise",
+        "task_cache_and_compiled_reference_counts",
+        "metadata_caps_and_source_identity"
+      ],
+      "locators": [
+        "tests/test_aparicio_pastor_zofio_2013_source.py",
+        "tests/test_apz_malmquist_luenberger.py",
+        "tests/test_environmental_productivity_postsolve_certification.py",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_productivity_operators.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.apz_malmquist_luenberger",
+        "path": "docs/analysis/apz-malmquist-luenberger.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

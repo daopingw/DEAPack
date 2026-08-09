@@ -1,0 +1,105 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 02:03+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../citing.md:1 c31e7e9cdaec4587976f362b644535be
+msgid "Citing This Book and DEAPack"
+msgstr "如何引用本书与 DEAPack"
+
+#: ../../citing.md:3 9f0df7cfaddc43ff9aafc14a6d996e51
+msgid ""
+"The book and DEAPack are related but distinct scholarly works. Cite the "
+"book when relying on its theory, unified vocabulary, interpretation, or "
+"worked cases. Cite the software when reporting a computation, "
+"implementation, or numerical workflow. Cite both when both materially "
+"support the study."
+msgstr ""
+"本书与 DEAPack "
+"相互关联，但属于两项不同的学术成果。使用本书的理论、统一术语、解释或案例时，应引用本书；报告计算、实现或数值工作流时，应引用软件；二者都对研究构成实质支持时，应同时引用。"
+
+#: ../../citing.md:8 da8947726c424904aabca7f36f1a66bf
+msgid "Cite the book"
+msgstr "引用本书"
+
+#: ../../citing.md:10 99a9b70aef69458f868d37c49089b368
+msgid ""
+"The current English-source Handbook and its Chinese translation form "
+"*Bilingual Handbook Preview 1*, one development manuscript by Daoping "
+"Wang. Until a formal edition supplies its own bibliographic record, "
+"identify the repository snapshot and language that you consulted. A "
+"suitable citation for the English rendering is:"
+msgstr "当前英文源手册及其中文译本共同构成《双语手册预览版 1》（Bilingual Handbook Preview 1），这是 Daoping Wang 编写的一部开发中手稿。在正式版本形成独立书目记录之前，请注明您实际查阅的仓库快照及语言。英文版本可采用如下引用格式："
+
+#: ../../citing.md:16 9e0baabd73034912ba591a069e580960
+msgid ""
+"Wang, Daoping. *Data Envelopment Analysis: Efficiency, Productivity, and "
+"Environmental Performance with Python*. Bilingual Handbook Preview 1, "
+"English rendering, development manuscript, DEAPack repository, commit "
+"**FULL_COMMIT_HASH**, accessed **YYYY-MM-DD**. "
+"<https://github.com/daopingw/DEAPack>"
+msgstr ""
+"Wang, Daoping. *Data Envelopment Analysis: Efficiency, Productivity, and "
+"Environmental Performance with Python*. Bilingual Handbook Preview 1，英文版本，开发中手稿，DEAPack repository，commit "
+"**FULL_COMMIT_HASH**，访问日期 **YYYY-MM-"
+"DD**。<https://github.com/daopingw/DEAPack>"
+
+#: ../../citing.md:22 651cf272d5b541629dc3294b1d45019a
+msgid ""
+"Replace the bold placeholders with the full Git commit hash and your "
+"access date. Do not add a publisher, publication year, edition number, or"
+" persistent identifier that the cited snapshot does not carry."
+msgstr "请用完整 Git commit hash 和访问日期替换粗体占位符。不要为所引用快照擅自添加其并不具有的出版社、出版年份、版次或永久标识符。"
+
+#: ../../citing.md:26 62f5d7b8686e48e2aa8c5abe132e6be4
+msgid ""
+"For the Chinese rendering, retain the author and English title so that "
+"the record remains discoverable, add “Chinese translation” in brackets, "
+"and use the same commit and access date. The two renderings should not be"
+" assigned separate placeholder DOI or ISBN values."
+msgstr "引用中文版本时，为便于检索，请保留作者姓名和英文书名，在方括号中注明“Chinese translation”，并使用相同的 commit hash 和访问日期。不得为两种语言版本分别虚构 DOI 或 ISBN。"
+
+#: ../../citing.md:31 67010447476c47d4a6b6dbad637d118b
+msgid "Cite the software"
+msgstr "引用软件"
+
+#: ../../citing.md:33 a9facf489e984d0098f6c2f98b2120cd
+msgid ""
+"The repository's current software citation metadata are recorded in "
+"[CITATION.cff](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)."
+" Use those metadata for the software citation and report the exact "
+"DEAPack version used in the analysis. The installed version is available "
+"in Python:"
+msgstr ""
+"仓库当前的软件引用元数据记录在 "
+"[CITATION.cff](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)"
+" 中。请使用这些元数据引用软件，并报告分析所用的确切 DEAPack 版本。可以在 Python 中查看已安装版本："
+
+#: ../../citing.md:44 86ffce73351341c396b0d9283a5217cb
+msgid ""
+"For an unreleased or source-based analysis, also record the full "
+"repository commit:"
+msgstr "对于尚未发布或直接基于源代码的分析，还应记录完整的仓库 commit："
+
+#: ../../citing.md:51 3f5d567c13644335a00c10302c336389
+msgid ""
+"The version, commit when applicable, data snapshot, and analysis code "
+"together identify the computation more precisely than the package name "
+"alone."
+msgstr "版本、适用时的 commit、数据快照和分析代码结合起来，比单独的包名更准确地标识一项计算。"

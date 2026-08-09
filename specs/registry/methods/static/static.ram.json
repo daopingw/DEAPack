@@ -1,0 +1,471 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.ram",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "static",
+  "title": "Range-adjusted measure",
+  "decision_question": "How large is an organization's combined resource excess and desirable-service shortfall when each variable is normalized by one frozen full-data range scale and performance is assessed against its declared VRS comparison population?",
+  "names": {
+    "display": "Range-adjusted measure",
+    "historical": [
+      {
+        "label": "Range adjusted measure",
+        "spellings": [
+          "RAM",
+          "range-adjusted measure"
+        ],
+        "sources": [
+          "doi:10.1023/A:1007701304281"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RangeAdjustedDEA",
+      "aliases": [
+        {
+          "symbol": "RAM"
+        }
+      ]
+    },
+    "spellings": [
+      "RAM efficiency",
+      "RAM inefficiency",
+      "range-normalized additive DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "managerial_plan": "joint_resource_saving_and_service_expansion_on_a_common_range_normalized_scale"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "finite_signed_resources",
+        "outputs": "finite_signed_desirable_services",
+        "bad_outputs": "excluded",
+        "sign_domain": "signed_finite"
+      },
+      "constraints": [
+        "domain.ram.finite_signed_inputs_and_desirable_outputs"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free",
+        "convexity_identity": "sum_lambda_equals_one"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "fixed": {
+        "range_population_without_peer_eligibility": "identical_to_global_reference_population",
+        "range_population_with_peer_eligibility": "base_global_data_before_peer_eligibility",
+        "effective_comparison_population_policy": "global_base_reference_intersected_with_peer_eligibility_when_supplied"
+      },
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "one_global_eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "global_only",
+          "availability_cutoff": "all_declared_periods",
+          "vintage_required": true,
+          "historical_revision": "global_sample"
+        }
+      },
+      "exposed": [
+        "kind",
+        "peer_eligibility"
+      ],
+      "constraints": [
+        "condition.ram.full_data_ranges_bound_effective_reference",
+        "condition.ram.panel_requires_explicit_global_reference"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "range_adjusted_measure",
+        "orientation": "non_oriented",
+        "normalization": "full_observed_coordinate_ranges",
+        "range_population_without_peer_eligibility": "identical_to_global_reference_population",
+        "range_population_with_peer_eligibility": "base_global_data_before_peer_eligibility",
+        "effective_comparison_population": "global_base_reference_intersected_with_peer_eligibility_when_supplied",
+        "native_distance": "ram_inefficiency",
+        "native_score": "ram_efficiency",
+        "source_profile": "cooper_park_pastor_1999_eq_17_18_20_23_when_full_self_inclusive",
+        "restricted_peer_eligibility_profile": "deapack_ram_extension",
+        "source_range_domain": "finite_nonnegative_coordinate_ranges_with_source_zero_range_omission",
+        "zero_range_policy": "source_equivalent_zero_weight_and_vrs_forced_zero_slack"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_dimension_mean_of_range_normalized_slacks",
+        "input_weight": "one_over_dimension_count_times_input_range",
+        "output_weight": "one_over_dimension_count_times_output_range"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "alternate_target_policy": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "source_evidence_boundary": {
+          "certified": "cooper_park_pastor_1999_eq_17_18_20_23_full_self_inclusive_cross_section",
+          "peer_eligibility_extension": "full_data_ranges_are_frozen_before_eligibility_and_effective_comparison_populations_may_differ_by_observation"
+        }
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.additive",
+    "canonical_symbol": "RangeAdjustedDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.additive",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "sample_range_weight_generation",
+      "full_data_pre_eligibility_range_normalization",
+      "signed_data_under_vrs",
+      "solver_neutral_primal_dual_kkt_and_strong_duality_certificate",
+      "raw_and_published_original_quantity_account_certificates",
+      "claim_specific_score_target_peer_and_dual_release",
+      "thresholded_peer_target_reconstruction",
+      "complete_original_unit_dual_account",
+      "stable_all_failure_result_schemas",
+      "sparse_linear_programming",
+      "zero_range_weight_handling"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "ram_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.ram.full_data_ranges_bound_effective_reference",
+            "condition.certified_reference_technology_membership"
+          ]
+        }
+      },
+      {
+        "id": "ram_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.ram.full_data_ranges_bound_effective_reference",
+            "condition.certified_reference_technology_membership"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_slacks",
+      "output_slacks",
+      "coordinate_ranges",
+      "range_population",
+      "range_normalized_slack_weights",
+      "peers",
+      "targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "dual_constraint_marginals",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "backend_solver_status",
+      "raw_solver_status",
+      "solver_neutral_lp_optimality_certificate",
+      "raw_and_published_quantity_account_certificates",
+      "thresholded_peer_account_certificate",
+      "original_unit_dual_account_certificate"
+    ],
+    "transformations": [
+      "ram_efficiency_equals_one_minus_ram_inefficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.ram.finite_signed_inputs_and_desirable_outputs",
+        "condition.ram.full_data_ranges_bound_effective_reference"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [
+          "coordinate_ranges",
+          "range_normalized_slack_weights",
+          "slacks",
+          "targets"
+        ],
+        "conditions": [
+          "condition.ram.same_full_data_pre_eligibility_normalization_population"
+        ]
+      },
+      "translation": {
+        "status": "supported",
+        "rule": "common_coordinate_translation_under_the_fixed_vrs_global_range_contract",
+        "co_transform": [
+          "targets"
+        ],
+        "conditions": [
+          "condition.ram.full_data_ranges_bound_effective_reference",
+          "condition.vrs_convexity"
+        ]
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_an_optimal_range_adjusted_solve",
+      "efficiency": "pareto_koopmans_efficient_under_the_frozen_global_vrs_range_contract",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.ram.full_data_ranges_bound_effective_reference"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1023/A:1007701304281"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/source_protocols/cooper_park_pastor_1999_ram.md",
+        "specs/oracles/ram-analytical.md",
+        "tests/test_ram_source_oracle.py::test_ram_exact_vrs_account_matches_independent_source_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/ram-analytical.md",
+        "public_api_test_locator": "tests/test_ram_source_oracle.py::test_ram_exact_vrs_account_matches_independent_source_compiler",
+        "claims": [
+          {
+            "claim_id": "ram.exact_vrs_range_adjusted_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_ram_source_oracle.py::test_ram_exact_vrs_account_matches_independent_source_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "direct_primary_lp"
+              ],
+              "valuation_policy": [
+                "equal_mean_of_full_range_normalized_slacks"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "ram.exact_vrs_d",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "D",
+                  "expected": {
+                    "ram_distance": "695/969",
+                    "ram_efficiency": "274/969",
+                    "input_slacks": "9,8",
+                    "output_slack": 4,
+                    "pareto_koopmans_status": false,
+                    "target": "1,2;5",
+                    "peer_b_intensity": 1,
+                    "source_profile": "cooper_park_pastor_1999_eq_17_18_20_23"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "ram_distance",
+              "ram_efficiency",
+              "input_slacks",
+              "output_slacks",
+              "pareto_koopmans_status",
+              "target",
+              "peer_intensity",
+              "source_profile_metadata"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "signed",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alias_identity",
+        "analytical_optimality_certificate",
+        "bounded_score_and_distance_contract",
+        "corrupted_incumbent_fail_closed",
+        "explicit_global_panel_reference",
+        "independent_dense_source_compiler",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_and_malformed_row_or_bound_marginal_rejection",
+        "raw_backend_status_preserved_on_certificate_failure",
+        "raw_and_published_original_quantity_account_certificates",
+        "claim_specific_score_target_peer_and_dual_release",
+        "thresholded_peer_target_reconstruction",
+        "complete_original_unit_dual_account",
+        "per_observation_failure_isolation",
+        "stable_all_failure_result_schemas",
+        "one_compile_n_primary_zero_certificate_solve_contract",
+        "peer_eligibility_global_base_intersection",
+        "peer_eligibility_fixed_full_data_range_normalization",
+        "peer_eligibility_additive_oracle_equivalence",
+        "peer_eligibility_compact_provenance_and_fail_closed_frequency",
+        "benchmark_missing_certificate_residual_and_count_rejection",
+        "source_configuration_boundary",
+        "translation_invariance",
+        "unit_invariance",
+        "zero_range_policy"
+      ],
+      "locators": [
+        "tests/test_additive.py",
+        "tests/test_ram_source_oracle.py",
+        "tests/test_additive_postsolve_certification.py",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_benchmark_classical_foundations.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py",
+      "benchmarks/benchmark_core_peer_eligibility.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.slack_based_efficiency",
+        "path": "book/chapters/02-classical/04-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.additive",
+        "path": "docs/models/additive.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

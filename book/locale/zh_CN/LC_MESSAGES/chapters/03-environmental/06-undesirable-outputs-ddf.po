@@ -1,0 +1,1133 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:1
+#: d42d360c171241268ff757a1364811a3
+msgid "Environmental Directional Distance: Producing More with Less Pollution"
+msgstr "环境方向性距离：以更少污染生产更多产出"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:3
+#: 1294ea2615214ea2a264ddaf15361c7c
+msgid ""
+"A power company is rarely asked simply to “be efficient.” It may be asked to"
+" supply more electricity while lowering carbon emissions. A hospital may "
+"need to treat more patients without increasing hazardous waste. A farm may "
+"want to maintain food output while reducing nutrient losses. In each case, "
+"managers face a joint operating programme: improve the service the "
+"organization exists to provide and reduce the residual society would prefer "
+"to avoid."
+msgstr "电力公司很少只被要求“提高效率”，更常见的目标是在降低碳排放的同时提供更多电力。医院可能需要在不增加危险废物的情况下诊疗更多患者；农场可能希望在维持粮食产出的同时减少养分流失。每种情形中，管理者都面对一套联合经营方案：改善组织本应提供的服务，同时减少社会希望避免的残余物。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:10
+#: 8d8d19ea7aa845e6b3ef8341aa42c560
+msgid ""
+"An ordinary output-oriented DEA model cannot express that programme. If "
+"emissions are entered as an ordinary output, producing more of them looks "
+"favourable. If they are entered as an input, they are treated as a resource "
+"committed before production, much like labour or capital. Environmental DEA "
+"instead recognizes undesirable outputs as consequences produced jointly with"
+" useful activity. It asks how far service expansion and burden reduction can"
+" proceed together, given what the study assumes about abatement, foregone "
+"output, and the operating practices observed in the comparison population."
+msgstr ""
+"普通产出导向 DEA "
+"无法表达这套方案。若把排放作为普通产出，模型会把更多排放视为有利；若把它作为投入，则相当于把排放当成生产前已经承诺的资源，与劳动或资本相似。环境 DEA"
+" 把非合意产出视为与有用活动联合产生的后果，并在研究对治理、产出牺牲和比较总体经营实践作出假设后，考察服务扩张与负担削减能够共同推进多远。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:19
+#: 80262c315dc64287bf1c554fba9ff5a6
+msgid "Pollution is part of the production account"
+msgstr "污染是生产账户的一部分"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:21
+#: 53bc45f78295413dbf7be4a5301d826f
+#, python-brace-format
+msgid ""
+"Let $x\\in\\mathbb{R}^m_+$ denote inputs, $y\\in\\mathbb{R}^s_+$ desirable "
+"outputs, and $b\\in\\mathbb{R}^q_+$ undesirable outputs. The environmental "
+"technology is"
+msgstr ""
+"令 $x\\in\\mathbb{R}^m_+$ 表示投入，$y\\in\\mathbb{R}^s_+$ "
+"表示合意产出，$b\\in\\mathbb{R}^q_+$ 表示非合意产出。环境技术为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:24
+#: 103c6618fc824487958768cd4c2dbe71
+#, python-brace-format
+msgid ""
+"\n"
+"\\mathcal T\n"
+"=\\{(x,y,b):x\\text{ can jointly produce }(y,b)\\}.\n"
+msgstr ""
+"\n"
+"\\mathcal T\n"
+"=\\{(x,y,b):x\\text{ 可联合生产 }(y,b)\\}.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:29
+#: e07d02fae27a4c1081ec9d0de7ffcded
+msgid "For a fixed resource commitment, the feasible output set is"
+msgstr "给定资源承诺时，可行产出集为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:31
+#: aa44da79eb204262a5058d6f8192f286
+#, python-brace-format
+msgid ""
+"\n"
+"P(x)=\\{(y,b):(x,y,b)\\in\\mathcal T\\}.\n"
+msgstr ""
+"\n"
+"P(x)=\\{(y,b):(x,y,b)\\in\\mathcal T\\}.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:35
+#: a08bf9bfde574cdb8c506da3248a3a9b
+msgid ""
+"The word *jointly* carries the economics. Electricity and emissions are not "
+"two unrelated products placed in the same table. They arise from an "
+"operating process, and reducing emissions may require cleaner fuel, "
+"abatement activity, lost output, or a different production plan. The "
+"technology must say which of these possibilities the benchmark comparison is"
+" allowed to represent."
+msgstr "“联合”一词承载着经济含义。电力和排放不是碰巧放在同一张表中的两个无关产品，而是由同一经营过程产生；减少排放可能需要更清洁燃料、治理活动、牺牲产出或改变生产方案。技术必须说明标杆比较允许表示其中哪些可能性。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:41
+#: 6a6876b7445c45a4b81f33cea700688d
+msgid "Weak and strong disposal answer different economic questions"
+msgstr "弱可处置性与强可处置性回答不同的经济问题"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:43
+#: a9de31dcfc5d4e10b349ca22f9977bfa
+msgid ""
+"The first management question is whether pollution can be reduced "
+"independently while useful output and the represented resource commitment "
+"are preserved, or whether lowering pollution requires curtailing the joint "
+"production activity unless a cleaner process is represented. Weak "
+"disposability adopts the latter view. If $(y,b)\\in P(x)$, then"
+msgstr ""
+"第一个管理问题是：污染能否在保留有用产出和所代表资源承诺时独立减少，还是在没有更清洁过程进入参照技术时，污染削减必须伴随联合生产活动收缩。弱可处置性采用后一种观点。若"
+" $(y,b)\\in P(x)$，则"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:49
+#: dc271bf9a4b04462800f314710742f65
+#, python-brace-format
+msgid ""
+"\n"
+"(\\alpha y,\\alpha b)\\in P(x)\n"
+"\\qquad\\text{for}\\qquad 0\\leq\\alpha\\leq1.\n"
+msgstr ""
+"\n"
+"(\\alpha y,\\alpha b)\\in P(x)\n"
+"\\qquad\\text{对于}\\qquad 0\\leq\\alpha\\leq1.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:54
+#: 7524839642e24ad1b24469ecc30e79e6
+#, python-brace-format
+msgid ""
+"Undesirable output cannot simply be deleted while everything else is held "
+"unchanged. Reducing it is represented as requiring some sacrifice or "
+"adjustment in the joint production plan. This is a natural baseline when "
+"pollution control uses resources or constrains desirable output. Chung, "
+"Färe, and Grosskopf combined this production assumption with a directional "
+"distance function to study environmental productivity {cite:p}`chung1997`."
+msgstr ""
+"非合意产出不能在其他条件不变时被直接删除。模型把污染削减表示为需要联合生产方案作出某种牺牲或调整。当污染控制消耗资源或约束合意产出时，这是自然的基准假设。Chung、Färe"
+" 和 Grosskopf 将这一生产假设与方向性距离函数结合，用于研究环境生产率 {cite:p}`chung1997`。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:61
+#: 1adec0764a8c42dfb5edb5702b2290ef
+msgid ""
+"Here *costly* describes a restriction on the production opportunities "
+"represented by the model. It does not measure a monetary abatement cost, an "
+"engineering treatment cost, or the causal effect of environmental "
+"regulation."
+msgstr "这里的“有成本”描述模型所代表生产机会受到的限制，不是货币治理成本、工程处理成本或环境监管因果效应的测量。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:65
+#: 42f69a1fe7bc40c58a3ae6c21d00114d
+msgid ""
+"Strong disposability instead allows a plan with no more pollution than the "
+"observed plan to be used as a comparator without recording an accompanying "
+"sacrifice. In a classic CRS common-factor joint-envelopment account such as "
+"the one used below, the distinction appears in the bad-output restriction:"
+msgstr "强可处置性则允许把污染不高于观测方案的活动作为比较对象，而不记录伴随牺牲。在下文采用的经典 CRS 共同因子联合包络账户中，二者区别体现在非合意产出约束："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:70
+#: 7fca910fb2404da3aedb77fe58c6ddc7
+#, python-brace-format
+msgid ""
+"\n"
+"B\\lambda=b\n"
+"\\quad\\text{under common-factor weak disposal},\n"
+"\\qquad\n"
+"B\\lambda\\leq b\n"
+"\\quad\\text{under its strong-disposal counterpart}.\n"
+msgstr ""
+"\n"
+"B\\lambda=b\n"
+"\\quad\\text{在共同因子弱处置下},\n"
+"\\qquad\n"
+"B\\lambda\\leq b\n"
+"\\quad\\text{在相应强处置下}.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:78
+#: aa04e90dbdfc4b788f77ea4a266bf287
+msgid ""
+"Strong disposal may be defensible when pollution-control resources and "
+"treatment activities are already measured, or useful as a sensitivity "
+"benchmark. It does not show that removal is costless in money or engineering"
+" terms. It says that the model requires no loss of useful output when the "
+"residual falls. If abatement consumes unmeasured resources, this assumption "
+"can overstate the environmental improvement available to managers and "
+"regulators."
+msgstr "当污染控制资源和处理活动已经纳入测量时，强可处置性可能合理，也可作为敏感性标杆。它不表示治理在货币或工程意义上没有成本，只表示残余物减少时模型不要求有用产出随之损失。若治理消耗了未测量资源，该假设可能夸大管理者和监管者可用的环境改进机会。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:85
+#: 01d8f7d607d942579f152bf5b08d94dd
+msgid ""
+"Weak disposability contracts desirable and undesirable outputs together, "
+"whereas the strong-disposal account records no accompanying sacrifice when "
+"undesirable output falls while desirable output is fixed"
+msgstr "弱可处置性使合意产出与非合意产出共同收缩；强可处置账户则在合意产出固定、非合意产出下降时不记录伴随牺牲"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:90
+#: 734f270939d94479b9ebb66a83de1000
+msgid ""
+"The disposal assumption changes the managerial opportunity set. Weak "
+"disposal treats pollution reduction as costly within the production account;"
+" the strong-disposal account does not represent an accompanying loss of "
+"desirable output."
+msgstr "处置性假设改变管理机会集。弱可处置性在生产账户内把污染削减视为有成本；强可处置账户不表示合意产出需要伴随下降。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:95
+#: 77686c59c2a64e8ca23330c203e28516
+msgid "Null jointness is a separate assumption:"
+msgstr "零结合性是另一项独立假设："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:97
+#: 34bf83d235c54c3090802d3c18edac4a
+msgid ""
+"\n"
+"b=0\\quad\\Longrightarrow\\quad y=0.\n"
+msgstr ""
+"\n"
+"b=0\\quad\\Longrightarrow\\quad y=0.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:101
+#: dbda8ebaadc04bfd95b81e5d60218b51
+msgid ""
+"It says that the modeled desirable output cannot be produced without "
+"generating some of the residual. That may be reasonable for an unavoidable "
+"by-product of combustion, but not for a sample containing verified zero-"
+"emission production, complete capture, or recycling. Weak disposability and "
+"null jointness should therefore be defended from the production process, not"
+" adopted merely because the variable is called pollution. In the technology "
+"used here, null jointness belongs to the weak-disposal account; it cannot be"
+" combined coherently with strong disposal, which permits the residual to be "
+"reduced independently in the represented opportunity set."
+msgstr "它表示所建模的合意产出不能在完全没有相应残余物时生产。对燃烧不可避免的副产物而言，这可能合理；若样本包含经核实的零排放生产、完全捕集或回收，则未必合理。因此，弱可处置性和零结合性必须依据生产过程辩护，不能只因为变量名是污染就直接采用。在本章技术中，零结合性属于弱可处置账户；它不能与强可处置性连贯结合，因为后者允许在所代表机会集中独立减少残余物。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:110
+#: 67a2b2ee46f844b999da9ceeee604877
+msgid "Weak disposal still leaves a benchmarking choice"
+msgstr "弱可处置性仍然留下标杆构造选择"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:112
+#: e8c848e39a814768b011e2bc22b21ea0
+msgid ""
+"The weak-disposal axiom does not by itself determine how observed "
+"organizations may be combined. In the classic constant-returns construction,"
+" one common activity account represents the benchmark:"
+msgstr "弱可处置公理本身不决定如何组合观测组织。在经典规模报酬不变构造中，一个共同活动账户表示标杆："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:116
+#: fa88959f929a4bb8b6e88e979ac9b655
+msgid ""
+"\n"
+"X\\lambda\\leq x,\\qquad\n"
+"Y\\lambda\\geq y,\\qquad\n"
+"B\\lambda=b,\\qquad\n"
+"\\lambda\\geq0.\n"
+msgstr ""
+"\n"
+"X\\lambda\\leq x,\\qquad\n"
+"Y\\lambda\\geq y,\\qquad\n"
+"B\\lambda=b,\\qquad\n"
+"\\lambda\\geq0.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:123
+#: 616bc43025354e9db6a8f1615650e873
+msgid ""
+"Because activity can be scaled under constant returns, the represented "
+"desirable and undesirable outputs can be curtailed together. Economically, "
+"the benchmark applies a common proportional adjustment to the whole "
+"reference production portfolio. That common-factor interpretation relies on "
+"CRS: simply adding a VRS convexity restriction to $B\\lambda=b$ does not "
+"create an identified VRS weak-disposal technology."
+msgstr ""
+"规模报酬不变允许活动按比例缩放，因此所代表的合意产出与非合意产出可以共同收缩。从经济上看，标杆对整个参照生产组合采用共同的比例调整。该共同因子解释依赖 "
+"CRS：仅向 $B\\lambda=b$ 增加 VRS 凸性约束，不能产生已识别的 VRS 弱可处置技术。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:129
+#: e02613eede054deea511352173dd7324
+#, python-brace-format
+msgid ""
+"Under VRS, a source-qualified alternative lets the reference activities "
+"carry different retention rates {cite:p}`kuosmanen2005`. DEAPack represents "
+"each activity by an active part $\\mu_j$, which contributes desirable and "
+"undesirable outputs, and a curtailed part $\\eta_j$, which still belongs to "
+"the input portfolio. Convexity applies to the full activity account,"
+msgstr ""
+"在 VRS 下，一项具有来源依据的替代方案允许各参照活动具有不同保留率 {cite:p}`kuosmanen2005`。DEAPack 用活跃部分 "
+"$\\mu_j$ 表示每项活动对合意与非合意产出的贡献，并用收缩部分 $\\eta_j$ 表示仍属于投入组合的部分。凸性作用于完整活动账户，"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:135
+#: 68de46e5821143ac8532092994a61f13
+msgid ""
+"\n"
+"\\mathbf 1^\\top(\\mu+\\eta)=1,\n"
+msgstr ""
+"\n"
+"\\mathbf 1^\\top(\\mu+\\eta)=1,\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:139
+#: db69d7ce6dc4456b8628af28fcaa3d01
+msgid ""
+"while the activity-specific retention rate is $r_j=\\mu_j/(\\mu_j+\\eta_j)$ "
+"whenever that activity has positive weight. This is a different economic "
+"construction, not a cosmetic returns-to-scale switch. An equality such as "
+"$B\\lambda=b$ without a coherent scaling or convexification account is "
+"retained only as a legacy numerical formulation; it is not presented as a "
+"named weak-disposal technology."
+msgstr ""
+"当活动权重为正时，活动特定保留率为 "
+"$r_j=\\mu_j/(\\mu_j+\\eta_j)$。这是一种不同的经济构造，不是表面上的规模报酬开关。若没有连贯的缩放或凸化账户，$B\\lambda=b$"
+" 这类等式只能保留为历史数值形式，不能作为具名弱可处置技术介绍。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:146
+#: ce5845a3eb5c49d0be252f8b1ce6c8d0
+msgid ""
+"An equality alone does not identify weak disposal, whereas the CRS common-"
+"factor construction uses one portfolio-wide retention rate and the VRS "
+"activity-specific construction permits different retention rates across "
+"reference activities"
+msgstr "仅有一条等式不能识别弱可处置性；CRS 共同因子构造使用组合整体的一项保留率，而 VRS 活动特定构造允许参照活动具有不同保留率"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:151
+#: 4a422f39426e4b1c8b8ed02379f6ca66
+msgid ""
+"The weak-disposal axiom admits more than one benchmarking construction. The "
+"model must state how the reference activities are scaled before its "
+"environmental comparison has a defensible production meaning."
+msgstr "弱可处置公理允许不止一种标杆构造。模型必须说明参照活动如何缩放，环境比较才具有可辩护的生产含义。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:156
+#: 7a08eff02d7345969fe16728ded5f272
+msgid "The directional distance is a feasible management programme"
+msgstr "方向性距离是一套可行管理改进方案"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:158
+#: 63ca68116a1b42a4b0f2140c1b9634fd
+msgid ""
+"Environmental performance is not adequately summarized by “less pollution.” "
+"The organization usually has obligations on several margins at once. Let "
+"$g^x$, $g^y$, and $g^b$ be nonnegative quantities describing a proposed "
+"reduction in inputs, an increase in desirable outputs, and a reduction in "
+"undesirable outputs. Collect them as the declared environmental programme "
+"$g=(g^x,g^y,g^b)$. The environmental directional distance is"
+msgstr ""
+"仅用“污染更少”不足以概括环境绩效。组织通常同时承担多方面责任。令非负数量 $g^x$、$g^y$ 和 $g^b$ "
+"分别描述拟议的投入削减、合意产出增加与非合意产出减少，并把它们组成既定环境改进方案 $g=(g^x,g^y,g^b)$。环境方向性距离为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:165
+#: 1170a74b974f4d2c9f3575650d7d9228
+#, python-brace-format
+msgid ""
+"\n"
+"D_{\\mathcal T}\n"
+"(x_o,y_o,b_o;g)\n"
+"=\\sup\\left\\{\n"
+"\\beta:\n"
+"(x_o-\\beta g^x,\n"
+" y_o+\\beta g^y,\n"
+" b_o-\\beta g^b)\n"
+"\\in\\mathcal T\n"
+"\\right\\}.\n"
+msgstr ""
+"\n"
+"D_{\\mathcal T}\n"
+"(x_o,y_o,b_o;g)\n"
+"=\\sup\\left\\{\n"
+"\\beta:\n"
+"(x_o-\\beta g^x,\n"
+" y_o+\\beta g^y,\n"
+" b_o-\\beta g^b)\n"
+"\\in\\mathcal T\n"
+"\\right\\}.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:177
+#: 6dd0dca6c5ad43ce98f1c4eeff8acd11
+#, python-brace-format
+msgid ""
+"The resulting value $\\beta_o=D_{\\mathcal T}(x_o,y_o,b_o;g)$ is the largest"
+" common ambition factor that the estimated technology can support. Its "
+"operational content is $\\beta_o g$: the associated resource savings, "
+"service expansion, and pollution reduction in the units managers actually "
+"observe."
+msgstr ""
+"所得 $\\beta_o=D_{\\mathcal T}(x_o,y_o,b_o;g)$ 是估计技术能够支持的最大共同雄心水平。它的经营含义是 "
+"$\\beta_o g$：用管理者实际观测的单位表示相应资源节约、服务扩张和污染削减。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:182
+#: 40bbb3416f5148b994b3bc6e003e69ec
+msgid "Different choices of $g$ pose different policy questions:"
+msgstr "不同的 $g$ 选择提出不同的政策问题："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:188
+#: bb12af1fb34d4c9bb3889db97a440a1b
+msgid "Programme"
+msgstr "方案"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:189
+#: af29a5c103914bda91df127070f6098e
+msgid "Direction"
+msgstr "方向"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:190
+#: 6301192dbc72432dba909dc646c63861
+msgid "Question posed"
+msgstr "所提问题"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:191
+#: 29199a1ecff84f3e869f1f1125b8da5e
+msgid "Joint environmental improvement"
+msgstr "联合环境改进"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:192
+#: 32b237c79d194ed7ba2f1b8afb0a522c
+msgid "$(0,y_o,b_o)$"
+msgstr "$(0,y_o,b_o)$"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:193
+#: 47466eccab3e43e4993ec37a03fba40d
+msgid ""
+"By what common proportion can desirable output rise and pollution fall with "
+"the resource budget fixed?"
+msgstr "资源预算固定时，合意产出可以增加、污染可以减少的共同百分比是多少？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:195
+#: 7270ad58cd00437dbb5d83b74bd19526
+msgid "Service-expansion programme"
+msgstr "服务扩张方案"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:196
+#: 043ac1a42a4d439eb4324de032da719e
+msgid "$(0,y_o,0)$"
+msgstr "$(0,y_o,0)$"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:197
+#: 1a1b1bfed8bb49b698a36f007c38cc9f
+msgid ""
+"How much desirable output can be added without requiring a pollution "
+"reduction?"
+msgstr "在不要求污染减少的情况下，可以增加多少合意产出？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:199
+#: 6d1683bfb93b4bda8f1e7bc5d86389d1
+msgid "Pollution-control improvement"
+msgstr "污染控制改进"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:200
+#: 8c4a9a11d6ad4bcaad56de764d1e03f3
+msgid "$(0,0,b_o)$"
+msgstr "$(0,0,b_o)$"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:201
+#: b3b825946fb548c69a05f6bea866fb50
+msgid ""
+"How much pollution can be reduced while resources and desirable output are "
+"maintained?"
+msgstr "资源和合意产出保持不变时，可以减少多少污染？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:203
+#: 63f49acb418b46f4881105320d5e5cbb
+msgid "Resource–service–residual programme"
+msgstr "资源—服务—残余物方案"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:204
+#: eab55191583c42fd8f3099aab7be08f2
+msgid "$(x_o,y_o,b_o)$"
+msgstr "$(x_o,y_o,b_o)$"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:205
+#: 9bc695e0771b4ea1af7693e869c7f9d5
+msgid ""
+"How ambitious can a coordinated conservation, expansion, and abatement plan "
+"be?"
+msgstr "协调的节约、扩张与治理方案可以达到多大幅度？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:209
+#: 5fd2916ff0df4aec99d1932feb29139b
+msgid ""
+"These are not alternative labels for the same score. They encode different "
+"management commitments. A direction becomes a target only when it "
+"corresponds to an institution's actual objectives and constraints. At least "
+"one direction component must be strictly positive for every assessed "
+"organization; an all-zero direction poses no improvement question and is "
+"therefore undefined."
+msgstr "这些不是同一个得分的不同名称，而是不同的管理承诺。只有方向符合机构真实目标与约束时，才可能进一步形成目标。对每个被评价组织，至少一个方向分量必须严格为正；全零方向没有提出改进问题，因此未定义。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:215
+#: f0b9e64ebcdc4cbfa7b660b0fe2f7c21
+msgid ""
+"For the common-factor constant-returns technology, the joint-improvement "
+"question is estimated from"
+msgstr "对共同因子、规模报酬不变技术，联合改进问题通过下式估计："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:218
+#: 450d0e54955c4554ab879d2efac9f1b9
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{\\beta,\\lambda}\\quad &\\beta\\\\\n"
+"\\text{s.t.}\\quad\n"
+"&X\\lambda\\leq x_o-\\beta g^x,\\\\\n"
+"&Y\\lambda\\geq y_o+\\beta g^y,\\\\\n"
+"&B\\lambda=b_o-\\beta g^b,\\\\\n"
+"&\\lambda\\geq0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\max_{\\beta,\\lambda}\\quad &\\beta\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X\\lambda\\leq x_o-\\beta g^x,\\\\\n"
+"&Y\\lambda\\geq y_o+\\beta g^y,\\\\\n"
+"&B\\lambda=b_o-\\beta g^b,\\\\\n"
+"&\\lambda\\geq0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:229
+#: 452ecef8ed3f4c228da0ab3f02a7b20d
+msgid ""
+"A positive $\\beta$ identifies an attainable directional plan relative to "
+"the chosen reference evidence. A larger value means that more of the "
+"declared improvement remains available; it is not “higher efficiency.” A "
+"zero value means that this particular programme cannot be expanded further. "
+"It establishes direction-specific efficiency, not necessarily "
+"Pareto–Koopmans efficiency, because another mix of resource, service, or "
+"residual changes may still be feasible."
+msgstr ""
+"正的 $\\beta$ 表示相对于所选参照证据存在可实现方向性方案。数值越大，表示既定改进仍有更多可用空间，而不是“效率越高”。取 0 "
+"表示这项特定方案无法继续扩张，只能确立方向特定有效，未必达到 Pareto–Koopmans 有效，因为其他资源、服务或残余物变化组合仍可能可行。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:236
+#: 7e6136ac33884bb48247281903adaf53
+msgid ""
+"When each organization belongs to its own reference set, the unchanged "
+"observed plan is feasible and $\\beta\\geq0$. External reference sets "
+"require more care. A signed negative distance can be retained when the "
+"analyst explicitly requests it; otherwise the nonnegative programme is "
+"reported as infeasible. For the equality-based common-factor technology, "
+"even a positive directional target does not by itself prove that the "
+"original assessed plan belongs to the external reference technology. DEAPack"
+" therefore reports the native $\\beta$ whenever its programme is certified, "
+"but releases the display transform $1/(1+\\beta)$, efficiency "
+"classifications, and improvement plot only after reference-technology "
+"membership is also certified."
+msgstr ""
+"当各组织属于自身参考集时，观测方案保持不变总是可行，因此 "
+"$\\beta\\geq0$。使用外部参考集需要更谨慎：分析者明确请求时可以保留带符号负距离，否则把非负方案报告为不可行。对基于等式的共同因子技术，即使方向目标为正，也不能单独证明原被评价方案属于外部参照技术。因此，DEAPack"
+" 在方案得到认证时报告原生 $\\beta$；只有参照技术成员资格也得到认证后，才发布展示变换 $1/(1+\\beta)$、效率分类和改进图。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:246
+#: 5b0217dd82264b0a824c4cd7793b6175
+#, python-brace-format
+msgid ""
+"The first-stage directional plan is $({\\tilde x}_o,{\\tilde y}_o,{\\tilde "
+"b}_o)= (x_o-\\beta g^x,y_o+\\beta g^y,b_o-\\beta g^b)$. A second stage may "
+"complete that plan by removing input slack or adding desirable-output slack."
+" Under strong disposal it may also remove residual slack; under common-"
+"factor equality disposal the bad-output account remains fixed at ${\\tilde "
+"b}_o$. We reserve hats for the completed target $({\\hat x}_o,{\\hat "
+"y}_o,{\\hat b}_o)$."
+msgstr ""
+"第一阶段方向方案为 $({\\tilde x}_o,{\\tilde y}_o,{\\tilde b}_o)= (x_o-\\beta "
+"g^x,y_o+\\beta g^y,b_o-\\beta "
+"g^b)$。第二阶段可通过消除投入松弛或增加合意产出松弛来完成该方案。强可处置性下还可以消除残余物松弛；共同因子等式处置下，非合意产出账户固定在 "
+"${\\tilde b}_o$。本书用帽号表示完成目标 $({\\hat x}_o,{\\hat y}_o,{\\hat b}_o)$。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:254
+#: 755f0cf3fa9d4958a4e33b430642d578
+msgid ""
+"A regulator, hospital system, or utility may also have a legitimate reason "
+"to limit who counts as a comparable operating peer: a common service "
+"mandate, permit regime, or accounting boundary, for example. In the generic "
+"DDF, common-factor weak-disposal DDF, and CFG preset, DEAPack lets the study"
+" declare that comparison population explicitly. The declared rule is then "
+"intersected with the chosen time/reference policy before the directional "
+"programme is solved. This is a statement about admissible management "
+"evidence, not a new pollution technology. It never turns strong disposal "
+"into weak disposal, and it does not make a negative external CFG distance "
+"disappear. The reported reference sizes and policy ledger should accompany "
+"the distance wherever such a restriction is used."
+msgstr ""
+"监管者、医院系统或公用事业也可能有正当理由限制哪些组织可作为可比经营参照，例如共同服务使命、许可制度或会计边界。在通用 DDF、共同因子弱可处置 DDF"
+" 和 CFG preset 中，DEAPack "
+"允许研究明确声明比较总体。既定规则与所选时间/参照政策取交集后，再求解方向性方案。这是对合格管理证据的声明，不是新污染技术；它绝不会把强可处置性变成弱可处置性，也不会使负的外部"
+" CFG 距离消失。使用这类限制时，报告距离应同时给出参照规模与政策记录。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:266
+#: ed0deab462c24410b43ebc5ed179fb90
+msgid "When one production relation hides the pollution mechanism"
+msgstr "当一个生产关系掩盖污染机制"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:268
+#: c66f3a5ce40a4d26a5c5e082aa55b6e9
+msgid ""
+"Weak and strong disposal describe what may happen inside one joint "
+"technology. Some applications need to distinguish the activity that creates "
+"desirable output from the physical relation that generates a residual. A "
+"coal-fired plant, for example, draws on labour, capital, and fuel to produce"
+" electricity, but the carbon content of its fuel has a special connection to"
+" emissions. Treating every input as equally responsible for that residual "
+"can obscure the environmental mechanism."
+msgstr "弱、强可处置性描述一个联合技术内部允许发生什么。有些应用需要区分创造合意产出的活动与产生残余物的物理关系。例如，燃煤电厂利用劳动、资本和燃料生产电力，但燃料含碳量与排放具有特殊联系。把每项投入视为对残余物承担同样责任，可能掩盖环境机制。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:275
+#: c51574a7863745859a7d686f394acb32
+#, python-brace-format
+msgid ""
+"The by-production approach represents the two relationships simultaneously "
+"{cite:p}`murty2012`. Partition inputs as $x=(x^n,x^p)$, where $x^p$ contains"
+" those inputs that physically generate the modeled residual. A common "
+"empirical account is"
+msgstr ""
+"by-production 方法同时表示这两种关系 {cite:p}`murty2012`。把投入分为 $x=(x^n,x^p)$，其中 $x^p$ "
+"包含会在物理上产生所建模残余物的投入。一种常见经验账户为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:279
+#: 23db73c81c584550b90eabd42b439750
+#, python-brace-format
+msgid ""
+"\n"
+"\\mathcal T_{BP}=\\mathcal T_1\\cap\\mathcal T_2,\n"
+msgstr ""
+"\n"
+"\\mathcal T_{BP}=\\mathcal T_1\\cap\\mathcal T_2,\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:283
+#: 209ffe5d03eb42b580d557aabcbb2d0e
+msgid "with intended production represented by"
+msgstr "其中，预期生产关系表示为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:285
+#: c69fd98fd0e74d29a67b0241c3b7a84c
+msgid ""
+"\n"
+"\\mathcal T_1:\\qquad\n"
+"X\\lambda\\le x,\\qquad Y\\lambda\\ge y,\n"
+msgstr ""
+"\n"
+"\\mathcal T_1:\\qquad\n"
+"X\\lambda\\le x,\\qquad Y\\lambda\\ge y,\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:290
+#: 2f15221740aa475f9168524cbac933f8
+msgid "and residual generation represented by"
+msgstr "残余物生成关系表示为"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:292
+#: ba76525094e544eb8c8c046036f631f0
+msgid ""
+"\n"
+"\\mathcal T_2:\\qquad\n"
+"X^p\\mu\\ge x^p,\\qquad B\\mu\\le b.\n"
+msgstr ""
+"\n"
+"\\mathcal T_2:\\qquad\n"
+"X^p\\mu\\ge x^p,\\qquad B\\mu\\le b.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:297
+#: 464a2d498ac142429a7041692ddbc30b
+msgid ""
+"Here $\\lambda,\\mu\\ge0$. As written, these are the constant-returns "
+"relations used in the classical source account. The inequality $B\\mu\\le b$"
+" should not be read in isolation as ordinary free disposal. Together with "
+"$X^p\\mu\\ge x^p$, it says that reducing the represented residual cannot be "
+"separated from the inputs that generate it. This is *costly disposal inside "
+"the residual-generation relation*: an opportunity-set restriction, not a "
+"monetary cost, an observed treatment process, or an engineering abatement "
+"technology."
+msgstr ""
+"这里 $\\lambda,\\mu\\ge0$。所写关系是经典来源账户采用的规模报酬不变形式。不能把不等式 $B\\mu\\le b$ "
+"单独理解为普通自由处置性；与 $X^p\\mu\\ge x^p$ "
+"结合后，它表示所代表残余物的减少不能与产生残余物的投入分离。这是**残余物生成关系内部的有成本处置**：一项机会集限制，而不是货币成本、观测处理过程或工程治理技术。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:305
+#: cfbdc04b6edf4225b2e62a2ce4bfa992
+msgid ""
+"The two reference combinations are deliberately distinct. An electricity "
+"producer may learn about production capacity from one set of plants and "
+"about the emissions associated with fuel use from another. The observed plan"
+" must nevertheless pass both relations."
+msgstr "两套参照组合有意保持不同。发电企业可以从一组电厂学习生产能力，同时从另一组电厂了解燃料使用相关排放；但观测方案必须同时满足两种关系。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: d20c2a990ff840309e2a8e63d100fc92
+msgid ""
+"By-production intersects an intended-production relation with a residual-"
+"generation relation using separate reference combinations"
+msgstr "by-production 把预期生产关系与残余物生成关系相交，并使用不同参照组合"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:315
+#: 81335c95dba149bfb19e04f964f6321d
+msgid ""
+"By-production separates the intended-production account from the residual-"
+"generation account while requiring the organization to satisfy both."
+msgstr "by-production 在要求组织同时满足两类关系的同时，把预期生产账户与残余物生成账户分开。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:319
+#: 70cf01f9c5534ee997f3e78f8272dfa4
+#, python-brace-format
+msgid ""
+"The conventional BP-DDF implemented here holds ordinary inputs fixed and "
+"declares $g^{BP}=(0,g^y,g^b)$. On the same directional scale, its two "
+"accounts ask for"
+msgstr "本章实现的传统 BP-DDF 保持普通投入不变，并声明 $g^{BP}=(0,g^y,g^b)$。在同一方向尺度上，两个账户分别考察"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:322
+#: 5c701f4129bf42ad8dfba097be5a6d07
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\beta_o^1&=\\sup\\{\\beta:X\\lambda\\le x_o,\\ \n"
+"Y\\lambda\\ge y_o+\\beta g^y\\},\\\\\n"
+"\\beta_o^2&=\\sup\\{\\beta:X^p\\mu\\ge x_o^p,\\ \n"
+"B\\mu\\le b_o-\\beta g^b\\}.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\beta_o^1&=\\sup\\{\\beta:X\\lambda\\le x_o,\\ \n"
+"Y\\lambda\\ge y_o+\\beta g^y\\},\\\\\n"
+"\\beta_o^2&=\\sup\\{\\beta:X^p\\mu\\ge x_o^p,\\ \n"
+"B\\mu\\le b_o-\\beta g^b\\}.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:331
+#: 060d0d4d7d0f4b96914cd22ea6582b84
+msgid ""
+"The classical source profile holds the nonnegative output and residual "
+"directions fixed across the compared organizations. Thus $\\beta_o^1$ and "
+"$\\beta_o^2$ are commensurable ambitions, not distances computed under two "
+"unrelated management programmes. A common programme constrained by both "
+"accounts has"
+msgstr ""
+"经典来源设定在被比较组织之间保持非负产出和残余物方向不变。因此，$\\beta_o^1$ 与 $\\beta_o^2$ "
+"是可比较的改进幅度，不是在两套互不相干的管理方案下计算的距离。同时受两个账户约束的共同方案满足"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:336
+#: cb6c9d64eb5a4ce994478fdf3671d58a
+#, python-brace-format
+msgid ""
+"\n"
+"\\beta_o^{BP}=\\min\\{\\beta_o^1,\\beta_o^2\\}.\n"
+msgstr ""
+"\n"
+"\\beta_o^{BP}=\\min\\{\\beta_o^1,\\beta_o^2\\}.\n"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:340
+#: 1f3b24fb6a1441f38e8faf6b914f9e9e
+#, python-brace-format
+msgid ""
+"Both direction blocks must pose a substantive question: at least one "
+"desirable-output direction component must be positive and at least one "
+"residual direction component must be positive. The minimum also creates an "
+"important interpretive limit. If $\\beta_o^{BP}=0$, only one component "
+"account needs to be at its directional limit; the other may still contain "
+"substantial improvement potential. Zero therefore does not establish "
+"componentwise efficiency, and still less strong efficiency of the whole "
+"operation."
+msgstr ""
+"两个方向块都必须提出实质问题：至少一个合意产出方向分量为正，至少一个残余物方向分量为正。取最小值还带来重要解释限制。若 "
+"$\\beta_o^{BP}=0$，只需一个分量账户达到其方向极限，另一个仍可能有大量改进空间。因此，零值不能确立分量逐项有效，更不能确立整个经营活动强有效。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:348
+#: 4a54fa3d78f2445187d814b4caff6d24
+msgid ""
+"The smaller component is the *direction-specific limiting account*. "
+"Reporting both components shows whether the intended-production relation or "
+"the residual-generation relation limits this declared common programme. It "
+"does not, by itself, identify a physical bottleneck, a causal management "
+"constraint, or an emissions-control process. That interpretation depends on "
+"identifying $x^p$ from scientific or engineering knowledge; a statistical "
+"column name cannot establish which inputs physically generate a residual."
+msgstr ""
+"较小分量是**方向特定的限制账户**。同时报告两个分量，可说明在这套共同方案中是预期生产关系还是残余物生成关系限制改进。但它本身不能识别物理瓶颈、因果管理约束或排放控制过程。相关解释依赖科学或工程知识识别"
+" $x^p$；一个统计列名无法证明哪些投入在物理上产生残余物。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:356
+#: f8b94b3965f84f45b22307f5d763d416
+msgid ""
+"Because the conclusion depends on the intersection of two production "
+"relations, both accounts must reproduce their quantity commitments before "
+"the common distance, target, or peer comparison has an economic "
+"interpretation. If either account cannot be reconstructed, the evidence is "
+"insufficient to support the joint environmental conclusion. Satisfying both "
+"accounts still does not turn the directional target into a strongly "
+"efficient engineering design. By-production remains a useful alternative "
+"production account within environmental directional analysis, not a "
+"universally preferable pollution score, a chemical mass-balance model, or a "
+"detailed account of capture, treatment, and recycling."
+msgstr ""
+"由于结论依赖两个生产关系的交集，在共同距离、目标或参照单元比较获得经济含义前，两个账户都必须重构其数量承诺。任一账户无法重构时，证据不足以支持联合环境结论。即使两个账户均满足，也不会把方向目标变成强有效工程设计"
+"。by-production 仍是环境方向性分析中的一种替代生产账户，而不是普遍更优的污染得分、化学质量平衡模型或捕集、处理与回收的详细模型。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:366
+#: 494cbfe506bc41e6a7fc23a35e20b924
+msgid "Reading the two accounts in practice"
+msgstr "在实践中解读两个账户"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:368
+#: d628aa1d8f5047f1bd445d2d0f926da4
+#, python-brace-format
+msgid ""
+"The five-organization teaching example from Murty, Russell, and Levkoff "
+"makes the minimum rule visible without adding another model family "
+"{cite:p}`murty2012`:"
+msgstr "Murty、Russell 和 Levkoff 的五组织教学案例无需再增加模型族，就能清楚展示最小值规则 {cite:p}`murty2012`："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:394
+#: 671690fdcc9e4fd8a99f22d61118cc02
+#, python-brace-format
+msgid ""
+"For DMU 3, the intended-production account supports $\\beta^1=4/3$, while "
+"the residual-generation account supports $\\beta^2=1$. The joint programme "
+"is therefore limited by the residual-generation relation and "
+"$\\beta^{BP}=1$. Starting from $(x^p,y,b)=(1,2/3,2)$, the common directional"
+" target is $(1,5/3,1)$. The intended account alone could support $y=2$, but "
+"that endpoint is not the joint operating plan. The peer tables make the "
+"separation equally concrete: DMU 1 supports the intended-production account,"
+" whereas DMU 2 supports the residual account. This is exactly why the two "
+"component distances and two peer systems should accompany the minimum rather"
+" than disappear behind one headline number."
+msgstr ""
+"对 DMU 3，预期生产账户支持 $\\beta^1=4/3$，残余物生成账户支持 "
+"$\\beta^2=1$，所以联合方案受残余物生成关系限制，$\\beta^{BP}=1$。从 $(x^p,y,b)=(1,2/3,2)$ "
+"出发，共同方向目标为 $(1,5/3,1)$。单独的预期生产账户可以支持 $y=2$，但该端点不是联合经营方案。参照单元表同样直观：DMU 1 "
+"支持预期生产账户，DMU 2 支持残余物账户。这正说明为什么应同时报告两个分量距离和两套参照系统，而不能让它们消失在一个核心数值之后。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:405
+#: 47e27aa2fdfb42fea13c6ac96d0a973b
+msgid "From environmental performance to productivity change"
+msgstr "从环境绩效到生产率变化"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:407
+#: ca1f154b1ae64a928189417c6d5fdcd3
+#, python-brace-format
+msgid ""
+"Evaluating an operation against another period's technology can produce a "
+"signed cross-technology distance, but one such comparison is not itself a "
+"productivity index. Part IV develops the required combinations of "
+"contemporaneous and cross-period environmental distances in "
+"{doc}`../04-productivity/environmental-productivity-ml-common-reference`."
+msgstr ""
+"把经营活动放到另一时期技术下评价可能产生带符号跨技术距离，但一次比较本身不是生产率指数。第四部分在 {doc}`../04-productivity"
+"/environmental-productivity-ml-common-reference` 中组合必要的同期与跨期环境距离。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:413
+#: 375f4b72063248afb034a1e8faa99212
+msgid "A contemporaneous power-plant comparison"
+msgstr "一个同期发电企业比较"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:415
+#: 7c5061c3cc734d8eb9d771624f3e5646
+msgid ""
+"The `environmental_panel` teaching data contain energy, labour, electricity,"
+" and carbon dioxide for several plants over four periods. Suppose the "
+"immediate management question is: with each plant's current energy and "
+"labour commitment, how much can electricity rise while carbon dioxide falls "
+"in the same proportion? A contemporaneous reference means that each plant is"
+" compared with operating practices observed in its own year."
+msgstr ""
+"`environmental_panel` "
+"教学数据包含若干电厂四个时期的能源、劳动、电力和二氧化碳。设当前管理问题为：在各电厂现有能源与劳动承诺下，电力增加与二氧化碳减少可以达到多大共同比例？同期参照表示每家电厂只与本年度观测经营实践比较。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:443
+#: 74ff6628c98740aab7f1997fa7e4659d
+msgid "The fitted account can display the supported variable-level plan directly:"
+msgstr "拟合账户可以直接展示各变量得到支持的方案："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:455
+#: 9be51094d5e54efa9aca8a7c58495e31
+msgid ""
+"Writing the directions explicitly keeps the economic promise visible: "
+"ordinary inputs are protected, desirable electricity expands in proportion "
+"to its observed level, and undesirable carbon dioxide contracts in "
+"proportion to its observed level. The technology is the family-level CRS "
+"common-factor weak- disposal account introduced above; a historical source "
+"label is not needed to define another model."
+msgstr ""
+"明确写出方向，可以让经济承诺保持可见：普通投入受到保护，合意电力按观测水平同比例扩张，非合意二氧化碳按观测水平同比例收缩。技术采用上文介绍的模型族层面 "
+"CRS 共同因子弱可处置账户，不需要另用历史来源标签定义一个新模型。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:462
+#: 5742c7931b0941e1820cfb75bc28ee45
+msgid ""
+"For Central in 2020, $\\beta=0.083815$. Conditional on the observed "
+"comparison group and the common-factor constant-returns technology, its "
+"resource commitment supports a coordinated plan with approximately 8.38 "
+"percent more electricity and 8.38 percent less carbon dioxide."
+msgstr ""
+"对 2020 年 "
+"Central，$\\beta=0.083815$。以观测比较群体和共同因子规模报酬不变技术为条件，其资源承诺支持一项协调方案：电力约增加 "
+"8.38%，二氧化碳约减少 8.38%。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 62d8e00d2f3f487caa870ba11f5de883
+msgid "Role"
+msgstr "角色"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 7c04c64bdaf54a6ebdec766d743b95a9
+msgid "Quantity"
+msgstr "数量"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: f14f9c1012fd4c44a8070f246c2ed494
+msgid "Observed"
+msgstr "观测值"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 123536e2a9f34f08bed9525cf18c0916
+msgid "Benchmark plan"
+msgstr "标杆方案"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: f26c1388f0b9479c92b282ad15d83c02
+msgid "Change"
+msgstr "变化"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 436dff76c8db4865958b475263195fbb cdb3dadf21aa4905b77085f784695853
+msgid "Input"
+msgstr "投入"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 7d8402922a6344a988d79462fc16d434
+msgid "Energy"
+msgstr "能源"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 382a0eef39d44d1f87610240776fbc6b 6253fda9ab574323960be56767096a9b
+msgid "110.000"
+msgstr "110.000"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 2f3da370f9ca48a5b59314a8b22d5613 923070838fde4c71960b89098fe3e334
+msgid "0.000"
+msgstr "0.000"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 485cedf027964e0fb79326fb25637000
+msgid "Labour"
+msgstr "劳动"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 0f46662cdf5f40889665a4e6bd32d09c a2e432bdcca94082878e88df7330b9cc
+msgid "55.000"
+msgstr "55.000"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 551c4f179c7542b29adefcb1f59c359d
+msgid "Desirable output"
+msgstr "合意产出"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 980dcd35893140208ed3d3f6fe5feb81
+msgid "Electricity"
+msgstr "电力"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 52710b7801374b508d3bdbfc8f5556fc
+msgid "79.376"
+msgstr "79.376"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 433e835391434174b9dbc74925f965ee
+msgid "86.028902"
+msgstr "86.028902"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 927acbe9c5bf473aaf15343e79a6dac3
+msgid "+6.652902"
+msgstr "+6.652902"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 8437b482bc154bbe8e7a513c454bb4ea
+msgid "Undesirable output"
+msgstr "非合意产出"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 3ee4e36679414bd9b73453c77be82bdd
+msgid "Carbon dioxide"
+msgstr "二氧化碳"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: d3c7b8837cb142438e753056656b17fd
+msgid "285.120"
+msgstr "285.120"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: a86e08afa20b4b2abef2c87e5e9590cf
+msgid "261.222659"
+msgstr "261.222659"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:310
+#: 78b70004f06841f89226cecd778effc0
+msgid "-23.897341"
+msgstr "-23.897341"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:474
+#: 577d816c325d4261a57c33c33c715358
+msgid ""
+"Central's conditional 2020 environmental improvement account keeps energy "
+"and labour fixed, expands electricity by 6.652902, and reduces carbon "
+"dioxide by 23.897341 under a common directional programme with no additional"
+" slack"
+msgstr ""
+"Central 的条件性 2020 年环境改进账户保持能源和劳动不变，在不存在额外松弛的共同方向方案下，电力增加 6.652902，二氧化碳减少 "
+"23.897341"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:479
+#: 614f6e382f3e47dc8f09752263c8917c
+msgid ""
+"Central's conditional plan under weak common-factor disposal, CRS, and a "
+"contemporaneous reference. The declared direction contributes the "
+"electricity gain of 6.652902 and carbon-dioxide reduction of 23.897341 while"
+" energy and labour remain fixed; the subsequent completion contributes no "
+"additional slack in this case. Each quantity retains its own original unit, "
+"so the rows do not share a quantity axis. This is one selected feasible "
+"benchmark, not a unique operating plan, engineering implementation, causal "
+"effect, or cost conclusion."
+msgstr ""
+"Central 在弱共同因子处置性、CRS 和同期参照下的条件性方案。既定方向贡献 6.652902 的电力增加和 23.897341 "
+"的二氧化碳减少，能源与劳动保持不变；本例后续完成步骤没有增加额外松弛。各数量保留原始单位，因此各行不共享一个数量轴。这只是一个选定的可行标杆，不是唯一经营方案、工程实施、因果效应或成本结论。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:489
+#: d029a3f77f1442c4a58cb84c3256e678
+msgid ""
+"The distinction between the common directional commitment and additional "
+"slack matters. Here the completion step finds zero extra slack, so the whole"
+" displayed change comes from the programme Central asked the benchmark to "
+"support. Other organizations or directions may require a second, variable-"
+"specific adjustment. Input and desirable-output slacks are available under "
+"both disposal accounts; additional bad-output slack belongs only to strong "
+"disposal. Under common-factor equality disposal, the residual target is "
+"fixed by the declared directional move."
+msgstr ""
+"必须区分共同方向承诺与额外松弛。本例完成步骤没有发现额外松弛，因此全部展示变化都来自 Central "
+"要求标杆支持的改进方案。其他组织或方向可能需要第二次、变量特定的调整。投入与合意产出松弛在两种处置账户下均可使用；额外非合意产出松弛只属于强可处置性。共同因子等式处置下，残余物目标由既定方向调整固定。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:497
+#: b026a549f0f8400fa0dcf489a1536ce2
+msgid ""
+"The benchmark is a conditional performance comparison. It does not establish"
+" that Central can adopt the plan without investment, identify a particular "
+"abatement technology, estimate compliance cost, or predict a causal "
+"response. Those claims would require engineering and economic information "
+"beyond the observed production quantities."
+msgstr ""
+"该标杆是条件性绩效比较。它不能证明 Central "
+"无需投资即可采用方案，不能识别特定治理技术、估计合规成本，也不能预测因果反应。这些主张需要观测生产数量之外的工程和经济信息。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:503
+#: 0d6e2c3b4071459bb10b0820f396fbce
+msgid ""
+"Here the contemporaneous reference answers a static annual benchmarking "
+"question. Part IV treats alternative time-information policies as components"
+" of environmental productivity analysis rather than as additional "
+"environmental DDF model families."
+msgstr "此处同期参照回答静态年度标杆问题。第四部分把不同时间信息政策作为环境生产率分析的组成部分，而不是额外的环境 DDF 模型族。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:507
+#: 58d7d15cd5784c38a5a2c56374bbfc44
+msgid "Sensitivity should follow the production story"
+msgstr "敏感性分析应服从生产叙事"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:509
+#: d22d4e2407604633bc930f51fe04c02a
+msgid ""
+"A useful sensitivity analysis varies economically defensible assumptions and"
+" asks why conclusions change:"
+msgstr "有用的敏感性分析会改变经济上可辩护的假设，并询问结论为什么改变："
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:512
+#: 11039edf8c2c47519d8fb0e14bc4d37c
+msgid ""
+"Does free scaling create benchmark plans that are implausible for the "
+"organization?"
+msgstr "自由缩放是否产生对该组织而言不现实的标杆方案？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:513
+#: 2772efe675eb418388a2078aacd6f808
+msgid ""
+"Does strong disposal obtain its improvement because the production account "
+"records no accompanying sacrifice for pollution reduction?"
+msgstr "强可处置性是否因为生产账户不记录污染削减的伴随牺牲而得到改进？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:515
+#: 6b987b82c8fe4c66af5910011c5e48b8
+msgid ""
+"Does the identity of the limiting production relation change under by-"
+"production?"
+msgstr "by-production 下，限制性生产关系的身份是否改变？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:516
+#: fdd4564be1ba41ecb9112bfe98c48a61
+msgid ""
+"Do the organizations identified as priorities for intervention remain the "
+"same?"
+msgstr "被识别为干预优先对象的组织是否保持不变？"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:518
+#: e56cf38764ff4b06ab8552a18d973d24
+msgid ""
+"The main specification should reflect the production and regulatory setting."
+" The alternatives show how much the conclusion depends on contestable "
+"assumptions. Merely reporting a correlation between score columns hides the "
+"mechanism that produced the difference."
+msgstr "主要设定应反映生产与监管环境，替代设定则展示结论对可争议假设的依赖程度。仅报告得分列之间的相关性，会掩盖产生差异的机制。"
+
+#: ../../chapters/03-environmental/06-undesirable-outputs-ddf.md:523
+#: 7924036e57f94b5ab2885dde6cd14b30
+msgid ""
+"Environmental directional distance is thus best read as a disciplined "
+"statement about feasible joint improvement: *given these observed practices,"
+" this production account, this reference policy, and this management "
+"programme, how far can the organization proceed?* It remains distinct from "
+"undesirable-output SBM, which uses a non-radial slack account, and from "
+"productivity indexes, which combine multiple distance evaluations through "
+"time."
+msgstr ""
+"因此，环境方向性距离最适合被理解为关于可行联合改进的严谨陈述：*给定这些观测实践、这项生产账户、这项参照政策和这套管理改进方案，组织能够推进多远？* "
+"它不同于采用非径向松弛账户的非合意产出 SBM，也不同于通过时间组合多次距离评价的生产率指数。"
+

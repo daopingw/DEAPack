@@ -1,2 +1,51 @@
-graft src/DEAPack/data
+include CHANGELOG.md
+include CITATION.cff
+include CITATION.md
+include DATA_LICENSES.md
+include LICENSE
+include NOTICE
+include LICENSES/CC-BY-4.0.txt
+include LICENSES/MIT-BenchmarkingEconomicEfficiency.jl.txt
+include LICENSES/MIT-DataEnvelopmentAnalysis.jl.txt
+include PYPI_README.md
+include README.md
+include RELEASE_NOTES_2.0.0rc1.md
+
+# The PyPI source distribution excludes the bilingual Handbook, English
+# package Documentation, figures, tests, benchmarks, source reviews, and
+# contribution infrastructure. It still contains numerical dataset values
+# represented inside Python source, so GPL-3.0-only is not a blanket
+# dataset-rights declaration.
+# A public archive additionally requires every retained dataset's approved
+# component license, notices, mapping, and truthful distribution metadata.
+recursive-include src *.py
+recursive-exclude src *.csv *.json *.jsonl *.parquet *.tsv *.xlsx
+
+# Keep an incremental local egg-info cache from reintroducing repository-only
+# publication and validation material. A fresh tagged checkout observes the
+# same boundary.
+exclude CONTRIBUTING.md
+exclude Makefile
+exclude ROADMAP.md
+exclude SECURITY.md
+prune DEAPack
+prune .github
+prune benchmarks
+prune book
+prune docs
+prune scripts
+prune specs
+prune tests
+prune tmp
+prune output
+prune build
+prune dist
+prune _build
+prune _site
+prune benchmark-results
+
+global-exclude *.mo
 global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .DS_Store
+global-exclude *.tmp

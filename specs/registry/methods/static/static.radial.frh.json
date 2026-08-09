@@ -1,0 +1,405 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.radial.frh",
+  "identifier_role": "method_id",
+  "kind": "variant",
+  "component_type": null,
+  "category": "static",
+  "title": "Radial free replicability hull",
+  "decision_question": "By what common proportion could controllable resources be saved, or desirable services be expanded, when complete observed operating modules may be copied and combined only in nonnegative whole numbers?",
+  "names": {
+    "display": "Radial free replicability hull",
+    "historical": [
+      {
+        "label": "Free replicability hull",
+        "spellings": [
+          "FRH",
+          "free replicable hull",
+          "free replication hull",
+          "free disposal and replicability hull"
+        ],
+        "sources": [
+          "doi:10.1007/BF01073473",
+          "doi:10.1016/j.omega.2008.08.003"
+        ]
+      },
+      {
+        "label": "Additive returns-to-scale technology",
+        "spellings": [
+          "RTS=add"
+        ],
+        "sources": [
+          "https://rdrr.io/cran/Benchmarking/man/dea.plot.html"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "FreeReplicabilityHullDEA",
+      "aliases": [
+        {
+          "symbol": "FRH"
+        }
+      ]
+    },
+    "spellings": [
+      "input-oriented radial FRH",
+      "output-oriented radial FRH",
+      "integer-replication radial efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "operating_interpretation": "complete_modules_may_be_replicated_and_combined"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.frh"
+      ],
+      "fixed": {
+        "family": "free_replicability_hull",
+        "convex": false,
+        "activity_combination": "integer_replication",
+        "scale_extrapolation": "integer_additivity",
+        "replication_domain": "nonnegative_integer",
+        "returns_to_scale": "not_parameterized",
+        "economic_replication_cap": "none",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.frh"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "mixed_integer_envelopment",
+        "continuous_relaxation": "matched_crs_radial_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_efficiency",
+        "same_technology_across_orientations": true
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "replication_count_semantics": "whole_reference_modules",
+        "peer_portfolio_uniqueness": "not_assessed",
+        "target_uniqueness": "not_assessed",
+        "economic_replication_cap": "none"
+      },
+      "defaults": {
+        "secondary_objective": "maximize_row_scaled_free_disposal_residuals"
+      },
+      "exposed": [
+        "slack_completion"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "integer_solution_certificate": "numerical_solver_certificate_with_declared_absolute_violation_and_relative_gap_thresholds"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.frh",
+    "canonical_symbol": "FreeReplicabilityHullDEA",
+    "registry_dependencies": [
+      "estimator.full.frh",
+      "graph.black_box",
+      "technology.frh"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "finite_implied_replication_bounds",
+      "lexicographic_mixed_integer_slack_completion",
+      "mixed_integer_optimality_diagnostics",
+      "sparse_mixed_integer_programming"
+    ],
+    "default_backend": "scipy_highs_milp",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "radial_efficiency",
+      "replication_count",
+      "total_replications",
+      "integer_reference_activity",
+      "radial_target",
+      "free_disposal_residuals",
+      "mip_gap",
+      "integer_solution_certified",
+      "strong_completion_certified",
+      "solver_status"
+    ],
+    "transformations": [
+      "output_display_efficiency_equals_one_over_phi"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.matched_reference_population",
+          "condition.matched_integer_replication_domain"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "A reported integer reference activity satisfies the selected radial target under ordinary free disposal only after the mixed-integer solve is certified within the declared numerical thresholds.",
+      "efficiency": "Generic strong efficiency is claimed only after the optional fixed-radial-factor mixed-integer slack completion is certified; score-only fits retain a missing strong-efficiency classification.",
+      "selection": "Replication portfolios and targets are solver selected among alternate integer optima and are explicitly not asserted unique.",
+      "conditions": [
+        "condition.solver_certified_integer_optimum",
+        "condition.successful_mixed_integer_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/BF01073473"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.omega.2008.08.003"
+      },
+      {
+        "role": "implementation",
+        "id": "https://rdrr.io/cran/Benchmarking/man/dea.plot.html"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/frh-benchmarking-033.md",
+        "tests/test_frh.py::test_project_integer_coordination_input_oracle",
+        "tests/test_frh.py::test_project_integer_coordination_output_oracle_and_score_convention"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/frh-benchmarking-033.md",
+        "public_api_test_locator": "tests/test_frh.py::test_project_integer_coordination_input_oracle",
+        "claims": [
+          {
+            "claim_id": "static.radial.frh.exact_project_integer_coordination_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_frh.py::test_project_integer_coordination_input_oracle",
+              "tests/test_frh.py::test_project_integer_coordination_output_oracle_and_score_convention"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "not_parameterized"
+              ],
+              "evaluation_protocol": [
+                "whole_module_integer_replication"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "radial_phase_without_slack_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "theta",
+              "phi",
+              "harmonized_efficiency",
+              "replication_count",
+              "integer_reference_activity"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_score_and_slack_checks",
+        "compiled_reference_reuse",
+        "project_integer_coordination_scores_and_portfolios",
+        "external_reference_and_infeasibility",
+        "fdh_frh_ccr_nesting",
+        "finite_computational_bounds",
+        "integer_certificate_failure",
+        "panel_reference_policy",
+        "same_technology_both_orientations",
+        "unit_invariance",
+        "undesirable_output_rejection"
+      ],
+      "locators": [
+        "tests/test_frh.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_frh.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.frh",
+        "path": "docs/models/frh.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

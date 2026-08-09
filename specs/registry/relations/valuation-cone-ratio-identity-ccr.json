@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "valuation.weight_restriction.cone_ratio.polyhedral_crs.charnes_etal_1990",
+  "target": "static.radial",
+  "type": "exact_reduction",
+  "equivalence_level": null,
+  "difference_axes": [
+    "valuation",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.cone_ratio.identity_generators",
+      "arguments": {
+        "input_generators": "identity_matrix",
+        "output_generators": "identity_matrix",
+        "target_orientation": "input",
+        "target_returns_to_scale": "crs",
+        "target_compute_slacks": false,
+        "claim_scope": "native_theta_scores_only",
+        "ordinary_slack_target_correspondence": "not_claimed"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1080/00207728908910197",
+      "doi:10.1016/0304-4076(90)90048-X"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_polyhedral_cone_ratio.py::test_identity_cones_reduce_to_score_only_ccr_input"
+    ]
+  }
+}

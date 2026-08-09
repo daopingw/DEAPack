@@ -1,0 +1,796 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:2
+#: 97d198cd7e3a4570a1c1a3c22a90b566
+msgid "Scale Performance: Separate the Gap from the Response"
+msgstr "规模绩效：区分绩效差距与规模反应"
+
+#: ../../chapters/02-classical/scale-performance-management.md:4
+#: 126f5ab5949b4aeda250678fa4c5e110
+msgid ""
+"A hospital board considering regional reorganization needs more than the "
+"word *scale*. One hospital may use its present resources well yet operate at"
+" a size that the comparison population does not support as productive. "
+"Another may have no measured scale gap while still retaining substantial "
+"resource waste. A third may sit at a locally productive scale but face very "
+"different service responses to a small expansion and a small contraction. "
+"These findings belong to different questions; none is automatically a "
+"proposal to merge, enlarge, or close a site."
+msgstr "一家医院董事会在考虑区域重组时，不能只听到“规模”二字。某家医院或许很好地利用了现有资源，但比较总体并不支持其当前规模具有生产率优势；另一家医院可能没有可测的规模差距，却仍存在大量资源浪费；第三家医院可能处在局部具有生产率优势的规模上，但小幅扩张与小幅收缩引起的服务反应大不相同。这些发现回答的是不同问题，任何一个都不会自动构成合并、扩建或关闭院区的建议。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:12
+#: c6b74289ff104bf0b3831e034b28ad2c
+#, python-brace-format
+msgid ""
+"The preceding {doc}`03-classical-radial` chapter separated the common "
+"proportional shortfall from additional resource- or service-specific gaps. "
+"Scale analysis asks a different question: whether the size at which an "
+"organization operates changes the opportunities visible to it. The evidence "
+"becomes progressively more local:"
+msgstr ""
+"上一章 {doc}`03-classical-radial` "
+"已经区分共同比例缺口与额外的逐项资源或服务缺口。规模分析另问一个问题：组织的经营规模是否改变了它所面对的生产机会。相关证据逐步从总体比较走向局部判断："
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: e08c86f985ee40bcb6f8e79848145576
+msgid "Scale evidence"
+msgstr "规模证据"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 33ec8e25ea934497a33b8a0fbc8f4edd
+msgid "Management question"
+msgstr "管理问题"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3e11948db31943049efb733b329daa11
+msgid "Proper conclusion boundary"
+msgstr "恰当的结论边界"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 4dfd88a2ec8d49eb91fec127c7285870 f6d85d380eac42aa8382e3bf0dfeb279
+msgid "Scale efficiency"
+msgstr "规模效率"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 00c200dc6acf4471b4aed9291dbe1ff9
+msgid ""
+"Does allowing a productive operating pattern to be copied at another "
+"organizational size reveal an additional radial performance opportunity?"
+msgstr "允许在另一组织规模上复制具有生产率优势的经营模式，是否会揭示额外的径向绩效机会？"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: d84e558c7af04fa2a95800a22f5aebeb
+msgid "a matched CRS--VRS performance gap, not a recommended size change"
+msgstr "匹配的 CRS--VRS 绩效差距，而不是改变规模的建议"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 5fc1248546d84a2991f121284d1f17a6
+msgid "Local returns to scale"
+msgstr "局部规模报酬"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3b5cc30bed1f440ea5c46741ce06053e
+msgid ""
+"If the organization changed all resources slightly around the selected "
+"efficient plan, would attainable services change by a larger, equal, or "
+"smaller proportion?"
+msgstr "如果组织在所选有效方案附近小幅改变所有资源，可实现服务会按更大、相同还是更小的比例变化？"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 2600d95fbfb34b74b27cac4eecab8806
+msgid "a supported qualitative response near that plan, not a response magnitude"
+msgstr "该方案附近有证据支持的定性反应，而不是反应幅度"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3e285069c737408ea907e008a23b6085
+msgid "Scale elasticity"
+msgstr "规模弹性"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: ed80743552254ad4ab7b5bb0ede1cda8
+msgid ""
+"How large are the one-sided proportional service responses to a one-percent "
+"resource change near that same plan?"
+msgstr "在同一方案附近，资源变化 1% 时，服务在两个单侧方向上的比例反应有多大？"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 0a3979e18e714cdc8e115b17cbf39b14
+msgid "a local technical sensitivity, not a demand or financial forecast"
+msgstr "局部技术敏感性，而不是需求或财务预测"
+
+#: ../../chapters/02-classical/scale-performance-management.md:23
+#: c5b83e60b3fc42a5b17343fc8d1f528f
+msgid ""
+"The sequence matters because each result supports a different decision "
+"inference. Scale efficiency compares two matched radial score accounts under"
+" CRS and VRS; it shows how much the permission to replicate operating "
+"patterns changes measured performance. It does not perform slack completion."
+" Local returns and scale elasticity instead describe the response around a "
+"particular Pareto-efficient VRS plan. None of them values the demand served,"
+" the cost and irreversibility of resizing, the effect on quality or access, "
+"or the risks of reorganization. Those considerations determine whether a "
+"technically indicated size change would create economic or social value."
+msgstr ""
+"这个次序很重要，因为每项结果支持不同的决策推论。规模效率比较 CRS 与 VRS "
+"下两项相互匹配的径向得分账户，说明允许复制经营模式会使测得的绩效改变多少；它并不进行松弛量补全。局部规模报酬和规模弹性则描述某个 Pareto 有效 "
+"VRS "
+"方案附近的反应。三者都没有评价服务需求、规模调整的成本和不可逆性、质量或可及性影响以及重组风险。只有把这些因素纳入考量，才能判断技术上显示的规模变化是否会创造经济或社会价值。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:33
+#: d61632be1dd4497b92361ea16ad5de98
+msgid "Scale efficiency: isolate the additional CRS comparison"
+msgstr "规模效率：分离 CRS 增加的比较"
+
+#: ../../chapters/02-classical/scale-performance-management.md:35
+#: ca255c626fdb4c6fa64f0327d66de08e
+#, python-brace-format
+msgid ""
+"Under the same data, orientation, and reference policy, CRS admits all VRS "
+"comparators plus proportional rescaling. Let $TE_o^{CRS}$ and $TE_o^{VRS}$ "
+"denote the standardized higher-is-better radial technical efficiencies for "
+"the declared orientation. When the evaluated operation belongs to both "
+"reference technologies, the familiar self-inclusive bounds are"
+msgstr ""
+"在数据、导向和参照政策相同的条件下，CRS 除了接纳所有 VRS 比较对象，还允许按比例调整经营规模。令 $TE_o^{CRS}$ 和 "
+"$TE_o^{VRS}$ 表示所声明导向下经过标准化、越高越好的径向技术效率。当被评价经营方案同时属于两个参照技术时，熟悉的自包含界限为"
+
+#: ../../chapters/02-classical/scale-performance-management.md:41
+#: 7a2399f3050a4b8a9bc7eba70cd96b91
+#, python-brace-format
+msgid ""
+"\n"
+"TE_o^{CRS}\\leq TE_o^{VRS}\\leq1,\n"
+msgstr ""
+"\n"
+"TE_o^{CRS}\\leq TE_o^{VRS}\\leq1,\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:45
+#: 9eb29e068afa4c56bb42a8f9b90ec399
+#, python-brace-format
+msgid "and the conventional scale-efficiency ratio is {cite:p}`banker1984`"
+msgstr "通常的规模效率比率为 {cite:p}`banker1984`"
+
+#: ../../chapters/02-classical/scale-performance-management.md:47
+#: 713363845707403fb26017d465888425
+msgid ""
+"\n"
+"SE_o=\\frac{TE_o^{CRS}}{TE_o^{VRS}}.\n"
+msgstr ""
+"\n"
+"SE_o=\\frac{TE_o^{CRS}}{TE_o^{VRS}}.\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:51
+#: ef2c4d72ab8442ff8a6064d6b0228008
+msgid ""
+"An external reference may exclude the evaluated operation, so either "
+"standardized component efficiency can exceed one and the component upper "
+"bound above no longer applies. The matched CRS technology still contains the"
+" matched VRS technology, so a valid positive ratio remains at most one up to"
+" numerical tolerance. What is lost is not that nesting result but the "
+"ordinary self-appraisal interpretation: a ratio of one against an external "
+"institution does not certify conventional scale efficiency. DEAPack "
+"therefore retains the numerical comparison while leaving "
+"`is_scale_efficient` missing unless the evaluated plan belongs to both "
+"component technologies."
+msgstr ""
+"外部参照可能排除被评价的经营方案，因此任一标准化分项效率都可能超过 1，上述分项上界便不再适用。匹配的 CRS 技术仍然包含匹配的 VRS "
+"技术，所以有效的正比率在数值容差内仍不会超过 1。失去的不是这一嵌套关系，而是通常的自我评价解释：相对于外部机构得到比率 "
+"1，并不能认证通常意义上的规模有效。为此，DEAPack 保留数值比较；除非被评价方案属于两个分项技术，否则 `is_scale_efficient` "
+"仍记为缺失。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:61
+#: 2b1054bf570e4d94b54f3ee4ce7588aa
+#, python-brace-format
+msgid ""
+"For input orientation, $TE_o=\\theta_o$, so this is "
+"$\\theta_o^{CRS}/\\theta_o^{VRS}$. For output orientation, the native result"
+" is the expansion factor $\\phi_o$ and $TE_o=1/\\phi_o$, so the same ratio "
+"becomes $\\phi_o^{VRS}/\\phi_o^{CRS}$. Writing the ratio in standardized-"
+"efficiency form prevents a contraction factor from being silently mixed with"
+" an expansion factor."
+msgstr ""
+"投入导向下 $TE_o=\\theta_o$，所以该比率为 "
+"$\\theta_o^{CRS}/\\theta_o^{VRS}$。产出导向的原生结果是扩张因子 $\\phi_o$，且 "
+"$TE_o=1/\\phi_o$，同一比率因而写成 "
+"$\\phi_o^{VRS}/\\phi_o^{CRS}$。采用标准化效率形式书写，可以避免不加说明地把压缩因子与扩张因子混在一起。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:68
+#: 7b1249032adc40e19873b8dc0e7004af
+msgid ""
+"The VRS account asks how the organization compares with a convex opportunity"
+" set that does not grant unrestricted replication. The CRS account also "
+"admits scaled versions of represented operating patterns. Their ratio "
+"isolates the additional radial gap created by that added benchmark right. It"
+" is a comparison of two counterfactual production accounts, not an estimate "
+"of the organization's physical size or the percentage by which it should "
+"resize."
+msgstr ""
+"VRS 账户考察组织相对于一个不赋予不受限复制权的凸生产机会集合表现如何。CRS "
+"账户还允许按比例调整代表性经营模式。二者之比把新增标杆构造权带来的额外径向差距分离出来。它比较的是两个反事实生产账户，并不是对组织实体规模的估计，也不是组织应按多少百分比改变规模。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:75
+#: d5edeb03be6143b99f50452359a73973
+msgid ""
+"This interpretation imposes a strict matching requirement. Dividing a CRS "
+"score for one orientation or peer population by a VRS score for another does"
+" not isolate scale. The data, variable roles, reference membership, "
+"orientation, and period policy must be held fixed."
+msgstr ""
+"这种解释要求严格匹配。用某一导向或参照总体下的 CRS 得分除以另一导向或参照总体下的 VRS "
+"得分，无法分离规模因素。数据、变量角色、参照成员、导向和时期政策都必须保持不变。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:80
+#: c08bb91fdca04a58be64cca996559600
+msgid "The `frontier_1x1` case makes the comparison visible:"
+msgstr "`frontier_1x1` 案例把这一比较直观地呈现出来："
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3eeca523f01f4a30aff5ebfce28bbaa9
+msgid "DMU"
+msgstr "决策单元（DMU）"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: e3524134e84641a7bc49e0f31b3a34cc
+msgid "CRS efficiency"
+msgstr "CRS 效率"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3f6761fb388e496abf0908081661f418
+msgid "VRS efficiency"
+msgstr "VRS 效率"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: b2cc654ccb064289812aeb6fecc217f4 f27f7b5fcc174c7085d2ba8fda8509ba
+msgid "A"
+msgstr "A"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: add77b3704f8457581e7829efcbc7e95 c0c2747f8d3b4f278077836cc78a07f1
+msgid "0.800"
+msgstr "0.800"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 3a6fc46e654c48b086b6c5e4f79af8a7 490276ef20f6418cb15287cf4426d9d4
+#: 6fe5050adcc540d39d7ebf09fb0520d9 92d20b08018649e89a184b5119c23d02
+#: 9b7d16bf2e6944c2a9cab3b42b2ddf1a e7d2bce6eb584ed086778ecbec6f8650
+msgid "1.000"
+msgstr "1.000"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: b13d5ec5964742488cd6011934b1edf5 f7c8ee94a6844dc6be1b7c8515bbf8a5
+msgid "B"
+msgstr "B"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 81e8bd6193c440b4b5c8f17729d84b43 857331c352ac486cacd2bfbe5382786c
+msgid "C"
+msgstr "C"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: 52c32f49a4704acfafbef7ddd8f9b76c 80b22d486609428ab9b1fa16c5cb1c9a
+msgid "0.880"
+msgstr "0.880"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 42a0549bc3ec49299c74a70cb0bb1bb2 4d1edb327d4145bd9455125fd77a5edb
+msgid "D"
+msgstr "D"
+
+#: ../../chapters/02-classical/scale-performance-management.md
+#: d2c3469c13c44f5387164a46f247af31 fe7becc0ba8d42e18fa43ceed1e7ad95
+msgid "0.760"
+msgstr "0.760"
+
+#: ../../chapters/02-classical/scale-performance-management.md:119
+#: 81424b00826545ea953ac1ad57eafebe
+msgid ""
+"Every ratio in the table rests on two available production comparisons. The "
+"CRS and VRS accounts must each describe a feasible, internally consistent "
+"benchmark before their ratio supports a scale interpretation. If either "
+"account lacks that support, an apparently plausible ratio is not sufficient "
+"evidence for the management comparison or the figure."
+msgstr ""
+"表中的每个比率都建立在两项可获得的生产比较之上。CRS 和 VRS "
+"账户都必须描述一个可行且内部一致的标杆，它们的比率才能支持规模解释。如果任一账户缺少这种支持，一个表面合理的比率仍不足以支持管理比较或图形结论。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:125
+#: f86c47bae14045fab0ccb873b54178d4
+msgid ""
+"D lies on the VRS frontier, but CRS compares it with a proportionally scaled"
+" version of B's more productive pattern. Its scale efficiency of 0.76 says "
+"that admitting continuous replication creates a 24-percent radial gap "
+"relative to the VRS appraisal. It does not say that D should become 24 "
+"percent smaller or that B's organization can be copied without cost."
+msgstr ""
+"D 位于 VRS 前沿，但 CRS 把它与 B 的高生产率模式按比例调整后的版本比较。规模效率 0.76 表示：相对于 VRS 评价，允许连续复制产生了"
+" 24% 的径向差距。这并不表示 D 应缩小 24%，也不表示可以无成本复制 B 的组织方式。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:131
+#: 1e7edeb0a3ce474aa699d2e9f64ba156
+msgid ""
+"Only B has scale efficiency one in this view. That statement is deliberately"
+" narrow: admitting proportional replication creates no additional radial gap"
+" for B. It does not prove that every input excess and output shortfall has "
+"disappeared. If both CRS and VRS efficiencies were 0.5, their ratio would "
+"also be one even though the organization retained a large operating "
+"shortfall."
+msgstr ""
+"在这一比较中，只有 B 的规模效率为 1。这个结论的范围刻意保持狭窄：允许按比例复制没有给 B "
+"带来额外径向差距。它并未证明所有投入冗余和产出不足都已消失。如果 CRS 与 VRS 效率同为 0.5，二者之比也会等于 "
+"1，即使组织仍有很大的经营缺口。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:137
+#: b6604159e6344a219fcec58470a4bb1b
+#, python-brace-format
+msgid ""
+"Scale efficiency also does not identify whether an organization lies in a "
+"region of increasing or decreasing returns. That requires local information "
+"about the selected efficient plan {cite:p}`banker1984,fare1985`."
+msgstr "规模效率也不能识别组织处于规模报酬递增还是递减区域。为此需要所选有效方案附近的局部信息 {cite:p}`banker1984,fare1985`。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:141
+#: 28429ba3a39d49a0b584169c3ed91746
+msgid ""
+"Scale efficiency for organizations A through D, showing B at one and the "
+"other organizations below one"
+msgstr "组织 A 至 D 的规模效率：B 为 1，其余组织均低于 1"
+
+#: ../../chapters/02-classical/scale-performance-management.md:146
+#: 3aa076467864447987b554a5464e1652
+msgid ""
+"The display compares the extra radial gap admitted by proportional "
+"replication. It does not recommend a new operating size: the same point plot"
+" cannot show whether a nearby expansion or contraction has increasing or "
+"decreasing local returns, and it contains no evidence about demand or "
+"adjustment cost."
+msgstr "图中比较了按比例复制所增加的径向差距，并不推荐新的经营规模。同一幅点图无法说明附近扩张或收缩对应局部规模报酬递增还是递减，也不包含需求或调整成本方面的证据。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:152
+#: bf55f9996cf949438be2ea9d084bdcab
+msgid "Local returns to scale: what happens near the selected plan?"
+msgstr "局部规模报酬：所选方案附近会发生什么？"
+
+#: ../../chapters/02-classical/scale-performance-management.md:154
+#: 8d6ad501023249feb04897cd01e43f1f
+#, python-brace-format
+msgid ""
+"Scale efficiency compares two matched score-only technology appraisals. It "
+"does not itself select a strongly efficient operating target. Local returns "
+"to scale instead begins from a separately selected Pareto-efficient VRS "
+"target and asks how attainable service capacity responds to a small "
+"proportional change in organizational size near that plan "
+"{cite:p}`banker1992,banker2004rts`."
+msgstr ""
+"规模效率比较两个相互匹配、仅报告得分的技术评价，自身并不选择强有效经营目标。局部规模报酬则从另行选定的 Pareto 有效 VRS "
+"目标出发，考察在该方案附近小幅按比例改变组织规模时，可实现服务能力如何反应 {cite:p}`banker1992,banker2004rts`。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: cd4e1be2095c4f24a51e3e2c158b5d6b
+msgid ""
+"Three cards show a ten percent resource increase associated with a larger, "
+"equal, or smaller percentage increase in attainable services under "
+"increasing, constant, and decreasing local returns"
+msgstr "三张卡片显示：资源增加 10% 时，在局部规模报酬递增、不变和递减下，可实现服务分别增加更大、相同或更小的百分比"
+
+#: ../../chapters/02-classical/scale-performance-management.md:166
+#: 641d98231d594fb9a96452ac9d10418e
+msgid ""
+"Local returns describe a benchmark-conditioned operating response. They do "
+"not include demand, prices, adjustment costs, investment constraints, or a "
+"decision to change scale."
+msgstr "局部规模报酬描述以标杆为条件的经营反应。它不包含需求、价格、调整成本、投资约束，也不等于改变规模的决策。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:171
+#: 30681afa6a984f028dd171bb02ba9787
+msgid "The three categories have direct operating meanings:"
+msgstr "三种类别具有直接的经营含义："
+
+#: ../../chapters/02-classical/scale-performance-management.md:173
+#: 47d2ae0b41b64089bc60c00d04a039f4
+msgid ""
+"**increasing returns**: a small proportional increase in all resources can "
+"support a more than proportional increase in all services;"
+msgstr "**规模报酬递增**：所有资源小幅同比例增加，可以支持所有服务按更大比例增加；"
+
+#: ../../chapters/02-classical/scale-performance-management.md:175
+#: 903e745870b54eec9a67fa0db9c2445d
+msgid "**constant returns**: proportional replication is locally supportable; and"
+msgstr "**规模报酬不变**：局部可以支持按比例复制；"
+
+#: ../../chapters/02-classical/scale-performance-management.md:176
+#: d83d21bafd054b5bbc6ee177778a8de4
+msgid ""
+"**decreasing returns**: attainable services rise less than resources near "
+"the selected plan."
+msgstr "**规模报酬递减**：在所选方案附近，可实现服务的增长比例小于资源增长比例。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:179
+#: 44a5ab28d3b74632a79d982d9fd2d1f6
+msgid ""
+"These statements concern a coordinated proportional change in the "
+"represented resource and service bundles. Increasing returns does not mean "
+"that every service line benefits equally, and decreasing returns does not "
+"prove that bureaucracy or congestion caused the weaker response. The "
+"classification describes what the maintained production evidence supports; "
+"explaining *why* requires organizational evidence outside the DEA account."
+msgstr ""
+"这些表述针对的是代表性资源组合与服务组合的一次协调同比例变化。规模报酬递增并不意味着每条服务线都同等受益，规模报酬递减也不能证明官僚主义或拥挤导致了较弱反应。分类描述的是既定生产证据能够支持什么；要解释*为什么*，还需要"
+" DEA 账户以外的组织证据。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:186
+#: 112418eac0b1423a9709867c573f41d3
+msgid ""
+"An inefficient observation is not itself assigned a local technology label. "
+"It is first connected to an efficient target under a declared orientation "
+"and target-selection policy. The local-returns statement belongs to that "
+"target. Another orientation can select a different target and therefore "
+"answer a different planning question."
+msgstr "不能直接给无效观测贴上局部技术标签。首先要在声明的导向和目标选择政策下，把它连接到一个有效目标；局部规模报酬结论属于这个目标。另一导向可能选择不同目标，因而回答不同的规划问题。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:192
+#: 2245734e37d34cb9a9dbf4d124c9ad4f
+msgid ""
+"At some efficient plans, the evidence does not support one unique local "
+"scale label. More than one supporting account, and therefore more than one "
+"supported local response, can be consistent with the same selected operating"
+" plan. That is a limitation of the available evidence: management should "
+"receive the supported set rather than a falsely precise single label."
+msgstr "在某些有效方案上，证据无法支持唯一的局部规模标签。同一个所选经营方案可能同时符合多个支持账户，因而也符合多个有证据支持的局部反应。这是现有证据的限制：管理层应当看到完整的受支持集合，而不是一个虚假精确的单一标签。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:198
+#: 8356de0851594bbfa970d9a82cffb8ff
+msgid ""
+"Classical presentations sometimes express this evidence through supporting "
+"hyperplanes and sometimes, under the matched Banker--Thrall conditions, "
+"through optimal intensity sums. Those are alternative representations of the"
+" local production evidence, not different managerial scale outcomes. NIRS or"
+" NDRS technology comparisons are separate categorical procedures and should "
+"not be silently substituted for the selected-plan analysis used here."
+msgstr ""
+"经典文献有时通过支持超平面表达这种证据，有时则在匹配的 Banker--Thrall "
+"条件下通过最优强度之和表达。它们是局部生产证据的不同表示，而不是不同的管理规模结果。NIRS 或 NDRS "
+"技术比较是另外的类别判定程序，不能不加说明地替代本章所用的所选方案分析。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:205
+#: 6c27aee0010148a89a79d44cd0d0be86
+#, python-brace-format
+msgid ""
+"In the piecewise DEA technology this ambiguity can occur at a kink. Treating"
+" whichever supporting account happens to be returned first as the only "
+"economically admissible one can create a false classification. The Banker--"
+"Thrall procedure therefore retains the interval of admissible normalized "
+"intercepts; if zero lies in that interval, constant returns belongs to the "
+"supported set even when other supports indicate increasing or decreasing "
+"returns. In DEAPack's stated supporting-valuation convention, a negative "
+"scale term supports increasing returns, zero supports constant returns, and "
+"a positive term supports decreasing returns "
+"{cite:p}`banker1992,banker2004rts`."
+msgstr ""
+"在分段线性的 DEA 技术中，这种多义性会出现在折点。若把求解器碰巧首先返回的支持账户当成唯一具有经济意义的账户，就可能产生错误分类。因此，Banker"
+"--Thrall 程序保留可接受归一化截距的区间；只要零位于该区间内，即使其他支持账户显示规模报酬递增或递减，规模报酬不变也属于受支持集合。按照 "
+"DEAPack 声明的支持价值约定，负的规模项支持规模报酬递增，零支持规模报酬不变，正的规模项支持规模报酬递减 "
+"{cite:p}`banker1992,banker2004rts`。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:215
+#: ce7ed10fddb14171ac817cfe4ff54812
+msgid "The five-organization example makes the distinction reproducible:"
+msgstr "五组织案例可以复现上述区别："
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 3d8cf8926b924f8cba405fda72dc615b
+msgid "Organization"
+msgstr "组织"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 6c2201b3f46b4248bad66561ed830496
+msgid "Reported local RTS"
+msgstr "报告的局部规模报酬"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 011f74a789cf4760b26512e20c05f89f
+msgid "Admissible support types"
+msgstr "可接受的支持类型"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 058d2c43c248437182d6272397066f47
+msgid "Intercept interval"
+msgstr "截距区间"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 2f09ba00ec3d4e169f78547b1e20158e b06a73ba9b8b47ee9e9c5281e539eafa
+msgid "increasing"
+msgstr "递增"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 84b6c71d79ce4cc4b1051241dbc13a33
+msgid "$[-1,-1/2]$"
+msgstr "$[-1,-1/2]$"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 2bd3556a124f479d943f042dea085852 ea832629397f460cb6722630aa1399c1
+msgid "constant"
+msgstr "不变"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 61d129903bf9459592b8a992e4550a46
+msgid "increasing, constant"
+msgstr "递增、不变"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 4ab072a5e45f47cbb0f1df335a84e9af
+msgid "$[-1/3,0]$"
+msgstr "$[-1/3,0]$"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 55242d7c8e894e939dfbc9f847d9b65b
+msgid "constant, decreasing"
+msgstr "不变、递减"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: de9e287b47054d0182666e8e9e65de03
+msgid "$[0,1/3]$"
+msgstr "$[0,1/3]$"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 07631e9a15284c6faf4716855eab686e 79b3b3790b2642cc9038ad1ddf8a5d15
+#: c1f73609238a4bd581695a2e7285a9af d1396d69778b4433ae7d167278052b82
+msgid "decreasing"
+msgstr "递减"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 27a55e2a5cd441f087dfcf29d02ee7a6
+msgid "$[1/4,+\\infty)$"
+msgstr "$[1/4,+\\infty)$"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 5475a5c6b741417590ce961fa8f779cb
+msgid "E"
+msgstr "E"
+
+#: ../../chapters/02-classical/scale-performance-management.md:161
+#: 905f79e4f2604d62b908fff0bc702b21
+msgid "$[2/7,2/7]$"
+msgstr "$[2/7,2/7]$"
+
+#: ../../chapters/02-classical/scale-performance-management.md:256
+#: 212af9064d214b4da8303e1e9c82bdfa
+msgid ""
+"E's observed plan $(4,4.5)$ is first compared with the input-oriented VRS "
+"target $(3.5,4.5)$. The decreasing-returns diagnosis therefore belongs to "
+"that target, not to an unqualified point called “E.” A management report "
+"should name both the projection rule and the local classification."
+msgstr ""
+"E 的观测方案 $(4,4.5)$ 首先与投入导向 VRS 目标 $(3.5,4.5)$ "
+"比较。因此，规模报酬递减的诊断属于该目标，而不是一个未经限定、名为“E”的点。管理报告应同时说明投影规则和局部分类。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:261
+#: eea355545efd43aca55c8f9d8b1cbcb7
+msgid ""
+"For all five organizations, the production evidence supports the reported "
+"intercept interval. D's positive upper endpoint is unbounded, but that does "
+"**not** mean infinite physical productivity. It means that the selected plan"
+" admits no finite largest normalized supporting intercept; because every "
+"admissible intercept is still positive, the decreasing-returns "
+"classification remains identified. This extended boundary supports an "
+"economic conclusion only when the production evidence also establishes the "
+"relevant recession behavior. Without that evidence, neither the interval nor"
+" the classification is justified by a numerical finding of unboundedness "
+"alone."
+msgstr ""
+"对全部五个组织，生产证据都支持表中报告的截距区间。D "
+"的正上端点无界，但这**不**表示物理生产率无穷大；它表示所选方案不存在有限的最大归一化支持截距。由于每个可接受截距仍然为正，规模报酬递减分类依然可以识别。只有当生产证据同时确立相关的技术衰退性质时，这一扩展边界才能支持经济结论。若没有这种证据，单凭数值无界这一发现，既不能证明该区间，也不能证明相应分类。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:271
+#: 3cf2d0f9ff6941f388cf42ff7c1c81c2
+msgid "Why an RTS category is not a response magnitude"
+msgstr "为何规模报酬类别不是反应幅度"
+
+#: ../../chapters/02-classical/scale-performance-management.md:273
+#: 2158a19068294976a60ff0425d317fa8
+#, python-brace-format
+msgid ""
+"“Increasing,” “constant,” and “decreasing” summarize the direction of a "
+"local scale response; they do not say how large that response is. Two "
+"hospitals can both face decreasing returns while one loses very little "
+"productivity as it expands and the other loses a great deal. If that "
+"difference matters to a planning decision, the analyst can estimate a local "
+"scale elasticity: the percentage change in the largest attainable service "
+"bundle associated with a one-percent proportional change in resources "
+"{cite:p}`forsund2004scale,podinovski2017rts`."
+msgstr ""
+"“递增”“不变”和“递减”概括局部规模反应的方向，却不说明反应有多大。两家医院可能都面临规模报酬递减，但一家在扩张时只损失很少生产率，另一家则损失很多。如果这种差异对规划决策很重要，分析者可以估计局部规模弹性：在资源按比例变化"
+" 1% 时，最大可实现服务组合变化的百分比 {cite:p}`forsund2004scale,podinovski2017rts`。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:282
+#: bde7a55afcf44c9d8d0be9d8abba816b
+msgid "At the selected efficient target $(\\widehat x_o,\\widehat y_o)$, let"
+msgstr "在所选有效目标 $(\\widehat x_o,\\widehat y_o)$ 处，令"
+
+#: ../../chapters/02-classical/scale-performance-management.md:284
+#: 362d6807bf4d4a9191a6a9ec685b8e68
+#, python-brace-format
+msgid ""
+"\n"
+"\\bar\\beta_o(\\alpha)\n"
+"=\\max\\{\\beta:(\\alpha \\widehat x_o,\\beta \\widehat y_o)\\in\\mathcal "
+"T\\},\n"
+"\\qquad \\bar\\beta_o(1)=1.\n"
+msgstr ""
+"\n"
+"\\bar\\beta_o(\\alpha)\n"
+"=\\max\\{\\beta:(\\alpha \\widehat x_o,\\beta \\widehat y_o)\\in\\mathcal "
+"T\\},\n"
+"\\qquad \\bar\\beta_o(1)=1.\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:290
+#: 3506239e429848a2a90122ed26b38129
+msgid ""
+"$\\alpha$ describes a common proportional change in the represented "
+"resources, while $\\bar\\beta_o(\\alpha)$ records the largest supported "
+"proportional service bundle at that resource scale. The scale-up and scale-"
+"down responses are the two one-sided derivatives"
+msgstr ""
+"$\\alpha$ 表示代表性资源的共同同比例变化，$\\bar\\beta_o(\\alpha)$ "
+"记录该资源规模下证据能够支持的最大比例服务组合。扩大规模和缩小规模的反应分别由两个单侧导数给出："
+
+#: ../../chapters/02-classical/scale-performance-management.md:295
+#: ac34256836f24513859748e61a910037
+#, python-brace-format
+msgid ""
+"\n"
+"\\epsilon_o^+=\\bar\\beta'_{o,+}(1),\n"
+"\\qquad\n"
+"\\epsilon_o^-=\\bar\\beta'_{o,-}(1),\n"
+"\\qquad\n"
+"\\epsilon_o^+\\leq\\epsilon_o^-.\n"
+msgstr ""
+"\n"
+"\\epsilon_o^+=\\bar\\beta'_{o,+}(1),\n"
+"\\qquad\n"
+"\\epsilon_o^-=\\bar\\beta'_{o,-}(1),\n"
+"\\qquad\n"
+"\\epsilon_o^+\\leq\\epsilon_o^-.\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:303
+#: 716167cb345748d0b7378a8df053d839
+msgid ""
+"An expansion response of $0.8$, for example, says that a one-percent "
+"increase in all represented resources supports approximately $0.8$ percent "
+"more of the same proportional service bundle near that target. It is not an "
+"estimate of revenue, profit, demand, or the productivity of an additional "
+"employee considered alone."
+msgstr ""
+"例如，扩张反应为 $0.8$，表示在该目标附近，所有代表性资源增加 1% 可以支持同一比例服务组合增加约 "
+"$0.8$%。它不是收益、利润或需求的估计，也不是单独增加一名员工的生产率估计。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:308
+#: ee423687e37a42808d3fcc4792824f37
+msgid ""
+"DEA frontiers are piecewise linear, so scale-up and scale-down may have "
+"different one-sided responses at the same efficient target. A constant-"
+"returns classification can therefore be supported even when neither response"
+" equals exactly one: one side of the target may be below proportional and "
+"the other above proportional. This is why an RTS label should not be "
+"converted into an assumed percentage effect."
+msgstr ""
+"DEA 前沿是分段线性的，因此在同一个有效目标上，扩大规模与缩小规模可能具有不同的单侧反应。即使两个反应都不恰好等于 "
+"1，证据仍可能支持规模报酬不变：目标一侧的反应可以低于同比例，另一侧则高于同比例。因此，不能把规模报酬标签直接换算成臆定的百分比效应。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:315
+#: ac3e4054c51342dbadb72f39dabfa529
+msgid "The relationship between the qualitative and quantitative accounts is"
+msgstr "定性账户与定量账户的关系为"
+
+#: ../../chapters/02-classical/scale-performance-management.md:317
+#: 10ce2dae15ec408ead5b48c7fe5314d2
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\text{increasing returns:}&\\quad 1<\\epsilon_o^+\\leq\\epsilon_o^-,\\\\\n"
+"\\text{decreasing returns:}&\\quad \\epsilon_o^+\\leq\\epsilon_o^-<1,\\\\\n"
+"\\text{constant returns supported:}&\\quad\n"
+"\\epsilon_o^+\\leq1\\leq\\epsilon_o^-.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\text{规模报酬递增：}&\\quad 1<\\epsilon_o^+\\leq\\epsilon_o^-,\\\\\n"
+"\\text{规模报酬递减：}&\\quad \\epsilon_o^+\\leq\\epsilon_o^-<1,\\\\\n"
+"\\text{支持规模报酬不变：}&\\quad\n"
+"\\epsilon_o^+\\leq1\\leq\\epsilon_o^-.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/scale-performance-management.md:326
+#: 8c36f070dd4c43eebf06201f54296968
+msgid ""
+"The last line is especially important at a kink: *constant supported* need "
+"not mean one unique elasticity equal to one. It means that zero belongs to "
+"the admissible support interval, so a constant-returns supporting account is"
+" consistent with the target even when the two one-sided responses differ."
+msgstr ""
+"最后一行在折点处尤其重要：*支持规模报酬不变*并不必然意味着存在唯一且等于 1 "
+"的弹性。它表示零属于可接受支持区间，因此即使两个单侧反应不同，规模报酬不变的支持账户仍与该目标相符。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:331
+#: 452e54f0e0c04d4eb46c324af0a61f49
+msgid ""
+"Scale elasticity remains a local technical sensitivity. It is not a demand "
+"forecast, a financial return, or evidence that management should change "
+"size. DEAPack's `scale_elasticity` transforms the same selected target and "
+"complete support interval used by `local_returns_to_scale`; it does not "
+"invent a second target to obtain a more convenient response. The package "
+"documentation provides the orientation-specific transformations and boundary"
+" conventions. A core management report can usually stop after stating scale "
+"efficiency, the projected target, and its supported RTS classification; the "
+"two elasticities belong in the report when the magnitude or the asymmetry of"
+" a local response matters."
+msgstr ""
+"规模弹性仍是一项局部技术敏感性，不是需求预测、财务回报或管理层应当改变规模的证据。DEAPack 的 `scale_elasticity` 使用 "
+"`local_returns_to_scale` 所采用的同一所选目标与完整支持区间作变换，并不会为了得到更方便的反应而另造一个目标。包 "
+"Documentation "
+"给出了各导向的具体变换和边界约定。核心管理报告通常可以在说明规模效率、投影目标及其受支持的规模报酬分类后结束；只有当局部反应的幅度或不对称性对决策重要时，才需要报告两个弹性。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:341
+#: 99eba10dde644ea9b7590e4de53274a7
+msgid "What a scale result can support"
+msgstr "规模结果能够支持什么"
+
+#: ../../chapters/02-classical/scale-performance-management.md:343
+#: 4a3517c1398a474692ab1d96f811d9a4
+msgid ""
+"These scale assessments describe represented production opportunities. "
+"Expansion or contraction decisions additionally require demand, prices and "
+"costs, quasi-fixed resources, service obligations, risk, transition "
+"capacity, and implementation constraints. A local response is not a "
+"forecast, and a scale gap is not a business case."
+msgstr "这些规模评价描述的是所表示的生产机会。作出扩张或收缩决策还需要考虑需求、价格与成本、准固定资源、服务义务、风险、转型能力和实施约束。局部反应不是预测，规模差距也不是商业论证。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:349
+#: 62f88af08b9a40c695433835c0265439
+msgid ""
+"Most productive scale size, congestion, and short-run physical capacity ask "
+"additional questions and require additional maintained quantities. In "
+"particular, congestion asks whether reducing a particular excessive input "
+"can raise attainable output. That claim requires a different production or "
+"disposability account: decreasing returns merely describes a weaker "
+"proportional response to expansion, while an ordinary input slack shows only"
+" that a resource can fall without reducing output. Neither one, and neither "
+"the CRS--VRS scale ratio, establishes congestion. Any analysis of these "
+"concepts must state its production assumptions and evidence separately "
+"rather than turn a scale-efficiency result into a broader management claim."
+msgstr ""
+"最优生产规模、拥挤和短期物理生产能力回答的是额外问题，也需要额外的既定数量。尤其是，拥挤考察减少某项过量投入能否提高可实现产出。这一主张需要不同的生产账户或可处置性账户：规模报酬递减只描述扩张时较弱的比例反应，通常的投入松弛量则只说明某项资源可以在不减少产出的情况下下降。二者都不能确立拥挤，CRS"
+"--VRS 规模比率也不能。对这些概念的任何分析都必须分别说明生产假设与证据，不能把规模效率结果扩张成更宽泛的管理主张。"
+
+#: ../../chapters/02-classical/scale-performance-management.md:360
+#: f9631bb832be4bbbb58b4584106cefe9
+#, python-brace-format
+msgid ""
+"The next chapter changes the focus from common proportional gaps and local "
+"scale response to variable-specific resource excesses and service "
+"shortfalls: {doc}`04-sbm`."
+msgstr "下一章把重点从共同比例缺口和局部规模反应转向逐项资源冗余与服务不足：{doc}`04-sbm`。"

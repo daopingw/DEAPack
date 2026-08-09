@@ -1,0 +1,781 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:1
+#: f2909393a65a45ae8a6fbbdcb6c4ee5a
+msgid "Comparing Organizations across Different Operating Environments"
+msgstr "在不同运营环境之间比较组织"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:3
+#: d606581ebf984b5ea1f32380fec256ce
+msgid ""
+"Suppose two hospitals use the same categories of labor, beds, and equipment "
+"to provide the same categories of care. One can recruit from a large labor "
+"market, refer difficult cases to nearby specialists, and rely on mature "
+"transport and digital infrastructure. The other serves a remote population, "
+"has limited referral capacity, and faces persistent staffing constraints. "
+"The hospitals share a mission, but they may not face the same production "
+"opportunities."
+msgstr "假设两家医院使用相同类别的员工、床位和设备，提供相同类别的医疗服务。其中一家可以从大型劳动力市场招聘，把疑难病例转诊给附近的专科机构，并依托成熟的交通与数字基础设施；另一家服务偏远地区人口，转诊能力有限，而且长期面临人员约束。两家医院使命相同，却未必面对相同的生产机会。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:11
+#: 6c30da3d781f41cc8c24d51dc4d2b33b
+msgid ""
+"A single comparison can then be misleading in either direction. Benchmarking"
+" each hospital only against nearby peers respects its operating environment,"
+" but conceals how far that environment lies from the strongest opportunities"
+" observed elsewhere. Benchmarking every hospital against one common frontier"
+" creates comparability, but risks presenting an opportunity disadvantage as "
+"poor local performance."
+msgstr "此时，只采用一种比较标准可能在两个方向上产生误导。只把每家医院与邻近同类机构比较，尊重了它的运营环境，却掩盖了该环境与其他地区所观察到的最强生产机会相距多远。把所有医院放到一条共同前沿上比较，建立了可比性，却可能把机会劣势误写成当地运营绩效不佳。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:18
+#: 492e06c8441f4c3a84a9fb225c86ff75
+#, python-brace-format
+msgid ""
+"Metafrontier analysis retains both standards. The within-group comparison "
+"asks how well an organization uses the opportunities available under its own"
+" infrastructure, mandate, or production system. The broader comparison then "
+"asks how those locally available opportunities compare with the strongest "
+"possibilities observed across all groups. Developed for firms operating "
+"under different technologies or production environments, the decomposition "
+"separates an organization's operating shortfall from an opportunity "
+"disadvantage associated with its group {cite:p}`odonnell2008`."
+msgstr ""
+"共同前沿（metafrontier，亦称元前沿）分析同时保留两种标准。群组内比较考察组织在自身基础设施、职责任务或生产系统所提供的机会下，利用这些机会的表现如何；更广泛的比较则考察当地可用机会与全部群组中观察到的最强机会相距多远。这一分解最初用于面对不同生产技术或生产环境的企业，将组织自身的运营不足与其所在群组对应的机会劣势区分开来"
+" {cite:p}`odonnell2008`。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:27
+#: 9461a857b99b46899b96962e3aec09e9
+msgid ""
+"This is useful whenever groups have an economic meaning established before "
+"estimation: countries with different infrastructures, hospitals with "
+"different service mandates, farms using different production systems, or "
+"plants subject to different regulatory regimes. A group is not simply a "
+"cluster that happened to emerge from the efficiency results. If group labels"
+" are chosen after examining the scores, the decomposition becomes an "
+"explanation constructed from the outcome it is meant to explain."
+msgstr "只要群组在估计之前已有明确经济含义，这种分析就有价值，例如基础设施不同的国家、服务职责不同的医院、采用不同生产系统的农场，或面对不同监管制度的工厂。群组不能只是效率结果出来后碰巧形成的聚类。如果分析者看过效率值后才选择群组标签，分解就会变成由待解释结果反向构造的解释。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:35
+#: 7a1264bd883343d09203a8dad6c6dd72
+msgid "Known groups are not discovered groups"
+msgstr "已知群组不是模型发现的群组"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:38
+#: 2ab115e17bd049bd8eb703fcc09c27ab
+msgid ""
+"This chapter begins with an institutional classification fixed before the "
+"frontiers are estimated. Clustering instead asks the data to discover "
+"groups; a conditional frontier asks how represented opportunities vary with "
+"observed operating circumstances, which may be continuous. Those designs "
+"require their own estimators and uncertainty accounts. The radial "
+"metafrontier used here does neither: it compares the declared groups without"
+" choosing, relabeling, or statistically conditioning them."
+msgstr "本章从估计生产前沿之前已经确定的制度分类出发。聚类分析让数据发现群组；条件前沿则考察已表示的生产机会如何随实际观察到且可能连续变化的运营条件而变化。这些研究设计需要各自的估计方法与不确定性账户。这里采用的径向共同前沿方法两者都不做：它比较事先声明的群组，不替模型选择群组、重新贴标签或进行统计条件化。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:47
+#: 2691d955045a466da0e6264615782de0
+msgid "Two standards answer two different questions"
+msgstr "两种标准回答两个不同问题"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:49
+#: 45ca1ca44e234e5fb616eef4e0c3a6d1
+msgid "For an organization $o$ belonging to group $\\kappa$, the analysis asks:"
+msgstr "对于属于群组 $\\kappa$ 的组织 $o$，分析提出两个问题："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:51
+#: 1b027bbc46774cde956f6e7b38cdf881
+msgid ""
+"**How well does the organization perform relative to attainable practice "
+"represented within its own group?**"
+msgstr "**相对于本群组所表示的可达到实践，该组织表现如何？**"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:53
+#: 2aa10ef01ce9483ca2ad430eb510a1bf
+msgid ""
+"**How close is that group's frontier to the broader opportunity frontier "
+"represented across all groups?**"
+msgstr "**该群组的前沿与所有群组共同表示的更广泛机会前沿有多接近？**"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:56
+#: 0cc3498e712e48a9ba63236910074b4d
+msgid ""
+"The first question yields **group efficiency**, denoted $E_o^G$. The same "
+"organization is then evaluated against the metafrontier, yielding **meta "
+"efficiency**, $E_o^M$. Their ratio is the **metatechnology ratio**:"
+msgstr ""
+"第一个问题得到**群组效率**，记作 $E_o^G$。然后把同一组织放到共同前沿下评价，得到**共同前沿效率** "
+"$E_o^M$。二者之比是**共同技术比率（MTR）**："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:60
+#: 489a648a8d184561978dfe584049daf9
+#, python-brace-format
+msgid ""
+"\n"
+"MTR_o=\\frac{E_o^M}{E_o^G}.\n"
+msgstr ""
+"\n"
+"MTR_o=\\frac{E_o^M}{E_o^G}.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:64
+#: 5e743f8c1b1d4479ba45f3e77768dad6
+msgid ""
+"The literature also calls this the *technology gap ratio* (TGR). A value "
+"nearer one means that the best practice available within the group "
+"approaches the broader best practice observed for the organization's "
+"resource and service mix. A lower value signals a larger opportunity gap at "
+"that mix. It does not say that local managers caused the gap or could remove"
+" infrastructure, regulatory, or mandate differences on their own."
+msgstr "文献也把它称为*技术差距比*（TGR）。数值越接近一，表示对于该组织的资源与服务组合，群组内可达到的最佳实践越接近更广泛范围内观察到的最佳实践；数值越低，表示该组合下的机会差距越大。它并不表明当地管理者造成了这一差距，也不意味着他们能够凭自身力量消除基础设施、监管或职责任务差异。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:71
+#: 8ddc128fdcd24765bf6bd136527ca7aa
+msgid "The three quantities obey the accounting identity"
+msgstr "三个量满足如下核算恒等式："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:73
+#: 0c648409e462450a87570dfc30295520
+msgid ""
+"\n"
+"E_o^M=E_o^G\\times MTR_o.\n"
+msgstr ""
+"\n"
+"E_o^M=E_o^G\\times MTR_o.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:77
+#: e07838b5886847d79e0ca531fd8fc662
+msgid ""
+"Consider an organization that uses four units of a resource and delivers two"
+" units of service. At this resource commitment, its group frontier supports "
+"four services, while the metafrontier supports eight. Its group efficiency "
+"is $2/4=0.50$, its meta efficiency is $2/8=0.25$, and its MTR is $4/8=0.50$."
+msgstr ""
+"考察一个使用四单位资源、提供两单位服务的组织。在这一资源承诺下，其群组前沿可以支持四单位服务，共同前沿可以支持八单位服务。因此，群组效率为 "
+"$2/4=0.50$，共同前沿效率为 $2/8=0.25$，MTR 为 $4/8=0.50$。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: ee4a3041de394dfb97e0b9ca1a0ddc96
+msgid ""
+"An organization using four resource units delivers two services, while its "
+"group frontier supports four and the pooled metafrontier supports eight; "
+"group efficiency is one half, the metatechnology ratio is one half, and meta"
+" efficiency is one quarter"
+msgstr "一个组织使用四单位资源提供两单位服务，而群组前沿可支持四单位服务、合并共同前沿可支持八单位服务；群组效率为二分之一，共同技术比率为二分之一，共同前沿效率为四分之一"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:87
+#: 537ef84b0ae14e2fba9d9d06994a9a91
+msgid ""
+"The same observed operation is assessed against two opportunity standards. "
+"The decomposition distinguishes performance within the declared group from "
+"the proximity of that group's frontier to the broader meta opportunity."
+msgstr "同一项实际运营接受两种机会标准的评价。该分解把事先声明群组内的运营绩效，与群组前沿接近更广泛共同机会的程度区分开来。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:92
+#: f315654ae513448aa3a9f62b4e0f314c
+msgid ""
+"The distinction changes the conversation. A process-redesign or maintenance "
+"programme may be relevant when an organization lies behind its group "
+"frontier. Infrastructure investment, regulatory reform, access to capital, "
+"or a change in service mandate may be relevant when the group frontier lies "
+"behind the meta opportunity. The scores organize these questions; they do "
+"not show that any named intervention will cause an improvement."
+msgstr "这种区分会改变管理讨论的重点。当组织落后于群组前沿时，过程再设计或维护计划可能值得关注；当群组前沿落后于共同机会时，基础设施投资、监管改革、资本可得性或服务职责调整可能更为相关。这些效率值有助于梳理这些问题，却不能证明任何一项具体干预必然带来改善。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:99
+#: 3525dfb8984e48f9a86723a8291717b2
+msgid "The radial metafrontier account"
+msgstr "径向共同前沿账户"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:101
+#: a2f55816c9fd4c53a9e03e3e29690854
+msgid ""
+"Let organization $o$ use input vector $x_o$ to deliver desirable-output "
+"vector $y_o$. Its declared group is $\\kappa$. The matrices $X_\\kappa$ and "
+"$Y_\\kappa$ contain the eligible observations in that group, while $X_M$ and"
+" $Y_M$ contain eligible observations from all declared groups. The "
+"variables, measurement units, mission boundary, orientation, returns to "
+"scale, and time information must be the same in the two comparisons. Only "
+"the reference population changes."
+msgstr ""
+"令组织 $o$ 使用投入向量 $x_o$ 提供合意产出向量 $y_o$，其事先声明的群组为 $\\kappa$。矩阵 $X_\\kappa$ 与 "
+"$Y_\\kappa$ 包含该群组内的合格观测，$X_M$ 与 $Y_M$ "
+"则包含所有已声明群组的合格观测。两次比较必须采用相同的变量、计量单位、使命边界、导向、规模报酬和时期信息；改变的只有参照总体。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:109
+#: 9cb4c4f75f8e4eb089bc7369976d4640
+msgid ""
+"For an output-oriented analysis under variable returns to scale, the group "
+"programme is"
+msgstr "在规模报酬可变的产出导向分析中，群组规划为"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:112
+#: c9f9a8e971204e1786b5249205931ab3
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\phi_o^G=\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{subject to}\\quad\n"
+"&X_\\kappa\\lambda\\leq x_o,\\\\\n"
+"&Y_\\kappa\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\mathbf 1^\\top\\lambda=1,\\qquad \\lambda\\geq0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\phi_o^G=\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X_\\kappa\\lambda\\leq x_o,\\\\\n"
+"&Y_\\kappa\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\mathbf 1^\\top\\lambda=1,\\qquad \\lambda\\geq0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:122
+#: 977bee1b389d4edfbc9bc740c99f6740
+msgid ""
+"The expansion factor $\\phi_o^G$ asks how much all recorded outputs could be"
+" increased together while inputs remain fixed. Reporting $E_o^G=1/\\phi_o^G$"
+" places group efficiency on the familiar higher-is-better scale from zero to"
+" one. The meta programme has the same form but replaces the group matrices "
+"with the pooled matrices:"
+msgstr ""
+"扩张因子 $\\phi_o^G$ 考察在投入保持不变时，所有记录产出可以同比例增加多少。报告 "
+"$E_o^G=1/\\phi_o^G$，就把群组效率置于熟悉的零到一且数值越高越好的尺度上。共同前沿规划形式相同，只把群组矩阵替换为合并矩阵："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:128
+#: 0c7403f5ff034346a368cebd1c0c226c
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\phi_o^M=\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{subject to}\\quad\n"
+"&X_M\\lambda\\leq x_o,\\\\\n"
+"&Y_M\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\mathbf 1^\\top\\lambda=1,\\qquad \\lambda\\geq0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\phi_o^M=\\max_{\\phi,\\lambda}\\quad &\\phi\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X_M\\lambda\\leq x_o,\\\\\n"
+"&Y_M\\lambda\\geq\\phi y_o,\\\\\n"
+"&\\mathbf 1^\\top\\lambda=1,\\qquad \\lambda\\geq0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:138
+#: a35eff5372694214bdd4cac930088e95
+msgid "Thus $E_o^M=1/\\phi_o^M$ and"
+msgstr "因此 $E_o^M=1/\\phi_o^M$，且"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:140
+#: 134261897a234b9fb92a3a5c68aaac3c
+#, python-brace-format
+msgid ""
+"\n"
+"MTR_o=\\frac{E_o^M}{E_o^G}\n"
+"     =\\frac{\\phi_o^G}{\\phi_o^M}.\n"
+msgstr ""
+"\n"
+"MTR_o=\\frac{E_o^M}{E_o^G}\n"
+"     =\\frac{\\phi_o^G}{\\phi_o^M}.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:145
+#: 39501139efec41abb445d23817db5e99
+msgid ""
+"Because the pooled comparison population contains the organization's own "
+"group, it cannot offer fewer represented opportunities than the matched "
+"group comparison. With valid nested technologies,"
+msgstr "由于合并比较总体包含该组织自己的群组，它所表示的生产机会不可能少于口径匹配的群组比较。在有效嵌套的生产技术下，"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:149
+#: b29791b370824c4a873d9bd25fc56dc5
+msgid ""
+"\n"
+"0<E_o^M\\leq E_o^G\\leq1,\n"
+"\\qquad\n"
+"0<MTR_o\\leq1.\n"
+msgstr ""
+"\n"
+"0<E_o^M\\leq E_o^G\\leq1,\n"
+"\\qquad\n"
+"0<MTR_o\\leq1.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:155
+#: 7a8712504ee840fdb31becece8ced6f4
+msgid ""
+"An input-oriented analysis protects the observed output commitments and asks"
+" how far inputs could contract. If $\\theta_o^G$ and $\\theta_o^M$ are the "
+"corresponding input efficiencies, then"
+msgstr "投入导向分析保护实际产出承诺，并考察投入可以收缩多少。若 $\\theta_o^G$ 与 $\\theta_o^M$ 是相应的投入效率，则"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:159
+#: aba0cdc6f2134c569fb736ee194855d9
+#, python-brace-format
+msgid ""
+"\n"
+"MTR_o=\\frac{\\theta_o^M}{\\theta_o^G}.\n"
+msgstr ""
+"\n"
+"MTR_o=\\frac{\\theta_o^M}{\\theta_o^G}.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:163
+#: 98a121cb162840898669c6d679f4a466
+msgid ""
+"The orientation should follow the organization's decision problem. An output"
+" orientation may suit a hospital expected to serve more patients with a "
+"largely fixed estate; an input orientation may suit a programme required to "
+"deliver a fixed service obligation at lower resource cost. Under constant "
+"returns to scale, matched input- and output-oriented radial efficiencies "
+"coincide. Under variable returns to scale they need not, so orientation is "
+"not a harmless presentational choice."
+msgstr "导向应服从组织的决策问题。对于主要资产大致固定、但被要求服务更多患者的医院，产出导向可能合适；对于必须以更低资源成本完成固定服务义务的项目，投入导向可能合适。在规模报酬不变下，口径匹配的投入导向与产出导向径向效率相同；在规模报酬可变下则未必如此，因此导向不是无关紧要的展示选择。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:171
+#: 46ebaef36c194565a9c12c7f0acfbc18
+msgid ""
+"The scale assumption also has substantive content. Variable returns to scale"
+" compares an organization with convex combinations at a comparable scale. "
+"Constant returns to scale admits proportional replication of observed "
+"activities. A study should choose between them from its account of the "
+"sector, not from whichever version produces a preferred ranking."
+msgstr "规模假设同样具有实质含义。规模报酬可变把组织与相近规模活动的凸组合比较；规模报酬不变允许把实际观察活动按比例复制。研究应根据对行业生产过程的理解选择二者，而不是选择能够产生偏好排名的版本。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:177
+#: ec09c42630c94010989e82d282db7e38
+msgid "A pooled frontier is not merely a union of group frontiers"
+msgstr "合并前沿并非只是各群组前沿的并集"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:179
+#: 1ee20a4fc02549cfa72bbf8c6c059dad
+msgid ""
+"There are two ideas that are easy to confuse. At the conceptual level, the "
+"meta opportunity can be described as the union of the opportunities "
+"available to the separate groups. Such a union need not be convex: an "
+"activity feasible under one institutional regime and another activity "
+"feasible under a different regime do not automatically imply that every "
+"mixture of the two is feasible."
+msgstr "这里有两个容易混淆的概念。在理论层面，共同机会可以描述为各群组分别可用机会的并集。这样的并集未必是凸的：某项活动在一种制度下可行，另一项活动在另一种制度下可行，并不自动意味着二者的每一种混合方案都可行。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:186
+#: d971ee9c8c39416a8fdb23a147a50224
+msgid ""
+"The radial DEA estimator used here instead pools all eligible observations "
+"and, under VRS, takes their common convex hull. It can therefore construct a"
+" meta benchmark by combining observations from different groups. A rural "
+"hospital and an urban hospital, for example, may jointly define a virtual "
+"comparator even though no real institution has exactly that configuration. "
+"Under CRS the analogous pooled technology is conic rather than convex."
+msgstr ""
+"这里使用的径向 DEA 估计量则合并所有合格观测，并在 VRS "
+"下取它们的共同凸包。因此，它可以通过组合不同群组的观测来构造共同前沿标杆。例如，一家乡村医院与一家城市医院可能共同界定一个虚拟比较对象，即使现实中没有任何机构恰好具有这种配置。在"
+" CRS 下，对应的合并生产技术是锥包，而不是凸包。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:193
+#: 4bcc76bc51b6405cb815f4e69f66f65d
+msgid ""
+"This distinction matters because the pooled hull is generally at least as "
+"expansive as the nonconvex union of separately estimated group hulls. It can"
+" therefore produce a lower meta efficiency and MTR. That is not a "
+"computational quirk; it follows from the maintained assumption that cross-"
+"group mixtures describe relevant opportunities. The assumption may be "
+"defensible when groups differ in degree but share transferable practices. It"
+" is harder to defend when regulations, production systems, or missions make "
+"the mixed plan institutionally impossible."
+msgstr ""
+"这一区别很重要，因为合并凸包通常至少与分别估计的群组凸包之非凸并集一样宽广，因而可能产生更低的共同前沿效率和 "
+"MTR。这不是计算异常，而是来自一项既定假设：跨群组混合方案代表相关生产机会。当群组只是程度不同且实践可以转移时，该假设可能站得住脚；当监管、生产系统或使命使混合方案在制度上不可能实施时，它就较难成立。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:202
+#: f27de0fd318f4a9c868ba844f5fe7496
+msgid ""
+"Accordingly, the MTR is always conditional on how the meta opportunity has "
+"been constructed. Researchers should examine which groups contribute to "
+"important meta benchmarks and explain whether the associated practices can "
+"be combined, transferred, or approached. A meta target may describe a useful"
+" long-run opportunity without being an immediately adoptable operating plan."
+msgstr ""
+"因此，MTR "
+"始终取决于共同机会的构造方式。研究者应检查哪些群组为重要的共同前沿标杆作出贡献，并说明相关实践能否组合、转移或逐步接近。共同前沿目标可以描述有价值的长期机会，却未必是一套可立即采用的运营方案。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:208
+#: c6a100964f8f4321be0bf982a3fbba2d
+msgid "A six-organization laboratory"
+msgstr "一个包含六个组织的实验案例"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:210
+#: 1b70268f7fef45a9841092643f85f431
+msgid ""
+"The `metafrontier_groups` dataset isolates the decomposition with one input "
+"and one output:"
+msgstr "`metafrontier_groups` 数据集用一个投入和一个产出单独呈现这一分解："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: b6fc72c4387e4a74831235ec1157a322 d7ee317407ef4b3783da4dac8fa57ca1
+msgid "Organization"
+msgstr "组织"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: fb953aa97c154f32a2c5fb67da720651
+msgid "Declared group"
+msgstr "声明群组"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 7ce4d6b8c11542daa43d59ae456a2793
+msgid "Resource"
+msgstr "资源"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 5fdbe2e194d64362b77fb54c5b1c0fc4
+msgid "Service"
+msgstr "服务"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 3d2718effa3948a692a05614ff32e404 8156d021192f4191805ddb9b3b86af19
+msgid "A"
+msgstr "A"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 7732c4c23ca4423eba5c4083640fcb66 a05671123b234c0bbd1f1e1224216b60
+#: ea28cc3e8feb4360a170e30337ee5411
+msgid "group 1"
+msgstr "group 1"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 123b484f56e248ebb52698b70188efbd 5e202a036211429589ce96cbd98ed745
+#: 7e4fc571de384168afe9cf1a6f7004a9 7f9ec419415b467cb03bf2091abbf30d
+#: 9369d75c43494ff0b530fd1b217bda2a
+msgid "2"
+msgstr "2"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 98433119c37947ecaed0a6fe85ef2ad0 fcc8da0f088c452b88400eee4359add9
+msgid "B"
+msgstr "B"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 557be5d64d084e4f901467f70363dd71 728d245ce73a4fcdb82ab81a21aa8b39
+#: 73831d53b3464d289fc4ba718f861233 d6fc0ef8d4d44edab7f4cce2164f3fd7
+#: fa1ff05dc14045729177e4cfbdd77d6b
+msgid "4"
+msgstr "4"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: abca4044a48b461e9d5bfd494c10c1ab d16e2b0b346e46588a59e255572d964e
+msgid "C"
+msgstr "C"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: f3c2e690e6bd490fb85e4d0f127ab416 f40a4d777b1c42658bda6be06cbfd37f
+msgid "D"
+msgstr "D"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 18ab52e309cb4269a024ac3e89c40300 4217ca0d516f48ad9bed5f14cdac7a8a
+#: f543f8ce54b748b89688ff4fefc38254
+msgid "group 2"
+msgstr "group 2"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: e954b8d2029b43df95403492c6cf3279
+msgid "1"
+msgstr "1"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: c0392306340e4cfb8a51550d6e49f47c dca3ff8f6acb45a890dec243ff4acbfc
+msgid "E"
+msgstr "E"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 2a8670a7e4574efb8393b3a6b8c6d851 dcb10e5bb7cc4786bac6e1a4d31e4a13
+msgid "F"
+msgstr "F"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: c302d1dbbc65468da31977caeb422a90
+msgid "8"
+msgstr "8"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:222
+#: 2b440b7c02214fb7bffdb53fd0411c54
+msgid ""
+"Group 1 demonstrates one service per resource unit, whereas group 2 "
+"demonstrates two. Organization C also has a within-group shortfall because B"
+" delivers twice as much service with the same resource commitment. The case "
+"therefore separates weak operating performance within a group from a gap "
+"between represented group opportunities."
+msgstr ""
+"group 1 所表示的生产机会是每单位资源一单位服务，group 2 则是每单位资源两单位服务。组织 C 在群组内也存在绩效不足，因为 B "
+"在资源承诺相同的情况下提供了两倍服务。因此，该案例把群组内运营绩效较弱，与已表示群组机会之间的差距区分开来。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:228
+#: 4a56b4fdf238428ba183b5c8f69c2fff
+msgid ""
+"The complete calculation requires only the dataset roles and the declared "
+"orientation and scale assumption:"
+msgstr "完整计算只需要声明数据角色、导向和规模假设："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:257
+#: 467f5b60a0e546e2af964a7a113b80d3
+msgid "The results are exact:"
+msgstr "结果均为精确值："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 1207ab8ed16a4b708c7188ae95b929a6
+msgid "Group efficiency"
+msgstr "群组效率"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: e53390cb2c8c4c078ecfa5e233aa353b
+msgid "Meta efficiency"
+msgstr "共同前沿效率"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 5a938680d78e4db7bcc0bac69a043c0f
+msgid "MTR/TGR"
+msgstr "MTR/TGR"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 069d245bfad546b4bbf3b05c0a01caea 1133bc7f0d1f47cf8da3b9258e99b7b7
+#: 15149e24194b41dcb0100c6af0308e3f 3688f5c8b6914030a12f8aa28da984b6
+#: 3fe36f26dca64f99be554ff5bfda4a2e 5a5d972a0dfd4c4e85d579019efb8f1b
+#: adaf97e2d5b8459ea7bd49680812f295 b8a0a6d60cdc432783f6fbd01859b4f7
+#: dbc9c66fc9ed405c9df1e5523b16cb9e e5b7bf65ec6244d7a098e84637686063
+#: e8ed524b0f63475d8b172f04a9fa4b18
+msgid "1.00"
+msgstr "1.00"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 4deceeda7a0746c0a79d7b9721b2eef6 56816b337eeb4cf182fd273d7516594f
+#: 7da38dd79c0449aabb2e885f8ed29605 bb1efc2715ab4feb9160994dae1d2517
+#: cd6a4ff91af848da80028d79aebfbf6f dd51a21c193a43c0805f24938c008f7e
+msgid "0.50"
+msgstr "0.50"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:82
+#: 1862984f2724455eb79c3df444a6dda1
+msgid "0.25"
+msgstr "0.25"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:268
+#: fb6eb45c6d6c4f36adfc43f59c2d2705
+msgid ""
+"Connected points compare each organization's output efficiency against its "
+"declared-group frontier and the pooled metafrontier; organizations A and B "
+"have no within-group shortfall but remain one half as efficient against "
+"pooled opportunities, organization C has both shortfalls, and organizations "
+"D through F attain both represented frontiers"
+msgstr ""
+"连线点图比较每个组织相对于声明群组前沿与合并共同前沿的产出效率；组织 A 和 B 在群组内没有绩效不足，但相对于合并机会的效率只有二分之一，组织 C "
+"同时存在两类绩效不足，组织 D 至 F 则同时达到两条已表示前沿"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:272
+#: 1bad8b8958754b6eb73fa8319c3d78c9
+msgid ""
+"Within-group performance and pooled-opportunity comparison. The hollow "
+"diamond records efficiency against declared-group best practice; the orange "
+"point records efficiency against pooled best practice. The MTR label gives "
+"their ratio. A connector links the two benchmark results for the same "
+"organization; its length is not another decomposition component, and it does"
+" not assign the difference to management, technology, or the operating "
+"environment."
+msgstr ""
+"群组内绩效与合并机会比较。空心菱形表示相对于声明群组最佳实践的效率，橙色圆点表示相对于合并最佳实践的效率，MTR "
+"标签给出二者之比。连接线把同一组织的两项标杆结果相连；其长度并不是另一个分解成分，也不把差额归因于管理、生产技术或运营环境。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:280
+#: e943be975a734e10a53f811c97b0b8c3
+msgid ""
+"A and B reach the best practice represented within group 1, but their meta "
+"efficiencies are only one half. Asking them simply to “catch up with local "
+"best practice” cannot close this part of the shortfall: they are already on "
+"their group frontier. Their result directs attention toward the difference "
+"between represented opportunity sets, while leaving open what produced that "
+"difference and whether it can be changed."
+msgstr ""
+"A 与 B 达到 group 1 "
+"所表示的最佳实践，但共同前沿效率只有二分之一。仅仅要求它们“追赶当地最佳实践”无法弥补这部分差距，因为它们已经位于自身群组前沿上。该结果把注意力引向已表示机会集合之间的差别，同时仍然保留两个问题：是什么造成了这种差别，以及它能否改变。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:287
+#: e7544ffa07bd44c580cb92feeedd5bd2
+msgid ""
+"C faces both dimensions. At four resource units, its service would rise from"
+" two to four at the group frontier and to eight at the pooled metafrontier. "
+"Its meta efficiency is therefore"
+msgstr "C 面临两个维度的绩效不足。在四单位资源下，其服务量在群组前沿上会从二增加到四，在合并共同前沿上则增加到八。因此，其共同前沿效率为"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:291
+#: 4659c2f6437f451bbd702c8e273877a6
+msgid ""
+"\n"
+"0.25=0.50\\times0.50.\n"
+msgstr ""
+"\n"
+"0.25=0.50\\times0.50.\n"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:295
+#: b2793f635fa24dbfa71b15604aa3e3f2
+msgid ""
+"D, E, and F attain both frontiers at their operating mixes. Their MTR of one"
+" does not prove that the two group technologies are identical everywhere; it"
+" only says that the matched group and meta boundaries coincide at those "
+"evaluations."
+msgstr ""
+"D、E 与 F 在各自运营组合下同时达到两条前沿。它们的 MTR "
+"为一，并不能证明两个群组的生产技术在所有位置都相同；它只表示在这些评价点上，口径匹配的群组边界与共同边界重合。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:300
+#: df6f69506efe487b974d214639ae1b51
+msgid ""
+"As in any radial DEA analysis, a score of one concerns proportional movement"
+" in the chosen orientation. It should not be silently enlarged into a claim "
+"that every individual input excess or output shortfall has disappeared."
+msgstr "与任何径向 DEA 分析一样，效率值为一只针对所选导向下的比例变动，不能悄然扩大成每一项投入冗余或产出不足都已消失的结论。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:304
+#: f2a4468974ba4276a56b21461a72f1de
+msgid "Time is part of the comparison policy"
+msgstr "时期是比较政策的一部分"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:306
+#: 8d0c332e552149d5bcb6039124ce836b
+msgid ""
+"Panel data add a second source of heterogeneity: the information available "
+"at each date. The radial metafrontier account used here pools all eligible "
+"study periods at both levels. Each group has one time-invariant frontier "
+"formed from all of its observations, and the meta account has one time-"
+"invariant frontier formed from all groups and periods."
+msgstr "面板数据增加了第二个异质性来源：每个日期可用的信息。这里的径向共同前沿账户在群组层面与共同层面都合并研究期限内的全部合格时期。每个群组使用由其所有观测形成的一条时不变前沿，共同账户则使用由全部群组和全部时期形成的一条时不变前沿。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:312
+#: 9de7942c3d6f466c864fe18027c4f19b
+msgid ""
+"This is a retrospective question: how close was each organization to the "
+"strongest practice observed anywhere in the complete study window? It can be"
+" valuable for ex post benchmarking, but it allows a later organization-"
+"period to benchmark an earlier one. That is an intentional information "
+"policy, not evidence that the earlier manager could have known or adopted "
+"the later practice."
+msgstr "这是一项回溯性问题：每个组织当时距离完整研究窗口内任何地点观察到的最强实践有多远？它可用于事后标杆分析，但允许后期的“组织—时期”记录成为早期记录的标杆。这是一项有意设定的信息政策，并不证明早期管理者当时能够知晓或采用后来出现的实践。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:319
+#: aa46710447be4b0fb100319589c74fcd
+msgid ""
+"A contemporaneous frontier would answer a different question, as would any "
+"other time-scoped information policy. Nor does a change in efficiency "
+"against the all-period frontier identify technological progress. Measuring "
+"frontier movement requires a productivity analysis with an explicitly dated "
+"reference technology. The temporal policy should therefore appear in the "
+"study design and reporting, not be left implicit in the data layout."
+msgstr "同期前沿会回答另一问题，任何其他按时期限定的信息政策也是如此。相对于全时期前沿的效率变化，也不能识别技术进步。测量前沿移动，需要使用具有明确日期参照技术的生产率分析。因此，时期政策应出现在研究设计与报告中，不能隐含在数据排列方式里。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:326
+#: 6a7d33b8f8e7440c8f42f6388936bdcb
+msgid "Reporting the decomposition responsibly"
+msgstr "负责任地报告分解结果"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:328
+#: 9083e53ce3be4eb38c77586c4702740e
+#, python-brace-format
+msgid ""
+"Reporting only meta efficiency throws away the main analytical benefit. A "
+"useful table places $E_o^G$, $E_o^M$, and $MTR_o$ side by side. Figure "
+"{numref}`fig-metafrontier-decomposition-result` displays group and meta "
+"efficiency as connected points and prints the exact MTR beside each "
+"organization. This makes the two benchmark comparisons visible without "
+"turning the MTR into a league table of managerial quality."
+msgstr ""
+"只报告共同前沿效率，会丢失该方法最主要的分析收益。一张有用的表应并列展示 $E_o^G$、$E_o^M$ 与 $MTR_o$。图 {numref"
+"}`fig-metafrontier-decomposition-result` 用连线点图展示群组效率和共同前沿效率，并在每个组织旁标出精确 "
+"MTR。这样既能看清两项标杆比较，又不会把 MTR 变成管理质量排行榜。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:335
+#: 15c17a17fc514bdabea35e59c729c94b
+msgid ""
+"The caption and accompanying methods statement should identify the declared "
+"groups, input or output orientation, returns to scale, pooled construction, "
+"comparison population, and study-period information policy. Important cases "
+"should be interpreted with their group and meta benchmarks, especially when "
+"the pooled frontier depends on cross-group combinations. The decomposition "
+"identity should hold to numerical precision, and the estimated meta "
+"opportunity should never be less expansive than the matched group "
+"opportunity."
+msgstr "图注和配套方法说明应明确：声明群组、投入或产出导向、规模报酬、合并构造方式、比较总体以及研究时期的信息政策。重要案例应结合其群组标杆与共同前沿标杆解释，特别是合并前沿依赖跨群组组合时。分解恒等式应在数值精度范围内成立，估计的共同机会绝不能比口径匹配的群组机会更窄。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:344
+#: 1654b3763e584fecb91b7c04d9331b64
+msgid ""
+"The labels attached to the two components require particular care. Group "
+"efficiency is sometimes described informally as managerial efficiency and "
+"the MTR as an environmental or technology effect. Those names overstate what"
+" the model establishes. Both quantities are deterministic, sample-relative "
+"comparisons. Unmeasured service quality, demand, case mix, capital vintage, "
+"measurement error, and selection into groups can affect either component. "
+"Group membership may itself summarize several institutional differences that"
+" the decomposition cannot disentangle."
+msgstr ""
+"给两个组成部分贴标签时需要格外谨慎。群组效率有时被非正式地称为管理效率，MTR "
+"则被称为环境效应或技术效应。这些名称夸大了模型能够证明的内容。二者都是确定性的、相对于样本的比较。未观察服务质量、需求、病例组合、资本年代、测量误差以及群组选择，都可能影响任一组成部分。群组成员身份本身也可能概括了多种制度差异，而该分解无法把它们进一步拆开。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:353
+#: 502eae92f52241248df270aad5a40781
+msgid "For the laboratory case, a defensible statement is:"
+msgstr "对于这个实验案例，站得住脚的表述是："
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:355
+#: 101e31c7b86e4e028a6e0272823407ef
+msgid ""
+"Organization C delivered one half of the output supported by its declared "
+"group frontier at the observed resource commitment. At that operating mix, "
+"the group frontier supported one half of the output represented by the "
+"pooled VRS metafrontier. Its resulting meta efficiency was one quarter."
+msgstr ""
+"在实际资源承诺下，组织 C 的实际产出是其声明群组前沿所支持产出的二分之一。在该运营组合下，群组前沿所支持的产出又是合并 VRS "
+"共同前沿所表示产出的二分之一。因此，其共同前沿效率为四分之一。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:360
+#: 4008530b865a4f40ab533db5153978c4
+msgid ""
+"It would not be defensible to conclude that management caused half of C's "
+"shortfall and the operating environment caused the other half. The "
+"multiplication is an efficiency account, not a causal decomposition. Claims "
+"about causes, treatment effects, or the gains from a policy intervention "
+"need a separate identification strategy and evidence about transition costs "
+"and institutional feasibility."
+msgstr ""
+"不能据此断言管理造成了 C "
+"绩效不足的一半，运营环境造成了另一半。乘法关系是一项效率核算，而不是因果分解。关于成因、处理效应或政策干预收益的判断，需要另外的识别策略，以及有关转型成本和制度可行性的证据。"
+
+#: ../../chapters/07-heterogeneity/23-metafrontier.md:367
+#: 82e691a3f84d4cd3bf220081d2176e61
+msgid ""
+"Finally, the six-organization dataset is a theory-led laboratory rather than"
+" evidence about an actual sector. In an empirical study, comparable "
+"missions, harmonized quantities, defensible ex ante groups, and "
+"institutional knowledge are part of the analysis itself. Metafrontier DEA is"
+" most informative when it preserves that context: it allows organizations to"
+" be compared on a common scale without pretending that all of them began "
+"with the same opportunities."
+msgstr ""
+"最后，这个六组织数据集是理论驱动的实验案例，不是某个真实行业的经验证据。在实证研究中，可比的使命、口径协调的数量、站得住脚的事前群组和制度知识，本身就是分析的一部分。共同前沿"
+" DEA 只有在保留这些背景时最有信息价值：它允许不同组织在共同尺度上比较，同时不假装它们最初拥有完全相同的机会。"

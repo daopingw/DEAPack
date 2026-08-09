@@ -1,0 +1,693 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:1
+#: 51a7d7f8c0964166a55b5643bb603fcb
+msgid "Constructing an Empirical Production Technology"
+msgstr "构造经验生产技术"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:3
+#: 63ee8661fc384b9e88e49b35f060b9fb
+msgid ""
+"The previous chapter defined the organization, the quantities in its "
+"production account, and the population from which it may credibly learn. The"
+" resulting data record what those organizations did. They do not, by "
+"themselves, say what else could have been done."
+msgstr "上一章界定了组织、生产核算中的数量，以及可以向其可信学习的总体。由此得到的数据记录这些组织实际做了什么，却不会自行说明它们还可能做到什么。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:8
+#: 163701380d714e3daf47ae97f86be7ff
+msgid ""
+"Suppose a health authority observes one hospital with a small resource base "
+"and another with a larger one. May a third hospital be compared with a half-"
+"and-half combination of their practices? May the smaller hospital's "
+"operating pattern be replicated at twice its scale? Should a plan that uses "
+"more resources to deliver less care still count as technologically possible?"
+" Each answer changes the opportunities against which management will be "
+"judged."
+msgstr "设某卫生主管部门观测到一家资源基础较小的医院和另一家规模较大的医院。第三家医院能否与两者经营实践各占一半的组合比较？小医院的经营方式能否复制到两倍规模？使用更多资源却提供更少医疗服务的方案，是否仍应算作技术上可行？每一个答案都会改变评价管理绩效所依据的生产机会。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:16
+#: 767ac4570035446fba3628d0f9b19507
+msgid ""
+"DEA therefore needs an explicit answer to a question that sits between study"
+" design and efficiency measurement:"
+msgstr "因此，DEA 必须明确回答一个处在研究设计与效率测量之间的问题："
+
+#: ../../chapters/01-foundations/02-production-frontier.md:19
+#: 4c79344cd3ff45989e565de9ef0b0ac5
+msgid ""
+"Which operating plans should the observed evidence make available as "
+"benchmarks, including plans that no single organization has been observed to"
+" carry out?"
+msgstr "观测证据应当允许哪些经营方案成为标杆，包括从未由任何单一组织完整实施过的方案？"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:23
+#: 4fdffe3ecaa943828d4c2aaa54efa440
+msgid ""
+"This chapter develops that answer as an economic account of production "
+"possibilities. The diagrams make the assumptions visible, but the diagrams "
+"are not the theory. The theory concerns resource commitments, service "
+"capability, organizational divisibility, and the scale over which operating "
+"practices can reasonably be transferred."
+msgstr "本章把答案发展为一套生产可能性的经济核算。图示让各项假设清晰可见，但图示本身不是理论。理论所关心的是资源承诺、服务能力、组织活动能否拆分，以及经营实践能够在多大规模范围内合理迁移。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:29
+#: 48eb687053ef4d33aaef7210ebab9306
+msgid "A technology is a claim about attainable operating plans"
+msgstr "生产技术是关于可实现经营方案的主张"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:31
+#: 30d6dd8b34e74149837e3570de663b98
+msgid ""
+"Let $n$ eligible decision-making units use $m$ inputs to produce $s$ "
+"desirable outputs. Following the book's common notation, write"
+msgstr "设 $n$ 个合格决策单元使用 $m$ 项投入生产 $s$ 项合意产出。按照全书统一符号，写作"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:34
+#: aae04b4273e64cb8987f86a5612d81bc
+#, python-brace-format
+msgid ""
+"\n"
+"X=[x_1,\\ldots,x_n]\\in\\mathbb R_+^{m\\times n},\n"
+"\\qquad\n"
+"Y=[y_1,\\ldots,y_n]\\in\\mathbb R_+^{s\\times n}.\n"
+msgstr ""
+"\n"
+"X=[x_1,\\ldots,x_n]\\in\\mathbb R_+^{m\\times n},\n"
+"\\qquad\n"
+"Y=[y_1,\\ldots,y_n]\\in\\mathbb R_+^{s\\times n}.\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:40
+#: cff50384fab74436a31036e5968e0a84
+msgid "The production technology"
+msgstr "生产技术"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:42
+#: d96583b944bc4366b5d42cfa95ff041c
+#, python-brace-format
+msgid ""
+"\n"
+"\\mathcal T=\\{(x,y):x\\text{ can produce }y\\}\n"
+msgstr ""
+"\n"
+"\\mathcal T=\\{(x,y):x\\text{ 可生产 }y\\}\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:46
+#: cde39ea35b204ef28bc8bd8022ad1cc1
+msgid ""
+"collects the resource--service plans treated as attainable for the study. "
+"The word *can* carries every decision made in the preceding chapter: the "
+"organizational boundary, decision horizon, variable meanings, eligible peer "
+"population, and operating conditions. A hospital-year that is attainable in "
+"a long-run regional capacity review need not be attainable in next month's "
+"staffing plan."
+msgstr "汇集本研究视为可实现的资源—服务方案。*能够*一词承载上一章的所有决定：组织边界、决策期限、变量含义、合格比较总体和经营条件。在长期地区产能审查中可实现的医院年度方案，未必能在下个月的人员配置计划中实现。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:53
+#: c260b62bc52c418d8f3b350976e79b20
+#, python-brace-format
+msgid ""
+"The hat in $\\widehat{\\mathcal T}$ will mark a technology constructed from "
+"the sample. DEA does not recover a timeless engineering law merely by "
+"enveloping the data. It combines observed practice with maintained "
+"production assumptions. The **frontier** is the best-practice edge of that "
+"constructed opportunity set: the operating plans for which the improvement "
+"under consideration has been exhausted. **Technical efficiency** then "
+"describes an organization's position relative to that edge. Both conclusions"
+" are conditional on the opportunity set, not intrinsic grades attached to "
+"the organization {cite:p}`farrell1957,fare1985`."
+msgstr ""
+"$\\widehat{\\mathcal T}$ 上方的帽号表示由样本构造的技术。DEA "
+"并不会仅凭包络数据就恢复一条不随时间改变的工程定律；它把观测实践与既定生产假设结合起来。**前沿**是这一构造机会集合中代表最佳实践的边缘：在那里，所考察的改进已经用尽。**技术效率**随后描述组织相对于该边缘的位置。两项结论都以生产机会集合为条件，并不是附着在组织身上的固有成绩"
+" {cite:p}`farrell1957,fare1985`。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:63
+#: e00007a01fa5431d93431b7c05c7849b
+msgid ""
+"Every admitted observation must belong to the empirical technology. "
+"Otherwise the model would declare its own evidence infeasible. Observations "
+"alone, however, leave large gaps between operating plans and say nothing "
+"about plans that use more resources or supply fewer services. The next "
+"assumptions decide how those gaps are filled."
+msgstr "每项纳入的观测都必须属于经验技术，否则模型会宣布自己的证据不可行。但只有观测仍会在经营方案之间留下大片空白，也不会说明多用资源或少供服务的方案如何处理。接下来的假设决定如何填补这些空白。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:69
+#: a87935487d504981aed950a45198300d
+msgid "Free disposal: feasibility is not approval"
+msgstr "自由处置：可行不等于赞同"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:71
+#: 842f69553327402aa2d8fd490c212c33
+msgid ""
+"For ordinary inputs and desirable outputs, classical DEA usually assumes "
+"**free disposability**. If $(x,y)$ is attainable, then a plan using at least"
+" as much of every input and delivering no more of every desirable output is "
+"also admitted:"
+msgstr "对于普通投入和合意产出，经典 DEA 通常假设**自由处置性**。如果 $(x,y)$ 可实现，那么各项投入都不少用、各项合意产出都不多供的方案也被纳入："
+
+#: ../../chapters/01-foundations/02-production-frontier.md:76
+#: 6c17f496493a4f20bffdb03851c083f5
+msgid ""
+"\n"
+"(x,y)\\in\\mathcal T,\\quad \\widetilde x\\geq x,\\quad 0\\leq \\widetilde "
+"y\\leq y\n"
+"\\quad\\Longrightarrow\\quad\n"
+"(\\widetilde x,\\widetilde y)\\in\\mathcal T.\n"
+msgstr ""
+"\n"
+"(x,y)\\in\\mathcal T,\\quad \\widetilde x\\geq x,\\quad 0\\leq \\widetilde "
+"y\\leq y\n"
+"\\quad\\Longrightarrow\\quad\n"
+"(\\widetilde x,\\widetilde y)\\in\\mathcal T.\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:82
+#: e1b1aaf75a474712b4e84e995c7e5ed9
+msgid ""
+"Economically, the assumption says that an organization can leave some "
+"resource capacity idle, waste an input, or withhold part of a desirable "
+"service without making the plan physically impossible. It does **not** say "
+"that waste is costless, that reducing service is acceptable, or that every "
+"quantity is under the evaluated manager's control. An input-oriented study "
+"can still protect the recorded service commitment; free disposal merely says"
+" what belongs to the wider production possibility set."
+msgstr "从经济上说，这项假设表示组织可以让部分资源能力闲置、浪费某项投入，或少提供一部分合意服务，而不会使方案在物理上变得不可能。它**并不**表示浪费没有成本、减少服务可以接受，或每个数量都由接受评价的管理者控制。投入导向研究仍可保护记录的服务承诺；自由处置只是在说明更广泛的生产可能集中包含哪些方案。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:90
+#: 57c8e9edb29e4e54ba6833ca168856ad
+msgid ""
+"This apparently modest assumption can fail in important settings. Congestion"
+" may make additional input harmful rather than harmless. A minimum-service "
+"mandate can make some output reductions institutionally unavailable. A "
+"pollutant cannot generally be discarded as though it were an ordinary "
+"desirable service: reducing it may require resources or a simultaneous "
+"change in production. Part III therefore states a different production "
+"account for undesirable outputs instead of changing their signs and carrying"
+" on."
+msgstr "这项看似温和的假设在重要情境中可能不成立。拥挤会使额外投入带来伤害，而非无害；最低服务要求会使某些产出削减在制度上不可行。污染物通常不能像普通合意服务一样处置，因为削减污染可能需要资源，或必须同时改变生产。因此，第三篇为非合意产出规定不同的生产核算，而不是改变它们的正负号后继续使用原模型。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:98
+#: 6cfe5a39356846a4881236895b72a4fa
+msgid "Convexity: may practices be combined?"
+msgstr "凸性：经营实践能否组合？"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:100
+#: ddac314d7fbf4f1fb3c88db60668ef4b
+msgid ""
+"A second decision concerns plans that were not observed in their entirety. "
+"Let $\\lambda\\in\\mathbb R_+^n$ assign weights to eligible observations. "
+"The quantities"
+msgstr "第二项决定涉及没有被完整观测到的方案。以 $\\lambda\\in\\mathbb R_+^n$ 为合格观测分配权重。下列数量"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:104
+#: ca2d957f394e4f10a036aa6df2a467bc
+#, python-brace-format
+msgid ""
+"\n"
+"X\\lambda\\quad\\text{and}\\quad Y\\lambda\n"
+msgstr ""
+"\n"
+"X\\lambda\\quad\\text{且}\\quad Y\\lambda\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:108
+#: 9f057657cba34a8f8b377035b086ebd1
+msgid ""
+"describe the resources and services of a reference activity. Nonzero "
+"$\\lambda_j$ values identify the observed practices contributing to that "
+"activity. They are evidence weights, not estimates of causal influence and "
+"not literal instructions to merge organizations."
+msgstr ""
+"描述一项参照活动的资源和服务。非零的 $\\lambda_j$ "
+"标示对该活动有贡献的观测实践。它们是证据权重，不是因果影响的估计，也不是把组织真正合并的指令。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:113
+#: 7b467bfcf05b446ea97137260ba8ac1f
+msgid ""
+"Under **convexity**, any weighted average of feasible activities is also "
+"treated as feasible, with nonnegative weights satisfying $\\mathbf "
+"1^\\top\\lambda=1$. Before looking at the first diagram, read A and D as two"
+" complete annual operating accounts: two ways of organizing resources and "
+"services whose quantities must remain internally consistent. The orange "
+"point M is not a third observed organization. It describes what the study "
+"treats as attainable when capacity can be divided between those two ways of "
+"operating."
+msgstr ""
+"在**凸性**假设下，可行活动的任意加权平均也视为可行，其中权重非负且满足 $\\mathbf "
+"1^\\top\\lambda=1$。观察第一幅图之前，把 A 与 D "
+"理解为两套完整的年度经营核算：两种组织资源和服务的方式，其内部数量必须保持一致。橙色点 M "
+"不是第三个观测组织，而是说明如果产能可以在这两种经营方式之间拆分，本研究把什么视为可实现。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:121
+#: 2429d94724bb4b619ac9b77a89340c8c
+msgid ""
+"Observed activities A and D form the unobserved composite reference activity"
+" M through a convex combination"
+msgstr "观测活动 A 与 D 通过凸组合形成未观测的复合参照活动 M"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:126
+#: 463c0a2cd8094d3398e4eef3b196043e
+msgid ""
+"Convexity admits the composite activity $M=0.5A+0.5D=(2.5,2.4)$ even though "
+"M was not observed. Economically, the assumption says that half of the "
+"activity can be organized as A operates and half as D operates, without "
+"losing the resources or services recorded in either share."
+msgstr ""
+"凸性允许复合活动 $M=0.5A+0.5D=(2.5,2.4)$，即使 M 没有被观测到。从经济上说，这项假设表示一半活动可以按照 A "
+"的方式组织，另一半按照 D 的方式组织，而不会丢失两部分各自记录的资源或服务。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:132
+#: 9739a985a66a47c7b54555c5a6093d27
+msgid ""
+"The line between A and D is credible when capacity is divisible, operating "
+"practices can be used for fractions of the year, or a portfolio organization"
+" can allocate activity across sites. A regional provider, for example, might"
+" assign half of its workload and capacity according to clinic A's practice "
+"and the remainder according to clinic D's. In that setting M is a feasible "
+"aggregate plan even if no individual clinic has reported exactly those "
+"quantities. Convexity does not allow a manager to take A's resource "
+"requirement while claiming D's service outcome; the resource and service "
+"commitments of each activity travel together."
+msgstr ""
+"如果产能可以拆分、经营实践可以在一年中的部分时间采用，或组合型组织能够把活动分配到不同地点，那么 A 与 D "
+"之间的线段就有可信含义。例如，一家地区服务提供者可以按诊所 A 的方式安排一半工作量和产能，其余部分按诊所 D "
+"的方式安排。在这种情况下，即使没有单一诊所恰好报告这些数量，M 仍是可行的总量方案。凸性不允许管理者只拿 A 的资源要求，却声称能实现 D "
+"的服务结果；每项活动的资源与服务承诺必须共同保留。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:141
+#: 7f27f715789c480a9f864bff3abd30f8
+msgid ""
+"Convexity is much stronger when production depends on indivisible assets, "
+"threshold effects, or a tightly integrated process. A hospital cannot "
+"install half of one emergency department and half of another; a treatment "
+"pathway may fail if its component practices are separated. In such cases M "
+"is arithmetically well defined but may not be managerially attainable. A "
+"virtual combination also says nothing about *how* to implement the plan. It "
+"supports a benchmark quantity account, not a causal recipe for "
+"organizational change."
+msgstr ""
+"当生产依赖不可分割资产、门槛效应或高度一体化的过程时，凸性是一个强得多的主张。医院不能分别安装两个急诊科的一半；治疗路径的各项实践一旦拆开，也可能失效。在这些情况下，M"
+" 在算术上有定义，却未必在管理上可实现。虚拟组合也不会说明方案*如何*实施；它支持的是标杆数量核算，而不是组织变革的因果步骤。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:149
+#: 2cfc028c3793475681678292b5c14665
+msgid ""
+"With free disposal and convexity, the familiar variable-returns-to-scale "
+"empirical technology is"
+msgstr "结合自由处置与凸性，熟悉的规模报酬可变经验技术为"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:152
+#: 130844f4eb2d4fe1abd726b0fd1a72ce
+#, python-brace-format
+msgid ""
+"\n"
+"\\widehat{\\mathcal T}_{VRS}\n"
+"=\\left\\{(x,y):\n"
+"X\\lambda\\leq x,\n"
+"\\;Y\\lambda\\geq y,\n"
+"\\;\\mathbf 1^\\top\\lambda=1,\n"
+"\\;\\lambda\\geq0\n"
+"\\right\\}.\n"
+msgstr ""
+"\n"
+"\\widehat{\\mathcal T}_{VRS}\n"
+"=\\left\\{(x,y):\n"
+"X\\lambda\\leq x,\n"
+"\\;Y\\lambda\\geq y,\n"
+"\\;\\mathbf 1^\\top\\lambda=1,\n"
+"\\;\\lambda\\geq0\n"
+"\\right\\}.\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:162
+#: 5743780085874fd6a4d9b24f2f368d0a
+#, python-brace-format
+msgid ""
+"The inequalities incorporate free disposal: the reference activity may use "
+"no more than $x$ and supply at least $y$. The equality makes "
+"$X\\lambda,Y\\lambda$ a weighted average of represented operations. This "
+"convex envelopment is the production account underlying the BCC models "
+"{cite:p}`banker1984`."
+msgstr ""
+"不等式纳入自由处置：参照活动使用的资源不多于 $x$，提供的服务不少于 $y$。等式使 $X\\lambda,Y\\lambda$ "
+"成为被代表经营活动的加权平均。这一凸包络就是 BCC 模型的生产核算 {cite:p}`banker1984`。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:168
+#: 06c7b4374abc424db15c866c203d9720
+msgid "FDH when only complete observed practices may teach"
+msgstr "FDH：只有完整的观测实践可以提供借鉴"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:170
+#: 08c6892c7deb445da878fb4cdefb3b52
+msgid ""
+"Convexity is not required for an empirical frontier. The free-disposal hull "
+"(FDH) admits free disposal around each observation but does not fill the "
+"gaps between observations:"
+msgstr "经验前沿并不一定要求凸性。自由处置包络（free-disposal hull，FDH）在每个观测周围允许自由处置，却不填补观测之间的空白："
+
+#: ../../chapters/01-foundations/02-production-frontier.md:174
+#: 645c6566b73f4bd0a3b4bfc4ae2c1ba5
+#, python-brace-format
+msgid ""
+"\n"
+"\\widehat{\\mathcal T}_{FDH}\n"
+"=\\left\\{(x,y):\n"
+"\\text{some observed }j\\text{ satisfies }x_j\\leq x,\n"
+"\\;y_j\\geq y\n"
+"\\right\\}.\n"
+msgstr ""
+"\n"
+"\\widehat{\\mathcal T}_{FDH}\n"
+"=\\left\\{(x,y):\n"
+"\\text{某个观测 }j\\text{ 满足 }x_j\\leq x,\n"
+"\\;y_j\\geq y\n"
+"\\right\\}.\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:182
+#: feb89a99309e489c8ffc3855d09e8316
+#, python-brace-format
+msgid ""
+"An FDH comparison therefore asks whether one complete observed practice "
+"demonstrates a better resource--service plan. Convex VRS asks the broader "
+"question of whether a weighted combination of observed practices does so "
+"{cite:p}`deprins1984,tulkens1993`."
+msgstr ""
+"因此，FDH 比较询问是否有一项完整的观测实践展示更好的资源—服务方案；凸 VRS 则提出更广的问题：观测实践的加权组合能否展示这种方案 "
+"{cite:p}`deprins1984,tulkens1993`。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:187
+#: b82ad860299b4360ae168c42b9722793
+msgid ""
+"FDH can be more persuasive when operating systems are indivisible or when an"
+" implementation discussion needs an observed organizational counterpart. It "
+"is not automatically safer or more realistic. In a sparse sample, the "
+"observed-practice steps can leave many organizations on the frontier simply "
+"because no single comparator dominates them. Convex VRS usually produces a "
+"more demanding opportunity set because it also admits intermediate plans; "
+"that extra discipline is warranted only when those plans have a credible "
+"production interpretation."
+msgstr ""
+"当经营系统不可分割，或实施讨论需要一个真实观测到的组织作为对应对象时，FDH "
+"可能更有说服力。但它不会自动更安全或更现实。样本稀疏时，阶梯状的观测实践会让许多组织停留在前沿，仅仅因为没有单一比较对象支配它们。凸 VRS "
+"通常构造更严格的生产机会集合，因为它还纳入中间方案；只有这些方案具有可信生产解释时，这种额外约束才合理。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:196
+#: e8b01b92c5df4583a78b34802f572432
+msgid ""
+"The right comparison is thus not “modern versus old” or “strict versus "
+"lenient.” It is a choice between two learning claims. The next chapter keeps"
+" one service-branch dataset fixed and compares DEAPack's "
+"`FDH(orientation=\"output\")` with `BCC(orientation=\"output\")`, so the "
+"change in the result can be read as sensitivity to this claim rather than as"
+" a difference between unrelated efficiency concepts."
+msgstr ""
+"所以，正确的比较不是“现代还是陈旧”，也不是“严格还是宽松”，而是两种关于如何学习的主张。下一章固定同一组服务网点数据，比较 DEAPack 的 "
+"`FDH(orientation=\"output\")` 与 "
+"`BCC(orientation=\"output\")`，使结果差异可以理解为对这项主张的敏感性，而非互不相关的效率概念之间的差异。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:203
+#: c57c64daf66641ca9462bdeeb67b6009
+msgid "Returns to scale: may an operating pattern be replicated?"
+msgstr "规模报酬：经营方式能否复制？"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:205
+#: fc7cbdbe0fb543639075a0f258a01175
+msgid ""
+"Convexity asks whether practices can be mixed. **Returns to scale** asks "
+"whether an operating pattern can be proportionally enlarged or reduced. The "
+"questions are related but not interchangeable."
+msgstr "凸性询问实践能否混合；**规模报酬**询问经营方式能否按比例扩大或缩小。两者相关，却不能互换。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:209
+#: 1177d05307b944ee804cf50daa80f253
+msgid ""
+"Under constant returns to scale (CRS), any nonnegative multiple of a "
+"feasible activity is also feasible. The empirical technology is"
+msgstr "在规模报酬不变（CRS）下，可行活动的任意非负倍数也可行。经验技术为"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:212
+#: e17c64a91023445f931f6bf76c5ecc21
+#, python-brace-format
+msgid ""
+"\n"
+"\\widehat{\\mathcal T}_{CRS}\n"
+"=\\left\\{(x,y):\n"
+"X\\lambda\\leq x,\n"
+"\\;Y\\lambda\\geq y,\n"
+"\\;\\lambda\\geq0\n"
+"\\right\\}.\n"
+msgstr ""
+"\n"
+"\\widehat{\\mathcal T}_{CRS}\n"
+"=\\left\\{(x,y):\n"
+"X\\lambda\\leq x,\n"
+"\\;Y\\lambda\\geq y,\n"
+"\\;\\lambda\\geq0\n"
+"\\right\\}.\n"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:221
+#: fd89b1635bb847d1b59499cdd9927063
+#, python-brace-format
+msgid ""
+"Without the restriction $\\mathbf 1^\\top\\lambda=1$, the total weight may "
+"be below or above one. An observed operating pattern can therefore be "
+"contracted or replicated while preserving its input--output proportions. The"
+" CCR model uses this constant-returns production account "
+"{cite:p}`charnes1978`."
+msgstr ""
+"没有 $\\mathbf 1^\\top\\lambda=1$ 的限制，总权重可以小于或大于 "
+"1。因此，观测经营方式可以在保持投入—产出比例的同时收缩或复制。CCR 模型采用这一规模报酬不变生产核算 {cite:p}`charnes1978`。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:227
+#: 1aaa9c8e689343a783182843582f4608
+msgid ""
+"CRS is a demanding economic assumption, not merely a tougher scoring option."
+" It can be credible for a long-run question when facilities and teams are "
+"replicable, inputs and outputs are sufficiently divisible, markets can "
+"absorb the service, and organizations face comparable operating conditions. "
+"It is harder to defend when fixed assets, minimum staffing, demand limits, "
+"geography, regulation, or coordination costs make a twofold operation more "
+"or less than two copies of the original."
+msgstr ""
+"CRS "
+"是一项要求很高的经济假设，而不只是用来得到更严格得分的选项。如果设施和团队可以复制、投入与产出足够可分、市场能够吸收服务，并且组织面对相似经营条件，那么它对长期问题可能可信。如果固定资产、最低人员配置、需求限制、地理、监管或协调成本，使两倍规模不等于原活动的两份复制，CRS"
+" 就更难辩护。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:235
+#: c4812f5b013d40bcb0057946770c54b5
+msgid ""
+"VRS withdraws the right of unrestricted proportional replication. It allows "
+"productivity to differ with operating scale and restricts convex reference "
+"plans to the scales represented by weighted averages of the sample. This "
+"does not mean that a VRS comparator must be the same size as the focal "
+"organization, nor does VRS by itself control for mission or environment. It "
+"means only that scale adjustment must be supported by combinations of the "
+"represented operations rather than by free replication."
+msgstr ""
+"VRS 撤回不受限制地按比例复制的权利，允许生产率随经营规模而异，并把凸参照方案限制在样本加权平均所代表的规模范围。这不表示 VRS "
+"比较对象必须与焦点组织规模相同，也不表示 VRS 自行控制了任务或环境；它只表示规模调整必须得到被代表经营活动组合的支持，不能依靠自由复制。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:243
+#: 04aac07e21e4406c80f513d0e15f8988
+msgid ""
+"The second diagram shows the practical consequence of the scale assumption. "
+"Branch D is compared first with similarly scaled combinations of observed "
+"practice under VRS. CRS then asks a more demanding question: if B's "
+"resource-to-service pattern could be replicated continuously, how much of "
+"D's resource budget would still be needed to honour D's service commitment? "
+"The horizontal movement records that additional resource-saving opportunity;"
+" it is not a recommendation to copy B literally."
+msgstr ""
+"第二幅图展示规模假设的实际后果。先在 VRS 下用观测实践中规模相近的组合比较网点 D；CRS 随后提出更严格的问题：如果 B "
+"的资源—服务方式可以连续复制，要履行 D 的服务承诺还需要多少资源预算？图中的水平移动记录授予这种复制权后出现的额外资源节约机会，而不是要求真正照搬 "
+"B。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:250
+#: 9a57b33b66ad4eb7af83b34142018098
+msgid ""
+"The same observations generate a piecewise VRS frontier and a CRS ray "
+"through the most productive activity"
+msgstr "同一批观测形成分段的 VRS 前沿，也形成穿过生产率最高活动的 CRS 射线"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:255
+#: 1966cda1e74541be972520fc10b05ec6
+#, python-brace-format
+msgid ""
+"All four branches lie on the VRS boundary in this illustration. Branch B "
+"also supports the strongest continuously scalable pattern under CRS. The "
+"arrow from D to $D_{CRS}$ records the additional resource-saving opportunity"
+" created by granting that replication right."
+msgstr ""
+"本例中四个网点都位于 VRS 边界。网点 B 还支持 CRS 下最强的连续可复制经营方式。从 D 指向 $D_{CRS}$ "
+"的箭头记录授予这种复制权后产生的额外资源节约机会。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:261
+#: 0039a6b39f564d80a7cd06bf6aa077d8
+#, python-brace-format
+msgid ""
+"Under VRS, D is not required to operate as a multiple of B and is efficient "
+"relative to the represented convex opportunities at its scale. Under CRS, "
+"B's resource--service ratio may be carried to D's service commitment, making"
+" $D_{CRS}$ an admissible and more demanding plan. The gap between the two "
+"accounts is conditional evidence that D's assessed performance depends on "
+"the scale assumption. It is not proof that D should contract, that B caused "
+"the gap, or that B's organization can be copied without transition costs."
+msgstr ""
+"在 VRS 下，D 不必按 B 的倍数经营，相对于其规模上被代表的凸生产机会是有效率的。在 CRS 下，B 的资源—服务比可以延伸到 D "
+"的服务承诺，从而使 $D_{CRS}$ 成为可行且更严格的方案。两种核算之间的差距，是 D 的评价表现取决于规模假设的条件性证据。它不能证明 D "
+"应当收缩、B 导致了差距，或 B 的组织形式能在没有转型成本时复制。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:269
+#: 6223f705118940ddb356052b928e74e4
+msgid ""
+"The picture uses one input and one output, but the same economic question "
+"survives when no honest two-axis drawing is possible. A higher-dimensional "
+"reference plan may draw on several organizations, and the strongest CRS "
+"benchmark need not be an observed unit. What matters is still the production"
+" claim: which combinations and replications could management plausibly make "
+"available over the stated decision horizon?"
+msgstr ""
+"图中只有一项投入和一项产出，但即使高维问题无法如实画在两个坐标轴上，同一个经济问题仍然存在。高维参照方案可能来自多个组织，最强的 CRS "
+"标杆也未必是一个观测单元。关键仍是生产主张：在声明的决策期限内，哪些组合与复制是管理者能够合理实现的？"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:276
+#: edefc23af69147679171a746ac538530
+msgid "Orientation identifies the commitment to protect"
+msgstr "导向说明必须保护的承诺"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:278
+#: 32ebea3ac6974bcfae8678c1610daed4
+#, python-brace-format
+msgid ""
+"The technology determines which plans count as attainable. **Orientation** "
+"does not alter that set; it states which commitment is protected while the "
+"organization is compared with it. An input-oriented account preserves the "
+"represented service commitments and examines controllable resource saving. "
+"An output-oriented account respects the represented resource limits and "
+"examines service expansion {cite:p}`farrell1957,charnes1978,banker1984`."
+msgstr ""
+"生产技术决定哪些方案可实现；**导向**不改变该集合，而是说明组织接受比较时保护哪项承诺。投入导向核算保留被代表的服务承诺，考察可控资源节约；产出导向核算尊重被代表的资源限制，考察服务扩张"
+" {cite:p}`farrell1957,charnes1978,banker1984`。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:285
+#: 76aef974c8ab4feea33c73650c5db705
+msgid ""
+"Moving between these questions does not turn CRS into VRS, remove convexity,"
+" or create a new peer population. It changes the responsibility being "
+"assessed. Input orientation is difficult to defend when most resources are "
+"fixed over the decision horizon; output orientation is difficult when "
+"demand, service obligations, or quality constraints rule out common "
+"expansion."
+msgstr ""
+"在两个问题之间切换，不会把 CRS 变成 "
+"VRS、取消凸性或创建新的比较总体；改变的是所评价的责任。如果大多数资源在决策期限内固定，投入导向很难辩护；如果需求、服务义务或质量约束不允许共同扩张，产出导向也很难辩护。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:291
+#: a65231d3cf364234b351aad3a8fd848f
+msgid ""
+"The first chapter introduced the corresponding contraction and expansion "
+"factors. Part II turns them into the four classical radial programmes. When "
+"a decision instead requires resource saving and service expansion together, "
+"or variable-specific changes, later slack-based and directional accounts "
+"provide different measures on a declared technology. None of these "
+"comparisons is a causal promise that management can implement the reported "
+"change without operational evidence, prices, and adjustment costs."
+msgstr "第一章介绍了相应的收缩因子和扩张因子；第二篇把它们写成四个经典径向规划。当决策要求同时节约资源、扩张服务，或要求各变量分别变化时，后续基于松弛变量和方向性的方法会在已声明技术上提供不同测度。任何比较都不是因果承诺，不能仅凭结果就保证管理者无需经营证据、价格信息和调整成本便能实现所报告的变化。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:299
+#: 2b9d8c604b2f410681702f966b31c6e0
+msgid "Efficiency is conditional evidence, not a verdict"
+msgstr "效率是条件性证据，而不是判决"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:301
+#: 62d037a00d7742a883e5d9b6a8bef143
+msgid ""
+"An organization is efficient only relative to a declared technology and a "
+"declared improvement question. A score of one under input-oriented VRS means"
+" that the represented convex technology offers no further common "
+"proportional input saving while the output commitments are protected. It "
+"does not, by itself, establish that"
+msgstr ""
+"组织只有相对于已声明技术和改进问题才有效率。投入导向 VRS 得分等于 "
+"1，表示在保护产出承诺时，被代表的凸技术不再提供按共同尺度节约投入的机会。它本身不能证明"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:307
+#: 694587f169024df9a99de6e99804a40d
+msgid "every individual input excess and output shortfall has disappeared;"
+msgstr "每项投入冗余和产出不足都已消失；"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:308
+#: dbf60591fc4e4efd875d78eacffaf114
+msgid "the organization minimizes cost or maximizes profit;"
+msgstr "组织实现了成本最小化或利润最大化；"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:309
+#: 7078274c141347c7912519c5ab06190b
+msgid "service quality, environmental harm, or unmeasured mission is satisfactory;"
+msgstr "服务质量、环境伤害或未测量的组织任务令人满意；"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:310
+#: 01a3469f693b49f89045aebb8c73ff10
+msgid "the current scale is most productive under CRS; or"
+msgstr "当前规模在 CRS 下具有最高生产率；或者"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:311
+#: ce278e3f77c64355a0a2ffe342dbbdb9
+msgid "the selected benchmark would cause the organization to improve."
+msgstr "所选标杆会因果地促使组织改善。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:313
+#: 958f6d09e228409293dbe051953cd9fe
+msgid ""
+"This conditional reading also explains why results change when credible "
+"assumptions change. FDH and convex VRS admit different learning "
+"opportunities. CRS and VRS grant different replication rights. Input and "
+"output orientation protect different commitments. A changed score is "
+"therefore evidence about the consequence of a changed production statement, "
+"not evidence that one of the calculations must be wrong."
+msgstr ""
+"这种条件性理解也解释了为什么可信假设改变时结果会变化。FDH 与凸 VRS 允许不同的学习机会；CRS 与 VRS "
+"授予不同的复制权；投入导向与产出导向保护不同承诺。因此，得分变化是生产主张改变所带来后果的证据，而不是某项计算必定错误的证据。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:320
+#: 1bd96ed8c51d46999c741f1de42cbfd0
+msgid ""
+"Before fitting a model, the analyst should be able to defend four "
+"propositions in the language of the organization: ordinary resources and "
+"desirable services are disposable in the stated sense; virtual combinations "
+"are or are not attainable; proportional replication is or is not credible "
+"over the decision horizon; and the chosen orientation matches the decision-"
+"maker's commitment. Those propositions are more informative than a model "
+"acronym."
+msgstr "拟合模型之前，分析者应能用组织自身的语言为四项主张辩护：普通资源与合意服务可按声明方式处置；虚拟组合可以或不可以实现；在决策期限内按比例复制可信或不可信；所选导向符合决策者的承诺。这些主张比模型缩写更有信息。"
+
+#: ../../chapters/01-foundations/02-production-frontier.md:327
+#: 571cb172ff494ac797918d9f237af618
+#, python-brace-format
+msgid ""
+"The next chapter turns them into the four classical radial recipes: "
+"{doc}`../02-classical/03-classical-radial`. Its `CCRInput`, `CCROutput`, "
+"`BCCInput`, and `BCCOutput` examples keep the production account visible "
+"while changing orientation and scale. The purpose is not to memorize four "
+"model names, but to see how a resource or service question becomes a "
+"reproducible DEA comparison."
+msgstr ""
+"下一章把它们写成四个经典径向模型：{doc}`../02-classical/03-classical-radial`。其中的 "
+"`CCRInput`、`CCROutput`、`BCCInput` 与 `BCCOutput` "
+"示例在改变导向和规模时始终保持生产核算可见。目的不是背诵四个模型名称，而是观察资源或服务问题如何变成可重复的 DEA 比较。"

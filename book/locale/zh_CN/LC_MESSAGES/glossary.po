@@ -1,0 +1,505 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../glossary.md:1 17290c479e6249d296d7e45567a1fad7
+msgid "Glossary and Historical Names"
+msgstr "术语表与历史名称"
+
+#: ../../glossary.md:3 f55f805521804fb0bf32374d414019ec
+msgid ""
+"DEA grew through several literatures, so the same idea is often encountered "
+"under different names. This glossary points historical labels back to the "
+"economic or managerial concept used consistently in this book. An alias "
+"listed here is a route into the relevant model family, not evidence that "
+"every similarly named variant is identical."
+msgstr ""
+"DEA "
+"在多个文献传统中发展，因此同一种思想往往有不同名称。本术语表把历史标签对应到本书一贯采用的经济或管理概念。这里列出的别名只是通向相关模型族的检索入口，并不表示名称相近的所有变体都完全相同。"
+
+#: ../../glossary.md 5e013d2b6b824fd9abb356c6b916f4ef
+msgid "Additive model"
+msgstr "加性模型"
+
+#: ../../glossary.md:11 ceeeaf269de64df1a02f82c9747897e4
+msgid ""
+"A non-oriented DEA model that maximizes a weighted sum of input excesses and"
+" desirable-output shortfalls. Because its gaps retain physical units until "
+"weights are supplied, it should not be treated as the same numerical ruler "
+"as RAM or SBM."
+msgstr ""
+"一种非导向 DEA 模型，其目标是最大化投入冗余与合意产出不足的加权和。在给定权重之前，各项缺口仍保留物理单位，因此不能把它视为与 RAM 或 SBM "
+"相同的数值尺度。"
+
+#: ../../glossary.md:5 027ced61ae8749738f5cfbad291266d6
+msgid "Allocative efficiency"
+msgstr "配置效率"
+
+#: ../../glossary.md:16 2b177cfea532425b82da62805c6a84d7
+msgid ""
+"The part of an economic-efficiency comparison associated with choosing an "
+"input or output mix under stated prices after the matched technical "
+"component has been accounted for. It is a counterfactual decomposition, not "
+"proof of managerial cause."
+msgstr "在计入相匹配的技术效率分量后，配置效率表示经济效率比较中与既定价格下投入或产出组合选择相关的部分。它是一种反事实分解，并不证明管理原因。"
+
+#: ../../glossary.md:10 72c0336ed54e4952bcefeeca72620575
+msgid "BCC model"
+msgstr "BCC 模型"
+
+#: ../../glossary.md:21 a1e824c130a546e2b3ede28fcb21e329
+msgid ""
+"The Banker--Charnes--Cooper form of radial DEA under variable returns to "
+"scale (VRS). Input and output orientation remain separate choices."
+msgstr "规模报酬可变（VRS）下 Banker--Charnes--Cooper 径向 DEA 形式；投入导向和产出导向仍是两个不同选择。"
+
+#: ../../glossary.md:14 cade3bb685d34cc3a513633e24ccf452
+msgid "Benchmark"
+msgstr "标杆"
+
+#: ../../glossary.md:25 61f429de9bb64ac193ee0c26ea9fed39
+msgid ""
+"An attainable comparison plan supported by the declared technology and "
+"eligible reference observations. It need not be an observed organization, a "
+"unique target, or a plan that can be copied without adaptation."
+msgstr "由已声明技术和合格参照观测支持的可实现比较方案。它不一定是一个真实观测组织，也不一定是唯一目标，更不保证能够不加调整地直接复制。"
+
+#: ../../glossary.md:19 288792df3bb846bca932c7cdee2ea7c7
+msgid "Catch-up"
+msgstr "追赶效应"
+
+#: ../../glossary.md:30 26f5f8c06a2d43bfbe3a1071bacb785e
+msgid ""
+"A traditional productivity-decomposition label for a change in benchmark-"
+"relative operating performance. This book states the underlying change first"
+" because the component does not identify why performance changed."
+msgstr "生产率分解中表示相对标杆的经营表现发生变化的传统名称。本书先陈述其基础变化量，因为这一组成部分并不能说明绩效为何改变。"
+
+#: ../../glossary.md:24 91bdc9a238634e7e90de9d7a93040642
+msgid "CCR model"
+msgstr "CCR 模型"
+
+#: ../../glossary.md:35 e5c438565b894a90988bc5d1b0807e36
+msgid ""
+"The Charnes--Cooper--Rhodes form of radial DEA under constant returns to "
+"scale (CRS). It is not a separate mother family from Farrell radial DEA "
+"under the same orientation and CRS assumptions."
+msgstr ""
+"规模报酬不变（CRS）下 Charnes--Cooper--Rhodes 径向 DEA 形式。在导向和 CRS 假设相同的情况下，它并非区别于 "
+"Farrell 径向 DEA 的另一母模型族。"
+
+#: ../../glossary.md:29 bd0b518f119c4d1885c9d857087d52b0
+msgid "Constant returns to scale (CRS)"
+msgstr "规模报酬不变（CRS）"
+
+#: ../../glossary.md:40 4d1c95fc886842b4bebf6db3bc7717a8
+msgid ""
+"A technology assumption permitting proportional replication of an attainable"
+" activity. Whether replication is economically credible is a study-design "
+"question."
+msgstr "一种允许可实现活动按比例复制的生产技术假设。比例复制在经济上是否可信，属于研究设计问题。"
+
+#: ../../glossary.md:33 e0a893fcda9f47929a33edc3ad376f0c
+msgid "Data envelopment analysis (DEA)"
+msgstr "数据包络分析（DEA）"
+
+#: ../../glossary.md:44 e9f666f34d6d434ab83de6a126ef755e
+msgid ""
+"A family of nonparametric frontier methods that constructs production "
+"possibilities from observed activities and maintained assumptions, then "
+"evaluates organizations against those represented opportunities."
+msgstr "一族非参数前沿方法：依据观测活动和既定假设构造生产可能性，再相对于这些被代表的生产机会评价组织。"
+
+#: ../../glossary.md:38 a03ef1a615c2486aa7d45718f5b898ef
+msgid "Decision-making unit (DMU)"
+msgstr "决策单元（DMU）"
+
+#: ../../glossary.md:49 aa55768265434e329d6dbb1923f38289
+msgid ""
+"The organization, facility, programme, process system, or complete "
+"trajectory being evaluated. The label does not by itself establish a "
+"meaningful organizational boundary."
+msgstr "接受评价的组织、设施、项目、过程系统或完整轨迹。这个名称本身不能确立一个有意义的组织边界。"
+
+#: ../../glossary.md:43 6eaa4b12867944a9b34ffb41923d6a87
+msgid "Directional distance function (DDF)"
+msgstr "方向性距离函数（DDF）"
+
+#: ../../glossary.md:54 321c26f4e20f4ca9af2e778849cf4015
+msgid ""
+"A performance measure asking how many units of a pre-specified joint "
+"improvement programme are attainable. Its direction gives one programme unit"
+" and therefore carries economic meaning and units."
+msgstr "一种绩效测度，用来考察预先设定的联合改进方案能够实现多少个单位。方向规定一个方案单位，因而具有经济含义和计量单位。"
+
+#: ../../glossary.md:48 2c4cee4555164739a7f92221c5407fe8
+msgid "Disposability"
+msgstr "可处置性"
+
+#: ../../glossary.md:59 24596e1775b245daa7117d01d885a2e9
+msgid ""
+"An assumption about whether inputs, desirable outputs, or undesirable "
+"outcomes may be reduced or expanded while retaining feasibility. Strong and "
+"weak disposal encode different production claims, especially for pollution."
+msgstr "关于投入、合意产出或非合意结果能否在保持可行的同时减少或增加的假设。强处置与弱处置代表不同的生产主张，对污染尤其如此。"
+
+#: ../../glossary.md:53 d348cf9757804ee398cc68fed23ba2f9
+msgid "Efficiency change"
+msgstr "技术效率变化"
+
+#: ../../glossary.md:64 58f5d69cf6f54dcc8451d25be42e550f
+msgid ""
+"The change in an organization's performance relative to its own-period "
+"benchmark in a productivity decomposition. It is often called catch-up, but "
+"it is not a causal explanation of operational improvement."
+msgstr "生产率分解中，组织相对于本期标杆的表现变化。它通常被称为追赶效应，但不是对经营改善原因的因果解释。"
+
+#: ../../glossary.md:58 dd8c3abdca154a42851c0a68e7d846b8
+msgid "Efficient frontier"
+msgstr "有效前沿"
+
+#: ../../glossary.md:69 d94ef8e4bf9148b782f5ddc4f0c42f16
+msgid ""
+"The boundary of the represented production possibilities on which the "
+"relevant performance improvement cannot be continued under the maintained "
+"model."
+msgstr "被代表的生产可能性的边界；在既定模型下，相关绩效改进不能在该边界上继续。"
+
+#: ../../glossary.md:62 cc3c410063c14363b1df02ba402142c7
+msgid "Enhanced Russell graph (ERG) measure"
+msgstr "增强 Russell 图（ERG）测度"
+
+#: ../../glossary.md:73 cfaf7011a32d45cfa7c43f07375bb740
+msgid ""
+"A historical label conditionally equivalent to the standard non-oriented SBM"
+" account on its stated positive-data domain. More general Russell graph "
+"measures require their own specification."
+msgstr "一个历史名称，在其声明的正数据定义域内与标准非导向 SBM 核算有条件地等价。更一般的 Russell 图测度仍需单独设定。"
+
+#: ../../glossary.md:67 5540673bbaa046f4abed1c21c87a53fb
+msgid "Free disposal hull (FDH)"
+msgstr "自由处置包络（FDH）"
+
+#: ../../glossary.md:78 f337b48cbd2f4c569abf2e4127f907eb
+msgid ""
+"A non-convex observed-practice technology that permits ordinary disposal but"
+" does not create virtual peers by convexly mixing organizations."
+msgstr "一种非凸的观测实践技术：允许通常的处置，却不通过组织的凸组合构造虚拟参照单元。"
+
+#: ../../glossary.md:71 09d94159909543ce80cf765c6af1a398
+msgid "Frontier shift"
+msgstr "前沿移动效应"
+
+#: ../../glossary.md:82 5b6703268a4e4d93a784700128f2a9e9
+msgid ""
+"A traditional productivity-decomposition label for a change in the "
+"production opportunities represented by dated technologies. It does not "
+"identify the cause of that change."
+msgstr "生产率分解中表示分期技术所代表的生产机会发生变化的传统名称。它并不识别这种变化的原因。"
+
+#: ../../glossary.md:76 72aaf247912a439aae27104a6de885a5
+msgid "Hicks--Moorsteen productivity index"
+msgstr "Hicks--Moorsteen 生产率指数"
+
+#: ../../glossary.md:87 9c8bf8a5af044e1a90b1c38802e7c4e9
+msgid ""
+"A multiplicatively complete quantity index formed from an output quantity "
+"index and an input quantity index. It answers a different accounting "
+"question from treating a Malmquist distance index as its synonym."
+msgstr "由产出数量指数和投入数量指数构成的乘法完全数量指数。它回答的核算问题不同于 Malmquist 距离指数，不能把两者当作同义词。"
+
+#: ../../glossary.md:81 395d3179139141e6a5a6c62846a2d5e7
+msgid "Input orientation"
+msgstr "投入导向"
+
+#: ../../glossary.md:92 6fda278c44df486ea263fb5eb7dadcb5
+msgid ""
+"A performance question that protects output commitments and asks how much of"
+" the chosen input burden can be reduced."
+msgstr "一种绩效问题：保护产出承诺，并考察所选投入负担可以减少多少。"
+
+#: ../../glossary.md:85 1b3a9aff7c08459984f38deb863c60f2
+msgid "Intensity"
+msgstr "强度变量"
+
+#: ../../glossary.md:96 bd9b39a7127d4e21ba09c04f90a27fb2
+msgid ""
+"A coefficient attached to a reference activity in an envelopment model. "
+"Positive intensities identify the selected peer combination but may be non-"
+"unique."
+msgstr "包络模型中附着于一项参照活动的系数。正强度标示所选择的参照组合，但该组合可能不唯一。"
+
+#: ../../glossary.md:89 2335f54e430a41a4af9157c233b8ebda
+msgid "Luenberger productivity indicator"
+msgstr "Luenberger 生产率指标"
+
+#: ../../glossary.md:100 1ecacbe5b19f4bd097da201d3fde5148
+msgid ""
+"An additive productivity-change account built from directional distances. "
+"Its values are measured in units of the declared improvement programme "
+"rather than as a multiplicative ratio."
+msgstr "基于方向性距离构造的加法生产率变化核算。其数值用已声明改进方案的单位计量，而不是乘法比率。"
+
+#: ../../glossary.md:94 8f0a94100abb4993afcb9454c13b12df
+msgid "Malmquist productivity index"
+msgstr "Malmquist 生产率指数"
+
+#: ../../glossary.md:105 65191ed4f32f4385ba533592bbde5496
+msgid ""
+"A multiplicative productivity-change account constructed from dated radial "
+"distance comparisons. Its reference-information policy and decomposition "
+"must be reported."
+msgstr "利用分期径向距离比较构造的乘法生产率变化核算。必须报告其参照信息政策和分解方式。"
+
+#: ../../glossary.md:98 18a14c983e67443fb02c50861fb2aff6
+msgid "Metafrontier"
+msgstr "共同前沿（metafrontier，亦称元前沿）"
+
+#: ../../glossary.md:109 44cd5bfc5e254b529f7254907b73731f
+msgid ""
+"A pooled opportunity set used alongside declared group frontiers to "
+"distinguish within-group performance from proximity between represented "
+"group and pooled opportunities. It does not discover groups or estimate a "
+"causal environmental effect."
+msgstr "与已声明群组前沿配合使用的汇集生产机会集合，用来区分群组内部表现，以及被代表的群组机会与汇集机会的接近程度。它既不发现群组，也不估计环境因素的因果效应。"
+
+#: ../../glossary.md:104 ec05bfa3b79147db8546b5cf65474cb1
+msgid "Multiplier form"
+msgstr "乘数形式"
+
+#: ../../glossary.md:115 70b2bd07d1cc4166b6f7f71e805ff2fc
+msgid ""
+"The value-weight representation dual to an envelopment formulation under the"
+" relevant regularity conditions. Endogenous DEA multipliers are not observed"
+" market prices unless the model explicitly supplies prices."
+msgstr "在相应正则条件下与包络形式对偶的价值权重表示。除非模型明确提供价格，DEA 的内生乘数不是观测市场价格。"
+
+#: ../../glossary.md:109 e817f472f5724b0fae717a279912812e
+msgid "Network DEA"
+msgstr "网络 DEA"
+
+#: ../../glossary.md:120 c07b525fc28d4e0cbd50cf795dfae93b
+msgid ""
+"DEA models that represent connected processes and enforce an organizational "
+"account for internal products or services. Independently scoring departments"
+" is not network DEA unless their plans form one feasible system."
+msgstr ""
+"显式表示相互连接的过程，并对内部产品或服务实行组织层面核算的 DEA 模型。分别评价各部门不属于网络 "
+"DEA；只有这些部门的方案共同构成一个可行系统时才是。"
+
+#: ../../glossary.md:114 5c7cc63c7aba4b3f99f6e9e2e8655370
+msgid "Output orientation"
+msgstr "产出导向"
+
+#: ../../glossary.md:125 43986f80c8744900a048c4734dde3ac9
+msgid ""
+"A performance question that protects the input envelope and asks how much "
+"desirable output can be expanded."
+msgstr "一种绩效问题：保持投入承诺不变，并考察合意产出可以扩张多少。"
+
+#: ../../glossary.md:118 8f6eff1465a74abbb99f5f6e3f1bb3a8
+msgid "Peer"
+msgstr "活跃参照单元（peer）"
+
+#: ../../glossary.md:129 7649987938484e8a8a042cbec2d6a876
+msgid ""
+"A reference organization with a positive reported intensity in one selected "
+"benchmark plan. Peer status need not be unique across alternative optima."
+msgstr "在某个选定标杆方案中报告强度为正的参照组织。不同最优解之间的活跃参照单元身份可能并不唯一。"
+
+#: ../../glossary.md:122 6601f681e66f4cd08ffe61779ffb1a0b
+msgid "Production possibility set"
+msgstr "生产可能集"
+
+#: ../../glossary.md:133 2aeaca1f1321475fb74afd4ce46e37a9
+msgid ""
+"The input--output plans treated as attainable under the data, organizational"
+" boundary, disposability, convexity, scale, and reference-set assumptions."
+msgstr "在数据、组织边界、可处置性、凸性、规模与参考集假设下视为可实现的投入—产出方案。"
+
+#: ../../glossary.md:126 64a54210007f4ee689ebab905983800c
+msgid "Projection"
+msgstr "投影"
+
+#: ../../glossary.md:137 78aeeff9ad234f738f968f0e64a030ba
+msgid ""
+"A fitted target or benchmark plan associated with an evaluated organization."
+" A projection can be non-unique and should not be presented automatically as"
+" a prescriptive implementation plan."
+msgstr "与接受评价的组织相联系的拟合目标或标杆方案。投影可能不唯一，不应自动表述为规定性的实施方案。"
+
+#: ../../glossary.md:131 36205a8f4f6744c09db396dcc861d764
+msgid "RAM"
+msgstr "RAM"
+
+#: ../../glossary.md:142 0fe4248fab524560ab94d4dc64a954e1
+msgid ""
+"The range-adjusted measure, which normalizes variable-specific slacks by "
+"sample ranges before aggregation. It shares a slack diagnosis with Additive "
+"and SBM models but uses a different reporting ruler."
+msgstr "极差调整测度，在汇总前先用样本极差对各变量特定的松弛量进行标准化。它与加性模型和 SBM 都能诊断松弛，但采用不同的报告尺度。"
+
+#: ../../glossary.md:136 43ed18d943c6456288a7050ff7662226
+msgid "Reference set"
+msgstr "参考集"
+
+#: ../../glossary.md:147 30e20714ed8f4aeea209561f9e90069c
+msgid ""
+"The observations eligible to construct the comparison technology. This "
+"population is chosen before fitting and is distinct from the smaller set of "
+"active peers in one solution."
+msgstr "有资格构造比较技术的观测总体。该总体在模型拟合前选定，区别于某个解中数量更少的活跃参照单元。"
+
+#: ../../glossary.md:141 f903f833fc7f44a09cd79459c853edee
+msgid "Returns to scale (RTS)"
+msgstr "规模报酬（RTS）"
+
+#: ../../glossary.md:152 b887063aacaa450db3e898e2e0f0661b
+msgid ""
+"Assumptions or local findings about how represented production responds when"
+" the overall size of an activity changes. CRS, VRS, NIRS, and NDRS alter the"
+" opportunity set; local RTS describes an efficient operating point."
+msgstr "关于所代表的生产活动在总体规模变化时如何响应的假设或局部结论。CRS、VRS、NIRS 与 NDRS 改变生产机会集合；局部规模报酬则描述一个有效经营点。"
+
+#: ../../glossary.md:146 68501b0368e4405091452bc0a3916d3e
+msgid "Russell measure"
+msgstr "Russell 测度"
+
+#: ../../glossary.md:157 99bc39d18bd94c6db7084fe2e4cb2b94
+msgid ""
+"A family of componentwise contraction or expansion measures. The input and "
+"output Russell forms used in this book are exact conditional aliases of the "
+"corresponding standard oriented SBM programmes; the wider Russell family is "
+"not collapsed into that equivalence."
+msgstr ""
+"一族逐分量收缩或扩张的测度。本书使用的投入与产出 Russell 形式，是相应标准导向 SBM 规划的精确条件别名；范围更广的 Russell "
+"方法族不合并到这一等价关系中。"
+
+#: ../../glossary.md:152 f2655f17feb94baca5e328a5916bd5b4
+msgid "Scale efficiency"
+msgstr "规模效率"
+
+#: ../../glossary.md:163 6ac9020fcd044fee8c72087d0833286b
+msgid ""
+"A matched comparison of radial performance under CRS and VRS. It records an "
+"additional gap associated with scale assumptions, not a causal diagnosis of "
+"why an organization operates at its current size."
+msgstr "在 CRS 与 VRS 下对径向表现进行的匹配比较。它记录与规模假设有关的额外差距，并不能对组织为何以当前规模经营作出因果诊断。"
+
+#: ../../glossary.md:157 3a08b82dad894b86836857c49e84e16e
+msgid "Slacks-based measure (SBM)"
+msgstr "基于松弛变量的效率测度（SBM）"
+
+#: ../../glossary.md:168 374e34f0aae045a784a3b43ddcaf3bb7
+msgid ""
+"A non-radial efficiency family that aggregates variable-specific input "
+"excesses and output shortfalls after normalizing them by the evaluated "
+"quantities."
+msgstr "一种非径向效率方法族：以接受评价的数量为基准对各变量特定的投入冗余和产出不足标准化，再加以汇总。"
+
+#: ../../glossary.md:161 3ed7ab49b6244b6dac75bf8be3f070fa
+msgid "Strong efficiency"
+msgstr "强有效"
+
+#: ../../glossary.md:172 63f1151a487947c09252234e7fb37144
+msgid ""
+"Pareto--Koopmans efficiency: no input can be reduced or desirable output "
+"increased without worsening another protected quantity under the declared "
+"technology. A radial score of one alone may establish only weak radial "
+"efficiency."
+msgstr ""
+"Pareto--Koopmans 有效：在已声明技术下，如果不使另一项受保护数量恶化，就不能减少任何投入或增加任何合意产出。径向得分等于 1 "
+"本身可能只说明弱径向有效。"
+
+#: ../../glossary.md:166 068f42abc7854507ab26dc951a0ba824
+msgid "Technical change"
+msgstr "技术变动"
+
+#: ../../glossary.md:177 041f586d15724c3a9447a6d3ee5677fb
+msgid ""
+"The part of a productivity decomposition associated with a change in "
+"represented production opportunities. It is a benchmark-accounting "
+"component, not by itself a measure of innovation or technological adoption."
+msgstr "生产率分解中与被代表生产机会的变化有关的部分。它是标杆核算组成部分，本身不是创新或技术采用的测度。"
+
+#: ../../glossary.md:171 31a20a19343446c7b54ef008725b0652
+msgid "Technical efficiency"
+msgstr "技术效率"
+
+#: ../../glossary.md:182 81362a7c376c44ec97d0bed2b888cd2a
+msgid ""
+"Performance relative to a production technology under a specified "
+"improvement criterion. The term is incomplete unless the orientation or "
+"measure, scale assumption, and reference population are known."
+msgstr "在特定改进准则下相对于生产技术的绩效。如果不说明导向或测度、规模假设和参照总体，这一术语并不完整。"
+
+#: ../../glossary.md:176 f99756bdb75d4228a007b6bd846fdbb1
+msgid "Technology gap ratio (TGR)"
+msgstr "技术差距比（TGR）"
+
+#: ../../glossary.md:187 47657ef8c5c84e3b850c26b418800698
+msgid ""
+"A common historical name for the metatechnology ratio (MTR), comparing "
+"group-frontier and metafrontier performance under a matched radial "
+"specification."
+msgstr "共同技术比率（MTR）的常见历史名称；在匹配的径向设定下比较群组前沿表现与共同前沿表现。"
+
+#: ../../glossary.md:180 a427f4689d6b4ea597dd621247800652
+msgid "Undesirable output"
+msgstr "非合意产出"
+
+#: ../../glossary.md:191 8a11496b3c6642dcb2c86d5e7f1ac922
+msgid ""
+"A jointly produced outcome such as emissions, defects, or adverse events for"
+" which less is preferred. Its production role and disposal assumptions must "
+"be modelled; changing its sign does not settle those assumptions."
+msgstr "排放、次品或不良事件等联合生产结果，人们通常希望其数量更少。模型必须明确其生产角色和处置假设；仅仅改变符号正负并不能解决这些问题。"
+
+#: ../../glossary.md:185 187cd93b13204d7c81ffa9ebf6797b83
+msgid "Variable returns to scale (VRS)"
+msgstr "规模报酬可变（VRS）"
+
+#: ../../glossary.md:196 df238b12ba1e45718da789f373988e36
+msgid ""
+"A convex technology in which reference intensities sum to one, preventing "
+"unrestricted proportional replication of the complete observed activities."
+msgstr "一种凸技术，其中参照强度之和等于 1，从而不允许完整观测活动不受限制地按比例复制。"
+
+#: ../../glossary.md:189 84819733525043828007504ad1c0db4d
+msgid "Weak efficiency"
+msgstr "弱有效"
+
+#: ../../glossary.md:200 b323585724774cd2a6bd32e6bca69533
+msgid ""
+"A boundary status under a particular radial or directional improvement in "
+"which no further movement is possible along that path, although variable-"
+"specific slacks may remain."
+msgstr "在特定径向或方向性改进下的边界状态：沿该路径已不能继续改进，但各变量特定的松弛量仍可能存在。"
+
+#: ../../glossary.md:207 19d0b44bc6c24ac4b47bc4a4131c22f2
+#, python-brace-format
+msgid ""
+"The notation table in {doc}`notation` supplies symbols and score directions."
+" The reader's map in {doc}`appendices/unified-framework` shows how these "
+"concepts combine when choosing a model. Complete API names and technical "
+"variants remain in the separate DEAPack Documentation."
+msgstr ""
+"{doc}`notation` 中的符号表给出符号和得分方向；{doc}`appendices/unified-framework` "
+"中的读者地图显示选择模型时这些概念如何组合。完整 API 名称和技术变体仍见单独的 DEAPack 文档。"

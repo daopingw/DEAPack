@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.malmquist.decomposition.fgnz_pure_scale_extension",
+  "target": "productivity.malmquist.adjacent_geometric",
+  "type": "shares_compiler",
+  "equivalence_level": null,
+  "difference_axes": [
+    "technology",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.fgnz_enhanced.shared_crs_malmquist_headline",
+      "arguments": {
+        "orientation": "output",
+        "panel_pair": "same_matched_dmu_and_same_adjacent_periods",
+        "shared_headline_technology": "four_crs_contemporaneous_distance_tasks",
+        "shared_headline_operator": "adjacent_geometric_malmquist",
+        "additional_fgnz_tasks": "two_own_period_vrs_distance_tasks",
+        "additional_fgnz_analysis": "efficiency_change_equals_pure_efficiency_change_times_fgnz_scale_change",
+        "partial_failure_contract": "auxiliary_vrs_own_failure_preserves_the_valid_crs_core",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.2307/2117971"
+    ],
+    "proof_obligations": [
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_fgnz_enhanced_productivity.py::test_public_enhanced_fgnz_matches_independent_six_task_source_oracle",
+      "tests/test_fgnz_enhanced_productivity.py::test_three_period_six_task_cache_and_template_counts_are_exact",
+      "tests/test_fgnz_enhanced_productivity.py::test_vrs_own_failure_retains_the_complete_crs_core_only"
+    ]
+  }
+}

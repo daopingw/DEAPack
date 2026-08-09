@@ -1,0 +1,36 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "evaluation.cross.game_nash.liang_wu_cook_zhu_2008",
+  "target": "evaluation.cross.crs",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "valuation",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.same_crs_cross_sectional_multiplier_technology",
+      "arguments": {
+        "ordinary_matrix_roles": "appraiser_by_evaluatee",
+        "game_matrix_roles": "protected_by_focal",
+        "ordinary_programs": "n_primary",
+        "game_programs_per_update": "n_squared"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "review_supported",
+    "sources": [
+      "doi:10.1002/ev.1441",
+      "doi:10.1287/opre.1070.0487"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_cross_efficiency.py::test_internal_prototype_alias_and_transparent_one_by_one_peer_appraisal",
+      "tests/test_game_cross_efficiency.py::test_high_precision_pair_matrix_has_protected_by_focal_semantics"
+    ]
+  }
+}

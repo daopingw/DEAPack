@@ -1,0 +1,575 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.sbm.tone_tsutsui_2009",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Tone--Tsutsui network SBM",
+  "decision_question": "Which divisional resource excesses and service shortfalls explain the connected organization's performance shortfall when each internal handoff is inherited, jointly re-planned, or assigned once to its recipient's input account or supplier's output account?",
+  "names": {
+    "display": "Tone--Tsutsui network SBM",
+    "historical": [
+      {
+        "label": "Network slacks-based measure",
+        "spellings": [
+          "network SBM"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2008.05.027"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ToneTsutsuiNetworkSBM",
+      "aliases": [
+        {
+          "symbol": "NetworkSBM"
+        }
+      ]
+    },
+    "spellings": [
+      "Tone-Tsutsui network SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_system_and_process_performance_accountability",
+        "managerial_control": "coordinated_process_system"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.general_network"
+      ],
+      "fixed": {
+        "kind": "general_network",
+        "link_accounting": "tone_tsutsui_fixed_free_or_single_owner_accountable_continuity",
+        "processes_solved_jointly": true
+      },
+      "exposed": [
+        "nodes",
+        "links"
+      ],
+      "constraints": [
+        "condition.network.connected_balanced_graph",
+        "condition.network.one_observed_account_per_directed_link"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "process_resources",
+        "final_outputs": "desirable_services",
+        "intermediates": "directed_products_used_as_source_outputs_and_recipient_inputs"
+      },
+      "exposed": [
+        "process_variable_assignments"
+      ],
+      "constraints": [
+        "domain.network_sbm.strictly_positive_observed_nonvacant_variables"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "network_envelopment",
+        "link_balance": "exact_source_recipient_continuity",
+        "process_feasibility": "joint",
+        "intensity_coupling": "division_specific_subject_to_link_equalities"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs",
+        "link_control": "free"
+      },
+      "exposed": [
+        "returns_to_scale",
+        "link_control",
+        "link_kinds"
+      ],
+      "constraints": [
+        "fixed_and_free_links_change_feasibility_without_link_slacks",
+        "as_input_links_assign_one_input_slack_to_the_recipient",
+        "as_output_links_assign_one_output_slack_to_the_supplier",
+        "every_link_preserves_supplier_recipient_continuity",
+        "accountable_link_slacks_are_never_counted_at_both_endpoints"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "network_dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "process_complete_eligible_dmus",
+          "membership_rule": "all_graph_compatible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "network_slacks_based_measure",
+        "normalization": "evaluated_external_values_plus_only_the_source_declared_single_owner_accountable_link_values",
+        "aggregation": "orientation_specific_weighted_division_account",
+        "accountable_link_extension": "equation_26_input_or_equation_27_output_only"
+      },
+      "defaults": {
+        "orientation": "non_oriented"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "exogenous_division_importance_weights",
+        "weight_constraints": "nonnegative_and_sum_to_one",
+        "link_weights": "absent_from_fixed_free_base_objective",
+        "accountable_link_normalization": "one_equal_dimension_share_inside_the_single_owner_process_account"
+      },
+      "exposed": [
+        "division_weights"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_process_appraisal"
+      },
+      "defaults": {
+        "alternate_target_policy": "solver_selected"
+      },
+      "exposed": [
+        "alternate_target_policy"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_network_fit_with_process_account"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.network.tone_tsutsui_sbm",
+    "canonical_symbol": "ToneTsutsuiNetworkSBM",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.general_network"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "source_compatible_charnes_cooper_transformation",
+      "sparse_block_linear_programming",
+      "compiled_reference_reuse",
+      "division_specific_intensities",
+      "fixed_and_free_link_continuity",
+      "per_link_source_kind_classification",
+      "sparse_accountable_link_slack_blocks",
+      "recipient_input_and_supplier_output_responsibility"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_network_sbm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.network_sbm.strictly_positive_observed_nonvacant_variables",
+            "condition.network_sbm.valid_division_weights"
+          ]
+        }
+      },
+      {
+        "id": "division_network_sbm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.network_sbm.strictly_positive_observed_nonvacant_variables"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "orientation",
+      "returns_to_scale",
+      "link_control",
+      "link_kinds",
+      "division_weights",
+      "system_efficiency",
+      "division_efficiencies",
+      "external_input_slacks",
+      "external_output_slacks",
+      "accountable_link_slacks",
+      "accountability_owner_process",
+      "accountability_role",
+      "accountability_target",
+      "accountability_balance_residual",
+      "division_reference_intensities",
+      "link_targets",
+      "system_targets",
+      "system_division_reconstruction_residual",
+      "alternate_optimum_diagnostics",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "link_valid",
+      "link_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "semantic_solver_status",
+      "backend_and_raw_solver_status",
+      "solver_neutral_lp_optimality_certificate",
+      "network_account_reconstruction_certificate",
+      "original_unit_normalized_network_account_certificate",
+      "thresholded_peer_reconstruction_certificate",
+      "zero_extra_solve_certificate_accounting",
+      "atomic_fail_closed_result_release"
+    ],
+    "transformations": [
+      "source_compatible_charnes_cooper_linearization_for_nonoriented",
+      "reciprocal_output_efficiency_reporting"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.network.connected_balanced_graph",
+        "condition.network.one_observed_account_per_directed_link",
+        "domain.network_sbm.strictly_positive_observed_nonvacant_variables",
+        "condition.network_sbm.valid_division_weights"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_external_or_link_variable",
+        "co_transform": [],
+        "conditions": [
+          "domain.network_sbm.strictly_positive_observed_nonvacant_variables",
+          "condition.network_sbm.fixed_dimensionless_division_weights"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "source_link_feasible_joint_system_projection",
+      "efficiency": "source_proven_overall_efficient_for_selected_optimum",
+      "selection": "division_scores_slacks_intensities_references_and_free_link_targets_may_be_nonunique",
+      "conditions": [
+        "condition.network.connected_balanced_graph",
+        "condition.fixed_links_reproduce_observed_handoffs",
+        "condition.free_links_share_one_source_recipient_target",
+        "condition.accountable_input_links_assign_slack_once_to_recipient",
+        "condition.accountable_output_links_assign_slack_once_to_supplier",
+        "condition.accountable_links_preserve_bilateral_continuity",
+        "condition.valid_charnes_cooper_normalization_when_nonoriented"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2008.05.027"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.24545/00000978"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2014.02.039"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "specs/oracles/tone_tsutsui_2009_accountable_links.md",
+        "tests/test_three_process_service_chain_sbm.py::test_project_service_chain_vrs_input_scores_are_certified",
+        "tests/test_three_process_service_chain_sbm.py::test_input_process_accounts_reconstruct_project_system_score",
+        "tests/test_three_process_service_chain_sbm.py::test_crs_project_service_chain_scores_are_certified",
+        "tests/test_three_process_service_chain_sbm.py::test_crs_process_accounts_reconstruct_without_peer_basis_claim",
+        "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/tone_tsutsui_2009_accountable_links.md",
+        "public_api_test_locator": "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles",
+        "claims": [
+          {
+            "claim_id": "network_sbm.eq26.accountable_input_exact_optimum",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "single_owner_accountable_link"
+              ],
+              "network_structure": [
+                "two_process_one_link"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "equation_26_input_a",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "system_efficiency": "5/8",
+                    "supplier_efficiency": "1/2",
+                    "recipient_efficiency": "3/4",
+                    "link_slack": 1.0,
+                    "link_target": 1.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "system_efficiency",
+              "process_efficiency",
+              "link_slack",
+              "accountability_target",
+              "continuity_residual",
+              "accountability_balance_residual",
+              "reconstruction_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "intermediate"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "network_sbm.eq27.accountable_output_exact_optimum",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "single_owner_accountable_link"
+              ],
+              "network_structure": [
+                "two_process_one_link"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "equation_27_output_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "system_efficiency": "4/7",
+                    "supplier_efficiency": "2/3",
+                    "recipient_efficiency": "1/2",
+                    "link_slack": 1.0,
+                    "link_target": 2.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "system_efficiency",
+              "process_efficiency",
+              "link_slack",
+              "accountability_target",
+              "continuity_residual",
+              "accountability_balance_residual",
+              "reconstruction_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "intermediate"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_vrs_fixed_and_free_input_oracles",
+        "published_crs_free_input_oracle",
+        "published_process_score_oracles",
+        "all_three_source_orientations_exact_hand_oracles",
+        "source_equation_26_recipient_accountable_input_link_oracle",
+        "source_equation_27_supplier_accountable_output_link_oracle",
+        "accountable_link_slack_counted_once_in_owner_dimension",
+        "accountable_link_bilateral_continuity_and_endpoint_balance",
+        "accountable_fixed_and_free_non_equivalence",
+        "accountable_link_unit_invariance",
+        "orientation_and_link_kind_failure_matrix",
+        "orientation_specific_system_process_reconstruction",
+        "source_table_7_joint_target_feasibility_without_basis_lock",
+        "fixed_link_observed_balance",
+        "free_link_shared_target_balance",
+        "fixed_score_not_below_free_score",
+        "crs_free_link_no_efficient_division_counterexample",
+        "connected_cycle_support",
+        "graph_order_and_unit_invariance",
+        "sparse_compile_and_solve_counts",
+        "invalid_normalizer_and_weight_failures",
+        "public_alias_and_registry_metadata",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "network_account_reconstruction_certificate",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "semantic_numerical_error_for_rejected_backend_optimum",
+        "original_unit_normalized_network_account_reconstruction",
+        "independent_score_target_link_peer_and_dual_claim_gates",
+        "thresholded_peer_failure_preserves_certified_score_and_targets",
+        "extreme_1e_minus_12_to_1e_plus_12_unit_invariance",
+        "per_observation_failure_isolation",
+        "complete_solver_call_and_zero_extra_solve_contract"
+      ],
+      "locators": [
+        "tests/test_three_process_service_chain_sbm.py",
+        "tests/test_three_process_service_chain_sbm.py::test_forged_optimal_results_fail_closed_without_semantic_tables",
+        "tests/test_three_process_service_chain_sbm.py::test_failed_backend_with_bogus_marginals_cannot_leak_semantic_tables",
+        "tests/test_three_process_service_chain_sbm.py::test_failed_economic_reconstruction_certificate_is_atomic",
+        "tests/test_three_process_service_chain_sbm.py::test_one_bad_observation_does_not_contaminate_the_next_network_plan",
+        "tests/test_three_process_service_chain_sbm.py::test_peer_reporting_threshold_cannot_invalidate_scores_or_targets",
+        "tests/test_three_process_service_chain_sbm.py::test_unit_changes_and_declaration_order_leave_scores_unchanged",
+        "tests/test_three_process_service_chain_sbm.py::test_one_reference_compile_and_one_primary_lp_per_observation",
+        "tests/test_network_sbm_accountable_links_project_case.py",
+        "tests/test_lp_certificates.py",
+        "tests/test_registry_metadata.py",
+        "tests/test_catalog.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_sbm.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.network.network_sbm",
+        "path": "book/chapters/05-network/20-network-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.network_sbm",
+        "path": "docs/models/tone-tsutsui-network-sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

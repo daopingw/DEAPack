@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title description">
+<title id="title">Contemporaneous and global reference-information policies</title>
+<desc id="description">A contemporaneous period-specific policy lets each period's observations define its own best-practice benchmark. A full-horizon global policy lets observations from every declared period define one common benchmark.</desc>
+<defs>
+<marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#176b73"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d97732"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#76528f"/></marker>
+<marker id="axis-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#24323d"/></marker>
+</defs>
+<rect width="760" height="500" fill="white"/>
+<text x="380" y="31" text-anchor="middle" font-size="22" font-weight="700" fill="#24323d">Which observations may define best practice?</text>
+<line x1="245" y1="82" x2="245" y2="350" stroke="#dce5e7" stroke-width="2" stroke-dasharray="5 6"/>
+<circle cx="245" cy="72" r="8" fill="#24323d"/>
+<text x="245" y="61" text-anchor="middle" font-size="18" fill="#24323d">t</text>
+<line x1="410" y1="82" x2="410" y2="350" stroke="#dce5e7" stroke-width="2" stroke-dasharray="5 6"/>
+<circle cx="410" cy="72" r="8" fill="#24323d"/>
+<text x="410" y="61" text-anchor="middle" font-size="18" fill="#24323d">t+1</text>
+<line x1="575" y1="82" x2="575" y2="350" stroke="#dce5e7" stroke-width="2" stroke-dasharray="5 6"/>
+<circle cx="575" cy="72" r="8" fill="#24323d"/>
+<text x="575" y="61" text-anchor="middle" font-size="18" fill="#24323d">t+2</text>
+<text x="24" y="124" font-size="15" font-weight="700" fill="#176b73">PERIOD-SPECIFIC</text>
+<text x="24" y="146" font-size="15" font-weight="700" fill="#176b73">POLICY</text>
+<text x="24" y="168" font-size="13" fill="#687780">one benchmark</text>
+<text x="24" y="187" font-size="13" fill="#687780">for each period</text>
+<text x="24" y="249" font-size="15" font-weight="700" fill="#76528f">FULL-HORIZON</text>
+<text x="24" y="271" font-size="15" font-weight="700" fill="#76528f">GLOBAL POLICY</text>
+<text x="24" y="293" font-size="13" fill="#687780">one common benchmark</text>
+<text x="24" y="312" font-size="13" fill="#687780">for the declared horizon</text>
+<rect x="179" y="105" width="132" height="80" rx="10" fill="#dceff0" stroke="#176b73" stroke-width="2"/>
+<text x="245" y="140" text-anchor="middle" font-size="19" fill="#176b73">T(t)</text>
+<text x="245" y="164" text-anchor="middle" font-size="13" fill="#687780">that period only</text>
+<rect x="344" y="105" width="132" height="80" rx="10" fill="#dceff0" stroke="#176b73" stroke-width="2"/>
+<text x="410" y="140" text-anchor="middle" font-size="19" fill="#176b73">T(t+1)</text>
+<text x="410" y="164" text-anchor="middle" font-size="13" fill="#687780">that period only</text>
+<rect x="509" y="105" width="132" height="80" rx="10" fill="#dceff0" stroke="#176b73" stroke-width="2"/>
+<text x="575" y="140" text-anchor="middle" font-size="19" fill="#176b73">T(t+2)</text>
+<text x="575" y="164" text-anchor="middle" font-size="13" fill="#687780">that period only</text>
+<rect x="179" y="230" width="462" height="88" rx="12" fill="#eee8f3" stroke="#76528f" stroke-width="3"/>
+<text x="410" y="267" text-anchor="middle" font-size="21" font-weight="700" fill="#76528f">T(G)</text>
+<text x="410" y="293" text-anchor="middle" font-size="14" fill="#687780">observations from every declared period</text>
+<line x1="70" y1="378" x2="690" y2="378" stroke="#dce5e7" stroke-width="2"/>
+<text x="380" y="417" text-anchor="middle" font-size="15" font-weight="600" fill="#24323d">The information policy decides what can define best practice—and what measured change means.</text>
+</svg>

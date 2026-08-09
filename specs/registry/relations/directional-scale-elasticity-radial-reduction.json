@@ -1,0 +1,44 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "analysis.scale_elasticity.directional.relative_vrs.ren_etal_2021",
+  "target": "analysis.scale_elasticity.local.radial_vrs",
+  "type": "exact_reduction",
+  "equivalence_level": null,
+  "difference_axes": [
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.all_one_relative_directions",
+      "arguments": {
+        "input_relative_direction": "all_ones",
+        "output_relative_direction": "all_ones",
+        "technology": "vrs",
+        "reference": "matched",
+        "projection_orientation": "matched",
+        "projection_and_target": "identical",
+        "solver_and_tolerances": "matched"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1051/ro/2021131",
+      "doi:10.1057/palgrave.jors.2601741"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_directional_scale_elasticity.py::test_all_ones_exactly_reduces_to_existing_radial_scale_elasticity"
+    ]
+  }
+}

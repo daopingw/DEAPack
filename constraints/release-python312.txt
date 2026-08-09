@@ -1,0 +1,29 @@
+# DEAPack protected release lane: CPython 3.12 on ubuntu-24.04.
+#
+# This is deliberately a cross-platform direct constraint set, not a frozen
+# Linux wheel lock.  It fixes every direct runtime, build, validation, test,
+# benchmark, documentation, and rendered-static-asset producer used by the
+# protected release workflow.  Transitive resolutions and Ubuntu/TeX packages
+# are recorded in the emitted release-toolchain inventory.
+
+build==1.5.0
+jsonschema==4.26.0
+matplotlib==3.11.1
+myst-parser==5.1.0
+numpy==2.4.6
+packaging==26.2
+pandas==3.0.3
+pip==25.0.1
+psutil==7.2.2
+pydata-sphinx-theme==0.19.0
+Pygments==2.20.0
+pytest==9.1.1
+pytest-cov==7.1.0
+ruff==0.15.18
+scipy==1.18.0
+setuptools==84.0.0
+Sphinx==9.1.0
+sphinx-autodoc-typehints==3.11.0
+sphinx-intl==2.3.2
+sphinxcontrib-bibtex==2.7.0
+twine==7.0.0

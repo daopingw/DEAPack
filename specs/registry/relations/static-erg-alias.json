@@ -1,0 +1,62 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "static.erg",
+  "target": "static.sbm.nonoriented.tone2001",
+  "type": "alias",
+  "equivalence_level": "A",
+  "difference_axes": [],
+  "conditions": [
+    {
+      "profile": "condition.strictly_positive_io_denominators",
+      "arguments": {}
+    },
+    {
+      "profile": "condition.paired_axes_equal",
+      "arguments": {
+        "axes": [
+          "context",
+          "graph",
+          "data_roles",
+          "technology",
+          "estimator",
+          "reference",
+          "performance",
+          "valuation",
+          "evaluation_protocol",
+          "analysis",
+          "uncertainty"
+        ]
+      }
+    },
+    {
+      "profile": "condition.performance_fields_equal",
+      "arguments": {
+        "fields": [
+          "orientation",
+          "weights",
+          "normalization"
+        ]
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/S0377-2217(98)00098-8",
+      "doi:10.1016/S0377-2217(99)00407-5",
+      "doi:10.1007/s10957-023-02188-2"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_catalog.py::test_erg_is_a_discoverability_alias_not_a_second_method",
+      "tests/test_sbm.py"
+    ]
+  }
+}

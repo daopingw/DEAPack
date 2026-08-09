@@ -1,0 +1,617 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.global_malmquist_luenberger.oh_2010",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Oh global Malmquist--Luenberger productivity index",
+  "decision_question": "Did environmental productivity improve under Oh's one retrospective CRS common-factor benchmark, and how did operating performance and the best-practice gap change?",
+  "names": {
+    "display": "Oh global Malmquist--Luenberger productivity index",
+    "historical": [
+      {
+        "label": "Global Malmquist--Luenberger productivity index",
+        "spellings": [
+          "GML productivity index",
+          "Oh GML index"
+        ],
+        "sources": [
+          "doi:10.1007/s11123-010-0178-y"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "GlobalMalmquistLuenbergerProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "GlobalMalmquistLuenbergerDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "Oh global ML",
+      "circular global environmental GML"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_common_benchmark_environmental_productivity_change",
+        "source_time_comparison": "any_period_pair_within_one_fixed_global_sample",
+        "package_transition_enumeration": "matched_selected_forward_period_pair_identifiers_with_adjacent_default",
+        "managerial_interpretation": "operating_performance_and_global_environmental_best_practice_gap_change"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box_joint_production",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources_held_fixed_by_direction",
+        "outputs": "desirable_services_expanded_in_observed_proportions",
+        "bad_outputs": "undesirable_residuals_contracted_in_observed_proportions",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative_quantities",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.environmental_productivity.declared_bad_outputs",
+        "domain.environmental_productivity.comparable_units_and_roles",
+        "condition.null_jointness_observed_sample"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.null_jointness",
+        "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997"
+      ],
+      "fixed": {
+        "returns_to_scale": "crs",
+        "bad_output_disposability": "weak_common_factor",
+        "null_jointness": true,
+        "envelopment": "X_lambda_le_x_Y_lambda_ge_y_B_lambda_eq_b",
+        "global_reference_construction": "pooled_crs_conical_envelope",
+        "literal_union_equivalence": "not_claimed"
+      },
+      "constraints": [
+        "condition.common_factor_weak_disposal_requires_crs",
+        "condition.null_jointness_observed_sample"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "global_and_period_specific_dea_envelopment"
+      }
+    },
+    "reference": {
+      "fixed": {
+        "kind": "global_full_sample_with_contemporaneous_decomposition",
+        "productivity_distance_tasks": [
+          "base_on_global",
+          "comparison_on_global"
+        ],
+        "decomposition_distance_tasks": [
+          "base_on_base",
+          "comparison_on_comparison"
+        ],
+        "cross_period_directional_solves": 0,
+        "global_construction": "all_sample_observations_pooled_in_one_crs_conical_envelope",
+        "literal_union": "excluded_from_the_certified_computational_contract"
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "all_declared_panel_observations_for_global_scores",
+          "membership_rule": "full_sample_pooled_crs_conical_envelope_with_period_specific_subsets_for_decomposition",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "retrospective_global_full_sample",
+          "availability_cutoff": "end_of_declared_sample_vintage",
+          "vintage_required": true,
+          "historical_revision": "recompute_all_global_distances_when_periods_or_observations_change"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "environmental_directional_distance",
+        "input_direction": "zeros",
+        "output_direction": "observed",
+        "bad_output_direction": "observed",
+        "signed_literature_direction": "zero_y_negative_b",
+        "self_contained_distance_domain": "all_own_period_and_global_distances_nonnegative",
+        "off_diagonal_cross_period_distances": "not_part_of_the_oh_gml_task_graph"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "package_matched_selected_forward_period_pair_enumeration",
+        "source_pairwise_theory": "any_period_pair_within_the_same_fixed_global_vintage",
+        "comparison_pair_contract": {
+          "adjacent": "default_consecutive_pairs_in_declared_period_order",
+          "all": "opt_in_all_forward_i_less_than_j_pairs_in_declared_period_order",
+          "custom": "ordered_nonempty_sequence_of_unique_forward_base_and_comparison_period_pairs"
+        },
+        "unbalanced_scope": "applied_independently_to_each_selected_pair_without_shrinking_the_global_reference",
+        "output_size": {
+          "adjacent": "O(D_times_P)",
+          "all": "O(D_times_P_squared)",
+          "custom": "O(D_times_K_selected_pairs)"
+        },
+        "distance_solve_cache": "at_most_one_own_period_and_one_global_distance_per_observation_or_O(D_times_P)"
+      },
+      "defaults": {
+        "unbalanced": "drop",
+        "comparison_pairs": "adjacent"
+      },
+      "exposed": [
+        "unbalanced",
+        "comparison_pairs"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "global_malmquist_luenberger_productivity",
+        "aggregation": "ratio_of_two_global_directional_distance_factors",
+        "decomposition": "productivity_change_equals_efficiency_change_times_best_practice_change",
+        "best_practice_gap": "own_period_directional_distance_factor_over_global_directional_distance_factor_at_the_same_observation",
+        "best_practice_change": "comparison_best_practice_gap_over_base_best_practice_gap",
+        "circularity": "within_one_fixed_global_sample",
+        "pairwise_interpretation": "direct_environmental_productivity_change_between_selected_operating_dates_under_one_retrospective_benchmark_not_additional_causal_evidence",
+        "historical_revision": "recompute_global_distances_when_periods_or_observations_change",
+        "source_evidence_boundary": {
+          "certified": "crs_observation_scaled_common_factor_weak_disposal_fixed_global_vintage",
+          "deferred_to_next_version": [
+            "published_26_country_1990_2003_application_replay",
+            "literal_union_global_estimator",
+            "vrs_nirs_ndrs_and_scale_decompositions",
+            "alternative_directions",
+            "alternative_bad_output_technologies",
+            "sequential_biennial_rolling_and_prospective_references",
+            "signed_interval_stochastic_and_missing_data",
+            "inference_shadow_price_welfare_abatement_cost_and_causal_claims"
+          ]
+        }
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_sensitivity"
+  },
+  "implementation": {
+    "module": "deapack.analysis.environmental_productivity",
+    "canonical_symbol": "GlobalMalmquistLuenbergerProductivityIndex",
+    "registry_dependencies": [
+      "environmental.null_jointness",
+      "environmental.weak_disposal.common_factor.crs.chung_fare_grosskopf_1997",
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_global_and_period_references",
+      "deduplicated_distance_task_cache",
+      "sparse_distance_peer_cache",
+      "nonnegative_self_contained_distance_domain",
+      "solver_neutral_distance_task_certification",
+      "source_account_and_multiplicative_certification",
+      "atomic_transition_release_without_extra_solves",
+      "requested_unique_and_solver_call_accounting",
+      "source_faithful_fixed_vintage_forward_period_pair_assembly",
+      "all_pairs_quadratic_output_with_linear_distance_solve_cache",
+      "task_diagnostic_peer_valid_alias",
+      "uniform_solver_call_counters"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "global_malmquist_luenberger_productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.oh_gml.self_contained_distances_nonnegative",
+            "condition.all_global_and_contemporaneous_tasks_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "efficiency_change",
+      "best_practice_change",
+      "base_best_practice_gap",
+      "comparison_best_practice_gap",
+      "two_global_directional_distances",
+      "two_contemporaneous_directional_distances",
+      "decomposition_residual",
+      "distance_task_intensities",
+      "global_sample_vintage",
+      "oh_source_identity",
+      "score_valid",
+      "score_status",
+      "peer_valid",
+      "peer_status",
+      "four_distance_lp_certificates",
+      "environmental_distance_account_certificates",
+      "global_multiplicative_account_certificate",
+      "task_diagnostic_published_peer_account_certified_and_peer_valid",
+      "comparison_pair_mode_and_selected_period_pairs",
+      "comparison_pair_output_size_complexity",
+      "unmatched_comparison_pairs",
+      "requested_distance_tasks",
+      "unique_distance_solves",
+      "solver_calls",
+      "additional_solver_calls"
+    ],
+    "transformations": [
+      "productivity_change_equals_base_global_factor_over_comparison_global_factor",
+      "base_best_practice_gap_equals_base_own_period_distance_factor_over_base_global_distance_factor",
+      "comparison_best_practice_gap_equals_comparison_own_period_distance_factor_over_comparison_global_distance_factor",
+      "best_practice_change_equals_comparison_best_practice_gap_over_base_best_practice_gap",
+      "productivity_change_equals_efficiency_change_times_best_practice_change"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.environmental_productivity.declared_bad_outputs",
+        "domain.environmental_productivity.comparable_units_and_roles",
+        "condition.null_jointness_observed_sample",
+        "condition.oh_gml.self_contained_distances_nonnegative",
+        "condition.oh_gml.pooled_crs_conical_global_envelope"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_under_observed_directions",
+        "co_transform": [],
+        "conditions": [
+          "condition.observed_direction_tracks_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each_distance_task_is_certified_in_its_global_or_contemporaneous_cfg_technology",
+      "efficiency": "not_applicable_to_the_multiplicative_change_index",
+      "selection": "distance_task_peers_are_solver_selected_and_not_one_joint_projection",
+      "conditions": [
+        "condition.all_global_and_contemporaneous_tasks_optimal",
+        "condition.cfg_source_direction",
+        "condition.oh_gml.self_contained_distances_nonnegative"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s11123-010-0178-y"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jema.1997.0146"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/oh-2010-global-malmquist-luenberger-analytical.md",
+        "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_exact_two_period_oh_gml_matches_independent_dense_source_lp",
+        "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_exact_three_period_oh_gml_is_circular_within_one_global_vintage",
+        "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_oh_gml_oracle_is_invariant_to_coherent_quantity_unit_changes",
+        "tests/test_m13_global_comparison_pairs.py::test_oh_all_pairs_adds_exact_endpoint_without_more_solves"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/oh-2010-global-malmquist-luenberger-analytical.md",
+        "public_api_test_locator": "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_exact_two_period_oh_gml_matches_independent_dense_source_lp",
+        "claims": [
+          {
+            "claim_id": "productivity.oh_gml.exact_two_period_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_exact_two_period_oh_gml_matches_independent_dense_source_lp"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "package_matched_adjacent_transition_enumeration"
+              ],
+              "disposability": [
+                "weak_common_factor_with_null_jointness"
+              ],
+              "direction_policy": [
+                "zero_input_observed_desirable_and_bad_output"
+              ],
+              "negative_distance_policy": [
+                "nonnegative_self_contained_reference_tasks"
+              ],
+              "time_aggregation": [
+                "one_fixed_global_sample_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "four_own_and_global_directional_distances",
+              "nonnegative_distance_domain",
+              "pooled_crs_conical_global_envelope",
+              "global_malmquist_luenberger_productivity_change",
+              "efficiency_change",
+              "best_practice_change",
+              "base_best_practice_gap",
+              "comparison_best_practice_gap",
+              "decomposition_identity",
+              "global_peer_intensities",
+              "no_off_diagonal_cross_period_tasks",
+              "distinction_from_conventional_malmquist_luenberger"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.oh_gml.fixed_vintage_circularity",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_exact_three_period_oh_gml_is_circular_within_one_global_vintage",
+              "tests/test_m13_global_comparison_pairs.py::test_oh_all_pairs_adds_exact_endpoint_without_more_solves"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "adjacent_default_all_forward_and_explicit_forward_pair_enumeration"
+              ],
+              "disposability": [
+                "weak_common_factor_with_null_jointness"
+              ],
+              "direction_policy": [
+                "zero_input_observed_desirable_and_bad_output"
+              ],
+              "negative_distance_policy": [
+                "nonnegative_self_contained_reference_tasks"
+              ],
+              "time_aggregation": [
+                "one_fixed_global_sample_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "own_period_directional_distances",
+              "global_directional_distances",
+              "global_malmquist_luenberger_productivity_change",
+              "efficiency_change",
+              "best_practice_change",
+              "decomposition_identity",
+              "fixed_vintage_circularity",
+              "global_sample_vintage"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.oh_gml.unit_invariance",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_oh_global_malmquist_luenberger_independent_oracle.py::test_oh_gml_oracle_is_invariant_to_coherent_quantity_unit_changes"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "package_matched_adjacent_transition_enumeration"
+              ],
+              "disposability": [
+                "weak_common_factor_with_null_jointness"
+              ],
+              "direction_policy": [
+                "zero_input_observed_desirable_and_bad_output"
+              ],
+              "negative_distance_policy": [
+                "nonnegative_self_contained_reference_tasks"
+              ],
+              "time_aggregation": [
+                "one_fixed_global_sample_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "four_own_and_global_directional_distances",
+              "global_malmquist_luenberger_productivity_change",
+              "efficiency_change",
+              "best_practice_change",
+              "base_best_practice_gap",
+              "comparison_best_practice_gap",
+              "global_peer_intensities",
+              "unit_invariance"
+            ],
+            "reference_scope": {
+              "requested_kind": "global",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_green_shift",
+        "exact_two_period_source_account",
+        "independent_dense_source_lp",
+        "nonnegative_self_contained_distances",
+        "pooled_crs_conical_global_envelope",
+        "decomposition_reconstruction",
+        "solver_neutral_distance_task_certificates",
+        "atomic_transition_failure_isolation",
+        "independent_thresholded_peer_release_gate",
+        "malicious_solver_response_rejection",
+        "global_gap_and_multiplicative_account_gate",
+        "fixed_sample_circularity",
+        "global_and_contemporaneous_reference_roles",
+        "default_adjacent_backward_compatibility",
+        "source_faithful_all_forward_and_explicit_pair_enumeration",
+        "comparison_pair_validation_and_per_pair_unbalanced_policy",
+        "all_pairs_quadratic_output_with_linear_solve_cache",
+        "source_pairwise_theory",
+        "source_configuration_lock",
+        "source_identity",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_environmental_productivity.py",
+        "tests/test_environmental_productivity_postsolve_certification.py",
+        "tests/test_oh_global_malmquist_luenberger_independent_oracle.py",
+        "tests/test_m13_global_comparison_pairs.py",
+        "tests/test_benchmark_environmental_productivity.py::test_gml_all_pairs_benchmark_keeps_linear_solve_graph",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_productivity.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.productivity.environmental_reference_information",
+        "path": "book/chapters/04-productivity/environmental-productivity-ml-common-reference.md",
+        "state": "present",
+        "role": "sensitivity"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.global_malmquist_luenberger",
+        "path": "docs/analysis/global-malmquist-luenberger.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

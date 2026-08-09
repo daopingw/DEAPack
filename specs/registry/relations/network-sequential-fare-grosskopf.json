@@ -1,0 +1,49 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "network.sequential.lewis_sexton_2004.forward_radial",
+  "target": "network.radial.fare_grosskopf_2000",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "graph",
+    "technology",
+    "estimator",
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_two_stage_forward_quantity_network",
+      "arguments": {
+        "graph": "same_two_process_series_dag",
+        "data_roles": "same_external_inputs_forward_intermediates_and_final_outputs",
+        "comparison_population": "matched",
+        "orientation": "input",
+        "returns_to_scale_by_process": "matched_crs",
+        "lewis_sexton_programme": "node_appraisals_then_hypothetical_node_construction_and_ordered_propagation",
+        "lewis_sexton_operating_plan": "solver_selected_local_targets_become_downstream_operating_conditions",
+        "fare_grosskopf_programme": "one_simultaneous_connected_system_envelopment",
+        "fare_grosskopf_operating_plan": "one_jointly_feasible_plan_with_process_specific_intensities_and_link_balance",
+        "system_score_identity": "not_claimed",
+        "target_and_peer_identity": "not_claimed",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/S0305-0548(03)00095-9",
+      "doi:10.1016/S0038-0121(99)00012-9"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_network_sequential.py::test_reproduces_lewis_sexton_figure_2_and_tables_1_2",
+      "tests/test_network_sequential.py::test_forward_propagation_reports_selected_targets_and_reuses_sources",
+      "tests/test_fare_grosskopf_network_radial.py::test_positive_link_disposal_and_distinct_intensity_accounts",
+      "tests/test_fare_grosskopf_network_radial.py::test_evaluated_intermediate_is_endogenous_not_a_fixed_condition"
+    ]
+  }
+}

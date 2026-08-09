@@ -1,0 +1,59 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "static.range_directional.portela_thanassoulis_simpson_2004",
+  "target": "static.directional_distance",
+  "type": "composes",
+  "equivalence_level": null,
+  "difference_axes": [
+    "data_roles",
+    "technology",
+    "reference",
+    "performance",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.rdm.generic_ddf_compiler_composition",
+      "arguments": {
+        "compiler_reuse": "vrs_input_contraction_output_expansion_directional_programme",
+        "direction_policy": "focal_to_reference_coordinatewise_ideal",
+        "returns_to_scale": "vrs_only",
+        "comparison_population": "extrema_and_technology_identical",
+        "self_membership": "required",
+        "orientation": [
+          "non-oriented",
+          "input",
+          "output"
+        ],
+        "native_score": "beta",
+        "reported_efficiency": "one_minus_beta",
+        "semantic_equivalence": "forbidden",
+        "non_equivalent_to": [
+          "generic_exogenous_direction_ddf",
+          "range_adjusted_measure",
+          "semi_oriented_radial_measure",
+          "inverse_range_directional_measure",
+          "radial_model_after_translation",
+          "environmental_undesirable_output_ddf"
+        ]
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1057/palgrave.jors.2601768",
+      "doi:10.1006/jeth.1996.0096"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_method_ontology.py::test_range_directional_record_freezes_source_contract_and_non_alias_relation"
+    ]
+  }
+}

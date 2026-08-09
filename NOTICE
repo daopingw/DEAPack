@@ -1,0 +1,28 @@
+DEAPack component notice
+========================
+
+The project-owned DEAPack 2.x software component is offered by Daoping Wang
+under GPL-3.0-only. The complete license is in LICENSE. Separately marked
+historical and third-party material retains its own terms.
+
+The repository also contains separately governed components. Project-owned
+original Documentation prose is licensed under CC-BY-NC-SA-4.0, with
+attribution to Daoping Wang / DEAPack, while code examples remain under
+GPL-3.0-only. Bilingual Handbook Preview 1 carries the notice
+"Copyright © 2026 Daoping Wang. All Rights Reserved." Named third-party
+material retains its recorded terms.
+
+The preserved uppercase `DEAPack/*.py` 0.1.x compatibility source remains
+under its original MIT license and 2024 Dr Daoping Wang copyright notice in
+`LICENSES/MIT-DEAPack-0.1.x.txt`. It is excluded from the 2.x wheel and source
+distribution and does not acquire GPL merely by remaining in the Git tree.
+
+All 33 current dataset fingerprints have item-level mappings in
+DATA_LICENSES.md. Thirty project-created or independently selected fixtures
+and the Ren dataset use CC-BY-4.0 with their stated attribution; the two
+revenue datasets retain their upstream MIT terms. A changed fingerprint does
+not inherit an earlier approval automatically.
+
+The maintainer confirmed that no DEAPack 2.0 copy was conveyed to a third
+party under the superseded MIT development metadata. Third-party materials
+retain the terms and notices recorded in THIRD_PARTY_NOTICES.md.

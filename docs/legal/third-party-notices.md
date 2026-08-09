@@ -1,0 +1,2 @@
+```{include} ../../THIRD_PARTY_NOTICES.md
+```

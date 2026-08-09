@@ -1,0 +1,56 @@
+name: Model or method proposal
+description: Suggest a DEA, efficiency, productivity, environmental, network, dynamic, or appraisal method for review.
+title: "[Model proposal]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A proposal is welcome even when you are not ready to write code. Start from the economic or managerial question. Historical acronyms may map to an existing family, preset, or Documentation-only specialization.
+  - type: textarea
+    id: question
+    attributes:
+      label: Economic or managerial question
+      description: What decision, performance, valuation, organizational, environmental, or intertemporal question does the method answer?
+      placeholder: The method is intended to measure...
+    validations:
+      required: true
+  - type: textarea
+    id: distinction
+    attributes:
+      label: Distinct mechanism
+      description: Which maintained mechanism differs from an existing DEAPack family—technology, disposability, returns to scale, measure, direction, reference information, internal structure, dynamics, valuation, or inference?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Defining sources
+      description: Give the complete primary citation, DOI or stable URL, and the exact equation/table/page when known. Say explicitly when the full source is unavailable.
+    validations:
+      required: true
+  - type: textarea
+    id: data_domain
+    attributes:
+      label: Data domain and conventions
+      description: State admissible signs/zeros, orientation, returns to scale, score convention, target policy, and any special variable roles.
+  - type: textarea
+    id: oracle
+    attributes:
+      label: Independent numerical check
+      description: Identify published results, another implementation, or an independently derived analytical fixture. It is fine to say that none is currently available.
+  - type: textarea
+    id: materials
+    attributes:
+      label: Available contribution
+      description: List any equations, data, code, tests, benchmark, case study, or prose you can contribute, and state the rights or license for data/figures.
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Submission checks
+      options:
+        - label: I have distinguished a complete defining source from a later application or review.
+          required: true
+        - label: I have not assumed that a published data table may automatically be redistributed.
+          required: true
+        - label: I understand that a model proposal does not license attached third-party material or assign Handbook copyright.
+          required: true

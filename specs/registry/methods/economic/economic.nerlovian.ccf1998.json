@@ -1,0 +1,393 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "economic.nerlovian.ccf1998",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "economic",
+  "title": "Chambers--Chung--Färe Nerlovian profit inefficiency",
+  "decision_question": "How much normalized profit is forgone, and how much of that shortfall is associated with operational performance along the declared improvement priorities rather than with an economically unfavorable input--output mix?",
+  "names": {
+    "display": "Chambers--Chung--Färe Nerlovian profit inefficiency",
+    "historical": [
+      {
+        "label": "Nerlovian profit inefficiency",
+        "spellings": [
+          "Nerlovian efficiency",
+          "Nerlovian profit efficiency"
+        ],
+        "sources": [
+          "doi:10.1023/A:1022637501082"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "NerlovianProfitInefficiency",
+      "aliases": [
+        {
+          "symbol": "NerlovianEfficiency"
+        }
+      ]
+    },
+    "spellings": [
+      "CCF Nerlovian measure",
+      "directional Nerlovian profit inefficiency",
+      "Nerlovian decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "explain_foregone_profit",
+        "managerial_interpretation": "separate_operational_shortfall_from_economic_misallocation"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_resources_available_for_contraction",
+        "outputs": "priced_desirable_services_available_for_expansion",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_and_output_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.ddf.positive_active_direction",
+        "condition.positive_direction_value",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "convex_envelopment",
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free",
+        "shutdown": "excluded_by_vrs_convex_hull"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "matched_profit_and_directional_distance_programs"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "nerlovian_profit_inefficiency",
+        "measure": "normalized_profit_gap",
+        "technical_measure": "directional_distance",
+        "normalizer": "input_price_valued_input_direction_plus_output_price_valued_output_direction",
+        "direction": "lower_is_better"
+      },
+      "defaults": {
+        "input_direction": "observed",
+        "output_direction": "observed"
+      },
+      "exposed": [
+        "input_direction",
+        "output_direction"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_and_output_prices",
+        "price_sides": [
+          "inputs",
+          "outputs"
+        ]
+      },
+      "exposed": [
+        "input_prices",
+        "output_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_profit_and_directional_appraisal",
+        "target_components": [
+          "profit_maximizing_activity",
+          "directional_activity",
+          "optional_directional_slack_completed_activity"
+        ],
+        "target_uniqueness": "not_assessed"
+      },
+      "defaults": {
+        "compute_slacks": true
+      },
+      "exposed": [
+        "compute_slacks"
+      ]
+    },
+    "analysis": {
+      "components": [
+        "economic.profit.maximum",
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "kind": "additive_nerlovian_decomposition",
+        "identity": "nerlovian_inefficiency_equals_technical_inefficiency_plus_allocative_inefficiency"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.nerlovian",
+    "canonical_symbol": "NerlovianProfitInefficiency",
+    "registry_dependencies": [
+      "economic.profit.maximum",
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.directional_distance",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "profit_solution_reuse",
+      "secondary_slack_completion",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "nerlovian_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_matched_nerlovian_programs",
+            "condition.positive_direction_value"
+          ]
+        }
+      },
+      {
+        "id": "technical_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.optimal_directional_program",
+            "condition.positive_direction_value"
+          ]
+        }
+      },
+      {
+        "id": "allocative_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.optimal_matched_nerlovian_programs",
+            "condition.nerlovian_component_ordering"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "profit_gap",
+      "direction_value",
+      "score_valid",
+      "score_status",
+      "profit_score_valid",
+      "profit_score_status",
+      "directional_score_valid",
+      "directional_score_status",
+      "directional_completion_valid",
+      "directional_target_valid",
+      "directional_peer_valid",
+      "directional_dual_valid",
+      "decomposition_defined",
+      "reconstruction_residual",
+      "decomposition_slack_status",
+      "max_slack",
+      "profit_maximizing_target",
+      "directional_target",
+      "directional_slack_completed_target",
+      "component_intensities",
+      "diagnostics"
+    ],
+    "transformations": [
+      "nerlovian_inefficiency_equals_profit_gap_over_direction_value",
+      "technical_inefficiency_equals_directional_distance",
+      "allocative_inefficiency_equals_nerlovian_inefficiency_minus_technical_inefficiency",
+      "nerlovian_inefficiency_equals_technical_inefficiency_plus_allocative_inefficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.ddf.positive_active_direction",
+        "condition.positive_direction_value",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_direction_and_inverse_price_rescaling_preserves_the_dimensionless_decomposition",
+        "co_transform": [
+          "input_directions",
+          "output_directions",
+          "input_prices",
+          "output_prices"
+        ],
+        "conditions": [
+          "condition.quantity_directions_and_prices_co_transform",
+          "condition.same_reference_comparison"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "Profit-maximizing and directional claims are released only when their matched source programs and economic accounts certify in the VRS reference technology.",
+      "efficiency": "The profit target is price-value optimal and the directional target is optimal for the declared improvement priorities; only the optional secondary program completes directional slacks, and no universal strong-efficiency claim is made.",
+      "selection": "The profit, directional, and optional slack-completed peer systems are selected by separate programs and may be non-unique.",
+      "conditions": [
+        "condition.optimal_matched_nerlovian_programs",
+        "condition.positive_direction_value"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1023/A:1022637501082"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jeth.1996.0096"
+      },
+      {
+        "role": "implementation",
+        "id": "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofit.jl#L12-L36"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofit.jl#L12-L36",
+        "tests/test_nerlovian.py::test_matches_the_public_zofio_pastor_aparicio_profit_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "cross_implementation_economic_and_directional_components",
+        "management_decomposition_identity",
+        "custom_and_observed_directions",
+        "price_and_unit_invariance",
+        "slack_completion",
+        "profit_and_directional_score_validity_propagation",
+        "uncertified_directional_component_fails_closed",
+        "atomic_component_table_release",
+        "zero_additional_certificate_solves",
+        "domain_validation",
+        "compiled_reference_reuse",
+        "metadata_contract"
+      ],
+      "locators": [
+        "tests/test_nerlovian.py",
+        "tests/test_directional_postsolve_certification.py::test_nerlovian_decomposition_consumes_directional_score_validity"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_profit.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.economic_efficiency_prices",
+        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.nerlovian",
+        "path": "docs/models/nerlovian.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.economics",
+        "path": "docs/api/economics.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "evaluation.super.directional.ray_2008",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": "protocol",
+  "category": "evaluation",
+  "title": "Ray (2008) directional super-efficiency",
+  "decision_question": "After a focal organization is removed, how much proportional resource increase and desirable-service reduction can its observed record absorb before the remaining VRS peer population can replace it?",
+  "names": {
+    "display": "Ray (2008) directional super-efficiency",
+    "historical": [
+      {
+        "label": "The Directional Distance Function and Measurement of Super-Efficiency",
+        "spellings": [
+          "directional super-efficiency",
+          "Nerlove-Luenberger super-efficiency",
+          "NL super-efficiency",
+          "Ray directional super-efficiency"
+        ],
+        "sources": [
+          "doi:10.1057/palgrave.jors.2602392"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RayDirectionalSuperEfficiency",
+      "aliases": [
+        {
+          "symbol": "NerloveLuenbergerSuperEfficiency"
+        }
+      ]
+    },
+    "spellings": [
+      "VRS observed-direction super-efficiency",
+      "leave-one-out directional peer-replacement exposure"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "frontier_discrimination_and_stability_appraisal",
+        "managerial_interpretation": "measure_joint_proportional_peer_replacement_exposure_after_row_level_self_exclusion",
+        "score_above_one_claim": "remaining_organizations_require_more_resources_and_fewer_services_to_replace_the_record_not_more_than_one_hundred_percent_efficiency",
+        "normative_quality_claim": "none",
+        "statistical_outlier_claim": "none"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_controllable_resource_quantities",
+        "outputs": "nonnegative_desirable_service_quantities_with_positive_row_aggregate",
+        "bad_outputs": "excluded",
+        "sample": "source_global_cross_section_or_package_extension_under_declared_reference_policy",
+        "representation": {
+          "measurement_scale": "cardinal_ratio",
+          "sign_domain": "strictly_positive_inputs_nonnegative_outputs",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "exclusion_unit": "one_row"
+        },
+        "zero_input_repair": "unsupported",
+        "signed_data_extension": "unsupported"
+      },
+      "constraints": [
+        "domain.ray_directional_super.strictly_positive_inputs",
+        "condition.desirable_outputs_only",
+        "condition.positive_aggregate_desirable_output",
+        "condition.at_least_two_observations"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "ray_2008_vrs_directional_super_efficiency",
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free",
+        "source_equation": 8,
+        "unsupported_returns_to_scale": [
+          "crs",
+          "nirs",
+          "ndrs"
+        ]
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.leave_one_out"
+      ],
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "otherwise_eligible_reference_rows",
+          "membership_rule": "require_evaluated_row_in_base_reference_then_remove_exactly_that_row",
+          "self_membership": "required_before_exclusion"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.evaluated_row_present_in_base_reference",
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "performance": {
+      "components": [
+        "direction.observation_scaled"
+      ],
+      "fixed": {
+        "family": "nerlove_luenberger_directional_super_efficiency",
+        "input_direction": "negative_evaluated_input_bundle",
+        "output_direction": "positive_evaluated_output_bundle",
+        "native_distance": "unrestricted_beta",
+        "reported_score": "one_minus_beta",
+        "score_direction": "higher_is_more_exposed",
+        "frontier_value": 1.0,
+        "source_valid_projection_range": "beta_greater_than_or_equal_to_minus_one_equivalently_score_at_most_two"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.super"
+      ],
+      "fixed": {
+        "kind": "ray_2008_vrs_directional_leave_one_out",
+        "exclusion_unit": "evaluated_row",
+        "self_exclusion": "required",
+        "direction_choice": "source_fixed_observed_bundle",
+        "beta_bound": "unrestricted",
+        "infeasibility_policy": "report_original_solver_status_without_repair",
+        "negative_projection_policy": "retain_certified_raw_beta_and_score_but_mark_substantive_score_and_target_invalid",
+        "slack_completion": "none_source_phase_one_only"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "frontier_ranking_and_stability_appraisal",
+        "peer_plan": "solver_selected_source_program_optimum",
+        "peer_plan_interpretation": "replacement_witness_not_improvement_prescription",
+        "peer_plan_uniqueness": "not_assessed",
+        "pareto_koopmans_classification": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.evaluation.directional_super_efficiency",
+    "canonical_symbol": "RayDirectionalSuperEfficiency",
+    "registry_dependencies": [
+      "direction.observation_scaled",
+      "estimator.full.dea",
+      "evaluation.super",
+      "graph.black_box",
+      "reference.leave_one_out",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_base_reference_reuse",
+      "row_level_self_exclusion_equality",
+      "unrestricted_signed_directional_distance",
+      "primal_dual_optimality_certification",
+      "source_projection_validity_state",
+      "tidy_directional_target_peer_surplus_intensity_and_diagnostic_tables"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "nl_super_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 2.0,
+          "conditions": [
+            "condition.certified_source_optimum",
+            "condition.nonnegative_source_directional_projection"
+          ]
+        }
+      },
+      {
+        "id": "beta",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": -1.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.certified_source_optimum",
+            "condition.nonnegative_source_directional_projection"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "unrestricted_beta",
+      "nl_super_efficiency_equals_one_minus_beta",
+      "score_valid",
+      "ranking_value_valid",
+      "source_projection_nonnegative",
+      "is_directionally_efficient",
+      "is_super_efficient",
+      "generic_is_efficient_missing_without_slack_completion",
+      "reference_size_before_exclusion",
+      "reference_size_after_exclusion",
+      "self_exclusion_status",
+      "source_directional_boundary",
+      "solver_selected_peer_activity",
+      "source_envelopment_surpluses",
+      "solver_selected_peer_intensities",
+      "primal_dual_and_source_account_diagnostics"
+    ],
+    "transformations": [
+      "nl_super_efficiency_equals_one_minus_beta"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.ray_directional_super.strictly_positive_inputs",
+        "condition.desirable_outputs_only",
+        "condition.positive_aggregate_desirable_output",
+        "condition.evaluated_row_present_in_base_reference",
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling_with_observed_direction_co_transformation",
+        "co_transform": [
+          "source_direction",
+          "directional_boundary",
+          "peer_activity"
+        ],
+        "conditions": [
+          "condition.same_reference_membership",
+          "condition.strictly_positive_rescaling_factors"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The source directional boundary and peer witness are released after a certified source solve; a negative output boundary is retained only as an explicitly invalid diagnostic rather than a substantive target.",
+      "efficiency": "Dedicated directional and super-efficiency fields classify the source scalar; generic is_efficient is missing because no Pareto-Koopmans slack completion is performed.",
+      "selection": "The scalar beta and directional boundary are source-defined; peer intensities and peer activity use one solver-selected source optimum and are not claimed unique or prescriptive.",
+      "conditions": [
+        "condition.certified_primal_dual_source_optimum",
+        "condition.certified_postprocessed_source_account"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1057/palgrave.jors.2602392"
+      },
+      {
+        "role": "defining",
+        "id": "https://media.economics.uconn.edu/working/2004-16.pdf"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "specs/oracles/ray-directional-super-efficiency.md",
+        "tests/test_ray_directional_super_efficiency.py"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_ten_organization_scores",
+        "published_twenty_eight_airline_beta_values",
+        "published_negative_output_projection_boundary",
+        "independent_dense_source_compiler",
+        "public_alias_and_method_metadata",
+        "source_directional_targets_and_peer_reconstruction",
+        "strictly_positive_input_domain",
+        "fixed_vrs_contract",
+        "reference_membership_and_self_exclusion",
+        "unit_invariance",
+        "peer_reporting_threshold_independence",
+        "solver_and_certificate_failure_closure"
+      ],
+      "locators": [
+        "tests/test_ray_directional_super_efficiency.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_directional_super_efficiency.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.evaluation.directional_super_efficiency",
+        "path": "docs/evaluation/directional-super-efficiency.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.evaluation",
+        "path": "docs/api/evaluation.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

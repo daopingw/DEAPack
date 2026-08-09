@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title description">
+<title id="title">Five radial benchmarks from one set of operating observations</title>
+<desc id="description">For organization E, FDH permits one observed template, FCH permits a subset of distinct templates, FRH permits repeated whole templates, CCR permits fractional scalable activity, and VRS permits one convex average. FCH and VRS are not generally nested.</desc>
+<defs>
+<marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#176b73"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d97732"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#76528f"/></marker>
+<marker id="axis-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#24323d"/></marker>
+</defs>
+<rect width="760" height="500" fill="white"/>
+<text x="380" y="27" text-anchor="middle" font-size="16" font-weight="700" fill="#24323d">What may the benchmark combine?</text>
+<text x="380" y="49" text-anchor="middle" font-size="12.5" fill="#687780">Same observations · organization E = (resource 10, service 10)</text>
+<rect x="18" y="67" width="175" height="226" rx="14" fill="#f5f0f8" stroke="#76528f" stroke-width="1.7"/>
+<rect x="18" y="67" width="175" height="48" rx="14" fill="#76528f"/>
+<rect x="18" y="99" width="175" height="16" fill="#76528f"/>
+<text x="105.5" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="white">FDH</text>
+<text x="105.5" y="139" text-anchor="middle" font-size="10.5" font-weight="700" fill="#76528f">ONE TEMPLATE</text>
+<text x="36" y="171" font-size="12" fill="#24323d">input: E</text>
+<text x="36" y="194" font-size="12" fill="#24323d">output: E</text>
+<line x1="36" y1="211" x2="175" y2="211" stroke="#76528f" stroke-width="1" opacity="0.42"/>
+<text x="105.5" y="239" text-anchor="middle" font-size="17" font-weight="700" fill="#76528f">θ = 1.00</text>
+<text x="105.5" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#76528f">1/φ = 1.00</text>
+<rect x="201" y="67" width="175" height="226" rx="14" fill="#edf7f6" stroke="#176b73" stroke-width="1.7"/>
+<rect x="201" y="67" width="175" height="48" rx="14" fill="#176b73"/>
+<rect x="201" y="99" width="175" height="16" fill="#176b73"/>
+<text x="288.5" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="white">FCH</text>
+<text x="288.5" y="139" text-anchor="middle" font-size="10.5" font-weight="700" fill="#176b73">DISTINCT SUBSET</text>
+<text x="219" y="171" font-size="12" fill="#24323d">input: A + B</text>
+<text x="219" y="194" font-size="12" fill="#24323d">output: A + B</text>
+<line x1="219" y1="211" x2="358" y2="211" stroke="#176b73" stroke-width="1" opacity="0.42"/>
+<text x="288.5" y="239" text-anchor="middle" font-size="17" font-weight="700" fill="#176b73">θ = 0.70</text>
+<text x="288.5" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#176b73">1/φ = 0.909</text>
+<rect x="384" y="67" width="175" height="226" rx="14" fill="#fff4ec" stroke="#d97732" stroke-width="1.7"/>
+<rect x="384" y="67" width="175" height="48" rx="14" fill="#d97732"/>
+<rect x="384" y="99" width="175" height="16" fill="#d97732"/>
+<text x="471.5" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="white">FRH</text>
+<text x="471.5" y="139" text-anchor="middle" font-size="10.5" font-weight="700" fill="#d97732">WHOLE REPEATS</text>
+<text x="402" y="171" font-size="12" fill="#24323d">input: 2A</text>
+<text x="402" y="194" font-size="12" fill="#24323d">output: 3A</text>
+<line x1="402" y1="211" x2="541" y2="211" stroke="#d97732" stroke-width="1" opacity="0.42"/>
+<text x="471.5" y="239" text-anchor="middle" font-size="17" font-weight="700" fill="#d97732">θ = 0.60</text>
+<text x="471.5" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#d97732">1/φ = 0.556</text>
+<rect x="567" y="67" width="175" height="226" rx="14" fill="#eef5fb" stroke="#356fa3" stroke-width="1.7"/>
+<rect x="567" y="67" width="175" height="48" rx="14" fill="#356fa3"/>
+<rect x="567" y="99" width="175" height="16" fill="#356fa3"/>
+<text x="654.5" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="white">CCR</text>
+<text x="654.5" y="139" text-anchor="middle" font-size="10.5" font-weight="700" fill="#356fa3">FRACTIONAL SCALE</text>
+<text x="585" y="171" font-size="12" fill="#24323d">input: 5/3 A</text>
+<text x="585" y="194" font-size="12" fill="#24323d">output: 10/3 A</text>
+<line x1="585" y1="211" x2="724" y2="211" stroke="#356fa3" stroke-width="1" opacity="0.42"/>
+<text x="654.5" y="239" text-anchor="middle" font-size="17" font-weight="700" fill="#356fa3">θ = 0.50</text>
+<text x="654.5" y="266" text-anchor="middle" font-size="17" font-weight="700" fill="#356fa3">1/φ = 0.50</text>
+<text x="380" y="322" text-anchor="middle" font-size="17" font-weight="700" fill="#24323d">FDH  ⊂  FCH  ⊂  FRH  ⊂  CCR</text>
+<text x="380" y="341" text-anchor="middle" font-size="11.5" fill="#687780">Matched data and ordinary free disposal</text>
+<rect x="46" y="357" width="668" height="88" rx="14" fill="#f7fafb" stroke="#9eb4ba" stroke-width="1.5"/>
+<rect x="62" y="372" width="96" height="57" rx="10" fill="#24323d"/>
+<text x="110" y="397" text-anchor="middle" font-size="19" font-weight="700" fill="white">VRS</text>
+<text x="110" y="416" text-anchor="middle" font-size="10.5" fill="#d7e2e5">one convex average</text>
+<text x="181" y="383" font-size="11.5" font-weight="700" fill="#687780">NO GENERAL NESTING WITH FCH</text>
+<text x="181" y="407" font-size="13" fill="#24323d">VRS: θ = 0.75 · 1/φ = 0.818</text>
+<text x="181" y="429" font-size="12.5" fill="#24323d">FCH is stricter for input saving here; VRS is stricter for output expansion.</text>
+<rect x="66" y="461" width="628" height="27" rx="13" fill="#24323d"/>
+<text x="380" y="479" text-anchor="middle" font-size="11.5" font-weight="700" fill="white">These are different operating rights, not solver tuning parameters</text>
+</svg>

@@ -1,0 +1,452 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.sbm.separable_strong",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Separable undesirable-output SBM",
+  "decision_question": "How much normalized input excess, desirable-output shortfall, and reference-supported separable residual excess remains when the three accounts improve non-radially?",
+  "names": {
+    "display": "Separable undesirable-output SBM",
+    "historical": [
+      {
+        "label": "Undesirable-output slacks-based measure",
+        "spellings": [
+          "undesirable-output SBM",
+          "bad-output SBM"
+        ],
+        "sources": [
+          "doi:10.1016/S0377-2217(99)00407-5",
+          "doi:10.24545/00000955"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "UndesirableSlacksBasedDEA",
+      "aliases": [
+        {
+          "symbol": "UndesirableSBM"
+        }
+      ]
+    },
+    "spellings": [
+      "separable environmental SBM",
+      "strong-disposal undesirable SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "nonradial_operating_and_environmental_benchmarking",
+        "managerial_plan": "resource_saving_service_expansion_and_reference_supported_separable_residual_contraction"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box_joint_production"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "strongly_disposable_undesirable_residuals",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "strictly_positive",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.environmental_sbm.strictly_positive_inputs_outputs_and_bads"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.disposal.strong",
+        "environmental.joint_production.envelopment",
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "bad_output_disposal": "strong",
+        "bad_output_balance": "b_o_equals_B_lambda_plus_bad_output_slack",
+        "null_jointness": false,
+        "separability": "good_and_bad_output_slacks_separable"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_environmental_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "slacks_based_measure",
+        "orientation": "non_oriented_environmental",
+        "normalization": "evaluated_dmu_values",
+        "output_aggregation": "equal_weight_over_good_and_bad_dimensions",
+        "source_table_scope": "tone_2003_table_2_equal_good_bad_weight_1_to_1_only",
+        "published_score_boundary": "all_equal_weight_1_to_1_scores_and_targets_match_the_high_resolution_source_table",
+        "unequal_weight_source_columns": "not_claimed_as_reproduced"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_dimension_weights"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "fractional_transformation": "charnes_cooper",
+        "alternate_target_policy": "solver_selected",
+        "efficiency_certification_boundary": "certified_reference_technology_membership"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.sbm",
+    "canonical_symbol": "UndesirableSlacksBasedDEA",
+    "registry_dependencies": [
+      "environmental.disposal.strong",
+      "environmental.joint_production.envelopment",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "charnes_cooper_transformation",
+      "sparse_linear_programming",
+      "shared_reference_compilation",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "row_scaled_quantity_balances",
+      "normalized_transformed_slack_coordinates",
+      "solver_neutral_lp_optimality_certificate",
+      "dehomogenized_sbm_economic_account_certificate",
+      "thresholded_public_peer_account_certificate",
+      "complete_original_unit_dual_account",
+      "claim_specific_fail_closed_result_release"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "rho_B",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.evaluated_observation_in_reference_technology",
+            "domain.environmental_sbm.strictly_positive_inputs_outputs_and_bads"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_inefficiency",
+      "desirable_output_inefficiency",
+      "bad_output_inefficiency",
+      "output_inefficiency",
+      "output_account_factor",
+      "score_valid",
+      "score_status",
+      "base_reference_size",
+      "reference_size",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "input_slacks",
+      "output_slacks",
+      "bad_output_slacks",
+      "peers",
+      "targets",
+      "strong_disposal_identity",
+      "solver_neutral_lp_optimality_certificate",
+      "sbm_account_reconstruction_certificate",
+      "thresholded_peer_account_reconstruction_certificate",
+      "complete_original_unit_dual_account_certificate",
+      "external_reference_membership_from_certified_sbm_balance",
+      "peer_eligibility_provenance_when_supplied",
+      "atomic_fail_closed_result_release",
+      "claim_specific_fail_closed_score_target_peer_and_dual_release"
+    ],
+    "transformations": []
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.environmental_sbm.strictly_positive_inputs_outputs_and_bads"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_quantity_columns",
+        "co_transform": [
+          "slacks",
+          "targets",
+          "balance_dual_marginals_inversely"
+        ],
+        "conditions": []
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_certified_solver_neutral_lp_and_dehomogenized_sbm_account_reconstruction",
+      "efficiency": "conditional_on_the_separable_strong_disposal_formulation",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.valid_charnes_cooper_normalization",
+        "condition.optimal_primary_solve",
+        "condition.successful_primal_dual_certificate",
+        "condition.successful_sbm_account_reconstruction_certificate"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "predecessor",
+        "id": "doi:10.1016/S0377-2217(99)00407-5"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.24545/00000955"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.1016/j.ejor.2009.01.031"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/tone-2003-separable-undesirable-sbm.md",
+        "tests/test_undesirable_sbm.py::test_undesirable_sbm_fractional_score_and_components",
+        "tests/test_undesirable_sbm.py::test_undesirable_sbm_is_units_invariant"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/tone-2003-separable-undesirable-sbm.md",
+        "public_api_test_locator": "tests/test_undesirable_sbm.py::test_undesirable_sbm_fractional_score_and_components",
+        "claims": [
+          {
+            "claim_id": "environmental.sbm.separable_strong.exact_project_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_undesirable_sbm.py::test_undesirable_sbm_fractional_score_and_components"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "self_appraisal_fractional_program"
+              ],
+              "disposability": [
+                "separable_strong"
+              ],
+              "projection_policy": [
+                "input_output_and_bad_output_slack_projection"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "input_inefficiency",
+              "desirable_output_inefficiency",
+              "bad_output_inefficiency",
+              "targets",
+              "peers"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "fractional_score",
+        "independent_dense_equation_compiler",
+        "panel_reference_reuse",
+        "positive_domain",
+        "project_fixture_exact_score_and_targets",
+        "returns_to_scale",
+        "score_components",
+        "strong_disposal_lock",
+        "target_contract",
+        "unit_invariance",
+        "extreme_independent_unit_rescaling_1e_plus_minus_9_and_12",
+        "target_and_original_unit_dual_co_transformation",
+        "external_reference_membership_and_outside_classification",
+        "thresholded_public_peer_account_fail_closed_without_score_or_target_loss",
+        "complete_finite_dual_account_all_or_nothing",
+        "forged_optimal_environmental_route_fail_closed",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "sbm_account_reconstruction_certificate",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "single_bad_dmu_failure_isolation",
+        "weak_disposal_shortcut_rejection"
+      ],
+      "locators": [
+        "tests/test_undesirable_sbm.py",
+        "tests/test_m13_environmental_peer_eligibility.py",
+        "tests/test_undesirable_sbm.py::test_undesirable_sbm_extreme_units_preserve_score_target_and_dual_accounts",
+        "tests/test_undesirable_sbm.py::test_undesirable_sbm_certifies_feasible_external_reference_membership",
+        "tests/test_undesirable_sbm.py::test_undesirable_sbm_reports_infeasible_external_plan_as_outside",
+        "tests/test_undesirable_sbm.py::test_peer_threshold_withholds_only_the_uncertified_public_peer_account",
+        "tests/test_sbm_postsolve_certification.py::test_uncertified_separable_undesirable_sbm_fails_closed",
+        "tests/test_sbm_postsolve_certification.py::test_environmental_sbm_duals_have_an_independent_complete_account_gate",
+        "tests/test_sbm_postsolve_certification.py",
+        "tests/test_sbm_postsolve_certification.py::test_uncertified_optimal_solution_withholds_every_semantic_table",
+        "tests/test_sbm_postsolve_certification.py::test_economic_account_corruption_fails_closed",
+        "tests/test_sbm_postsolve_certification.py::test_one_bad_dmu_does_not_abort_or_contaminate_the_next_dmu",
+        "tests/test_sbm_postsolve_certification.py::test_default_highs_certifies_all_classic_orientations_and_rts",
+        "tests/test_lp_certificates.py",
+        "tests/test_environmental_disposability_contrast.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.environmental.sbm",
+        "path": "book/chapters/03-environmental/07-undesirable-output-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.undesirable_sbm",
+        "path": "docs/models/undesirable-sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

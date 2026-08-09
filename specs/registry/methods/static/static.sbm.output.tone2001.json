@@ -1,0 +1,464 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.sbm.output.tone2001",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "static",
+  "title": "Tone output-oriented SBM",
+  "decision_question": "How much could management expand delivered outputs on average without requiring more observed inputs?",
+  "names": {
+    "display": "Tone output-oriented SBM",
+    "historical": [
+      {
+        "label": "Output-oriented slacks-based measure",
+        "spellings": [
+          "output-oriented SBM",
+          "output SBM"
+        ],
+        "sources": [
+          "doi:10.1016/S0377-2217(99)00407-5"
+        ]
+      },
+      {
+        "label": "Russell measure of output efficiency",
+        "spellings": [
+          "output-oriented Russell measure",
+          "output Russell measure"
+        ],
+        "sources": [
+          "doi:10.1007/978-94-015-7721-2",
+          "doi:10.1016/S0377-2217(99)00407-5"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "OutputOrientedSlacksBasedDEA",
+      "aliases": [
+        {
+          "symbol": "OutputSBM"
+        },
+        {
+          "symbol": "OutputRussell"
+        }
+      ]
+    },
+    "spellings": [
+      "output-oriented SBM",
+      "output SBM",
+      "output-oriented Russell measure",
+      "output Russell measure"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "service_expansion_benchmarking",
+        "managerial_plan": "expand_outputs_without_increasing_inputs"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "maintained_controllable_resources",
+        "outputs": "expandable_desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.sbm.strictly_positive_io_denominators"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "source_documented_returns_to_scale": [
+          "crs",
+          "vrs"
+        ],
+        "package_returns_to_scale_variants": [
+          "nirs",
+          "ndrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "slacks_based_measure",
+        "orientation": "output",
+        "normalization": "evaluated_dmu_output_values"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_output_dimension_weights"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "objective_form": "direct_output_expansion_linear_program",
+        "unoptimized_side": "feasible_input_slacks"
+      },
+      "defaults": {
+        "alternate_target_policy": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.sbm",
+    "canonical_symbol": "OutputOrientedSlacksBasedDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "shared_sparse_sbm_compiler",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "rho_O",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "output_inefficiency",
+      "output_expansion_factor",
+      "output_slacks",
+      "feasible_input_slacks",
+      "peers",
+      "solver_selected_targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "score_valid",
+      "score_status",
+      "solver_neutral_lp_optimality_certificate",
+      "sbm_account_reconstruction_certificate",
+      "atomic_fail_closed_result_release"
+    ],
+    "transformations": [
+      "reciprocal_of_average_output_expansion"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.sbm.strictly_positive_io_denominators"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": []
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_certified_primary_solve_and_sbm_account_reconstruction",
+      "efficiency": "output_orientation_only_input_side_not_strong_efficiency_certified",
+      "selection": "solver_selected_unoptimized_input_slacks_and_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.successful_primal_dual_certificate",
+        "condition.successful_sbm_account_reconstruction_certificate"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0377-2217(99)00407-5"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1007/978-94-015-7721-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/oriented-sbm-analytical.md",
+        "tests/test_oriented_sbm_independent_oracle.py::test_exact_output_oriented_sbm_vrs_score_factor_and_status",
+        "tests/test_oriented_sbm_independent_oracle.py::test_output_oriented_sbm_matches_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/oriented-sbm-analytical.md",
+        "public_api_test_locator": "tests/test_oriented_sbm_independent_oracle.py::test_output_oriented_sbm_matches_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "sbm.output.exact_vrs_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_oriented_sbm_independent_oracle.py::test_exact_output_oriented_sbm_vrs_score_factor_and_status"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "direct_oriented_primary_lp"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency",
+              "direct_output_expansion_factor",
+              "active_average_normalized_slack",
+              "oriented_efficiency_status",
+              "generic_efficiency_status_missing"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "sbm.output.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_oriented_sbm_independent_oracle.py::test_output_oriented_sbm_matches_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "direct_oriented_primary_lp"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency",
+              "direct_output_expansion_factor",
+              "active_average_normalized_slack",
+              "oriented_efficiency_status",
+              "generic_efficiency_status_missing",
+              "component_diagnostics",
+              "execution_accounting",
+              "target_slack_accounting_identity"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytical_optimality_certificate",
+        "domain",
+        "independent_dense_direct_compiler",
+        "orientation_semantics",
+        "reciprocal_score",
+        "reference_compilation",
+        "returns_to_scale",
+        "solver_count",
+        "unit_invariance",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_or_malformed_row_and_bound_marginal_rejection",
+        "forged_optimal_claim_fail_closed_release",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "sbm_account_reconstruction_certificate",
+        "peer_eligibility_reference_policy_intersection",
+        "peer_eligibility_manual_custom_reference_equivalence",
+        "peer_eligibility_compact_provenance_and_fail_closed_frequency",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "single_bad_dmu_failure_isolation"
+      ],
+      "locators": [
+        "tests/test_sbm.py",
+        "tests/test_oriented_sbm_independent_oracle.py",
+        "tests/test_sbm_postsolve_certification.py",
+        "tests/test_sbm_postsolve_certification.py::test_uncertified_optimal_solution_withholds_every_semantic_table",
+        "tests/test_sbm_postsolve_certification.py::test_economic_account_corruption_fails_closed",
+        "tests/test_sbm_postsolve_certification.py::test_one_bad_dmu_does_not_abort_or_contaminate_the_next_dmu",
+        "tests/test_sbm_postsolve_certification.py::test_default_highs_certifies_all_classic_orientations_and_rts",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_lp_certificates.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_sbm_orientations.py",
+      "benchmarks/benchmark_core_peer_eligibility.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.slack_based_efficiency",
+        "path": "book/chapters/02-classical/04-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.sbm",
+        "path": "docs/models/sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

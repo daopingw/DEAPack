@@ -1,0 +1,1470 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:1
+#: 8d140f43e57d4994b5d746d353fe564e
+msgid "Economic Efficiency When Prices Are Observed"
+msgstr "观测到价格时的经济效率"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:3
+#: a31ccfd2a8b840dd8a7f446dbe941e2c
+msgid ""
+"A production frontier describes what an organization could attain with the "
+"technology represented in the data. It does not, by itself, identify the "
+"economically preferred plan. Prices make that comparison possible, but only "
+"after management has said which parts of the current operation are "
+"commitments and which parts can change."
+msgstr "生产前沿描述组织在数据所代表的技术下能够实现什么，却不能单独识别经济上更受偏好的方案。价格使这种比较成为可能，但管理层必须先说明当前经营活动中哪些部分是必须履行的承诺，哪些部分可以改变。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:8
+#: bfac1dddb8b54b9ba72f50fa7b9db19d
+msgid ""
+"A hospital may have to deliver a fixed bundle of services and seek the least"
+" costly way to do so. A university may have fixed staff and facilities and "
+"ask which mix of teaching and research creates the most value. A farm or "
+"factory with discretion over both resources and products may instead seek "
+"the largest operating surplus. These are not different names for one "
+"efficiency score. They are, respectively, cost, revenue, and profit "
+"decisions."
+msgstr "医院可能必须提供固定的服务组合，并寻找成本最低的实现方式。大学可能已经确定人员与设施，想知道怎样组合教学和科研才能创造最大价值。能够同时调整资源和产品的农场或工厂，则可能追求最大的经营盈余。成本、收益和利润决策并不是同一个效率得分的不同名称。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:15
+#: 1e3cc53fc68a407089587067b4b88f08
+#, python-brace-format
+msgid ""
+"This chapter develops those decisions as one production-economic family and "
+"shows how technical and allocative performance fit together. A short final "
+"bridge connects a declared directional programme to the profit gap without "
+"turning that bridge into a fourth economic objective. The distinction "
+"between technical and allocative performance originates in Farrell's account"
+" of productive efficiency {cite:p}`farrell1957`; cost, revenue, profit, and "
+"distance measures can then be understood within a common technology-and-"
+"prices framework {cite:p}`fare1985`."
+msgstr ""
+"本章把这些决策作为一个统一的生产经济学模型族来讨论，并说明技术绩效与配置绩效如何结合。结尾的一座短桥把一套声明的方向性方案与利润缺口联系起来，但不会把这座桥变成第四种经济目标。技术绩效与配置绩效的区别源于"
+" Farrell 的生产效率账户 {cite:p}`farrell1957`；成本、收益、利润和距离测度随后可以置于共同的技术—价格框架中理解 "
+"{cite:p}`fare1985`。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:23
+#: 467fe602b58a455ca1dbe82816201ae6
+msgid "Begin with the economic decision"
+msgstr "从经济决策开始"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:25
+#: b8937dce48a04c149eea9da12649d8c2
+msgid "Let an organization use inputs"
+msgstr "令一个组织使用投入"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:27
+#: 30e5f6977d38475b903e6fc18e359c7f
+msgid ""
+"\n"
+"x=(x_1,\\ldots,x_m)^\\top\n"
+msgstr ""
+"\n"
+"x=(x_1,\\ldots,x_m)^\\top\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:31
+#: dae03f47ece741b4b60239ab322a004c
+msgid "to produce desirable outputs"
+msgstr "生产合意产出"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:33
+#: 85fc2c66b617448d94c8cf19fcbccf3f
+msgid ""
+"\n"
+"y=(y_1,\\ldots,y_s)^\\top.\n"
+msgstr ""
+"\n"
+"y=(y_1,\\ldots,y_s)^\\top.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:37
+#: 1ea1b8fd3a6c49ddaff76da162aeb11b
+#, python-brace-format
+msgid ""
+"The technology $\\mathcal T$ contains the input--output plans regarded as "
+"attainable under the study's data, reference-set policy, disposability "
+"assumptions, and returns to scale. Let $w\\in\\mathbb R_{++}^m$ and "
+"$p\\in\\mathbb R_{++}^s$ denote input and output prices. The observed "
+"accounts are"
+msgstr ""
+"技术 $\\mathcal T$ 包含在研究的数据、参考集政策、可处置性假设和规模报酬下被视为可实现的投入—产出方案。令 $w\\in\\mathbb "
+"R_{++}^m$ 和 $p\\in\\mathbb R_{++}^s$ 分别表示投入价格与产出价格。观测账户为"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:42
+#: 47a3bc1ce51846d49f6a2c5f1a37c68c
+msgid ""
+"\n"
+"C=w^\\top x,\\qquad\n"
+"R=p^\\top y,\\qquad\n"
+"\\Pi=p^\\top y-w^\\top x.\n"
+msgstr ""
+"\n"
+"C=w^\\top x,\\qquad\n"
+"R=p^\\top y,\\qquad\n"
+"\\Pi=p^\\top y-w^\\top x.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:48
+#: 9c7160ed95a24207b71d238a801626c5
+msgid ""
+"One technology and one set of prices therefore support three different "
+"counterfactuals:"
+msgstr "因此，同一个技术和同一组价格可以支持三种不同的反事实："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 61bee1b8ec56495ab056fdc3fe9d5ccb
+msgid "Management question"
+msgstr "管理问题"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 68b3fb6c98a24f9a92fd01eefb902fbf
+msgid "What remains committed?"
+msgstr "什么必须保持为承诺？"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 35fd98ffb24b42569dd1cf582f11c0f7
+msgid "What may the benchmark change?"
+msgstr "标杆可以改变什么？"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: aec3e7db4eeb43729ddb28f20dc52da0
+msgid "Economic result"
+msgstr "经济结果"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 814cdc15fd0b460d94af2a35fabd9ad3
+msgid "How cheaply could the promised outputs be delivered?"
+msgstr "怎样才能以最低成本履行承诺的产出？"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 6d73690171d04710833c4ef7a8737e08
+msgid "At least the observed outputs"
+msgstr "至少达到观测产出"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: d2fdbf944a5c4d8fb1c2dad9e90fbb6e
+msgid "Input quantities and mix"
+msgstr "投入数量与投入组合"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: be22e0918c20492dba1b98cfb47ae4ca
+msgid "Minimum cost"
+msgstr "最低成本"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: e59634f0116347aab44868ff75941f3a
+msgid "How much value could the available resources generate?"
+msgstr "现有资源能够创造多少价值？"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 0ec24cd72b8b449d957c95f228e71845
+msgid "No more than the observed inputs"
+msgstr "不超过观测投入"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 7233f1cedec74673b2309853409edf3a
+msgid "Output quantities and mix"
+msgstr "产出数量与产出组合"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 1ecb9169b79e4cadad4cc4cf5afae529
+msgid "Maximum revenue"
+msgstr "最大收益"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: def4d39aea284bc384a89c222978fa2c
+msgid "Which attainable operation creates the largest net return?"
+msgstr "哪个可实现经营方案创造最大的净回报？"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: dfc6b888903e4f1e8f59db08a46b5344
+msgid "Neither side of the observed plan"
+msgstr "观测方案的两侧都不固定"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: c691d65152894221bb4bb71667a70308
+msgid "Inputs, outputs, and operating scale jointly"
+msgstr "投入、产出与经营规模共同调整"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 2dcd359ea3d841c2aeec6fa60b14f0e8 a3917c81eb8e4440925d8f0872082800
+msgid "Maximum profit"
+msgstr "最大利润"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:57
+#: a6999ab951e74967a855973e7acda645
+msgid ""
+"The commitment is the key to interpretation. A unit can be cost efficient "
+"for its current output obligation yet have a large profit gap because "
+"another scale or output portfolio would be more valuable. It can also use "
+"its existing capacity well while purchasing an unnecessarily expensive input"
+" mix. Prices do not alter technical feasibility; they rank feasible plans. A"
+" change in relative prices can therefore change the preferred benchmark even"
+" when the production frontier is unchanged."
+msgstr "承诺是解释的关键。一个组织可以在履行当前产出义务的条件下成本有效，却仍有很大利润缺口，因为另一经营规模或产出组合更有价值。它也可能充分利用现有产能，却购买了成本不必要地高的投入组合。价格不改变技术可行性，而是在可行方案之间排序。因此，即使生产前沿不变，相对价格变化也可能改变首选标杆。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:64
+#: 0c13bb898e8642a9a819f97e9bef8b47
+msgid "A service system for the whole chapter"
+msgstr "贯穿全章的一套服务系统"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:66
+#: ba5179d95b974fa684cbbeccd1bf8f38
+msgid ""
+"Consider four attainable service plans. Each uses one composite resource to "
+"deliver two services, one of which receives a higher valuation."
+msgstr "考虑四个可实现服务方案。每个方案使用一项复合资源提供两种服务，其中一种服务的价值较高。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 53cb02005a414e2ea1e3c13dcfa9551b d55d0e7c590c403093e1afa976cb894e
+msgid "Plan"
+msgstr "方案"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 645c236b3fc54309ac51a4a31f7a4017
+msgid "Resource $x$"
+msgstr "资源 $x$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 712894924652497fbbc7bec9ab201e8a
+msgid "Standard service $y_1$"
+msgstr "标准服务 $y_1$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 2da109158acb482b8def937f4ad31b74
+msgid "Specialist service $y_2$"
+msgstr "专科服务 $y_2$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: b19576c352684f14b9e292e632d366a7 c4af8ff19c2247b0850814b1f28d8da0
+msgid "A"
+msgstr "A"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: b298f94f99a74ef4ac3b7433d160fb41 b4ead75d4834415790fab18ff254bc27
+msgid "4"
+msgstr "4"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 884f66146bb84945a2422a14c6227731 93c9b1660579463d81cdbfe389f321ae
+#: 93ce77c07e6e490a96e9e8cd3f332674
+msgid "6"
+msgstr "6"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 5198fd9a0596461ab514b4a2c7dbd56c 5461675b01364ac68afa364c8e854f72
+msgid "2"
+msgstr "2"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 7d8e2e11b7c74429abb1677b15cdf292 b346f40dcd3346b9af549186299c5b1e
+msgid "B"
+msgstr "B"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 8ef82276d3f54984a9c8bee629050c57 ac26eaf61a3a40d2a4b452fed28fcdc0
+#: c0c08f7c477740d7adaa9c70969ce8ff
+msgid "5"
+msgstr "5"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 0c504fa57ae0426abcbe60b04c32e42d 5222ced5360a4db2acee2279f9977f5e
+msgid "C"
+msgstr "C"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 4637c3f6c25949fb9b785d165823dd94 7b2e61c1f8154455aca3d9989b5024ed
+msgid "3"
+msgstr "3"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 23620a1c51414890a9b4e74226aa5d55 aea619e8b7cd45fb8c7ffb902156a0ed
+#: dbba292e70f841a79aea577e8df5c6df
+msgid "1"
+msgstr "1"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 2e3b6c913e0c457abccfb7d968814bd4 a9486059b9e94b319ed2495e3dde2da9
+msgid "D"
+msgstr "D"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:76
+#: 3a3c8fafec5543f599aac9a1a1cc8447
+msgid "One unit of the resource costs 2, and the services are valued at 3 and 5:"
+msgstr "一单位资源的成本为 2，两种服务的价值分别为 3 和 5："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:78
+#: 1ecb12839c60461e90c565ca7e7cc0f8
+msgid ""
+"\n"
+"w=2,\\qquad p=(3,5)^\\top.\n"
+msgstr ""
+"\n"
+"w=2,\\qquad p=(3,5)^\\top.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:82
+#: e16476dcb68c48dd931964aaacb16830
+msgid "The observed economic accounts are consequently:"
+msgstr "因此，观测经济账户为："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 8b3b7894b9fa4a44b82ab3cbfbcc04a2
+msgid "Cost"
+msgstr "成本"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: bab0b2096da947649609b38c104dfbc8
+msgid "Revenue"
+msgstr "收益"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 9341fd1b04794200863407cc21e340a2
+msgid "Profit"
+msgstr "利润"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: b96f3e65932d499282fcb8cbd9314f5f
+msgid "8"
+msgstr "8"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: c1e04fbce39f461ca8d48e986fc73583
+msgid "28"
+msgstr "28"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 0b0a8280e5724446bde3fdb665871882 b0de101eb9a34f8c8885013f62bb57a4
+msgid "20"
+msgstr "20"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: ec2f601521d34e448c8ce349df6d3de8
+msgid "10"
+msgstr "10"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: e6933369bdb74d85ae68aec67ad0e7ed
+msgid "37"
+msgstr "37"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: fb9a133e93d8425dba7400caf5c42766
+msgid "27"
+msgstr "27"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 0f66a8a2e0b64060ba446b4b3cd98325
+msgid "14"
+msgstr "14"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: a70e2c7c64f2460d94c7112c353252ad
+msgid "12"
+msgstr "12"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: 2230013818654f31bede6b51c4a0a1ad
+msgid "19"
+msgstr "19"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md
+#: e0bfc21c2b744938b0529dba97f96b5d
+msgid "7"
+msgstr "7"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:91
+#: 92849fabc32642c880dcec13d223eef2
+msgid ""
+"We use the variable-returns-to-scale (VRS) convex technology generated by A"
+"--D, with ordinary free disposal. A benchmark may be an observed plan or a "
+"convex combination of plans. Plan D is the main management case. Its "
+"observed account is weak, but each model will explain that weakness against "
+"a different, decision-relevant alternative. Plans A and C will show why "
+"technical, conditional economic, and joint profit performance cannot be "
+"treated as interchangeable labels."
+msgstr ""
+"本章使用由 A--D 生成、具有普通自由处置性的规模报酬可变（VRS）凸技术。标杆可以是一个观测方案，也可以是多个方案的凸组合。方案 D "
+"是主要管理案例：其观测账户表现较弱，但每个模型都会用一个不同且与决策相关的替代方案解释这种不足。方案 A 和 C "
+"则说明，为何技术绩效、条件经济绩效和联合利润绩效不能作为可以互换的标签。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 671127cf4f5c49a6ab8f92a548cbb16c
+msgid ""
+"Observed Plan D branches to minimum-cost, maximum-revenue, and maximum-"
+"profit decisions, followed by a directional bridge that values one declared "
+"joint improvement package"
+msgstr "观测方案 D 分别通往最低成本、最大收益和最大利润决策，再通过一座方向性桥梁评价一套声明的联合改进方案"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:103
+#: 193322002c884ddca785713df96abb0b
+msgid ""
+"Holding the observations fixed makes the economic commitments visible. The "
+"first three branches are economic decisions; the fourth only interprets part"
+" of the profit gap through a declared operating programme."
+msgstr "保持观测值不变，可以清楚看见各种经济承诺。前三个分支是经济决策；第四个分支只通过一套声明的经营方案解释利润缺口的一部分。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:108
+#: 9f4cae8438ad4ce1ad0cb93ba3292780
+msgid "Cost: protect the service commitment"
+msgstr "成本：保障服务承诺"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:110
+#: c8061ca743924b4da106b3fb7190473f
+msgid ""
+"Cost analysis is appropriate when the organization must deliver at least its"
+" observed outputs but can adjust the resources used. Examples include a "
+"contracted production volume, a regulated service obligation, or a fixed "
+"order book."
+msgstr "当组织必须至少提供观测产出，但可以调整资源使用时，适合进行成本分析。典型情形包括合同约定的生产量、监管规定的服务义务或固定订单。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:114
+#: 94ab605738be46cf978e2a1e9d383c1a
+msgid ""
+"For unit $o$, let $X$ and $Y$ collect the reference inputs and outputs. "
+"Minimum attainable cost is"
+msgstr "对单元 $o$，令 $X$ 和 $Y$ 汇集参照投入与产出。最低可实现成本为"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:117
+#: 0842aba1d0f8430ca46b6a8cee6eb39c
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"C_o^*(w_o,y_o)\n"
+"=\\min_{\\lambda}\\quad & w_o^\\top X\\lambda\\\\\n"
+"\\text{s.t.}\\quad\n"
+"&Y\\lambda\\ge y_o,\\\\\n"
+"&\\lambda\\ge0,\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"C_o^*(w_o,y_o)\n"
+"=\\min_{\\lambda}\\quad & w_o^\\top X\\lambda\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&Y\\lambda\\ge y_o,\\\\\n"
+"&\\lambda\\ge0,\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:127
+#: 9216e78127cd4670b3aa55a418dc6fad
+msgid ""
+"with the declared returns-to-scale restriction. Under VRS, $\\mathbf "
+"1^\\top\\lambda=1$; under constant returns to scale (CRS), that equality is "
+"absent. The chosen activity is the attainable plan that satisfies the output"
+" commitment at the lowest bill, not necessarily the physically nearest plan."
+msgstr ""
+"并附加声明的规模报酬约束。VRS 下有 $\\mathbf "
+"1^\\top\\lambda=1$；规模报酬不变（CRS）下则没有这项等式。所选生产活动是在满足产出承诺的可实现方案中账单最低者，不一定是物理数量上最近的方案。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:132
+#: 8fb2b2d849e24c80abc38e5bacf25175
+msgid "Two reports serve different purposes:"
+msgstr "两种报告服务于不同目的："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:134
+#: 7b10916bc7d544a79cdd214ab8c0efcd
+#, python-brace-format
+msgid ""
+"\n"
+"CE_o=\\frac{C_o^*}{C_o},\n"
+"\\qquad\n"
+"G_o^C=C_o-C_o^*.\n"
+msgstr ""
+"\n"
+"CE_o=\\frac{C_o^*}{C_o},\n"
+"\\qquad\n"
+"G_o^C=C_o-C_o^*.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:140
+#: badc31fb480a45d78329d49df664d196
+msgid ""
+"Cost efficiency $CE_o$ is a dimensionless ratio, with one best for a "
+"positive-price, self-inclusive technology. The cost gap $G_o^C$ expresses "
+"the same opportunity in money units and is often more useful for budgeting."
+msgstr ""
+"成本效率 $CE_o$ 是无量纲比率；在价格为正、且包含被评价单元自身的技术下，1 为最优值。成本缺口 $G_o^C$ "
+"用货币单位表达同一机会，通常更便于预算管理。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:144
+#: 5d2d69ac80144e27b5313e5d115a8560
+msgid "Technical and allocative sources of a cost gap"
+msgstr "成本缺口的技术来源与配置来源"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:146
+#: e60c05f3c56d4847a0c4fa24c6d2cb95
+msgid ""
+"An input-oriented Farrell model holds outputs fixed and contracts the "
+"observed input bundle in common proportion. Let its input technical "
+"efficiency be $TE_o^I=\\theta_o$. Cost allocative efficiency is "
+"conventionally"
+msgstr ""
+"投入导向 Farrell 模型保持产出不变，并按共同百分比压缩观测投入组合。记其投入技术效率为 "
+"$TE_o^I=\\theta_o$。成本配置效率通常定义为"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:150
+#: ed9bd11d232947c18c9eb1ee2587149d
+#, python-brace-format
+msgid ""
+"\n"
+"AE_o^C=\\frac{CE_o}{TE_o^I},\n"
+"\\qquad\n"
+"CE_o=TE_o^I AE_o^C.\n"
+msgstr ""
+"\n"
+"AE_o^C=\\frac{CE_o}{TE_o^I},\n"
+"\\qquad\n"
+"CE_o=TE_o^I AE_o^C.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:156
+#: 00b4e7bc2c69426c87017a268111138d
+msgid ""
+"The first component values the opportunity to reduce the existing resource "
+"bundle proportionally. The second records the remaining cost advantage when "
+"the input mix may respond to relative prices. The same distinction can be "
+"written as a monetary account:"
+msgstr "第一项评价按比例减少现有资源组合的机会；第二项记录投入组合可以响应相对价格时剩余的成本优势。同一区别也可以写成货币账户："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:161
+#: 5807dbf83d584e909cfe4758934ff79c
+msgid ""
+"\n"
+"\\underbrace{C_o-C_o^*}_{\\text{total cost opportunity}}\n"
+"=\n"
+"\\underbrace{C_o-\\theta_oC_o}_{\\text{proportional resource saving}}\n"
+"+\n"
+"\\underbrace{\\theta_oC_o-C_o^*}_{\\text{remaining cost saving}}.\n"
+msgstr ""
+"\n"
+"\\underbrace{C_o-C_o^*}_{\\text{总成本节约空间}}\n"
+"=\n"
+"\\underbrace{C_o-\\theta_oC_o}_{\\text{比例性资源节约}}\n"
+"+\n"
+"\\underbrace{\\theta_oC_o-C_o^*}_{\\text{剩余成本节约}}.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:169
+#: 13a0c1152f644a82b0480ba02ddf9b18
+msgid ""
+"The word *allocative* requires care. If the radial technical plan retains "
+"input slacks, the remaining cost component can combine non-proportional "
+"resource savings with price-responsive input substitution. An output surplus"
+" does not enter the input bill directly, although it prevents the radial "
+"plan from supporting an unconditional strong-efficiency claim. The identity "
+"remains exact, but the second component should not automatically be "
+"interpreted as purchasing skill."
+msgstr "*配置*一词需要谨慎。如果径向技术方案仍有投入松弛量，剩余成本分量就可能同时包含非比例资源节约和响应价格的投入替代。产出富余不会直接进入投入账单，但会使径向方案不能支持无条件强效率主张。恒等式仍然精确，却不能自动把第二项解释为采购能力。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:176
+#: 347921cf405c4041a570ffd4e6d7692c
+msgid ""
+"For Plan D, the least-cost activity is $0.25B+0.75C$. It uses 3.5 units of "
+"the resource and produces $(4.75,2)$, so it satisfies D's service commitment"
+" at a cost of 7. Therefore"
+msgstr ""
+"对方案 D，最低成本生产活动为 $0.25B+0.75C$。它使用 3.5 单位资源，生产 $(4.75,2)$，因而以成本 7 满足 D "
+"的服务承诺。因此"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:180
+#: 701c8ee61e484723a0a78159cda0dc05
+#, python-brace-format
+msgid ""
+"\n"
+"CE_D=\\frac{7}{12}\\approx0.583,\n"
+"\\qquad\n"
+"G_D^C=12-7=5.\n"
+msgstr ""
+"\n"
+"CE_D=\\frac{7}{12}\\approx0.583,\n"
+"\\qquad\n"
+"G_D^C=12-7=5.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:186
+#: 62d20c6088c5416b95c0190da66709f7
+msgid ""
+"With only one input there is no composition to change, so $TE_D^I=7/12$ and "
+"$AE_D^C=1$. This does not make D a good operation overall. It says that its "
+"five-unit cost opportunity is fully explained by resource contraction in "
+"this one-input example. Nor must the least-cost activity reproduce outputs "
+"exactly: free disposal permits it to exceed the commitment for standard "
+"services."
+msgstr ""
+"这里只有一项投入，无法改变投入构成，所以 $TE_D^I=7/12$、$AE_D^C=1$。这并不表示 D "
+"的整体经营良好；它只说明在这个单投入例子中，五单位成本机会全部由资源压缩解释。最低成本生产活动也不必精确复制产出：自由处置性允许其标准服务超过承诺量。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:192
+#: 5b1b181461c143d0bc219689bb6ad7fb
+msgid "Revenue: use the available capacity well"
+msgstr "收益：充分利用现有产能"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:194
+#: 42c5f54e8fec4e6d9fd69008fefd8fee
+msgid ""
+"Revenue analysis treats the observed input vector as the resource envelope "
+"and asks which feasible output quantities and mix create the greatest value "
+"at $p_o$:"
+msgstr "收益分析把观测投入向量视为资源限额，考察在 $p_o$ 下哪种可行产出数量与组合能够创造最大价值："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:197
+#: 8b19d502a8b54302ada85b70764cf826
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"R_o^*(p_o,x_o)\n"
+"=\\max_{\\lambda}\\quad & p_o^\\top Y\\lambda\\\\\n"
+"\\text{s.t.}\\quad\n"
+"&X\\lambda\\le x_o,\\\\\n"
+"&\\lambda\\ge0,\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"R_o^*(p_o,x_o)\n"
+"=\\max_{\\lambda}\\quad & p_o^\\top Y\\lambda\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&X\\lambda\\le x_o,\\\\\n"
+"&\\lambda\\ge0,\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:207
+#: c4c065ebd84843a48fc2863d2ef815dd
+msgid ""
+"again with the chosen returns-to-scale restriction. Revenue efficiency and "
+"its money-valued gap are"
+msgstr "同样附加所选规模报酬约束。收益效率及其货币价值缺口为"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:210
+#: aaaee335b0ab46f1b8bbcb9ef3d98004
+#, python-brace-format
+msgid ""
+"\n"
+"RE_o=\\frac{R_o}{R_o^*},\n"
+"\\qquad\n"
+"G_o^R=R_o^*-R_o.\n"
+msgstr ""
+"\n"
+"RE_o=\\frac{R_o}{R_o^*},\n"
+"\\qquad\n"
+"G_o^R=R_o^*-R_o.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:216
+#: 95c02c5339c4473dafbe31a94421beb4
+msgid ""
+"A revenue ratio of 0.70 means that the observed portfolio earns 70 percent "
+"of the largest revenue supported by the same input envelope. That "
+"interpretation assumes the supplied prices remain meaningful for the "
+"additional outputs. Demand limits, volume-sensitive prices, quotas, and "
+"changing quality can otherwise make the counterfactual commercially "
+"unrealistic."
+msgstr ""
+"收益比率 0.70 表示，观测产出组合获得了同一投入限额能够支持的最大收益的 "
+"70%。这种解释假定所给价格对新增产出仍有意义；否则，需求限制、随产量变化的价格、配额和质量变化都可能使反事实在商业上不现实。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:222
+#: 777cddb12f1c4312bed1dc8b4950fafb
+msgid ""
+"Let $\\phi_o\\ge1$ be the greatest common-proportion expansion of observed "
+"desirable outputs supported by the input envelope. On a higher-is-better "
+"scale, $TE_o^O=1/\\phi_o$, and"
+msgstr ""
+"令 $\\phi_o\\ge1$ 表示在投入限额下，观测合意产出能够实现的最大共同比例扩张。转换到越高越好的尺度，有 "
+"$TE_o^O=1/\\phi_o$，且"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:226
+#: 96fb6f08370745069d3a5465be6da539
+#, python-brace-format
+msgid ""
+"\n"
+"AE_o^R=\\frac{RE_o}{TE_o^O},\n"
+"\\qquad\n"
+"RE_o=TE_o^OAE_o^R.\n"
+msgstr ""
+"\n"
+"AE_o^R=\\frac{RE_o}{TE_o^O},\n"
+"\\qquad\n"
+"RE_o=TE_o^OAE_o^R.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:232
+#: cd1925061e3e4bc586f27c6bf4077931
+msgid ""
+"$TE_o^O$ asks whether more of the existing output bundle could be delivered;"
+" $AE_o^R$ records the remaining advantage of changing its composition in "
+"response to output values. If the radial plan retains desirable-output "
+"slacks, the remaining revenue component can combine non-proportional service"
+" gains with price-responsive output reallocation. An input saving does not "
+"enter the revenue account directly, although it still prevents an "
+"unconditional strong-efficiency conclusion."
+msgstr ""
+"$TE_o^O$ 问的是现有产出组合能否提供更多；$AE_o^R$ "
+"记录产出组合响应产出价值后剩余的优势。如果径向方案仍有合意产出松弛量，剩余收益分量就可能同时包含非比例服务增加和响应价格的产出重新配置。投入节约不会直接进入收益账户，但仍使无条件强效率结论不能成立。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:239
+#: a5f9bd4278004cf991f122fc700f699f
+msgid ""
+"Plan D earns 19 with six units of resource. Plan B uses only five units and "
+"earns 37, so"
+msgstr "方案 D 使用 6 单位资源，获得收益 19。方案 B 只使用 5 单位资源，却获得收益 37，所以"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:242
+#: 67ab3653f9e34bb9afcba4ce74d9212c
+#, python-brace-format
+msgid ""
+"\n"
+"RE_D=\\frac{19}{37}\\approx0.514,\n"
+"\\qquad\n"
+"G_D^R=37-19=18.\n"
+msgstr ""
+"\n"
+"RE_D=\\frac{19}{37}\\approx0.514,\n"
+"\\qquad\n"
+"G_D^R=37-19=18.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:248
+#: d50db93cc27844a4832d7871d31bc9b9
+msgid ""
+"The greatest proportional expansion of D's observed output mix is "
+"$\\phi_D=22/13$, giving"
+msgstr "D 的观测产出组合最大同比例扩张为 $\\phi_D=22/13$，得到"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:251
+#: 4c45228ccc8d4184bcfe81e320d3cc5b
+#, python-brace-format
+msgid ""
+"\n"
+"TE_D^O=\\frac{13}{22}\\approx0.591,\n"
+"\\qquad\n"
+"AE_D^R\n"
+"=\\frac{19/37}{13/22}\n"
+"=\\frac{418}{481}\n"
+"\\approx0.869.\n"
+msgstr ""
+"\n"
+"TE_D^O=\\frac{13}{22}\\approx0.591,\n"
+"\\qquad\n"
+"AE_D^R\n"
+"=\\frac{19/37}{13/22}\n"
+"=\\frac{418}{481}\n"
+"\\approx0.869.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:260
+#: 27a96fd8127f4384b4e073c3ebeb5f3d
+msgid ""
+"Part of D's revenue shortfall is thus associated with delivering too little "
+"from its resource envelope; another part is associated with its low-value "
+"output mix. Plan A provides the converse lesson. It cannot expand both "
+"outputs proportionally, so $TE_A^O=1$, yet $0.5B+0.5C$ uses the same input "
+"and earns 28.5 rather than 28. Hence"
+msgstr ""
+"因此，D 的一部分收益不足与其资源限额内提供的数量过少有关，另一部分则与低价值产出组合有关。方案 A 提供相反的教训：它不能同时按比例扩张两项产出，所以"
+" $TE_A^O=1$；但 $0.5B+0.5C$ 使用同样投入，收益为 28.5，而不是 28。因此"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:265
+#: e57aca2e0852491f84ed462ff9a9cfe1
+#, python-brace-format
+msgid ""
+"\n"
+"RE_A=AE_A^R=\\frac{28}{28.5}=\\frac{56}{57}<1.\n"
+msgstr ""
+"\n"
+"RE_A=AE_A^R=\\frac{28}{28.5}=\\frac{56}{57}<1.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:269
+#: 5741a950d68146cc9c6af8afb55dc081
+msgid ""
+"A can be technically efficient for proportional output expansion without "
+"being revenue maximizing."
+msgstr "A 可以在产出同比例扩张问题上技术有效，却没有实现收益最大化。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:272
+#: 1992ac1004a04883add93616c020ca6f
+msgid "Profit: choose the operating plan jointly"
+msgstr "利润：联合选择经营方案"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:274
+#: 333caaeeb3684f3b82f09db6bbfc443f
+msgid ""
+"Cost and revenue analysis protect one side of the observed operation. Profit"
+" analysis removes both conditional commitments and asks which attainable "
+"input--output plan creates the largest difference between revenue and cost. "
+"For the VRS technology,"
+msgstr "成本分析与收益分析都保障观测经营方案的一侧。利润分析取消这两项条件性承诺，考察哪个可实现投入—产出方案能使收益与成本之差最大。对于 VRS 技术，"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:278
+#: dbbf6bd7e9f6430db2c93c4af50f82a5
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"\\Pi_o^*(w_o,p_o)\n"
+"=\\max_{\\lambda}\\quad\n"
+"&p_o^\\top Y\\lambda-w_o^\\top X\\lambda\\\\\n"
+"\\text{s.t.}\\quad\n"
+"&\\mathbf 1^\\top\\lambda=1,\\\\\n"
+"&\\lambda\\ge0.\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"\\Pi_o^*(w_o,p_o)\n"
+"=\\max_{\\lambda}\\quad\n"
+"&p_o^\\top Y\\lambda-w_o^\\top X\\lambda\\\\\n"
+"\\text{约束条件}\\quad\n"
+"&\\mathbf 1^\\top\\lambda=1,\\\\\n"
+"&\\lambda\\ge0.\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:289
+#: d5e4fa201c294148b4f873da38dabab7
+msgid "The natural measure of profit inefficiency is the raw gap"
+msgstr "利润无效率最自然的测度是原始缺口"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:291
+#: c638d6e10880497f9a4a780eca013347
+msgid ""
+"\n"
+"G_o^\\Pi=\\Pi_o^*-\\Pi_o.\n"
+msgstr ""
+"\n"
+"G_o^\\Pi=\\Pi_o^*-\\Pi_o.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:295
+#: d836c45bba424b569666422cc4830738
+msgid ""
+"Profit is already a difference between two accounts. Observed or maximum "
+"profit can be zero or negative, so a ratio can become undefined or reverse "
+"the economic ranking. The raw gap remains meaningful: it is the additional "
+"profit available within the declared technology and at the supplied prices."
+msgstr "利润本身已经是两个账户之差。观测利润或最大利润可能为零或负值，此时比率可能无定义，或颠倒经济排序。原始缺口仍有意义：它是在声明技术与所给价格下可以获得的额外利润。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 7d83d5225081417ebcb336214d88396d 9ec35ce8fd5247ca8b073b05d56e4bb1
+msgid "Result"
+msgstr "结果"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 394fed4d66b14e1ea3d79e7b8566d0f9
+msgid "Formula"
+msgstr "公式"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: f707e4b075f0478083ecd91df8c85030
+msgid "Best value"
+msgstr "最优值"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 688c774f540a43e48d9b1c334006a0d2
+msgid "Unit"
+msgstr "单位"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: d2734d2b19d3440692e9af23c97b6882
+msgid "Cost efficiency"
+msgstr "成本效率"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 93bc49e921c14f01891a5babeeba1171
+msgid "$C_o^*/C_o$"
+msgstr "$C_o^*/C_o$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 3b7a72102c6245dbaa08a17dc5cebbcb a8b94440000e426fb22697092046ec51
+msgid "Ratio"
+msgstr "比率"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 60f32ca34e1047aeba2e58b46665260d
+msgid "Revenue efficiency"
+msgstr "收益效率"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 9e00f3dfdc5d453b8508fa6d6c064db7
+msgid "$R_o/R_o^*$"
+msgstr "$R_o/R_o^*$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: a8f8e2a407d44fc9bb6336ea16caec5c
+msgid "Profit gap"
+msgstr "利润缺口"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 1253baaa6ba14b8c9d94637168082675
+msgid "$\\Pi_o^*-\\Pi_o$"
+msgstr "$\\Pi_o^*-\\Pi_o$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 7afb7c572832400b995f5e1749615166
+msgid "0"
+msgstr "0"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:98
+#: 5e6f1c2e19104f04b5e6b6ff8284c260
+msgid "Currency or declared value"
+msgstr "货币或声明的价值单位"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:306
+#: c9b4beb3f71349be8abade6d3fd2167a
+msgid "In the example, Plan B maximizes profit:"
+msgstr "本例中，方案 B 实现利润最大化："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:308
+#: f42bb51cb6004cd39e33e235a9b5d9c5
+#, python-brace-format
+msgid ""
+"\n"
+"\\Pi^*=\\max\\{20,27,14,7\\}=27,\n"
+msgstr ""
+"\n"
+"\\Pi^*=\\max\\{20,27,14,7\\}=27,\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:312
+#: 759529b318e84bdf8898eb6be1261039
+msgid ""
+"so the gaps for A--D are $(7,0,13,20)$. Plan D has a twenty-unit profit "
+"opportunity. Plan C illustrates why this is not redundant with the "
+"conditional models. It is both cost efficient for its output commitment and "
+"revenue efficient within its three-unit input envelope, but it has a profit "
+"gap of 13 because profit maximization permits a different scale and service "
+"portfolio. “Best conditional on the current operation” is not the same as "
+"“best attainable operation at these prices.”"
+msgstr ""
+"所以 A--D 的缺口为 $(7,0,13,20)$。方案 D 存在 20 单位利润机会。方案 C "
+"说明为何利润分析并非条件模型的重复：对于自身产出承诺，它成本有效；在三单位投入限额内，它也收益有效；但它仍有 13 "
+"的利润缺口，因为利润最大化允许选择不同的规模与服务组合。“在当前经营条件下最优”并不等于“在这些价格下可实现的最优经营方案”。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:319
+#: c360e1a4168b49299eb8b9f5f659b01e
+msgid "A directional bridge to the profit gap"
+msgstr "连接方向性方案与利润缺口的桥梁"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:321
+#: 102e79b5ac4f41258b2801dc13c814c3
+#, python-brace-format
+msgid ""
+"The profit gap measures the whole economic opportunity. Sometimes management"
+" also wants to know how much of that opportunity is represented by a "
+"*declared operating programme*. This is where the directional distance "
+"function from the preceding chapter meets the price account; it is not a "
+"fourth production technology or a parallel management objective "
+"{cite:p}`chambers1998,zofio2013profit`."
+msgstr ""
+"利润缺口衡量完整的经济机会。有时管理层还希望知道，其中有多少由一套*声明的经营方案*所代表。这里，上一章的方向性距离函数与价格账户相遇；它不是第四种生产技术，也不是并列的管理目标"
+" {cite:p}`chambers1998,zofio2013profit`。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:327
+#: c6beb0e76ad9452db4bb7784350550e1
+msgid ""
+"Suppose one unit of the programme saves $g_o^x$ inputs and adds $g_o^y$ "
+"outputs. If the directional model supports $\\beta_o$ units of that package,"
+" prices value one programme unit at"
+msgstr "假设一单位方案节约 $g_o^x$ 投入并增加 $g_o^y$ 产出。若方向性模型支持该方案的 $\\beta_o$ 个单位，价格对一单位方案的价值评价为"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:331
+#: d6e0b04d6e66424da7d3172536166f7e
+msgid ""
+"\n"
+"\\nu_o=w_o^\\top g_o^x+p_o^\\top g_o^y>0.\n"
+msgstr ""
+"\n"
+"\\nu_o=w_o^\\top g_o^x+p_o^\\top g_o^y>0.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:335
+#: 321af968962f477dad1a8d90ee1b9e6f
+msgid ""
+"The feasible programme therefore accounts for $\\nu_o\\beta_o$ of the profit"
+" opportunity. Under the same technology, prices, returns to scale, and "
+"reference set, that amount cannot exceed the total profit gap. The Nerlovian"
+" normalization simply expresses the gap in programme units:"
+msgstr ""
+"因此，可行方案解释了利润机会中的 "
+"$\\nu_o\\beta_o$。在技术、价格、规模报酬和参考集相同的条件下，该数额不能超过总利润缺口。Nerlovian "
+"归一化只是用方案单位表达缺口："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:340
+#: f1193749ac1e4c4c9e7243d907b76ccf
+#, python-brace-format
+msgid ""
+"\n"
+"NI_o:=\\frac{G_o^\\Pi}{\\nu_o}\n"
+"=\n"
+"\\beta_o+\\frac{G_o^\\Pi-\\nu_o\\beta_o}{\\nu_o}.\n"
+msgstr ""
+"\n"
+"NI_o:=\\frac{G_o^\\Pi}{\\nu_o}\n"
+"=\n"
+"\\beta_o+\\frac{G_o^\\Pi-\\nu_o\\beta_o}{\\nu_o}.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:346
+#: a31aa2ab908f407eaa7b7640a7444f4b
+msgid ""
+"The residual is the profit opportunity not represented by the selected "
+"package. It may reflect a different input mix, output mix, operating scale, "
+"or technical changes outside the declared direction; calling it “allocative”"
+" does not prove a managerial cause."
+msgstr "剩余项是所选方案未能代表的利润机会。它可能反映不同的投入组合、产出组合、经营规模，或声明方向以外的技术变化；把它称为“配置项”并不能证明任何管理原因。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:351
+#: 43d3d2d0f5a944f481dad79c1762b1b7
+msgid ""
+"Some literature calls the normalized quantity *Nerlovian efficiency*. "
+"Because $NI_o$ is zero at the profit optimum and rises with foregone profit,"
+" this book and DEAPack use *Nerlovian profit inefficiency*. "
+"`NerlovianEfficiency` is retained only as a discoverability alias; it does "
+"not define another model."
+msgstr ""
+"部分文献把归一化数量称为 *Nerlovian efficiency*。由于 $NI_o$ 在利润最优点为零，并随放弃的利润增加，本书和 DEAPack"
+" 使用 *Nerlovian 利润无效率*。`NerlovianEfficiency` 只作为便于发现的别名保留，并不定义另一个模型。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:356
+#: 0ce7eee968404cc1bbfd606cb1ddfc70
+msgid ""
+"This reconciliation is reported only when both underlying decisions can be "
+"rebuilt: the selected activity must attain the stated profit maximum, and "
+"the directional activity must actually deliver $\\beta_o$ units of the same "
+"declared programme within the same reference technology. A finite optimum "
+"without those two economic accounts cannot support the decomposition."
+msgstr ""
+"只有当两个基础决策都能重构时，才报告这一协调分解：所选生产活动必须达到所述最大利润，方向性生产活动也必须在同一参照技术内实际实现同一声明方案的 "
+"$\\beta_o$ 个单位。若缺少这两个经济账户，仅有一个有限最优值不足以支持分解。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:362
+#: 3732f14204774162985fe85c6f344c2c
+msgid ""
+"For Plan D, the package “save one resource unit and add one unit of each "
+"service” is worth 10. The directional model supports 1.6 packages, while the"
+" full profit gap is 20. Thus the programme represents 16 of the opportunity "
+"and 4 remains. This compact bridge is the substantive lesson. Detailed "
+"direction-normalization choices and the complete "
+"`NerlovianProfitInefficiency` field inventory belong in the DEAPack "
+"Documentation."
+msgstr ""
+"对方案 D，“节约一单位资源并且每项服务各增加一单位”这一方案的价值为 10。方向性模型支持 1.6 份方案，总利润缺口为 20。因此，方案代表其中 "
+"16，剩余 4。这座简明桥梁就是核心实质结论。方向归一化的详细选择以及完整的 `NerlovianProfitInefficiency` 字段清单属于 "
+"DEAPack Documentation。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 09a9e3f670ee427d90c48dcd24af433a
+msgid ""
+"Current Plan D, its feasible directional operating benchmark, and profit-"
+"maximizing Plan B are compared, with the total profit gap divided into the "
+"part represented by the declared programme and the remaining price-"
+"responsive allocation opportunity"
+msgstr "比较当前方案 D、其可行方向性经营标杆和利润最大化方案 B，并把总利润缺口分为声明方案所代表的部分与剩余的价格响应型配置机会"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:374
+#: b277f51ad4c14bc894011a198c6d3997
+msgid ""
+"The same Plan D account in operating quantities and value. The middle plan "
+"is the largest feasible multiple of the declared improvement programme; the "
+"right-hand plan maximizes profit. The bridge reconciles two counterfactuals "
+"and does not prescribe an order in which management must act."
+msgstr ""
+"用经营数量和价值显示同一个方案 D "
+"账户。中间方案是声明改进方案的最大可行倍数，右侧方案实现利润最大化。这座桥协调两个反事实，并不规定管理层必须按何种顺序行动。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:380
+#: dc60df9d03de4dc494942a83034d0e43
+msgid "Reproduce the account with DEAPack"
+msgstr "使用 DEAPack 复现账户"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:382
+#: fe427ab601b84827b45fa8c064c220fb
+msgid ""
+"The core case uses one data object, one price contract, and one VRS "
+"technology. Keeping these choices common is what makes the cost, revenue, "
+"and profit comparisons coherent."
+msgstr "核心案例使用一个数据对象、一项价格契约和一个 VRS 技术。只有保持这些选择一致，成本、收益和利润比较才彼此协调。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:445
+#: ad166824517f4f1d8ca6e7802c27a4c1
+msgid ""
+"The four summaries reproduce the core economic account and its directional "
+"bridge:"
+msgstr "四份摘要复现核心经济账户及其方向性桥梁："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: fa61f1b7c129473bbf4ecba7194572ac
+msgid "Question for Plan D"
+msgstr "针对方案 D 的问题"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 5298d2dfaef647049ac862d7b2fe7d85
+msgid "Decision-relevant reading"
+msgstr "与决策相关的解释"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 1161e4ed235145bfbde37bc828dbc409
+msgid "Minimum cost for $(3,2)$"
+msgstr "为 $(3,2)$ 提供服务的最低成本"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 35972f0179e542ad9a5462819987fb81
+msgid "$7$; $CE=TE^I AE^C=(7/12)(1)$"
+msgstr "$7$; $CE=TE^I AE^C=(7/12)(1)$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: fdb188a126ff48df81cba616ce3326f2
+msgid "The current service commitment could be delivered for 5 less"
+msgstr "履行当前服务承诺可以少花 5"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 0172dfcafdbf46468777a40206a5b0d7
+msgid "Maximum revenue with at most 6 units of the resource"
+msgstr "使用不超过 6 单位资源时的最大收益"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 6c8093dddb844dbc8e1df8eff63b171c
+msgid "$37$; $RE=TE^O AE^R=(13/22)(418/481)$"
+msgstr "$37$; $RE=TE^O AE^R=(13/22)(418/481)$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: ccb9f37f3aa144e4a371bedbff5a644c
+msgid "The same resource envelope supports 18 more value units"
+msgstr "同一资源限额可以多创造 18 单位价值"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 2934c6f6fef34d489f7e4baa2210174e
+msgid "$27$; gap $=20$"
+msgstr "$27$; gap $=20$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: af485b927aa24b0b962ac064fbeef11b
+msgid "Joint adjustment favors Plan B over D"
+msgstr "联合调整支持选择方案 B 而不是 D"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 66ccbc6b4d424a5889523470414f02df
+msgid "Price-valued declared programme"
+msgstr "用价格评价的声明方案"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: 0569bb3c9d71485ca10094bf29ee0930
+msgid "$\\nu=10$; $NI=2.0=1.6+0.4$"
+msgstr "$\\nu=10$; $NI=2.0=1.6+0.4$"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:369
+#: d95da6cea2b3478489941487dd3743be
+msgid "The programme represents 16 of the 20-unit profit opportunity"
+msgstr "该方案代表 20 单位利润机会中的 16"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:454
+#: 353cb8163d9f4846b9233b392c970c6f
+msgid ""
+"Before any of these numbers becomes a management claim, the economic account"
+" must reconcile with the benchmark operation. Minimum cost must equal the "
+"input-price bill of the selected cost plan, maximum revenue must equal the "
+"output value of the selected revenue plan, and maximum profit must equal "
+"benchmark revenue minus benchmark cost. DEAPack verifies those links and "
+"withholds an unreconciled result. This safeguard cannot make the prices or "
+"the reference population economically credible; it establishes only that the"
+" reported account follows from the declared model and benchmark."
+msgstr ""
+"在把这些数字变成管理主张之前，经济账户必须与标杆经营方案相协调。最低成本必须等于所选成本方案的投入价格账单；最大收益必须等于所选收益方案的产出价值；最大利润必须等于标杆收益减去标杆成本。DEAPack"
+" 会核验这些联系，并拒绝发布无法协调的结果。这项保障不能使价格或参照总体在经济上自动可信；它只表明报告账户确实来自声明的模型与标杆。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:463
+#: ad38770060fd481987ad71c6b95d5b21
+msgid ""
+"Headline values should be read with the associated benchmark activity, "
+"peers, and slacks. A minimum-cost activity, a maximum-revenue activity, and "
+"a profit-maximizing activity are different counterfactuals even when two of "
+"them happen to select the same observed peer. A directional programme can "
+"then be used to interpret part of the profit gap; it does not replace these "
+"three decisions."
+msgstr "解读首要数值时，应同时查看相应的标杆生产活动、活跃参照单元和松弛量。最低成本活动、最大收益活动和利润最大化活动是不同的反事实，即使其中两项碰巧选择了同一个观测参照单元。随后可以用方向性方案解释利润缺口的一部分；它不能取代这三种决策。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:469
+#: f26c83458f0d43af8524119b6fd05262
+msgid "Prices and technology form one empirical contract"
+msgstr "价格与技术共同构成经验契约"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:471
+#: 213bb4077112476890831cc2d189c637
+msgid ""
+"Economic DEA results are meaningful only when both sides of the comparison "
+"are credible. Prices define the value account; the technology defines the "
+"attainable alternatives."
+msgstr "只有比较两侧都可信，经济 DEA 结果才有意义。价格定义价值账户，技术定义可实现替代方案。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:475
+#: 6184623a25cd4ed2af05295458a48f66
+msgid "Prices are observed valuations, not flexible DEA weights"
+msgstr "价格是观测价值，不是可自由选择的 DEA 权重"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:477
+#: 2e09c43eaea2400ba803820577d432f4
+msgid ""
+"The vectors $w$ and $p$ are wage rates, rental prices, tariffs, product "
+"prices, reimbursements, or explicitly justified social values supplied by "
+"the analyst. The study must also say whose valuation they represent. Market "
+"prices may describe a firm's commercial opportunity, administered tariffs "
+"may describe a regulator's payment regime, and social values may express a "
+"public decision-maker's priorities; none is automatically a measure of "
+"social welfare. These observed valuations are not the endogenous multiplier "
+"weights through which a conventional DEA model values each unit favorably. A"
+" technically efficient unit can still be far from the least-cost or maximum-"
+"profit plan under the valuation regime it actually faces."
+msgstr ""
+"向量 $w$ 和 $p$ "
+"可以是工资率、租赁价格、收费标准、产品价格、报销价格，或由分析者明确论证的社会价值。研究还必须说明它们代表谁的价值评价。市场价格可以描述企业的商业机会，行政收费标准可以描述监管支付制度，社会价值可以表达公共决策者的优先级；任何一种都不会自动成为社会福利的测度。这些观测价值不是传统"
+" DEA 模型用来给予各单元最有利评价的内生乘数权重。一个技术有效单元在实际面对的价值制度下，仍可能远离最低成本或最大利润方案。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:487
+#: cb11a71894564c56b5dc918bdea661f8
+#, python-brace-format
+msgid ""
+"Weight-restricted DEA lies between unrestricted self-valuation and an "
+"observed-price account. An authority may bound relative multipliers to "
+"express defensible service priorities or production trade-offs, but those "
+"bounds remain declared value judgements; they do not become wages, tariffs, "
+"or market prices. The resulting assessment therefore belongs to its parent "
+"technical-efficiency family and must not be labelled cost, revenue, or "
+"profit efficiency merely because its multipliers are restricted "
+"{cite:p}`allen1997,cooper2011handbook`."
+msgstr ""
+"权重受限 DEA "
+"位于不受限的自我价值评价与观测价格账户之间。主管机构可以限制乘数相对值，以表达可辩护的服务优先级或生产权衡；但这些界限仍是明确声明的价值判断，并不会变成工资、收费标准或市场价格。因此，所得评价仍属于其母技术效率模型族，不能仅因乘数受到限制就标为成本、收益或利润效率"
+" {cite:p}`allen1997,cooper2011handbook`。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:495
+#: 4b8b423aaeb241e2b1b2c9a16b8b6d80
+msgid ""
+"Variable names and physical units must match their prices. If labor is "
+"converted from hours to thousands of hours, the price must be converted from"
+" currency per hour to currency per thousand hours so that $w^\\top x$ "
+"remains unchanged. Monetary comparisons also require a common currency and "
+"price base. Deflation and conversion belong in the study design, not in an "
+"interpretation added after estimation."
+msgstr ""
+"变量名称和物理单位必须与价格匹配。如果把劳动从工时改为千工时，价格也必须从每工时货币单位改为每千工时货币单位，使 $w^\\top x$ "
+"保持不变。货币比较还要求采用共同货币和价格基期。平减与换算应在研究设计中完成，不能在估计后才通过解释补上。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:501
+#: 9aa86afea4014a0baa6f8f7e7ffbcc2d
+msgid ""
+"For the classical ratios used here, prices are finite and strictly positive."
+" A zero or negative valuation may represent a subsidy, disposal liability, "
+"bad output, or public service whose economic role needs to be modelled "
+"explicitly. Replacing it by an arbitrary small positive number changes the "
+"question rather than solving it."
+msgstr "本章的经典比率要求价格有限且严格为正。零或负的价值可能代表补贴、处置负债、非合意产出，或需要明确建模其经济角色的公共服务。用任意小的正数替代它，并不是解决问题，而是改变问题。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:506
+#: 392d18e0b5a9405cad3af09659955856
+msgid ""
+"Multiplying every input price by the same positive constant leaves cost "
+"efficiency unchanged but rescales the cost gap; the analogous statement "
+"holds for revenue. Multiplying both input and output prices by the same "
+"constant rescales the profit gap and the value of a directional programme "
+"together, leaving the programme-unit account unchanged. Changes in "
+"*relative* prices are different: they can select a different input mix, "
+"output portfolio, or profit-maximizing operation."
+msgstr "所有投入价格同乘一个正常数，不改变成本效率，但会缩放成本缺口；收益也有对应性质。投入与产出价格同时乘同一个常数，会一起缩放利润缺口和一单位方向性方案的价值，从而保持方案单位账户不变。*相对*价格变化则不同：它可能选择新的投入组合、产出组合或利润最大化经营方案。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:513
+#: 99cddd97922d47a78eebdca3dd9ecf75
+msgid ""
+"Common prices compare organizations under one valuation regime, as in a "
+"national tariff. Observation-specific prices evaluate each organization "
+"under its own wage, procurement, or reimbursement conditions. Both can be "
+"legitimate, but the latter mixes production opportunities with different "
+"local price environments and should not be presented as a common-price "
+"league table."
+msgstr "共同价格按照同一种价值制度比较组织，例如全国统一收费标准。观测特定价格则按照各组织自身的工资、采购或报销条件评价。两者都可能合理，但后者把生产机会与不同的地方价格环境混合起来，不应报告成共同价格排行榜。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:519
+#: 161bbc6b20944e6392c902b10373df12
+msgid "The opportunity set must match the decision"
+msgstr "生产机会集合必须与决策匹配"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:521
+#: 95dcee6a1dfd4bc2a9cffd27dc087ddf
+msgid ""
+"All components of any technical--economic decomposition must use the same "
+"observations, variables, returns to scale, disposability assumptions, and "
+"reference policy. Combining VRS economic efficiency with a CRS technical "
+"component divides results from different opportunity sets and has no stable "
+"economic meaning."
+msgstr ""
+"任何技术—经济分解的所有分量都必须使用相同观测、变量、规模报酬、可处置性假设和参照政策。把 VRS 经济效率与 CRS "
+"技术分量结合，是在用不同生产机会集合的结果相除，没有稳定的经济含义。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:526
+#: d75c7b3a97d2470393c49cfa7d275795
+msgid ""
+"The familiar bounds $CE\\le1$, $RE\\le1$, and nonnegative gaps also rely on "
+"the observed plan being feasible in the reference technology. An external, "
+"historical, or leave-group-out frontier may not envelop the evaluated unit. "
+"A ratio above one or a negative gap should then be read as evidence that the"
+" unit lies beyond that benchmark, not forced back into the usual range."
+msgstr ""
+"熟悉的界限 $CE\\le1$、$RE\\le1$ "
+"和非负缺口同样依赖观测方案在参照技术中可行。外部、历史或留组外前沿可能不包络被评价单元。此时，比率大于 1 "
+"或缺口为负，应理解为该单元超出了这一标杆，而不能强行压回通常范围。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:532
+#: 2a79b28ddb0b4b7e82b30b21e66c1698
+msgid ""
+"Cost and revenue problems can be posed under CRS or VRS. Unconstrained CRS "
+"profit maximization requires special care. If one feasible operation earns "
+"positive profit, CRS permits it to be replicated indefinitely:"
+msgstr "成本和收益问题都可以在 CRS 或 VRS 下提出。无约束 CRS 利润最大化需要特别谨慎。如果某个可行经营方案能够获得正利润，CRS 允许无限复制："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:536
+#: 099b3100a71a4b738c9dddc3d75a78a4
+#, python-brace-format
+msgid ""
+"\n"
+"p^\\top(ty)-w^\\top(tx)\n"
+"=t\\bigl(p^\\top y-w^\\top x\\bigr)\\longrightarrow\\infty\n"
+"\\quad\\text{as }t\\to\\infty.\n"
+msgstr ""
+"\n"
+"p^\\top(ty)-w^\\top(tx)\n"
+"=t\\bigl(p^\\top y-w^\\top x\\bigr)\\longrightarrow\\infty\n"
+"\\quad\\text{当 }t\\to\\infty.\n"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:542
+#: a1025a7718c544cca2bb73f9e47dbb82
+msgid ""
+"Unboundedness is then the correct economic conclusion. A finite CRS profit "
+"benchmark requires capacity constraints, an equilibrium price condition, or "
+"another explicit scale limit. Our worked price account and directional "
+"bridge use VRS because its convexity condition bounds the operating scale."
+msgstr ""
+"此时，无界正是正确的经济结论。有限的 CRS 利润标杆需要产能约束、均衡价格条件或其他明确规模限制。本章示例的价格账户与方向性桥梁采用 "
+"VRS，因为其凸性条件限制了经营规模。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:547
+#: 4f08e7269c6f4f71a8c98f9c9c298b7a
+msgid ""
+"VRS does not automatically include the zero-activity plan. If every observed"
+" plan makes a loss, the model selects the least-loss-making attainable "
+"operation. That can be appropriate for a hospital or regulated utility with "
+"a continuing-service obligation. If a firm can close in the long run, "
+"inactivity, fixed commitments, exit costs, and minimum-service requirements "
+"must be represented in the opportunity set. Shutdown is an economic choice, "
+"not something to infer mechanically from a negative observed profit."
+msgstr ""
+"VRS "
+"不会自动包含零生产活动。如果每个观测方案都亏损，模型会选择可实现方案中亏损最少者。对于负有持续服务义务的医院或受监管公用事业，这可能恰当。如果企业长期可以关闭，就必须在生产机会集合中表示停产、固定承诺、退出成本和最低服务要求。停业是经济选择，不能由负的观测利润机械推断。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:555
+#: ec590d696f434f05a24333c9889ddc07
+msgid "From a benchmark to a management conclusion"
+msgstr "从标杆走向管理结论"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:557
+#: b4bcf98b06c94d728d45b8f228247f14
+#, python-brace-format
+msgid ""
+"A scalar result is the beginning of an explanation, not the end. Radial "
+"technical models preserve the observed mix during their proportional step "
+"and can leave non-proportional savings or expansions. Such slacks qualify "
+"any claim that the residual component is purely allocative "
+"{cite:p}`pastor2022benchmarking,aparicio2023essential`."
+msgstr ""
+"标量结果是解释的起点，不是终点。径向技术模型在比例步骤中保持观测组合，并可能留下非比例节约或扩张。只要存在这些松弛量，就必须限定“剩余分量纯属配置因素”这一主张"
+" {cite:p}`pastor2022benchmarking,aparicio2023essential`。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:562
+#: 849ddfb6b1f0414891651c3db099e368
+msgid ""
+"The same economic optimum may also be attainable through several peer "
+"combinations. The optimum value can therefore be well determined while the "
+"operating target is not unique. If implementation depends on a particular "
+"target, the study should examine alternative optima, transition costs, and "
+"organizational constraints rather than present one selected activity as the "
+"only recommendation."
+msgstr "同一个经济最优值也可能由多个活跃参照单元组合实现。因此，最优值可以非常确定，而经营目标并不唯一。如果实施取决于具体目标，研究应考察其他最优方案、转型成本和组织约束，而不能把一个所选生产活动当作唯一建议。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:568
+#: eb6211a4edc6487ba1c8123e99783c07
+msgid ""
+"The models support disciplined counterfactual statements: under the recorded"
+" prices and VRS comparison technology, D could meet its service commitment "
+"for 5 less, earn 18 more from its current resource envelope, or gain 20 in "
+"profit through joint adjustment. They do not establish that management "
+"caused the gaps or that the peer plan can be copied without adaptation. Case"
+" mix, quality, regulation, demand, geography, and omitted resources can all "
+"matter."
+msgstr ""
+"这些模型支持规范的反事实表述：在记录价格和 VRS 比较技术下，D 可以少花 5 来履行服务承诺，在当前资源限额内多获得 18 "
+"收益，或通过联合调整多获得 20 "
+"利润。它们不能说明缺口由管理造成，也不能说明参照方案无需调整即可照搬。病例结构、质量、监管、需求、地理和遗漏资源都可能影响结果。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:575
+#: 490130b549e1498aa059b6b5f1852b7b
+msgid "A responsible analysis therefore proceeds in this order:"
+msgstr "因此，负责任的分析应按以下次序进行："
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:577
+#: 21453f9290704391a458f0319a6c4cec
+msgid "state the operational commitment and decision horizon;"
+msgstr "说明经营承诺与决策期限；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:578
+#: b285ca068a094b078970ee36be9b7341
+msgid "define the technology and comparison set;"
+msgstr "定义技术和比较集合；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:579
+#: a276643f15f34c62a96d926916e44179
+msgid "document price meanings, units, provenance, and variation across units;"
+msgstr "记录价格含义、单位、来源及其在不同单元间的变化；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:580
+#: 73a30a41184047709af1cc3f13f5183b
+msgid "choose the cost, revenue, or profit question that matches the commitment;"
+msgstr "选择与承诺匹配的成本、收益或利润问题；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:581
+#: b9640b0c817345f89473115065371c4e
+msgid ""
+"if useful, declare a directional programme for interpreting part of a profit"
+" gap;"
+msgstr "如果有用，声明一套方向性方案，用来解释利润缺口的一部分；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:582
+#: d797396af86147d1bbd84743421cb720
+msgid "interpret the value alongside the benchmark activity, peers, and slacks; and"
+msgstr "结合标杆生产活动、活跃参照单元和松弛量解释价值；"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:583
+#: 5ee82e50f9854ff18c40e8ec25ab7cef
+msgid "investigate constraints and adjustment costs that are absent from the model."
+msgstr "调查模型未包含的约束和调整成本。"
+
+#: ../../chapters/02-classical/economic-efficiency-under-prices.md:585
+#: 96e22ddbbcce45c49a2fbf1f99d92490
+msgid ""
+"There is no virtue in estimating every member of the family when only one "
+"counterfactual is credible. The central distinction is simple: cost "
+"efficiency values resource adjustment while protecting outputs; revenue "
+"efficiency values output adjustment while protecting inputs; and the profit "
+"gap values joint adjustment. A declared directional programme may illuminate"
+" part of that gap, but it is subordinate to the economic decision. Once the "
+"commitment is explicit, each result has a clear economic meaning rather than"
+" being merely another score attached to a frontier."
+msgstr "当只有一个反事实可信时，没有必要估计模型族的每个成员。核心区别很简单：成本效率在保障产出时评价资源调整，收益效率在保障投入时评价产出调整，利润缺口则评价联合调整。声明的方向性方案可以阐明利润缺口的一部分，但从属于经济决策。一旦承诺明确，每项结果都有清楚的经济含义，而不只是附在前沿上的另一个得分。"
+

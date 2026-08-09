@@ -1,0 +1,371 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.allocative_decomposition.profitability_gdf.zofio_prieto_2006",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "economic",
+  "title": "GDF technical--scale--allocative profitability decomposition",
+  "decision_question": "Why does the organization earn less output value per unit of input expenditure than the best reference activity: operational performance, operating scale, or an input--output mix that is poorly aligned with prices?",
+  "names": {
+    "display": "GDF technical--scale--allocative profitability decomposition",
+    "historical": [
+      {
+        "label": "Zofío--Prieto profitability decomposition",
+        "spellings": [
+          "generalized-distance profitability decomposition",
+          "technical scale and allocative profitability decomposition"
+        ],
+        "sources": [
+          "doi:10.1007/s10108-006-9004-0"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "GDFProfitabilityDecomposition",
+      "aliases": [
+        {
+          "symbol": "ProfitabilityDecomposition"
+        }
+      ]
+    },
+    "spellings": [
+      "GDF profitability decomposition",
+      "return-to-dollar decomposition",
+      "Zofio--Prieto decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "explain_return_to_dollar_shortfall",
+        "managerial_interpretation": "separate_operational_scale_and_market_value_alignment_sources_of_profitability_inefficiency"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_resources_forming_input_expenditure",
+        "outputs": "priced_desirable_outputs_forming_output_value",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_and_output_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.positive_input_cost",
+        "condition.positive_reference_costs_and_revenues",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "matched_crs_and_vrs_convex_envelopment",
+        "returns_to_scale": "crs_and_vrs",
+        "disposal": "ordinary_free",
+        "profitability_ratio_value": "invariant_between_crs_and_vrs"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "matched_internal_composition",
+        "algorithms": [
+          "closed_form_profitability_extreme_ratio",
+          "crs_chavas_cox_generalized_distance",
+          "vrs_chavas_cox_generalized_distance"
+        ]
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "economic_decomposition",
+        "native_score": "allocative_efficiency",
+        "identity": "profitability_efficiency_equals_vrs_gdf_technical_efficiency_times_scale_efficiency_times_allocative_efficiency",
+        "alpha_interpretation": "performance_contract_balance",
+        "direction": "higher_is_better"
+      },
+      "defaults": {
+        "alpha": 0.5
+      },
+      "exposed": [
+        "alpha"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_and_output_prices",
+        "price_sides": [
+          "inputs",
+          "outputs"
+        ]
+      },
+      "exposed": [
+        "input_prices",
+        "output_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_internal_composition",
+        "components": [
+          "economic.profitability.return_to_dollar",
+          "static.generalized_distance.chavas_cox"
+        ],
+        "component_configurations": [
+          {
+            "method_id": "economic.profitability.return_to_dollar",
+            "role": "profitability_benchmark"
+          },
+          {
+            "method_id": "static.generalized_distance.chavas_cox",
+            "returns_to_scale": "crs",
+            "role": "crs_gdf"
+          },
+          {
+            "method_id": "static.generalized_distance.chavas_cox",
+            "returns_to_scale": "vrs",
+            "role": "vrs_gdf"
+          }
+        ],
+        "target_components": [
+          "profitability_maximizing_activity",
+          "crs_gdf",
+          "vrs_gdf"
+        ],
+        "unified_dual": "unavailable"
+      },
+      "defaults": {
+        "compute_slacks": true
+      },
+      "exposed": [
+        "compute_slacks"
+      ]
+    },
+    "analysis": {
+      "components": [
+        "economic.profitability.return_to_dollar",
+        "static.generalized_distance.chavas_cox"
+      ],
+      "fixed": {
+        "kind": "allocative_decomposition",
+        "identities": [
+          "profitability_efficiency_equals_crs_gdf_technical_efficiency_times_allocative_efficiency",
+          "profitability_efficiency_equals_vrs_gdf_technical_efficiency_times_scale_efficiency_times_allocative_efficiency",
+          "scale_efficiency_equals_crs_gdf_technical_efficiency_over_vrs_gdf_technical_efficiency"
+        ]
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.profitability_decomposition",
+    "canonical_symbol": "GDFProfitabilityDecomposition",
+    "registry_dependencies": [
+      "economic.profitability.return_to_dollar",
+      "static.generalized_distance.chavas_cox"
+    ],
+    "backend_capabilities": [
+      "closed_form_profitability_kernel",
+      "compiled_reference_reuse",
+      "monotone_feasibility_search",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "allocative_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_matched_profitability_decomposition_components",
+            "condition.positive_crs_gdf_technical_efficiency"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "profitability_efficiency",
+      "crs_technical_efficiency",
+      "vrs_technical_efficiency",
+      "scale_efficiency",
+      "crs_reconstruction_residual",
+      "vrs_reconstruction_residual",
+      "crs_vrs_ordering_residual",
+      "decomposition_defined",
+      "gdf_alpha",
+      "profitability_maximizing_target",
+      "crs_gdf_target",
+      "vrs_gdf_target",
+      "component_intensities",
+      "gdf_slacks",
+      "component_diagnostics"
+    ],
+    "transformations": [
+      "allocative_efficiency_equals_profitability_efficiency_over_crs_gdf_technical_efficiency",
+      "scale_efficiency_equals_crs_gdf_technical_efficiency_over_vrs_gdf_technical_efficiency",
+      "profitability_efficiency_equals_crs_gdf_technical_efficiency_times_allocative_efficiency",
+      "profitability_efficiency_equals_vrs_gdf_technical_efficiency_times_scale_efficiency_times_allocative_efficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.positive_input_cost",
+        "condition.positive_reference_costs_and_revenues",
+        "condition.positive_crs_and_vrs_gdf_components",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_rescaling_preserves_the_matched_dimensionless_profitability_decomposition",
+        "co_transform": [
+          "input_prices",
+          "output_prices"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.same_alpha_and_reference_across_components"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "Each profitability-maximizing, CRS GDF, and VRS GDF target is feasible only in its declared component technology when that component resolves successfully.",
+      "efficiency": "The reported factors reconcile return-to-dollar performance with CRS and VRS generalized-distance performance; they do not define one joint projection or establish one common Pareto-efficient target.",
+      "selection": "The three target and peer systems arise from separate matched component programs and may differ or be non-unique.",
+      "conditions": [
+        "condition.optimal_matched_profitability_decomposition_components",
+        "condition.same_alpha_and_reference_across_components"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s10108-006-9004-0"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1002/j.2325-8012.1999.tb00248.x"
+      },
+      {
+        "role": "implementation",
+        "id": "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45",
+        "tests/test_profitability_decomposition.py::test_five_dmu_oracle_reconstructs_both_profitability_identities"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "cross_implementation_five_dmu_oracle",
+        "both_profitability_identities",
+        "crs_vrs_ordering",
+        "component_target_labels",
+        "alpha_variation",
+        "external_reference_failure_closure",
+        "component_failure_propagation",
+        "api_aliases_and_metadata"
+      ],
+      "locators": [
+        "tests/test_profitability_decomposition.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_profitability_decomposition.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.profitability_decomposition",
+        "path": "docs/analysis/profitability-decomposition.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

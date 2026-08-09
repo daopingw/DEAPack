@@ -1,0 +1,309 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "evaluation.cross.crs",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": "protocol",
+  "category": "evaluation",
+  "title": "Ordinary CRS cross-efficiency",
+  "decision_question": "How well does each organization's record stand up when it is appraised using the admissible resource and service valuations selected by every organization in the comparison population?",
+  "names": {
+    "display": "Ordinary CRS cross-efficiency",
+    "historical": [
+      {
+        "label": "Cross-efficiency evaluation",
+        "spellings": [
+          "cross efficiency",
+          "peer-appraisal matrix"
+        ],
+        "sources": [
+          "doi:10.1002/ev.1441"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": null,
+      "aliases": []
+    },
+    "spellings": [
+      "ordinary CRS cross-efficiency",
+      "solver-selected primary cross-appraisal"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "comparative_peer_appraisal",
+        "managerial_interpretation": "test_each_record_under_peer_selected_admissible_valuations",
+        "ranking_status": "exploratory_unless_weight_selection_stability_is_established"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_resource_quantities",
+        "outputs": "nonnegative_desirable_service_quantities_with_positive_aggregate",
+        "bad_outputs": "excluded",
+        "sample": "cross_section",
+        "representation": {
+          "measurement_scale": "cardinal_ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "ordinary_discretionary_account"
+        }
+      },
+      "constraints": [
+        "condition.cross_section_only",
+        "condition.desirable_outputs_only",
+        "domain.cross_efficiency.strictly_positive_input_components"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "crs_multiplier_feasibility",
+        "returns_to_scale": "crs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "ccr_multiplier"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "cross_section",
+        "comparison_population": {
+          "scope": "all_eligible_organizations",
+          "membership_rule": "all_rows",
+          "self_membership": "included"
+        },
+        "temporal_information_set": {
+          "policy": "cross_section_only",
+          "availability_cutoff": "single_declared_vintage",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      }
+    },
+    "performance": {
+      "fixed": {
+        "base_measure": "input_normalized_ccr_efficiency",
+        "reported_measure": "equal_mean_cross_efficiency",
+        "score_direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "organization_specific_endogenous_multipliers",
+        "selection": "solver_selected_primary_optimum",
+        "alternate_optimum_policy": "visible_not_resolved",
+        "aggressive_benevolent_neutral_claim": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.cross"
+      ],
+      "fixed": {
+        "kind": "ordinary_cross_appraisal",
+        "matrix_rows": "appraiser_dmu_id",
+        "matrix_columns": "evaluatee_dmu_id",
+        "invalid_entry_policy": "fail_closed"
+      },
+      "defaults": {
+        "aggregation": "equal_arithmetic_mean_including_self"
+      },
+      "exposed": [
+        "include_self"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "peer_appraisal",
+        "maverick_index": "self_minus_peer_mean_over_peer_mean",
+        "pareto_koopmans_classification": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "prototype",
+    "api": "none",
+    "publication_scope": "next_version"
+  },
+  "implementation": {
+    "module": "deapack.evaluation.cross_efficiency",
+    "canonical_symbol": "CRSCrossEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "evaluation.cross",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "dimensionless_postprocessed_ratio_certification",
+      "dual_optimality_and_duality_gap_certification",
+      "linear_programming",
+      "streamed_column_summary",
+      "tidy_appraiser_evaluatee_matrix"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "mean_cross_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.certified_crs_appraisal_ratios"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "self_efficiency",
+      "peer_mean_excluding_self",
+      "maverick_index",
+      "appraisal_dispersion",
+      "appraiser_evaluatee_matrix",
+      "solver_selected_multipliers",
+      "primal_dual_ratio_certificates"
+    ],
+    "transformations": []
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.cross_section_only",
+        "condition.desirable_outputs_only",
+        "domain.cross_efficiency.strictly_positive_input_components"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_factor_rescaling_with_corresponding_multiplier_rescaling",
+        "co_transform": [
+          "input_multipliers",
+          "output_multipliers"
+        ],
+        "conditions": [
+          "condition.same_solver_selected_optimal_face"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The protocol reports comparative appraisals rather than an operating target.",
+      "efficiency": "A score of one is an appraisal result and does not by itself certify Pareto--Koopmans efficiency.",
+      "selection": "Primary CCR multipliers and all off-diagonal appraisals are solver selected among alternate optima; uniqueness is not claimed.",
+      "conditions": [
+        "condition.certified_primal_dual_optimum",
+        "condition.certified_crs_appraisal_ratios"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "review_supported",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1002/ev.1441"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1057/jors.1994.84"
+      },
+      {
+        "role": "implementation",
+        "id": "doi:10.1287/opre.1070.0487"
+      }
+    ],
+    "oracle": {
+      "status": "candidate",
+      "locators": [
+        "release_disposition=deferred_to_next_version; complete defining and secondary-goal sources were not obtained in the audited environment; source boundary and reopening requirements: specs/source_protocols/ordinary_crs_cross_efficiency.md",
+        "Liang--Wu--Cook--Zhu (2008) Table 2 supplies a later-source CCR diagonal and aggregate profiles, but its arbitrary raw profile is not unique under alternate primary optima",
+        "Internal tests exercise the production prototype and do not constitute an independent source-native numerical oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alternate_primary_optimum_matrix_and_ranking_nonuniqueness",
+        "appraiser_evaluatee_role_semantics",
+        "later_source_ccr_diagonal_fixture",
+        "dimensionless_ratio_amplification_rejection",
+        "dual_optimality_certificate_requirement",
+        "prototype_include_and_exclude_self_aggregation_policies",
+        "streamed_summary",
+        "unit_invariance",
+        "unsupported_data_and_time_protocols"
+      ],
+      "locators": [
+        "tests/test_cross_efficiency.py",
+        "tests/test_results.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_cross_appraisal.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.evaluation.cross_efficiency",
+        "path": "docs/evaluation/cross-efficiency.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.evaluation",
+        "path": "docs/api/evaluation.md",
+        "state": "present",
+        "role": "mention"
+      }
+    ]
+  }
+}

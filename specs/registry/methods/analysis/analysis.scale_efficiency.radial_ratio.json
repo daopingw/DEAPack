@@ -1,0 +1,424 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.scale_efficiency.radial_ratio",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "scale",
+  "title": "Radial scale-efficiency ratio",
+  "decision_question": "How much of an organization's matched radial technical-performance shortfall is associated with operating scale rather than its position relative to the variable-returns benchmark?",
+  "names": {
+    "display": "Radial scale-efficiency ratio",
+    "historical": [
+      {
+        "label": "Scale efficiency",
+        "spellings": [
+          "DEA scale efficiency",
+          "CRS/VRS efficiency ratio"
+        ],
+        "sources": [
+          "doi:10.1287/mnsc.30.9.1078"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "scale_efficiency",
+      "aliases": []
+    },
+    "spellings": [
+      "radial scale efficiency",
+      "technical and scale efficiency decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "diagnose_scale_related_performance_gap"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "matched_crs_and_vrs_convex_envelopment",
+        "disposal": "ordinary_free",
+        "component_returns_to_scale": [
+          "crs",
+          "vrs"
+        ]
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment",
+        "component_fits": 2
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.scale_efficiency.matched_reference_across_components"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_efficiency",
+        "component_scores": [
+          "crs_efficiency",
+          "vrs_efficiency"
+        ],
+        "native_score": "scale_efficiency"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_component_ratio",
+        "components": "crs_and_vrs",
+        "slack_completion": "not_required_for_the_score_ratio",
+        "generic_pareto_koopmans_classification": "not_reported"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "scale_efficiency_ratio",
+        "identity": "crs_efficiency_over_vrs_efficiency",
+        "distinguished_from": [
+          "capacity_utilization",
+          "local_returns_to_scale",
+          "most_productive_scale_size",
+          "scale_elasticity"
+        ]
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.analysis.scale",
+    "canonical_symbol": "scale_efficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.radial",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "matched_crs_and_vrs_radial_composition",
+      "score_only_component_fits",
+      "shared_reference_compilation",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "scale_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.scale_efficiency.matched_reference_across_components",
+            "condition.self_inclusive_reference",
+            "condition.scale_efficiency.both_component_fits_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "crs_efficiency",
+      "vrs_efficiency",
+      "crs_solver_status",
+      "vrs_solver_status",
+      "crs_primary_solver_status",
+      "vrs_primary_solver_status",
+      "crs_score_valid",
+      "vrs_score_valid",
+      "crs_score_status",
+      "vrs_score_status",
+      "score_valid",
+      "score_status",
+      "scale_efficiency_classification"
+    ],
+    "transformations": [
+      "scale_efficiency_equals_crs_efficiency_divided_by_vrs_efficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.scale_efficiency.matched_reference_across_components",
+        "condition.scale_efficiency.both_component_fits_optimal"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_orientation_and_component_policy"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "not_applicable_because_the_operator_reports_no_target",
+      "efficiency": "the_ratio_diagnoses_scale_efficiency_and_does_not_certify_pareto_koopmans_efficiency",
+      "selection": "not_applicable_because_both_component_fits_are_score_only",
+      "conditions": [
+        "condition.scale_efficiency.both_component_fits_optimal",
+        "condition.scale_efficiency.matched_reference_across_components"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1287/mnsc.30.9.1078"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1007/978-94-015-7721-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/scale-efficiency-analytical.md",
+        "tests/test_scale_independent_oracle.py::test_exact_scale_efficiency_for_both_orientations",
+        "tests/test_scale_independent_oracle.py::test_public_scale_efficiency_matches_independent_dense_component_programmes"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/scale-efficiency-analytical.md",
+        "public_api_test_locator": "tests/test_scale_independent_oracle.py::test_public_scale_efficiency_matches_independent_dense_component_programmes",
+        "claims": [
+          {
+            "claim_id": "scale_efficiency.exact_matched_ratio",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_scale_independent_oracle.py::test_exact_scale_efficiency_for_both_orientations"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "evaluation_protocol": [
+                "matched_score_only_component_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "crs_efficiency",
+              "vrs_efficiency",
+              "scale_efficiency",
+              "ratio_identity",
+              "scale_efficiency_status",
+              "generic_efficiency_status_missing"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "scale_efficiency.independent_dense_components",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_scale_independent_oracle.py::test_public_scale_efficiency_matches_independent_dense_component_programmes"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "evaluation_protocol": [
+                "matched_score_only_component_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "crs_efficiency",
+              "vrs_efficiency",
+              "scale_efficiency",
+              "ratio_identity",
+              "scale_efficiency_status",
+              "generic_efficiency_status_missing",
+              "component_diagnostics",
+              "execution_accounting"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytical_optimality_certificate",
+        "crs_vrs_ratio_identity",
+        "generic_efficiency_classification_is_withheld",
+        "independent_dense_component_compilers",
+        "component_postsolve_certificates_fail_closed",
+        "scale_efficiency_classification",
+        "shared_crs_vrs_reference_compilation"
+      ],
+      "locators": [
+        "tests/test_scale.py",
+        "tests/test_radial_consumer_validity.py::test_scale_efficiency_requires_both_certified_radial_component_scores",
+        "tests/test_scale_independent_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.scale_performance_management",
+        "path": "book/chapters/02-classical/scale-performance-management.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.scale_efficiency",
+        "path": "docs/analysis/scale-efficiency.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

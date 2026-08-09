@@ -1,0 +1,47 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.directional_nonradial.energy_carbon.zhou_ang_wang_2012_non_chp",
+  "target": "environmental.ddf.weak_disposal.common_factor",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "performance",
+    "valuation",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.zhou_ang_wang_2012_non_chp_not_alias_of_common_factor_ddf",
+      "arguments": {
+        "shared_technology": "crs_common_factor_bad_output_equality_with_null_jointness",
+        "source_account": "separate_nonradial_beta_fossil_beta_electricity_beta_carbon_steps_with_fixed_block_weights",
+        "comparison_account": "one_common_directional_step_with_configurable_direction",
+        "source_score_transforms": "account_specific_epi_cpi_ecpi_formulas",
+        "comparison_score_transform": "one_over_one_plus_common_beta_when_nonnegative",
+        "matched_numerical_value": "does_not_create_a_method_or_target_alias",
+        "arbitrary_direction_or_weight": "forbidden_under_zhou_ang_wang_identity",
+        "chp_branch": "excluded_printed_programme_unbounded",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.ejor.2012.04.022",
+      "doi:10.1006/jema.1997.0146"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_method_ontology.py::test_zhou_ang_wang_non_chp_machine_identity_and_non_alias_relation",
+      "tests/test_zhou_ang_wang_non_chp_source_oracle.py::test_public_non_chp_accounts_match_exact_analytical_oracle"
+    ]
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.allocative_decomposition.cost_input_radial",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "economic",
+  "title": "Cost technical--allocative decomposition",
+  "decision_question": "How much of the organization's avoidable input expenditure is associated with using too many resources for its output commitments, and how much is associated with choosing a costly input mix at the prevailing prices?",
+  "names": {
+    "display": "Cost technical--allocative decomposition",
+    "historical": [
+      {
+        "label": "Technical and allocative cost-efficiency decomposition",
+        "spellings": [
+          "cost efficiency decomposition",
+          "overall technical and allocative efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/978-94-015-7721-2"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "AllocativeDecomposition",
+      "aliases": []
+    },
+    "spellings": [
+      "cost allocative decomposition",
+      "input-oriented cost decomposition",
+      "technical--allocative cost efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "separate_excess_resource_use_from_costly_input_mix",
+        "managerial_interpretation": "distinguish_operational_and_procurement_or_mix_sources_of_cost_inefficiency"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_controllable_resources",
+        "outputs": "fixed_desirable_commitments",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_prices",
+        "condition.positive_observed_cost",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "matched_convex_envelopment",
+        "disposal": "ordinary_free"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.rts_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "matched_two_program_decomposition",
+        "programs": [
+          "minimum_cost",
+          "input_radial_technical"
+        ]
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "cost_technical_allocative",
+        "orientation": "input",
+        "native_score": "allocative_efficiency",
+        "identity": "cost_efficiency_equals_input_radial_technical_efficiency_times_cost_allocative_efficiency",
+        "direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_prices",
+        "price_side": "inputs"
+      },
+      "exposed": [
+        "input_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_component_appraisal",
+        "shared_settings": [
+          "reference",
+          "returns_to_scale",
+          "prices",
+          "solver",
+          "tolerances"
+        ],
+        "reported_target": "cost_minimizing_activity",
+        "radial_target": "not_carried_in_the_combined_result",
+        "target_uniqueness": "not_assessed"
+      }
+    },
+    "analysis": {
+      "components": [
+        "economic.cost",
+        "static.radial"
+      ],
+      "fixed": {
+        "kind": "multiplicative_cost_decomposition",
+        "residual": "cost_efficiency_minus_technical_efficiency_times_allocative_efficiency"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.allocative",
+    "canonical_symbol": "AllocativeDecomposition",
+    "registry_dependencies": [
+      "economic.cost",
+      "static.radial"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "matched_component_decomposition",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "allocative_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_matched_cost_decomposition_programs",
+            "condition.positive_technical_efficiency"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "cost_efficiency",
+      "technical_efficiency",
+      "reconstruction_residual",
+      "cost_solver_status",
+      "technical_solver_status",
+      "technical_primary_solver_status",
+      "technical_score_valid",
+      "technical_score_status",
+      "score_valid",
+      "score_status",
+      "decomposition_defined",
+      "is_efficient",
+      "cost_minimizing_targets",
+      "cost_minimizing_intensities",
+      "cost_duals",
+      "component_diagnostics"
+    ],
+    "transformations": [
+      "allocative_efficiency_equals_cost_efficiency_over_input_radial_technical_efficiency",
+      "cost_efficiency_equals_input_radial_technical_efficiency_times_allocative_efficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_prices",
+        "condition.positive_observed_cost",
+        "condition.positive_technical_efficiency",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_rescaling_preserves_all_dimensionless_decomposition_components",
+        "co_transform": [
+          "input_prices",
+          "reported_input_costs"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.matched_reference_across_components"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The combined result carries the feasible minimum-cost target when the cost component is optimal; the radial technical target is not carried into this result contract.",
+      "efficiency": "The decomposition distinguishes proportional input-use performance from the cost consequences of input mix; it does not establish that the reported cost target is strongly or Pareto efficient.",
+      "selection": "The cost and radial components solve separately under matched settings, and their peer systems may be non-unique.",
+      "conditions": [
+        "condition.optimal_matched_cost_decomposition_programs",
+        "condition.matched_reference_across_components"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/978-94-015-7721-2"
+      },
+      {
+        "role": "implementation",
+        "id": "https://www.owlnet.rice.edu/~econ380/DEAP.PDF"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "https://www.owlnet.rice.edu/~econ380/DEAP.PDF",
+        "tests/test_cost.py::test_cost_allocative_decomposition_reproduces_published_components"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_component_oracle",
+        "multiplicative_identity",
+        "crs_and_vrs",
+        "component_failure_propagation",
+        "technical_component_postsolve_certificate_fail_closed",
+        "external_reference_nullable_claims",
+        "unit_invariance",
+        "compiled_reference_reuse",
+        "metadata_contract"
+      ],
+      "locators": [
+        "tests/test_cost.py",
+        "tests/test_radial_consumer_validity.py::test_cost_allocative_requires_the_certified_technical_component_score"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_economic_allocative.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.economic_efficiency_prices",
+        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.allocative_decomposition",
+        "path": "docs/analysis/allocative-decomposition.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

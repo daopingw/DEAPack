@@ -1,0 +1,688 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.radial",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "Farrell radial DEA",
+  "decision_question": "By what common proportion could controllable resources be saved, or desirable services be expanded, while remaining attainable under the declared technology?",
+  "names": {
+    "display": "Farrell radial DEA",
+    "historical": [
+      {
+        "label": "Farrell radial efficiency",
+        "spellings": [
+          "radial DEA"
+        ],
+        "sources": [
+          "doi:10.2307/2343100"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RadialDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "input-oriented radial DEA",
+      "output-oriented radial DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_farrell_efficiency"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.target_completion.pareto_koopmans"
+      ],
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "target_completion_scale_anchor": "evaluated_observation"
+      },
+      "defaults": {
+        "secondary_objective": "maximize_row_scaled_slacks"
+      },
+      "exposed": [
+        "slack_completion"
+      ],
+      "constraints": [
+        "condition.pareto_koopmans.ordinary_all_discretionary_domain",
+        "condition.pareto_koopmans.same_primary_optimal_face",
+        "condition.pareto_koopmans.positive_row_scale_weights",
+        "condition.pareto_koopmans.evaluated_observation_scale_anchor"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.radial",
+    "canonical_symbol": "RadialDEA",
+    "registry_dependencies": [
+      "evaluation.target_completion.pareto_koopmans",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "lexicographic_slack_completion",
+      "observation_specific_peer_eligibility_intersection",
+      "peer_eligibility_on_fixed_crs_vrs_orientation_recipes",
+      "content_deduplicated_reference_compilation"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "phi",
+        "direction": "lower_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 1.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "radial_efficiency",
+      "input_slacks",
+      "output_slacks",
+      "peers",
+      "targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "score_valid",
+      "score_status",
+      "solver_status",
+      "backend_solver_status",
+      "raw_solver_status",
+      "primary_solver_status",
+      "primary_semantic_solver_status",
+      "primary_backend_solver_status",
+      "primary_raw_solver_status",
+      "completion_valid",
+      "completion_status",
+      "completion_solver_status",
+      "completion_semantic_solver_status",
+      "completion_backend_solver_status",
+      "completion_raw_solver_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "solver_neutral_primary_lp_optimality_certificate",
+      "radial_primary_account_reconstruction_certificate",
+      "solver_neutral_completion_lp_optimality_certificate",
+      "radial_completion_account_reconstruction_certificate",
+      "phase_scoped_fail_closed_result_release"
+    ],
+    "transformations": [
+      "output_display_efficiency_equals_one_over_phi"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": []
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "conditional_on_certified_primary_and_completion_accounts",
+      "efficiency": "conditional_strong_after_slack_completion",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.successful_primal_dual_certificate",
+        "condition.successful_radial_primary_account_reconstruction_certificate",
+        "condition.successful_lexicographic_slack_completion",
+        "condition.successful_radial_completion_account_reconstruction_certificate"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.2307/2343100"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0377-2217(78)90138-8"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1287/mnsc.30.9.1078"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0304-4076(85)90133-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/radial-analytical.md",
+        "tests/test_radial_independent_oracle.py::test_exact_radial_rts_oracle",
+        "tests/test_radial_independent_oracle.py::test_named_radial_presets_match_exact_phase_one_oracle",
+        "tests/test_radial_independent_oracle.py::test_named_crs_presets_recover_exact_slack_completed_targets",
+        "tests/test_radial_independent_oracle.py::test_exact_vrs_slack_completion_distinguishes_radial_and_strong_efficiency",
+        "tests/test_radial_independent_oracle.py::test_exact_vrs_output_completion_recovers_the_remaining_input_excess",
+        "tests/test_radial_independent_oracle.py::test_public_radial_scores_match_an_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/radial-analytical.md",
+        "public_api_test_locator": "tests/test_radial_independent_oracle.py::test_public_radial_scores_match_an_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "radial.phase_one.exact_scores",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_radial_independent_oracle.py::test_exact_radial_rts_oracle",
+              "tests/test_radial_independent_oracle.py::test_named_radial_presets_match_exact_phase_one_oracle"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs",
+                "nirs",
+                "ndrs"
+              ],
+              "evaluation_protocol": [
+                "score_only",
+                "lexicographic_slack_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "radial.phase_two.exact_slack_semantics",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_radial_independent_oracle.py::test_exact_vrs_slack_completion_distinguishes_radial_and_strong_efficiency",
+              "tests/test_radial_independent_oracle.py::test_exact_vrs_output_completion_recovers_the_remaining_input_excess"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "lexicographic_slack_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "vrs_input_c",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "C",
+                  "expected": {
+                    "native_score": 1.0,
+                    "radial_efficiency_status": true,
+                    "strong_efficiency_status": false,
+                    "output_slack": 0.5,
+                    "output_target": 1.0
+                  }
+                },
+                {
+                  "case_id": "vrs_output_b",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "native_score": 1.0,
+                    "radial_efficiency_status": true,
+                    "strong_efficiency_status": false,
+                    "input_slack": 1.0,
+                    "input_target": 1.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_score",
+              "radial_efficiency_status",
+              "strong_efficiency_status",
+              "slacks",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "radial.phase_two.crs_exact_slack_semantics",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_radial_independent_oracle.py::test_named_crs_presets_recover_exact_slack_completed_targets"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "lexicographic_slack_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "crs_input_b",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "native_score": 0.5,
+                    "peer_a_lambda": 1.0,
+                    "input_x1_target": 1.0,
+                    "input_x2_target": 1.0,
+                    "output_y1_target": 1.0,
+                    "output_y2_target": 1.0,
+                    "input_x1_slack": 0.0,
+                    "input_x2_slack": 0.5,
+                    "output_y1_slack": 0.0,
+                    "output_y2_slack": 0.5
+                  }
+                },
+                {
+                  "case_id": "crs_output_b",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "native_score": 2.0,
+                    "peer_a_lambda": 2.0,
+                    "input_x1_target": 2.0,
+                    "input_x2_target": 2.0,
+                    "output_y1_target": 2.0,
+                    "output_y2_target": 2.0,
+                    "input_x1_slack": 0.0,
+                    "input_x2_slack": 1.0,
+                    "output_y1_slack": 0.0,
+                    "output_y2_slack": 1.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_score",
+              "peers",
+              "slacks",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "radial.two_phase.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_radial_independent_oracle.py::test_public_radial_scores_match_an_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs",
+                "nirs",
+                "ndrs"
+              ],
+              "evaluation_protocol": [
+                "score_only",
+                "lexicographic_slack_completion"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency",
+              "radial_efficiency_status",
+              "strong_efficiency_status",
+              "slacks",
+              "targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytical_optimality_certificate",
+        "classic_radial_presets",
+        "domain",
+        "failure",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "primary_radial_account_reconstruction_certificate",
+        "completion_target_and_slack_account_reconstruction_certificate",
+        "semantic_solver_status_rejects_uncertified_backend_optimum",
+        "raw_solver_status_preserved_on_certificate_failure",
+        "phase_specific_semantic_backend_raw_status_separation",
+        "primary_failure_withholds_all_semantic_tables",
+        "completion_failure_preserves_only_certified_primary_score",
+        "semantic_subtables_withheld_for_uncertified_completion",
+        "single_bad_dmu_failure_isolation",
+        "unit_invariant_postsolve_account_checks",
+        "publication_cleanup_peer_threshold_and_dual_account_checks",
+        "independent_dense_two_phase_compiler",
+        "source_neutral_peer_eligibility_key_and_row_validation",
+        "peer_eligibility_reference_policy_intersection",
+        "peer_eligibility_manual_custom_reference_score_equivalence",
+        "peer_eligibility_fixed_radial_recipe_equivalence",
+        "peer_eligibility_content_deduplicated_compilation",
+        "peer_eligibility_compact_provenance_and_fingerprints",
+        "peer_eligibility_reference_frequency_fail_closed",
+        "reference",
+        "restricted_returns_to_scale",
+        "score",
+        "shared_pareto_koopmans_phase_two_composition",
+        "target",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_radial.py",
+        "tests/test_radial_certificates.py",
+        "tests/test_radial_certificates.py::test_uncertified_primary_withholds_all_claims_for_only_the_bad_dmu",
+        "tests/test_radial_certificates.py::test_uncertified_completion_preserves_only_the_primary_score_for_bad_dmu",
+        "tests/test_radial_certificates.py::test_default_highs_certifies_both_phases_without_extra_solves",
+        "tests/test_radial_certificates.py::test_publication_cleanup_cannot_release_an_invalid_aggregate_account",
+        "tests/test_radial_certificates.py::test_vrs_dual_account_includes_the_certified_convexity_marginal",
+        "tests/test_lp_certificates.py",
+        "tests/test_peer_eligibility_spec.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_radial_independent_oracle.py",
+        "tests/test_target_completion_protocol.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_radial.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.radial",
+        "path": "book/chapters/02-classical/03-classical-radial.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.radial",
+        "path": "docs/models/radial.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      },
+      {
+        "doc_id": "docs.api.specifications",
+        "path": "docs/api/specifications.md",
+        "state": "present",
+        "role": "api"
+      },
+      {
+        "doc_id": "docs.user_guide.reference_sets",
+        "path": "docs/user-guide/reference-sets.md",
+        "state": "present",
+        "role": "supporting_reference_policy"
+      }
+    ]
+  }
+}

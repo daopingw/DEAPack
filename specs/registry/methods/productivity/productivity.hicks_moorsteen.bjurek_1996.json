@@ -1,0 +1,495 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.hicks_moorsteen.bjurek_1996",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Bjurek Hicks--Moorsteen total-factor-productivity index",
+  "decision_question": "Did aggregate desirable-output quantity grow faster than aggregate productive-input quantity between two adjacent periods?",
+  "names": {
+    "display": "Bjurek Hicks--Moorsteen productivity index",
+    "historical": [
+      {
+        "label": "Malmquist total factor productivity index",
+        "spellings": [
+          "Malmquist TFP index"
+        ],
+        "sources": [
+          "doi:10.2307/3440861"
+        ]
+      },
+      {
+        "label": "Hicks--Moorsteen productivity index",
+        "spellings": [
+          "Hicks-Moorsteen index",
+          "Moorsteen--Bjurek productivity index",
+          "Bjurek productivity index"
+        ],
+        "sources": [
+          "doi:10.2307/3440861",
+          "repec:qld:uqcepa:35"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "HicksMoorsteenProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "HicksMoorsteenDEA"
+        },
+        {
+          "symbol": "MoorsteenBjurekProductivityIndex"
+        },
+        {
+          "symbol": "MoorsteenBjurekDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "Hicks--Moorsteen TFP",
+      "HM productivity index",
+      "Moorsteen--Bjurek index"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "complete_total_factor_productivity_quantity_accounting",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "aggregate_output_quantity_growth_relative_to_aggregate_input_quantity_growth"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resource_quantities",
+        "outputs": "desirable_service_or_product_quantities",
+        "bad_outputs": "excluded",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative_quantities_with_positive_observation_aggregates",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.hicks_moorsteen.nonnegative_desirable_quantities",
+        "domain.hicks_moorsteen.positive_input_and_output_aggregates",
+        "domain.productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "two_contemporaneous_convex_envelopment_technologies",
+        "free_disposal": true
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.hicks_moorsteen.rts_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "period_specific_dea_envelopment"
+      }
+    },
+    "reference": {
+      "fixed": {
+        "kind": "bjurek_symmetric_two_contemporaneous_technology_reference",
+        "distance_tasks_per_pair": [
+          "output_s_xs_ys",
+          "output_s_xs_yt",
+          "output_t_xt_ys",
+          "output_t_xt_yt",
+          "input_s_xs_ys",
+          "input_s_xt_ys",
+          "input_t_xs_yt",
+          "input_t_xt_yt"
+        ],
+        "held_quantity_pairing": "reference_period_input_for_output_comparisons_and_reference_period_output_for_input_comparisons"
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "one_contemporaneous_technology_per_period",
+          "membership_rule": "all_eligible_observations_from_the_technology_period",
+          "self_membership": "allowed_for_own_period_tasks"
+        },
+        "temporal_information_set": {
+          "policy": "adjacent_contemporaneous",
+          "availability_cutoff": "each_evaluated_technology_period",
+          "vintage_required": true,
+          "historical_revision": "period_technology_recomputed_when_its_sample_changes"
+        }
+      }
+    },
+    "performance": {
+      "fixed": {
+        "family": "shephard_input_and_output_quantity_indexes",
+        "orientation": "both_input_and_output",
+        "output_distance": "D_O_inf_delta_such_that_x_y_over_delta_is_feasible",
+        "input_distance": "D_I_sup_delta_such_that_x_over_delta_y_is_feasible",
+        "aggregation": "geometric_mean_across_base_and_comparison_reference_technologies"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none",
+        "aggregation_basis": "production_technology_distances_not_prices"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_adjacent_period_identifiers",
+        "first_period_rows": "omitted_no_predecessor",
+        "distance_solve_cache": "orientation_technology_period_input_row_output_row",
+        "failure_policy": "atomic_transition_release_only_after_all_eight_lp_and_quantity_account_certificates"
+      },
+      "defaults": {
+        "unbalanced": "drop"
+      },
+      "exposed": [
+        "unbalanced"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "hicks_moorsteen_multiplicative_tfp",
+        "output_quantity_identity": "Q_equals_sqrt_Qs_times_Qt",
+        "input_quantity_identity": "X_equals_sqrt_Xs_times_Xt",
+        "complete_identity": "productivity_change_equals_Q_divided_by_X",
+        "reported_decomposition": "none",
+        "transitivity": "not_claimed_for_chained_bilateral_indexes"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.analysis.hicks_moorsteen",
+    "canonical_symbol": "HicksMoorsteenProductivityIndex",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_period_references",
+      "deduplicated_eight_distance_task_cache",
+      "row_scaled_quantity_constraints",
+      "original_unit_raw_and_published_radial_account_certification",
+      "sparse_thresholded_peer_cache",
+      "independent_thresholded_peer_account_gate",
+      "log_domain_multiplicative_index_construction",
+      "solver_neutral_primal_dual_kkt_certificate_per_distance_task",
+      "atomic_transition_quantity_account_release",
+      "requested_unique_and_solver_call_accounting",
+      "task_diagnostic_peer_valid_alias",
+      "zero_extra_solve_uniform_solver_counters"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "hicks_moorsteen_productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.all_eight_shephard_distances_positive",
+            "condition.all_eight_distance_tasks_optimal",
+            "condition.all_eight_distance_lp_certificates_valid",
+            "condition.all_eight_original_unit_distance_accounts_certified",
+            "condition.complete_hicks_moorsteen_quantity_account_certified"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "output_quantity_index",
+      "input_quantity_index",
+      "output_quantity_index_s",
+      "output_quantity_index_t",
+      "input_quantity_index_s",
+      "input_quantity_index_t",
+      "eight_shephard_distances",
+      "identity_residual",
+      "distance_task_intensities",
+      "unmatched_adjacent_periods",
+      "distance_task_postsolve_certificates",
+      "distance_task_original_unit_economic_certificates",
+      "quantity_account_certificate",
+      "peer_valid",
+      "peer_status",
+      "peer_certified_distance_count",
+      "all_eight_peer_accounts_certified",
+      "task_diagnostic_published_peer_account_certified_and_peer_valid",
+      "requested_distance_tasks",
+      "unique_distance_solves",
+      "solver_calls",
+      "additional_solver_calls",
+      "score_valid",
+      "score_status"
+    ],
+    "transformations": [
+      "output_quantity_index_equals_geometric_mean_of_two_output_quantity_comparisons",
+      "input_quantity_index_equals_geometric_mean_of_two_input_quantity_comparisons",
+      "productivity_change_equals_output_quantity_index_divided_by_input_quantity_index"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.hicks_moorsteen.nonnegative_desirable_quantities",
+        "domain.hicks_moorsteen.positive_input_and_output_aggregates",
+        "domain.productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.all_eight_shephard_distances_positive",
+        "condition.all_eight_distance_lp_certificates_valid",
+        "condition.complete_hicks_moorsteen_quantity_account_certified"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_input_and_output_quantity",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_variable_units_across_periods_and_reference_observations"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each_distance_task_is_certified_only_in_its_declared_period_technology",
+      "efficiency": "not_applicable_to_the_multiplicative_productivity_change_index",
+      "selection": "each_distance_task_has_solver_selected_peers_and_the_index_has_no_single_joint_projection",
+      "conditions": [
+        "condition.all_eight_distance_tasks_optimal",
+        "condition.all_eight_shephard_distances_positive",
+        "condition.all_eight_distance_lp_certificates_valid",
+        "condition.complete_hicks_moorsteen_quantity_account_certified"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.2307/3440861"
+      },
+      {
+        "role": "review",
+        "id": "repec:qld:uqcepa:35"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1007/s11123-023-00692-1"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/bjurek-1996-hicks-moorsteen-analytical.md",
+        "tests/test_hicks_moorsteen.py::test_public_api_matches_exact_bjurek_two_input_two_output_account",
+        "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_eight_dense_distances_match_the_exact_two_technology_oracle",
+        "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_exact_quantity_indexes_and_hm_identity",
+        "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_reversing_the_same_bilateral_account_gives_exact_reciprocals"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/bjurek-1996-hicks-moorsteen-analytical.md",
+        "public_api_test_locator": "tests/test_hicks_moorsteen.py::test_public_api_matches_exact_bjurek_two_input_two_output_account",
+        "claims": [
+          {
+            "claim_id": "productivity.hicks_moorsteen.bjurek_1996.exact_bilateral_quantity_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_hicks_moorsteen.py::test_public_api_matches_exact_bjurek_two_input_two_output_account",
+              "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_eight_dense_distances_match_the_exact_two_technology_oracle",
+              "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_exact_quantity_indexes_and_hm_identity",
+              "tests/test_bjurek_1996_hicks_moorsteen_source.py::test_reversing_the_same_bilateral_account_gives_exact_reciprocals"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input_and_output_quantity_indexes"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_bilateral_eight_distance_account"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "source_defined_radial_shephard_input_and_output_distances"
+              ],
+              "time_aggregation": [
+                "geometric_two_reference_views"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "productivity.hicks_moorsteen.fixture.exact_bilateral_account",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "D",
+                  "expected": {
+                    "output_quantity_index_s": 2.5,
+                    "output_quantity_index_t": 1.5,
+                    "input_quantity_index_s": 1.2,
+                    "input_quantity_index_t": 1.5,
+                    "output_quantity_index": "sqrt(15)/2",
+                    "input_quantity_index": "3/sqrt(5)",
+                    "productivity_change": "5*sqrt(3)/6"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "eight_shephard_distances",
+              "output_quantity_index_s",
+              "output_quantity_index_t",
+              "input_quantity_index_s",
+              "input_quantity_index_t",
+              "output_quantity_index",
+              "input_quantity_index",
+              "identity_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_single_input_single_output_oracle",
+        "independent_dense_vrs_eight_task_compiler",
+        "exact_two_input_two_output_bilateral_account",
+        "eight_distance_reconstruction",
+        "exact_historical_api_aliases",
+        "unit_invariance",
+        "extreme_independent_unit_invariance_1e10_and_1e12",
+        "strictly_positive_radial_factor_below_solver_tolerance",
+        "bilateral_time_reversal",
+        "identifier_and_period_order_pairing",
+        "unbalanced_panel_policy",
+        "rts_domain",
+        "undesirable_output_rejection",
+        "distance_failure_propagation",
+        "metadata_identity",
+        "solver_neutral_eight_program_postsolve_certification",
+        "atomic_transition_release_after_complete_quantity_reconstruction",
+        "forged_optimum_primal_bound_objective_dual_and_complementarity_rejection",
+        "zero_additional_solve_certificate",
+        "independent_thresholded_peer_account_release",
+        "sparse_peer_cache_payload",
+        "descriptive_combined_output_and_input_quantity_visualization"
+      ],
+      "locators": [
+        "tests/test_hicks_moorsteen.py",
+        "tests/test_bjurek_1996_hicks_moorsteen_source.py",
+        "tests/test_hicks_moorsteen_postsolve_certification.py",
+        "tests/test_visualization_hicks_moorsteen.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_hicks_moorsteen.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.productivity.hicks_moorsteen",
+        "path": "book/chapters/04-productivity/17-hicks-moorsteen.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.hicks_moorsteen",
+        "path": "docs/analysis/hicks-moorsteen.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,869 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this
+# catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 18:28+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:1
+#: 679dba9418a44b099c52a9c70f2fb869
+msgid "Network SBM: Managing a Connected Organization"
+msgstr "网络 SBM：管理一个相互联结的组织"
+
+#: ../../chapters/05-network/20-network-sbm.md:3
+#: 7717688740b247169fd14b50f261e045
+msgid ""
+"A hospital can use too many resources for the treatments it completes, "
+"but that system-wide fact does not tell management whether the shortfall "
+"begins in intake, diagnostics, treatment, or discharge. A utility can "
+"compare total labor and fuel with electricity delivered, yet still know "
+"little about how generation, transmission, and distribution contribute to"
+" the result. The missing information lies inside the organization."
+msgstr "一家医院可能为完成既定诊疗服务投入了过多资源，但这一系统层面的事实并不能告诉管理者，绩效不足究竟始于接诊、诊断、治疗还是出院环节。公用事业企业可以比较劳动和燃料总投入与交付电量，却仍未必清楚发电、输电和配电分别如何影响最终结果。所缺失的信息，恰恰藏在组织内部。"
+
+#: ../../chapters/05-network/20-network-sbm.md:10
+#: 199f2388a229469499c3693229e4c17c
+msgid ""
+"Analyzing each department separately does not solve the problem. The "
+"benchmark chosen for diagnostics might pass 100 cases to treatment, while"
+" the treatment benchmark is constructed to receive only 70. Both "
+"departments could appear efficient on their own, but their plans could "
+"not be implemented by one hospital."
+msgstr ""
+"把各部门拆开分析并不能解决这个问题。诊断过程选出的标杆方案可能向治疗过程移交 100 个病例，而治疗过程的标杆方案却只准备接收 70 "
+"个。两个部门单独看都可能显得有效率，但它们的方案无法由同一家医院同时实施。"
+
+#: ../../chapters/05-network/20-network-sbm.md:15
+#: 5308d79455844916bd9fe65e0e6db950
+#, python-brace-format
+msgid ""
+"Network slacks-based measurement (network SBM) treats the organization as"
+" one connected production system {cite:p}`tone2009network`. Each process "
+"retains its own resources, outputs, peers, and normalized slack measure. "
+"At the same time, the model requires adjacent process plans to agree on "
+"the internal goods or services they pass between them. The result answers"
+" two linked management questions:"
+msgstr ""
+"网络基于松弛变量的效率测度（网络 SBM）把组织视为一个相互联结的生产系统 "
+"{cite:p}`tone2009network`。每个过程保留自己的资源、产出、参照单元和标准化松弛账户，同时模型要求相邻过程就其内部传递的产品或服务达成一致。由此可以回答两个相互关联的管理问题："
+
+#: ../../chapters/05-network/20-network-sbm.md:21
+#: 1329d87b81c34ee0a7554e7971719cdc
+msgid ""
+"How well does the connected organization perform, and which processes "
+"locate the resource excesses or service shortfalls in one feasible system"
+" plan?"
+msgstr "相互联结的组织整体表现如何？在一个可行的系统方案中，哪些过程暴露了资源冗余或服务不足？"
+
+#: ../../chapters/05-network/20-network-sbm.md:24
+#: b93c21c9dbed4c6d9d3349388c4332d7
+msgid ""
+"This is the mainstream contribution of network SBM: it preserves internal"
+" responsibility without allowing the parts of the organization to choose "
+"mutually inconsistent targets. More scores are useful only because they "
+"illuminate one feasible organizational plan."
+msgstr ""
+"这正是网络 SBM "
+"的主流贡献：既保留组织内部的责任归属，又不允许各组成部分选择彼此矛盾的目标。更多的效率值之所以有用，是因为它们共同说明了一个可行的组织方案。"
+
+#: ../../chapters/05-network/20-network-sbm.md:29
+#: 01dc6f15b46e4855aeaebce92771da2d
+msgid "One organization, several sources of shortfall"
+msgstr "一个组织，多种绩效不足来源"
+
+#: ../../chapters/05-network/20-network-sbm.md:31
+#: 137e4415c3714a6d809d013bef26ef5c
+msgid ""
+"Suppose an organization contains processes $k=1,\\ldots,K$. Process $k$ "
+"uses external inputs $x_o^k$, produces external outputs $y_o^k$, and has "
+"its own reference intensities $\\lambda^k$. For evaluated organization "
+"$o$, the external resource excesses and service shortfalls can be written"
+" as"
+msgstr ""
+"假设一个组织包含过程 $k=1,\\ldots,K$。过程 $k$ 使用外部投入 $x_o^k$，生产外部产出 "
+"$y_o^k$，并拥有自己的参照强度变量 $\\lambda^k$。对于被评价组织 $o$，外部资源冗余与服务不足可写为"
+
+#: ../../chapters/05-network/20-network-sbm.md:36
+#: 635664b43d03460796af00f1fe028d89
+#, python-brace-format
+msgid ""
+"\n"
+"x_o^k=X^k\\lambda^k+s_o^{k-},\n"
+"\\qquad\n"
+"y_o^k=Y^k\\lambda^k-s_o^{k+}.\n"
+msgstr ""
+"\n"
+"x_o^k=X^k\\lambda^k+s_o^{k-},\n"
+"\\qquad\n"
+"y_o^k=Y^k\\lambda^k-s_o^{k+}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:42
+#: be1e2ec1c9614744927e605da3648eb6
+msgid ""
+"The benchmark process uses no more of a scored external input and "
+"produces no less of a scored external output. Under variable returns to "
+"scale (VRS), each process has its own convexity condition,"
+msgstr "标杆过程使用的任何被评价外部投入都不更多，生产的任何被评价外部产出都不少。在规模报酬可变（VRS）下，每个过程都有自己的凸性约束："
+
+#: ../../chapters/05-network/20-network-sbm.md:46
+#: 1de8970888964081a7ddb379761070fd
+msgid ""
+"\n"
+"\\mathbf 1^\\top\\lambda^k=1.\n"
+msgstr ""
+"\n"
+"\\mathbf 1^\\top\\lambda^k=1.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:50
+#: 32ba96068ed64cfdb3fea213144ba1e8
+msgid ""
+"Under constant returns to scale (CRS), these conditions are omitted. A "
+"single organization-wide convexity equation is not equivalent: different "
+"processes can have different peer mixtures, provided that their shared "
+"handoffs remain compatible."
+msgstr "在规模报酬不变（CRS）下，这些约束被省略。用一条全组织凸性方程替代并不等价：只要共享的内部交付量彼此相容，不同过程可以采用不同的参照单元组合。"
+
+#: ../../chapters/05-network/20-network-sbm.md:54
+#: b462b0d100364c8cb91e4a3efd527960
+#, python-brace-format
+msgid ""
+"Let $Z^{(k,\\ell)}$ denote an intermediate product supplied by process "
+"$k$ and used by process $\\ell$. It might be diagnosed patients, approved"
+" loans, generated electricity, unfinished components, or an internal "
+"information service. The link equations make the supplier's target equal "
+"the recipient's target. Without this continuity, the analysis is a set of"
+" independent departmental DEA models rather than a model of one "
+"organization."
+msgstr ""
+"用 $Z^{(k,\\ell)}$ 表示由过程 $k$ 提供并由过程 $\\ell$ "
+"使用的中间产品。它可以是已完成诊断的患者、获批贷款、已发电量、未完工部件，也可以是一项内部信息服务。联结方程使供应过程的目标等于接收过程的目标。没有这种连续性，分析就只是一组相互独立的部门"
+" DEA 模型，而不是对一个完整组织的建模。"
+
+#: ../../chapters/05-network/20-network-sbm.md:61
+#: a561bf3991984ddda6cfe6bb6a010bad
+msgid ""
+"This distinction changes the meaning of a process score. It is not the "
+"efficiency that the process would necessarily obtain if removed from the "
+"network. It is an attribution from a jointly feasible system solution."
+msgstr "这一差别改变了过程效率值的含义。它未必等于该过程脱离网络、单独评价时所得的效率，而是来自系统联合可行解的一项归属结果。"
+
+#: ../../chapters/05-network/20-network-sbm.md:65
+#: cec8c074ba37413fbc868faaea3e4282
+msgid "Link governance defines the management counterfactual"
+msgstr "联结变量治理界定管理反事实"
+
+#: ../../chapters/05-network/20-network-sbm.md:67
+#: 3edba44c3ab742ff9239e3dcbc40084c
+msgid ""
+"An observed handoff can play two core roles in a performance appraisal. "
+"Management must decide whether the quantity was an inherited commitment "
+"or was open to coordinated redesign by the connected processes."
+msgstr "在绩效评价中，实际观察到的内部交付量可以承担两种核心角色。管理者必须判断：这一数量是必须承接的既有承诺，还是可以由相互联结的过程协同重新设计。"
+
+#: ../../chapters/05-network/20-network-sbm.md:71
+#: 75177309ee5c4aaa939a90957d3fe7de
+msgid ""
+"Two core network SBM link policies preserve supplier-recipient "
+"continuity: fixed inherits the observed handoff, while free permits the "
+"processes to coordinate one common target"
+msgstr "网络 SBM 的两种核心联结政策都保持供应方—接收方的连续性：固定联结承接实际交付量，自由联结则允许各过程协调形成一个共同目标"
+
+#: ../../chapters/05-network/20-network-sbm.md:76
+#: eb993cae69ca44bc8eb17af76971e77a
+msgid ""
+"Two core governance policies for an internal handoff. Both preserve one "
+"common supplier--recipient target; they differ in whether the observed "
+"quantity must be inherited or may be redesigned jointly."
+msgstr "内部交付量的两种核心治理政策。二者都保持供应方—接收方只有一个共同目标；差别在于必须承接实际数量，还是可以共同重新设计。"
+
+#: ../../chapters/05-network/20-network-sbm.md:81
+#: 5e6463d905e04ffbacc239be5b84cd3c
+msgid "Fixed: inherit the observed commitment"
+msgstr "固定联结：承接既有承诺"
+
+#: ../../chapters/05-network/20-network-sbm.md:83
+#: 6e18fff967994c76bc996ae0578bca2d
+msgid "For a fixed link from $k$ to $\\ell$,"
+msgstr "对于从 $k$ 到 $\\ell$ 的固定联结，"
+
+#: ../../chapters/05-network/20-network-sbm.md:85
+#: 045d95d9e66e4173a391533dc5890b7a
+#, python-brace-format
+msgid ""
+"\n"
+"Z^{(k,\\ell)}\\lambda^k\n"
+"=z_o^{(k,\\ell)}\n"
+"=Z^{(k,\\ell)}\\lambda^\\ell.\n"
+msgstr ""
+"\n"
+"Z^{(k,\\ell)}\\lambda^k\n"
+"=z_o^{(k,\\ell)}\n"
+"=Z^{(k,\\ell)}\\lambda^\\ell.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:91
+#: 93a7ce10c28f43d5853a78d7782e8591
+msgid ""
+"Both process benchmarks must reproduce the observed handoff. This policy "
+"is suitable when managers could not change the flow during the period: a "
+"contracted supply quantity, a regulated transfer obligation, an inherited"
+" referral load, or a service commitment already accepted by the next "
+"department."
+msgstr "两个过程的标杆方案都必须复现实际交付量。这一政策适用于管理者在评价期内无法改变流量的情形，例如合同约定的供应数量、受监管的转移义务、既有的转诊负荷，或下一部门已经接受的服务承诺。"
+
+#: ../../chapters/05-network/20-network-sbm.md:96
+#: a512986bc3ce4ddb8f063d0a78ad0728
+msgid ""
+"“Fixed” is conditional language. It does not claim that the handoff can "
+"never change; it asks how the organization performs while that commitment"
+" is protected."
+msgstr "“固定”是一种有条件的表述。它并非声称交付量永远不能改变，而是在既有承诺受到保护的条件下，询问组织表现如何。"
+
+#: ../../chapters/05-network/20-network-sbm.md:99
+#: 6c8bab8bcdb04691962f70d3d4bda838
+msgid "Free: permit a coordinated redesign"
+msgstr "自由联结：允许协同重新设计"
+
+#: ../../chapters/05-network/20-network-sbm.md:101
+#: a798502f0c074ce096ccaae58f7aa62e
+msgid "For a free link,"
+msgstr "对于自由联结，"
+
+#: ../../chapters/05-network/20-network-sbm.md:103
+#: c63b54ad0a6a4cd3b3a8866af22cc397
+#, python-brace-format
+msgid ""
+"\n"
+"Z^{(k,\\ell)}\\lambda^k\n"
+"=Z^{(k,\\ell)}\\lambda^\\ell.\n"
+msgstr ""
+"\n"
+"Z^{(k,\\ell)}\\lambda^k\n"
+"=Z^{(k,\\ell)}\\lambda^\\ell.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:108
+#: 81b6f7b9965a484b825f9453d7481dc6
+msgid ""
+"The common target may differ from the observed amount. The two processes "
+"can redesign the handoff together, but they cannot choose different "
+"quantities. This is appropriate for integrated planning—for example, when"
+" diagnostics and treatment can jointly redesign referral volume or a "
+"supply chain can coordinate production and distribution."
+msgstr "共同目标可以不同于实际数量。两个过程可以协同重新设计交付量，但不能各自选择不同的数量。这适合一体化规划，例如诊断与治疗可以共同调整转诊量，或者供应链可以协调生产与配送。"
+
+#: ../../chapters/05-network/20-network-sbm.md:113
+#: dddb82fbd7ea4f05a8f60d6a0aa7ced0
+msgid ""
+"Free does not mean disconnected. Removing the equality would let each "
+"process optimize against an incompatible internal plan."
+msgstr "自由并不意味着断开联结。取消这一等式，会使各过程针对彼此不相容的内部方案分别优化。"
+
+#: ../../chapters/05-network/20-network-sbm.md:116
+#: ac31ea15f9564e9099821d6f54998e04
+msgid ""
+"With all other assumptions held constant, the free-link feasible set "
+"contains the fixed-link feasible set. It can therefore reveal at least as"
+" much improvement potential. Because efficiency is reported on a higher-"
+"is-better scale, the free-link score cannot exceed its fixed-link "
+"counterpart. A lower free-link score does not mean coordination made "
+"performance worse; it means that coordination exposed an opportunity "
+"hidden by the inherited-flow constraint."
+msgstr "在其他假设均相同的情况下，自由联结的可行集包含固定联结的可行集，因此至少能够揭示同样多的改善潜力。由于效率采用数值越高越好的尺度，自由联结效率值不会高于对应的固定联结效率值。较低的自由联结效率值并不表示协调使绩效变差，而是表明协调揭示了原先被既有流量约束遮蔽的改善机会。"
+
+#: ../../chapters/05-network/20-network-sbm.md:123
+#: 2c0aa41384de408caa74fa4fcedea3e2
+msgid ""
+"Fixed and free links govern feasibility but do not add a link slack to "
+"the SBM objective. Source-qualified extensions can instead assign a "
+"handoff deviation to one process's performance account. Because those "
+"extensions alter the orientation and normalization rather than merely "
+"switching the link constraint, their detailed formulations belong in the "
+"package Documentation. The mainstream management comparison remains: "
+"inherit the observed commitment or coordinate a redesign."
+msgstr ""
+"固定联结与自由联结决定可行性，但不会在 SBM "
+"目标函数中增加联结松弛量。有明确文献依据的扩展模型也可以把交付偏差计入某一过程的绩效账户。由于这些扩展改变了导向与标准化方式，而不只是切换联结约束，其详细公式放在本包的"
+" Documentation 中。主流的管理比较仍然是：承接实际承诺，还是协同重新设计。"
+
+#: ../../chapters/05-network/20-network-sbm.md:130
+#: 0b3fd3a6fc984d1680e64abf98101770
+msgid "Process weights are a governance choice"
+msgstr "过程权重是一项治理选择"
+
+#: ../../chapters/05-network/20-network-sbm.md:132
+#: e7a9c1b58e2e478b94d3221d5e011cae
+msgid ""
+"Top management still needs a declared rule for aggregating the processes."
+" Network SBM uses exogenous process weights"
+msgstr "最高管理层还需要事先声明一套过程汇总规则。网络 SBM 使用外生过程权重"
+
+#: ../../chapters/05-network/20-network-sbm.md:135
+#: 4d40769937374c3a95c729a068660a25
+#, python-brace-format
+msgid ""
+"\n"
+"w_k\\ge0,\n"
+"\\qquad\n"
+"\\sum_{k=1}^{K}w_k=1.\n"
+msgstr ""
+"\n"
+"w_k\\ge0,\n"
+"\\qquad\n"
+"\\sum_{k=1}^{K}w_k=1.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:141
+#: ffb6da01066c41a7a151898530613b92
+msgid ""
+"They can reflect controllable cost shares, staff-time shares, or an "
+"approved strategic importance policy. They are not flexible DEA "
+"multipliers, prices of the intermediate products, or statistical "
+"estimates produced by the model."
+msgstr ""
+"这些权重可以反映可控成本占比、员工工时占比，或经批准的战略重要性政策。它们不是可自由选择的 DEA "
+"乘数，不是中间产品的价格，也不是模型估计得到的统计量。"
+
+#: ../../chapters/05-network/20-network-sbm.md:145
+#: 4641874b575f4b538e79f39f23c6c4dd
+msgid ""
+"The basis matters. Weighting hospital processes by expenditure answers a "
+"different question from weighting them by clinical priority. A credible "
+"study should state who chose the weights and examine plausible "
+"alternatives rather than select a policy after seeing the ranking."
+msgstr "权重依据至关重要。按支出为医院各过程赋权，与按临床优先级赋权回答的是不同问题。一项可信的研究应说明权重由谁确定，并考察若干合理的备选方案，而不是看到排名后再挑选政策。"
+
+#: ../../chapters/05-network/20-network-sbm.md:150
+#: 87d8d536b083447380e0e7a67ed3f2cf
+msgid ""
+"A zero-weight process can still restrict system feasibility through its "
+"technology and links, but its slack account does not enter the objective."
+" Consequently, system efficiency of one establishes efficiency for every "
+"process only when all relevant processes have strictly positive weights."
+msgstr "权重为零的过程仍可通过自身技术与联结关系限制系统可行性，但其松弛账户不会进入目标函数。因此，只有当所有相关过程的权重都严格为正时，系统效率等于一才意味着每个过程都有效率。"
+
+#: ../../chapters/05-network/20-network-sbm.md:155
+#: 1b1430d14ea34ee59dd4881fd0f7254f
+msgid "A process map is an economic description"
+msgstr "过程图是一种经济描述"
+
+#: ../../chapters/05-network/20-network-sbm.md:157
+#: 71e5192fea9f4e23b35c8ce75c3a74ae
+msgid ""
+"The network should follow responsibility and material or service flow, "
+"not simply copy the organization chart. A process boundary is useful when"
+" it separates decisions that management wants to diagnose and when the "
+"handoff crossing that boundary is measured consistently for both sides."
+msgstr "网络结构应遵循责任边界以及产品或服务流，而不是简单照搬组织结构图。当一个过程边界能够区分管理者希望诊断的决策，并且穿过该边界的交付量在两侧采用一致口径测量时，这一边界才有分析价值。"
+
+#: ../../chapters/05-network/20-network-sbm.md:162
+#: 96b7d1554f924c019476bb6324745645
+msgid ""
+"An internal link is declared once, with one supplier and one recipient. "
+"Although the same variable appears as an output of the supplying process "
+"and an input of the receiving process, it is not an external system "
+"output and input counted twice. Its purpose is to connect the two process"
+" technologies through one compatible handoff target."
+msgstr "一个内部联结只声明一次，并指定一个供应过程和一个接收过程。尽管同一变量既是供应过程的产出，又是接收过程的投入，它并不是被重复计算的外部系统产出和投入。它的作用是通过一个相容的交付目标，把两个过程的生产技术联结起来。"
+
+#: ../../chapters/05-network/20-network-sbm.md:168
+#: 61145dbc23ea44259bad76f46f2284e3
+msgid ""
+"The continuity equation also carries a substantive assumption: the "
+"quantity leaving one process is the quantity entering the next. If a "
+"handoff undergoes measured loss, quality conversion, storage, or delay, "
+"simple equality may not describe the operation. Those features should be "
+"represented in the data and production account before the model is "
+"fitted. Relabeling a transformed quantity as an ordinary link would "
+"create a precise but economically false target."
+msgstr "连续性方程还包含一项实质性假设：离开一个过程的数量就是进入下一过程的数量。如果内部交付伴随可测量的损耗、质量转换、库存变化或时滞，简单等式可能无法描述真实运作。在拟合模型之前，应在数据和生产账户中明确表示这些特征。把经过转换的数量重新命名为普通联结变量，只会得到形式精确却在经济意义上错误的目标。"
+
+#: ../../chapters/05-network/20-network-sbm.md:175
+#: c4ddf78fecc74a81ac404e30873218f1
+msgid ""
+"Process definitions should therefore remain stable across the "
+"organizations being compared. If one hospital records diagnostics and "
+"treatment separately while another combines them, their process scores do"
+" not refer to the same responsibilities. The system model is only as "
+"comparable as the operational map on which it is built."
+msgstr "因此，被比较组织的过程定义应保持稳定。如果一家医院将诊断和治疗分别记录，而另一家将二者合并，其过程效率值所指的责任范围便不相同。系统模型的可比性，取决于其所依据的运营流程图是否可比。"
+
+#: ../../chapters/05-network/20-network-sbm.md:180
+#: 204169571d8c48228a73723eaf4ecdb8
+msgid "Normalized slacks create three performance accounts"
+msgstr "标准化松弛量形成三类绩效账户"
+
+#: ../../chapters/05-network/20-network-sbm.md:182
+#: 33891ac63d06480e881d307279ddadde
+msgid ""
+"SBM compares excesses and shortfalls relative to the observed quantities,"
+" allowing variables with different units to enter one process account. "
+"For process $k$, define"
+msgstr "SBM 将资源冗余和服务不足除以相应实际数量，使计量单位不同的变量可以进入同一个过程账户。对于过程 $k$，定义"
+
+#: ../../chapters/05-network/20-network-sbm.md:185
+#: 4fb857129c1f4b56aba6546678e73134
+msgid ""
+"\n"
+"A_o^k\n"
+"=1-\\frac{1}{m_k}\\sum_{i=1}^{m_k}\n"
+"\\frac{s_{io}^{k-}}{x_{io}^k},\n"
+msgstr ""
+"\n"
+"A_o^k\n"
+"=1-\\frac{1}{m_k}\\sum_{i=1}^{m_k}\n"
+"\\frac{s_{io}^{k-}}{x_{io}^k},\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:191
+#: de85f2e8eee5491ebc2a3ae660ca038f
+msgid "and"
+msgstr "以及"
+
+#: ../../chapters/05-network/20-network-sbm.md:193
+#: a8b1e9862a83406eb36f80c45164a8bd
+msgid ""
+"\n"
+"B_o^k\n"
+"=1+\\frac{1}{r_k}\\sum_{r=1}^{r_k}\n"
+"\\frac{s_{ro}^{k+}}{y_{ro}^k}.\n"
+msgstr ""
+"\n"
+"B_o^k\n"
+"=1+\\frac{1}{r_k}\\sum_{r=1}^{r_k}\n"
+"\\frac{s_{ro}^{k+}}{y_{ro}^k}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:199
+#: e1e73f508cdf4ad1869c65df28aa74f0
+msgid ""
+"$A_o^k$ is the retained-resource account: it falls as normalized input "
+"excesses increase. $B_o^k$ is the service-expansion account: it rises as "
+"normalized output shortfalls increase. Positive observed quantities are "
+"therefore part of the classical normalization contract."
+msgstr ""
+"$A_o^k$ 是资源保留账户：标准化投入冗余越大，该账户越低。$B_o^k$ "
+"是服务扩张账户：标准化产出不足越大，该账户越高。因此，实际观察值为正是经典标准化方式的一项前提。"
+
+#: ../../chapters/05-network/20-network-sbm.md:204
+#: 14b8ea9ffc7a4cd1b85c60b1e0fbd981
+msgid "Input orientation: conserve resources"
+msgstr "投入导向：节约资源"
+
+#: ../../chapters/05-network/20-network-sbm.md:206
+#: d903c8b6aed94fc8940109873562ed16
+msgid "The input-oriented process and system scores are"
+msgstr "投入导向的过程效率与系统效率分别为"
+
+#: ../../chapters/05-network/20-network-sbm.md:208
+#: 58025987c01d4bd3a0e9bb36117b21ca
+#, python-brace-format
+msgid ""
+"\n"
+"\\theta_o^k=A_o^k,\n"
+"\\qquad\n"
+"\\theta_o=\\sum_{k=1}^{K}w_k\\theta_o^k.\n"
+msgstr ""
+"\n"
+"\\theta_o^k=A_o^k,\n"
+"\\qquad\n"
+"\\theta_o=\\sum_{k=1}^{K}w_k\\theta_o^k.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:214
+#: 808e8e4a49544d52acf2dc08c4ace7d7
+msgid ""
+"This orientation asks where external resources can be reduced while "
+"outputs and network continuity remain feasible. A score of one says that "
+"the chosen system optimum contains no scored input slack in positively "
+"weighted processes. It does not establish that every output-expansion "
+"opportunity has been exhausted."
+msgstr "这一导向考察：在保持产出和网络连续性可行的前提下，哪些外部资源可以减少。效率值为一表示，在所选系统最优解中，权重为正的过程不存在被计入评价的投入松弛。它并不表明所有产出扩张机会都已用尽。"
+
+#: ../../chapters/05-network/20-network-sbm.md:220
+#: 94048274a730452aa1df2d40f4a9fafd
+msgid "Output orientation: expand services"
+msgstr "产出导向：扩张服务"
+
+#: ../../chapters/05-network/20-network-sbm.md:222
+#: eb3fe7ac110948cf9db49912eda92871
+msgid "For process $k$, let"
+msgstr "对于过程 $k$，令"
+
+#: ../../chapters/05-network/20-network-sbm.md:224
+#: c00bbf0230f245da955028b5de678020
+#, python-brace-format
+msgid ""
+"\n"
+"\\rho_o^{O,k}=\\frac{1}{B_o^k}.\n"
+msgstr ""
+"\n"
+"\\rho_o^{O,k}=\\frac{1}{B_o^k}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:228
+#: d072731674f84277b74ee89f4eb1ea13
+msgid "The system output efficiency is"
+msgstr "系统产出效率为"
+
+#: ../../chapters/05-network/20-network-sbm.md:230
+#: 897b038b585848c9bc5d9270afec2629
+msgid ""
+"\n"
+"\\rho_o^O\n"
+"=\\frac{1}{\\sum_{k=1}^{K}w_kB_o^k}\n"
+"=\\frac{1}{\\sum_{k=1}^{K}w_k/\\rho_o^{O,k}}.\n"
+msgstr ""
+"\n"
+"\\rho_o^O\n"
+"=\\frac{1}{\\sum_{k=1}^{K}w_kB_o^k}\n"
+"=\\frac{1}{\\sum_{k=1}^{K}w_k/\\rho_o^{O,k}}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:236
+#: 5838f4a41f20428193a9afeb735bda6a
+#, python-brace-format
+msgid ""
+"It is a weighted harmonic aggregation of process efficiencies, not the "
+"arithmetic mean $\\sum_k w_k\\rho_o^{O,k}$. This orientation asks where "
+"external services can be expanded within one connected operating plan. "
+"Input slacks can remain feasible but unscored."
+msgstr ""
+"它是过程效率的加权调和汇总，而不是算术平均数 $\\sum_k "
+"w_k\\rho_o^{O,k}$。这一导向考察：在一个相互联结的运营方案中，哪些外部服务可以扩张。投入松弛可以仍然可行，但不计入效率评价。"
+
+#: ../../chapters/05-network/20-network-sbm.md:240
+#: befe4f3eab7245f8b912480bd712787d
+msgid "Non-orientation: redesign both sides"
+msgstr "非导向：同时重新设计投入与产出"
+
+#: ../../chapters/05-network/20-network-sbm.md:242
+#: b81c725e7cd74ac896873f46506a6db9
+msgid "With fixed or free links, the selected process ratio is"
+msgstr "在固定联结或自由联结下，所选的过程比率为"
+
+#: ../../chapters/05-network/20-network-sbm.md:244
+#: 5e46f2565d6a49d0bae7057c60ef231e
+#, python-brace-format
+msgid ""
+"\n"
+"\\rho_o^k=\\frac{A_o^k}{B_o^k},\n"
+msgstr ""
+"\n"
+"\\rho_o^k=\\frac{A_o^k}{B_o^k},\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:248
+#: 16327bb73fff48689362cc73db68419a
+msgid "and the system score is"
+msgstr "系统效率值为"
+
+#: ../../chapters/05-network/20-network-sbm.md:250
+#: 0099b0bfddee459e88b413d4b9c40d49
+msgid ""
+"\n"
+"\\rho_o\n"
+"=\\frac{\\sum_{k=1}^{K}w_kA_o^k}\n"
+"       {\\sum_{k=1}^{K}w_kB_o^k}.\n"
+msgstr ""
+"\n"
+"\\rho_o\n"
+"=\\frac{\\sum_{k=1}^{K}w_kA_o^k}\n"
+"       {\\sum_{k=1}^{K}w_kB_o^k}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:256
+#: 0e2c5a906a6e4a07b47c5fd5dd5d48a4
+msgid ""
+"This is generally not the arithmetic weighted average of the process "
+"ratios. It can be reconstructed as"
+msgstr "一般而言，它并不是过程比率的算术加权平均数。它可以重构为"
+
+#: ../../chapters/05-network/20-network-sbm.md:259
+#: 19394ac9150a43f39ef436c0c03cbffc
+msgid ""
+"\n"
+"\\rho_o=\\sum_{k=1}^{K}\\omega_o^k\\rho_o^k,\n"
+"\\qquad\n"
+"\\omega_o^k\n"
+"=\\frac{w_kB_o^k}{\\sum_{\\ell=1}^{K}w_\\ell B_o^\\ell}.\n"
+msgstr ""
+"\n"
+"\\rho_o=\\sum_{k=1}^{K}\\omega_o^k\\rho_o^k,\n"
+"\\qquad\n"
+"\\omega_o^k\n"
+"=\\frac{w_kB_o^k}{\\sum_{\\ell=1}^{K}w_\\ell B_o^\\ell}.\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:266
+#: ded928bf8e964b05abd6fb0f600c4a38
+msgid ""
+"The $\\omega_o^k$ are denominator-adjusted reconstruction weights from "
+"the selected solution. They do not replace the declared management "
+"weights $w_k$. Reporting the two as though they were the same would "
+"misstate how the system result is formed."
+msgstr ""
+"$\\omega_o^k$ 是由所选解的分母调整得到的重构权重，不能替代事先声明的管理权重 "
+"$w_k$。如果把二者当作同一种权重报告，就会错误陈述系统结果的形成方式。"
+
+#: ../../chapters/05-network/20-network-sbm.md:270
+#: d874108e494f46fe94f21c99d4257f54
+msgid ""
+"The three orientations therefore answer different operating questions. "
+"Their scores should not be mixed in a league table without naming the "
+"resource-conservation, service-expansion, or joint-redesign account "
+"behind them."
+msgstr "因此，三种导向回答的是不同的运营问题。如果不说明背后采用的是资源节约账户、服务扩张账户还是联合重新设计账户，就不应把它们的效率值混在同一张排名表中。"
+
+#: ../../chapters/05-network/20-network-sbm.md:274
+#: 1cb9f2b632b640f1ae8d9ff96f8e6e6f
+msgid "System performance is primary; process performance is attribution"
+msgstr "系统绩效是首要结果；过程绩效是归属结果"
+
+#: ../../chapters/05-network/20-network-sbm.md:276
+#: dd6f6183fb6a4111aeecb1f35c4eb064
+msgid ""
+"Every process score is produced by the optimization of the complete "
+"connected system. Its peer mixture must coexist with adjacent peer "
+"mixtures and satisfy the link policy. A low process score locates a "
+"shortfall in one feasible system account; it does not prove that the "
+"process manager caused the organization's performance."
+msgstr "每个过程效率值都由完整联结系统的优化产生。它的参照单元组合必须与相邻过程的组合共存，并满足联结政策。较低的过程效率值是在一个可行系统账户中定位绩效不足，并不能证明该过程的管理者导致了组织整体绩效。"
+
+#: ../../chapters/05-network/20-network-sbm.md:281
+#: a60a28813f7d4fce9ca287b67a0c2af0
+msgid ""
+"The distinction is especially important when a policy changes. A "
+"treatment process that looks strong under fixed referrals may receive a "
+"different attribution when the referral mix becomes redesignable. The "
+"model changed the feasible management problem, not merely the display of "
+"the same result."
+msgstr "政策发生变化时，这一区别尤其重要。在转诊量固定时表现良好的治疗过程，当转诊组合可重新设计后，可能得到不同的归属结果。模型改变的是可行的管理问题，而不只是同一结果的展示方式。"
+
+#: ../../chapters/05-network/20-network-sbm.md:286
+#: 7b445a4803f44600bfe403a68f4b97a8
+msgid ""
+"Network linear programs can also have alternate optima. The primary "
+"system score may be unique while process scores, slacks, peer "
+"intensities, and free-link targets vary across equally good system plans."
+" For a selected optimum,"
+msgstr "网络线性规划也可能存在多重最优解。首要的系统效率值可能唯一，但过程效率值、松弛量、参照强度以及自由联结目标可能在同样优良的系统方案之间变化。对于某个选定最优解，"
+
+#: ../../chapters/05-network/20-network-sbm.md:290
+#: 773b89e67aca4f7eaf93cef87cd7f7bf
+#, python-brace-format
+msgid ""
+"\n"
+"x_o^{k*}=x_o^k-s_o^{k-*},\n"
+"\\qquad\n"
+"y_o^{k*}=y_o^k+s_o^{k+*},\n"
+msgstr ""
+"\n"
+"x_o^{k*}=x_o^k-s_o^{k-*},\n"
+"\\qquad\n"
+"y_o^{k*}=y_o^k+s_o^{k+*},\n"
+
+#: ../../chapters/05-network/20-network-sbm.md:296
+#: 985bb4ca04674e518dccb1a43055e0bd
+msgid ""
+"and every internal target remains continuous between supplier and "
+"recipient. But that target need not be the only system-optimal one."
+msgstr "且每个内部目标在供应过程与接收过程之间都保持连续。但该目标未必是唯一的系统最优目标。"
+
+#: ../../chapters/05-network/20-network-sbm.md:299
+#: 20de975d894c4e78867b476915bbb2e9
+msgid ""
+"Managers should therefore read process values as **attributions within "
+"one selected optimum** unless uniqueness or admissible ranges have been "
+"established. If an operational plan depends on one exact handoff target, "
+"a documented secondary selection criterion or an alternate-optimum "
+"analysis is more informative than treating the first solution as a unique"
+" prescription."
+msgstr "因此，除非已经证明唯一性或确定了容许区间，管理者应把过程数值理解为**某个选定最优解内的归属结果**。如果运营方案依赖某个精确交付目标，记录清楚的次级选择准则或多重最优解分析，会比把求解器返回的第一个解当作唯一处方更有信息价值。"
+
+#: ../../chapters/05-network/20-network-sbm.md:305
+#: d42305e71b5e41c0994dd52d051c2295
+msgid "A three-process service chain in DEAPack"
+msgstr "DEAPack 中的三过程服务链"
+
+#: ../../chapters/05-network/20-network-sbm.md:307
+#: 31e9ce9614f345e497062837c1ebdf51
+msgid ""
+"The bundled `three_process_service_chain` data describe a neutral service"
+" system with three connected processes. Stage 1 supplies the first "
+"handoff to stage 2; stage 2 produces an external service and passes a "
+"second handoff to stage 3; stage 3 produces the final external service. "
+"The following compact workflow asks how much scored external input could "
+"be conserved under VRS when both handoffs can be coordinated freely."
+msgstr ""
+"内置的 `three_process_service_chain` 数据描述了一个包含三个相互联结过程的中性服务系统。阶段 1 向阶段 2 "
+"提供第一项内部交付；阶段 2 生产一项外部服务，并向阶段 3 传递第二项内部交付；阶段 3 "
+"生产最终外部服务。下面的简洁工作流在规模报酬可变（VRS）且两项内部交付都可自由协调时，考察被评价的外部投入可以节约多少。"
+
+#: ../../chapters/05-network/20-network-sbm.md:381
+#: ea0eadba81e24a56941ffc6e51ac8b78
+msgid ""
+"The three objects above form a compact management report: one system "
+"result, one declared-weight process account, and two supplier--recipient "
+"handoff checks. Their values are computed from the project case rather "
+"than copied from a publication."
+msgstr "上述三个对象构成一份简洁的管理报告：一项系统结果、一套按声明权重汇总的过程账户，以及两项供应方—接收方交付核查。其数值由项目案例计算得出，并非从发表文献中抄录。"
+
+#: ../../chapters/05-network/20-network-sbm.md:386
+#: 2711f780de3d42eba6af92992b90c83d
+msgid ""
+"A project service plan's network SBM result, with three process input-"
+"performance bars, a declared-weight system reconstruction, and two "
+"observed-to-selected handoff accounts"
+msgstr "项目服务方案的网络 SBM 结果：三个过程投入绩效柱、按声明权重重构的系统结果，以及两项“观测值—所选值”内部交付账户"
+
+#: ../../chapters/05-network/20-network-sbm.md:391
+#: 2711f780de3d42eba6af92992b90c83d
+msgid ""
+"One connected management account for a project-authored service plan. The"
+" process values locate input burden inside the jointly feasible plan, the"
+" middle account reconstructs the system result from the declared weights,"
+" and the handoff ledger preserves the supplier--recipient responsibility "
+"chain. These are selected attributions and coordinated targets, not "
+"causal departmental effects or uniquely prescribed instructions."
+msgstr ""
+"项目自主编制的服务方案的一套联结管理账户。过程数值在联合可行方案中定位投入负担，中间账户使用声明权重重构系统结果，内部交付台账则保持供应方—接收方的责任链。这些数值是所选归属结果和协同目标，并非部门因果效应或唯一指定的行动指令。"
+
+#: ../../chapters/05-network/20-network-sbm.md:399
+#: df2a161978d7428c952175e65fcdeb3b
+msgid ""
+"Reading across the figure is more informative than ranking the three "
+"process numbers. The left panel shows that all three selected process "
+"accounts contain a similar normalized input burden. The upper-right panel"
+" then makes the governance arithmetic visible: each process result "
+"contributes only through its declared weight, so stage 2 has a smaller "
+"effect on the system account because management assigned it a weight of "
+"0.2 rather than 0.4. The lower ledger returns to operational units. Each "
+"row has its own unit and compares the observed handoff with the one "
+"common supplier--recipient target selected by the fitted plan; the arrows"
+" do not put different physical flows on one artificial scale."
+msgstr ""
+"横向联读整幅图，比给三个过程数值排序更有信息价值。左图显示，三个所选过程账户都承受着相近的标准化投入负担。右上图进一步呈现治理层面的汇总逻辑：每个过程结果只通过其声明权重影响系统账户；由于管理层给阶段"
+" 2 的权重是 0.2 而非 "
+"0.4，它对系统账户的影响较小。下方台账回到运营单位。每一行使用自身单位，将实际交付量与拟合方案选出的供应方—接收方共同目标比较；箭头并没有把不同实物流量强行放到同一个人为尺度上。"
+
+#: ../../chapters/05-network/20-network-sbm.md:409
+#: c2880bdec1b546268a21b32828e22a50
+msgid ""
+"The declared-weight arithmetic mean of the three process accounts "
+"reconstructs the system result. Both supplier--recipient continuity "
+"residuals are at numerical zero, so the selected handoff targets form one"
+" implementable network plan rather than three independent process "
+"projections."
+msgstr "三个过程账户按声明权重计算的算术平均数，恰好重构系统结果。供应方—接收方的两项连续性残差在数值上均为零，因此所选内部交付目标构成一个可实施的网络方案，而不是三个相互独立的过程投影。"
+
+#: ../../chapters/05-network/20-network-sbm.md:414
+#: f2a3830c0a514141b1eb603469d0483d
+msgid ""
+"The management interpretation requires one feasible connected plan: "
+"external resource and service balances must hold, and each supplier--"
+"recipient pair must share the same handoff target. Here both continuity "
+"residuals are at numerical zero, so the process accounts and handoff "
+"ledger describe one coherent organization. Detailed numerical checks "
+"belong in the DEAPack Documentation."
+msgstr ""
+"管理解释必须以一个可行的联结方案为前提：外部资源与服务平衡必须成立，每一对供应方—接收方必须共享同一个内部交付目标。这里两项连续性残差在数值上均为零，因此过程账户与内部交付台账描述的是同一个协调一致的组织。详细数值检查见"
+" DEAPack Documentation。"
+
+#: ../../chapters/05-network/20-network-sbm.md:421
+#: fba2bad342464142b40fc0af288b6f65
+msgid ""
+"The system score summarizes a normalized scored-input account under the "
+"declared technology and governance policy. It must not be reported as the"
+" same removable percentage for every physical input. SBM averages "
+"variable-specific proportional slacks, and the target table—not one "
+"aggregate percentage—shows the selected changes in original units."
+msgstr ""
+"系统效率值汇总的是既定技术与治理政策下的标准化被评价投入账户。不得把它报告成每一种实物投入都可削减的同一百分比。SBM 对各变量的比例松弛取平均；以原始单位展示所选调整的是目标表，而不是一个汇总百分比。"
+
+#: ../../chapters/05-network/20-network-sbm.md:427
+#: a3c8e52844d34d63810df5f02eaac99d
+msgid ""
+"Nor should the three process values be described as causal contributions."
+" They locate the slack account within the selected coordinated optimum. "
+"Another system-optimal solution may support different process or handoff "
+"details while preserving the same primary score."
+msgstr "同样，也不应把三个过程数值描述成因果贡献。它们是在所选协同最优解中定位松弛账户。另一个系统最优解可能支持不同的过程细节或交付方案，同时保持相同的首要系统效率值。"
+
+#: ../../chapters/05-network/20-network-sbm.md:432
+#: 1fbc9193f7fa45d79067a8198486d854
+msgid "Reading the result as a management argument"
+msgstr "把结果读成一套管理论证"
+
+#: ../../chapters/05-network/20-network-sbm.md:434
+#: 1e66c519e1d542878931fb47a58a87ea
+msgid ""
+"A useful network-SBM report is short but explicit. It identifies the "
+"process map, orientation, returns to scale, link governance, and process-"
+"weight policy; then it presents the system score together with process "
+"attributions and common handoff targets. Before those targets are "
+"discussed operationally, the analyst should confirm that the appraisal "
+"succeeded and that supplier and recipient quantities agree."
+msgstr ""
+"一份有用的网络 SBM "
+"报告应简短而明确。它首先说明过程图、导向、规模报酬、联结治理和过程权重政策，然后把系统效率值与过程归属结果及共同交付目标一并呈现。在讨论这些目标的运营含义之前，分析者应确认评价成功完成，并核实供应方与接收方的数量一致。"
+
+#: ../../chapters/05-network/20-network-sbm.md:440
+#: c8218a8970614491b28f0e3272aaa30f
+msgid "The model supports claims such as:"
+msgstr "该模型支持如下判断："
+
+#: ../../chapters/05-network/20-network-sbm.md:442
+#: 32a45b00f9564b4880c2ffedbcec3f5c
+msgid ""
+"the connected organization contains a specified normalized resource or "
+"service shortfall relative to the observed reference system;"
+msgstr "相对于实际观察到的参照系统，这个相互联结的组织存在明确数量的标准化资源冗余或服务不足；"
+
+#: ../../chapters/05-network/20-network-sbm.md:444
+#: 624f4e0d9cbe4d87856ec6d8bf82779a
+msgid ""
+"the selected system optimum assigns more of that shortfall to some "
+"process accounts than others;"
+msgstr "所选系统最优解把更多的绩效不足归入某些过程账户，而不是其他过程账户；"
+
+#: ../../chapters/05-network/20-network-sbm.md:446
+#: 9784e571a2a64ff8bd2fff110071d367
+msgid ""
+"treating a handoff as fixed or redesignable changes the attainable "
+"coordinated benchmark; and"
+msgstr "将内部交付视为固定承诺还是可重新设计的对象，会改变可达到的协同标杆；以及"
+
+#: ../../chapters/05-network/20-network-sbm.md:448
+#: a3e45e0796f94dbd8948efaf6097b97e
+msgid "supplier and recipient targets agree under the chosen governance rule."
+msgstr "在所选治理规则下，供应方与接收方的目标相互一致。"
+
+#: ../../chapters/05-network/20-network-sbm.md:450
+#: 5b77194080d44a91816b4581e527bf52
+msgid ""
+"It does not establish that a process manager caused the shortfall, that a"
+" declared weight is objectively correct, or that the selected peers can "
+"be copied without transition costs. It also does not infer inventories, "
+"losses, quality transformations, shared system budgets, or movements "
+"through time unless those mechanisms are explicitly modeled."
+msgstr "它不能证明某个过程管理者导致了绩效不足，不能证明某个声明权重客观正确，也不能证明所选参照单元无需考虑转型成本即可照搬。如果没有明确建模，它也不会推断库存、损耗、质量转换、系统共享预算或跨期变动。"
+
+#: ../../chapters/05-network/20-network-sbm.md:456
+#: d7cc72d27eaa4223b91344c01908f543
+msgid ""
+"The central discipline is continuity. Black-box DEA hides internal "
+"responsibility; separate process DEA can create incompatible plans. "
+"Network SBM occupies the useful middle ground: one system objective, "
+"process-level normalized slack accounts, and a declared governance rule "
+"for every internal handoff. That combination lets managers locate "
+"performance opportunities without pretending that the organization is "
+"either a single undifferentiated box or a collection of independent "
+"departments."
+msgstr ""
+"核心纪律是保持连续性。黑箱 DEA 隐藏内部责任，把过程分别进行 DEA 又可能生成彼此矛盾的方案。网络 SBM "
+"位于两者之间一个有用的位置：一个系统目标、过程层面的标准化松弛账户，以及针对每项内部交付明确声明的治理规则。这一组合帮助管理者定位绩效改善机会，同时避免把组织假想成一个无法区分内部结构的单一黑箱，或一群互不相关的独立部门。"

@@ -1,0 +1,348 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "economic.profitability.return_to_dollar",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "economic",
+  "title": "Return-to-dollar profitability efficiency",
+  "decision_question": "How much desirable-output value does the organization earn per unit of input expenditure, and how does that return compare with the best observed reference activity at the same prices?",
+  "names": {
+    "display": "Return-to-dollar profitability efficiency",
+    "historical": [
+      {
+        "label": "Profitability efficiency",
+        "spellings": [
+          "return-to-the-dollar efficiency",
+          "return to the dollar",
+          "profitability ratio efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/s10108-006-9004-0"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ReturnToDollarEfficiency",
+      "aliases": [
+        {
+          "symbol": "ProfitabilityEfficiency"
+        }
+      ]
+    },
+    "spellings": [
+      "return-to-dollar DEA",
+      "RTD profitability efficiency",
+      "revenue-to-cost efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "maximum_output_value_per_unit_expenditure",
+        "managerial_interpretation": "benchmark_revenue_generated_per_currency_unit_of_input_cost"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_resources_forming_input_expenditure",
+        "outputs": "priced_desirable_outputs_forming_output_value",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_and_output_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.positive_input_cost",
+        "condition.positive_reference_costs_and_revenues",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "reference_activity_extreme_ratio",
+        "disposal": "ordinary_free",
+        "shutdown": "excluded_undefined_zero_over_zero",
+        "returns_to_scale_value": "invariant_between_crs_and_vrs_for_the_reference_ratio"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.rts_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier_extreme_ratio",
+        "algorithm": "closed_form_extreme_ratio",
+        "solver_calls": 0
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_positive_cost_reference_activities",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "economic_value_ratio",
+        "measure": "profitability_efficiency",
+        "observed_ratio": "observed_revenue_over_observed_input_cost",
+        "native_score": "observed_return_to_dollar_over_maximum_reference_return_to_dollar",
+        "profit_ratio": "not_defined",
+        "direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_and_output_prices",
+        "price_sides": [
+          "inputs",
+          "outputs"
+        ]
+      },
+      "exposed": [
+        "input_prices",
+        "output_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_extreme_ratio_appraisal",
+        "target_selection": "first_maximizer_in_reference_order",
+        "ties": "maximizer_count_and_nonuniqueness_reported",
+        "external_reference_score_policy": "retain_unclipped",
+        "duals": "unavailable"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_profitability_ratio",
+        "target_scale_under_crs": "match_observed_input_cost",
+        "target_scale_under_vrs": "use_selected_reference_activity",
+        "decomposition": "not_reported_by_this_operator"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.profitability",
+    "canonical_symbol": "ReturnToDollarEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "closed_form_extreme_ratio",
+      "reference_ratio_cache",
+      "stable_tie_reporting"
+    ],
+    "default_backend": "closed_form_extreme_ratio",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "profitability_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.positive_input_cost",
+            "condition.positive_maximum_return_to_dollar"
+          ]
+        }
+      },
+      {
+        "id": "return_to_dollar",
+        "direction": "higher_is_better",
+        "efficient_value": "maximum_reference_return_to_dollar",
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.positive_input_cost",
+            "condition.nonnegative_output_value"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "observed_revenue",
+      "observed_cost",
+      "observed_profitability",
+      "maximum_profitability",
+      "profitability_gap",
+      "target_revenue",
+      "target_cost",
+      "target_profitability",
+      "transform_scale",
+      "maximizer_count",
+      "target_scale_policy",
+      "target_uniqueness",
+      "profitability_targets",
+      "profitability_intensities",
+      "score_status",
+      "diagnostics"
+    ],
+    "transformations": [
+      "return_to_dollar_equals_observed_revenue_over_observed_input_cost",
+      "profitability_efficiency_equals_return_to_dollar_over_maximum_reference_return_to_dollar",
+      "profitability_gap_equals_maximum_reference_return_to_dollar_minus_return_to_dollar"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.positive_input_cost",
+        "condition.positive_reference_costs_and_revenues",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_rescaling_and_common_price_scaling_preserve_profitability_efficiency",
+        "co_transform": [
+          "input_prices",
+          "output_prices"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.same_reference_comparison"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The target is a scaled maximizing reference activity under CRS or the selected maximizing reference activity under VRS, subject to a positive reference input cost.",
+      "efficiency": "The target maximizes revenue per unit of input expenditure among eligible references; it is not a maximum-profit target and no Pareto or strong-efficiency completion is claimed.",
+      "selection": "The first maximizing reference in declared order is selected reproducibly; the maximizer count and non-uniqueness status disclose ties without claiming that every tied target is returned.",
+      "conditions": [
+        "condition.positive_reference_costs_and_revenues",
+        "condition.positive_maximum_return_to_dollar"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s10108-006-9004-0"
+      },
+      {
+        "role": "implementation",
+        "id": "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45",
+        "tests/test_profitability.py::test_zofio_prieto_return_to_dollar_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "cross_implementation_oracle",
+        "closed_form_vs_charnes_cooper_lp",
+        "crs_vrs_ratio_equivalence",
+        "external_reference_unclipped_score",
+        "tie_reporting",
+        "unit_and_price_invariance",
+        "domain_validation",
+        "reference_ratio_cache",
+        "api_aliases_and_metadata"
+      ],
+      "locators": [
+        "tests/test_profitability.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_profitability.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.profitability",
+        "path": "docs/models/profitability.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.economics",
+        "path": "docs/api/economics.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

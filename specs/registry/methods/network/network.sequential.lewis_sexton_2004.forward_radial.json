@@ -1,0 +1,364 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.sequential.lewis_sexton_2004.forward_radial",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Lewis--Sexton sequential forward-quantity radial network DEA",
+  "decision_question": "What organizational radial improvement is supported when a selected benchmark plan for one process becomes the operating condition for the processes that depend on it?",
+  "names": {
+    "display": "Lewis--Sexton sequential forward-quantity radial network DEA",
+    "historical": [
+      {
+        "label": "Network DEA with organizational DMUs and sub-DMUs",
+        "spellings": [
+          "Lewis--Sexton network DEA",
+          "sequential network DEA"
+        ],
+        "sources": [
+          "doi:10.1016/S0305-0548(03)00095-9"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "LewisSextonSequentialNetworkDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "Lewis-Sexton sequential DEA",
+      "sequential radial network appraisal"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "organizational_performance_with_propagated_process_improvements",
+        "managerial_control": "centralized_internal_sequence",
+        "interpretation": "selected_local_benchmark_plans_become_later_operating_conditions"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.general_network"
+      ],
+      "fixed": {
+        "kind": "directed_acyclic_network",
+        "forward_quantities": true,
+        "series_forks_and_joins": "allowed",
+        "cycles": "excluded",
+        "intensity_policy": "process_specific",
+        "link_balance": "upstream_supply_greater_than_or_equal_to_downstream_requirement",
+        "endpoint_ownership": "one_declared_process_per_external_quantity_type",
+        "output_orientation_propagation": "forward_topological",
+        "input_orientation_propagation": "reverse_topological"
+      },
+      "exposed": [
+        "processes",
+        "links"
+      ],
+      "constraints": [
+        "condition.source_compatible_forward_quantity_dag",
+        "condition.network.one_declared_owner_per_external_endpoint_type"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "outside_resources_owned_by_declared_processes",
+        "links": "forward_internal_products_used_as_source_outputs_and_recipient_inputs",
+        "external_outputs": "final_results_owned_by_declared_processes",
+        "representation": {
+          "measurement_scale": "quantity",
+          "sign_domain": "nonnegative",
+          "flow_type": "forward_only",
+          "observation_status": "exact"
+        }
+      },
+      "exposed": [
+        "process_variable_assignments",
+        "link_endpoints"
+      ],
+      "constraints": [
+        "domain.sequential_network.nonnegative_quantities",
+        "domain.sequential_network.positive_aggregate_process_inputs_and_outputs",
+        "domain.sequential_network.positive_aggregate_external_inputs_and_outputs"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "sequential_process_envelopment",
+        "process_intensities": "separate",
+        "process_projection": "radial_primary_optimum",
+        "link_disposal": "upstream_surplus_allowed",
+        "process_feasibility": "local_then_propagated_not_simultaneously_joint"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale_by_process"
+      ],
+      "constraints": [
+        "condition.process_rts_crs_vrs_nirs_or_ndrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_sequential_network_envelopment",
+        "solver_programmes": "initial_process_appraisals_plus_affected_propagated_reappraisals"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_graph_compatible_dmus",
+          "membership_rule": "all_observations_with_complete_declared_process_roles",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "components": [
+        "network.radial_ratio"
+      ],
+      "fixed": {
+        "family": "lewis_sexton_sequential_radial",
+        "output_organizational_factor": "minimum_external_output_target_to_observed_ratio",
+        "input_organizational_factor": "maximum_external_input_target_to_observed_ratio",
+        "output_efficiency_transform": "reciprocal_of_organizational_expansion_factor",
+        "input_efficiency_transform": "organizational_input_factor",
+        "endpoint_aggregation": "source_sum_over_processes_collapses_under_one_declared_owner_per_type"
+      },
+      "defaults": {
+        "orientation": "output"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none",
+        "process_or_link_importance_weights": "not_part_of_method"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal_then_sequential_reappraisal",
+        "initial_programmes": "one_per_process_and_observation",
+        "propagated_source_or_sink_programmes": "reuse_initial_when_no_affected_link",
+        "secondary_objective": "none",
+        "target_selection": "solver_selected_primary_optimum",
+        "target_uniqueness": "not_certified",
+        "failure_policy": "fail_closed_if_any_required_programme_or_link_certificate_fails"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_network_fit",
+        "accounts": [
+          "initial_process",
+          "propagated_process",
+          "organizational_endpoint_bottleneck"
+        ],
+        "simultaneous_joint_network_equivalence": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.network.sequential",
+    "canonical_symbol": "LewisSextonSequentialNetworkDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.general_network",
+      "network.radial_ratio"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_process_envelopment_compilation",
+      "compiled_dag_layout",
+      "topological_forward_and_backward_propagation",
+      "primal_dual_certification",
+      "process_specific_crs_vrs_nirs_ndrs"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_sequential_radial_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.sequential_network.valid_nonnegative_quantities",
+            "condition.all_required_programmes_certified"
+          ]
+        }
+      },
+      {
+        "id": "process_radial_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.sequential_network.valid_nonnegative_quantities",
+            "condition.process_programme_certified"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_efficiency",
+      "organizational_factor",
+      "is_measure_efficient",
+      "is_sequentially_efficient",
+      "generic_is_efficient_missing_without_pareto_koopmans_certificate",
+      "initial_process_radial_factors",
+      "propagated_process_radial_factors",
+      "solver_selected_process_targets",
+      "process_specific_intensities",
+      "transmitted_link_quantities",
+      "upstream_supply_targets",
+      "downstream_requirement_targets",
+      "disposable_link_surplus",
+      "programme_certification_diagnostics"
+    ],
+    "transformations": [
+      "output_efficiency_equals_reciprocal_organizational_expansion_factor",
+      "input_efficiency_equals_organizational_retained_resource_factor"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.source_compatible_forward_quantity_dag",
+        "condition.network.one_declared_owner_per_external_endpoint_type",
+        "domain.sequential_network.valid_nonnegative_quantities",
+        "condition.process_rts_crs_vrs_nirs_or_ndrs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_external_or_link_quantity_column",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_column_rescaling_in_every_process_role"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each_selected_process target is certified against its process technology and every propagated link satisfies upstream supply at least downstream requirement",
+      "efficiency": "is_measure_efficient and is_sequentially_efficient classify the source-specific radial bottleneck score; generic is_efficient is missing because there is no strong slack completion or simultaneous joint-system Pareto--Koopmans claim",
+      "selection": "solver-selected primary targets and peer mixtures may be non-unique and can affect later propagated appraisals",
+      "conditions": [
+        "condition.all_required_programmes_certified",
+        "condition.propagated_link_balance_certified",
+        "condition.solver_selected_target_interpretation"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/S0305-0548(03)00095-9"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2014.02.039"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_network_sequential.py::test_reproduces_lewis_sexton_figure_2_and_tables_1_2"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_forward_quantity_oracle",
+        "output_min_and_input_max_endpoint_aggregation",
+        "forward_and_backward_propagation",
+        "series_fork_and_join_graph",
+        "process_and_variable_order_independence",
+        "process_specific_crs_vrs_nirs_ndrs",
+        "solver_and_certificate_failure",
+        "unit_invariance",
+        "standard_eleven_axis_metadata"
+      ],
+      "locators": [
+        "tests/test_network_sequential.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_sequential.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.network.sequential",
+        "path": "docs/network/sequential.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

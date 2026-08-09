@@ -1,0 +1,369 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 16:48+0100\n"
+"PO-Revision-Date: 2026-08-09 16:10+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../../THIRD_PARTY_NOTICES.md:2 702567dccb3b4f63bcd42284a4a2dbc4
+msgid "Third-Party Notices"
+msgstr "第三方声明"
+
+#: ../../../THIRD_PARTY_NOTICES.md:4 4d2f757a1fa14f4f95f311bcf5d08647
+msgid "This page identifies third-party material that is copied into generated DEAPack Documentation or Handbook sites, embedded in Handbook PDFs, or adapted in the Handbook build configuration. These notices apply only to the named third-party material. They neither select nor grant a license for DEAPack's project-owned software, Documentation, Handbook, translations, figures, or data; those component decisions remain subject to the release sign-off record. No upstream author or project endorses or supports DEAPack merely because its work is acknowledged here. License text inside fenced blocks is retained in its upstream English form; localized narrative does not replace it."
+msgstr "本页列明以下第三方材料：复制到 DEAPack 文档或手册生成站点中的材料、嵌入手册 PDF 的材料，以及手册构建配置所改编的材料。下列声明只适用于明确列出的第三方材料，并不为 DEAPack 自有的软件、文档、手册、中译本、插图或数据选择或授予任何许可；这些组件仍须以发布签署记录中的最终决定为准。仅因本页致谢上游作品，并不表示任何上游作者或项目认可 DEAPack 或为其提供支持。围栏代码块中的许可证原文保留上游英文；本地化说明不能取代该原文。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:14 8257af88093749fca37f024d817e8935
+msgid "Audited build-surface inventory"
+msgstr "经审计的构建产物清单"
+
+#: ../../../book/legal-notices.md:1 18e5502792e64f10b4ba51bd88612049
+msgid "Component"
+msgstr "组件"
+
+#: ../../../book/legal-notices.md:1 eb6a5b4edba048c8a3759bc21008cf0a
+msgid "Audited release-build version"
+msgstr "经审计的发布构建版本"
+
+#: ../../../book/legal-notices.md:1 a1da0371464c437b83aa9ca2e6890e65
+msgid "Where it appears"
+msgstr "出现位置"
+
+#: ../../../book/legal-notices.md:1 f64a8c52731044488f24c9ac812c5c32
+msgid "Upstream terms"
+msgstr "上游许可条款"
+
+#: ../../../book/legal-notices.md:1 aa5e4de67280482ea340c66804730b7a
+msgid "Sphinx"
+msgstr "Sphinx"
+
+#: ../../../book/legal-notices.md:1 72d0d9834ab14364b10a0db6cb0feeec
+msgid "9.1.0"
+msgstr "9.1.0"
+
+#: ../../../book/legal-notices.md:1 1f618dccc4754cd3a1573a960d105844
+msgid "Generated site assets; an adapted page-style fragment in `book/conf.py`"
+msgstr "生成站点的资源；`book/conf.py` 中改编的页面样式片段"
+
+#: ../../../book/legal-notices.md:1 5a8502ac580249279a4feb3fc7d4ef1d 6d5854435a3841489acb0029d9d6a7e1
+msgid "BSD-2-Clause"
+msgstr "BSD-2-Clause"
+
+#: ../../../book/legal-notices.md:1 b8677327a3aa4262824ef63bea6f78b5
+msgid "PyData Sphinx Theme"
+msgstr "PyData Sphinx Theme"
+
+#: ../../../book/legal-notices.md:1 37a92e63047243f6be5e5b7d3d4876c7
+msgid "0.19.0"
+msgstr "0.19.0"
+
+#: ../../../book/legal-notices.md:1 f2a8292178644938bc06ad3b4f1f5b78
+msgid "Generated site CSS, JavaScript, templates, and web assets"
+msgstr "生成站点的 CSS、JavaScript、模板和 Web 资源"
+
+#: ../../../book/legal-notices.md:1 431b19180fcb49ef8cadda488625513b
+msgid "BSD-3-Clause"
+msgstr "BSD-3-Clause"
+
+#: ../../../book/legal-notices.md:1 db78f76826ef4a66ac2e9e3ee1c5eda0
+msgid "Bootstrap"
+msgstr "Bootstrap"
+
+#: ../../../book/legal-notices.md:1 62ab4290d9b74c6e8785bae3404214c4
+msgid "5.3.3, supplied by the theme"
+msgstr "5.3.3（由主题提供）"
+
+#: ../../../book/legal-notices.md:1 e8513d7d843d41098e04141c5512599b
+msgid "Generated site CSS and JavaScript"
+msgstr "生成站点的 CSS 和 JavaScript"
+
+#: ../../../book/legal-notices.md:1 091204a0d2344110b5e70f752baf5705
+msgid "MIT"
+msgstr "MIT"
+
+#: ../../../book/legal-notices.md:1 0eaed55127bf4e7baea915e48d543f8b
+msgid "Font Awesome Free"
+msgstr "Font Awesome Free"
+
+#: ../../../book/legal-notices.md:1 001a60a2bdb94dc7822d84df8272555a
+msgid "7.2.0, supplied by the theme"
+msgstr "7.2.0（由主题提供）"
+
+#: ../../../book/legal-notices.md:1 e4c4a551a48043e5b5b6888a5e6f7855
+msgid "Generated site code, icons, and webfonts"
+msgstr "生成站点的代码、图标和 Web 字体"
+
+#: ../../../book/legal-notices.md:1 f69588657f0b4dc28fa809ed2e1febb8
+msgid "Code: MIT; icons: CC BY 4.0; fonts: SIL OFL 1.1"
+msgstr "代码：MIT；图标：CC BY 4.0；字体：SIL OFL 1.1"
+
+#: ../../../book/legal-notices.md:1 81288de9269a4abf945def4bf7916745
+msgid "Pygments"
+msgstr "Pygments"
+
+#: ../../../book/legal-notices.md:1 ccfeb95f7d594074aaabd0d57632b917
+msgid "2.20.0"
+msgstr "2.20.0"
+
+#: ../../../book/legal-notices.md:1 4b7f8c5b92bf40b5b55ab0a18e4a018b
+msgid "Generated syntax-highlighting stylesheet"
+msgstr "生成的语法高亮样式表"
+
+#: ../../../book/legal-notices.md:1 c096d7627b3a46939d33c5275e650292
+msgid "MathJax"
+msgstr "MathJax"
+
+#: ../../../book/legal-notices.md:1 d21c957f0fae4167b18ad83e33cabfa8
+msgid "4.0.0"
+msgstr "4.0.0"
+
+#: ../../../book/legal-notices.md:1 80bdfe5ed1de4343a786bb5506666a2a
+msgid "Loaded from the pinned jsDelivr URL at viewing time; not copied into the built site"
+msgstr "浏览页面时从固定版本的 jsDelivr URL 加载；不复制到生成站点中"
+
+#: ../../../book/legal-notices.md:1 43fffb35d2474c00883ea687d5f0509e
+msgid "Apache-2.0"
+msgstr "Apache-2.0"
+
+#: ../../../book/legal-notices.md:1 f6e61372757444f09e891c8287405eff
+msgid "`fncychap`"
+msgstr "`fncychap`"
+
+#: ../../../book/legal-notices.md:1 4c4cb50042734d61bb27f685a9e1435d
+msgid "1.34"
+msgstr "1.34"
+
+#: ../../../book/legal-notices.md:1 e919b8dffbc14db2b0f6e82510106ca0
+msgid "A modified Bjarne-style chapter-number macro in `book/conf.py`"
+msgstr "`book/conf.py` 中经过修改的 Bjarne 风格章节编号宏"
+
+#: ../../../book/legal-notices.md:1 a65caf2de6fc493caa63a395350155b3
+msgid "LPPL 1.3 or any later version; this modified excerpt uses LPPL 1.3c"
+msgstr "LPPL 1.3 或任何更高版本；本修改片段采用 LPPL 1.3c"
+
+#: ../../../book/legal-notices.md:1 f6d77dde218244d6b30864850bf6bd19
+msgid "Noto Sans/Serif CJK SC"
+msgstr "Noto Sans/Serif CJK SC（简体中文）"
+
+#: ../../../book/legal-notices.md:1 cdd428c7323f43fda0ba4fda7f377bea
+msgid "Ubuntu 24.04 `fonts-noto-cjk` (reviewed baseline `1:20230817+repack1-3`)"
+msgstr "Ubuntu 24.04 `fonts-noto-cjk`（经审计基线为 `1:20230817+repack1-3`）"
+
+#: ../../../book/legal-notices.md:1 72635d2f0f504dbfa3a47f84fd5ef7c3
+msgid "Font subsets may be embedded in the Chinese Handbook PDF"
+msgstr "中文手册 PDF 可能嵌入字体子集"
+
+#: ../../../book/legal-notices.md:1 31037a6b4b3c4ddebb541c2d2db8f47d
+msgid "SIL OFL 1.1"
+msgstr "SIL OFL 1.1"
+
+#: ../../../book/legal-notices.md:1 6e6677065a244ef9b09575a20a039a76
+msgid "TeX Gyre Termes and Heros"
+msgstr "TeX Gyre Termes 和 Heros"
+
+#: ../../../book/legal-notices.md:1 f721e959781b4f1cb7507ab14472e377
+msgid "Ubuntu 24.04 `fonts-texgyre`/`tex-gyre` (reviewed baseline `20180621-6`)"
+msgstr "Ubuntu 24.04 `fonts-texgyre`/`tex-gyre`（经审计基线为 `20180621-6`）"
+
+#: ../../../book/legal-notices.md:1 d3686906d6c14e799a1c7dd182d55f99
+msgid "Font subsets may be embedded in both Handbook PDFs"
+msgstr "两个语言版本的手册 PDF 均可能嵌入字体子集"
+
+#: ../../../book/legal-notices.md:1 6db9f3a0847c4d959da4637f13a94cd0
+msgid "GUST Font License 1.0 / LPPL 1.3c or later"
+msgstr "GUST Font License 1.0 / LPPL 1.3c 或更高版本"
+
+#: ../../../book/legal-notices.md:1 52864897a6f74e1f8c7eca88209f4577
+msgid "DejaVu Sans and Sans Mono"
+msgstr "DejaVu Sans 与 Sans Mono"
+
+#: ../../../book/legal-notices.md:1 c72a3bf642dc4173ba1d8eb29d02a1ad
+msgid "Ubuntu 24.04 `fonts-dejavu-core`/`fonts-dejavu-mono` (reviewed baseline `2.37-8`)"
+msgstr "Ubuntu 24.04 `fonts-dejavu-core`/`fonts-dejavu-mono`（经审计基线为 `2.37-8`）"
+
+#: ../../../book/legal-notices.md:1 4d743c2a8a7c46e283dbafbd72d2f603
+msgid "Font subsets may be embedded by Handbook text and vector figures"
+msgstr "手册正文和矢量图可能嵌入字体子集"
+
+#: ../../../book/legal-notices.md:1 af467bca1b304835ac05df03abf900ab
+msgid "Bitstream Vera and Arev notices below; DejaVu changes are public domain"
+msgstr "见下文 Bitstream Vera 和 Arev 声明；DejaVu 的改动属于公有领域"
+
+#: ../../../THIRD_PARTY_NOTICES.md:29 32f7eb82699e4c93b89795b527df9785
+msgid "The versions in this table are reviewed Ubuntu 24.04 baselines, not general runtime requirements. The protected release inventory must bind the actual installed package version and copyright-file hash, the resolver-selected font path and file hash, and the complete `pdffonts` table for each final PDF. A baseline name or an upstream web page does not substitute for that byte-level runner evidence."
+msgstr "表中版本是经审计的 Ubuntu 24.04 基线，并非一般运行时要求。受保护的发布清单必须绑定实际安装的软件包版本和版权文件哈希、解析器选定的字体路径和文件哈希，以及每份最终 PDF 的完整 `pdffonts` 表。仅有基线名称或上游网页，不能替代运行器上针对具体字节的证据。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:36 ad11586010a947939314d6d49c43a018
+msgid "Adapted Handbook build fragments"
+msgstr "手册构建中的改编片段"
+
+#: ../../../THIRD_PARTY_NOTICES.md:38 f3823e45cf054a948e76f38b42dc3250
+msgid "The `normal` page-style definition in `book/conf.py` is a partial adaptation of `sphinx/texinputs/sphinxlatexstylepage.sty` from Sphinx 9.1.0. It retains the upstream header/footer arrangement and adds `\\footnotesize` to the running section and chapter marks. It is embedded in a differently named host file and does not replace the Sphinx package. The complete unmodified Sphinx 9.1.0 source is available from the [Sphinx 9.1.0 tag](https://github.com/sphinx-doc/sphinx/tree/v9.1.0)."
+msgstr "`book/conf.py` 中的 `normal` 页面样式定义，部分改编自 Sphinx 9.1.0 的 `sphinx/texinputs/sphinxlatexstylepage.sty`。它保留上游的页眉、页脚布局，并在连续显示的节标题和章标题中加入 `\\footnotesize`。该片段嵌入名称不同的宿主文件，并不替代 Sphinx 软件包。完整且未经修改的 Sphinx 9.1.0 源码见 [Sphinx 9.1.0 标签](https://github.com/sphinx-doc/sphinx/tree/v9.1.0)。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:46 3c2092aa9a8f46369962607095793a26
+msgid "The `\\TheAlphaChapter` definition in `book/conf.py` is a modified excerpt from the Bjarne style in Ulf A. Lindgren's `fncychap` 1.34. The adaptation keeps the appendix branch and changes English compound chapter names from concatenated forms such as `TWENTYONE` to hyphenated forms such as `TWENTY-ONE`. It is embedded in `book/conf.py`, not distributed as a replacement named `fncychap.sty`. The complete unmodified package is available from the [CTAN `fncychap` 1.34 package](https://ctan.org/pkg/fncychap). Copyright 2007 Ulf Lindgren. The upstream README permits distribution and modification under LPPL 1.3 or, at the recipient's option, any later version. DEAPack distributes this modified excerpt under LPPL 1.3c; the unmodified LPPL 1.3c text is reproduced below."
+msgstr "`book/conf.py` 中的 `\\TheAlphaChapter` 定义，是根据 Ulf A. Lindgren 的 `fncychap` 1.34 Bjarne 样式修改而来的片段。改编后保留附录分支，并把 `TWENTYONE` 之类连写的英文复合章节名改为 `TWENTY-ONE` 之类的连字符形式。该片段嵌入 `book/conf.py`，不会以 `fncychap.sty` 这一替代文件名发布。完整且未经修改的软件包见 [CTAN `fncychap` 1.34 软件包](https://ctan.org/pkg/fncychap)。版权所有 2007 Ulf Lindgren。上游 README 允许按 LPPL 1.3，或由接收者选择的任何更高版本，分发和修改该作品。DEAPack 对本修改片段采用 LPPL 1.3c；下文原样转载未经修改的 LPPL 1.3c 文本。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:58 4053e786ea0846179b345267bc555c32
+msgid "Sphinx 9.1.0 — BSD-2-Clause"
+msgstr "Sphinx 9.1.0 — BSD-2-Clause"
+
+#: ../../../THIRD_PARTY_NOTICES.md:60 9e897e32c18b40eaa957c31108e10b07
+msgid "The following notice is reproduced from Sphinx 9.1.0's `LICENSE.rst`:"
+msgstr "以下声明原样转载自 Sphinx 9.1.0 的 `LICENSE.rst`："
+
+#: ../../../THIRD_PARTY_NOTICES.md:90 4daea434be1d49b9a86bd014267ff29b
+msgid "PyData Sphinx Theme 0.19.0 — BSD-3-Clause"
+msgstr "PyData Sphinx Theme 0.19.0 主题 — BSD-3-Clause"
+
+#: ../../../THIRD_PARTY_NOTICES.md:92 11b7d613125f459598788c47bdb026f9
+msgid "The following notice is reproduced from the theme's `LICENSE` file:"
+msgstr "以下声明原样转载自该主题的 `LICENSE` 文件："
+
+#: ../../../THIRD_PARTY_NOTICES.md:126 1d48b0d2c18f4cee8b726e51a1fa70d6
+msgid "Pygments 2.20.0 — BSD-2-Clause"
+msgstr "Pygments 2.20.0 — BSD-2-Clause"
+
+#: ../../../THIRD_PARTY_NOTICES.md:128 7ecc1d65ab924e2aa84972e19456a2bc
+msgid "The following notice is reproduced from Pygments 2.20.0's `LICENSE` file:"
+msgstr "以下声明原样转载自 Pygments 2.20.0 的 `LICENSE` 文件："
+
+#: ../../../THIRD_PARTY_NOTICES.md:158 fbfd32a0437941a0853090984cc59ba1
+msgid "Bootstrap and Font Awesome code — MIT"
+msgstr "Bootstrap 与 Font Awesome 代码 — MIT"
+
+#: ../../../THIRD_PARTY_NOTICES.md:160 7b8b1a1206f946229fd7f838ac26297e
+msgid "Bootstrap 5.3.3 is copyright 2011-2024 The Bootstrap Authors. Font Awesome Free 7.2.0 code is copyright 2026 Fonticons, Inc. Each is distributed under the following MIT License:"
+msgstr "Bootstrap 5.3.3 的版权归 2011—2024 年 Bootstrap Authors 所有。Font Awesome Free 7.2.0 代码的版权归 2026 年 Fonticons, Inc. 所有。二者均按以下 MIT License 发布："
+
+#: ../../../THIRD_PARTY_NOTICES.md:184 0eda0e95436c4cbe8ddca3d91dbd1b35
+msgid "Font Awesome icons — CC BY 4.0"
+msgstr "Font Awesome 图标 — CC BY 4.0"
+
+#: ../../../THIRD_PARTY_NOTICES.md:186 a62d4e51865c4efda9e889915a9f5506
+msgid "Font Awesome Free 7.2.0 icons are copyright 2026 Fonticons, Inc. and are licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/legalcode). The icons are supplied through PyData Sphinx Theme 0.19.0. DEAPack does not alter the upstream icon data or claim authorship of it; selecting an icon for a site control does not imply endorsement by Fonticons."
+msgstr "Font Awesome Free 7.2.0 图标的版权归 2026 年 Fonticons, Inc. 所有，并按 [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/legalcode) 许可。这些图标由 PyData Sphinx Theme 0.19.0 提供。DEAPack 既不改动上游图标数据，也不声称其作者身份；为站点控件选用图标，并不表示 Fonticons 对 DEAPack 的认可。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:193 ffb745d0fe454c2792075ad4d9299c13
+msgid "Font Awesome webfonts and Noto CJK — SIL OFL 1.1"
+msgstr "Font Awesome Web 字体与 Noto CJK — SIL OFL 1.1"
+
+#: ../../../THIRD_PARTY_NOTICES.md:195 20863d3f99fa4e46986b64ac23da7f61
+msgid "Font Awesome Free 7.2.0 webfonts are copyright 2026 Fonticons, Inc. The Noto faces used by the protected release lane are supplied by Ubuntu 24.04's `fonts-noto-cjk` package. The signed release inventory records the actual package version, Debian copyright-file hash, resolver-selected font paths and font-file hashes; current upstream metadata is not treated as evidence for the installed Ubuntu bytes. Font Awesome webfonts and the selected Noto faces are licensed under the SIL Open Font License 1.1 reproduced below."
+msgstr "Font Awesome Free 7.2.0 Web 字体的版权归 2026 年 Fonticons, Inc. 所有。受保护发布通道使用的 Noto 字体由 Ubuntu 24.04 的 `fonts-noto-cjk` 软件包提供。经签署的发布清单记录实际软件包版本、Debian 版权文件哈希、解析器选定的字体路径与字体文件哈希；当前上游元数据不作为已安装 Ubuntu 字节的证据。Font Awesome Web 字体和所选 Noto 字体均按下文原样转载的 SIL Open Font License 1.1 许可。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:291 6dd54e0886584afc9865b75f0b8c8bae
+msgid "TeX Gyre Termes and Heros — GUST Font License"
+msgstr "TeX Gyre Termes 与 Heros — GUST Font License"
+
+#: ../../../THIRD_PARTY_NOTICES.md:293 36ccc0681c044f07a6ab911af8a4c0fe
+msgid "TeX Gyre's upstream font metadata and manifests identify the individual copyright holders and the URW base fonts from which the families were derived. The release build uses the fonts without renaming or claiming endorsement. The GUST Font License supplied with the TeX Gyre distribution reads:"
+msgstr "TeX Gyre 的上游字体元数据和清单列明了各版权所有者，以及这些字体家族所派生自的 URW 基础字体。发布构建使用这些字体时既不更名，也不声称获得认可。TeX Gyre 发行版随附的 GUST Font License 内容如下："
+
+#: ../../../THIRD_PARTY_NOTICES.md:329 456bb5d262274a619b2ea745a7bb6e32
+msgid "LPPL 1.3c — `fncychap` and TeX Gyre license basis"
+msgstr "LPPL 1.3c — `fncychap` 与 TeX Gyre 的许可依据"
+
+#: ../../../THIRD_PARTY_NOTICES.md:331 959e4016923e461aa35378e97dcd0e11
+msgid "The unmodified LPPL 1.3c text follows. It applies only to the third-party works identified above, not to unrelated DEAPack project-owned components."
+msgstr "以下为未经修改的 LPPL 1.3c 原文。它只适用于上文明确列出的第三方作品，不适用于与之无关的 DEAPack 自有组件。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:752 8f917ce16afd46c9bb710f1ff424e06e
+msgid "DejaVu Sans and Sans Mono — retained font notices"
+msgstr "DejaVu Sans 与 Sans Mono — 保留的字体声明"
+
+#: ../../../THIRD_PARTY_NOTICES.md:754 cff62528fbfe42c8b58755f01766f303
+msgid "The substantive DejaVu notice distributed with Matplotlib 3.11.1 is reproduced below with whitespace normalized and its non-substantive RCS trailer omitted. The release runner may embed DejaVu Sans from vector figures and DejaVu Sans Mono from the Chinese Handbook's code typography."
+msgstr "下文转载 Matplotlib 3.11.1 随附的 DejaVu 实质性声明；其中空白已规范化，并省略了不影响许可内容的 RCS 尾注。发布运行器可能从矢量图嵌入 DejaVu Sans，并从中文手册的代码排版嵌入 DejaVu Sans Mono。"
+
+#: ../../../THIRD_PARTY_NOTICES.md:859 a7b1b4ff365e4deba3d303973e1ef6c4
+msgid "Primary upstream evidence"
+msgstr "上游一手证据"
+
+#: ../../../THIRD_PARTY_NOTICES.md:861 f0dc8dd5181944489882568bdb2b941c
+msgid "The release review used the license files installed with the exact audited Python distributions and the following primary upstream sources:"
+msgstr "本次发布复核采用了随经审计的确切 Python 发行版安装的许可证文件，并查阅了以下上游一手资料："
+
+#: ../../../THIRD_PARTY_NOTICES.md:864 2eba423dc30a4e09b04f985bcf7e9e4a
+msgid "[Sphinx 9.1.0 source and license](https://github.com/sphinx-doc/sphinx/tree/v9.1.0)"
+msgstr "[Sphinx 9.1.0 源码与许可证](https://github.com/sphinx-doc/sphinx/tree/v9.1.0)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:865 7b5448404c7e4a16b7c25fc0a82c7487
+msgid "[PyData Sphinx Theme 0.19.0 source and license](https://github.com/pydata/pydata-sphinx-theme/tree/v0.19.0)"
+msgstr "[PyData Sphinx Theme 0.19.0 源码与许可证](https://github.com/pydata/pydata-sphinx-theme/tree/v0.19.0)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:866 27a2e403f0264fcabe411111fcdc153a
+msgid "[Bootstrap 5.3.3 source and license](https://github.com/twbs/bootstrap/tree/v5.3.3)"
+msgstr "[Bootstrap 5.3.3 源码与许可证](https://github.com/twbs/bootstrap/tree/v5.3.3)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:867 be30d505c5c64dad9219c82a1c9e19d8
+msgid "[Font Awesome Free 7.2.0 source and license](https://github.com/FortAwesome/Font-Awesome/tree/7.2.0)"
+msgstr "[Font Awesome Free 7.2.0 源码与许可证](https://github.com/FortAwesome/Font-Awesome/tree/7.2.0)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:868 b97356970e4248309822aa7696cba95d
+msgid "[Pygments 2.20.0 source and license](https://github.com/pygments/pygments/tree/2.20.0)"
+msgstr "[Pygments 2.20.0 源码与许可证](https://github.com/pygments/pygments/tree/2.20.0)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:869 74e0d86f1f4646a68b08bd85f36760ff
+msgid "[MathJax 4.0.0 source and license](https://github.com/mathjax/MathJax-src/tree/4.0.0)"
+msgstr "[MathJax 4.0.0 源码与许可证](https://github.com/mathjax/MathJax-src/tree/4.0.0)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:870 9536a727e6a54e3f94088ae8b15507c1
+msgid "[`fncychap` 1.34 and its README at CTAN](https://ctan.org/tex-archive/macros/latex/contrib/fncychap)"
+msgstr "[CTAN 上的 `fncychap` 1.34 及其 README](https://ctan.org/tex-archive/macros/latex/contrib/fncychap)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:871 8b459e44dcab4123813f476783b9d2f4
+msgid "[LPPL 1.3c from the LaTeX Project](https://www.latex-project.org/lppl/lppl-1-3c/)"
+msgstr "[LaTeX Project 发布的 LPPL 1.3c](https://www.latex-project.org/lppl/lppl-1-3c/)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:872 ce0a13bc76744ddaa438a111b3c271c4
+msgid "[Noto CJK source and SIL OFL 1.1](https://github.com/notofonts/noto-cjk)"
+msgstr "[Noto CJK 源码与 SIL OFL 1.1](https://github.com/notofonts/noto-cjk)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:873 ea6b427b8687476f8f9542c03d11fbf2
+msgid "[TeX Gyre source](https://ctan.org/pkg/tex-gyre) and [GUST Font License 1.0](https://ctan.org/license/gfl)"
+msgstr "[TeX Gyre 源码](https://ctan.org/pkg/tex-gyre)与 [GUST Font License 1.0](https://ctan.org/license/gfl)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:874 01ad08deea8c437b8ef9e71934476204
+msgid "[DejaVu Fonts license](https://dejavu-fonts.github.io/License.html)"
+msgstr "[DejaVu Fonts 许可证](https://dejavu-fonts.github.io/License.html)"
+
+#: ../../../THIRD_PARTY_NOTICES.md:875 70c091f916d24ef5840031ab55dc59f8
+msgid "[Ubuntu 24.04 `fonts-noto-cjk`](https://packages.ubuntu.com/noble/fonts-noto-cjk), [`fonts-texgyre`](https://packages.ubuntu.com/noble/fonts-texgyre), and [`fonts-dejavu-mono`](https://packages.ubuntu.com/noble/fonts-dejavu-mono) package records"
+msgstr "Ubuntu 24.04 的 [`fonts-noto-cjk`](https://packages.ubuntu.com/noble/fonts-noto-cjk)、[`fonts-texgyre`](https://packages.ubuntu.com/noble/fonts-texgyre) 与 [`fonts-dejavu-mono`](https://packages.ubuntu.com/noble/fonts-dejavu-mono) 软件包记录"
+
+#~ msgid "LPPL 1.3 (interpreted as LPPL 1.3c)"
+#~ msgstr "LPPL 1.3（按 LPPL 1.3c 解释）"
+
+#~ msgid "Release runner's `fonts-noto-cjk` package"
+#~ msgstr "发布运行器的 `fonts-noto-cjk` 软件包"
+
+#~ msgid "Release runner's `tex-gyre` package"
+#~ msgstr "发布运行器的 `tex-gyre` 软件包"
+
+#~ msgid "Release runner's DejaVu/TeX font package"
+#~ msgstr "发布运行器的 DejaVu/TeX 字体软件包"
+
+#~ msgid "The versions in this table are the reviewed release-toolchain versions, not general runtime requirements. The exact embedded-font names in each final PDF must also be checked from that final artifact; this expected inventory does not replace the final `pdffonts` evidence."
+#~ msgstr "表中版本是经过复核的发布工具链版本，并非一般运行时要求。每一份最终 PDF 仍须从成品中核查实际嵌入的字体名称；这份预期清单不能替代最终的 `pdffonts` 证据。"
+
+#~ msgid "Font Awesome Free 7.2.0 webfonts are copyright 2026 Fonticons, Inc. The audited upstream Noto Sans CJK SC metadata states “© 2014-2021 Adobe (http://www.adobe.com/)”; Noto Serif CJK SC states “© 2017-2024 Adobe (http://www.adobe.com/)”. Both identify Noto as a trademark of Google Inc. The final release must compare these statements with the actual runner fonts and update this notice if those bytes differ. These fonts are licensed under the SIL Open Font License 1.1 reproduced below."
+#~ msgstr "Font Awesome Free 7.2.0 Web 字体的版权归 2026 年 Fonticons, Inc. 所有。经审计的上游 Noto Sans CJK SC 元数据显示“© 2014-2021 Adobe (http://www.adobe.com/)”；Noto Serif CJK SC 显示“© 2017-2024 Adobe (http://www.adobe.com/)”。二者均注明 Noto 为 Google Inc. 的商标。最终发布必须把这些声明与发布运行器实际使用的字体逐项比对；若字节不同，须同步更新本声明。这些字体按下文原样转载的 SIL Open Font License 1.1 许可。"
+
+#~ msgid "[TeX Gyre source and GUST Font License](https://ctan.org/pkg/tex-gyre)"
+#~ msgstr "[TeX Gyre 源码与 GUST Font License](https://ctan.org/pkg/tex-gyre)"

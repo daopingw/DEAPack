@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-labelledby="title description">
+<title id="title">Sequential improvement propagation and the organizational bottleneck</title>
+<desc id="description">Two upstream processes select improved handoff quantities and pass them to a downstream process in a directed acyclic graph. The downstream process is re-appraised at those quantities. The smallest final-output expansion ratio limits output-oriented organizational improvement, while the largest retained-input ratio limits input-oriented resource contraction.</desc>
+<defs>
+  <marker id="seq-arrow-teal" markerWidth="10" markerHeight="10" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#176b73"/></marker>
+  <marker id="seq-arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#d97732"/></marker>
+  <filter id="seq-shadow" x="-12%" y="-12%" width="124%" height="132%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#24323d" flood-opacity="0.13"/></filter>
+</defs>
+<rect width="1180" height="760" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif">
+  <text x="44" y="44" font-size="25" font-weight="700" fill="#24323d">A selected process improvement becomes the next process's operating condition</text>
+  <text x="44" y="72" font-size="14.5" fill="#5c6b73">Output orientation moves benchmark supplies forward through the DAG; input orientation moves benchmark requirements backward.</text>
+
+  <rect x="42" y="98" width="1096" height="382" rx="20" fill="#f8fafb" stroke="#cfdadd"/>
+
+  <circle cx="78" cy="136" r="20" fill="#176b73"/>
+  <text x="78" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
+  <text x="110" y="132" font-size="14.5" font-weight="700" fill="#24323d">Appraise the source processes</text>
+  <text x="110" y="153" font-size="12.5" fill="#5c6b73">Select a certified radial benchmark plan for each local sub-DMU.</text>
+
+  <rect x="82" y="197" width="210" height="102" rx="14" fill="#eef7f7" stroke="#176b73" stroke-width="2" filter="url(#seq-shadow)"/>
+  <text x="187" y="225" text-anchor="middle" font-size="14" font-weight="700" fill="#176b73">PROCESS A</text>
+  <text x="187" y="249" text-anchor="middle" font-size="14" fill="#24323d">resource x₁ → handoff z₁</text>
+  <rect x="112" y="264" width="150" height="23" rx="11" fill="#ffffff" stroke="#9fc8cb"/>
+  <text x="187" y="280" text-anchor="middle" font-size="11.5" font-weight="700" fill="#176b73">selected target: ẑ₁</text>
+
+  <rect x="82" y="336" width="210" height="102" rx="14" fill="#eef7f7" stroke="#176b73" stroke-width="2" filter="url(#seq-shadow)"/>
+  <text x="187" y="364" text-anchor="middle" font-size="14" font-weight="700" fill="#176b73">PROCESS B</text>
+  <text x="187" y="388" text-anchor="middle" font-size="14" fill="#24323d">resource x₂ → handoff z₂</text>
+  <rect x="112" y="403" width="150" height="23" rx="11" fill="#ffffff" stroke="#9fc8cb"/>
+  <text x="187" y="419" text-anchor="middle" font-size="11.5" font-weight="700" fill="#176b73">selected target: ẑ₂</text>
+
+  <circle cx="401" cy="136" r="20" fill="#d97732"/>
+  <text x="401" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+  <text x="433" y="132" font-size="14.5" font-weight="700" fill="#24323d">Propagate the selected handoffs</text>
+  <text x="433" y="153" font-size="12.5" fill="#5c6b73">Replace the downstream process's observed link inputs.</text>
+
+  <path d="M292 248 C380 248, 405 272, 485 302" fill="none" stroke="#d97732" stroke-width="4" marker-end="url(#seq-arrow-orange)"/>
+  <path d="M292 387 C380 387, 405 363, 485 333" fill="none" stroke="#d97732" stroke-width="4" marker-end="url(#seq-arrow-orange)"/>
+  <rect x="330" y="274" width="132" height="27" rx="13" fill="#ffffff" stroke="#e5b58f"/>
+  <text x="396" y="292" text-anchor="middle" font-size="11.5" font-weight="700" fill="#d97732">pass ẑ₁ forward</text>
+  <rect x="330" y="336" width="132" height="27" rx="13" fill="#ffffff" stroke="#e5b58f"/>
+  <text x="396" y="354" text-anchor="middle" font-size="11.5" font-weight="700" fill="#d97732">pass ẑ₂ forward</text>
+
+  <rect x="488" y="253" width="238" height="132" rx="16" fill="#fff3e9" stroke="#d97732" stroke-width="2" filter="url(#seq-shadow)"/>
+  <text x="607" y="282" text-anchor="middle" font-size="14" font-weight="700" fill="#d97732">PROCESS C: RE-APPRAISE</text>
+  <text x="607" y="307" text-anchor="middle" font-size="14" fill="#24323d">(ẑ₁, ẑ₂) → final results</text>
+  <line x1="529" y1="326" x2="685" y2="326" stroke="#e5b58f"/>
+  <text x="607" y="348" text-anchor="middle" font-size="12" fill="#5c6b73">The reference frontier is unchanged.</text>
+  <text x="607" y="368" text-anchor="middle" font-size="12" fill="#5c6b73">The evaluated workload has changed.</text>
+
+  <circle cx="788" cy="136" r="20" fill="#76528f"/>
+  <text x="788" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+  <text x="820" y="132" font-size="14.5" font-weight="700" fill="#24323d">Read the external endpoints</text>
+  <text x="820" y="153" font-size="12.5" fill="#5c6b73">A common system improvement stops at its binding result.</text>
+
+  <path d="M726 319 L793 319" fill="none" stroke="#76528f" stroke-width="4" marker-end="url(#seq-arrow-teal)"/>
+  <rect x="807" y="210" width="287" height="210" rx="16" fill="#f3eef7" stroke="#76528f" stroke-width="2" filter="url(#seq-shadow)"/>
+  <text x="950" y="239" text-anchor="middle" font-size="14" font-weight="700" fill="#76528f">OUTPUT-ORIENTED ENDPOINT ACCOUNT</text>
+  <rect x="836" y="261" width="110" height="72" rx="11" fill="#ffffff" stroke="#cbb8d8"/>
+  <text x="891" y="284" text-anchor="middle" font-size="12" fill="#5c6b73">result 1</text>
+  <text x="891" y="313" text-anchor="middle" font-size="20" font-weight="700" fill="#176b73">ŷ₁ / y₁ = 1.40</text>
+  <rect x="958" y="261" width="110" height="72" rx="11" fill="#fff3e9" stroke="#d97732" stroke-width="2"/>
+  <text x="1013" y="284" text-anchor="middle" font-size="12" fill="#5c6b73">result 2</text>
+  <text x="1013" y="313" text-anchor="middle" font-size="20" font-weight="700" fill="#d97732">ŷ₂ / y₂ = 1.15</text>
+  <text x="950" y="357" text-anchor="middle" font-size="14" font-weight="700" fill="#24323d">system factor = min(1.40, 1.15) = 1.15</text>
+  <rect x="855" y="372" width="190" height="31" rx="15" fill="#76528f"/>
+  <text x="950" y="393" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">efficiency = 1 / 1.15 = 0.87</text>
+  <text x="1013" y="442" text-anchor="middle" font-size="11.5" font-weight="700" fill="#d97732">binding endpoint</text>
+  <line x1="1013" y1="420" x2="1013" y2="430" stroke="#d97732" stroke-width="2"/>
+
+  <rect x="42" y="508" width="1096" height="198" rx="20" fill="#ffffff" stroke="#cfdadd"/>
+  <text x="72" y="544" font-size="17" font-weight="700" fill="#24323d">The bottleneck rule preserves an organization-wide radial claim</text>
+
+  <rect x="72" y="568" width="480" height="105" rx="14" fill="#eef7f7" stroke="#176b73"/>
+  <text x="96" y="596" font-size="13" font-weight="700" fill="#176b73">OUTPUT EXPANSION</text>
+  <text x="96" y="622" font-size="14" fill="#24323d">Use the smallest final-result target / observed ratio.</text>
+  <text x="96" y="650" font-size="17" font-weight="700" fill="#176b73">Φ = min<tspan baseline-shift="sub" font-size="12">r</tspan>(ŷ<tspan baseline-shift="sub" font-size="12">r</tspan> / y<tspan baseline-shift="sub" font-size="12">r</tspan>)   →   E = 1 / Φ</text>
+
+  <rect x="574" y="568" width="534" height="105" rx="14" fill="#fff3e9" stroke="#d97732"/>
+  <text x="598" y="596" font-size="13" font-weight="700" fill="#d97732">INPUT CONSERVATION</text>
+  <text x="598" y="622" font-size="14" fill="#24323d">Use the largest retained-resource target / observed ratio.</text>
+  <text x="598" y="650" font-size="17" font-weight="700" fill="#d97732">Θ = max<tspan baseline-shift="sub" font-size="12">i</tspan>(x̂<tspan baseline-shift="sub" font-size="12">i</tspan> / x<tspan baseline-shift="sub" font-size="12">i</tspan>)   →   E = Θ</text>
+
+  <rect x="42" y="723" width="1096" height="25" rx="12" fill="#24323d"/>
+  <text x="590" y="741" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Sequential plan ≠ simultaneous joint network optimum • selected targets may be non-unique</text>
+</g>
+</svg>

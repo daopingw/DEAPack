@@ -1,0 +1,723 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.biennial_malmquist",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Pastor--Asmild--Lovell Biennial Malmquist productivity index",
+  "decision_question": "How did radial productive performance change when each adjacent transition is evaluated against one benchmark pooled from exactly those two periods?",
+  "names": {
+    "display": "Pastor--Asmild--Lovell Biennial Malmquist productivity index",
+    "historical": [
+      {
+        "label": "Biennial Malmquist productivity index",
+        "spellings": [
+          "Biennial MPI",
+          "Biennial Malmquist index"
+        ],
+        "sources": [
+          "doi:10.1016/j.seps.2010.09.001"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "BiennialMalmquistProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "BiennialMalmquistDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "adjacent-pair common-reference Malmquist",
+      "Pastor--Asmild--Lovell biennial index"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "adjacent_pair_productivity_change_accounting",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "operating_performance_change_and_change_in_proximity_of_contemporaneous_best_practice_to_the_two_period_benchmark_at_the_evaluated_operating_mix"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resource_quantities",
+        "outputs": "desirable_service_or_product_quantities",
+        "bad_outputs": "excluded",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative_quantities_with_positive_observation_aggregates",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "condition.adjacent_dmu_identifier_match"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "contemporaneous_and_adjacent_pair_pooled_convex_envelopment",
+        "free_disposal": true,
+        "biennial_pooling": "raw_observations_from_exactly_the_base_and_comparison_periods",
+        "source_returns_to_scale": "crs",
+        "non_crs_interpretation": "sensitivity_specification_not_automatically_the_classic_total_factor_productivity_contract"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.biennial",
+        "reference.contemporaneous"
+      ],
+      "fixed": {
+        "kind": "adjacent_pair_pool_and_own_period",
+        "distance_tasks_per_transition": [
+          "base_on_base",
+          "comparison_on_comparison",
+          "base_on_biennial",
+          "comparison_on_biennial"
+        ]
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "all_economically_eligible_observations_in_the_adjacent_pair",
+          "membership_rule": "pooled_from_exactly_two_periods",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "biennial_adjacent_pair",
+          "availability_cutoff": "base_and_comparison_period_pair",
+          "vintage_required": true,
+          "historical_revision": "an_existing_pair_is_unchanged_when_later_periods_are_appended"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.radial"
+      ],
+      "fixed": {
+        "family": "radial_farrell_efficiency"
+      },
+      "defaults": {
+        "orientation": "output"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_adjacent_period_identifiers",
+        "first_period_rows": "omitted_no_predecessor",
+        "failure_policy": "missing_index_with_failed_distance_roles_preserved"
+      },
+      "defaults": {
+        "unbalanced": "drop"
+      },
+      "exposed": [
+        "unbalanced"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "biennial_malmquist_productivity",
+        "productivity_identity": "biennial_efficiency_comparison_divided_by_biennial_efficiency_base",
+        "decomposition": "productivity_change_equals_efficiency_change_times_best_practice_gap_change",
+        "circularity": "not_guaranteed_across_pair_specific_references",
+        "source_interpretation_domain": "crs",
+        "causal_interpretation": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.analysis.biennial_malmquist",
+    "canonical_symbol": "BiennialMalmquistProductivityIndex",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "reference.biennial",
+      "reference.contemporaneous",
+      "static.radial"
+    ],
+    "backend_capabilities": [
+      "compiled_contemporaneous_references",
+      "compiled_adjacent_pair_references",
+      "deduplicated_distance_task_cache",
+      "sparse_linear_programming",
+      "shared_solver_neutral_lp_certification",
+      "raw_and_published_original_unit_radial_account_certification",
+      "independent_thresholded_peer_account_certification",
+      "complete_four_distance_multiplicative_account_certification",
+      "per_transition_atomic_release",
+      "reported_solver_call_counters"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.all_common_reference_distances_positive",
+            "condition.all_distance_tasks_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "efficiency_change",
+      "best_practice_change",
+      "base_best_practice_gap",
+      "comparison_best_practice_gap",
+      "biennial_efficiency_base",
+      "biennial_efficiency_comparison",
+      "contemporaneous_efficiency_base",
+      "contemporaneous_efficiency_comparison",
+      "distance_base_on_base",
+      "distance_comparison_on_comparison",
+      "distance_base_on_biennial",
+      "distance_comparison_on_biennial",
+      "decomposition_residual",
+      "reported_peer_intensities_above_peer_tolerance",
+      "biennial_reference_membership_metadata",
+      "score_valid",
+      "score_status",
+      "peer_valid",
+      "peer_status",
+      "all_four_distance_programs_certified",
+      "all_four_economic_distance_claims_certified",
+      "all_four_peer_accounts_certified",
+      "raw_multiplicative_account_certified",
+      "published_multiplicative_account_certified",
+      "multiplicative_account_certified",
+      "solver_neutral_lp_certificate_diagnostics",
+      "original_unit_economic_account_diagnostics",
+      "raw_backend_status_preservation",
+      "solver_calls_metadata",
+      "additional_solver_calls_metadata"
+    ],
+    "transformations": [
+      "productivity_change_equals_biennial_efficiency_comparison_divided_by_biennial_efficiency_base",
+      "efficiency_change_equals_contemporaneous_efficiency_comparison_divided_by_contemporaneous_efficiency_base",
+      "best_practice_change_equals_comparison_best_practice_gap_divided_by_base_best_practice_gap",
+      "productivity_change_equals_efficiency_change_times_best_practice_change"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.all_common_reference_distances_positive"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_input_and_output_with_units_held_consistent_across_the_pair",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_variable_units_across_periods_and_reference_observations"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+        "feasibility": "each published radial task is solver_reported_optimal and passes solver_neutral_primal_bound_objective_duality_complementarity_and_strong_duality_checks in its declared contemporaneous or biennial technology",
+        "efficiency": "not_applicable_to_the_productivity_change_index",
+        "selection": "reported peer intensities are solver_selected coefficients above peer_tolerance released only after an independent original_unit_account_reconstruction; the index has no single joint projection",
+      "conditions": [
+        "condition.all_distance_tasks_optimal",
+        "condition.all_common_reference_distances_positive"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.seps.2010.09.001"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/pastor-asmild-lovell-2011-biennial-malmquist-analytical.md",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_own_period_distance_roles_and_efficiency_change",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_biennial_distance_roles_and_productivity_change",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_frontier_shift_four_distances_and_biennial_account",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_catch_up_four_distances_and_biennial_account",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_biennial_reference_is_exact_raw_union_of_the_adjacent_pair",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_source_oracle_is_production_free_and_claim_scoped",
+        "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_matches_exact_frontier_shift_and_catch_up_oracles",
+        "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_pair_pool_includes_unmatched_rows_and_excludes_other_periods"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/pastor-asmild-lovell-2011-biennial-malmquist-analytical.md",
+        "public_api_test_locator": "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_matches_exact_frontier_shift_and_catch_up_oracles",
+        "claims": [
+          {
+            "claim_id": "productivity.pastor_asmild_lovell_biennial.exact_own_period_distance_roles",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_own_period_distance_roles_and_efficiency_change"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "adjacent_pair_biennial_common_reference_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "frontier_shift_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_on_base": "1",
+                    "comparison_on_comparison": "1",
+                    "efficiency_change": "1"
+                  }
+                },
+                {
+                  "case_id": "catch_up_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_on_base": "1/2",
+                    "comparison_on_comparison": "1",
+                    "efficiency_change": "2"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "base_on_base_farrell_distance",
+              "comparison_on_comparison_farrell_distance",
+              "two_contemporaneous_crs_conical_envelopes",
+              "efficiency_change"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.pastor_asmild_lovell_biennial.exact_pair_pool_distance_roles",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_biennial_distance_roles_and_productivity_change"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "adjacent_pair_biennial_common_reference_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "frontier_shift_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_on_biennial": "1/2",
+                    "comparison_on_biennial": "1",
+                    "productivity_change": "2"
+                  }
+                },
+                {
+                  "case_id": "catch_up_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_on_biennial": "1/2",
+                    "comparison_on_biennial": "1",
+                    "productivity_change": "2"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "base_on_biennial_farrell_distance",
+              "comparison_on_biennial_farrell_distance",
+              "pooled_crs_conical_biennial_envelope",
+              "biennial_malmquist_productivity_change",
+              "biennial_reference_membership",
+              "no_off_diagonal_cross_period_tasks"
+            ],
+            "reference_scope": {
+              "requested_kind": "biennial",
+              "resolved_kind": "biennial",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.pastor_asmild_lovell_biennial.exact_cross_reference_account_reconstruction",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_frontier_shift_four_distances_and_biennial_account",
+              "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_exact_catch_up_four_distances_and_biennial_account",
+              "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_matches_exact_frontier_shift_and_catch_up_oracles"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "composition_of_two_contemporaneous_and_two_biennial_distance_roles"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "frontier_shift_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "efficiency_change": "1",
+                    "base_best_practice_gap": "1/2",
+                    "comparison_best_practice_gap": "1",
+                    "best_practice_change": "2",
+                    "productivity_change": "2"
+                  }
+                },
+                {
+                  "case_id": "catch_up_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "efficiency_change": "2",
+                    "base_best_practice_gap": "1",
+                    "comparison_best_practice_gap": "1",
+                    "best_practice_change": "1",
+                    "productivity_change": "2"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "composition_of_separately_certified_contemporaneous_and_biennial_distance_roles",
+              "no_additional_reference_technology_in_account_reconstruction",
+              "base_best_practice_gap",
+              "comparison_best_practice_gap",
+              "efficiency_change",
+              "best_practice_change",
+              "biennial_malmquist_productivity_change",
+              "decomposition_identity"
+            ],
+            "reference_scope": {
+              "requested_kind": "biennial",
+              "resolved_kind": "biennial",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.pastor_asmild_lovell_biennial.exact_adjacent_pair_membership",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py::test_biennial_reference_is_exact_raw_union_of_the_adjacent_pair",
+              "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_pair_pool_includes_unmatched_rows_and_excludes_other_periods"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "adjacent_pair_biennial_common_reference_ratio"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "base_only_member_sets_adjacent_pair_frontier",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_period": 0,
+                    "comparison_period": 1,
+                    "reference_observations": 6,
+                    "unique_biennial_peer": "C@0",
+                    "base_on_biennial": "1/4",
+                    "comparison_on_biennial": "1/4",
+                    "outside_period_peer_excluded": true
+                  }
+                },
+                {
+                  "case_id": "comparison_only_member_sets_adjacent_pair_frontier",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "base_period": 0,
+                    "comparison_period": 1,
+                    "reference_observations": 6,
+                    "unique_biennial_peer": "D@1",
+                    "base_on_biennial": "1/4",
+                    "comparison_on_biennial": "1/4",
+                    "outside_period_peer_excluded": true
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "biennial_reference_membership",
+              "raw_adjacent_period_observation_union",
+              "unmatched_reference_observation_inclusion",
+              "outside_period_observation_exclusion",
+              "unmatched_member_frontier_effect",
+              "two_biennial_distance_behavioral_membership_check"
+            ],
+            "reference_scope": {
+              "requested_kind": "biennial",
+              "resolved_kind": "biennial",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 9,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_frontier_shift_property",
+        "analytic_catch_up_property",
+        "independent_exact_crs_upper_bound_and_attaining_witness",
+        "independent_exact_four_distance_frontier_shift_account",
+        "independent_exact_four_distance_catch_up_account",
+        "public_api_exact_analytical_oracle_mapping",
+        "raw_adjacent_pair_reference_union_with_unmatched_members",
+        "three_period_public_behavioral_reference_membership",
+        "base_only_and_comparison_only_frontier_member_effects",
+        "outside_period_frontier_member_exclusion",
+        "later_period_extension_stability",
+        "non_circularity_counterexample",
+        "biennial_pair_membership",
+        "unbalanced_panel_membership",
+        "environmental_data_rejection",
+        "four_role_solver_neutral_lp_certificates",
+        "raw_and_published_original_unit_radial_account_release_gates",
+        "complete_raw_and_published_biennial_multiplicative_account_gates",
+        "independent_all_four_thresholded_peer_release_gate",
+        "malicious_optimal_response_rejection",
+        "raw_backend_status_preservation",
+        "per_transition_failure_isolation",
+        "zero_additional_certification_solves",
+        "independently_counted_solver_and_compilation_metadata",
+        "metadata_identity"
+      ],
+      "locators": [
+        "tests/test_biennial_malmquist.py",
+        "tests/test_pastor_asmild_lovell_2011_biennial_malmquist_source.py",
+        "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_matches_exact_frontier_shift_and_catch_up_oracles",
+        "tests/test_biennial_malmquist_analytical_public_api.py::test_public_api_pair_pool_includes_unmatched_rows_and_excludes_other_periods",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata",
+        "tests/test_malmquist_postsolve_certification.py::test_clean_four_distance_certificates_add_no_solve",
+        "tests/test_malmquist_postsolve_certification.py::test_uncertified_task_withholds_the_complete_transition",
+        "tests/test_malmquist_postsolve_certification.py::test_atomic_failure_is_scoped_to_one_transition",
+        "tests/test_malmquist_postsolve_certification.py::test_peer_threshold_has_an_independent_all_four_release_gate",
+        "tests/test_malmquist_postsolve_certification.py::test_kernel_reconstructs_raw_published_and_peer_accounts_independently",
+        "tests/test_malmquist_postsolve_certification.py::test_raw_or_published_economic_reconstruction_failure_is_fail_closed",
+        "tests/test_malmquist_postsolve_certification.py::test_complete_account_rejection_withholds_transition",
+        "tests/test_malmquist_postsolve_certification.py::test_biennial_certificate_rejects_wrong_gaps_even_when_product_holds",
+        "tests/test_benchmark_productivity_operators.py::test_productivity_benchmark_enforces_real_task_graph"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_productivity_operators.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.biennial_malmquist",
+        "path": "docs/analysis/biennial-malmquist.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

@@ -1,0 +1,407 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../reading-guide.md:1 162c6b495b3c426c9781c7a2dd93c8db
+msgid "How to Use This Book"
+msgstr "如何使用本书"
+
+#: ../../reading-guide.md:3 176c2976f3a74501b7c8dff245a131b6
+msgid ""
+"Writing down a DEA programme is not especially difficult. The harder task is"
+" deciding what its result means for an organization. If a hospital is called"
+" inefficient, is the claim that it could use fewer beds while meeting the "
+"same commitments, treat more patients with its current resources, alter its "
+"service mix, or learn from a different group of hospitals? Those are "
+"different claims, even if their optimization programs share much of the same"
+" machinery. The notation becomes useful only after the performance question "
+"is clear."
+msgstr ""
+"写出一个 DEA "
+"规划并不特别困难，真正困难的是判断结果对一个组织意味着什么。如果一家医院被评为低效率，究竟是说它可以在履行相同服务责任的同时减少床位，可以用现有资源诊治更多患者，可以调整服务结构，还是应当与另一类医院比较学习？这些论断并不相同，即使其优化程序大量共用同一套计算机制。只有先明确绩效问题，符号才真正有用。"
+
+#: ../../reading-guide.md:11 8a6abf1e0c2f4006a3723da85e45d9c2
+msgid "Your First Journey through the Book"
+msgstr "第一次阅读：从哪里出发"
+
+#: ../../reading-guide.md:13 1ab09e63a4324ec09e998a873c9615f1
+msgid ""
+"If efficiency analysis is new to you, begin with Part I and let the hospital"
+" example do most of the work. The opening chapter separates three questions "
+"that are often blurred together: how an organization performs against a "
+"benchmark, how much physical output it produces from its resources, and "
+"whether it earns a surplus at observed prices. The study-design chapter then"
+" asks what belongs inside the hospital, which services must be protected, "
+"and which hospitals offer credible evidence. The production-frontier chapter"
+" shows how those choices become a set of attainable operating plans."
+msgstr "如果你初次接触效率分析，请从第一篇读起，并让医院案例承担主要的解释工作。第一章分开三个经常混在一起的问题：组织相对于标杆表现如何，它用既有资源生产了多少实物产出，以及按观测价格计算是否获得盈余。随后，研究设计章讨论医院的组织边界、必须保护的服务，以及哪些医院能够提供可信证据；生产前沿章则说明如何把这些选择转化为一组可实现的经营方案。"
+
+#: ../../reading-guide.md:22 6b92771e40ca4599a87a345fa0023bd5
+msgid ""
+"Small examples are used deliberately. They let you see resource commitments,"
+" service capacity, comparator organizations, and scale before a large "
+"dataset obscures the argument. Whenever an equation appears, translate it "
+"into three questions: What must the organization preserve? What is it being "
+"asked to change? Whose experience supplies the benchmark? If you can answer "
+"those in ordinary language, the notation is already doing useful work."
+msgstr "本书有意采用小型示例。这样，在大型数据掩盖论证之前，你便能看清资源承诺、服务能力、比较对象和经营规模。每当遇到公式，都可以把它还原成三个问题：组织必须保留什么？模型要求它改变什么？谁的经验提供标杆？如果你能用日常语言回答，符号已经开始发挥作用。"
+
+#: ../../reading-guide.md:29 c0f5ddd3bd7449768d8870bdb52846ab
+msgid ""
+"For a first pass, continue to classical radial DEA and then the slack-based "
+"chapter. Radial DEA introduces proportional resource saving and service "
+"expansion. The slack-based chapter shows what changes when individual "
+"resources and services need not move together. Next, use the community-"
+"hospital study to see how the research question, comparison group, primary "
+"result, peers, improvement quantities, and sensitivity checks fit together. "
+"Directional distance is most helpful after those ideas are familiar, because"
+" it lets management define a coordinated programme of several changes. The "
+"intervening scale chapter is valuable but optional on this first pass: read "
+"its opening distinction between operating and scale-related shortfalls, then"
+" return later for local returns to scale and scale elasticity. The observed-"
+"price chapter is the next stop when cost, revenue, or profit is the "
+"substantive objective."
+msgstr ""
+"第一遍阅读可继续学习经典径向 DEA，再进入基于松弛变量的章节。径向 DEA "
+"引入按比例节约资源和扩张服务；松弛章节说明各项资源和服务不必同步变化时会发生什么。接着阅读社区医院研究，观察研究问题、比较群体、主要结果、活跃参照单元、改进数量和敏感性检验如何组成完整分析。熟悉这些思想之后再学习方向性距离最为合适，因为它允许管理者预先设定包含多项协调变化的改进方案。其间的规模章节很有价值，但第一遍可以选读：先理解经营不足与规模相关不足的区别，之后再回头学习局部规模报酬和规模弹性。如果研究目标是成本、收益或利润，下一站便是观测价格章节。"
+
+#: ../../reading-guide.md:42 e885296885804c14a0e1aa0f2175d37d
+msgid "This gives a deliberately short first-pass route:"
+msgstr "由此得到一条有意压缩的首次阅读路线："
+
+#: ../../reading-guide.md:44 2d0738edfce5423eb3c2defd29705f06
+msgid "Part I through the construction of the production frontier;"
+msgstr "阅读第一篇，直至完成生产前沿的构造；"
+
+#: ../../reading-guide.md:45 f65750eeecc94546b1a5dbddc20cd184
+msgid "classical radial DEA;"
+msgstr "经典径向 DEA；"
+
+#: ../../reading-guide.md:46 aff2e190d8f942308f21940269440a30
+msgid "Additive, RAM, and SBM measures;"
+msgstr "加性、RAM 与 SBM 测度；"
+
+#: ../../reading-guide.md:47 74515c4ef65842079cb87f1b1680778f
+msgid "the community-hospital efficiency study;"
+msgstr "社区医院效率研究；"
+
+#: ../../reading-guide.md:48 1c253367ce7a48cbafead9bb503c2f09
+msgid "directional distance; and"
+msgstr "方向性距离；以及"
+
+#: ../../reading-guide.md:49 412e022e76f84818b794f9c4217a9a70
+msgid "whichever applied part matches the production problem."
+msgstr "与实际生产问题相匹配的应用篇章。"
+
+#: ../../reading-guide.md:51 cf81bc5127c640f4b080f7c25cf00057
+msgid ""
+"On this route, concentrate on the organizational question, the neutral value"
+" of the measure, and the interpretation of the target. Bootstrap inference, "
+"second-stage contextual analysis, detailed dual arguments, and specialized "
+"reference policies belong to a researcher's second pass rather than being "
+"prerequisites for understanding CCR and BCC."
+msgstr ""
+"沿这条路线阅读时，请重点把握组织问题、测度的中性值和目标方案的含义。Bootstrap "
+"推断、第二阶段情境分析、细致的对偶论证和专门化参照政策，适合研究者在第二遍阅读时学习，而不是理解 CCR 和 BCC 的前置条件。"
+
+#: ../../reading-guide.md:57 c7b06dae0d7a45db98e02dbde90c6018
+msgid ""
+"After Part II, follow the problem you actually care about. Read Part III "
+"when production creates pollution or another undesirable consequence; Part "
+"IV when performance must be compared over time; Parts V and VI when "
+"departments or periods are joined by internal flows; and Part VII when "
+"organizations operate under meaningfully different opportunities. You do not"
+" need network or dynamic DEA in order to understand a conventional hospital,"
+" plant, or bank comparison."
+msgstr ""
+"读完第二篇后，应按照你真正关心的问题继续。生产会带来污染或其他非合意后果时阅读第三篇；需要跨期比较绩效时阅读第四篇；部门由内部流量相连时阅读第五篇，时期由跨期变量相连时阅读第六篇；组织面临实质不同的生产机会时阅读第七篇。理解常规的医院、工厂或银行比较，并不以掌握网络"
+" DEA 或动态 DEA 为前提。"
+
+#: ../../reading-guide.md:64 b0cd02579d8f4863bd0a451fe45ca202
+msgid "Where a Second Reading Pays Off"
+msgstr "第二遍阅读特别值得关注的内容"
+
+#: ../../reading-guide.md:66 45dc49b247ce4516a8e525840e7731b7
+msgid ""
+"Some sections are written for readers who need to design research, defend an"
+" empirical specification, or extend a model. They belong in the book, but "
+"they need not interrupt a first encounter with DEA."
+msgstr "有些小节面向需要设计研究、为经验设定辩护或扩展模型的读者。它们理应保留在书中，却不必打断初识 DEA 的过程。"
+
+#: ../../reading-guide.md e49250d1b11a4b689990c84bb3cefd96
+msgid "Chapter or topic"
+msgstr "章节或主题"
+
+#: ../../reading-guide.md 652133955f0c4b5cb1482c7aeae17311
+msgid "Read first for"
+msgstr "第一遍重点"
+
+#: ../../reading-guide.md feba1ba9c5bf473ea7999b7efe51686b
+msgid "Return later for"
+msgstr "第二遍再读"
+
+#: ../../reading-guide.md b3d92fe42d7c49e3bb992dce14b6aee1
+msgid "Scale performance"
+msgstr "规模绩效"
+
+#: ../../reading-guide.md 427541162d2b4052bb24f8cf06866199
+msgid "the difference between operating shortfall and scale-related shortfall"
+msgstr "经营不足与规模相关不足的区别"
+
+#: ../../reading-guide.md 63c300818b4b4cde8adf16816acd405c
+msgid ""
+"local returns to scale, scale elasticity, and the conditions behind "
+"congestion diagnostics"
+msgstr "局部规模报酬、规模弹性，以及拥挤诊断成立所需的条件"
+
+#: ../../reading-guide.md aee623f2a54949f79fc9052e4e35c1bb
+msgid "Study design"
+msgstr "研究设计"
+
+#: ../../reading-guide.md 887d599f760a40fc927ef8b09dd2de1e
+msgid "organizational boundaries, variable roles, and eligible comparators"
+msgstr "组织边界、变量角色与合格比较对象"
+
+#: ../../reading-guide.md cbedb375bb99492e999654633065f803
+msgid "sampling inference, contextual second-stage designs, and robustness protocols"
+msgstr "抽样推断、情境因素第二阶段设计与稳健性方案"
+
+#: ../../reading-guide.md 23e1176066954a89ad05124b583beda3
+msgid "Community-hospital study"
+msgstr "社区医院研究"
+
+#: ../../reading-guide.md 330aebafa02e4cb49a219931229b066e
+msgid "how design choices become a complete management analysis"
+msgstr "设计选择如何形成完整的管理分析"
+
+#: ../../reading-guide.md 7612ed86e6844282b37523eeb231aba6
+msgid "peer-population, SBM, and scale-assumption sensitivity"
+msgstr "比较总体、SBM 与规模假设的敏感性"
+
+#: ../../reading-guide.md 6a86b9e751514fa4a1914e281f23d9c9
+msgid "Economic efficiency"
+msgstr "经济效率"
+
+#: ../../reading-guide.md e9452750ac07427a9af5a82dd32036d1
+msgid "why cost, revenue, and profit protect different commitments"
+msgstr "为什么成本、收益和利润保护的是不同承诺"
+
+#: ../../reading-guide.md fb789643cb304b97be54af65a9302944
+msgid ""
+"allocative decompositions, price heterogeneity, and the directional profit "
+"bridge"
+msgstr "配置分解、价格异质性与方向性利润桥接关系"
+
+#: ../../reading-guide.md 524459abf68f4084bafd4a8aae3296e4
+msgid "Malmquist productivity"
+msgstr "Malmquist 生产率"
+
+#: ../../reading-guide.md 5da9d46be05b45888439014c2ffc7deb
+msgid ""
+"the four dated appraisals and the operating-performance/opportunity-change "
+"decomposition"
+msgstr "四项分期评价，以及经营表现变化与生产机会变化的分解"
+
+#: ../../reading-guide.md 521bb150e939463f948504608d4c70d0
+msgid "cross-period feasibility, global benchmark vintages, and long-run chaining"
+msgstr "跨期可行性、全局标杆的时期范围与长期链式比较"
+
+#: ../../reading-guide.md 02adad0a57a4437fbfbd8ebe24cdd7b8
+msgid "Environmental productivity"
+msgstr "环境生产率"
+
+#: ../../reading-guide.md 2e7e423d80024d5abd9310ef216a0819
+msgid "the joint useful-output/pollution programme and its two change components"
+msgstr "合意产出增长与污染削减的联合方案及其两个变化组成部分"
+
+#: ../../reading-guide.md 8dac2e6b639b4bdbb89831e86565c46c
+msgid "signed cross-technology distances and infeasible environmental comparisons"
+msgstr "带符号的跨技术距离与不可行的环境比较"
+
+#: ../../reading-guide.md 43f88666f9cd493da073508d64897d86
+msgid "Network DEA"
+msgstr "网络 DEA"
+
+#: ../../reading-guide.md 123cc3389ad74471a30bb266b10abc71
+msgid "why departments must share one feasible organizational plan"
+msgstr "为什么各部门必须共同满足同一个可行的组织方案"
+
+#: ../../reading-guide.md 8d2ed5674a9d48fe808f27a2d0189135
+msgid ""
+"relational and additive process accounts, internal-link valuation, and non-"
+"unique process attributions"
+msgstr "关系型与加性过程账户、内部联结的价值评价，以及非唯一的过程归属"
+
+#: ../../reading-guide.md 4f6f1ac98d774ed98802d75e5953fa0e
+msgid "Dynamic DEA"
+msgstr "动态 DEA"
+
+#: ../../reading-guide.md a566f2c5d45b4e9f9e82a1e422305664
+msgid "why today's carry-over restricts tomorrow's possibilities"
+msgstr "为什么今天的结转变量会约束明天的生产机会"
+
+#: ../../reading-guide.md bb56e608b1e24b799a17791f9173b634
+msgid ""
+"carry-over governance, period weights, and the distinction between a "
+"trajectory result and its period-level diagnoses"
+msgstr "结转变量治理、时期权重，以及轨迹结果与分期诊断之间的区别"
+
+#: ../../reading-guide.md:81 c786d73bf14f472c84bb9ce3a5188b33
+msgid ""
+"The same principle applies within the mathematics. The statement of a model "
+"and the meaning of its result belong on the first pass. Proof-oriented "
+"detail, duality, and sensitivity to maintained assumptions reward a slower "
+"return once the economic question is settled."
+msgstr "同一原则也适用于数学内容。模型的表述及其结果的含义应在第一遍掌握；等经济问题已经厘清，再放慢速度研究证明细节、对偶关系和结果对既定假设的敏感程度，会有更大收获。"
+
+#: ../../reading-guide.md:86 000e89b560144b2e87a075462e6efd50
+msgid "If You Are Conducting an Empirical Study"
+msgstr "如果你正在开展经验研究"
+
+#: ../../reading-guide.md:88 26fa61cb08264682a1efbe9b11c603e8
+msgid ""
+"Readers who already have data and a research question need not proceed "
+"linearly. Use the study-design chapter to audit the unit boundary, decision "
+"horizon, managerial control, measurement definitions, and peer-eligibility "
+"rule. Identifying inputs, desirable outputs, and undesirable outputs is "
+"necessary but not sufficient: a contextual condition is not automatically a "
+"resource, an internal handoff is not automatically a final output, and a "
+"quantity fixed over one planning horizon may be adjustable over another. "
+"Then go to the relevant model chapter."
+msgstr "已经掌握数据和研究问题的读者不必线性阅读。可以先用研究设计章审查分析单元的边界、决策期限、管理控制范围、测量定义和比较对象资格规则。识别投入、合意产出和非合意产出是必要的，但还不充分：情境条件不会自动成为资源，内部交接不会自动成为最终产出，在一个计划期内固定的数量换一个期限可能可以调整。之后再进入相关模型章节。"
+
+#: ../../reading-guide.md:97 07c49b4dc24d42c684d40719c6f29b7c
+msgid ""
+"After running the code, do not keep only one efficiency column. Comparator "
+"organizations, benchmark operating plans, resource excesses, output "
+"shortfalls, and returns to scale often explain the result better than "
+"rankings do."
+msgstr "运行代码后，不要只保留一列效率得分。比较对象、标杆经营方案、投入冗余、产出不足和规模报酬，往往比排名更能解释结果。"
+
+#: ../../reading-guide.md:102 3915325de7bb40e590c422e9d00dcec4
+msgid ""
+"Most model chapters use small datasets as magnifying glasses for observing "
+"model behavior. Before substituting your own data, reproduce the book's "
+"result with its theory dataset; that simple step catches many errors "
+"involving column roles, orientation, and score direction. The community-"
+"hospital chapter then brings the main design and reporting choices together "
+"in one larger synthetic study. It is a workflow template, not evidence about"
+" a real health system. A publishable application must use defensible source "
+"data, document provenance and units, screen its comparison population, pre-"
+"specify sensitivity analyses, and report the limitations of its final "
+"conclusions."
+msgstr "多数模型章把小型数据集用作观察模型行为的放大镜。替换成自己的数据之前，请先用书中的理论数据重现结果；这一简单步骤能发现许多与列角色、导向和得分方向有关的错误。社区医院章随后在一个规模较大的合成研究中汇集主要设计与报告选择。它是一份工作流程模板，而不是关于真实医疗系统的证据。可发表的应用研究必须使用来源可信的数据，记录数据出处和单位，筛选比较总体，预先设定敏感性分析，并报告最终结论的局限。"
+
+#: ../../reading-guide.md:112 5aae60b2d2804adeb70d4891d8e228e4
+msgid "If You Compare or Develop Methods"
+msgstr "如果你要比较或开发方法"
+
+#: ../../reading-guide.md:114 9e15a546afc44aea9fe7a38926d9b97e
+#, python-brace-format
+msgid ""
+"If you want to compare methods or develop a new model, keep {doc}`notation` "
+"and the model map in the appendix close at hand. Start by separating the "
+"management question, the operating system, the organizations and periods "
+"supplying evidence, and the improvement or economic objective. Technology "
+"assumptions and equations then make those choices precise. Historically "
+"different names are combined when they lead to the same attainable plans and"
+" performance criterion; genuine differences in production structure, "
+"disposability, scale, benchmark policy, valuation, or statistical claim "
+"remain visible."
+msgstr ""
+"如果你希望比较方法或开发新模型，请把 {doc}`notation` "
+"和附录中的模型图放在手边。首先分开管理问题、经营系统、提供证据的组织与时期，以及改进目标或经济目标，再用技术假设和公式精确表达这些选择。历史名称不同、但导出相同可行方案和绩效准则的方法合并讲解；生产结构、可处置性、规模、标杆政策、价值评价或统计主张上的实质差异则清楚保留。"
+
+#: ../../reading-guide.md:123 f7b0c0fcd7004b1f851a3a9cd20fdd11
+msgid "Moving from a management problem to usable evidence"
+msgstr "从管理问题走向可用证据"
+
+#: ../../reading-guide.md:125 057eeabda23a47c8a7c85d16c5f9f9ac
+msgid ""
+"Each form of evidence in the book answers a different practical question. "
+"The economic discussion identifies the responsibility being assessed: saving"
+" resources, protecting services, improving environmental outcomes, or "
+"raising productivity. Figures show whose experience supplies a credible "
+"comparison and what operating change that comparison makes possible. "
+"Equations state the assumptions precisely, while code tests whether the same"
+" reasoning survives realistic combinations of resources, services, "
+"organizations, and periods. When reading a diagram, ask first what "
+"management can alter, what it must preserve, and whether the proposed "
+"benchmark could be implemented within the stated horizon. Coordinates and "
+"arrows are useful only insofar as they make those organizational choices "
+"easier to see."
+msgstr "本书中的不同证据回答不同的实践问题。经济讨论确定所评价的责任：节约资源、保护服务、改善环境结果或提高生产率。图形显示谁的经验构成可信比较，以及这种比较能够支持怎样的经营变化；公式精确陈述假设；代码则检验同一逻辑能否适用于资源、服务、组织和时期的现实组合。阅读图示时，先问管理者可以改变什么、必须保留什么，以及所提标杆能否在声明的期限内实施。坐标和箭头只有在帮助我们看清这些组织选择时才有价值。"
+
+#: ../../reading-guide.md:136 112b90a2e7fa4349814c3232dcad8631
+msgid ""
+"Code blocks contain what is needed to understand and reproduce the analysis."
+" Complete parameters, return fields, exceptions, and version-compatibility "
+"details live in the separate DEAPack Documentation. The text asks why a "
+"model is appropriate and what its result can support. Readers can consult "
+"the API pages alongside an example when implementation detail is needed, "
+"while the main argument remains readable without them."
+msgstr ""
+"代码块只保留理解和重现分析所需的内容。完整参数、返回字段、异常和版本兼容细节见单独的 DEAPack "
+"文档。正文讨论模型为何适用、结果能够支持什么。需要实现细节时，读者可以在阅读示例的同时查询 API 页面，而主线论证即使脱离这些页面也应保持通畅。"
+
+#: ../../reading-guide.md:143 ddab023baf87472080e4180ef384c278
+msgid ""
+"The handbook concentrates on mature model families that organize the field. "
+"A paper-specific variant enters the main route only when it has become a "
+"principal family and changes the production setting, performance criterion, "
+"or interpretation in a way the existing family cannot express. Specialized "
+"variants and computational options remain in the DEAPack Documentation."
+msgstr ""
+"本 Handbook "
+"聚焦能够组织整个领域的成熟模型族。只有当某篇论文提出的变体已经成为主要方法族，并以现有方法族无法表达的方式改变生产环境、绩效准则或解释时，它才进入正文主线。专门化变体和计算选项保留在"
+" DEAPack 文档中。"
+
+#: ../../reading-guide.md:149 4c645717addc4e8b8439dc5d46df41fe
+msgid "Numerical integrity without software plumbing"
+msgstr "不让软件细节遮蔽数值完整性"
+
+#: ../../reading-guide.md:151 fe46294ef71848499dd5c97afaee9071
+msgid ""
+"A performance number is informative only when the comparison it summarizes "
+"actually exists. If another period's technology cannot support the required "
+"appraisal, or a decomposition is undefined, it remains missing; it is never "
+"replaced by zero or described as poor performance. The missing result marks "
+"a limit of the evidence. Each model chapter therefore identifies the "
+"feasibility and accounting conditions that must hold before the result can "
+"inform a management or policy discussion."
+msgstr "只有当得分所概括的比较确实存在时，绩效数值才有信息意义。如果另一时期的技术无法支持所需评价，或某项分解没有定义，结果就保持缺失；绝不能用零填补，也不能称为绩效不佳。缺失结果标示的是证据边界。因此，各模型章都会说明结果进入管理或政策讨论之前必须满足的可行性与核算条件。"
+
+#: ../../reading-guide.md:159 59ea7f83f9cc495fa1499f510c4abd12
+msgid ""
+"DEAPack also retains field-level numerical diagnostics for readers who need "
+"to audit a computation. Those diagnostic names, tolerances, and failure "
+"statuses are described in the package Documentation. The handbook keeps the "
+"substantive question in view: what has been established about the "
+"organization's production possibilities, and what remains unsupported?"
+msgstr ""
+"DEAPack 还为需要审计计算过程的读者保留字段层面的数值诊断。诊断名称、容差和失败状态见包文档。Handbook "
+"始终把实质问题置于中心：关于组织的生产可能性，我们究竟已经确认了什么，还有什么缺乏支持？"
+
+#: ../../reading-guide.md:165 837535ad4d954f7e85f4ca224ee329f9
+msgid ""
+"One final habit is especially useful. Whenever a unit has an efficiency "
+"score of one, ask: Efficient under which technology, orientation, period, "
+"and peer group? That question runs through almost the entire book."
+msgstr "最后请养成一个格外有用的习惯。每当某个单元的效率得分等于 1，都追问一句：它是在什么技术、导向、时期和比较群体下有效率？这个问题贯穿本书几乎所有章节。"

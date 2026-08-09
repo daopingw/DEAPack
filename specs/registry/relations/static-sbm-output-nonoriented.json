@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "static.sbm.output.tone2001",
+  "target": "static.sbm.nonoriented.tone2001",
+  "type": "variant_of",
+  "equivalence_level": "B",
+  "difference_axes": [
+    "performance",
+    "valuation",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.paired_technology_equal",
+      "arguments": {
+        "graph": "black_box",
+        "returns_to_scale": "matched",
+        "reference": "matched"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/S0377-2217(99)00407-5"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_sbm.py::test_oriented_sbm_scores_and_public_aliases"
+    ]
+  }
+}

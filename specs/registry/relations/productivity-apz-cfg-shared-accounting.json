@@ -1,0 +1,45 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.malmquist_luenberger.aparicio_pastor_zofio_2013",
+  "target": "productivity.malmquist_luenberger.chung_fare_grosskopf_1997",
+  "type": "shares_compiler",
+  "equivalence_level": null,
+  "difference_axes": [
+    "context",
+    "data_roles",
+    "technology"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.apz.cfg.shared_four_distance_accounting_distinct_technology",
+      "arguments": {
+        "shared_direction": "fixed_input_observed_good_and_bad_output",
+        "shared_reference_roles": "four_adjacent_contemporaneous_own_and_cross_period_tasks",
+        "shared_operator": "geometric_malmquist_luenberger_efficiency_change_times_technical_change",
+        "cfg_bad_output_row": "B_lambda_equals_directional_bad_target",
+        "apz_bad_output_rows": "B_lambda_le_directional_bad_target_le_reference_period_componentwise_maximum",
+        "implementation_rule": "recompile_all_four_apz_tasks",
+        "postprocessing_equivalence": "forbidden",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1006/jema.1997.0146",
+      "doi:10.1016/j.ejor.2013.03.031",
+      "doi:10.1016/j.jenvman.2017.03.007"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_aparicio_pastor_zofio_2013_source.py::test_apz_certificate_is_not_a_standard_ml_postprocessing_alias",
+      "tests/test_apz_malmquist_luenberger.py::test_apz_is_neither_cfg_postprocessing_nor_oh_global_index"
+    ]
+  }
+}

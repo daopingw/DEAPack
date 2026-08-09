@@ -1,0 +1,334 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "economic.profit.maximum",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "economic",
+  "title": "Maximum-profit gap",
+  "decision_question": "When both resource use and desirable-output supply can be adjusted at the prevailing prices, how much profit does the organization forgo relative to the best activity available in the declared technology?",
+  "names": {
+    "display": "Maximum-profit gap",
+    "historical": [
+      {
+        "label": "Profit efficiency",
+        "spellings": [
+          "profit inefficiency",
+          "profit loss",
+          "maximum profit efficiency"
+        ],
+        "sources": [
+          "doi:10.1023/A:1022637501082"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ProfitEfficiency",
+      "aliases": []
+    },
+    "spellings": [
+      "maximum-profit DEA",
+      "profit gap",
+      "profit-loss DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "maximum_profit_when_inputs_outputs_adjust",
+        "managerial_interpretation": "foregone_operating_profit_at_observed_prices"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_adjustable_resources",
+        "outputs": "priced_adjustable_desirable_outputs",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_and_output_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "convex_envelopment",
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free",
+        "shutdown": "excluded_by_vrs_convex_hull",
+        "finite_profit_policy": "vrs_simplex"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "economic_value",
+        "measure": "profit_gap",
+        "orientation": "joint_input_and_output_choice",
+        "native_score": "maximum_profit_minus_observed_profit",
+        "ratio": "not_defined",
+        "direction": "lower_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_and_output_prices",
+        "price_sides": [
+          "inputs",
+          "outputs"
+        ]
+      },
+      "exposed": [
+        "input_prices",
+        "output_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "target": "profit_maximizing_activity",
+        "external_reference_score_policy": "fail_closed_when_internal_optimum_does_not_dominate_observed_profit",
+        "target_uniqueness": "not_assessed",
+        "pareto_completion": "not_claimed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_maximum_profit_program",
+        "decomposition": "not_reported_by_this_operator"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.profit",
+    "canonical_symbol": "ProfitEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "shared_profit_solution_reuse",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "profit_gap",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_maximum_profit_program"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "observed_cost",
+      "observed_revenue",
+      "observed_profit",
+      "target_cost",
+      "target_revenue",
+      "maximum_profit",
+      "profit_maximizing_targets",
+      "profit_maximizing_intensities",
+      "profit_duals",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "peer_valid",
+      "dual_valid",
+      "postsolve_certification",
+      "diagnostics"
+    ],
+    "transformations": [
+      "observed_profit_equals_observed_revenue_minus_observed_cost",
+      "maximum_profit_equals_target_revenue_minus_target_cost",
+      "profit_gap_equals_maximum_profit_minus_observed_profit"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_and_output_prices",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_unit_conversion_preserves_the_profit_gap_in_a_common_numeraire_but_common_price_scaling_rescales_the_monetary_gap",
+        "co_transform": [
+          "input_prices",
+          "output_prices",
+          "reported_monetary_values"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.common_numeraire"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The reported activity belongs to the VRS convex reference technology only after the source LP and reconstructed target-profit account are certified.",
+      "efficiency": "The target maximizes operating profit at the supplied prices within that technology; no shutdown option, strong-efficiency completion, or profit ratio is claimed.",
+      "selection": "A profit-maximizing activity and its intensities are solver selected and may be non-unique.",
+      "conditions": [
+        "condition.optimal_maximum_profit_program",
+        "condition.complete_strictly_positive_input_and_output_prices"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1023/A:1022637501082"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1006/jeth.1996.0096"
+      },
+      {
+        "role": "implementation",
+        "id": "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofit.jl#L12-L36"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofit.jl#L12-L36",
+        "tests/test_nerlovian.py::test_matches_the_public_zofio_pastor_aparicio_profit_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "hand_solved_profit_program",
+        "cross_implementation_profit_oracle",
+        "negative_observed_profit",
+        "price_scaling",
+        "external_reference_fail_closed_status",
+        "solver_neutral_lp_certificate",
+        "cached_target_and_observation_account_certificates",
+        "atomic_price_task_failure_isolation",
+        "published_account_identity_preservation",
+        "independent_target_peer_and_dual_validity",
+        "zero_additional_certificate_solves",
+        "domain_validation",
+        "compiled_reference_reuse",
+        "metadata_contract"
+      ],
+      "locators": [
+        "tests/test_profit.py",
+        "tests/test_profit_postsolve_certification.py",
+        "tests/test_nerlovian.py::test_matches_the_public_zofio_pastor_aparicio_profit_oracle"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_profit.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.economic_efficiency_prices",
+        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.profit",
+        "path": "docs/models/profit.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.economics",
+        "path": "docs/api/economics.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

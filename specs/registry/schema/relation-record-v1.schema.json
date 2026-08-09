@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://deapack.org/schema/relation-record-v1.schema.json",
+  "title": "DEAPack typed method relation",
+  "description": "A directed relation between method or alias identities. A-D belongs to this edge, not to either endpoint in isolation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "ontology_schema_version",
+    "source",
+    "target",
+    "type",
+    "equivalence_level",
+    "difference_axes",
+    "conditions",
+    "evidence"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "ontology_schema_version": {
+      "const": "1.0.0"
+    },
+    "source": {
+      "$ref": "#/$defs/registryId"
+    },
+    "target": {
+      "$ref": "#/$defs/registryId"
+    },
+    "type": {
+      "enum": [
+        "alias",
+        "exact_score_transform",
+        "specialization_of",
+        "preset_of",
+        "variant_of",
+        "contrasts_with",
+        "incompatible",
+        "composes",
+        "requires",
+        "shares_compiler",
+        "exact_reduction"
+      ]
+    },
+    "equivalence_level": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        null
+      ]
+    },
+    "difference_axes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/axisName"
+      },
+      "uniqueItems": true
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/condition"
+      }
+    },
+    "evidence": {
+      "$ref": "#/$defs/evidence"
+    }
+  },
+  "$defs": {
+    "registryId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "axisName": {
+      "enum": [
+        "context",
+        "graph",
+        "data_roles",
+        "technology",
+        "estimator",
+        "reference",
+        "performance",
+        "valuation",
+        "evaluation_protocol",
+        "analysis",
+        "uncertainty"
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "arguments"
+      ],
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/registryId"
+        },
+        "arguments": {
+          "type": "object"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sources",
+        "proof_obligations",
+        "tests"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "primary_checked",
+            "review_supported",
+            "registry_provisional"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "proof_obligations": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "feasible_set",
+              "objective_or_exact_value_transform",
+              "target_and_peer_correspondence",
+              "parameter_domain",
+              "regression_test"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "alias"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "equivalence_level": {
+            "const": "A"
+          },
+          "difference_axes": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "enum": [
+              "composes",
+              "requires",
+              "shares_compiler",
+              "exact_reduction"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "equivalence_level": {
+            "const": null
+          }
+        }
+      }
+    }
+  ]
+}

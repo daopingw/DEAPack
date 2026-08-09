@@ -1,0 +1,127 @@
+# Data schema
+
+`DEAData` separates the user-facing table from immutable numerical arrays used
+by the solver. DMUs are rows in a DataFrame; the numerical compiler performs
+the matrix orientation once.
+
+```python
+from deapack import DEAData
+
+data = DEAData.from_frame(
+    frame,
+    dmu="region",
+    period="year",
+    inputs=["capital", "labor", "energy"],
+    polluting_inputs=["energy"],
+    outputs=["gdp"],
+    bad_outputs=["co2"],
+)
+```
+
+`polluting_inputs` is an explicit subset of `inputs`. It is used only by
+technologies such as by-production that distinguish ordinary inputs from
+inputs that trigger residual generation. Declaring `energy` as polluting does
+not remove it from the intended-production input matrix.
+
+Validation includes:
+
+- unique DMU keys for cross sections;
+- unique `(dmu, period)` keys for panels;
+- distinct columns for each variable role;
+- polluting-input names that are also declared as inputs;
+- numeric and finite measurement values;
+- explicit period ordering when labels cannot be sorted safely.
+
+Negative values are not silently shifted. Each measure validates whether its
+theory supports zero or negative observations.
+
+## Signed accounting values need declared economic roles
+
+A negative observation does not by itself identify an undesirable output. A
+negative change in deposits or net service balance may still be a desirable
+account for which a larger value is preferred. Conversely, emissions remain
+a burden to contract even when an accounting adjustment produces a negative
+entry.
+
+`RangeDirectionalDEA` accepts finite signed inputs and desirable outputs
+because it measures change relative to each focal observation's remaining
+room to the best values in the same VRS comparison population. It does not
+pre-shift the data. Use:
+
+```python
+from deapack import DEAData, RDM
+
+data = DEAData.from_frame(
+    frame,
+    dmu="branch",
+    inputs=["net_resource_account"],
+    outputs=["change_in_service_balance"],
+)
+result = RDM().fit(data)
+```
+
+The variable documentation must still say why less input and more output are
+economically preferred. Common translation invariance under VRS is not
+permission to shift selected observations or to relabel a burden as a
+desirable service. See {doc}`../models/range-directional`.
+
+## Dynamic trajectories are not row-level panel observations
+
+`DynamicData` stores a complete balanced trajectory for every DMU and an
+explicit production/carry-over specification:
+
+```python
+from deapack import (
+    CarryOverSpec,
+    DynamicData,
+    DynamicSBMSpec,
+    PeriodProductionSpec,
+)
+
+spec = DynamicSBMSpec(
+    production=PeriodProductionSpec(
+        inputs=("labor", "capital"),
+        outputs="service",
+    ),
+    carryovers=(
+        CarryOverSpec("capacity", "good"),
+        CarryOverSpec("backlog", "bad"),
+    ),
+)
+dynamic_data = DynamicData.from_frame(
+    frame,
+    spec=spec,
+    dmu="organization",
+    period="year",
+    period_order=(2021, 2022, 2023, 2024),
+)
+```
+
+One observation in a dynamic fit is the organization’s whole trajectory.
+Every DMU must appear exactly once in every declared period. Missing periods
+are not imputed, and a row-level `ReferenceSpec` is not silently applied to
+the trajectory cohort. See {doc}`../models/tone-tsutsui-dynamic-sbm`.
+
+## Prices remain valuation data
+
+Input and output prices do not become columns in `DEAData`'s production
+technology. Economic models receive a separate immutable `PriceData`:
+
+```python
+from deapack import PriceData
+
+prices = PriceData.common(
+    input_prices={
+        "capital": 0.08,
+        "labor": 25.0,
+        "energy": 0.12,
+    }
+)
+```
+
+Observation-specific prices are constructed with `PriceData.from_frame` and
+aligned to quantities by exact DMU or `(DMU, period)` keys. Quantity names
+must match exactly; positional matching, silent broadcasting across missing
+variables, price imputation, and automatic currency conversion are not
+performed. Panel monetary comparisons additionally require an explicit
+currency and base period in `PriceSpec`.

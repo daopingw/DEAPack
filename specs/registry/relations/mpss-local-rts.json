@@ -1,0 +1,37 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "analysis.mpss.banker_1984",
+  "target": "analysis.returns_to_scale.local.banker_thrall_1992",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology",
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_data_and_reference_population",
+      "arguments": {
+        "comparison_population": "matched",
+        "data_roles": "matched",
+        "disposal": "matched"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "review_supported",
+    "sources": [
+      "doi:10.1016/0377-2217(84)90006-7",
+      "doi:10.1016/0377-2217(92)90178-C",
+      "https://media.economics.uconn.edu/working/2010-07.pdf"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_mpss.py",
+      "tests/test_local_rts.py"
+    ]
+  }
+}

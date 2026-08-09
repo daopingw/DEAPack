@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title description">
+<title id="title">A virtual DMU formed by convex combination</title>
+<desc id="description">Observed activities A and D connected by a segment with virtual activity M at their midpoint.</desc>
+<defs>
+<marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#176b73"/></marker>
+<marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d97732"/></marker>
+<marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#76528f"/></marker>
+<marker id="axis-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L8,4 z" fill="#24323d"/></marker>
+</defs>
+<rect width="760" height="500" fill="white"/>
+<line x1="220.22" y1="48" x2="220.22" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="220.22" y="463" text-anchor="middle" font-size="14" fill="#687780">1</text>
+<line x1="358.44" y1="48" x2="358.44" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="358.44" y="463" text-anchor="middle" font-size="14" fill="#687780">2</text>
+<line x1="496.67" y1="48" x2="496.67" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="496.67" y="463" text-anchor="middle" font-size="14" fill="#687780">3</text>
+<line x1="634.89" y1="48" x2="634.89" y2="438" stroke="#dce5e7" stroke-width="1"/>
+<text x="634.89" y="463" text-anchor="middle" font-size="14" fill="#687780">4</text>
+<line x1="82" y1="345.14" x2="704" y2="345.14" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="350.14" text-anchor="end" font-size="14" fill="#687780">1</text>
+<line x1="82" y1="252.29" x2="704" y2="252.29" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="257.29" text-anchor="end" font-size="14" fill="#687780">2</text>
+<line x1="82" y1="159.43" x2="704" y2="159.43" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="164.43" text-anchor="end" font-size="14" fill="#687780">3</text>
+<line x1="82" y1="66.57" x2="704" y2="66.57" stroke="#dce5e7" stroke-width="1"/>
+<text x="64" y="71.57" text-anchor="end" font-size="14" fill="#687780">4</text>
+<line x1="82" y1="438" x2="716" y2="438" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow)"/>
+<line x1="82" y1="438" x2="82" y2="36" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow)"/>
+<text x="724" y="444" font-size="18" font-style="italic" fill="#24323d">x</text>
+<text x="77" y="26" font-size="18" font-style="italic" fill="#24323d">y</text>
+<line x1="220.22" y1="345.14" x2="634.89" y2="85.14" stroke="#176b73" stroke-width="4"/>
+<line x1="427.56" y1="215.14" x2="427.56" y2="438.00" stroke="#687780" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="82.00" y1="215.14" x2="427.56" y2="215.14" stroke="#687780" stroke-width="1.5" stroke-dasharray="5 5"/>
+<circle cx="220.22" cy="345.14" r="7" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="229.22" y="336.14" font-size="16" font-weight="600" fill="#24323d">A</text>
+<circle cx="634.89" cy="85.14" r="7" fill="#24323d" stroke="white" stroke-width="2"/>
+<text x="643.89" y="76.14" font-size="16" font-weight="600" fill="#24323d">D</text>
+<circle cx="427.56" cy="215.14" r="9" fill="#d97732" stroke="white" stroke-width="2"/>
+<text x="439.56" y="203.14" font-size="16" font-weight="600" fill="#d97732">M</text>
+<rect x="390" y="72" width="260" height="48" rx="8" fill="#f8e8dc"/>
+<text x="520" y="102" text-anchor="middle" font-size="18" fill="#24323d">M = 0.5 A + 0.5 D</text>
+<text x="427.56" y="463" text-anchor="middle" font-size="14" fill="#d97732">2.5</text>
+<text x="64" y="220.14" text-anchor="end" font-size="14" fill="#d97732">2.4</text>
+</svg>

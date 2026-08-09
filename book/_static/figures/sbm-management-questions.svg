@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="500" viewBox="0 0 1050 500" role="img" aria-labelledby="title description">
+<title id="title">Three management questions answered by slacks-based measures</title>
+<desc id="description">Input-oriented SBM values resource conservation, output-oriented SBM values service expansion, and non-oriented SBM values both.</desc>
+<rect width="1050" height="500" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="525" y="38" text-anchor="middle" font-size="24" font-weight="700" fill="#24323d">Same production account, three management mandates</text>
+<rect x="25" y="68" width="320" height="398" rx="16" fill="#ffffff" stroke="#cbdadd" stroke-width="2"/>
+<path d="M41 68 H329 Q345 68 345 84 V134 H25 V84 Q25 68 41 68" fill="#176b73"/>
+<text x="185" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">Conserve resources</text>
+<text x="185" y="121" text-anchor="middle" font-size="14" font-weight="400" fill="#ffffff">Input-oriented SBM</text>
+<text x="105" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">RESOURCES</text>
+<text x="260" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">SERVICES</text>
+<rect x="73" y="187" width="115" height="44" rx="8" fill="#dceff0" stroke="#176b73" stroke-width="2"/>
+<rect x="228" y="187" width="115" height="44" rx="8" fill="#dceff0" stroke="#176b73" stroke-width="2"/>
+<text x="130" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#176b73">SAVE</text>
+<text x="285" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#176b73">PROTECT</text>
+<text x="185" y="285" text-anchor="middle" font-size="15" font-weight="400" fill="#24323d">Score-driving account</text>
+<text x="185" y="318" text-anchor="middle" font-size="17" font-weight="700" fill="#176b73">resource retention ρᴵ</text>
+<text x="185" y="375" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">Resource shortfalls drive the score;</text>
+<text x="185" y="397" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">service slack is feasibility-only.</text>
+<rect x="74" y="425" width="222" height="22" rx="11" fill="#dceff0"/>
+<text x="185" y="441" text-anchor="middle" font-size="12.5" font-weight="700" fill="#176b73">one selected attainable plan</text>
+<rect x="365" y="68" width="320" height="398" rx="16" fill="#ffffff" stroke="#cbdadd" stroke-width="2"/>
+<path d="M381 68 H669 Q685 68 685 84 V134 H365 V84 Q365 68 381 68" fill="#3b7f5f"/>
+<text x="525" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">Expand services</text>
+<text x="525" y="121" text-anchor="middle" font-size="14" font-weight="400" fill="#ffffff">Output-oriented SBM</text>
+<text x="445" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">RESOURCES</text>
+<text x="600" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">SERVICES</text>
+<rect x="413" y="187" width="115" height="44" rx="8" fill="#e8f2ec" stroke="#3b7f5f" stroke-width="2"/>
+<rect x="568" y="187" width="115" height="44" rx="8" fill="#e8f2ec" stroke="#3b7f5f" stroke-width="2"/>
+<text x="470" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#3b7f5f">PROTECT</text>
+<text x="625" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#3b7f5f">EXPAND</text>
+<text x="525" y="285" text-anchor="middle" font-size="15" font-weight="400" fill="#24323d">Score-driving account</text>
+<text x="525" y="318" text-anchor="middle" font-size="17" font-weight="700" fill="#3b7f5f">expansion τᴼ; efficiency ρᴼ=1/τᴼ</text>
+<text x="525" y="375" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">Service shortfalls drive the score;</text>
+<text x="525" y="397" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">resource slack is feasibility-only.</text>
+<rect x="414" y="425" width="222" height="22" rx="11" fill="#e8f2ec"/>
+<text x="525" y="441" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3b7f5f">one selected attainable plan</text>
+<rect x="705" y="68" width="320" height="398" rx="16" fill="#ffffff" stroke="#cbdadd" stroke-width="2"/>
+<path d="M721 68 H1009 Q1025 68 1025 84 V134 H705 V84 Q705 68 721 68" fill="#76528f"/>
+<text x="865" y="98" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">Redesign operations</text>
+<text x="865" y="121" text-anchor="middle" font-size="14" font-weight="400" fill="#ffffff">Non-oriented SBM</text>
+<text x="785" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">RESOURCES</text>
+<text x="940" y="166" text-anchor="start" font-size="13" font-weight="700" fill="#24323d">SERVICES</text>
+<rect x="753" y="187" width="115" height="44" rx="8" fill="#f2edf6" stroke="#76528f" stroke-width="2"/>
+<rect x="908" y="187" width="115" height="44" rx="8" fill="#f2edf6" stroke="#76528f" stroke-width="2"/>
+<text x="810" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#76528f">SAVE</text>
+<text x="965" y="215" text-anchor="middle" font-size="14" font-weight="700" fill="#76528f">EXPAND</text>
+<text x="865" y="285" text-anchor="middle" font-size="15" font-weight="400" fill="#24323d">Score-driving account</text>
+<text x="865" y="318" text-anchor="middle" font-size="17" font-weight="700" fill="#76528f">ρᴺᴼ = (1−Lˣ)/(1+Lʸ)</text>
+<text x="865" y="375" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">Every valued resource saving and</text>
+<text x="865" y="397" text-anchor="middle" font-size="14" font-weight="400" fill="#687780">service gain enters the account.</text>
+<rect x="754" y="425" width="222" height="22" rx="11" fill="#f2edf6"/>
+<text x="865" y="441" text-anchor="middle" font-size="12.5" font-weight="700" fill="#76528f">one selected attainable plan</text>
+</g>
+</svg>

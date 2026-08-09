@@ -1,0 +1,44 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018",
+  "target": "environmental.ddf.weak_disposal.activity_specific",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "graph",
+    "data_roles",
+    "technology",
+    "performance",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.same_activity_specific_weak_disposal_mechanism",
+      "arguments": {
+        "shared_core": "active_plus_complementary_activity_linearization",
+        "network_graph": "general_process_graph_with_final_and_internal_good_bad_products_and_producer_specific_intermediate_balances",
+        "black_box_graph": "single_joint_production_process",
+        "network_measure": "input_radial_system_score_h",
+        "black_box_measure": "directional_distance_with_declared_direction",
+        "network_rts": "crs_vrs_nirs_or_ndrs_by_process",
+        "black_box_rts": "source_fixed_vrs",
+        "score_identity": "not_claimed",
+        "target_identity": "not_claimed",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1051/ro/2017022",
+      "doi:10.1111/j.1467-8276.2005.00788.x"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_kalhor_matin_environmental_network_2018_oracle.py",
+      "tests/test_weak_disposal.py"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "heterogeneity.metafrontier.radial.odonnell_rao_battese_2008",
+  "target": "static.radial",
+  "type": "composes",
+  "equivalence_level": null,
+  "difference_axes": [
+    "context",
+    "reference",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.metafrontier.matched_group_meta_radial_programmes",
+      "arguments": {
+        "input_output_roles": "matched",
+        "orientation": "matched",
+        "returns_to_scale": "matched",
+        "group_comparison_population": "same_declared_group",
+        "meta_comparison_population": "all_declared_groups",
+        "vrs_meta_construction": "pooled_convex",
+        "crs_meta_construction": "pooled_conic",
+        "nonconvex_union_equivalence": "forbidden",
+        "composition": "one_group_radial_fit_and_one_pooled_meta_radial_fit_per_observation",
+        "score_identity": "metafrontier_efficiency_equals_group_efficiency_times_metatechnology_ratio",
+        "target_and_peer_identity": "not_claimed_across_reference_levels"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1007/s00181-007-0119-4"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_metafrontier.py::test_exact_six_dmu_oracle_and_independent_equation_compiler",
+      "tests/test_metafrontier.py::test_targets_and_peers_keep_group_and_meta_accounts_separate",
+      "tests/test_metafrontier.py::test_source_phase_one_is_two_solves_per_observation"
+    ]
+  }
+}

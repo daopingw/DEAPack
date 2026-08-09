@@ -1,0 +1,38 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "analysis.capacity.physical.fare_grosskopf_kokkelenberg_1989",
+  "target": "analysis.mpss.banker_1984",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "context",
+    "data_roles",
+    "technology",
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_data_and_reference_population",
+      "arguments": {
+        "comparison_population": "matched",
+        "input_output_observations": "matched",
+        "disposal": "matched"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "review_supported",
+    "sources": [
+      "doi:10.2307/2526781",
+      "doi:10.1016/0377-2217(84)90006-7"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_physical_capacity.py",
+      "tests/test_mpss.py"
+    ]
+  }
+}

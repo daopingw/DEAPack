@@ -1,0 +1,40 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "environmental.ddf.weak_disposal.common_factor",
+  "target": "environmental.ddf.weak_disposal.activity_specific",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "technology",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.same_environmental_data_direction_and_reference",
+      "arguments": {
+        "common_factor_returns_to_scale": "crs_fixed",
+        "common_factor_intensity_account": "one_activity_vector",
+        "activity_specific_returns_to_scale": "vrs_fixed",
+        "activity_specific_intensity_account": "mu_plus_tau"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1006/jema.1997.0146",
+      "doi:10.1111/j.1467-8276.2005.00788.x",
+      "doi:10.1016/j.ejor.2018.09.019"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental.py",
+      "tests/test_weak_disposal.py"
+    ]
+  }
+}

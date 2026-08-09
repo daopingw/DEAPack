@@ -1,0 +1,45 @@
+name: Documentation, Handbook, or translation
+description: Suggest a clearer explanation, correction, case, figure, citation, or Chinese translation.
+title: "[Editorial]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Package Documentation contributions use CC-BY-NC-SA-4.0 for original prose and GPL-3.0-only for code. For Bilingual Handbook Preview 1, please report the issue and evidence without pasting a substantial replacement passage: substantive manuscript and translation pull requests are temporarily closed pending an executed, professionally reviewed contribution agreement.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Contribution type
+      options:
+        - English Handbook
+        - Chinese Handbook translation
+        - Package Documentation
+        - Worked case or teaching dataset
+        - Figure or visualization
+        - Citation or terminology
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Page or source location
+      description: Link the page or give the repository path and section heading.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Explain what is unclear or incorrect and propose wording, a figure, a case, or a terminology correction when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Terminology or factual evidence
+      description: For technical or Chinese terminology changes, cite an authoritative source and explain why the revision is more accurate or idiomatic.
+  - type: textarea
+    id: rights
+    attributes:
+      label: Rights and provenance
+      description: If suggesting data, an image, wording from a source, or other third-party material, state its source, transformations, redistribution status, and license. A citation alone is not permission to redistribute.

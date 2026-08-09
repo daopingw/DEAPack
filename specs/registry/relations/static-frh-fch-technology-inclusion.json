@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "static.radial.frh",
+  "target": "static.radial.fch.green_cook_2004",
+  "type": "contrasts_with",
+  "equivalence_level": "C",
+  "difference_axes": [
+    "technology",
+    "estimator",
+    "evaluation_protocol"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_fch_frh_radial_programmes",
+      "arguments": {
+        "data_roles": "matched_nonnegative_inputs_and_desirable_outputs_with_positive_observation_aggregates",
+        "quantities": "additive_across_distinct_organizations_or_modules",
+        "comparison_population": "matched",
+        "temporal_information_set": "matched_cross_section",
+        "orientation": "matched",
+        "disposal": "ordinary_free",
+        "self_membership": "matched",
+        "fch_activity_combination": "nonempty_binary_subset",
+        "frh_activity_combination": "nonnegative_integer_replication_and_combination",
+        "technology_inclusion": "T_FCH_subseteq_T_FRH",
+        "input_score_implication": "theta_FRH_less_than_or_equal_to_theta_FCH",
+        "output_score_implication": "phi_FRH_greater_than_or_equal_to_phi_FCH",
+        "fch_continuous_relaxation": "bounded_intensity_zero_to_one_with_nonempty_constraint",
+        "fch_continuous_relaxation_is_ccr": false,
+        "vrs_nesting_claim": "none"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1057/palgrave.jors.2601773",
+      "doi:10.1007/BF01073473"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_fch.py::test_coordination_hulls_distinguishing_oracle",
+      "tests/test_fch.py::test_fdh_fch_frh_ccr_nesting",
+      "tests/test_fch.py::test_fch_and_vrs_are_not_nested"
+    ]
+  }
+}

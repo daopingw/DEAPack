@@ -1,0 +1,610 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.material_inflow.coelli2007",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Coelli material-inflow efficiency",
+  "decision_question": "How much declared material inflow could be avoided while preserving the observed desirable-output commitment, and how much of the shortfall is technical versus material-allocative?",
+  "names": {
+    "display": "Coelli material-inflow efficiency",
+    "historical": [
+      {
+        "label": "Environmental efficiency under the materials balance condition",
+        "spellings": [
+          "Coelli material-balance efficiency",
+          "material-input environmental efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/s11123-007-0052-8"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "MaterialBalanceDEA",
+      "aliases": [
+        {
+          "symbol": "CoelliMaterialBalanceDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "material-inflow DEA",
+      "Coelli environmental efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "material_use_and_surplus_management",
+        "managerial_plan": "minimize_material_bearing_input_for_observed_service_commitment"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box_material_account"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "material_bearing_and_other_resources",
+        "outputs": "desirable_services_with_declared_material_content",
+        "bad_outputs": "excluded_from_the_source_native_account",
+        "explicit_abatement": "excluded_from_the_source_native_account",
+        "material_coefficients": "common_declared_nonnegative_physical_content",
+        "certified_material_scope": "one_material_account",
+        "source_multiple_pollutant_extension": "equations_18_21_independent_validation_deferred",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "condition.material_inflow.common_nonnegative_coefficients",
+        "condition.material_inflow.fixed_desirable_output_commitment",
+        "condition.material_inflow.single_material_certificate_scope",
+        "domain.material_inflow.positive_observed_inflow",
+        "condition.material_input_content_covers_output_content",
+        "condition.observed_bad_output_columns_absent",
+        "condition.explicit_abatement_accounts_absent"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.material_inflow",
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "convex_envelopment_with_material_account",
+        "balance_rule": "input_content_minus_output_content",
+        "supported_returns_to_scale": [
+          "crs",
+          "vrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_material_account_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.material_inflow.source_equivalence_cross_section",
+        "condition.material_inflow.source_equivalence_self_inclusive_global_reference"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "minimum_material_inflow",
+        "orientation": "input",
+        "output_commitment": "observed",
+        "decomposition": "environmental_efficiency_equals_technical_efficiency_times_environmental_allocative_efficiency"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "declared_physical_material_coefficients",
+        "coefficient_role": "physical_material_content",
+        "price_data_required": false,
+        "damage_weights_required": false,
+        "certified_aggregation": "single_material",
+        "package_extension": "source_defined_multi_material_weighting_independent_validation_deferred"
+      },
+      "exposed": [
+        "material_coefficients",
+        "material_weights"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "desirable_output_commitment": "fixed_at_the_evaluated_observation",
+        "programmes_per_observation": [
+          "input_radial_technical",
+          "minimum_material_inflow"
+        ]
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "material_efficiency_decomposition",
+        "source_evidence_boundary": {
+          "certified": "single_material_self_inclusive_cross_section_crs_vrs",
+          "deferred_to_next_version": [
+            "nirs_ndrs",
+            "weighted_multiple_pollutant_aggregate_independent_validation",
+            "heterogeneous_material_coefficients",
+            "estimated_material_coefficients",
+            "panel_reference_source_equivalence",
+            "custom_reference_source_equivalence",
+            "external_reference_source_equivalence",
+            "unit_level_183_farm_reproduction",
+            "welfare_claims",
+            "causal_claims",
+            "damage_claims",
+            "actual_emission_claims"
+          ]
+        }
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.material_balance",
+    "canonical_symbol": "MaterialBalanceDEA",
+    "registry_dependencies": [
+      "environmental.material_inflow",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "physical_coefficient_validation",
+      "multi_material_weighting",
+      "shared_reference_compilation"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "environmental_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.material_inflow.positive_observed_inflow"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "technical_efficiency",
+      "environmental_allocative_efficiency",
+      "observed_material_inflow",
+      "minimum_material_inflow",
+      "observed_material_surplus",
+      "minimum_material_surplus",
+      "technical_intensities",
+      "material_minimum_intensities",
+      "material_targets"
+    ],
+    "transformations": [
+      "environmental_efficiency_equals_minimum_material_inflow_over_observed_material_inflow",
+      "environmental_efficiency_equals_technical_efficiency_times_environmental_allocative_efficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.material_inflow.positive_observed_inflow",
+        "condition.material_input_content_covers_output_content",
+        "condition.observed_bad_output_columns_absent"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_rescaling_of_material_coefficients_and_weights_preserves_efficiency",
+        "co_transform": [
+          "material_coefficients",
+          "material_weights",
+          "reported_material_flows"
+        ],
+        "conditions": [
+          "condition.physical_coefficients_co_transform_with_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "minimum_material_target_preserves_the_observed_desirable_output_commitment",
+      "efficiency": "material_efficiency_only_and_may_hide_nonmaterial_input_excess",
+      "selection": "technical_and_material_minimum_peer_systems_are_solver_selected_separately_and_targets_need_not_be_unique",
+      "conditions": [
+        "condition.technical_and_material_programmes_optimal",
+        "condition.material_input_content_covers_output_content",
+        "condition.target_uniqueness_not_claimed"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s11123-007-0052-8"
+      },
+      {
+        "role": "defining",
+        "id": "https://economics.uq.edu.au/files/5310/WP062005.pdf"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1561/101.00000021"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.1007/s10640-015-9974-1"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/coelli-material-inflow-analytical.md",
+        "tests/test_material_balance_independent_oracle.py::test_public_scores_match_independently_compiled_source_programmes",
+        "tests/test_material_balance_independent_oracle.py::test_crs_exact_account_targets_peers_and_surplus",
+        "tests/test_material_balance_independent_oracle.py::test_vrs_book_case_has_two_economically_distinct_improvement_accounts",
+        "tests/test_material_balance_independent_oracle.py::test_coherent_quantity_unit_changes_preserve_scores_and_transform_targets",
+        "tests/test_material_balance_independent_oracle.py::test_zero_content_inputs_make_material_targets_nonunique"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/coelli-material-inflow-analytical.md",
+        "public_api_test_locator": "tests/test_material_balance_independent_oracle.py::test_public_scores_match_independently_compiled_source_programmes",
+        "claims": [
+          {
+            "claim_id": "environmental.material_inflow.coelli2007.crs_exact_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_material_balance_independent_oracle.py::test_public_scores_match_independently_compiled_source_programmes",
+              "tests/test_material_balance_independent_oracle.py::test_crs_exact_account_targets_peers_and_surplus"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "source_equations_23_26"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "fixed_observed_desirable_output"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "technical_efficiency",
+              "environmental_efficiency",
+              "environmental_allocative_efficiency",
+              "decomposition_identity",
+              "observed_material_inflow",
+              "minimum_material_inflow",
+              "observed_material_surplus",
+              "minimum_material_surplus",
+              "technical_target",
+              "material_minimum_target",
+              "technical_peers",
+              "material_minimum_peers"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.material_inflow.coelli2007.vrs_exact_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_material_balance_independent_oracle.py::test_vrs_book_case_has_two_economically_distinct_improvement_accounts"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "source_equations_23_26"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "fixed_observed_desirable_output"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "technical_efficiency",
+              "environmental_efficiency",
+              "environmental_allocative_efficiency",
+              "decomposition_identity",
+              "observed_material_inflow",
+              "minimum_material_inflow",
+              "observed_material_surplus",
+              "minimum_material_surplus",
+              "technical_target",
+              "material_minimum_target"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.material_inflow.coelli2007.unit_invariance",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_material_balance_independent_oracle.py::test_coherent_quantity_unit_changes_preserve_scores_and_transform_targets"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "coherent_quantity_and_coefficient_rescaling"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "fixed_observed_desirable_output"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "technical_efficiency",
+              "environmental_efficiency",
+              "environmental_allocative_efficiency",
+              "observed_material_inflow",
+              "minimum_material_inflow",
+              "observed_material_surplus",
+              "minimum_material_surplus",
+              "technical_target",
+              "material_minimum_target",
+              "unit_invariance"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.material_inflow.coelli2007.target_nonuniqueness",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_material_balance_independent_oracle.py::test_zero_content_inputs_make_material_targets_nonunique"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "native_material_status_only"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "projection_policy": [
+                "solver_selected_nonunique_material_target"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "environmental_efficiency",
+              "material_efficiency_status",
+              "generic_efficiency_status_missing",
+              "target_nonuniqueness"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "coefficient_domain",
+        "decomposition_identity",
+        "material_minimum_target",
+        "multiple_material_weights_package_extension",
+        "nonmaterial_excess_disclosure",
+        "observed_bad_output_rejection",
+        "panel_reference_reuse_package_extension",
+        "physical_identity",
+        "source_native_crs_vrs_programmes",
+        "source_native_target_nonuniqueness_disclosure",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_material_balance.py",
+        "tests/test_material_balance_independent_oracle.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.material_balance",
+        "path": "docs/models/material-balance.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

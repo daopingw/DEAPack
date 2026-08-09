@@ -1,0 +1,332 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.scale_elasticity.local.radial_vrs",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "scale",
+  "title": "One-sided radial VRS scale elasticity",
+  "decision_question": "At the selected Pareto-efficient VRS operating plan, by what percentage can the maximum proportional output bundle change when all resources change by one percent on the scale-up or scale-down side?",
+  "names": {
+    "display": "One-sided radial scale elasticity",
+    "historical": [
+      {
+        "label": "Scale elasticity in a VRS DEA model",
+        "spellings": [
+          "DEA scale elasticity",
+          "left- and right-hand scale elasticity"
+        ],
+        "sources": [
+          "doi:10.1057/palgrave.jors.2601741",
+          "doi:10.1016/j.ejor.2016.09.029"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "scale_elasticity",
+      "aliases": []
+    },
+    "spellings": [
+      "radial scale elasticity",
+      "one-sided scale response"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "quantify_local_scale_response"
+      },
+      "exposed": [
+        "managerial_orientation"
+      ]
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "radial_scale_elasticity",
+        "native_result": "left_and_right_elasticity"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "selected_projection_support_transform",
+        "projection_completion": "maximize_row_scaled_slacks",
+        "projection_uniqueness": "not_assessed",
+        "alternate_support_policy": "transform_full_interval_at_selected_target"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "one_sided_scale_elasticity",
+        "scope": "selected_projection",
+        "support_sign_convention": "v'x-u'y+delta>=0",
+        "output_formula": "epsilon_right=1-delta_upper;epsilon_left=1-delta_lower",
+        "input_formula": "epsilon_right=1/(1+delta_upper);epsilon_left=1/(1+delta_lower)",
+        "endpoint_order": "epsilon_right_le_epsilon_left",
+        "aggregate_rts_rule": "banker_thrall_support_interval",
+        "boundary_policy": "separate_extended_value_from_feasible_perturbation",
+        "projection_invariance_claimed": false
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.analysis.scale_elasticity",
+    "canonical_symbol": "scale_elasticity",
+    "registry_dependencies": [
+      "analysis.returns_to_scale.local.banker_thrall_1992",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "lexicographic_slack_completion",
+      "sparse_linear_programming",
+      "support_intercept_interval_transform"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "scale_elasticity_right",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.selected_pareto_efficient_projection",
+            "condition.scale_up_perturbation_exists"
+          ]
+        }
+      },
+      {
+        "id": "scale_elasticity_left",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.selected_pareto_efficient_projection"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "aggregate_rts_classification",
+      "left_endpoint_existence_and_extended_flags",
+      "one_sided_response_labels",
+      "right_endpoint_existence_and_extended_flags",
+      "selected_projection",
+      "support_intercept_interval",
+      "endpoint_domain_and_transform_status",
+      "scale_elasticity_validity_and_economic_certificate",
+      "semantic_backend_and_raw_status",
+      "stable_success_and_failure_schema",
+      "solve_and_compilation_accounting"
+    ],
+    "transformations": [
+      "input_and_output_normalizations_agree_only_at_the_same_target",
+      "left_and_right_elasticities_are_exact_transforms_of_support_endpoints",
+      "one_sided_rts_labels_are_thresholds_not_separate_solvers",
+      "elasticity_release_requires_certified_support_domain_order_and_rts_identity",
+      "mathematically_undefined_boundaries_are_separate_from_numerical_failure",
+      "postsolve_transformation_adds_zero_optimization_solves"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.selected_pareto_efficient_projection"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_and_projection_policy"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "conditional_on_optimal_vrs_projection_and_resolved_support_endpoints",
+      "efficiency": "pareto_efficient_after_successful_slack_completion",
+      "selection": "same_solver_selected_projection_as_local_returns_to_scale",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.resolved_support_endpoints",
+        "condition.successful_lexicographic_slack_completion"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2016.09.029"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1057/palgrave.jors.2601741"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0377-2217(92)90178-C"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "Førsund and Hjalmarsson (2004), seven-unit Banker--Thrall scale-elasticity example",
+        "tests/test_scale_elasticity.py::test_output_elasticities_match_forsund_hjalmarsson_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "aggregate_rts_identity",
+        "backend_raw_status_preservation",
+        "boundary_existence_and_extended_values",
+        "endpoint_domain_and_economic_transform_certificates",
+        "failure",
+        "failure_isolation",
+        "input_output_same_target_equivalence",
+        "published_oracle",
+        "selected_projection_reuse",
+        "solver_workload_reuse",
+        "stable_success_failure_schema",
+        "unit_invariance",
+        "unbounded_endpoint_ray_requirement",
+        "zero_additional_solve_and_compilation_accounting"
+      ],
+      "locators": [
+        "tests/test_scale_elasticity.py",
+        "tests/test_benchmark_local_rts.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_local_rts.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.scale_performance_management",
+        "path": "book/chapters/02-classical/scale-performance-management.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.scale_elasticity",
+        "path": "docs/analysis/scale-elasticity.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

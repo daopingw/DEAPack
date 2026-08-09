@@ -1,0 +1,30 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "network.sbm.tone_tsutsui_2009",
+  "target": "static.sbm.nonoriented.tone2001",
+  "type": "variant_of",
+  "equivalence_level": "C",
+  "difference_axes": [
+    "graph",
+    "technology"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.network_links_active",
+      "arguments": {
+        "link_balance": "source_defined",
+        "processes_solved_jointly": true
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.ejor.2008.05.027",
+      "doi:10.1016/S0377-2217(99)00407-5"
+    ],
+    "proof_obligations": [],
+    "tests": []
+  }
+}

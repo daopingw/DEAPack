@@ -1,0 +1,316 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "evaluation.cross.game_nash.liang_wu_cook_zhu_2008",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": "protocol",
+  "category": "evaluation",
+  "title": "Liang--Wu--Cook--Zhu game cross-efficiency",
+  "decision_question": "What peer-appraisal scores remain defensible when each focal organization may improve its own admissible appraisal without lowering one protected organization's current score claim?",
+  "names": {
+    "display": "Liang--Wu--Cook--Zhu game cross-efficiency",
+    "historical": [
+      {
+        "label": "DEA game cross-efficiency model",
+        "spellings": [
+          "game cross-efficiency",
+          "DEA game cross efficiency",
+          "Nash cross-efficiency"
+        ],
+        "sources": [
+          "doi:10.1287/opre.1070.0487"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "LiangWuCookZhuGameCrossEfficiency",
+      "aliases": [
+        {
+          "symbol": "GameCrossEfficiency"
+        }
+      ]
+    },
+    "spellings": [
+      "Liang-Wu-Cook-Zhu 2008 game protocol",
+      "protected-peer focal-player cross-appraisal"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "strategic_competitive_peer_appraisal",
+        "players": "all_organizations",
+        "managerial_interpretation": "focal_self_improvement_subject_to_one_peer_score_protection_per_pair",
+        "normative_fairness_claim": "not_implied"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "strictly_positive_resource_quantities",
+        "outputs": "nonnegative_desirable_service_quantities_with_positive_aggregate",
+        "bad_outputs": "excluded",
+        "sample": "cross_section",
+        "representation": {
+          "measurement_scale": "cardinal_ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "ordinary_discretionary_account"
+        }
+      },
+      "constraints": [
+        "condition.cross_section_only",
+        "condition.desirable_outputs_only",
+        "domain.cross_efficiency.strictly_positive_input_components"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "crs_multiplier_feasibility",
+        "returns_to_scale": "crs",
+        "disposal": "ordinary_free"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "ccr_multiplier"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "cross_section",
+        "comparison_population": {
+          "scope": "all_participating_organizations",
+          "membership_rule": "all_rows",
+          "self_membership": "included"
+        },
+        "temporal_information_set": {
+          "policy": "cross_section_only",
+          "availability_cutoff": "single_declared_vintage",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      }
+    },
+    "performance": {
+      "fixed": {
+        "base_measure": "input_normalized_ccr_efficiency",
+        "reported_measure": "average_game_cross_efficiency",
+        "score_direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "pair_specific_endogenous_multipliers",
+        "normalization": "focal_virtual_input_equals_one",
+        "protected_units_per_program": 1
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "liang_wu_cook_zhu_2008_game_cross",
+        "matrix_rows": "protected_dmu_id",
+        "matrix_columns": "focal_dmu_id",
+        "programs_per_update": "n_squared",
+        "update": "synchronous_jacobi",
+        "aggregation": "source_fixed_equal_mean_including_self",
+        "solution_concept": "nash_fixed_point",
+        "fixed_point_verification": "one_additional_complete_map",
+        "invalid_entry_policy": "fail_closed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "strategic_peer_appraisal",
+        "pareto_koopmans_classification": "not_claimed",
+        "score_uniqueness": "source_claimed_not_computationally_certified",
+        "multiplier_uniqueness": "not_assessed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.evaluation.game_cross_efficiency",
+    "canonical_symbol": "LiangWuCookZhuGameCrossEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "evaluation.cross.crs",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "dimensionless_postprocessed_ratio_certification",
+      "dual_optimality_and_duality_gap_certification",
+      "fixed_point_verification",
+      "linear_programming",
+      "protected_focal_pair_multiplier_storage",
+      "synchronous_n_squared_game_map",
+      "two_cycle_suspicion_diagnostics"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "game_cross_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.certified_game_fixed_point",
+            "condition.certified_crs_appraisal_ratios"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "ccr_self_efficiency",
+      "last_iterate",
+      "protected_focal_appraisal_matrix",
+      "iteration_history",
+      "convergence_residual",
+      "fixed_point_residual",
+      "pair_specific_multipliers",
+      "failure_diagnostics"
+    ],
+    "transformations": []
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.cross_section_only",
+        "condition.desirable_outputs_only",
+        "domain.cross_efficiency.strictly_positive_input_components"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling_with_corresponding_multiplier_rescaling",
+        "co_transform": [
+          "input_multipliers",
+          "output_multipliers"
+        ],
+        "conditions": [
+          "condition.certified_game_fixed_point"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The protocol reports strategic peer appraisals rather than a production target.",
+      "efficiency": "A verified score of one is a game-appraisal result and does not by itself certify Pareto--Koopmans efficiency.",
+      "selection": "Every matrix cell has a pair-specific solver-selected optimum; final scores are released only after convergence and an additional complete fixed-point map.",
+      "conditions": [
+        "condition.certified_primal_dual_optimum",
+        "condition.certified_crs_appraisal_ratios",
+        "condition.certified_game_fixed_point"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1287/opre.1070.0487"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1002/ev.1441"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1057/jors.1994.84"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "tests/test_game_cross_efficiency_independent_oracle.py::test_four_plan_tolerance_path_matches_independent_dense_oracle",
+        "tests/test_game_cross_efficiency_independent_oracle.py::test_high_precision_fixed_point_and_matrix_match_dense_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "fixed_point_failure_closure",
+        "high_precision_project_fixed_point_and_pair_matrix",
+        "independent_dense_source_equation_compiler",
+        "initial_profile_bounds",
+        "iteration_history",
+        "project_four_plan_tolerance_path",
+        "project_fixture_without_published_reproduction",
+        "protected_focal_matrix_roles",
+        "streamed_materialization",
+        "unit_rescaled_alternating_convergence"
+      ],
+      "locators": [
+        "tests/test_game_cross_efficiency.py",
+        "tests/test_game_cross_efficiency_independent_oracle.py",
+        "tests/test_results.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_cross_appraisal.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.evaluation.cross_efficiency",
+        "path": "docs/evaluation/cross-efficiency.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.evaluation",
+        "path": "docs/api/evaluation.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

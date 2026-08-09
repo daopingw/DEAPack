@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720" role="img" aria-labelledby="title description">
+  <title id="title">Observed, proportional expansion, and revenue-maximizing output plans</title>
+  <desc id="description">For Unit 1 in the five-unit variable-returns example, the observed output mix is seven units of output one and four of output two. A common proportional expansion reaches nine and thirty-six sevenths, while the revenue-maximizing feasible mix at output prices three and two is nine and nine. Parallel equal-revenue lines show observed revenue twenty-nine and maximum revenue forty-five.</desc>
+  <defs>
+    <marker id="axis-arrow-revenue" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#24323d"/>
+    </marker>
+    <marker id="arrow-orange-revenue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d97732"/>
+    </marker>
+    <marker id="arrow-purple-revenue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#76528f"/>
+    </marker>
+    <filter id="shadow-revenue" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#24323d" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="720" fill="#ffffff"/>
+  <text x="62" y="38" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#24323d">Unit 1 · fixed input capacity under VRS</text>
+  <text x="62" y="64" font-family="Arial, sans-serif" font-size="15" fill="#5c6b73">Output prices: p₁ = 3 and p₂ = 2 · one unit of output 1 earns 50% more</text>
+
+  <g font-family="Arial, sans-serif">
+    <line x1="80" y1="590" x2="612" y2="590" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow-revenue)"/>
+    <line x1="80" y1="590" x2="80" y2="84" stroke="#24323d" stroke-width="2" marker-end="url(#axis-arrow-revenue)"/>
+    <text x="619" y="598" font-size="18" font-style="italic" fill="#24323d">output y₁</text>
+    <text x="68" y="76" text-anchor="end" font-size="18" font-style="italic" fill="#24323d">output y₂</text>
+
+    <g stroke="#e1e8ea" stroke-width="1">
+      <line x1="166" y1="106" x2="166" y2="590"/>
+      <line x1="252" y1="106" x2="252" y2="590"/>
+      <line x1="338" y1="106" x2="338" y2="590"/>
+      <line x1="424" y1="106" x2="424" y2="590"/>
+      <line x1="510" y1="106" x2="510" y2="590"/>
+      <line x1="596" y1="106" x2="596" y2="590"/>
+      <line x1="80" y1="498" x2="596" y2="498"/>
+      <line x1="80" y1="406" x2="596" y2="406"/>
+      <line x1="80" y1="314" x2="596" y2="314"/>
+      <line x1="80" y1="222" x2="596" y2="222"/>
+      <line x1="80" y1="130" x2="596" y2="130"/>
+    </g>
+
+    <g fill="#65757d" font-size="13">
+      <text x="166" y="612" text-anchor="middle">2</text>
+      <text x="252" y="612" text-anchor="middle">4</text>
+      <text x="338" y="612" text-anchor="middle">6</text>
+      <text x="424" y="612" text-anchor="middle">8</text>
+      <text x="510" y="612" text-anchor="middle">10</text>
+      <text x="596" y="612" text-anchor="middle">12</text>
+      <text x="62" y="503" text-anchor="end">2</text>
+      <text x="62" y="411" text-anchor="end">4</text>
+      <text x="62" y="319" text-anchor="end">6</text>
+      <text x="62" y="227" text-anchor="end">8</text>
+      <text x="62" y="135" text-anchor="end">10</text>
+    </g>
+
+    <path d="M80 590 L467 590 L467 176 L424 130 L80 130 Z" fill="#e9f4f3" fill-opacity="0.78"/>
+    <text x="110" y="183" font-size="14" fill="#43747a">output plans attainable with Unit 1's inputs</text>
+
+    <path d="M424 130 L467 176" fill="none" stroke="#176b73" stroke-width="5" stroke-linecap="round"/>
+    <text x="400" y="108" font-size="14" font-weight="700" fill="#176b73">best-practice output menu</text>
+    <path d="M467 176 L467 590" fill="none" stroke="#6e9da0" stroke-width="2" stroke-dasharray="5 5"/>
+
+    <path d="M209 130 L496 590" fill="none" stroke="#9ba8ae" stroke-width="2" stroke-dasharray="7 6"/>
+    <text x="270" y="232" font-size="13" fill="#687780" transform="rotate(58 270 232)">observed revenue line: R = 29</text>
+
+    <path d="M438.3 130 L596 383" fill="none" stroke="#76528f" stroke-width="2.5" stroke-dasharray="7 5"/>
+    <text x="503" y="225" font-size="13" fill="#66427c" transform="rotate(58 503 225)">maximum revenue line: R* = 45</text>
+
+    <line x1="80" y1="590" x2="467" y2="353.4" stroke="#d9a276" stroke-width="2" stroke-dasharray="6 5"/>
+    <line x1="386" y1="399" x2="457" y2="356" stroke="#d97732" stroke-width="3.5" marker-end="url(#arrow-orange-revenue)"/>
+    <line x1="467" y1="341" x2="467" y2="190" stroke="#76528f" stroke-width="3.5" marker-end="url(#arrow-purple-revenue)"/>
+
+    <circle cx="381" cy="406" r="9" fill="#24323d" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="467" cy="353.4" r="9" fill="#d97732" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="467" cy="176" r="9" fill="#76528f" stroke="#ffffff" stroke-width="3"/>
+    <circle cx="424" cy="130" r="6" fill="#176b73" stroke="#ffffff" stroke-width="2"/>
+    <text x="365" y="432" font-size="17" font-weight="700" fill="#24323d">O</text>
+    <text x="478" y="359" font-size="17" font-weight="700" fill="#b55f23">P</text>
+    <text x="478" y="170" font-size="17" font-weight="700" fill="#66427c">M</text>
+    <text x="397" y="148" font-size="12" fill="#176b73">Unit 3</text>
+
+    <g filter="url(#shadow-revenue)">
+      <rect x="674" y="91" width="355" height="135" rx="10" fill="#f5f7f8" stroke="#cbd5d9"/>
+      <rect x="674" y="268" width="355" height="146" rx="10" fill="#fff7ef" stroke="#e4a46f"/>
+      <rect x="674" y="456" width="355" height="153" rx="10" fill="#f7f1fa" stroke="#a98abb"/>
+    </g>
+
+    <g fill="#24323d">
+      <text x="696" y="120" font-size="17" font-weight="700">O · Observed service portfolio</text>
+      <text x="696" y="151" font-size="16">(y₁, y₂) = (7, 4)</text>
+      <text x="696" y="178" font-size="16">Revenue = 3(7) + 2(4) = 29</text>
+      <text x="696" y="205" font-size="14" fill="#5c6b73">What the organization currently delivers</text>
+
+      <text x="696" y="297" font-size="17" font-weight="700" fill="#a65119">P · Proportional capacity execution</text>
+      <text x="696" y="328" font-size="16">(y₁, y₂) = (9, 36/7)</text>
+      <text x="696" y="355" font-size="16">φ = 9/7 · TEᴼ = 7/9</text>
+      <text x="696" y="382" font-size="14" fill="#7b604a">Same output mix, expanded in common proportion</text>
+
+      <text x="696" y="485" font-size="17" font-weight="700" fill="#66427c">M · Revenue-maximizing activity</text>
+      <text x="696" y="516" font-size="16">(y₁, y₂) = (9, 9) · R* = 45</text>
+      <text x="696" y="543" font-size="16">RE = 29/45 · AEᴿ = 29/35</text>
+      <text x="696" y="570" font-size="14" fill="#66556f">Different mix, chosen at supplied prices</text>
+      <text x="696" y="592" font-size="13" fill="#66556f">Technology and prices jointly determine M</text>
+    </g>
+
+    <text x="80" y="658" font-size="14" fill="#5c6b73">O→P diagnoses common capacity execution; P→M reveals additional value from nonradial expansion and output reallocation.</text>
+    <text x="80" y="684" font-size="13" fill="#687780">The arrows organize the comparison. They are not a required sequence of managerial actions.</text>
+  </g>
+</svg>

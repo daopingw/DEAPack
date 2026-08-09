@@ -1,0 +1,495 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.malmquist.decomposition.fgnz_pure_scale_extension",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "productivity",
+  "title": "FGNZ enhanced pure-efficiency and scale-efficiency Malmquist decomposition",
+  "decision_question": "How should the output-oriented CRS Malmquist productivity change be allocated between change in represented production opportunities, pure operating-efficiency change, and change in the producer's own-period scale-efficiency position?",
+  "names": {
+    "display": "Enhanced FGNZ Malmquist decomposition",
+    "historical": [
+      {
+        "label": "Enhanced Malmquist decomposition",
+        "spellings": [
+          "FGNZ pure-efficiency and scale-efficiency decomposition",
+          "Färe--Grosskopf--Norris--Zhang enhanced decomposition"
+        ],
+        "sources": [
+          "doi:10.2307/2117971"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "FGNZEnhancedMalmquistProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "FGNZEnhancedMalmquist"
+        }
+      ]
+    },
+    "spellings": [
+      "FGNZ enhanced Malmquist account",
+      "six-task FGNZ scale decomposition",
+      "PEFFCH times SCH times TECHCH Malmquist decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_productivity_change_decomposition",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "allocation_between_crs_opportunity_change_pure_operating_performance_change_and_own_period_scale_efficiency_change"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "one_or_more_nonnegative_productive_resource_quantities_with_positive_observation_aggregate",
+        "outputs": "one_or_more_nonnegative_desirable_service_or_product_quantities_with_positive_observation_aggregate",
+        "bad_outputs": "excluded",
+        "panel_key": "matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative_quantities_with_positive_observation_aggregates",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        },
+        "source_certificate_domain": "strictly_positive_matched_adjacent_panel",
+        "package_extension_domain": "partial_zero_cells_and_unbalanced_drop_or_raise_policy"
+      },
+      "constraints": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "domain.productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.fgnz_enhanced.no_undesirable_outputs"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "matched_contemporaneous_convex_envelopment_technologies",
+        "headline_returns_to_scale": "crs",
+        "auxiliary_returns_to_scale": "vrs",
+        "free_disposal": true
+      },
+      "constraints": [
+        "condition.fgnz_enhanced.four_crs_headline_tasks",
+        "condition.fgnz_enhanced.two_own_period_vrs_auxiliary_tasks",
+        "condition.fgnz_enhanced.no_vrs_cross_period_tasks"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "period_specific_dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.contemporaneous"
+      ],
+      "fixed": {
+        "kind": "adjacent_contemporaneous_cross_evaluation_with_own_period_vrs_auxiliaries",
+        "distance_tasks_per_pair": [
+          "crs_base_on_base",
+          "crs_comparison_on_base",
+          "crs_base_on_comparison",
+          "crs_comparison_on_comparison",
+          "vrs_base_on_base",
+          "vrs_comparison_on_comparison"
+        ],
+        "headline_reference_symmetry": "geometric_mean_of_two_crs_period_reference_ratios",
+        "vrs_reference_scope": "own_period_only"
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "one_contemporaneous_technology_per_period",
+          "membership_rule": "all_eligible_observations_from_the_technology_period",
+          "self_membership": "allowed_for_own_period_tasks"
+        },
+        "temporal_information_set": {
+          "policy": "adjacent_contemporaneous",
+          "availability_cutoff": "each_evaluated_technology_period",
+          "vintage_required": true,
+          "historical_revision": "period_technology_recomputed_when_its_sample_changes"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.radial"
+      ],
+      "fixed": {
+        "family": "output_radial_farrell_efficiency_form_distance",
+        "orientation": "output",
+        "distance": "one_divided_by_output_expansion_factor",
+        "cross_period_distance": "strictly_positive_when_defined_and_may_exceed_one"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "matched_adjacent_period_identifiers",
+        "first_period_rows": "omitted_no_predecessor",
+        "distance_solve_cache": "evaluated_row_technology_period_and_returns_to_scale",
+        "partial_failure_policy": "retain_valid_crs_core_when_an_auxiliary_vrs_own_period_task_fails",
+        "partial_failure_source_status": "dependency_preserving_software_policy_not_a_published_partial_account",
+        "missing_transition_policy": "undefined_and_never_imputed"
+      },
+      "defaults": {
+        "unbalanced": "drop"
+      },
+      "exposed": [
+        "unbalanced"
+      ],
+      "constraints": [
+        "condition.fgnz_enhanced.no_component_imputation",
+        "condition.fgnz_enhanced.complete_account_requires_six_positive_optimal_distances"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "fgnz_1994_pure_efficiency_scale_extension",
+        "parent_operator_id": "productivity.malmquist.adjacent_geometric",
+        "source_core_preset_id": "productivity.malmquist.decomposition.fgnz_core",
+        "productivity_identity": "crs_four_distance_geometric_malmquist_index",
+        "efficiency_change_identity": "crs_comparison_on_comparison_divided_by_crs_base_on_base",
+        "technical_change_identity": "crs_four_distance_opportunity_change_factor",
+        "pure_efficiency_change_identity": "vrs_comparison_on_comparison_divided_by_vrs_base_on_base",
+        "own_period_scale_efficiency_identity": "crs_own_period_distance_divided_by_vrs_own_period_distance",
+        "fgnz_scale_change_identity": "comparison_period_scale_efficiency_divided_by_base_period_scale_efficiency",
+        "nested_decomposition": "efficiency_change_equals_pure_efficiency_change_times_fgnz_scale_change",
+        "decomposition": "productivity_change_equals_technical_change_times_pure_efficiency_change_times_fgnz_scale_change",
+        "component_causality": "not_claimed",
+        "published_application_reproduction": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.analysis.fgnz_enhanced",
+    "canonical_symbol": "FGNZEnhancedMalmquistProductivityIndex",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "productivity.malmquist.adjacent_geometric",
+      "reference.contemporaneous",
+      "static.radial"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_period_references",
+      "compiled_crs_and_vrs_radial_templates",
+      "deduplicated_six_distance_task_cache",
+      "partial_component_result_preservation",
+      "multi_input_multi_output_output_distance"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.fgnz_enhanced.all_four_crs_distances_positive_and_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "crs_distance_base_on_base",
+      "crs_distance_comparison_on_base",
+      "crs_distance_base_on_comparison",
+      "crs_distance_comparison_on_comparison",
+      "vrs_distance_base_on_base",
+      "vrs_distance_comparison_on_comparison",
+      "scale_efficiency_base_on_base",
+      "scale_efficiency_comparison_on_comparison",
+      "efficiency_change",
+      "technical_change",
+      "pure_efficiency_change",
+      "fgnz_scale_change",
+      "decomposition_residual",
+      "efficiency_decomposition_residual",
+      "fgnz_enhanced_decomposition_residual",
+      "decomposition_defined",
+      "decomposition_status",
+      "distance_task_intensities",
+      "unmatched_adjacent_periods"
+    ],
+    "transformations": [
+      "productivity_change_equals_crs_four_distance_geometric_index",
+      "efficiency_change_equals_crs_comparison_on_comparison_divided_by_crs_base_on_base",
+      "technical_change_equals_crs_four_distance_opportunity_change_factor",
+      "pure_efficiency_change_equals_vrs_comparison_on_comparison_divided_by_vrs_base_on_base",
+      "own_period_scale_efficiency_equals_crs_distance_divided_by_vrs_distance",
+      "fgnz_scale_change_equals_comparison_period_scale_efficiency_divided_by_base_period_scale_efficiency",
+      "efficiency_change_equals_pure_efficiency_change_times_fgnz_scale_change_when_decomposition_defined",
+      "productivity_change_equals_technical_change_times_pure_efficiency_change_times_fgnz_scale_change_when_decomposition_defined",
+      "vrs_own_failure_preserves_the_valid_crs_core_and_leaves_enhanced_components_undefined"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.productivity.nonnegative_desirable_quantities",
+        "domain.productivity.positive_input_and_output_aggregates",
+        "domain.productivity.comparable_units_and_roles",
+        "condition.adjacent_dmu_identifier_match",
+        "condition.fgnz_enhanced.all_four_crs_distances_positive_and_optimal"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_input_and_output_quantity_with_units_held_consistent_across_periods",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_variable_units_across_periods_and_reference_observations"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each radial task is certified only in its declared period and returns-to-scale technology; a valid CRS core remains reportable when only an auxiliary VRS own-period task fails",
+      "efficiency": "not_applicable_to_the_multiplicative_productivity_change_index",
+      "selection": "each distance task has solver-selected peers and the decomposition has no single joint projection",
+      "conditions": [
+        "condition.fgnz_enhanced.all_four_crs_distances_positive_and_optimal",
+        "condition.fgnz_enhanced.complete_account_requires_six_positive_optimal_distances"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.2307/2117971"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/fare_etal_1994_enhanced_fgnz.md",
+        "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_six_source_tasks_match_exact_discriminating_fixture",
+        "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_component_identities_hold_individually_for_every_dmu",
+        "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_same_exact_fixture_proves_fgnz_and_ray_allocations_are_not_aliases",
+        "tests/test_fgnz_enhanced_productivity.py::test_public_enhanced_fgnz_matches_independent_six_task_source_oracle"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/fare_etal_1994_enhanced_fgnz.md",
+        "public_api_test_locator": "tests/test_fgnz_enhanced_productivity.py::test_public_enhanced_fgnz_matches_independent_six_task_source_oracle",
+        "claims": [
+          {
+            "claim_id": "productivity.fgnz.enhanced.exact_six_distance_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_six_source_tasks_match_exact_discriminating_fixture",
+              "tests/test_fgnz_enhanced_productivity.py::test_public_enhanced_fgnz_matches_independent_six_task_source_oracle"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs_headline",
+                "vrs_own_period_auxiliary"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "fgnz_six_distance_geometric_decomposition"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "six_farrell_distances",
+              "two_own_period_scale_efficiencies",
+              "productivity_change",
+              "efficiency_change",
+              "technical_change",
+              "pure_efficiency_change",
+              "fgnz_scale_change",
+              "three_reconstruction_residuals"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.fgnz.enhanced.distinct_from_ray_desli_allocation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_component_identities_hold_individually_for_every_dmu",
+              "tests/test_fare_etal_1994_enhanced_fgnz_source.py::test_same_exact_fixture_proves_fgnz_and_ray_allocations_are_not_aliases"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs_headline",
+                "vrs_own_period_auxiliary"
+              ],
+              "evaluation_protocol": [
+                "matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "fgnz_six_distance_geometric_decomposition"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "productivity_change",
+              "efficiency_change",
+              "technical_change",
+              "pure_efficiency_change",
+              "fgnz_scale_change",
+              "nested_efficiency_identity",
+              "ray_desli_non_equivalence"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "source_equations_and_six_distance_task_graph",
+        "independent_dense_crs_and_vrs_compilation",
+        "exact_nested_component_reconstruction",
+        "non_equivalence_to_ray_desli_technical_and_scale_allocation",
+        "multi_input_multi_output_domain",
+        "partial_zero_package_extension",
+        "unbalanced_drop_and_raise_package_extension",
+        "vrs_own_failure_dependency_preserving_partial_result",
+        "unit_invariance",
+        "task_cache_and_template_counts",
+        "metadata_identity"
+      ],
+      "locators": [
+        "tests/test_fare_etal_1994_enhanced_fgnz_source.py",
+        "tests/test_fgnz_enhanced_productivity.py",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_productivity_operators.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.malmquist",
+        "path": "docs/analysis/malmquist.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

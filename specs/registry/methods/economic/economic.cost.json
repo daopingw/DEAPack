@@ -1,0 +1,327 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "economic.cost",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "economic",
+  "title": "Minimum-cost efficiency",
+  "decision_question": "Given the organization's observed output commitments and input prices, what is the least expenditure attainable from the declared production technology, and how large is the avoidable cost?",
+  "names": {
+    "display": "Minimum-cost efficiency",
+    "historical": [
+      {
+        "label": "Cost efficiency",
+        "spellings": [
+          "overall cost efficiency",
+          "economic input efficiency"
+        ],
+        "sources": [
+          "doi:10.1007/978-94-015-7721-2"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "CostEfficiency",
+      "aliases": []
+    },
+    "spellings": [
+      "cost DEA",
+      "minimum-cost DEA",
+      "overall cost efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "minimum_cost_for_output_commitment",
+        "managerial_interpretation": "avoidable_expenditure_at_observed_output_commitments"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "priced_controllable_resources",
+        "outputs": "fixed_desirable_commitments",
+        "bad_outputs": "excluded",
+        "prices": "strictly_positive_input_prices"
+      },
+      "constraints": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_prices",
+        "condition.positive_observed_cost",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "convex_envelopment",
+        "disposal": "ordinary_free"
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ],
+      "constraints": [
+        "condition.rts_crs_or_vrs"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "economic_value",
+        "measure": "cost_efficiency",
+        "orientation": "input_choice_for_fixed_output",
+        "native_score": "minimum_cost_over_observed_cost",
+        "direction": "higher_is_better"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "supplied_input_prices",
+        "price_side": "inputs"
+      },
+      "exposed": [
+        "input_prices"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "target": "cost_minimizing_activity",
+        "external_reference_score_policy": "retain_unclipped_and_withhold_internal_efficiency_claim",
+        "target_uniqueness": "not_assessed",
+        "pareto_completion": "not_claimed"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_minimum_cost_program",
+        "decomposition": "not_reported_by_this_family"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.economics.cost",
+    "canonical_symbol": "CostEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "sparse_linear_programming",
+      "shared_price_pattern_reuse"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "cost_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.optimal_minimum_cost_program",
+            "condition.positive_observed_cost"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "observed_cost",
+      "minimum_cost",
+      "cost_gap",
+      "is_cost_efficient",
+      "cost_minimizing_targets",
+      "cost_minimizing_intensities",
+      "cost_duals",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "peer_valid",
+      "dual_valid",
+      "postsolve_certification",
+      "diagnostics"
+    ],
+    "transformations": [
+      "cost_efficiency_equals_minimum_cost_over_observed_cost",
+      "cost_gap_equals_observed_cost_minus_minimum_cost"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.economic.nonnegative_quantities",
+        "domain.economic.positive_observation_aggregates",
+        "condition.complete_strictly_positive_input_prices",
+        "condition.positive_observed_cost",
+        "condition.desirable_outputs_only"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "coherent_quantity_and_inverse_price_rescaling_preserves_cost_efficiency",
+        "co_transform": [
+          "input_prices",
+          "reported_input_costs"
+        ],
+        "conditions": [
+          "condition.quantity_units_and_prices_co_transform",
+          "condition.same_reference_comparison"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "The reported cost-minimizing activity satisfies the declared output commitments and technology constraints only after the source LP and reconstructed cost account are certified.",
+      "efficiency": "The target minimizes input expenditure at the supplied prices; it is not asserted to be strongly or Pareto efficient because unpriced slack completion is not performed.",
+      "selection": "Intensities and a cost-minimizing target are solver selected and may be non-unique.",
+      "conditions": [
+        "condition.optimal_minimum_cost_program",
+        "condition.complete_strictly_positive_input_prices"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/978-94-015-7721-2"
+      },
+      {
+        "role": "implementation",
+        "id": "https://www.owlnet.rice.edu/~econ380/DEAP.PDF"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "https://www.owlnet.rice.edu/~econ380/DEAP.PDF",
+        "tests/test_cost.py::test_cost_efficiency_reproduces_coelli_deap_21_example_3"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_numerical_oracle",
+        "cost_identity",
+        "crs_and_vrs",
+        "price_and_quantity_unit_invariance",
+        "external_reference_unclipped_score",
+        "solver_neutral_lp_certificate",
+        "atomic_cost_account_release",
+        "tiny_monetary_identity_preservation",
+        "independent_target_peer_and_dual_validity",
+        "zero_additional_certificate_solves",
+        "domain_validation",
+        "compiled_reference_reuse",
+        "metadata_contract"
+      ],
+      "locators": [
+        "tests/test_cost.py",
+        "tests/test_cost_postsolve_certification.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_economic_allocative.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.economic_efficiency_prices",
+        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.cost",
+        "path": "docs/models/cost.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.economics",
+        "path": "docs/api/economics.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

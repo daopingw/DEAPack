@@ -1,0 +1,533 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.ddf.weak_disposal.activity_specific",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Activity-specific weak-disposal directional distance",
+  "decision_question": "How much declared environmental improvement is feasible when reference activities may use different residual-curtailment rates inside one convex operating portfolio?",
+  "names": {
+    "display": "Activity-specific weak-disposal directional distance",
+    "historical": [
+      {
+        "label": "Kuosmanen activity-specific weak-disposal technology",
+        "spellings": [
+          "Kuosmanen weak disposal",
+          "non-uniform abatement-factor technology"
+        ],
+        "sources": [
+          "doi:10.1111/j.1467-8276.2005.00788.x"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ActivitySpecificWeakDisposalDDF",
+      "aliases": [
+        {
+          "symbol": "KuosmanenWeakDisposalDDF"
+        }
+      ]
+    },
+    "spellings": [
+      "activity-specific environmental DDF",
+      "Kuosmanen VRS weak-disposal DDF"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_operating_and_environmental_improvement",
+        "managerial_plan": "activity_specific_residual_curtailment"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box_joint_production"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "resources_supporting_active_and_curtailment_components",
+        "outputs": "desirable_services_from_active_components",
+        "bad_outputs": "residuals_from_active_components",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.environmental_ddf.declared_bad_outputs",
+        "domain.environmental_ddf.nonnegative_quantities"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.weak_disposal.activity_specific.vrs.kuosmanen_2005"
+      ],
+      "fixed": {
+        "returns_to_scale": "vrs",
+        "weak_disposal": "activity_specific",
+        "linearization": "X_mu_plus_tau_le_x_Y_mu_ge_y_B_mu_eq_b_sum_mu_plus_tau_eq_one",
+        "activity_components": {
+          "mu": "active_reference_activity",
+          "tau": "complementary_weak_disposal_component_not_observed_abatement_cost"
+        }
+      },
+      "defaults": {
+        "null_jointness": false
+      },
+      "exposed": [
+        "null_jointness"
+      ],
+      "constraints": [
+        "condition.activity_specific_weak_disposal_requires_vrs",
+        "condition.convexity_applies_to_mu_plus_tau"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_environmental_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "components": [
+        "static.directional_distance"
+      ],
+      "fixed": {
+        "family": "environmental_directional_distance",
+        "sign_convention": {
+          "input": "contract",
+          "output": "expand",
+          "bad_output": "contract"
+        }
+      },
+      "defaults": {
+        "input_direction": "zeros",
+        "output_direction": "observed",
+        "bad_output_direction": "observed",
+        "allow_negative_distance": false
+      },
+      "exposed": [
+        "input_direction",
+        "output_direction",
+        "bad_output_direction",
+        "allow_negative_distance"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_conditioned_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "bad_output_slack": "not_allowed",
+        "membership_assessment": "structural_self_inclusion_or_negative_beta_exclusion_or_beta_zero_feasibility_program",
+        "efficiency_classification_domain": "evaluated_plan_within_reference_technology"
+      },
+      "defaults": {
+      "secondary_objective": "maximize_row_scaled_slacks"
+      },
+      "exposed": [
+        "compute_slacks"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.weak_disposal",
+    "canonical_symbol": "ActivitySpecificWeakDisposalDDF",
+    "registry_dependencies": [
+      "environmental.weak_disposal.activity_specific.vrs.kuosmanen_2005",
+      "estimator.full.dea",
+      "graph.black_box",
+      "static.directional_distance"
+    ],
+    "backend_capabilities": [
+      "exact_activity_specific_linearization",
+      "sparse_linear_programming",
+      "optional_lexicographic_slack_completion",
+      "shared_reference_compilation",
+      "row_scaled_primary_and_completion_quantity_accounts",
+      "unit_free_slack_completion_objective_with_original_unit_results",
+      "solver_neutral_postsolve_certification",
+      "raw_and_cleaned_activity_specific_account_reconstruction",
+      "claim_scoped_fail_closed_score_target_peer_and_dual_release",
+      "solver_neutral_reference_membership_certification",
+      "conditional_external_reference_beta_zero_membership_lp",
+      "structural_self_membership_without_solver_call",
+      "negative_beta_exclusion_without_solver_call",
+      "explicit_certificate_and_membership_solver_call_accounts",
+      "exact_physical_zero_null_jointness_validation",
+      "finite_positive_numerical_tolerance_validation",
+      "zero_additional_score_and_projection_release_certificate_solves"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "beta",
+        "direction": "mixed",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.negative_distance_disabled"
+          ]
+        }
+      },
+      {
+        "id": "efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.certified_reference_technology_membership"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "directional_distance",
+      "directional_efficiency_status",
+      "permitted_slacks",
+      "active_mu",
+      "abatement_tau",
+      "total_intensity",
+      "retention_rate_theta",
+      "curtailment_share_one_minus_theta",
+      "peers",
+      "targets",
+      "named_weak_disposal_identity",
+      "score_valid",
+      "score_status",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "efficiency_denominator_valid",
+      "completion_valid",
+      "completion_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "solver_neutral_lp_optimality_certificate",
+      "raw_and_published_activity_specific_account_certificate",
+      "solver_neutral_reference_membership_certificate",
+      "membership_solver_call_account",
+      "certificate_solver_call_account",
+      "published_peer_account_certificate",
+      "published_dual_account_certificate"
+    ],
+    "transformations": [
+      "efficiency_equals_one_over_one_plus_beta_when_reference_technology_membership_is_certified",
+      "total_intensity_equals_active_mu_plus_abatement_tau"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.environmental_ddf.declared_bad_outputs",
+        "domain.environmental_ddf.nonnegative_quantities",
+        "condition.activity_specific_weak_disposal_requires_vrs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_rescaling_with_corresponding_direction_rescaling",
+        "co_transform": [
+          "directions",
+          "targets"
+        ],
+        "conditions": [
+          "condition.direction_co_transforms_with_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_in_the_kuosmanen_vrs_activity_specific_technology_after_certified_primary_and_completion_solves",
+      "efficiency": "directional_only_unless_permitted_slack_completion_succeeds",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.certified_primary_solve",
+        "condition.certified_lexicographic_slack_completion",
+        "condition.convexity_applies_to_mu_plus_tau"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1111/j.1467-8276.2005.00788.x"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2018.09.019"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/activity-specific-weak-disposal-analytical.md",
+        "tests/test_activity_specific_weak_disposal_oracle.py::test_exact_activity_specific_c_primal_dual_certificate",
+        "tests/test_activity_specific_weak_disposal_oracle.py::test_public_activity_specific_ddf_matches_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/activity-specific-weak-disposal-analytical.md",
+        "public_api_test_locator": "tests/test_activity_specific_weak_disposal_oracle.py::test_public_activity_specific_ddf_matches_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "environmental.ddf.weak_disposal.activity_specific.exact_c_primal_dual",
+            "evidence_kind": "exact_primal_dual",
+            "test_locators": [
+              "tests/test_activity_specific_weak_disposal_oracle.py::test_exact_activity_specific_c_primal_dual_certificate"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "primary_directional_distance"
+              ],
+              "disposability": [
+                "activity_specific_weak"
+              ],
+              "direction_policy": [
+                "observation_scaled_zero_input_good_growth_bad_reduction"
+              ],
+              "negative_distance_policy": [
+                "disallowed"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "activity_specific_weak_disposal.exact_c",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "C",
+                  "expected": {
+                    "directional_distance": "1/42",
+                    "efficiency": "42/43",
+                    "desirable_output_target": "43/35",
+                    "bad_output_target": "123/140"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "directional_distance",
+              "harmonized_efficiency",
+              "directional_targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          },
+          {
+            "claim_id": "environmental.ddf.weak_disposal.activity_specific.independent_dense_compiler",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_activity_specific_weak_disposal_oracle.py::test_public_activity_specific_ddf_matches_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "primary_directional_distance_with_optional_slack_completion"
+              ],
+              "disposability": [
+                "activity_specific_weak"
+              ],
+              "direction_policy": [
+                "observation_scaled_zero_input_good_growth_bad_reduction"
+              ],
+              "negative_distance_policy": [
+                "disallowed"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "directional_distance",
+              "harmonized_efficiency",
+              "directional_targets"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "undesirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 1
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "exact_primal_dual_certificate",
+        "independent_dense_compiler",
+        "exact_phase_one_matrix",
+        "exact_phase_two_matrix",
+        "legacy_equality_non_equivalence",
+        "metadata_identity",
+        "mu_tau_accounting",
+        "reference_policy",
+        "unit_invariance",
+        "extreme_unit_scale_invariance",
+        "solver_neutral_primary_and_completion_certificates",
+        "raw_and_cleaned_economic_account_release_gates",
+        "malicious_optimal_primal_rejection",
+        "thresholded_peer_and_complete_dual_release_gates",
+        "finite_positive_tolerance_validation",
+        "exact_physical_zero_null_jointness",
+        "positive_external_distance_without_reference_membership",
+        "conditional_beta_zero_membership_solver_account",
+        "membership_conditioned_efficiency_classification",
+        "zero_additional_certificate_solver_calls",
+        "vrs_total_activity_convexity"
+      ],
+      "locators": [
+        "tests/test_activity_specific_weak_disposal_oracle.py",
+        "tests/test_weak_disposal.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.environmental_directional",
+        "path": "docs/models/environmental-directional.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

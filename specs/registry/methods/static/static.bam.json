@@ -1,0 +1,315 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.bam",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "2011 bounded-adjusted measure",
+  "decision_question": "How large are an organization's jointly removable input excesses and producible output shortfalls when each gap is judged against that organization-specific sample-supported room for improvement?",
+  "names": {
+    "display": "Bounded-adjusted measure",
+    "historical": [
+      {
+        "label": "Bounded adjusted measure",
+        "spellings": [
+          "BAM",
+          "bounded-adjusted measure"
+        ],
+        "sources": [
+          "doi:10.1007/s11123-010-0190-2"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "BoundedAdjustedDEA",
+      "aliases": [
+        {
+          "symbol": "BAM"
+        }
+      ]
+    },
+    "spellings": [
+      "BAM efficiency",
+      "BAM inefficiency",
+      "one-sided range-adjusted DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "managerial_plan": "joint_resource_saving_and_service_expansion"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded"
+      },
+      "constraints": [
+        "domain.bam.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "supported_returns_to_scale": [
+          "crs",
+          "vrs",
+          "nirs",
+          "ndrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "one_global_eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "required"
+        },
+        "temporal_information_set": {
+          "policy": "global_only",
+          "availability_cutoff": "all_declared_periods",
+          "vintage_required": true,
+          "historical_revision": "global_sample"
+        }
+      },
+      "exposed": [
+        "kind"
+      ],
+      "constraints": [
+        "condition.bam.global_bounds_match_reference"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "bounded_adjusted_measure",
+        "orientation": "non_oriented",
+        "normalization": "dmu_specific_one_sided_sample_rooms",
+        "slack_bounds": "same_one_sided_rooms_under_all_rts",
+        "zero_room_policy": "zero_weight_and_zero_slack_upper_bound"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_dimension_mean_of_normalized_slacks",
+        "input_normalizer": "x_io_minus_sample_minimum",
+        "output_normalizer": "sample_maximum_minus_y_ro"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "alternate_target_policy": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.bam",
+    "canonical_symbol": "BoundedAdjustedDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "bounded_normalized_slack_variables",
+      "anchored_vrs_balances",
+      "dmu_specific_objective_weights",
+      "material_target_contribution_peer_reporting",
+      "row_scaled_quantity_balances",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "bam_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.bam.global_bounds_match_reference",
+            "condition.self_inclusive_reference"
+          ]
+        }
+      },
+      {
+        "id": "bam_inefficiency",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.bam.global_bounds_match_reference",
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_slacks",
+      "output_slacks",
+      "normalized_slacks",
+      "one_sided_slack_bounds",
+      "peers",
+      "targets"
+    ],
+    "transformations": [
+      "bam_efficiency_equals_one_minus_bam_inefficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.bam.nonnegative_positive_aggregates",
+        "condition.bam.global_bounds_match_reference"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_reference_population"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_an_optimal_bounded_bam_solve",
+      "efficiency": "optimal_for_the_declared_bounded_improvement_programme",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.bam.global_bounds_match_reference"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1007/s11123-010-0190-2"
+      },
+      {
+        "role": "implementation",
+        "id": "https://cran.r-project.org/src/contrib/Archive/additiveDEA/additiveDEA_1.1.tar.gz"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/S0305-0483(97)00072-8"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "Cooper et al. (2007), Table 1.5, 12-DMU example independently solved with additiveDEA 1.1 and SciPy/HiGHS",
+        "tests/test_bam.py::test_twelve_dmu_independent_bam_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "crs_oracle",
+        "failure",
+        "global_reference_policy",
+        "ndrs",
+        "nirs",
+        "nonnegative_domain",
+        "score_and_target_contract",
+        "unit_invariance",
+        "vrs_oracle",
+        "zero_room_policy"
+      ],
+      "locators": [
+        "tests/test_bam.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_bam.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.bam",
+        "path": "docs/models/bam.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

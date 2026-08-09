@@ -1,0 +1,540 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.additive",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "Additive DEA with configurable slack weights",
+  "decision_question": "Which resource excesses and desirable-service shortfalls can be removed simultaneously, and how should those heterogeneous shortfalls be weighted in one operating-performance account?",
+  "names": {
+    "display": "Additive DEA with configurable slack weights",
+    "historical": [
+      {
+        "label": "Additive model",
+        "spellings": [
+          "additive DEA",
+          "unweighted additive DEA"
+        ],
+        "sources": [
+          "doi:10.1016/0304-4076(85)90133-2"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "AdditiveDEA",
+      "aliases": [
+        {
+          "symbol": "WeightedAdditiveDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "unweighted additive DEA",
+      "weighted-additive DEA",
+      "slack-sum additive model"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "operating_performance_benchmarking",
+        "managerial_plan": "simultaneous_variable_specific_resource_saving_and_service_expansion"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded",
+        "sign_domain": "nonnegative_with_positive_observation_aggregates"
+      },
+      "constraints": [
+        "domain.additive.nonnegative_positive_aggregates"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "supported_returns_to_scale": [
+          "crs",
+          "vrs",
+          "nirs",
+          "ndrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "vrs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "peer_eligibility": {
+          "kind": "none",
+          "composition_when_supplied": "intersection_with_base_reference_policy",
+          "categorical_interpretation": "not_claimed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "peer_eligibility",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "weighted_additive_slack_inefficiency",
+        "orientation": "non_oriented",
+        "native_score": "weighted_slack_sum",
+        "efficient_value": 0.0,
+        "bounded_efficiency_transform": "none"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "declared_positive_slack_weights",
+        "interpretation": "technical_or_analyst_declared_weights_not_market_prices"
+      },
+      "defaults": {
+        "input_weights": "unit",
+        "output_weights": "unit"
+      },
+      "exposed": [
+        "input_weights",
+        "output_weights"
+      ],
+      "constraints": [
+        "condition.additive.finite_strictly_positive_weights"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "reference_set_dependent_appraisal",
+        "fitted_kind": "derived_as_self_mixed_or_external_from_reference_plan",
+        "alternate_target_policy": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "source_evidence_boundary": {
+          "certified": "charnes_etal_1985_equations_4_5_4_6_vrs_unit_weights_self_inclusive_cross_section",
+          "package_extensions_without_source_identity": [
+            "fixed_positive_nonunit_slack_weights",
+            "crs_nirs_ndrs",
+            "panel_and_non_global_reference_policies"
+          ],
+          "deferred_to_next_version": [
+            "charnes_etal_1985_equation_5_7_observation_specific_normalization",
+            "separately_named_weighted_additive_literature_leaf",
+            "separately_named_rts_or_temporal_additive_literature_leaf",
+            "published_numerical_table_reproduction"
+          ],
+          "peer_eligibility_boundary": "deapack_comparison_population_extension_when_the_effective_plan_is_not_the_full_self_inclusive_source_sample"
+        }
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.additive",
+    "canonical_symbol": "AdditiveDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "compiled_reference_reuse",
+      "observation_specific_peer_eligibility_intersection",
+      "content_deduplicated_reference_compilation",
+      "declared_variable_specific_slack_weights",
+      "material_target_contribution_peer_reporting",
+      "anchored_vrs_balances",
+      "solver_scaled_and_strong_status_scaled_slack_accounts",
+      "solver_neutral_primal_dual_kkt_and_strong_duality_certificate",
+      "raw_and_published_original_quantity_account_certificates",
+      "claim_specific_score_target_peer_and_dual_release",
+      "thresholded_peer_target_reconstruction",
+      "complete_original_unit_dual_account",
+      "stable_all_failure_result_schemas",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "weighted_slack_sum",
+        "direction": "lower_is_better",
+        "efficient_value": 0.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.optimal_primary_solve"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "input_slacks",
+      "output_slacks",
+      "declared_slack_weights",
+      "row_scaled_slacks",
+      "solver_scaled_slacks",
+      "peers",
+      "targets",
+      "base_reference_size",
+      "reference_size",
+      "self_in_reference",
+      "is_within_reference_technology",
+      "membership_status",
+      "peer_eligibility_provenance_when_supplied",
+      "dual_constraint_marginals",
+      "score_valid",
+      "score_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "dual_valid",
+      "dual_status",
+      "backend_solver_status",
+      "raw_solver_status",
+      "solver_neutral_lp_optimality_certificate",
+      "raw_and_published_quantity_account_certificates",
+      "thresholded_peer_account_certificate",
+      "original_unit_dual_account_certificate"
+    ],
+    "transformations": [
+      "score_equals_distance_equals_weighted_slack_sum",
+      "generic_efficiency_is_not_defined"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.additive.nonnegative_positive_aggregates",
+        "condition.additive.finite_strictly_positive_weights"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "independent_positive_factor_rescaling_with_reciprocal_weight_co_transformation",
+        "co_transform": [
+          "slack_weights",
+          "targets",
+          "slacks"
+        ],
+        "conditions": [
+          "condition.additive.weights_track_quantity_units"
+        ]
+      },
+      "translation": {
+        "status": "conditional",
+        "rule": "common_coordinate_translation_under_vrs_while_translated_data_remain_in_the_public_nonnegative_domain",
+        "co_transform": [
+          "targets"
+        ],
+        "conditions": [
+          "condition.vrs_convexity",
+          "condition.additive.translated_data_remain_nonnegative"
+        ]
+      }
+    },
+    "target": {
+      "feasibility": "supported_after_an_optimal_weighted_additive_solve",
+      "efficiency": "pareto_koopmans_efficient_for_the_declared_strictly_positive_slack_weights",
+      "selection": "solver_selected_alternate_optima_possible",
+      "conditions": [
+        "condition.optimal_primary_solve",
+        "condition.additive.finite_strictly_positive_weights"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0304-4076(85)90133-2"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/additive-analytical.md",
+        "tests/test_additive_independent_oracle.py::test_source_displayed_two_dmu_case_recovers_the_pareto_shortfall",
+        "tests/test_additive_independent_oracle.py::test_exact_vrs_additive_matches_independent_dense_source_program"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/additive-analytical.md",
+        "public_api_test_locator": "tests/test_additive_independent_oracle.py::test_exact_vrs_additive_matches_independent_dense_source_program",
+        "claims": [
+          {
+            "claim_id": "additive.source_displayed_pareto_shortfall",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_additive_independent_oracle.py::test_source_displayed_two_dmu_case_recovers_the_pareto_shortfall"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "direct_primary_lp"
+              ],
+              "valuation_policy": [
+                "unit_slack_weights"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "additive.source_displayed_b",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "native_score": 2,
+                    "input_slacks": "0,2",
+                    "output_slack": 0,
+                    "pareto_koopmans_status": false,
+                    "target": "1,2;1",
+                    "peer_a_intensity": 1
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_weighted_slack_score",
+              "input_slacks",
+              "output_slacks",
+              "pareto_koopmans_status",
+              "target",
+              "peer_intensity"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "additive.exact_vrs_direct_account",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_additive_independent_oracle.py::test_exact_vrs_additive_matches_independent_dense_source_program"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "direct_primary_lp"
+              ],
+              "valuation_policy": [
+                "unit_slack_weights"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "additive.exact_vrs_d",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "D",
+                  "expected": {
+                    "native_score": 24,
+                    "input_slacks": "3,2",
+                    "output_slack": 19,
+                    "pareto_koopmans_status": false,
+                    "target": "7,8;20",
+                    "peer_a_intensity": 1,
+                    "source_profile": "charnes_etal_1985_eq_4_6"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_weighted_slack_score",
+              "input_slacks",
+              "output_slacks",
+              "pareto_koopmans_status",
+              "target",
+              "peer_intensity",
+              "source_profile_metadata"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "nonnegative_positive_aggregates",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alias_identity",
+        "analytical_optimality_certificate",
+        "configurable_rts_independent_dense_extension",
+        "independent_dense_source_compiler",
+        "input_and_output_slack_contract",
+        "material_peer_target_explanation",
+        "native_unbounded_distance",
+        "panel_reference_policy",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "missing_and_malformed_row_or_bound_marginal_rejection",
+        "raw_backend_status_preserved_on_certificate_failure",
+        "raw_and_published_original_quantity_account_certificates",
+        "claim_specific_score_target_peer_and_dual_release",
+        "thresholded_peer_target_reconstruction",
+        "complete_original_unit_dual_account",
+        "per_observation_failure_isolation",
+        "stable_all_failure_result_schemas",
+        "one_compile_n_primary_zero_certificate_solve_contract",
+        "peer_eligibility_reference_policy_intersection",
+        "peer_eligibility_manual_custom_reference_equivalence",
+        "peer_eligibility_compact_provenance_and_fail_closed_frequency",
+        "benchmark_missing_certificate_residual_and_count_rejection",
+        "scale_aware_strong_status",
+        "source_configuration_boundary",
+        "target_reconstruction",
+        "weight_validation",
+        "weight_unit_co_transformation"
+      ],
+      "locators": [
+        "tests/test_additive.py",
+        "tests/test_additive_independent_oracle.py",
+        "tests/test_additive_postsolve_certification.py",
+        "tests/test_peer_eligibility_classical_core.py",
+        "tests/test_peer_eligibility_integration.py",
+        "tests/test_benchmark_classical_foundations.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_classical_foundations.py",
+      "benchmarks/benchmark_core_peer_eligibility.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.classical.slack_based_efficiency",
+        "path": "book/chapters/02-classical/04-sbm.md",
+        "state": "present",
+        "role": "primary"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.additive",
+        "path": "docs/models/additive.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

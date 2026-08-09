@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="500" viewBox="0 0 1080 500" role="img" aria-labelledby="title description">
+<title id="title">One productivity change, two literature-defined allocation ledgers</title>
+<desc id="description">FGNZ and Ray--Desli allocate the same productivity change and pure-efficiency change to different opportunity and scale factors.</desc>
+<rect width="1080" height="500" fill="#ffffff"/>
+<text x="540" y="38" text-anchor="middle" font-size="24" font-weight="750" fill="#24323d">One productivity change, two literature-defined allocation ledgers</text>
+<text x="540" y="66" text-anchor="middle" font-size="14.5" fill="#5c6b74">Organization D, 2020&#8211;2021 · common CRS Malmquist index = 1.1307</text>
+<rect x="28" y="91" width="1024" height="151" rx="16" fill="#f7fafb" stroke="#aebdc3"/>
+<rect x="28" y="257" width="1024" height="151" rx="16" fill="#f2f9f9" stroke="#79afb4" stroke-width="1.8"/>
+<text x="43" y="119" font-size="15" font-weight="750" fill="#356fa3">ENHANCED FGNZ METHOD</text>
+<text x="43" y="139" font-size="12.5" fill="#5c6b74">public six-task source method</text>
+<text x="43" y="285" font-size="15" font-weight="750" fill="#176b73">RAY&#8211;DESLI METHOD</text>
+<text x="43" y="305" font-size="12.5" fill="#5c6b74">public source-qualified eight-task method</text>
+<text x="340" y="99" text-anchor="middle" font-size="10.5" font-weight="650" fill="#5c6b74">
+<tspan x="340" dy="0">PURE OPERATING</tspan>
+<tspan x="340" dy="11">PERFORMANCE</tspan>
+</text>
+<text x="524" y="99" text-anchor="middle" font-size="10.5" font-weight="650" fill="#5c6b74">
+<tspan x="524" dy="0">REPRESENTED</tspan>
+<tspan x="524" dy="11">OPPORTUNITIES</tspan>
+</text>
+<text x="708" y="99" text-anchor="middle" font-size="10.5" font-weight="650" fill="#5c6b74">
+<tspan x="708" dy="0">SCALE-RELATED</tspan>
+<tspan x="708" dy="11">ACCOUNT</tspan>
+</text>
+<text x="938" y="99" text-anchor="middle" font-size="10.5" font-weight="650" fill="#5c6b74">
+<tspan x="938" dy="0">OVERALL</tspan>
+<tspan x="938" dy="11">CHANGE</tspan>
+</text>
+<rect x="262" y="136" width="156" height="76" rx="12" fill="#e8f0f8" stroke="#356fa3" stroke-width="1.5"/>
+<text x="340" y="163" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">PEFFCH</text>
+<text x="340" y="193" text-anchor="middle" font-size="23" font-weight="750" fill="#356fa3">1.0336</text>
+<text x="432" y="184" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">&#215;</text>
+<rect x="446" y="136" width="156" height="76" rx="12" fill="#e1f1f1" stroke="#176b73" stroke-width="1.5"/>
+<text x="524" y="163" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">TECHCH(C)</text>
+<text x="524" y="193" text-anchor="middle" font-size="23" font-weight="750" fill="#176b73">1.0600</text>
+<text x="616" y="184" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">&#215;</text>
+<rect x="630" y="136" width="156" height="76" rx="12" fill="#f9e9dd" stroke="#ad4f16" stroke-width="1.5"/>
+<text x="708" y="163" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">own-period SCH</text>
+<text x="708" y="193" text-anchor="middle" font-size="23" font-weight="750" fill="#ad4f16">1.0320</text>
+<text x="803" y="184" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">=</text>
+<rect x="824" y="136" width="210" height="76" rx="12" fill="#24323d"/>
+<text x="929" y="163" text-anchor="middle" font-size="13" font-weight="650" fill="#d7e2e5">M</text>
+<text x="929" y="193" text-anchor="middle" font-size="23" font-weight="750" fill="#ffffff">1.1307</text>
+<rect x="262" y="302" width="156" height="76" rx="12" fill="#e8f0f8" stroke="#356fa3" stroke-width="1.5"/>
+<text x="340" y="329" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">PEFFCH</text>
+<text x="340" y="359" text-anchor="middle" font-size="23" font-weight="750" fill="#356fa3">1.0336</text>
+<text x="432" y="350" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">&#215;</text>
+<rect x="446" y="302" width="156" height="76" rx="12" fill="#e1f1f1" stroke="#176b73" stroke-width="1.5"/>
+<text x="524" y="329" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">TECHCH(V)</text>
+<text x="524" y="359" text-anchor="middle" font-size="23" font-weight="750" fill="#176b73">1.1138</text>
+<text x="616" y="350" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">&#215;</text>
+<rect x="630" y="302" width="156" height="76" rx="12" fill="#f9e9dd" stroke="#ad4f16" stroke-width="1.5"/>
+<text x="708" y="329" text-anchor="middle" font-size="13" font-weight="650" fill="#24323d">SCH(V)</text>
+<text x="708" y="359" text-anchor="middle" font-size="23" font-weight="750" fill="#ad4f16">0.9822</text>
+<text x="803" y="350" text-anchor="middle" font-size="25" font-weight="650" fill="#5c6b74">=</text>
+<rect x="824" y="302" width="210" height="76" rx="12" fill="#24323d"/>
+<text x="929" y="329" text-anchor="middle" font-size="13" font-weight="650" fill="#d7e2e5">M</text>
+<text x="929" y="359" text-anchor="middle" font-size="23" font-weight="750" fill="#ffffff">1.1307</text>
+<rect x="118" y="427" width="844" height="50" rx="12" fill="#ffffff" stroke="#d6e0e3"/>
+<text x="540" y="448" text-anchor="middle" font-size="13.5" font-weight="700" fill="#24323d">Factors multiply; equal-width boxes are not additive shares.</text>
+<text x="540" y="467" text-anchor="middle" font-size="12.5" fill="#5c6b74">Both rows are benchmark-conditional accounts, not causal explanations of management or innovation.</text>
+</svg>

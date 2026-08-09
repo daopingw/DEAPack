@@ -1,0 +1,46 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "dynamic.network_sbm.tone_tsutsui_2014",
+  "target": "dynamic.sbm.tone_tsutsui_2010",
+  "type": "exact_reduction",
+  "equivalence_level": null,
+  "difference_axes": [
+    "graph",
+    "data_roles",
+    "technology",
+    "performance"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.dynamic_network.single_process_reduction",
+      "arguments": {
+        "processes": 1,
+        "within_period_links": 0,
+        "carryover_roles": "matched",
+        "period_weights": "matched",
+        "returns_to_scale": "common_crs_or_vrs",
+        "boundary_equation_scope": "published_article_with_named_terminal_resolution"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "registry_provisional",
+    "sources": [
+      "doi:10.1016/j.omega.2013.04.002",
+      "doi:10.1016/j.omega.2009.07.003",
+      "url:https://www.grips.ac.jp/cms/wp-content/uploads/2013/03/DEA_Chapter1.pdf"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "target_and_peer_correspondence",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_dynamic_network_sbm_compiler.py::test_k1_reduces_exactly_to_tone_tsutsui_2010_compiler",
+      "tests/test_dynamic_network_sbm_project_case.py::test_k1_scores_reduce_to_tone_tsutsui_2010"
+    ]
+  }
+}

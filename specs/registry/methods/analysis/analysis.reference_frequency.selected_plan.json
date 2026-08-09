@@ -1,0 +1,309 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "analysis.reference_frequency.selected_plan",
+  "identifier_role": "method_id",
+  "kind": "procedure",
+  "component_type": null,
+  "category": "diagnostics",
+  "title": "Certified selected-plan reference frequency",
+  "decision_question": "Which organizations recur as active observed benchmarks in the one certified peer plan selected by a static convex DEA fit?",
+  "names": {
+    "display": "Selected peer frequency",
+    "historical": [],
+    "api": {
+      "canonical_symbol": "reference_frequency",
+      "aliases": []
+    },
+    "spellings": [
+      "reference frequency",
+      "peer frequency",
+      "benchmark frequency",
+      "selected-plan reference use"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "describe_selected_operational_benchmark_use",
+        "sample": "cross_section"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "panel": false,
+        "grouped": false
+      },
+      "constraints": [
+        "condition.reference_frequency.complete_certified_peer_account",
+        "condition.reference_frequency.reported_edges_above_source_peer_tolerance"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "continuous_convex_envelopment",
+        "source_scope": "static_black_box"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "post_estimation",
+        "source_estimator": "full_frontier_dea",
+        "additional_solver_calls": 0
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "complete_certified_source_cross_section",
+          "membership_rule": "all_evaluated_organizations",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "fixed": {
+        "kind": "global",
+        "comparison_population": "one_complete_cross_section",
+        "account": "reported_solver_selected_active_peer_edges_strictly_above_source_peer_tolerance"
+      },
+      "constraints": [
+        "condition.reference_frequency.complete_certified_peer_account",
+        "condition.reference_frequency.reported_edges_above_source_peer_tolerance"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "descriptive_reference_use",
+        "native_result": "reported_active_peer_edge_count",
+        "normalized_result": "reference_rate",
+        "count_identity": "reference_frequency_equals_self_reference_frequency_plus_other_reference_frequency",
+        "count_range": "integer_zero_to_evaluated_organization_count",
+        "rate_numerator": "reference_frequency_including_self_and_other_reported_active_edges",
+        "rate_denominator": "all_evaluated_organizations",
+        "reported_edge_threshold": "lambda_strictly_above_source_peer_tolerance",
+        "directional_interpretation": "none",
+        "intensity_aggregation_across_evaluations": false
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "selected_peer_plan_accounting",
+        "self_and_other_reference_use": "reported_separately",
+        "alternate_optima_assessed": false
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "reference_frequency",
+        "claim": "one_certified_solver_selected_plan",
+        "global_reference_set_claim": false,
+        "influence_claim": false,
+        "outlier_claim": false,
+        "ranking_claim": false,
+        "literature_boundary": "package_defined_reported_active_edge_account_not_torgersen_slack_adjusted_peer_importance_or_global_maximal_reference_set_analysis"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_sensitivity"
+  },
+  "implementation": {
+    "module": "deapack.analysis.reference_frequency",
+    "canonical_symbol": "reference_frequency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "certified_public_result_consumption",
+      "linear_reported_active_edge_aggregation",
+      "source_peer_tolerance_provenance",
+      "stable_self_and_other_frequency_account",
+      "zero_optimization_solve_postprocessing"
+    ],
+    "default_backend": "pandas_numpy",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "reference_rate",
+        "direction": "mixed",
+        "efficient_value": null,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.reference_frequency.complete_certified_peer_account",
+            "condition.reference_frequency.reported_edges_above_source_peer_tolerance"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "reference_frequency",
+      "self_reference_frequency",
+      "other_reference_frequency",
+      "reference_rate",
+      "is_referenced",
+      "certified_reported_active_edge_table",
+      "source_peer_tolerance",
+      "reference_rate_denominator",
+      "per_evaluation_peer_diagnostics",
+      "alternate_optima_assessed_false",
+      "zero_additional_solver_calls"
+    ],
+    "transformations": [
+      "reference_frequency_equals_self_reference_frequency_plus_other_reference_frequency",
+      "reference_rate_equals_reference_frequency_divided_by_all_evaluated_organizations"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.reference_frequency.complete_certified_peer_account",
+        "condition.reference_frequency.reported_edges_above_source_peer_tolerance"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "consume_the_unchanged_certified_reported_active_edge_support_above_source_peer_tolerance_after_valid_source_fit",
+        "co_transform": [],
+        "conditions": [
+          "condition.reference_frequency.same_selected_peer_support"
+        ]
+      },
+      "translation": {
+        "status": "not_applicable",
+        "rule": "the_post_estimation_account_does_not_transform_quantities",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "inherited_only_from_each_source_result_peer_certificate",
+      "efficiency": "not_applicable_because_frequency_is_not_an_efficiency_measure",
+      "selection": "one_solver_selected_plan_with_alternate_optima_not_assessed",
+      "conditions": [
+        "condition.reference_frequency.complete_certified_peer_account",
+        "condition.reference_frequency.reported_edges_above_source_peer_tolerance"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "review_supported",
+    "sources": [
+      {
+        "role": "review",
+        "id": "specs/reviews/STATISTICS_UNCERTAINTY.md#deterministic-diagnostics"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1007/BF00162048"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1080/03155986.1995.11732281"
+      },
+      {
+        "role": "critique",
+        "id": "doi:10.1016/j.ejor.2015.03.029"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "tests/test_reference_frequency.py::test_selected_plan_frequency_matches_independent_dictionary_oracle",
+        "tests/test_reference_frequency.py::test_classic_convex_models_integrate_without_another_solve"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "independent_dictionary_oracle",
+        "classic_convex_family_integration",
+        "complete_denominator_fail_closed",
+        "self_and_other_reference_separation",
+        "malicious_edge_schema_and_value_rejection",
+        "source_peer_tolerance_provenance_and_strict_threshold",
+        "nonconvex_panel_network_dynamic_productivity_super_and_cross_rejection",
+        "input_order_and_label_invariance",
+        "alternate_optimum_disclosure",
+        "one_hundred_thousand_edge_performance_gate",
+        "zero_additional_solver_calls"
+      ],
+      "locators": [
+        "tests/test_reference_frequency.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_reference_frequency.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.foundations.study_design",
+        "path": "book/chapters/01-foundations/02-study-design.md",
+        "state": "present",
+        "role": "sensitivity"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.reference_frequency",
+        "path": "docs/analysis/reference-frequency.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

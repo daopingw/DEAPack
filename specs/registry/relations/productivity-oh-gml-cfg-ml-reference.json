@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.global_malmquist_luenberger.oh_2010",
+  "target": "productivity.malmquist_luenberger.chung_fare_grosskopf_1997",
+  "type": "contrasts_with",
+  "equivalence_level": "C",
+  "difference_axes": [
+    "reference",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_cfg_environmental_technology_direction_and_panel",
+      "arguments": {
+        "ml_reference": "adjacent_contemporaneous_cross_evaluation",
+        "ml_operator": "four_distance_geometric_mean",
+        "gml_reference": "global_full_sample_with_contemporaneous_decomposition",
+        "gml_operator": "two_global_factor_ratio",
+        "gml_cross_period_solves": 0,
+        "identity_claim": "distinct_not_alias"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1006/jema.1997.0146",
+      "doi:10.1007/s11123-010-0178-y"
+    ],
+    "proof_obligations": [
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_environmental_productivity.py::test_malmquist_luenberger_identifies_pure_green_frontier_shift",
+      "tests/test_environmental_productivity.py::test_global_malmquist_luenberger_uses_one_global_environmental_frontier",
+      "tests/test_environmental_productivity.py::test_global_malmquist_luenberger_is_circular_in_a_fixed_sample"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.hicks_moorsteen.bjurek_1996",
+  "target": "productivity.malmquist.adjacent_geometric",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "performance",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_adjacent_productivity_comparison",
+      "arguments": {
+        "panel_pair": "same_dmu_and_same_adjacent_periods",
+        "data_roles": "same_nonnegative_productive_inputs_and_desirable_outputs",
+        "contemporaneous_technologies": "same_two_period_specific_frontiers",
+        "hicks_moorsteen_operator": "geometric_output_quantity_index_divided_by_geometric_input_quantity_index",
+        "hicks_moorsteen_distance_roles": "four_output_plus_four_input",
+        "malmquist_operator": "one_orientation_four_distance_geometric_index",
+        "complete_tfp_identity": "claimed_only_by_the_hicks_moorsteen_source_recipe",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.2307/3440861",
+      "doi:10.2307/2117971"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_hicks_moorsteen.py::test_quantity_indexes_reconstruct_from_eight_shephard_distances",
+      "tests/test_hicks_moorsteen.py::test_result_contract_states_complete_tfp_without_extra_decomposition",
+      "tests/test_productivity.py::test_malmquist_exposes_four_distances_and_peer_systems"
+    ]
+  }
+}

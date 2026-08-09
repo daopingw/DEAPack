@@ -1,0 +1,354 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "evaluation.super.ap_radial",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": "protocol",
+  "category": "evaluation",
+  "title": "Andersen--Petersen radial super-efficiency",
+  "decision_question": "Which radial frontier organizations remain most difficult for the otherwise eligible peer population to replace when each evaluated row is removed from its own reference set?",
+  "names": {
+    "display": "Andersen--Petersen radial super-efficiency",
+    "historical": [
+      {
+        "label": "Procedure for ranking efficient units in data envelopment analysis",
+        "spellings": [
+          "Andersen-Petersen super-efficiency",
+          "AP super-efficiency",
+          "radial super-efficiency"
+        ],
+        "sources": [
+          "doi:10.1287/mnsc.39.10.1261"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": null,
+      "aliases": []
+    },
+    "spellings": [
+      "input-oriented AP radial super-efficiency",
+      "output-oriented AP radial super-efficiency",
+      "leave-self-out radial appraisal"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "frontier_discrimination_and_stability_appraisal",
+        "managerial_interpretation": "measure_radial_peer_replaceability_after_row_level_self_exclusion",
+        "normative_quality_claim": "none",
+        "statistical_outlier_claim": "none"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "nonnegative_controllable_resources_with_positive_row_aggregate",
+        "outputs": "nonnegative_desirable_services_with_positive_row_aggregate",
+        "bad_outputs": "excluded",
+        "sample": "cross_section_or_panel_under_declared_reference_policy",
+        "representation": {
+          "measurement_scale": "cardinal_ratio",
+          "sign_domain": "nonnegative",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "exclusion_unit": "one_row"
+        }
+      },
+      "constraints": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only",
+        "condition.at_least_two_observations"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "family": "ordinary_radial_dea",
+        "disposal": "ordinary_free",
+        "production_axioms_changed_by_protocol": false
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.leave_one_out"
+      ],
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "otherwise_eligible_reference_rows",
+          "membership_rule": "construct_base_reference_then_remove_evaluated_row_when_present",
+          "self_membership": "excluded_when_present"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ],
+      "constraints": [
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "andersen_petersen_radial_super_efficiency",
+        "input_reported_score": "theta",
+        "output_native_factor": "phi",
+        "output_reported_score": "reciprocal_phi",
+        "score_direction": "higher_is_better",
+        "classification_scope": "radial"
+      },
+      "defaults": {
+        "orientation": "input"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.super"
+      ],
+      "fixed": {
+        "kind": "review_reconstructed_radial_leave_one_out_prototype",
+        "exclusion_unit": "evaluated_row",
+        "self_exclusion": "when_present_in_base_reference",
+        "candidate_source": "andersen_petersen_1993",
+        "source_identity_status": "defining_full_text_not_obtained",
+        "release_disposition": "deferred_to_next_version",
+        "infeasibility_policy": "deapack_prototype_report_solver_status_without_repair",
+        "score_above_one_interpretation": "radial_peer_replacement_margin_not_more_than_one_hundred_percent_efficiency",
+        "slack_completion": "none"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "frontier_ranking_and_stability_appraisal",
+        "peer_plan": "solver_selected_phase_one_optimum",
+        "peer_plan_uniqueness": "not_assessed",
+        "pareto_koopmans_classification": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "prototype",
+    "api": "none",
+    "publication_scope": "next_version"
+  },
+  "implementation": {
+    "module": "deapack.evaluation.super_efficiency",
+    "canonical_symbol": "AndersenPetersenSuperEfficiency",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "evaluation.super",
+      "graph.black_box",
+      "reference.leave_one_out",
+      "static.radial",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "streamed_leave_one_out_reference_compilation",
+      "cached_shared_nonself_reference_sets",
+      "primal_dual_optimality_certification",
+      "explicit_infeasible_and_unbounded_states",
+      "tidy_peer_target_and_diagnostic_tables"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta_input_super_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.input_orientation",
+            "condition.certified_positive_radial_factor"
+          ]
+        }
+      },
+      {
+        "id": "reciprocal_phi_output_super_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.output_orientation",
+            "condition.certified_positive_radial_factor"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "native_radial_factor",
+      "is_radially_efficient",
+      "is_super_efficient",
+      "generic_is_efficient_missing_without_strong_slack_completion",
+      "reference_size_before_exclusion",
+      "reference_size_after_exclusion",
+      "self_exclusion_status",
+      "solver_selected_peer_intensities",
+      "solver_selected_peer_replacement_targets",
+      "phase_one_slacks",
+      "failure_diagnostics"
+    ],
+    "transformations": [
+      "output_display_score_equals_one_over_phi"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.radial.nonnegative_positive_aggregates",
+        "condition.desirable_outputs_only",
+        "condition.leave_one_out_reference_nonempty"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [
+          "peer_replacement_targets",
+          "radial_bounds"
+        ],
+        "conditions": [
+          "condition.same_reference_membership",
+          "condition.same_orientation_and_returns_to_scale"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "A peer-replacement target is released only after a certified optimal solve; infeasible, unbounded, limited, malformed, or nonpositive-factor cases retain diagnostics and no target.",
+      "efficiency": "The dedicated is_radially_efficient and is_super_efficient fields classify radial peer replaceability only; generic is_efficient is missing because no Pareto--Koopmans certificate or statistical outlier claim is made.",
+      "selection": "Targets and intensities use one solver-selected phase-one optimum and are not claimed to be unique; display thresholding never changes the target calculation.",
+      "conditions": [
+        "condition.certified_primal_dual_optimum",
+        "condition.certified_positive_radial_factor"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "review_supported",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1287/mnsc.39.10.1261"
+      },
+      {
+        "role": "implementation",
+        "id": "doi:10.1287/mnsc.48.5.705.7805"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.mcm.2008.06.008"
+      }
+    ],
+    "oracle": {
+      "status": "candidate",
+      "locators": [
+        "release_disposition=deferred_to_next_version; defining full text was not obtained in the audited environment; source boundary and reopening requirements: specs/source_protocols/andersen_petersen_1993_super_efficiency.md",
+        "The exact one-input/one-output CRS ratio check is analytically derived and is not a defining-source numerical reproduction",
+        "The Lu--Lo five-unit table is an indirect reprint attributed to Andersen--Petersen and cannot replace the defining full text",
+        "The Xue--Harker six-unit table validates a later strictly-positive input-VRS formulation and its infeasible row, not the 1993 source profile",
+        "tests/test_super_efficiency.py::test_derived_crs_ratio_check_and_ordinary_efficiency_relationship",
+        "tests/test_super_efficiency.py::test_indirectly_reprinted_five_unit_candidate_table",
+        "tests/test_super_efficiency.py::test_xue_harker_2002_vrs_candidate_table_and_infeasibility"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "analytic_crs_score",
+        "ordinary_efficiency_relationship",
+        "orientation_and_reciprocal_reporting",
+        "returns_to_scale_infeasibility",
+        "unit_invariance",
+        "reference_membership_and_self_exclusion",
+        "peer_threshold_target_independence",
+        "domain_and_failure_closure"
+      ],
+      "locators": [
+        "tests/test_super_efficiency.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_super_efficiency.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.evaluation.super_efficiency",
+        "path": "docs/evaluation/super-efficiency.md",
+        "state": "present",
+        "role": "analysis"
+      }
+    ]
+  }
+}

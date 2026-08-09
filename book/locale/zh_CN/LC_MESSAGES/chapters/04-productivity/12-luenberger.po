@@ -1,0 +1,975 @@
+# Simplified Chinese translation catalog for the DEAPack Handbook.
+# Copyright (C) 2026, Daoping Wang and contributors
+# The Handbook component license is pending maintainer approval; this catalog
+# does not grant permission to redistribute otherwise uncleared material.
+# Translation contributions remain credited in repository history.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: DEAPack Handbook Preview 1\n"
+"Report-Msgid-Bugs-To: https://github.com/daopingw/DEAPack/issues\n"
+"POT-Creation-Date: 2026-08-09 00:31+0100\n"
+"PO-Revision-Date: 2026-08-09 01:20+0100\n"
+"Last-Translator: DEAPack contributors\n"
+"Language: zh_CN\n"
+"Language-Team: DEAPack Chinese Handbook contributors\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:1
+#: 81227dcdc4bb49319697070410384803
+msgid "The Luenberger Indicator: Change in Units of a Declared Programme"
+msgstr "Luenberger 生产率指标：用既定改进方案的单位衡量变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:3
+#: eb5a388406f24b0280d4457fb5dd3d72
+msgid ""
+"A hospital board may define next year's improvement programme without ever "
+"using a percentage. It might ask each hospital to hold its staffed capacity "
+"constant while treating 500 additional patients. A manufacturer might commit"
+" to saving ten tonnes of material while delivering 200 additional units of "
+"product. A public transport agency might seek a joint reduction in vehicle-"
+"hours and increase in passenger journeys. In each case, management has "
+"described improvement as a **bundle of operational changes**."
+msgstr ""
+"医院董事会可以完全不借助百分比来规定下一年度的改进方案。例如，要求各医院在人员配置能力不变的情况下多诊疗 500 名患者；制造企业可能承诺在增加 200"
+" 件产品交付量的同时节约 10 "
+"吨材料；公共交通机构则可能希望同时减少车辆运营小时并增加客运人次。每一种情形中，管理者都是用一组**经营活动变化组合**来界定改进。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:11
+#: 1337a708d65147bbbccfc4ad7e87642e
+msgid ""
+"The ordinary Luenberger productivity indicator asks whether the organization"
+" realized more or less of that improvement programme between two periods. It"
+" reports change in the programme's own units. If one unit means “save ten "
+"tonnes of material and deliver 200 extra units,” a value of 0.4 corresponds "
+"to four tonnes of saving and 80 additional units along that joint plan. The "
+"direction therefore embeds management's chosen resource--output trade-off "
+"and determines what counts as progress. Selecting it after seeing the "
+"ranking would replace the original decision problem with a convenient "
+"retrospective one."
+msgstr ""
+"普通 Luenberger 生产率指标考察组织在两个时期之间实现了这套改进方案的更多还是更少，并以方案自身的单位报告变化。如果一个方案单位表示“节约 "
+"10 吨材料并额外交付 200 件产品”，那么 0.4 就对应沿该联合方案节约 4 吨材料并增加 80 "
+"件产品。方向由此体现管理者选择的资源—产出权衡，并规定何为进步。若看到排序后才选择方向，就把原来的决策问题换成了一个事后更方便的问题。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:20
+#: 463e787d405b48498de9cf06bc5107a3
+#, python-brace-format
+msgid ""
+"This makes Luenberger measurement useful when proportional expansion or "
+"contraction is not the question of interest. The familiar Malmquist index "
+"asks about proportional productivity change and reports a ratio around one. "
+"The Luenberger indicator measures change additively around zero. Its "
+"foundations lie in directional benefit and distance functions and in exact "
+"nonradial productivity measurement {cite:p}`chambers1996,chambers2002`."
+msgstr ""
+"因此，当研究关心的不是等比例扩张或收缩时，Luenberger 测度尤其有用。熟悉的 Malmquist 指数考察生产率的比例变化，并报告以 1 "
+"为中性值的比率；Luenberger 指标则以 0 为中性值作加法度量。其理论基础来自方向性收益函数、方向性距离函数和精确的非径向生产率测度 "
+"{cite:p}`chambers1996,chambers2002`。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:26
+#: 6b34db4d9ce0402590afecc74ba1782f
+msgid ""
+"An important boundary should be clear from the outset. The ordinary "
+"Luenberger indicator in this chapter is a **directional technical-"
+"performance indicator**. It does not, merely because it is called a "
+"productivity indicator, construct a complete total-factor-productivity "
+"account in which an aggregate output quantity index is compared with an "
+"aggregate input quantity index. Its value is nevertheless economically "
+"meaningful: it reports change relative to production opportunities in the "
+"units of a programme that the analyst has made explicit."
+msgstr ""
+"首先必须划清一条重要边界。本章的普通 Luenberger "
+"指标是一个**方向性技术绩效指标**。它不会仅仅因为名称中含有“生产率指标”，就自动构造一个用综合产出数量指数与综合投入数量指数相比的完整全要素生产率账户。但它仍具有明确的经济含义：以分析者明确声明的方案单位，报告相对于生产机会的变化。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:34
+#: 24d8b02a174240cfaa851ec867844811
+msgid "From an operating commitment to a directional distance"
+msgstr "从经营承诺到方向性距离"
+
+#: ../../chapters/04-productivity/12-luenberger.md:36
+#: 1d5dcb89214342eb9ecebd63548facf6
+msgid ""
+"Let $\\mathcal T^\\tau$ denote the production possibilities represented by "
+"the organizations in reference period $\\tau$. An operating plan $z=(x,y)$ "
+"uses the resource vector $x$ to deliver the desirable-output vector $y$. The"
+" analyst declares a common programme"
+msgstr ""
+"以 $\\mathcal T^\\tau$ 表示参照期 $\\tau$ 的组织所代表的生产可能性。经营方案 $z=(x,y)$ 使用资源向量 $x$ "
+"提供合意产出向量 $y$。分析者声明一套共同改进方案"
+
+#: ../../chapters/04-productivity/12-luenberger.md:41
+#: fe20763845e442fe892b8a9370ab8ac4
+msgid ""
+"\n"
+"g=(g^x,g^y),\n"
+msgstr ""
+"\n"
+"g=(g^x,g^y),\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:45
+#: c287e81a75b5494d91b92baea55fb1ab
+msgid ""
+"where $g^x$ contains planned input savings and $g^y$ contains planned output"
+" gains. Both are written as nonnegative magnitudes. Completing $\\beta$ "
+"units of the programme would move the operating plan to"
+msgstr "其中，$g^x$ 表示计划节约的投入，$g^y$ 表示计划增加的产出，二者均写为非负幅度。完成 $\\beta$ 个方案单位，会把经营方案调整为"
+
+#: ../../chapters/04-productivity/12-luenberger.md:49
+#: 1f5c3f5142634bcca2ad0df3ae1f50d3
+msgid ""
+"\n"
+"(x-\\beta g^x,\\;y+\\beta g^y).\n"
+msgstr ""
+"\n"
+"(x-\\beta g^x,\\;y+\\beta g^y).\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:53
+#: 17cfa718c6fc400dac985d98130f4907
+msgid "The directional distance relative to period-$\\tau$ opportunities is"
+msgstr "相对于时期 $\\tau$ 生产机会的方向性距离为"
+
+#: ../../chapters/04-productivity/12-luenberger.md:55
+#: edefbcb06fe04edfb24975dc0a4d0629
+msgid ""
+"\n"
+"D^\\tau(z;g)\n"
+"=\\sup\\left\\{\\beta\\in\\mathbb{R}:\n"
+"(x-\\beta g^x,\\;y+\\beta g^y)\\in\\mathcal T^\\tau\\right\\}.\n"
+msgstr ""
+"\n"
+"D^\\tau(z;g)\n"
+"=\\sup\\left\\{\\beta\\in\\mathbb{R}:\n"
+"(x-\\beta g^x,\\;y+\\beta g^y)\\in\\mathcal T^\\tau\\right\\}.\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:61
+#: f4932401018e44a4b1f3e1a338e6529f
+msgid ""
+"This expression asks how much of the specified resource saving and output "
+"gain remains attainable from plan $z$. If $D^\\tau(z;g)=0.6$, comparable "
+"practice supports another 0.6 units of the joint programme. A value of zero "
+"means that the whole package cannot be advanced further under that period's "
+"observed opportunities, although other unmeasured or differently composed "
+"improvements may still be possible. A smaller remaining amount indicates "
+"that the organization is closer to exhausting this particular improvement "
+"opportunity."
+msgstr ""
+"该式考察从方案 $z$ 出发，既定的资源节约与产出增加还能够实现多少。若 $D^\\tau(z;g)=0.6$，可比实践支持再完成 0.6 "
+"个联合方案单位。取值为 0 "
+"表示在该期观测到的生产机会下，这套完整方案已经不能继续推进；但仍可能存在未被测量或构成不同的其他改进。剩余量越小，说明组织越接近用尽这项特定改进机会。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:69
+#: 98868808d85247488f04a707d42ce27d
+msgid ""
+"The programme need not change every variable. A health authority interested "
+"in additional treatments at unchanged staffed capacity can set $g^x=0$ and "
+"give $g^y$ the physical size of one treatment commitment. A resource-"
+"conservation programme can hold outputs fixed by setting $g^y=0$. A joint "
+"programme assigns positive magnitudes to both sides. Zeros mean that the "
+"corresponding quantities are commitments to be held fixed during this "
+"particular appraisal; they do not imply that those quantities are "
+"unimportant to production."
+msgstr ""
+"改进方案不必改变每一个变量。若卫生主管部门关心在人员配置能力不变时增加诊疗量，可以令 $g^x=0$，并把 $g^y$ "
+"设为一项诊疗承诺的实际规模。资源节约方案可令 $g^y=0$，使产出保持不变。联合方案则在投入和产出两侧都给出正幅度。某一分量为 "
+"0，表示在这次评价中相应数量被作为必须保持不变的承诺，而不表示它对生产无关紧要。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:77
+#: 04b44fe44b164461b97c7b07baa8d8f9
+msgid ""
+"Because the indicator is cardinal, the size of the programme matters. "
+"Replacing $g$ with $cg$, for $c>0$, changes the numerical distance according"
+" to"
+msgstr "由于该指标具有基数意义，方案单位的大小会影响数值。用 $cg$（$c>0$）替换 $g$ 时，方向性距离按下式变化："
+
+#: ../../chapters/04-productivity/12-luenberger.md:80
+#: 148c3747b3044dbdae161d3cbb6d0000
+#, python-brace-format
+msgid ""
+"\n"
+"D^\\tau(z;cg)=\\frac{1}{c}D^\\tau(z;g).\n"
+msgstr ""
+"\n"
+"D^\\tau(z;cg)=\\frac{1}{c}D^\\tau(z;g).\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:84
+#: e206bf2dcf084f42aa23b4bdbd30f909
+msgid ""
+"Doubling the physical size of one programme unit therefore halves the number"
+" of programme units reported. That is not a defect. It is the same reason "
+"that 500 metres and 0.5 kilometres use different numbers to describe the "
+"same distance. Trouble arises only when results measured under different "
+"programmes are compared as though they shared one unit."
+msgstr ""
+"把一个方案单位的实际规模扩大一倍，报告的方案单位数就会减半。这不是缺陷，就像 500 米与 0.5 "
+"千米用不同数值描述同一段长度。只有把不同方案单位下测得的结果误当成同一单位进行比较时，才会产生问题。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:90
+#: b777238c5a3340e28457f47ef25d0da6
+msgid "Four appraisals behind one change indicator"
+msgstr "一个变化指标背后的四次评价"
+
+#: ../../chapters/04-productivity/12-luenberger.md:92
+#: 33f23e0d9e3347a282063e49e7bbaccf
+#, python-brace-format
+msgid ""
+"Consider one organization observed in adjacent periods $t$ and $t+1$, with "
+"plans $z^t=(x^t,y^t)$ and $z^{t+1}=(x^{t+1},y^{t+1})$. Productivity "
+"measurement has to separate two changes that occur at the same time. The "
+"organization may realize more of the opportunities available to it, and the "
+"best-practice opportunities represented by the comparison population may "
+"themselves become more or less favorable."
+msgstr ""
+"设同一组织在相邻时期 $t$ 和 $t+1$ 的经营方案分别为 $z^t=(x^t,y^t)$ 与 "
+"$z^{t+1}=(x^{t+1},y^{t+1})$。生产率测度必须区分同时发生的两类变化：组织可能更多地实现其可用生产机会，而比较总体所代表的最佳实践机会本身也可能变得更有利或更不利。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:98
+#: 489d0e049d824b21a69fe5085633a51b
+msgid ""
+"To distinguish these changes, each plan is appraised against each period's "
+"production opportunities:"
+msgstr "为区分这两类变化，需要把两个时期的方案分别放到两个时期的生产机会下评价："
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 1be5c74521eb4501812b592ab4c5b859 8c5b3494900e4943b5ffc6ab0ccf41d7
+msgid "Appraisal"
+msgstr "评价"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 99fcca760d2e49e7b579101beb6e66a3
+msgid "Economic question"
+msgstr "经济问题"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 38f1c84b5fb345d79c9456d5a7c6e7d1
+msgid "$D^t(z^t;g)$"
+msgstr "$D^t(z^t;g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 90c319cf2b7c476f8c063dddaf938a15
+msgid ""
+"How much of the programme remained unrealized by the old plan under old "
+"opportunities?"
+msgstr "在旧生产机会下，旧方案还有多少改进方案尚未实现？"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 926cfa69464749e9a6588eed8f3e69fd
+#, python-brace-format
+msgid "$D^t(z^{t+1};g)$"
+msgstr "$D^t(z^{t+1};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 927d604b0b7b44afba0b01f46e74f7df
+msgid "How would the new plan have performed under old opportunities?"
+msgstr "在旧生产机会下，新方案会有怎样的表现？"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 751055b41b8046a49b0656429f5e2fdf
+#, python-brace-format
+msgid "$D^{t+1}(z^t;g)$"
+msgstr "$D^{t+1}(z^t;g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: f3679ee1fe97441db398d3a3652aeaab
+msgid "How would the old plan perform under new opportunities?"
+msgstr "在新生产机会下，旧方案会有怎样的表现？"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 4b6409d8d361463dabc2c5dbd8ed8f86
+#, python-brace-format
+msgid "$D^{t+1}(z^{t+1};g)$"
+msgstr "$D^{t+1}(z^{t+1};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md
+#: 6a51e6bd59394a3d88f2c92193bd66aa
+msgid "How much remained unrealized by the new plan under new opportunities?"
+msgstr "在新生产机会下，新方案还有多少改进方案尚未实现？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:108
+#: e84dd6c83435485f86e0bb5ddd544720
+msgid ""
+"One common input-saving and output-expansion programme is used to appraise "
+"two period-specific operating plans against both period-specific production "
+"technologies, producing four directional distances and one additive change "
+"account"
+msgstr "用一套共同的投入节约与产出扩张方案，把两个时期的经营方案分别放到两个时期的生产技术下评价，从而得到四个方向性距离和一个加法变化账户"
+
+#: ../../chapters/04-productivity/12-luenberger.md:113
+#: eface2418ab54297b9e1fbbaca5a7a41
+msgid ""
+"One declared programme supplies the common unit for all four appraisals. The"
+" two diagonal cells describe contemporaneous operating shortfalls; the off-"
+"diagonal cells show how each plan would be assessed under the other period's"
+" represented opportunities."
+msgstr "同一套既定方案为四次评价提供共同计量单位。对角线上的两个单元格描述同期经营缺口；非对角线单元格则说明每个方案放到另一时期所代表的生产机会下会得到怎样的评价。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:119
+#: 15dc7331cdae41569fc576bf31605b05
+msgid "Holding the old technology fixed gives one view of performance change:"
+msgstr "固定旧生产技术，可以得到一种绩效变化度量："
+
+#: ../../chapters/04-productivity/12-luenberger.md:121
+#: 019c22e4745f4f8a871112eef49f5d23
+#, python-brace-format
+msgid ""
+"\n"
+"P^t\n"
+"=D^t(z^t;g)-D^t(z^{t+1};g).\n"
+msgstr ""
+"\n"
+"P^t\n"
+"=D^t(z^t;g)-D^t(z^{t+1};g).\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:126
+#: c68546e334af469f942c17a1bc6f8bc7
+msgid "Holding the new technology fixed gives the other:"
+msgstr "固定新生产技术，则得到另一种度量："
+
+#: ../../chapters/04-productivity/12-luenberger.md:128
+#: 6ce7a3c05fa045aaa97aafc648d22af5
+#, python-brace-format
+msgid ""
+"\n"
+"P^{t+1}\n"
+"=D^{t+1}(z^t;g)-D^{t+1}(z^{t+1};g).\n"
+msgstr ""
+"\n"
+"P^{t+1}\n"
+"=D^{t+1}(z^t;g)-D^{t+1}(z^{t+1};g).\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:133
+#: f0c740e3ee9f4713bd7022d43ffabd4c
+msgid ""
+"In each expression, the old plan's unrealized potential is compared with the"
+" new plan's unrealized potential while the benchmark is held constant. A "
+"positive difference means that the new plan realizes more of the declared "
+"programme. Neither period is given sole authority, so the adjacent-period "
+"Luenberger indicator takes the arithmetic mean:"
+msgstr ""
+"在每个表达式中，都在参照标准保持不变时比较旧方案与新方案尚未实现的潜力。差值为正，表示新方案实现了更多既定改进。两个时期都不被赋予唯一权威，因此相邻期 "
+"Luenberger 指标取二者的算术平均："
+
+#: ../../chapters/04-productivity/12-luenberger.md:139
+#: e2c5c780b8ba4166b6f5208a128f6eb6
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"L^{t,t+1}\n"
+"&=\\frac{1}{2}\\left(P^t+P^{t+1}\\right)\\\\\n"
+"&=\\frac{1}{2}\\left[\n"
+"D^t(z^t;g)-D^t(z^{t+1};g)\n"
+"+D^{t+1}(z^t;g)-D^{t+1}(z^{t+1};g)\n"
+"\\right].\n"
+"\\end{aligned}\n"
+msgstr ""
+"\n"
+"\\begin{aligned}\n"
+"L^{t,t+1}\n"
+"&=\\frac{1}{2}\\left(P^t+P^{t+1}\\right)\\\\\n"
+"&=\\frac{1}{2}\\left[\n"
+"D^t(z^t;g)-D^t(z^{t+1};g)\n"
+"+D^{t+1}(z^t;g)-D^{t+1}(z^{t+1};g)\n"
+"\\right].\n"
+"\\end{aligned}\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:150
+#: 2ce7943219fd4ea399bfd87a88241fad
+msgid ""
+"The reporting convention in this book is straightforward: $L>0$ indicates "
+"measured improvement, $L=0$ no measured change, and $L<0$ measured decline. "
+"These are programme units, not percentage points. An indicator of 0.25 and a"
+" Malmquist index of 1.25 do not say the same thing, even though both numbers"
+" may casually be described as a 25 percent improvement. Only the latter is a"
+" ratio with that percentage interpretation."
+msgstr ""
+"本书的报告约定很直接：$L>0$ 表示测得改善，$L=0$ 表示未测得变化，$L<0$ "
+"表示测得下降。这些数值的单位是方案单位，不是百分点。Luenberger 指标 0.25 与 Malmquist 指数 1.25 "
+"并不表达同一件事，即使二者有时都被随意描述为“改善 25%”。只有后者是具有这一百分比解释的比率。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:156
+#: 5e1ecda0a9df49a198b04454505b7ddf
+msgid "An additive account of two benchmark-relative changes"
+msgstr "两个相对标杆变化的加法账户"
+
+#: ../../chapters/04-productivity/12-luenberger.md:158
+#: d65ad5366bdc4bfb9476264695e8232b
+msgid ""
+"The four appraisals also support an exact additive decomposition. Define "
+"relative operating-performance change as"
+msgstr "四次评价还支持一个精确的加法分解。将相对经营绩效变化定义为"
+
+#: ../../chapters/04-productivity/12-luenberger.md:161
+#: 699f97741365433cb244250fbf870e97
+#, python-brace-format
+msgid ""
+"\n"
+"EC_L^{t,t+1}\n"
+"=D^t(z^t;g)-D^{t+1}(z^{t+1};g).\n"
+msgstr ""
+"\n"
+"EC_L^{t,t+1}\n"
+"=D^t(z^t;g)-D^{t+1}(z^{t+1};g).\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:166
+#: c19a6dcd5b7149e087cb3c716c1841b4
+msgid ""
+"This component compares the programme left unrealized by the organization "
+"against the best-practice opportunities represented in each plan's own "
+"period. A positive value means that the contemporaneous shortfall became "
+"smaller. “Catch-up” is often used as historical shorthand, but the more "
+"informative statement is that the organization realized more of the declared"
+" programme relative to its contemporaneous comparison population."
+msgstr "该分量比较组织在各自时期的最佳实践机会下尚未实现的方案数量。取正值表示同期经营缺口缩小。“追赶”是常见的历史简称，但更准确的表述是：相对于同期比较总体，组织实现了更多既定改进方案。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:173
+#: 13edeceb0a9842ddbeec697dc0e61904
+msgid ""
+"The component is not proof of better management. A smaller shortfall may "
+"accompany improved scheduling, maintenance, learning, or coordination, but "
+"it may also reflect a different case mix, reporting revision, or comparison "
+"population. DEA supplies the benchmark-relative account; institutional "
+"evidence is needed to explain its cause."
+msgstr ""
+"该分量不能证明管理改善。较小的经营缺口可能伴随排班、维护、学习或协调的改善，也可能反映病例组合变化、报告修订或比较总体改变。DEA "
+"提供相对标杆账户；解释其成因还需要制度与情境证据。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:178
+#: b3f1cf434bd94624957bcf652462ba17
+msgid "The change in represented production opportunities is"
+msgstr "所代表生产机会的变化为"
+
+#: ../../chapters/04-productivity/12-luenberger.md:180
+#: f7a075f5564e4f57bd2373fdc02568d8
+#, python-brace-format
+msgid ""
+"\n"
+"TC_L^{t,t+1}\n"
+"=\\frac{1}{2}\\left[\n"
+"D^{t+1}(z^t;g)-D^t(z^t;g)\n"
+"+D^{t+1}(z^{t+1};g)-D^t(z^{t+1};g)\n"
+"\\right].\n"
+msgstr ""
+"\n"
+"TC_L^{t,t+1}\n"
+"=\\frac{1}{2}\\left[\n"
+"D^{t+1}(z^t;g)-D^t(z^t;g)\n"
+"+D^{t+1}(z^{t+1};g)-D^t(z^{t+1};g)\n"
+"\\right].\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:188
+#: 998b977c676446ddbb127802650ed376
+msgid ""
+"This component asks whether the new reference technology supports more of "
+"the programme than the old reference technology, first at the old operating "
+"plan and then at the new one. A positive value means that the best-practice "
+"opportunities represented by the declared samples became more favorable for "
+"the plans and programme being studied. “Frontier shift” is the familiar "
+"shorthand, but it should not be mistaken for evidence that a new invention "
+"appeared or diffused. The reference set can change because of investment, "
+"regulation, demand, data coverage, entry and exit, or genuine technical "
+"progress."
+msgstr "该分量考察新参照技术是否比旧参照技术支持更多既定方案，并分别在旧经营方案和新经营方案处评价。取正值表示：就所研究的方案和经营规模而言，声明样本所代表的最佳实践机会变得更有利。“前沿移动”是熟悉的简称，但不能据此断言出现或扩散了新发明。参照集可能因为投资、监管、需求、数据覆盖、进入退出或真实技术进步而变化。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:197
+#: 6b69d3e34b4d43e4bb9cc0f741bdef39
+msgid "The two components reconstruct the overall indicator exactly:"
+msgstr "两个分量精确重构总体指标："
+
+#: ../../chapters/04-productivity/12-luenberger.md:199
+#: 1345928f2a3549959e774115a95d2f2f
+#, python-brace-format
+msgid ""
+"\n"
+"L^{t,t+1}=EC_L^{t,t+1}+TC_L^{t,t+1}.\n"
+msgstr ""
+"\n"
+"L^{t,t+1}=EC_L^{t,t+1}+TC_L^{t,t+1}.\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:203
+#: fbea74bdf29c453f91b17a62a65ef20c
+msgid ""
+"This identity is the heart of the account. It also imposes discipline on "
+"interpretation. The components are allocations of one measured change under "
+"one programme and one pair of reference technologies. They are not "
+"independent causal effects, and components calculated with different "
+"directions cannot legitimately be added together."
+msgstr "这条恒等式是整个账户的核心，也约束了解释方式。两个分量是在同一改进方案和同一对参照技术下，对同一个测得变化进行的分配，并非彼此独立的因果效应；使用不同方向计算的分量也不能合法相加。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:209
+#: 8c05445b9b1e4b889da89df4bc4611d9
+msgid "Why a cross-period distance may be negative"
+msgstr "为什么跨期距离可能为负"
+
+#: ../../chapters/04-productivity/12-luenberger.md:211
+#: b72de9f304c84aa59752cc650236a6b2
+msgid ""
+"A contemporaneous plan included in its own reference technology normally has"
+" nonnegative unrealized improvement potential. A cross-period plan is "
+"different. The new plan may deliver more than the old technology can "
+"reproduce. If the only way to place that plan inside the old production "
+"possibilities is to reverse the declared programme, its directional distance"
+" is negative."
+msgstr "纳入自身时期参照技术的同期方案，其尚未实现的改进潜力通常非负。跨期方案则不同：新方案可能提供了旧技术无法再现的产出。如果只有反向执行既定改进方案才能把新方案放回旧生产可能集，那么它的方向性距离就是负值。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:217
+#: 2fcd63e38468414485182dff2e221c95
+msgid ""
+"Suppose one programme unit means adding five treatment batches with "
+"resources held fixed. A new plan delivers ten batches more than the old "
+"reference technology can support. Relative to the old opportunities, the "
+"plan must surrender two programme units before it becomes reproducible, so "
+"its cross-period distance is $-2$. This is not “negative efficiency.” It is "
+"a signed statement about the position of one period's plan relative to "
+"another period's represented opportunities."
+msgstr ""
+"假设一个方案单位表示在资源不变时增加 5 批诊疗。新方案比旧参照技术可支持的水平多提供 10 "
+"批。相对于旧生产机会，必须先放弃两个方案单位才可再现该方案，因此其跨期距离为 "
+"$-2$。这不是“负效率”，而是一个时期的方案相对于另一时期所代表生产机会的位置所形成的带符号陈述。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:224
+#: ed33106d307f45ef903cc00865761ca9
+msgid ""
+"Allowing the sign is essential. Replacing a negative cross-period value by "
+"zero would erase evidence that the later plan exceeded the earlier "
+"opportunities. It would also distort the measured change in represented "
+"opportunities and generally break the additive identity. A valid negative "
+"value should therefore be explained, not repaired. It is conceptually "
+"distinct from a comparison that cannot be formed under the declared "
+"technology and data assumptions."
+msgstr ""
+"允许负号至关重要。把负的跨期值截为 "
+"0，会抹去后期方案超越早期生产机会的证据，也会扭曲所代表生产机会的变化，并通常破坏加法恒等式。因此，有效的负值应当得到解释，而不是被“修复”。它在概念上不同于在既定技术和数据假设下根本无法形成的比较。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:231
+#: da0b7fb36f6c41c6a2dfc47fa4d241b6
+msgid "A hospital programme with an explicit common direction"
+msgstr "具有明确共同方向的医院方案"
+
+#: ../../chapters/04-productivity/12-luenberger.md:233
+#: de526c2c7200432f978f53f25a89ee57
+msgid ""
+"Consider two hospitals observed in 2020 and 2021. Inputs are measured in "
+"standardized staff bundles and outputs in batches of 100 completed "
+"treatments. In 2020, the observed best-practice rate is one treatment batch "
+"per staff bundle. In 2021, both hospitals demonstrate two treatment batches "
+"per staff bundle."
+msgstr ""
+"考虑 2020 年和 2021 年观测到的两家医院。投入以标准化人员组合计量，产出以每 100 例完成诊疗为一批计量。2020 "
+"年观测到的最佳实践比率为每个人员组合提供 1 批诊疗；2021 年两家医院都实现了每个人员组合提供 2 批诊疗。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:238
+#: 3e216c24f7cc41acba1e802c3b319d92
+msgid ""
+"The authority's programme is deliberately simple: **hold staff input "
+"constant and add one treatment batch**. Thus every hospital and every period"
+" is evaluated with the same direction, $g^x=0$ and $g^y=1$."
+msgstr "主管部门有意采用一项简单方案：**保持人员投入不变，增加一批诊疗**。因此，对每家医院和每个时期都使用同一方向，即 $g^x=0$、$g^y=1$。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: e0c93ed26e6049e3b0f49c4aa9549ca7
+msgid ""
+"A point plot reports one additional treatment-batch programme unit for "
+"Hospital A and two for Hospital B between 2020 and 2021, with zero as the "
+"no-change benchmark"
+msgstr "点图显示，2020—2021 年间，医院 A 增加 1 个诊疗批次方案单位，医院 B 增加 2 个，0 表示没有变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:292
+#: a874aebd3eda42eaaaa0665456d6c2b2
+msgid ""
+"The plot compares the two hospitals in **absolute programme units**. "
+"Hospital A records 1 and Hospital B records 2 because one unit always means "
+"one additional treatment batch at unchanged staff input. B's value of 2 does"
+" **not** mean that B is twice as productive as A; neither value is a ratio "
+"or percentage."
+msgstr ""
+"图中用**绝对方案单位**比较两家医院。医院 A 为 1、医院 B 为 2，因为一个单位始终表示在人员投入不变时增加一批诊疗。B 取值 2 "
+"并不表示其生产率是 A 的两倍；两个数值都不是比率或百分比。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:299
+#: 61cf0abd5fb144f5a58983cf79a43cc9
+msgid "For Hospital A, the four appraisals have transparent values:"
+msgstr "医院 A 的四次评价具有直观数值："
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: eaebbe0985e54dd2bad536b0bd32be22
+msgid "Value"
+msgstr "数值"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: ac4042d547dc45afbf8841a986ba0a0b
+msgid "Meaning"
+msgstr "含义"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: d5100285cd1741719594a509f5e0a060
+#, python-brace-format
+msgid "$D^{2020}(z^{2020};g)$"
+msgstr "$D^{2020}(z^{2020};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 0b5b237dbf1a4db49537d89a11ae9b55 3e841839f7e0433f94055097c62b00f3
+msgid "0"
+msgstr "0"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 02a3f3e009a642caaffbf747cfe2b8cc
+msgid "The 2020 plan is on the 2020 benchmark."
+msgstr "2020 年方案位于 2020 年标杆上。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 842f17d8cc81447e97b6d3492e599e20
+#, python-brace-format
+msgid "$D^{2020}(z^{2021};g)$"
+msgstr "$D^{2020}(z^{2021};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: a13615d300b5412eb6382300ace888f4
+msgid "$-1$"
+msgstr "$-1$"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 62cd8a3ff64d40c787986738627b68ac
+msgid "The 2021 plan exceeds 2020 opportunities by one programme unit."
+msgstr "2021 年方案比 2020 年生产机会多 1 个方案单位。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 1cd760aa6c31475ab00576a3583c6bda
+#, python-brace-format
+msgid "$D^{2021}(z^{2020};g)$"
+msgstr "$D^{2021}(z^{2020};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: b507cbf7553f4b6fa68a5fc1206ed372
+msgid "1"
+msgstr "1"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 44fcccc5be8b4ef3b347e415e0977557
+msgid "Under 2021 opportunities, the old plan could add one treatment batch."
+msgstr "在 2021 年生产机会下，旧方案还可以增加一批诊疗。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 8828ae5aa26c4f6cbc2956bdf9cf8005
+#, python-brace-format
+msgid "$D^{2021}(z^{2021};g)$"
+msgstr "$D^{2021}(z^{2021};g)$"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 5e2d47632dea43dca6a1db3c6f128c3e
+msgid "The 2021 plan is on the 2021 benchmark."
+msgstr "2021 年方案位于 2021 年标杆上。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:308
+#: 9c00a54b9510491d8bfd751f0a563a03
+msgid "The overall change is therefore"
+msgstr "因此，总体变化为"
+
+#: ../../chapters/04-productivity/12-luenberger.md:310
+#: 1ab59a0879b9407b9693fd5f1dde4407
+#, python-brace-format
+msgid ""
+"\n"
+"L^{2020,2021}\n"
+"=\\frac{1}{2}\\{[0-(-1)]+[1-0]\\}=1.\n"
+msgstr ""
+"\n"
+"L^{2020,2021}\n"
+"=\\frac{1}{2}\\{[0-(-1)]+[1-0]\\}=1.\n"
+
+#: ../../chapters/04-productivity/12-luenberger.md:315
+#: 655e1837dfe6415dae0944ae5d72aa5f
+#, python-brace-format
+msgid ""
+"Hospital A remains on its contemporaneous benchmark in both years, so "
+"$EC_L^{2020,2021}=0$. The represented production opportunities become more "
+"favorable by one programme unit at the hospital's scale, so "
+"$TC_L^{2020,2021}=1$. The account is $1=0+1$: with the same staff bundle, "
+"the hospital delivers one additional batch of 100 treatments, and the "
+"measured change is associated with changed sector opportunities rather than "
+"a smaller contemporaneous operating shortfall."
+msgstr ""
+"医院 A 两年都位于同期标杆上，因此 $EC_L^{2020,2021}=0$。在该医院的经营规模上，所代表的生产机会改善了 1 个方案单位，因此 "
+"$TC_L^{2020,2021}=1$。账户为 $1=0+1$：使用同样的人员组合，医院多提供了 1 批、即 100 "
+"例诊疗；测得变化被归入行业生产机会变化，而不是同期经营缺口缩小。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:322
+#: 2081329db553458e8661260c8974b618
+msgid ""
+"Hospital B receives $L=2$ because the same physical programme unit is "
+"applied to an operation twice as large. This does not mean that B is “twice "
+"as productive” as A. It means that B realizes two additional batches under "
+"an absolute programme measured in treatment batches. If the policy question "
+"concerns proportional rather than absolute change, the analyst needs a "
+"proportional measure or a different, explicitly justified common "
+"normalization. Changing the programme after seeing the result would change "
+"the question, not merely its presentation."
+msgstr ""
+"医院 B 的 $L=2$，因为同一个实际方案单位被用于规模大一倍的经营活动。这不表示 B 的“生产率是 A "
+"的两倍”，而表示在以诊疗批次计量的绝对方案下，B "
+"多实现了两批诊疗。若政策问题关心比例变化而非绝对变化，分析者需要使用比例测度，或者采用另一项有明确依据的共同标准化方案。看到结果后再改变方案，就是改变研究问题，而不只是改变展示方式。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:330
+#: 88dc53a9ea1344d88ae05a253bef5a6b
+msgid ""
+"This interpretation requires all four appraisals to be available under the "
+"same programme and to close the account $L=EC_L+TC_L$. If either condition "
+"fails, there is no productivity conclusion for that transition. The detailed"
+" implementation evidence belongs in the DEAPack Documentation."
+msgstr ""
+"这一解释要求四次评价都能在同一方案下获得，并满足 $L=EC_L+TC_L$。任一条件不成立，就不能对该次转变作出生产率结论。实现细节和验证证据见 "
+"DEAPack Documentation。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:335
+#: 910cd61cd776476b9330107a9e769289
+msgid "Choosing a direction that can support a decision"
+msgstr "选择能够支持决策的方向"
+
+#: ../../chapters/04-productivity/12-luenberger.md:337
+#: 22b2fb053cc24387af042fb8d4fb102c
+msgid ""
+"A defensible direction begins with the purpose of the study. A regulator may"
+" derive it from a stated service obligation. A firm's operating plan may "
+"supply target reductions in labor-hours, energy, and materials together with"
+" desired gains in output. A clinical study may hold resources fixed because "
+"its question concerns attainable service. The direction should use stable "
+"variable definitions and physical units and should be declared before the "
+"resulting rankings are interpreted."
+msgstr "有根据的方向应当从研究目的出发。监管者可以依据明确的服务义务设定方向；企业经营计划可以同时给出工时、能源和材料的削减目标以及期望增加的产出；临床研究若关心可实现服务量，则可以保持资源不变。方向应使用稳定的变量定义和实际单位，并在解释结果排序之前声明。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:344
+#: 9ad46c1887e04ecca5b56463bafbcf7f
+msgid ""
+"Comparability is especially important over time. The same $g$ must give “one"
+" programme unit” the same meaning in all four appraisals. If every "
+"organization receives a different direction proportional to its own current "
+"operation, its indicator is measured in its own private unit; additive "
+"comparisons across organizations and periods then lose their immediate "
+"meaning. Such directions may answer legitimate local questions, but they do "
+"not automatically form the common cardinal account developed in this "
+"chapter."
+msgstr ""
+"跨期可比性尤其重要。同一个 $g$ "
+"必须使“一单位方案”在四次评价中保持同一含义。若每个组织都得到一个与自身当期经营规模成比例的不同方向，其指标就使用各自的私人单位；此时跨组织、跨时期的加法比较不再具有直接含义。这类方向可以回答合理的局部问题，却不会自动形成本章所建立的共同基数账户。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:352
+#: 202ce489f62c4b3d87ff724d8e01eea2
+msgid ""
+"Unit conversion is harmless when the data and the direction are converted "
+"together. Expressing both treatments and the treatment component of $g$ in "
+"individual cases rather than hundreds of cases leaves the underlying "
+"programme unchanged. By contrast, changing only $g$, using a future-expanded"
+" sample to redefine a historical direction, or assigning a new programme to "
+"each period alters the estimand. A useful sensitivity analysis can compare "
+"several substantively defensible common programmes, but each scenario should"
+" retain its own label and unit."
+msgstr ""
+"当数据和方向同时换算时，单位转换不会改变结果。把诊疗量及 $g$ 的诊疗分量同时从“百例”改为“例”，不会改变底层方案。相反，只改变 "
+"$g$、用未来扩展后的样本重新定义历史方向，或为每个时期另设一套方案，都会改变估计对象。敏感性分析可以比较若干在实质上有依据的共同方案，但每种情景必须保留自己的名称和单位。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:360
+#: 86bbfd19629840dfaad6b23a516fe9fe
+msgid ""
+"The direction is not a vector of prices and does not reveal willingness to "
+"trade one resource or service for another. It states a physical operating "
+"commitment. If the research question is about cost, revenue, profit, or "
+"welfare, observed prices and the corresponding economic-efficiency model are"
+" needed. Directional productivity and price-based economic performance are "
+"complementary accounts, not substitutes."
+msgstr "方向不是价格向量，也不会揭示组织愿意用一种资源或服务交换另一种资源或服务的程度。它声明的是一项实际经营承诺。若研究问题涉及成本、收益、利润或福利，就需要观测价格及相应经济效率模型。方向性生产率与价格基础的经济绩效是互补账户，不能相互替代。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:366
+#: b6589621484e4467b0293dfbdd849d82
+msgid "Which change question matches the decision?"
+msgstr "哪一种变化问题与决策相匹配？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:368
+#: d6f0993064b74638990039f02d716991
+msgid ""
+"Several prominent productivity accounts use distance functions. The "
+"practical choice begins with the decision question, not with the model name."
+msgstr "若干重要生产率账户都使用距离函数。实践中的选择应从决策问题出发，而不是从模型名称出发。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: a38207504dd54d5ea4721a3d07827397
+msgid "Decision account"
+msgstr "决策账户"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 16e42d30ceee445f9c3da77938c21c80
+msgid "Question the analysis answers"
+msgstr "分析回答的问题"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: e4e8a52a35be43d2a8c7b39b00495847
+msgid "Reporting form and neutral value"
+msgstr "报告形式与中性值"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 0bcb65ecdd7e49129cee34ea8c85099c
+msgid "Required production comparison"
+msgstr "所需生产比较"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 0f9cb5616dee4628b0b3de710cf0301f
+msgid "Proportional productivity change"
+msgstr "比例生产率变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 931781ae5df94742948539f7e4fb2f21
+msgid ""
+"How did proportional productivity change relative to period-specific "
+"production opportunities?"
+msgstr "相对于各期生产机会，比例生产率如何变化？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: aead26a756d8424c9df092d49903bcbc
+msgid "Multiplicative ratio; no change at 1"
+msgstr "乘法比率；1 表示没有变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 5384bd11bd054baea01ad0c6a6e60cdc
+msgid "Radial input or output comparison"
+msgstr "径向投入或产出比较"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 0014da5af2e14964b2b918a7f2194ffb
+msgid "Change in a declared operating programme"
+msgstr "既定经营方案的变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: dd0a3586c32d468484f1770cf9d64d18
+msgid "How many more units of the programme were realized?"
+msgstr "多实现了多少个方案单位？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: e570ad36ab034202bb6ccf603c50f807
+msgid "Additive indicator; no change at 0"
+msgstr "加法指标；0 表示没有变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 9533cfce291948c685730474db70af98
+msgid "One common input-saving/output-expansion direction"
+msgstr "一个共同的投入节约/产出扩张方向"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 20f6a8bdcd804865b1ba224dc31f3f08
+msgid "Joint desirable-output and residual performance"
+msgstr "合意产出与非合意残余物的联合绩效"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: f70e625f48bc463b8111aab413c7cbde
+msgid ""
+"How did performance change when useful production and undesirable residuals "
+"are modeled jointly?"
+msgstr "把有用生产和非合意残余物联合建模时，绩效如何变化？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 9bdb85bd5f334ceab1275f1f82fc7d93
+msgid "Multiplicative environmental index; no change at 1"
+msgstr "乘法环境指数；1 表示没有变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: c8aee71dc2d74846b160d447d19e4af4
+msgid ""
+"Environmental technology, disposability assumptions, and a pollution-"
+"reduction direction"
+msgstr "环境技术、可处置性假设和污染削减方向"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 425187528e6f4deda7004747eb542a73
+msgid "Complete output--input quantity change"
+msgstr "完整的产出—投入数量变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 4f4800c2f63d4c099bb45d436230e37e
+msgid "Did aggregate output quantity grow faster than aggregate input quantity?"
+msgstr "综合产出数量的增长是否快于综合投入数量？"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: 74329d6ab84b4b16bcbb7a1910730e16
+msgid "Multiplicative complete TFP ratio; no change at 1"
+msgstr "乘法完整 TFP 比率；1 表示没有变化"
+
+#: ../../chapters/04-productivity/12-luenberger.md:287
+#: e49195b8934b4381a559556c5359a97c
+msgid "Output quantity index divided by input quantity index"
+msgstr "产出数量指数除以投入数量指数"
+
+#: ../../chapters/04-productivity/12-luenberger.md:378
+#: 5af841fa79ba41e3aa270f0114de7c10
+#, python-brace-format
+msgid ""
+"The proportional account is developed in the {doc}`Malmquist chapter "
+"<malmquist-productivity-reference-information>`, the joint production-and-"
+"residual account in the {doc}`environmental productivity chapter "
+"<environmental-productivity-ml-common-reference>`, and the complete quantity"
+" account in the {doc}`Hicks--Moorsteen chapter <17-hicks-moorsteen>`."
+msgstr ""
+"比例账户见 {doc}`Malmquist 章节 <malmquist-productivity-reference-"
+"information>`；生产与残余物联合账户见 {doc}`环境生产率章节 <environmental-productivity-ml-"
+"common-reference>`；完整数量账户见 {doc}`Hicks--Moorsteen 章节 <17-hicks-moorsteen>`。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:385
+#: 51b3b987aeaf41e389082a0061bd2a6e
+msgid ""
+"Ordinary Luenberger is not Malmquist written with subtraction signs. It "
+"changes both the unit of measurement and the operating adjustment being "
+"evaluated. It is also not an environmental model merely because the "
+"direction could conceptually include a reduction. Undesirable outputs "
+"require a joint environmental production technology and explicit assumptions"
+" about how desirable production and residual generation are linked. Those "
+"assumptions belong to the environmental productivity family."
+msgstr ""
+"普通 Luenberger 不是把 Malmquist "
+"的乘号改成减号。它既改变计量单位，也改变所评价的经营调整。它也不会仅仅因为方向在概念上可以包含削减项就自动成为环境模型。非合意产出需要联合环境生产技术，并明确规定合意生产与残余物生成如何联系；这些假设属于环境生产率模型族。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:392
+#: b069abe71933468899199220cc393518
+msgid ""
+"Nor is ordinary Luenberger the Hicks--Moorsteen index. Hicks--Moorsteen "
+"constructs a complete quantity account by dividing aggregate output change "
+"by aggregate input change. Ordinary Luenberger reports technical-performance"
+" change along one declared programme. Source-defined hybrid indicators are "
+"not enumerated here: a shared word in their names does not make them aliases"
+" of the four core decision accounts."
+msgstr ""
+"普通 Luenberger 也不是 Hicks--Moorsteen 指数。Hicks--Moorsteen "
+"以综合产出变化除以综合投入变化，构造完整数量账户；普通 Luenberger "
+"则沿一套既定方案报告技术绩效变化。本章不枚举来源特定的混合指标：名称中共享一个词，不会使它们成为四类核心决策账户的别名。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:398
+#: 1d55e2d7c5a84b228eb18c34964753c6
+msgid ""
+"The practical choice follows the decision question. Use ordinary Luenberger "
+"when the organization or policy maker can state a meaningful common "
+"programme in physical units, especially when inputs are to fall while "
+"outputs rise together. Use Malmquist when proportional radial change is the "
+"intended account. Use an environmental measure when undesirable production "
+"is part of the technology, and use a complete quantity index when the claim "
+"concerns total output quantity relative to total input quantity."
+msgstr ""
+"实际选择取决于决策问题。当组织或政策制定者能够用实际单位说明一套有意义的共同方案，特别是希望投入减少与产出增加同时发生时，使用普通 "
+"Luenberger。若目标是比例径向变化，使用 "
+"Malmquist；若技术包含非合意生产，使用环境测度；若结论关心总产出数量相对于总投入数量的变化，使用完整数量指数。"
+
+#: ../../chapters/04-productivity/12-luenberger.md:405
+#: 0994981296f844fcbc4e7a8badc38493
+msgid ""
+"A careful empirical conclusion might therefore read: “Between 2020 and 2021,"
+" Hospital A realized one additional unit of the declared programme of "
+"unchanged staffed capacity and 100 additional treatments. Its "
+"contemporaneous operating shortfall did not change; the measured gain was "
+"allocated to more favorable production opportunities represented by the two "
+"comparison samples.” That statement records what was measured, in what unit,"
+" and relative to which economic opportunities. It does not turn a benchmark "
+"account into a claim about managerial effort or the cause of sector change."
+msgstr ""
+"因此，一项审慎的实证结论可以写成：“2020—2021 年间，医院 A 多实现了 1 个既定方案单位，即在人员配置能力不变的情况下增加 100 "
+"例诊疗。其同期经营缺口没有变化；测得增益被分配给两个比较样本所代表的、更有利的生产机会。”这句话记录了测量对象、计量单位和所依据的经济机会，并没有把相对标杆账户改写成有关管理努力或行业变化成因的断言。"
+

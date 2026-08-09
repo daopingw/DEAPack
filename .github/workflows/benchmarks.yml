@@ -1,0 +1,69 @@
+name: Benchmarks
+
+on:
+  schedule:
+    - cron: "23 3 * * 1"
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tier:
+        description: Frozen workload tier
+        required: true
+        default: release
+        type: choice
+        options:
+          - smoke
+          - release
+
+permissions:
+  contents: read
+
+env:
+  LC_ALL: C
+  LANG: C
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  benchmark-report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install benchmark environment
+        run: python -m pip install -e '.[benchmark]'
+      - name: Resolve workload tier
+        id: tier
+        env:
+          REQUESTED_TIER: ${{ inputs.tier }}
+        run: |
+          if [ -n "$REQUESTED_TIER" ]; then
+            echo "value=$REQUESTED_TIER" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=release" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run frozen benchmark suite
+        run: >-
+          python scripts/run_benchmarks.py
+          --tier "${{ steps.tier.outputs.value }}"
+          --output-dir benchmark-results
+          --require-clean
+      - name: Upload benchmark evidence
+        # Preserve benchmark execution and logs while keeping downloadable
+        # reports inside the protected publication boundary. The former
+        # unconditional policy was `if: always()`; it must not be restored.
+        if: ${{ always() && false }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: deapack-${{ steps.tier.outputs.value }}-benchmark-report
+          path: benchmark-results
+          if-no-files-found: error

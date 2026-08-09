@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "analysis.scale_elasticity.local.radial_vrs",
+  "target": "analysis.returns_to_scale.local.banker_thrall_1992",
+  "type": "requires",
+  "equivalence_level": null,
+  "difference_axes": [
+    "performance",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.same_selected_pareto_efficient_projection",
+      "arguments": {
+        "reference": "matched",
+        "orientation": "matched",
+        "support_interval": "identical"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1057/palgrave.jors.2601741",
+      "doi:10.1016/j.ejor.2016.09.029"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_scale_elasticity.py::test_operator_reuses_local_rts_projection_and_four_solve_kernel"
+    ]
+  }
+}

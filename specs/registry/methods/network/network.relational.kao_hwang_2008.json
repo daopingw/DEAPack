@@ -1,0 +1,365 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "network.relational.kao_hwang_2008",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "network",
+  "title": "Kao--Hwang relational two-stage DEA",
+  "decision_question": "How should overall efficiency and divisional responsibility be related when the first stage produces the intermediate used by the second stage?",
+  "names": {
+    "display": "Kao--Hwang relational two-stage DEA",
+    "historical": [
+      {
+        "label": "Relational two-stage DEA",
+        "spellings": [
+          "Kao-Hwang model"
+        ],
+        "sources": [
+          "doi:10.1016/j.ejor.2006.11.041"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "KaoHwangRelationalDEA",
+      "aliases": [
+        {
+          "symbol": "KaoHwangDEA"
+        }
+      ]
+    },
+    "spellings": [
+      "Kao-Hwang relational model"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "two_stage_system_and_divisional_accountability",
+        "managerial_control": "coordinated_series_process"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.series"
+      ],
+      "fixed": {
+        "kind": "series",
+        "stages": 2,
+        "intermediate_direction": "stage_one_to_stage_two",
+        "intermediate_quantity": "observed_once",
+        "multiplier_policy": "shared",
+        "intensity_policy": "process_specific",
+        "envelopment_balance": "upstream_supply_greater_than_or_equal_to_downstream_requirement"
+      },
+      "constraints": [
+        "condition.network.one_valid_series_link"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "stage_one_resources",
+        "intermediates": "stage_one_output_and_stage_two_input",
+        "final_outputs": "stage_two_desirable_services"
+      },
+      "exposed": [
+        "stage_variable_assignments"
+      ],
+      "constraints": [
+        "domain.relational.valid_ratio_normalizers"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "two_stage_relational",
+        "returns_to_scale": "crs",
+        "multiplier_coupling": "common_intermediate_account"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "relational_dea"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "homogeneous_two_stage_dmus",
+          "membership_rule": "all_series_compatible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "atemporal",
+          "availability_cutoff": "not_applicable",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "relational_ratio_efficiency",
+        "system_stage_identity": "system_equals_stage_one_times_stage_two",
+        "normalization": "source_defined"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "common_multiplier_account",
+        "intermediate_multiplier": "shared_across_stage_boundary"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_system_and_stage_appraisal",
+        "strong_slack_completion": false
+      },
+      "defaults": {
+        "alternate_stage_score_policy": "maximize_stage_one_given_system_optimum",
+        "projection_policy": "lim_zhu_source_midpoint"
+      },
+      "exposed": [
+        "alternate_stage_score_policy",
+        "projection_policy"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "system_stage_multiplicative_decomposition"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 0,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "handbook_core"
+  },
+  "implementation": {
+    "module": "deapack.network.kao_hwang",
+    "canonical_symbol": "KaoHwangRelationalDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.series"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "sparse_multiplier_compilation",
+      "primal_dual_projection",
+      "secondary_stage_score_ranges",
+      "shared_solver_neutral_lp_certification",
+      "raw_and_published_relational_account_certification",
+      "independent_target_and_link_account_certification",
+      "independent_thresholded_peer_account_certification",
+      "per_observation_atomic_release",
+      "stable_all_failure_result_schema",
+      "independent_solver_and_compilation_accounting"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "system_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.relational.valid_ratio_normalizers"
+          ]
+        }
+      },
+      {
+        "id": "stage_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.source_normalization",
+            "domain.relational.valid_ratio_normalizers"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "system_efficiency",
+      "stage_one_efficiency",
+      "stage_two_efficiency",
+      "stage_score_ranges",
+      "shared_intermediate_multipliers",
+      "process_specific_intensities",
+      "link_target_intervals",
+      "score_valid",
+      "score_status",
+      "decomposition_valid",
+      "decomposition_status",
+      "target_valid",
+      "target_status",
+      "peer_valid",
+      "peer_status",
+      "solver_neutral_lp_optimality_certificate",
+      "raw_relational_account_reconstruction_certificate",
+      "published_relational_account_reconstruction_certificate",
+      "raw_target_and_link_account_certificate",
+      "published_target_and_link_account_certificate",
+      "thresholded_peer_account_reconstruction_certificate",
+      "raw_backend_status_preservation",
+      "phase_reconciled_solver_counts",
+      "zero_additional_certificate_solves",
+      "atomic_system_process_target_peer_release"
+    ],
+    "transformations": [
+      "system_efficiency_equals_stage_one_times_stage_two"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.network.one_valid_series_link",
+        "domain.relational.valid_ratio_normalizers"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "conditional",
+        "rule": "ratio_units_with_corresponding_multiplier_rescaling",
+        "co_transform": [
+          "input_multipliers",
+          "intermediate_multiplier",
+          "output_multipliers"
+        ],
+        "conditions": [
+          "condition.source_normalization"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "certified_by_lim_zhu_envelopment_dual",
+      "efficiency": "relational_frontier_projection_without_strong_slack_completion",
+      "selection": "midpoint_of_componentwise_link_interval",
+      "conditions": [
+        "condition.source_normalization",
+        "condition.successful_projection_certificate",
+        "condition.successful_primal_dual_certificate"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.ejor.2006.11.041"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2014.02.039"
+      },
+      {
+        "role": "implementation",
+        "id": "doi:10.1016/j.ejor.2015.06.050"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "tests/test_kao_hwang.py::test_published_24_insurer_score_oracle_and_product_identity",
+        "tests/test_kao_hwang.py::test_lim_zhu_source_midpoint_projection_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "domain",
+        "product_identity",
+        "stage_nonuniqueness",
+        "two_stage_link_account",
+        "unit_behavior",
+        "shared_solver_neutral_lp_optimality_certificate",
+        "raw_and_published_original_quantity_relational_accounts",
+        "independent_process_multiplication_account",
+        "raw_and_published_target_link_accounts",
+        "thresholded_peer_account_reconstruction",
+        "separate_score_decomposition_target_peer_release_gates",
+        "malicious_optimal_response_rejection",
+        "raw_backend_status_preservation",
+        "per_observation_failure_isolation",
+        "secondary_failure_partial_system_release",
+        "target_failure_partial_score_and_process_release",
+        "stable_all_failure_result_schema",
+        "one_reference_compilation_per_common_population",
+        "phase_reconciled_primary_secondary_projection_solver_counts",
+        "zero_additional_certificate_solves",
+        "benchmark_missing_trust_field_rejection",
+        "benchmark_full_100_dmu_all_release_gate_certification",
+        "benchmark_score_only_1000_dmu_certification_and_count_reconciliation"
+      ],
+      "locators": [
+        "tests/test_kao_hwang.py",
+        "tests/test_kao_hwang_postsolve_certification.py",
+        "tests/test_benchmark_network_relational.py",
+        "tests/test_network_data.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_network_relational.py"
+    ]
+  },
+  "placement": {
+    "book": [
+      {
+        "doc_id": "book.network.core_organizations_links_responsibility",
+        "path": "book/chapters/05-network/network-dea-organizations-links-responsibility.md",
+        "state": "present",
+        "role": "mention"
+      }
+    ],
+    "docs": [
+      {
+        "doc_id": "docs.models.relational_two_stage",
+        "path": "docs/models/kao-hwang-network.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.network",
+        "path": "docs/api/network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

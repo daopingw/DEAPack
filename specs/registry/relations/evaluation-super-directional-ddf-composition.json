@@ -1,0 +1,53 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "evaluation.super.directional.ray_2008",
+  "target": "static.directional_distance",
+  "type": "composes",
+  "equivalence_level": null,
+  "difference_axes": [
+    "data_roles",
+    "technology",
+    "reference",
+    "performance",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.ray_2008.source_ddf_composition",
+      "arguments": {
+        "compiler_reuse": "input_contraction_output_expansion_directional_envelopment_constraints",
+        "direction_policy": "fixed_to_negative_focal_inputs_and_positive_focal_outputs",
+        "returns_to_scale": "vrs_only",
+        "base_reference_membership": "evaluated_row_present_exactly_once",
+        "effective_reference_membership": "evaluated_row_zero_fixed_and_all_other_eligible_rows_retained",
+        "native_distance": "unrestricted_beta",
+        "reported_score": "one_minus_beta",
+        "target_completion": "none_source_phase_one_only",
+        "semantic_equivalence": "forbidden",
+        "non_equivalent_to": [
+          "generic_directional_distance_with_user_selected_direction",
+          "ordinary_self_inclusive_directional_efficiency",
+          "radial_andersen_petersen_super_efficiency",
+          "super_sbm_peer_replacement",
+          "undesirable_output_directional_distance"
+        ]
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1057/palgrave.jors.2602392",
+      "doi:10.1006/jeth.1996.0096"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "objective_or_exact_value_transform",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": ["tests/test_ray_directional_super_efficiency.py"]
+  }
+}

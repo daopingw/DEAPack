@@ -1,0 +1,356 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "static.generalized_distance.chavas_cox",
+  "identifier_role": "method_id",
+  "kind": "family",
+  "component_type": null,
+  "category": "static",
+  "title": "Chavas--Cox generalized distance",
+  "decision_question": "What proportional productivity gap remains when a declared contract allocates adjustment between common resource saving and common desirable-service growth?",
+  "names": {
+    "display": "Chavas--Cox generalized distance",
+    "historical": [
+      {
+        "label": "Generalized distance function",
+        "spellings": [
+          "generalized distance",
+          "Chavas--Cox GDF"
+        ],
+        "sources": [
+          "doi:10.1002/j.2325-8012.1999.tb00248.x"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "GeneralizedDistanceDEA",
+      "aliases": [
+        {
+          "symbol": "ChavasCoxGDF"
+        },
+        {
+          "symbol": "GDF"
+        }
+      ]
+    },
+    "spellings": [
+      "Chavas--Cox generalized-distance DEA",
+      "multiplicative resource--service adjustment path",
+      "GDF efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_resource_service_benchmarking",
+        "managerial_plan": "allocate_a_common_proportional_productivity_adjustment_between_resources_and_services"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "controllable_resources",
+        "outputs": "desirable_services",
+        "bad_outputs": "excluded",
+        "sign_domain": "nonnegative_with_positive_observation_aggregates"
+      },
+      "constraints": [
+        "domain.gdf.nonnegative_positive_aggregates",
+        "condition.gdf.finite_path_support"
+      ]
+    },
+    "technology": {
+      "components": [
+        "technology.convex_envelopment"
+      ],
+      "fixed": {
+        "disposal": "ordinary_free",
+        "supported_returns_to_scale": [
+          "crs",
+          "vrs"
+        ]
+      },
+      "defaults": {
+        "returns_to_scale": "crs"
+      },
+      "exposed": [
+        "returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_sample",
+          "membership_rule": "all_eligible",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "chavas_cox_generalized_distance",
+        "path_rule": "delta_to_one_minus_alpha_times_inputs_and_delta_to_minus_alpha_times_outputs",
+        "native_score": "delta",
+        "score_direction": "higher_is_better",
+        "alpha_domain": "closed_unit_interval"
+      },
+      "defaults": {
+        "alpha": 0.5
+      },
+      "exposed": [
+        "alpha"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none",
+        "alpha_interpretation": "performance_contract_balance_not_a_market_price"
+      }
+    },
+    "evaluation_protocol": {
+      "components": [
+        "evaluation.target_completion.pareto_koopmans"
+      ],
+      "fixed": {
+        "kind": "self_appraisal",
+        "score_stage": "exact_radial_reduction_or_certified_monotone_lp_feasibility_search",
+        "target_completion_scale_anchor": "fixed_path_target"
+      },
+      "defaults": {
+        "secondary_objective": "maximize_row_scaled_slacks"
+      },
+      "exposed": [
+        "compute_slacks"
+      ],
+      "constraints": [
+        "condition.pareto_koopmans.ordinary_all_discretionary_domain",
+        "condition.pareto_koopmans.fixed_primary_path_target",
+        "condition.pareto_koopmans.positive_row_scale_weights",
+        "condition.pareto_koopmans.gdf_finite_nonnegative_fixed_path_target",
+        "condition.pareto_koopmans.gdf_fixed_path_target_scale_anchor"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "endpoint_equivalences": {
+          "alpha_zero": "input_radial_theta",
+          "alpha_one": "reciprocal_output_radial_phi"
+        },
+        "crs_equivalence": "input_radial_theta_for_every_alpha",
+        "conditional_reciprocal_path_algebra": "if_a_source_native_h_uses_the_matched_reciprocal_joint_adjustment_then_delta_equals_h_squared_at_alpha_one_half",
+        "standard_hyperbolic_public_leaf": "deferred_to_next_version"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.generalized_distance",
+    "canonical_symbol": "GeneralizedDistanceDEA",
+    "registry_dependencies": [
+      "evaluation.target_completion.pareto_koopmans",
+      "estimator.full.dea",
+      "graph.black_box",
+      "technology.convex_envelopment"
+    ],
+    "backend_capabilities": [
+      "certified_monotone_lp_feasibility_bisection",
+      "exact_crs_radial_reduction",
+      "exact_endpoint_radial_reductions",
+      "row_scaled_slack_completion",
+      "sparse_linear_programming"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "delta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.gdf.certified_score",
+            "condition.self_inclusive_reference"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "resource_commitment",
+      "service_commitment",
+      "resource_saving_percentage",
+      "service_growth_percentage",
+      "path_target",
+      "phase_one_reference_activity",
+      "slack_completed_target",
+      "input_slacks",
+      "output_slacks",
+      "peers",
+      "search_certificate"
+    ],
+    "transformations": [
+      "alpha_zero_delta_equals_input_radial_theta",
+      "alpha_one_delta_equals_inverse_output_radial_phi",
+      "conditional_matched_reciprocal_path_value_h_equals_square_root_of_delta_at_alpha_one_half_not_a_public_hyperbolic_method_claim"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.gdf.nonnegative_positive_aggregates",
+        "condition.gdf.alpha_in_closed_unit_interval",
+        "condition.gdf.crs_or_vrs",
+        "condition.gdf.finite_path_support"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_factor_rescaling",
+        "co_transform": [
+          "path_targets",
+          "phase_one_reference_activities",
+          "slack_completed_targets",
+          "slacks"
+        ],
+        "conditions": [
+          "condition.same_reference_and_alpha"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "the_certified_path_point_is_attainable_after_a_successful_score_stage_and_the_reported_strong_target_is_attainable_after_successful_slack_completion",
+      "efficiency": "gdf_score_efficiency_is_distinct_from_pareto_koopmans_efficiency_which_requires_successful_slack_completion",
+      "selection": "the_score_is_certified_to_the_declared_search_tolerance_but_peer_activities_and_strong_targets_may_be_solver_selected",
+      "conditions": [
+        "condition.gdf.certified_score",
+        "condition.optimal_primary_solve"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1002/j.2325-8012.1999.tb00248.x"
+      },
+      {
+        "role": "implementation",
+        "id": "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1007/s10108-006-9004-0"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.1016/0304-4076(85)90133-2"
+      }
+    ],
+    "oracle": {
+      "status": "cross_implemented",
+      "locators": [
+        "https://github.com/javierbarbero/DataEnvelopmentAnalysis.jl/blob/ca17532cd4de4e47d159cee563c05d9a0db6a61c/test/deaprofitability.jl#L4-L45",
+        "tests/test_generalized_distance.py::test_crs_alpha_half_matches_the_fixed_five_dmu_oracle",
+        "tests/test_generalized_distance.py::test_vrs_alpha_half_matches_the_fixed_five_dmu_oracle"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "alias_identity",
+        "crs_alpha_invariance",
+        "cross_implementation_oracle",
+        "endpoint_radial_equivalence",
+        "external_reference_and_failure_policy",
+        "metadata_contract",
+        "pareto_koopmans_phase_two_composition",
+        "row_order_invariance",
+        "score_and_target_stage_separation",
+        "structural_zero_domain",
+        "target_completion_scale_anchor",
+        "unit_invariance",
+        "vrs_search_certification"
+      ],
+      "locators": [
+        "tests/test_generalized_distance.py",
+        "tests/test_target_completion_protocol.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_generalized_distance.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.generalized_distance",
+        "path": "docs/models/generalized-distance.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

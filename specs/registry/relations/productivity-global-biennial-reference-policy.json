@@ -1,0 +1,43 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "productivity.global_malmquist",
+  "target": "productivity.biennial_malmquist",
+  "type": "contrasts_with",
+  "equivalence_level": "C",
+  "difference_axes": [
+    "technology",
+    "reference",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.malmquist.common_reference_policy_comparison",
+      "arguments": {
+        "shared_family": "radial_common_reference_malmquist_productivity_change",
+        "shared_transition_protocol": "matched_adjacent_period_identifiers",
+        "source_information_horizon": "entire_declared_sample_vintage",
+        "target_information_horizon": "exactly_the_two_transition_periods",
+        "source_historical_revision": "all_global_distances_recomputed_when_sample_vintage_changes",
+        "target_historical_revision": "closed_pair_unchanged_when_later_periods_are_appended",
+        "same_reference_policy_claim": "forbidden",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "primary_checked",
+    "sources": [
+      "doi:10.1016/j.econlet.2005.02.013",
+      "doi:10.1016/j.seps.2010.09.001"
+    ],
+    "proof_obligations": [
+      "feasible_set",
+      "parameter_domain",
+      "regression_test"
+    ],
+    "tests": [
+      "tests/test_method_ontology.py::test_productivity_publication_scope_and_reference_policy_relations"
+    ]
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "valuation.weight_restriction.cone_ratio.polyhedral_crs.charnes_etal_1990",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "valuation",
+  "title": "Charnes--Cooper--Huang--Sun polyhedral cone-ratio DEA",
+  "decision_question": "Which organizations retain favourable input--output performance when their self-selected valuations must belong to declared finite polyhedral input and output cones?",
+  "names": {
+    "display": "Charnes--Cooper--Huang--Sun polyhedral cone-ratio DEA",
+    "historical": [
+      {
+        "label": "Polyhedral cone-ratio DEA",
+        "spellings": [
+          "cone-ratio CCR",
+          "polyhedral cone-ratio model"
+        ],
+        "sources": [
+          "doi:10.1016/0304-4076(90)90048-X"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "PolyhedralConeRatioDEA",
+      "aliases": []
+    },
+    "spellings": [
+      "finite sum-form cone-ratio DEA",
+      "input-oriented CRS polyhedral cone-ratio DEA"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "valuation_restricted_operating_performance_self_appraisal"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "black_box"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "ordinary_nonnegative_resources",
+        "outputs": "desirable_nonnegative_services",
+        "bad_outputs": "excluded",
+        "time_structure": "one_cross_section"
+      },
+      "constraints": [
+        "domain.cone_ratio.nonnegative_quantities",
+        "domain.cone_ratio.strictly_positive_transformed_accounts"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "returns_to_scale": "crs",
+        "dominance": "declared_polyhedral_cone_order",
+        "convexity_equation": "absent"
+      }
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global",
+        "comparison_population": {
+          "scope": "declared_cross_section",
+          "membership_rule": "all_observations",
+          "self_membership": "required"
+        },
+        "temporal_information_set": {
+          "policy": "single_cross_section",
+          "availability_cutoff": "declared_validity_period",
+          "vintage_required": true,
+          "historical_revision": "not_applicable"
+        }
+      }
+    },
+    "performance": {
+      "fixed": {
+        "family": "cone_ratio_radial_efficiency",
+        "orientation": "input",
+        "native_score": "theta",
+        "score_one_status": "measure_efficiency_not_source_interior_efficiency"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "polyhedral_cone_ratio",
+        "input_cone": "finite_nonnegative_sum_form_A_transpose_alpha",
+        "output_cone": "finite_nonnegative_sum_form_B_transpose_gamma",
+        "generator_provenance": "required",
+        "automatic_generator_elicitation": "excluded",
+        "half_space_conversion": "excluded"
+      },
+      "exposed": [
+        "input_generators",
+        "output_generators",
+        "restriction_provenance"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "self_appraisal",
+        "primary_program": "one_input_oriented_crs_envelopment_lp_per_organization",
+        "ordinary_slack_completion": "absent",
+        "peer_selection": "solver_selected"
+      }
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P1",
+    "release_tier": 2,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.valuation.weight_restriction.cone_ratio.polyhedral_crs",
+    "canonical_symbol": "PolyhedralConeRatioDEA",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "solver_marginal_multiplier_reconstruction",
+      "solver_neutral_primal_certificate",
+      "single_reference_compilation"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "theta",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.cone_ratio.strictly_positive_transformed_accounts"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "native_theta",
+      "measure_efficiency_status",
+      "source_interior_efficiency_unknown",
+      "solver_selected_peer_intensities",
+      "original_coordinate_radial_account",
+      "original_coordinate_peer_composites_not_targets",
+      "transformed_input_cone_residuals",
+      "transformed_output_cone_residuals",
+      "generator_coefficients",
+      "original_coordinate_supporting_multipliers",
+      "layered_primal_dual_economic_validity",
+      "restriction_provenance_fingerprint"
+    ],
+    "transformations": [
+      "input_multiplier_equals_A_transpose_alpha",
+      "output_multiplier_equals_B_transpose_gamma"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.cone_ratio.nonnegative_quantities",
+        "domain.cone_ratio.strictly_positive_transformed_accounts"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "positive_diagonal_quantity_recoding_with_covariant_A_and_B_generator_updates",
+        "co_transform": [
+          "input_generators",
+          "output_generators",
+          "original_coordinate_composites",
+          "original_coordinate_multipliers"
+        ],
+        "conditions": [
+          "condition.cone_ratio.a_tilde_equals_a_c_inverse",
+          "condition.cone_ratio.b_tilde_equals_b_d_inverse"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "only_transformed_cone_inequalities_are_certified",
+      "efficiency": "theta_one_is_measure_efficiency_only_and_source_interior_efficiency_is_unknown",
+      "selection": "peer_and_dual_accounts_are_solver_selected_and_alternate_optima_may_exist",
+      "conditions": [
+        "condition.certified_cone_ratio_primal_account",
+        "condition.dual_claims_require_solver_marginals"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1080/00207728908910197"
+      },
+      {
+        "role": "defining",
+        "id": "doi:10.1016/0304-4076(90)90048-X"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.1080/00207729108910773"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "specs/source_protocols/charnes_cooper_huang_sun_1990_polyhedral_cone_ratio.md",
+        "specs/oracles/charnes_cooper_huang_sun_1990_cone_ratio.md",
+        "tests/test_polyhedral_cone_ratio_source_oracle.py::test_example_two_independent_multiplier_oracle_reproduces_source_values",
+        "tests/test_polyhedral_cone_ratio.py::test_public_scores_match_independently_compiled_multiplier_form"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "published_example_two",
+        "independent_multiplier_envelopment_cross_form",
+        "identity_cone_ccr_reduction",
+        "unit_covariance",
+        "malformed_generator_failure",
+        "strict_transformed_positivity",
+        "solver_tamper_failure",
+        "missing_dual_layering",
+        "provenance_fingerprint",
+        "one_lp_per_organization"
+      ],
+      "locators": [
+        "tests/test_polyhedral_cone_ratio.py",
+        "tests/test_polyhedral_cone_ratio_source_oracle.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_polyhedral_cone_ratio.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.polyhedral_cone_ratio",
+        "path": "docs/models/polyhedral-cone-ratio.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.valuation",
+        "path": "docs/api/valuation.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

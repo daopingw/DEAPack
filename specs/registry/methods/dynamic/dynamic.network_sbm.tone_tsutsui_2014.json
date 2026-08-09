@@ -1,0 +1,592 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "dynamic.network_sbm.tone_tsutsui_2014",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "dynamic",
+  "title": "Tone--Tsutsui dynamic network SBM",
+  "decision_question": "How well does a multi-process organization perform over a planning horizon when managers jointly coordinate internal handoffs and beneficial, harmful, discretionary, or fixed state accounts?",
+  "names": {
+    "display": "Tone--Tsutsui dynamic network SBM",
+    "historical": [
+      {
+        "label": "Dynamic network slacks-based measure",
+        "spellings": [
+          "dynamic network SBM",
+          "DN-SBM"
+        ],
+        "sources": [
+          "doi:10.1016/j.omega.2013.04.002"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ToneTsutsuiDynamicNetworkSBM",
+      "aliases": [
+        {
+          "symbol": "DynamicNetworkSBM"
+        }
+      ]
+    },
+    "spellings": [
+      "Tone-Tsutsui dynamic network SBM"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_intertemporal_multi_process_performance",
+        "managerial_unit": "complete_organization_trajectory"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.dynamic_network"
+      ],
+      "fixed": {
+        "kind": "time_expanded_process_network",
+        "within_period_links": true,
+        "adjacent_period_carryovers": true,
+        "period_process_plans_solved_jointly": true
+      },
+      "exposed": [
+        "processes",
+        "links",
+        "link_kinds",
+        "carryover_roles",
+        "period_order"
+      ],
+      "constraints": [
+        "condition.dynamic.complete_balanced_trajectory",
+        "condition.dynamic_network.same_reference_membership_every_period_process"
+      ]
+    },
+    "data_roles": {
+      "fixed": {
+        "external_inputs": "process_resources",
+        "external_outputs": "process_services",
+        "free_links": "jointly_coordinated_unscored_handoffs",
+        "fixed_links": "observed_handoffs_reproduced_at_both_endpoints",
+        "as_input_links": "recipient_process_resource_accounts",
+        "as_output_links": "supplier_process_service_accounts",
+        "good_carryovers": "future_capacity_or_benefit",
+        "bad_carryovers": "future_burden_or_liability",
+        "free_carryovers": "replannable_unscored_state_accounts",
+        "fixed_carryovers": "observed_state_commitments"
+      },
+      "exposed": [
+        "process_variable_assignments",
+        "link_account_assignments",
+        "carryover_assignments"
+      ],
+      "constraints": [
+        "domain.dynamic_network_sbm.strictly_positive_observed_accounts"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "dynamic_carryover_portfolio_network_envelopment",
+        "process_period_specific_intensities": true,
+        "free_link_rule": "source_target_continuity",
+        "fixed_link_rule": "both_endpoints_reproduce_observation",
+        "as_input_rule": "recipient_balance_plus_source_target_continuity",
+        "as_output_rule": "supplier_balance_plus_source_target_continuity",
+        "all_link_endpoint_continuity": true,
+        "carryover_continuity": "Z_t_lambda_t_k_equals_Z_t_lambda_t_plus_1_k",
+        "boundary_policy": "tone_tsutsui_2014_core",
+        "equation_source_scope": "published_article_with_named_terminal_resolution",
+        "published_equations_audited": true,
+        "published_terminal_indexing_consistent": false,
+        "terminal_resolution": "T_observed_accounts_T_minus_1_continuity",
+        "terminal_observed_account": true,
+        "continuity_periods": "T_minus_1"
+      },
+      "defaults": {
+        "returns_to_scale": "vrs_for_every_process"
+      },
+      "exposed": [
+        "returns_to_scale_by_process"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "dynamic_network_dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "global_complete_trajectory_cohort",
+        "comparison_population": {
+          "scope": "complete_graph_compatible_trajectories",
+          "membership_rule": "same_membership_every_period_and_process",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "joint_full_horizon",
+          "availability_cutoff": "declared_horizon_end",
+          "vintage_required": true,
+          "historical_revision": "fixed_input_dataset"
+        }
+      },
+      "exposed": [
+        "comparison_population"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "dynamic_network_slacks_based_measure",
+        "input_account": "external_inputs_plus_recipient_as_input_links_plus_bad_carryovers",
+        "output_account": "external_outputs_plus_supplier_as_output_links_plus_good_carryovers",
+        "unscored_accounts": "free_and_fixed_links_and_carryovers",
+        "aggregation": "period_and_division_weighted_accounts",
+        "source_optional_objective_extension": "not_implemented_free_link_and_free_carryover_deviations",
+        "unsupported_source_extensions": [
+          "initial_boundary_condition",
+          "terminal_boundary_condition",
+          "published_terminal_indexing_conflict_requires_named_policy",
+          "free_link_and_free_carryover_objective_extension",
+          "source_reverse_chronological_period_priority",
+          "dynamic_malmquist_productivity_operator"
+        ]
+      },
+      "defaults": {
+        "orientation": "non_oriented"
+      },
+      "exposed": [
+        "orientation"
+      ]
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "exogenous_relative_importance_weights",
+        "weight_domain": "nonnegative_each_group_with_at_least_one_positive",
+        "normalization": "period_weights_and_division_weights_each_sum_to_one",
+        "within_account_item_weights": "source_equal"
+      },
+      "exposed": [
+        "period_weights",
+        "division_weights"
+      ]
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "joint_horizon_process_appraisal",
+        "subsystem_accounts": "conditional_components_of_one_joint_optimum"
+      },
+      "defaults": {
+        "alternate_target_policy": "solver_selected"
+      },
+      "exposed": [
+        "alternate_target_policy"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "joint_system_period_process_and_period_process_accounts"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.dynamic_network.tone_tsutsui_sbm",
+    "canonical_symbol": "ToneTsutsuiDynamicNetworkSBM",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.dynamic_network"
+    ],
+    "backend_capabilities": [
+      "linear_programming",
+      "charnes_cooper_transformation",
+      "sparse_block_linear_programming",
+      "compiled_trajectory_reference_reuse",
+      "process_period_specific_intensities",
+      "four_link_account_kinds",
+      "four_carryover_account_kinds",
+      "process_specific_crs_or_vrs",
+      "solver_neutral_lp_optimality_certification",
+      "dynamic_network_economic_reconstruction_certification",
+      "atomic_fail_closed_semantic_result_release",
+      "one_primary_solve_per_trajectory_with_zero_certificate_solves"
+    ],
+    "default_backend": "scipy-highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "overall_dynamic_network_sbm_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.dynamic_network_sbm.strictly_positive_observed_accounts",
+            "condition.dynamic_network_sbm.valid_nonnegative_weights"
+          ]
+        }
+      },
+      {
+        "id": "conditional_period_process_dynamic_network_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "condition.dynamic_network_sbm.solver_selected_decomposition"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "orientation",
+      "process_returns_to_scale",
+      "overall_returns_to_scale_identification",
+      "period_weights",
+      "division_weights",
+      "system_efficiency",
+      "period_accounts",
+      "process_accounts",
+      "period_process_accounts",
+      "scored_slacks",
+      "process_period_reference_intensities",
+      "process_targets",
+      "within_period_link_accounts",
+      "carryover_accounts",
+      "balance_and_continuity_residuals",
+      "alternate_optimum_diagnostics",
+      "boundary_source_qualification",
+      "score_valid",
+      "score_status",
+      "semantic_solver_status",
+      "backend_and_raw_solver_status",
+      "solver_neutral_lp_optimality_certificate",
+      "dynamic_network_account_reconstruction_certificate",
+      "finite_strictly_positive_transform_scale_without_tolerance_cutoff",
+      "atomic_fail_closed_result_release",
+      "no_dual_release_before_all_certificates",
+      "solver_calls_equal_assessed_trajectories",
+      "zero_additional_and_certificate_solver_calls"
+    ],
+    "transformations": [
+      "charnes_cooper_linearization_for_nonoriented",
+      "reciprocal_output_efficiency_reporting"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "condition.dynamic.complete_balanced_trajectory",
+        "condition.dynamic_network.same_reference_membership_every_period_process",
+        "domain.dynamic_network_sbm.strictly_positive_observed_accounts",
+        "condition.dynamic_network_sbm.valid_nonnegative_weights"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_observed_account_variable",
+        "co_transform": [],
+        "conditions": [
+          "domain.dynamic_network_sbm.strictly_positive_observed_accounts",
+          "condition.dynamic_network_sbm.fixed_dimensionless_relative_weights"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "lp_and_economic_postsolve_certified_joint_dynamic_network_projection_with_named_terminal_resolution",
+      "efficiency": "postsolve_certified_optimal_score_for_the_implemented_base_account_with_named_terminal_resolution_and_claim_scoped_independent_joint_crs_oracle",
+      "selection": "period_process_scores_slacks_targets_and_intensities_may_depend_on_the_solver_selected_joint_optimum",
+      "conditions": [
+        "condition.dynamic_network.free_link_has_endpoint_continuity_without_observed_endpoint_balance",
+        "condition.dynamic_network.fixed_links_reproduce_both_observed_endpoints",
+        "condition.dynamic_network.as_input_recipient_account_plus_endpoint_continuity",
+        "condition.dynamic_network.as_output_supplier_account_plus_endpoint_continuity",
+        "condition.dynamic.same_z_t_continuity",
+        "condition.valid_charnes_cooper_normalization_when_nonoriented",
+        "condition.dynamic_network_sbm.finite_strictly_positive_transform_scale",
+        "condition.dynamic_network_sbm.atomic_release_after_lp_and_economic_certification",
+        "condition.dynamic_network.published_terminal_indexing_conflict_named_resolution"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.omega.2013.04.002"
+      },
+      {
+        "role": "implementation",
+        "id": "url:https://www.grips.ac.jp/cms/wp-content/uploads/2013/03/DEA_Chapter1.pdf"
+      },
+      {
+        "role": "equivalence",
+        "id": "doi:10.24545/00000978"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/tone-tsutsui-2014-dynamic-network-sbm-joint-analytical.md",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_independent_source_compiler_cannot_reuse_production_helpers",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_exact_joint_source_form_has_independent_primal_dual_certificate",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_link_and_carryover_constraints_are_jointly_discriminating",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_public_crs_nonoriented_accounts_match_independent_joint_oracle"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/tone-tsutsui-2014-dynamic-network-sbm-joint-analytical.md",
+        "public_api_test_locator": "tests/test_dynamic_network_sbm_independent_oracle.py::test_public_crs_nonoriented_accounts_match_independent_joint_oracle",
+        "claims": [
+          {
+            "claim_id": "dynamic.network_sbm.tone_tsutsui_2014.joint_crs_exact_account",
+            "evidence_kind": "exact_primal_dual",
+            "test_locators": [
+              "tests/test_dynamic_network_sbm_independent_oracle.py::test_independent_source_compiler_cannot_reuse_production_helpers",
+              "tests/test_dynamic_network_sbm_independent_oracle.py::test_exact_joint_source_form_has_independent_primal_dual_certificate",
+              "tests/test_dynamic_network_sbm_independent_oracle.py::test_public_crs_nonoriented_accounts_match_independent_joint_oracle"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "joint_full_horizon_base_account"
+              ],
+              "network_structure": [
+                "two_process_one_as_input_link_two_period_two_good_carryovers"
+              ],
+              "valuation_policy": [
+                "equal_period_and_division_weights_with_source_equal_item_weights"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "dynamic.network_sbm.tone_tsutsui_2014.fixture_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "system_efficiency": "2/3",
+                    "input_account": "2/3",
+                    "output_expansion_account": 1,
+                    "handoff_targets": "1;3",
+                    "carryover_transition_targets": "supplier:1;recipient:1",
+                    "component_reconstruction_residual": 0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "system_efficiency",
+              "input_account",
+              "output_expansion_account",
+              "process_period_reference_intensities",
+              "within_period_link_targets",
+              "carryover_transition_targets",
+              "period_process_efficiency_contributions",
+              "objective_reconstruction"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "intermediate",
+                "carry_over"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "dynamic.network_sbm.tone_tsutsui_2014.joint_continuity_discrimination",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_dynamic_network_sbm_independent_oracle.py::test_link_and_carryover_constraints_are_jointly_discriminating"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs"
+              ],
+              "evaluation_protocol": [
+                "diagnostic_continuity_row_relaxations_not_public_variants"
+              ],
+              "network_structure": [
+                "two_process_one_as_input_link_two_period_two_good_carryovers"
+              ],
+              "valuation_policy": [
+                "equal_period_and_division_weights_with_source_equal_item_weights"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "dynamic.network_sbm.tone_tsutsui_2014.fixture_o_relaxations",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "full_joint_score": "2/3",
+                    "without_link_continuity": "1/2",
+                    "without_carryover_continuity": "16/27",
+                    "without_both_continuities": "8/17"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "joint_source_form_score",
+              "link_continuity_value_restriction",
+              "carryover_continuity_value_restriction"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "intermediate",
+                "carry_over"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "all_three_orientations",
+        "global_and_process_specific_crs_vrs",
+        "nonnegative_period_and_division_weights",
+        "all_four_link_and_carryover_roles",
+        "as_input_recipient_and_as_output_supplier_ownership_with_endpoint_continuity",
+        "system_component_and_objective_reconstruction",
+        "balance_link_and_carryover_residuals",
+        "single_process_dynamic_sbm_exact_reduction",
+        "single_period_network_sbm_exact_reduction",
+        "sparse_compile_once_and_one_primary_solve_per_dmu",
+        "failure_and_invalid_domain_contracts",
+        "public_alias_catalog_and_registry_metadata",
+        "shared_solver_neutral_primal_dual_bound_kkt_certificate",
+        "objective_tamper_and_forged_primal_or_tau_rejection",
+        "dynamic_network_score_target_link_carryover_and_component_reconstruction_certificate",
+        "semantic_numerical_error_for_rejected_backend_optimum",
+        "backend_and_raw_solver_status_preserved",
+        "failed_backend_stale_marginals_cannot_leak_duals",
+        "semantic_subtables_withheld_for_uncertified_solution",
+        "forged_nonpositive_tau_rejected_without_global_exception",
+        "complete_solver_call_and_zero_extra_solve_contract",
+        "independent_source_compiler_ast_and_runtime_dependency_guard",
+        "independent_joint_two_process_two_period_dense_source_programme",
+        "exact_rational_joint_primal_dual_certificate",
+        "exact_rational_relaxation_primal_witnesses",
+        "joint_link_and_carryover_continuity_discrimination",
+        "public_joint_score_target_continuity_and_component_reconstruction_oracle"
+      ],
+      "locators": [
+        "tests/test_dynamic_network_sbm_independent_oracle.py",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_independent_source_compiler_cannot_reuse_production_helpers",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_exact_joint_source_form_has_independent_primal_dual_certificate",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_link_and_carryover_constraints_are_jointly_discriminating",
+        "tests/test_dynamic_network_sbm_independent_oracle.py::test_public_crs_nonoriented_accounts_match_independent_joint_oracle",
+        "tests/test_dynamic_network_sbm_project_case.py",
+        "tests/test_dynamic_network_sbm_compiler.py",
+        "tests/test_dynamic_network_foundations.py",
+        "tests/test_dynamic_network_sbm_project_case.py::test_uncertified_optimal_backend_fails_closed_atomically",
+        "tests/test_dynamic_network_sbm_project_case.py::test_failed_backend_with_stale_marginals_cannot_leak_duals",
+        "tests/test_dynamic_network_sbm_project_case.py::test_failed_economic_reconstruction_is_atomic",
+        "tests/test_dynamic_network_sbm_project_case.py::test_fit_compiles_once_and_solves_once_per_dmu",
+        "tests/test_lp_certificates.py",
+        "tests/test_registry_metadata.py",
+        "tests/test_catalog.py"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_dynamic_network_sbm.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.dynamic_network_sbm",
+        "path": "docs/models/tone-tsutsui-dynamic-network-sbm.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.dynamic_network",
+        "path": "docs/api/dynamic-network.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

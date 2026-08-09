@@ -1,0 +1,337 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "environmental.by_production.fgl",
+  "identifier_role": "method_id",
+  "kind": "preset",
+  "component_type": null,
+  "category": "environmental",
+  "title": "Modified Färe--Grosskopf--Lovell efficiency under by-production",
+  "decision_question": "How much of the service-production and residual-generation performance demonstrated in two separate by-production accounts does an organization currently realize when the accounts receive equal weight?",
+  "names": {
+    "display": "Modified Färe--Grosskopf--Lovell efficiency under by-production",
+    "historical": [
+      {
+        "label": "Färe--Grosskopf--Lovell efficiency under by-production",
+        "spellings": [
+          "FGL by-production index",
+          "BP-FGL"
+        ],
+        "sources": [
+          "doi:10.1016/j.jeem.2012.02.005"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "ByProductionFareGrosskopfLovellDEA",
+      "aliases": [
+        {
+          "symbol": "ByProductionFGL"
+        }
+      ]
+    },
+    "spellings": [
+      "by-production FGL",
+      "output-oriented BP-FGL efficiency"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "joint_production_and_residual_generation_appraisal",
+        "managerial_plan": "nonradial_productive_and_environmental_component_improvement"
+      }
+    },
+    "graph": {
+      "fixed": {
+        "kind": "by_production",
+        "subtechnologies": [
+          "intended_production",
+          "residual_generation"
+        ],
+        "intensity_policy": "separate"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "productive_resources",
+        "polluting_inputs": "declared_residual_generating_resource_subset",
+        "outputs": "strictly_positive_desirable_services",
+        "bad_outputs": "strictly_positive_undesirable_residuals",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "strictly_positive_for_outputs_bads_and_declared_polluting_inputs",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.by_production_fgl.declared_polluting_inputs",
+        "domain.by_production_fgl.strictly_positive_outputs_and_bads",
+        "domain.by_production_fgl.strictly_positive_polluting_inputs",
+        "domain.by_production.nonnegative_inputs"
+      ]
+    },
+    "technology": {
+      "components": [
+        "environmental.by_production",
+        "environmental.costly_disposal"
+      ],
+      "fixed": {
+        "family": "intersection_of_intended_and_residual_subtechnologies",
+        "intended_disposal": "ordinary_free",
+        "residual_disposal": "costly",
+        "component_intensities": "independent"
+      },
+      "defaults": {
+        "intended_returns_to_scale": "crs",
+        "residual_returns_to_scale": "crs"
+      },
+      "exposed": [
+        "intended_returns_to_scale",
+        "residual_returns_to_scale"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "componentwise_dea_envelopment"
+      }
+    },
+    "reference": {
+      "defaults": {
+        "kind": "auto",
+        "comparison_population": {
+          "scope": "eligible_by_production_sample",
+          "membership_rule": "same_population_for_both_subtechnologies",
+          "self_membership": "allowed"
+        },
+        "temporal_information_set": {
+          "policy": "derived_from_reference_kind",
+          "availability_cutoff": "declared_by_reference",
+          "vintage_required": true,
+          "historical_revision": "policy_dependent"
+        }
+      },
+      "exposed": [
+        "kind",
+        "comparison_population",
+        "temporal_information_set"
+      ]
+    },
+    "performance": {
+      "fixed": {
+        "family": "fare_grosskopf_lovell_nonradial",
+        "orientation": "output",
+        "source_profile": "murty_russell_levkoff_2012_eq_4_6_4_8_5_9_5_10",
+        "productive_component": "mean_reciprocal_output_expansion_factors",
+        "environmental_component": "mean_bad_output_contraction_factors",
+        "system_aggregation": "equal_mean_of_two_component_efficiencies"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "equal_component_weights",
+        "productive_weight": 0.5,
+        "environmental_weight": 0.5,
+        "within_component_weights": "equal_by_dimension"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "componentwise_reference_appraisal",
+        "intended_optimizer": "certified_cutting_plane",
+        "residual_optimizer": "exact_linear_program"
+      },
+      "defaults": {
+        "fgl_tolerance": 1e-08,
+        "max_cut_iterations": 100
+      },
+      "exposed": [
+        "fgl_tolerance",
+        "max_cut_iterations"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "direct_model_fit",
+        "decomposition": "productive_and_environmental_efficiency"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public"
+  },
+  "implementation": {
+    "module": "deapack.models.by_production_fgl",
+    "canonical_symbol": "ByProductionFareGrosskopfLovellDEA",
+    "registry_dependencies": [
+      "environmental.by_production",
+      "environmental.costly_disposal",
+      "estimator.full.dea"
+    ],
+    "backend_capabilities": [
+      "certified_cutting_plane_intended_component",
+      "sparse_linear_programming",
+      "optimality_gap_reporting",
+      "returned_incumbent_primal_certification",
+      "shared_reference_compilation"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "fgl_efficiency",
+        "direction": "higher_is_better",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": 1.0,
+          "conditions": [
+            "condition.self_inclusive_reference",
+            "domain.by_production_fgl.strictly_positive_outputs_and_bads",
+            "domain.by_production_fgl.strictly_positive_polluting_inputs"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "productive_efficiency",
+      "environmental_efficiency",
+      "output_expansion_factors",
+      "bad_output_contraction_factors",
+      "separate_component_intensities",
+      "component_targets",
+      "fgl_optimality_gap",
+      "fgl_cut_iterations",
+      "is_fgl_efficient",
+      "solver_status"
+    ],
+    "transformations": [
+      "fgl_efficiency_equals_mean_of_productive_and_environmental_efficiency",
+      "distance_display_equals_one_minus_fgl_efficiency"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.by_production_fgl.declared_polluting_inputs",
+        "domain.by_production_fgl.strictly_positive_outputs_and_bads",
+        "domain.by_production_fgl.strictly_positive_polluting_inputs",
+        "domain.by_production.nonnegative_inputs"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_quantity_columns",
+        "co_transform": [
+          "targets"
+        ],
+        "conditions": [
+          "domain.by_production_fgl.strictly_positive_outputs_and_bads",
+          "domain.by_production_fgl.strictly_positive_polluting_inputs"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each_component_target_is_feasible_in_its_own_by_production_subtechnology",
+      "efficiency": "fgl_score_one_certifies_coordinatewise_output_vector_efficiency_but_not_input_slack_completion_or_pareto_koopmans_efficiency",
+      "selection": "productive_target_is_cutting_plane_selected_and_component_peer_systems_remain_separate",
+      "conditions": [
+        "condition.fgl_optimality_gap_within_tolerance",
+        "condition.residual_component_optimal"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "doi:10.1016/j.jeem.2012.02.005"
+      },
+      {
+        "role": "review",
+        "id": "doi:10.1016/j.ejor.2015.07.024"
+      }
+    ],
+    "oracle": {
+      "status": "reproduced",
+      "locators": [
+        "specs/source_protocols/by_production_fgl_reference.md",
+        "specs/oracles/by-production-fgl-project-case.md",
+        "src/deapack/datasets/_replacement_cases.py::_by_production_component_bottleneck",
+        "tests/test_by_production_fgl_source_oracle.py::test_bp_fgl_matches_independent_compiler_on_project_case"
+      ]
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "component_decomposition",
+        "cutting_plane_certificate",
+        "independent_dense_crs_compiler",
+        "iteration_limit_fail_closed",
+        "by_production_component_bottleneck_oracle",
+        "nonradial_multioutput",
+        "panel_reference_reuse",
+        "positive_domain",
+        "returned_incumbent_certificate",
+        "source_profile_boundary",
+        "target_contract",
+        "unit_invariance"
+      ],
+      "locators": [
+        "tests/test_by_production_fgl.py",
+        "tests/test_by_production_fgl_source_oracle.py",
+        "tests/test_registry_metadata.py::test_environmental_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_environmental_foundations.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.models.by_production_fgl",
+        "path": "docs/models/by-production-fgl.md",
+        "state": "present",
+        "role": "model"
+      },
+      {
+        "doc_id": "docs.api.models",
+        "path": "docs/api/models.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

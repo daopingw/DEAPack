@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store
 
 # Distribution / packaging
 .Python
@@ -34,10 +35,35 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.pytest_cache/
+.ruff_cache/
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
 
-tests/
-test.py
+# Tests are source files and must remain tracked.
+
+# Local environments
+.venv/
+
+# Sphinx output
+/_build/
+book/_build/
+docs/_build/
+_site/
+output/
+*.mo
+
+# RC1 public-source boundary: historical and generated localization material
+# is retained locally but is not part of the GitHub publication surface.
+book/_archive/
+docs/locale/
+specs/archive/
+
+# Local scratch files and source-audit downloads
+tmp/
+specs/reviews/*.tmp
+
+# Generated benchmark reports and raw process logs
+benchmark-results/

@@ -1,0 +1,552 @@
+{
+  "$schema": "../../schema/method-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "id": "productivity.malmquist.decomposition.ray_desli",
+  "identifier_role": "method_id",
+  "kind": "operator",
+  "component_type": null,
+  "category": "productivity",
+  "title": "Ray--Desli output-oriented VRS Malmquist decomposition",
+  "decision_question": "How should one output-oriented CRS Malmquist productivity change be allocated among pure operating-efficiency change, change in the opportunities represented by VRS frontiers, and Ray and Desli's cross-period scale contribution?",
+  "names": {
+    "display": "Ray--Desli VRS Malmquist decomposition",
+    "historical": [
+      {
+        "label": "Ray--Desli decomposition",
+        "spellings": [
+          "Ray and Desli alternative VRS decomposition",
+          "Ray--Desli Malmquist decomposition"
+        ],
+        "sources": [
+          "jstor:2951340"
+        ]
+      }
+    ],
+    "api": {
+      "canonical_symbol": "RayDesliMalmquistProductivityIndex",
+      "aliases": [
+        {
+          "symbol": "RayDesliMalmquist"
+        }
+      ]
+    },
+    "spellings": [
+      "Ray--Desli output Malmquist account",
+      "VRS technical-change and scale-change Malmquist decomposition"
+    ]
+  },
+  "composition": {
+    "context": {
+      "fixed": {
+        "purpose": "source_qualified_productivity_change_decomposition",
+        "time_comparison": "adjacent_periods",
+        "managerial_interpretation": "accounting_allocation_among_benchmark_relative_operating_performance_vrs_opportunity_change_and_scale_contribution"
+      }
+    },
+    "graph": {
+      "components": [
+        "graph.black_box"
+      ],
+      "fixed": {
+        "kind": "repeated_black_box",
+        "temporal_links": "none"
+      }
+    },
+    "data_roles": {
+      "fixed": {
+        "inputs": "one_or_more_strictly_positive_productive_resource_quantities",
+        "outputs": "exactly_one_strictly_positive_desirable_service_or_product_quantity",
+        "bad_outputs": "excluded",
+        "panel_key": "balanced_matched_dmu_and_ordered_period",
+        "representation": {
+          "measurement_scale": "ratio",
+          "sign_domain": "strictly_positive",
+          "divisibility": "continuous",
+          "observation_status": "exact",
+          "controllability": "discretionary"
+        }
+      },
+      "constraints": [
+        "domain.ray_desli.strictly_positive_quantities",
+        "condition.ray_desli.exactly_one_desirable_output",
+        "condition.ray_desli.no_undesirable_outputs",
+        "condition.ray_desli.balanced_adjacent_panel",
+        "domain.productivity.comparable_units_and_roles"
+      ]
+    },
+    "technology": {
+      "fixed": {
+        "family": "matched_contemporaneous_convex_envelopment_technologies",
+        "headline_returns_to_scale": "crs",
+        "auxiliary_returns_to_scale": "vrs",
+        "free_disposal": true
+      },
+      "constraints": [
+        "condition.ray_desli.crs_headline_and_vrs_auxiliary_technologies",
+        "condition.ray_desli.ordinary_desirable_output_technology"
+      ]
+    },
+    "estimator": {
+      "components": [
+        "estimator.full.dea"
+      ],
+      "fixed": {
+        "kind": "full_frontier",
+        "family": "period_specific_dea_envelopment"
+      }
+    },
+    "reference": {
+      "components": [
+        "reference.contemporaneous"
+      ],
+      "fixed": {
+        "kind": "adjacent_contemporaneous_cross_evaluation",
+        "distance_tasks_per_pair": [
+          "crs_base_on_base",
+          "crs_comparison_on_base",
+          "crs_base_on_comparison",
+          "crs_comparison_on_comparison",
+          "vrs_base_on_base",
+          "vrs_comparison_on_base",
+          "vrs_base_on_comparison",
+          "vrs_comparison_on_comparison"
+        ],
+        "headline_reference_symmetry": "geometric_mean_of_two_crs_period_reference_ratios"
+      },
+      "defaults": {
+        "comparison_population": {
+          "scope": "one_contemporaneous_technology_per_period",
+          "membership_rule": "all_eligible_observations_from_the_technology_period",
+          "self_membership": "allowed_for_own_period_tasks"
+        },
+        "temporal_information_set": {
+          "policy": "adjacent_contemporaneous",
+          "availability_cutoff": "each_evaluated_technology_period",
+          "vintage_required": true,
+          "historical_revision": "period_technology_recomputed_when_its_sample_changes"
+        }
+      }
+    },
+    "performance": {
+      "components": [
+        "static.radial"
+      ],
+      "fixed": {
+        "family": "output_radial_farrell_efficiency_form_distance",
+        "orientation": "output",
+        "distance": "one_divided_by_output_expansion_factor",
+        "cross_period_distance": "strictly_positive_when_defined_and_may_exceed_one"
+      }
+    },
+    "valuation": {
+      "fixed": {
+        "kind": "none"
+      }
+    },
+    "evaluation_protocol": {
+      "fixed": {
+        "kind": "balanced_matched_adjacent_period_identifiers",
+        "unbalanced": "raise",
+        "first_period_rows": "omitted_no_predecessor",
+        "distance_solve_cache": "evaluated_row_technology_period_and_returns_to_scale",
+        "partial_failure_policy": "retain_valid_crs_malmquist_and_own_period_vrs_pure_efficiency_when_a_vrs_cross_period_task_is_infeasible"
+      },
+      "constraints": [
+        "condition.ray_desli.vrs_cross_infeasibility_preserves_partial_account",
+        "condition.ray_desli.no_fallback_component_imputation"
+      ]
+    },
+    "analysis": {
+      "fixed": {
+        "kind": "ray_desli_1997_vrs_decomposition",
+        "parent_operator_id": "productivity.malmquist.adjacent_geometric",
+        "productivity_identity": "crs_malmquist_geometric_index",
+        "pure_efficiency_change_identity": "vrs_comparison_on_comparison_divided_by_vrs_base_on_base",
+        "vrs_technical_change_identity": "square_root_of_vrs_base_on_base_divided_by_vrs_base_on_comparison_times_vrs_comparison_on_base_divided_by_vrs_comparison_on_comparison",
+        "scale_efficiency_role_identity": "crs_distance_for_role_divided_by_vrs_distance_for_role",
+        "ray_desli_scale_change_identity": "square_root_of_scale_efficiency_comparison_on_base_divided_by_scale_efficiency_base_on_base_times_scale_efficiency_comparison_on_comparison_divided_by_scale_efficiency_base_on_comparison",
+        "decomposition": "productivity_change_equals_pure_efficiency_change_times_vrs_technical_change_times_ray_desli_scale_change",
+        "component_causality": "not_claimed",
+        "published_application_reproduction": "not_claimed"
+      }
+    },
+    "uncertainty": {
+      "fixed": {
+        "sampling": {
+          "kind": "none"
+        },
+        "data": {
+          "kind": "none"
+        }
+      }
+    }
+  },
+  "status": {
+    "priority": "P0",
+    "release_tier": 1,
+    "implementation": "implemented",
+    "api": "public",
+    "publication_scope": "documentation_only"
+  },
+  "implementation": {
+    "module": "deapack.analysis.productivity",
+    "canonical_symbol": "RayDesliMalmquistProductivityIndex",
+    "registry_dependencies": [
+      "estimator.full.dea",
+      "graph.black_box",
+      "productivity.malmquist.adjacent_geometric",
+      "reference.contemporaneous",
+      "static.radial"
+    ],
+    "backend_capabilities": [
+      "sparse_linear_programming",
+      "compiled_period_references",
+      "compiled_crs_and_vrs_radial_templates",
+      "deduplicated_eight_distance_task_cache",
+      "cross_period_vrs_infeasibility_diagnostics",
+      "partial_component_result_preservation"
+    ],
+    "default_backend": "scipy_highs",
+    "optional_backends": []
+  },
+  "result_contract": {
+    "scores": [
+      {
+        "id": "productivity_change",
+        "direction": "greater_than_one_is_improvement",
+        "efficient_value": 1.0,
+        "usual_range": {
+          "lower": 0.0,
+          "upper": null,
+          "conditions": [
+            "condition.ray_desli.all_four_crs_distances_positive_and_optimal"
+          ]
+        }
+      }
+    ],
+    "components": [
+      "crs_distance_base_on_base",
+      "crs_distance_comparison_on_base",
+      "crs_distance_base_on_comparison",
+      "crs_distance_comparison_on_comparison",
+      "vrs_distance_base_on_base",
+      "vrs_distance_comparison_on_base",
+      "vrs_distance_base_on_comparison",
+      "vrs_distance_comparison_on_comparison",
+      "scale_efficiency_base_on_base",
+      "scale_efficiency_comparison_on_base",
+      "scale_efficiency_base_on_comparison",
+      "scale_efficiency_comparison_on_comparison",
+      "pure_efficiency_change",
+      "vrs_technical_change",
+      "ray_desli_scale_change",
+      "ray_desli_decomposition_residual",
+      "decomposition_defined",
+      "decomposition_status",
+      "distance_task_intensities"
+    ],
+    "transformations": [
+      "scale_efficiency_for_each_role_equals_crs_distance_divided_by_vrs_distance",
+      "productivity_change_equals_crs_four_distance_geometric_index",
+      "productivity_change_equals_pure_efficiency_change_times_vrs_technical_change_times_ray_desli_scale_change_when_decomposition_defined",
+      "vrs_cross_infeasibility_leaves_vrs_technical_change_scale_change_and_residual_undefined"
+    ]
+  },
+  "guarantees": {
+    "domain": {
+      "status": "conditional",
+      "conditions": [
+        "domain.ray_desli.strictly_positive_quantities",
+        "condition.ray_desli.exactly_one_desirable_output",
+        "condition.ray_desli.no_undesirable_outputs",
+        "condition.ray_desli.balanced_adjacent_panel",
+        "condition.ray_desli.all_four_crs_distances_positive_and_optimal"
+      ]
+    },
+    "invariance": {
+      "unit": {
+        "status": "supported",
+        "rule": "independent_positive_rescaling_of_each_input_and_the_single_output_with_units_held_consistent_across_periods",
+        "co_transform": [],
+        "conditions": [
+          "condition.same_variable_units_across_periods_and_reference_observations"
+        ]
+      },
+      "translation": {
+        "status": "unsupported",
+        "rule": "general_translation",
+        "co_transform": [],
+        "conditions": []
+      }
+    },
+    "target": {
+      "feasibility": "each radial task is certified only in its declared period and returns-to-scale technology; the CRS headline remains reportable when only a VRS cross task is infeasible",
+      "efficiency": "not_applicable_to_the_multiplicative_productivity_change_index",
+      "selection": "each distance task has solver-selected peers and the decomposition has no single joint projection",
+      "conditions": [
+        "condition.ray_desli.all_four_crs_distances_positive_and_optimal",
+        "condition.ray_desli.full_decomposition_requires_all_four_vrs_distances_positive_and_optimal"
+      ]
+    }
+  },
+  "validation": {
+    "evidence_status": "primary_checked",
+    "sources": [
+      {
+        "role": "defining",
+        "id": "jstor:2951340"
+      },
+      {
+        "role": "predecessor",
+        "id": "doi:10.2307/2117971"
+      }
+    ],
+    "oracle": {
+      "status": "analytically_derived",
+      "locators": [
+        "specs/oracles/ray_desli_1997_vrs_decomposition.md",
+        "tests/test_ray_desli_1997_source_reproduction.py::test_eight_dense_distance_tasks_match_exact_fixture_oracle",
+        "tests/test_ray_desli_1997_source_reproduction.py::test_ray_desli_identity_reconstructs_and_differs_from_fgnz",
+        "tests/test_ray_desli_1997_source_reproduction.py::test_vrs_cross_infeasibility_preserves_only_source_defined_partial_account",
+        "tests/test_ray_desli_productivity.py::test_public_ray_desli_matches_independent_eight_task_source_oracle",
+        "tests/test_ray_desli_productivity.py::test_vrs_cross_infeasibility_keeps_source_defined_partial_account",
+        "tests/test_ray_desli_productivity.py::test_existing_fgnz_and_generic_crs_contracts_remain_numerically_identical"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/ray_desli_1997_vrs_decomposition.md",
+        "public_api_test_locator": "tests/test_ray_desli_productivity.py::test_public_ray_desli_matches_independent_eight_task_source_oracle",
+        "claims": [
+          {
+            "claim_id": "productivity.ray_desli.exact_eight_distance_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_ray_desli_1997_source_reproduction.py::test_eight_dense_distance_tasks_match_exact_fixture_oracle",
+              "tests/test_ray_desli_productivity.py::test_public_ray_desli_matches_independent_eight_task_source_oracle"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs_headline",
+                "vrs_auxiliary"
+              ],
+              "evaluation_protocol": [
+                "balanced_matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "ray_desli_eight_distance_geometric_decomposition"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "eight_farrell_distances",
+              "four_scale_efficiencies",
+              "productivity_change",
+              "pure_efficiency_change",
+              "vrs_technical_change",
+              "ray_desli_scale_change",
+              "ray_desli_decomposition_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.ray_desli.distinct_from_fgnz_allocation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_ray_desli_1997_source_reproduction.py::test_ray_desli_identity_reconstructs_and_differs_from_fgnz",
+              "tests/test_ray_desli_productivity.py::test_existing_fgnz_and_generic_crs_contracts_remain_numerically_identical"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs_headline",
+                "vrs_auxiliary"
+              ],
+              "evaluation_protocol": [
+                "balanced_matched_adjacent_period_identifiers"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "ray_desli_eight_distance_geometric_decomposition"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "crs_malmquist_headline",
+              "pure_efficiency_change",
+              "vrs_technical_change",
+              "ray_desli_scale_change",
+              "fgnz_non_equivalence"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "productivity.ray_desli.vrs_cross_infeasibility_partial_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_ray_desli_1997_source_reproduction.py::test_vrs_cross_infeasibility_preserves_only_source_defined_partial_account",
+              "tests/test_ray_desli_productivity.py::test_vrs_cross_infeasibility_keeps_source_defined_partial_account"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "output"
+              ],
+              "returns_to_scale": [
+                "crs_headline",
+                "vrs_auxiliary"
+              ],
+              "evaluation_protocol": [
+                "balanced_matched_adjacent_period_identifiers_with_partial_decomposition"
+              ],
+              "disposability": [
+                "ordinary_free"
+              ],
+              "time_aggregation": [
+                "ray_desli_eight_distance_geometric_decomposition"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "productivity.ray_desli.partial_fixture_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "productivity_change": "11/5",
+                    "pure_efficiency_change": "1",
+                    "vrs_technical_change": null,
+                    "ray_desli_scale_change": null,
+                    "ray_desli_decomposition_residual": null,
+                    "decomposition_defined": false
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "productivity_change",
+              "pure_efficiency_change",
+              "vrs_technical_change",
+              "ray_desli_scale_change",
+              "ray_desli_decomposition_residual",
+              "decomposition_defined",
+              "decomposition_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "contemporaneous",
+              "resolved_kind": "contemporaneous",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
+    },
+    "tests": {
+      "status": "present",
+      "coverage": [
+        "source_equations_and_eight_distance_task_graph",
+        "independent_dense_crs_and_vrs_compilation",
+        "exact_component_reconstruction",
+        "non_equivalence_to_fgnz_technical_and_scale_allocation",
+        "vrs_cross_infeasibility_partial_result",
+        "strictly_positive_one_output_domain",
+        "balanced_panel_enforcement",
+        "unit_and_row_invariance",
+        "task_cache_and_template_counts",
+        "metadata_identity"
+      ],
+      "locators": [
+        "tests/test_ray_desli_1997_source_reproduction.py",
+        "tests/test_ray_desli_productivity.py",
+        "tests/test_registry_metadata.py::test_productivity_result_paths_have_canonical_method_metadata"
+      ]
+    },
+    "benchmarks": [
+      "benchmarks/benchmark_productivity_operators.py"
+    ]
+  },
+  "placement": {
+    "book": [],
+    "docs": [
+      {
+        "doc_id": "docs.analysis.malmquist",
+        "path": "docs/analysis/malmquist.md",
+        "state": "present",
+        "role": "analysis"
+      },
+      {
+        "doc_id": "docs.api.analysis",
+        "path": "docs/api/analysis.md",
+        "state": "present",
+        "role": "api"
+      }
+    ]
+  }
+}

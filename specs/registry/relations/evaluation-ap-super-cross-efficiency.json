@@ -1,0 +1,47 @@
+{
+  "$schema": "../schema/relation-record-v1.schema.json",
+  "ontology_schema_version": "1.0.0",
+  "source": "evaluation.super.ap_radial",
+  "target": "evaluation.cross.crs",
+  "type": "contrasts_with",
+  "equivalence_level": "D",
+  "difference_axes": [
+    "reference",
+    "performance",
+    "valuation",
+    "evaluation_protocol",
+    "analysis"
+  ],
+  "conditions": [
+    {
+      "profile": "condition.matched_crs_input_radial_and_cross_appraisal_data",
+      "arguments": {
+        "data_roles": "same_nonnegative_productive_inputs_and_desirable_outputs",
+        "returns_to_scale": "crs",
+        "base_technology": "matched_convex_free_disposal_technology",
+        "ap_reference_membership": "evaluated_row_excluded_from_otherwise_eligible_peers",
+        "ap_programmes": "one_leave_one_out_envelopment_appraisal_per_evaluated_row",
+        "ap_reported_measure": "input_radial_peer_replacement_margin",
+        "cross_reference_membership": "all_eligible_rows_including_each_appraiser",
+        "cross_programmes": "one_input_normalized_multiplier_appraisal_per_appraiser",
+        "cross_reported_measure": "aggregate_of_peer_selected_appraisal_ratios",
+        "ranking_identity": "distinct",
+        "alias_claim": "forbidden"
+      }
+    }
+  ],
+  "evidence": {
+    "status": "review_supported",
+    "sources": [
+      "doi:10.1287/mnsc.39.10.1261",
+      "doi:10.1002/ev.1441"
+    ],
+    "proof_obligations": [],
+    "tests": [
+      "tests/test_super_efficiency.py::test_custom_reference_excludes_self_only_when_present",
+      "tests/test_super_efficiency.py::test_derived_crs_ratio_check_and_ordinary_efficiency_relationship",
+      "tests/test_cross_efficiency.py::test_internal_prototype_alias_and_transparent_one_by_one_peer_appraisal",
+      "tests/test_cross_efficiency.py::test_alternate_primary_optima_preserve_self_scores_but_change_peer_matrix"
+    ]
+  }
+}
