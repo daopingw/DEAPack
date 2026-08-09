@@ -149,6 +149,6 @@ for identity and documentation boundaries, the
 [registry guide](https://github.com/daopingw/DEAPack/blob/main/specs/registry/README.md)
 for ontology semantics, the
 [changelog](https://github.com/daopingw/DEAPack/blob/main/CHANGELOG.md) for
-version history, and {doc}`releasing` for the synchronized release and
-archival checklist. A policy change should update those sources in the same
-reviewed change rather than create a competing version rule on this page.
+version history, and {doc}`hosting` for Documentation publication boundaries.
+A policy change should update those sources in the same reviewed change rather
+than create a competing version rule on this page.

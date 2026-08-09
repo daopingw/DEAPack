@@ -167,4 +167,4 @@ Before proposing any extension, answer five questions:
    transferable mother-model idea that also belongs in the Handbook?
 
 Use {doc}`architecture`, {doc}`performance`, {doc}`versioning`, and
-{doc}`releasing` as the common review entry points.
+{doc}`hosting` as the common review entry points.
