@@ -1,9 +1,8 @@
-# Draft Release Notes — DEAPack 2.0.0rc1
+# Release Notes — DEAPack 2.0.0rc1
 
-> **Candidate status:** `2.0.0rc1` has not been tagged or published. The
-> source metadata have been advanced to the candidate version, but these
-> notes remain a draft until the exact committed tag passes the clean-tag
-> verification gate below.
+> **Historical pre-release:** `2.0.0rc1` was tagged and published on
+> 2026-08-10 and was subsequently superseded by stable `2.0.0`. This file
+> preserves the candidate scope and release plan as historical evidence.
 
 DEAPack 2.0 is a greenfield redesign of the historical DEAPack 0.1.x and
 ProdPack prototypes. It provides a source-audited, composable Python toolkit

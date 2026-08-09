@@ -46,9 +46,11 @@ def test_software_citation_metadata_is_complete_and_version_aligned() -> None:
         pyproject,
         "version",
     )
-    assert _top_level_scalar(citation, "version") == "2.0.0rc1"
+    assert _top_level_scalar(citation, "version") == "2.0.0"
+    assert _top_level_scalar(citation, "date-released") == "2026-08-10"
     assert _toml_scalar(pyproject, "requires-python") == ">=3.10,<3.14"
-    assert '"Development Status :: 4 - Beta"' in pyproject
+    assert '"Development Status :: 5 - Production/Stable"' in pyproject
+    assert '"Development Status :: 4 - Beta"' not in pyproject
     assert "Pre-Alpha" not in pyproject
     assert "family-names: Wang" in citation
     assert "given-names: Daoping" in citation
@@ -109,13 +111,14 @@ def test_component_licenses_are_scoped_and_data_mapping_fails_closed() -> None:
     assert "All 33 current dataset fingerprints have item-level mappings" in notice
 
 
-def test_pypi_description_is_release_candidate_specific_and_portable() -> None:
+def test_pypi_description_is_stable_release_specific_and_portable() -> None:
     pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     description = (ROOT / "PYPI_README.md").read_text(encoding="utf-8")
 
     assert 'readme = "PYPI_README.md"' in pyproject
-    assert "2.0.0rc1" in description
-    assert "DEAPack==2.0.0rc1" in description
+    assert "2.0.0" in description
+    assert "DEAPack==2.0.0" in description
+    assert "release candidate" not in description.lower()
     assert "https://github.com/daopingw/DEAPack/" in description
     assert "](docs/" not in description
     assert "](book/" not in description
@@ -125,13 +128,13 @@ def test_development_metadata_does_not_invent_publication_identifiers() -> None:
     citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
     prohibited_top_level = (
         "doi",
-        "date-released",
         "commit",
         "preferred-citation",
     )
 
     for key in prohibited_top_level:
         assert re.search(rf"^{re.escape(key)}:", citation, re.MULTILINE) is None
+    assert _top_level_scalar(citation, "date-released") == "2026-08-10"
     assert re.search(r"^\s+orcid:", citation, re.MULTILINE) is None
     assert not (ROOT / ".zenodo.json").exists()
 

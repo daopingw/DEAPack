@@ -5,19 +5,15 @@ efficiency measurement, productivity analysis, and environmental performance.
 The redesigned 2.x API uses the lowercase `deapack` import and a common data,
 technology, result, visualization, and reporting architecture.
 
-`2.0.0rc1` is the draft release-candidate identity. The candidate has not yet
-been published. Its 33 dataset fingerprints now have exact item-level license
-and attribution mappings; GitHub and PyPI publication actions remain separate
-manual steps. After those authenticated steps complete, the release candidate
-will be suitable for public testing and exact version-pinned research; it
-will still not be the stable 2.0 compatibility promise.
+`2.0.0` is the first stable release of the redesigned DEAPack 2.x line. Its 33
+dataset fingerprints have exact item-level license and attribution mappings.
 
 ## Installation
 
-After publication, install the exact release candidate with:
+Install the stable release with:
 
 ```bash
-python -m pip install "DEAPack==2.0.0rc1"
+python -m pip install "DEAPack==2.0.0"
 ```
 
 Python 3.10, 3.11, 3.12, and 3.13 are supported. NumPy, pandas, and SciPy are
@@ -58,7 +54,7 @@ deterministic audit archive.
 
 ## Scope
 
-The candidate covers the major classical radial and non-radial families,
+The release covers the major classical radial and non-radial families,
 directional and generalized-distance analysis, price-informed economic
 efficiency, undesirable-output and environmental technologies, Malmquist and
 related productivity accounts, network and dynamic production, panel models,
@@ -82,7 +78,7 @@ explicit next-version work rather than provisional APIs.
 - [English Handbook source](https://github.com/daopingw/DEAPack/tree/main/book)
 - [Chinese Handbook catalogs](https://github.com/daopingw/DEAPack/tree/main/book/locale/zh_CN/LC_MESSAGES)
 - [2.x migration guide](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/migration.md)
-- [Release notes](https://github.com/daopingw/DEAPack/blob/main/RELEASE_NOTES_2.0.0rc1.md)
+- [Release notes](https://github.com/daopingw/DEAPack/blob/main/RELEASE_NOTES_2.0.0.md)
 - [Contribution guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md)
 - [Issue tracker](https://github.com/daopingw/DEAPack/issues)
 
@@ -94,7 +90,7 @@ only `import deapack`.
 
 Use the repository's
 [`CITATION.cff`](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)
-and record the exact pre-release version and commit used. The DEAPack software
+and record the exact version and commit used. The DEAPack software
 component is licensed under `GPL-3.0-only`. Bundled dataset content is released
 only when its provenance record identifies confirmed licensing authority, an
 approved redistribution status, content license, attribution, and required

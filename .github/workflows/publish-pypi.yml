@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Exact canonical PEP 440 version to publish (for example, 2.0.0rc1)
+        description: Exact canonical PEP 440 version to publish (for example, 2.0.0)
         required: true
         type: string
 

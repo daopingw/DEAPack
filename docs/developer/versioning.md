@@ -17,11 +17,10 @@ normative records.
 | Registry inventory checkpoint | `registry_release` in `specs/registry/registry-manifest.json` | one auditable shadow inventory; it is not a software release number |
 | Companion book | the edition identified by the book publication record | reader-facing theory and cases; it is cited separately from software |
 
-The current checkout is the feature-frozen `2.0.0rc1` release candidate. It is
-not a stable compatibility promise. The current ontology record schema is `1.0.0`,
-the fitted compact registry schema is `2`, and audit bundles use their own
-integer schema version. Consumers must read these fields rather than infer one
-from another.
+The current checkout is the stable `2.0.0` software release. The current
+ontology record schema is `1.0.0`, the fitted compact registry schema is `2`,
+and audit bundles use their own integer schema version. Consumers must read
+these fields rather than infer one from another.
 
 ## Software versions
 
@@ -38,12 +37,10 @@ prepared.
 - A `.devN`, alpha, beta, or release-candidate build is not a stable release.
   Its exact package version and commit should accompany research outputs.
 
-Before the first stable 2.0 release, candidate APIs can still change when a
-correctness, packaging, documentation, or compatibility issue is found. New
-model families are excluded from the release-candidate cycle. Every change
-belongs in the changelog and migration guide; a pre-release suffix is not
-permission to silently change the mathematical meaning of an existing method
-identity.
+Beginning with `2.0.0`, supported public APIs follow the deprecation lifecycle
+below. Every change belongs in the changelog and migration guide; a
+pre-release suffix is not permission to silently change the mathematical
+meaning of an existing method identity.
 
 ## What counts as public Python API
 

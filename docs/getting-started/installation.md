@@ -16,12 +16,16 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
 The complete test matrix, rather than an unlisted interpreter version, defines
 the supported range for a release.
 
-## Current release-candidate checkout
+## Stable 2.0 installation
 
-The repository metadata identifies DEAPack as `2.0.0rc1`. This is a
-feature-frozen release candidate, not yet a stable or drop-in replacement for
-DEAPack 0.1.x. Clone the repository, enter its root directory, and install the
-base package in editable form:
+Install the stable `2.0.0` release from PyPI:
+
+```bash
+python -m pip install "DEAPack==2.0.0"
+```
+
+DEAPack 2.x is not a drop-in replacement for DEAPack 0.1.x. To work from the
+current source, clone the repository and install the package in editable form:
 
 ```bash
 git clone https://github.com/daopingw/DEAPack.git
@@ -57,23 +61,21 @@ python -c "import deapack; print(deapack.__version__); print(deapack.__file__)"
 
 ## Stable, pre-release, and exact research installs
 
-No stable 2.0 installation command should be inferred from release-candidate
-metadata. After `2.0.0rc1` is published, its exact pre-release installation
-command will be:
+For a reproducible stable installation, pin the exact release:
 
 ```bash
-python -m pip install "DEAPack==2.0.0rc1"
+python -m pip install "DEAPack==2.0.0"
 ```
 
-Before the tagged artifact is available, prefer an editable checkout for
-contribution or pin an exact reviewed commit for a research environment. Do
-not cite a moving branch as if it were an archival release.
+For contribution work, prefer an editable checkout. For research, record the
+installed version and commit or release tag; do not cite a moving branch as if
+it were an archival release.
 
 An alpha, beta, or release candidate remains a pre-release even when it is
 installable. Record its full version and commit, read the migration notes, and
 do not use `--pre` as a substitute for selecting and auditing an exact
-release. A tagged and archived release remains distinct from a passing local
-candidate build.
+release. A tagged release remains distinct from a passing local candidate
+build.
 
 ## Optional features
 

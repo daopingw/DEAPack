@@ -6,9 +6,9 @@ separate citation objects.
 
 Use the root [`CITATION.cff`](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)
 metadata when a paper relies on the software implementation, a computed
-result, or a reproducible workflow. For the `2.0.0rc1` pre-release, identify
-both the exact version and commit because the candidate is not yet an
-archival release and has no DOI.
+result, or a reproducible workflow. For the stable `2.0.0` release, identify
+the exact version and commit. No DOI has yet been assigned, so include the
+repository URL rather than inventing an archival identifier.
 
 Use the book's
 [`citing.md`](https://github.com/daopingw/DEAPack/blob/main/book/citing.md)

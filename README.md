@@ -3,9 +3,7 @@
 DEAPack is a Python toolkit for data envelopment analysis (DEA), efficiency,
 productivity, environmental-performance, network, and dynamic analysis.
 
-Version `2.0.0rc1` is the feature-frozen release candidate for the redesigned
-2.x line. It is a pre-release, so small compatibility corrections may still be
-made before the first stable release.
+Version `2.0.0` is the first stable release of the redesigned 2.x line.
 
 ## What is included
 
@@ -28,7 +26,13 @@ mathematical conventions are recorded in [specs](specs/README.md).
 
 DEAPack supports Python 3.10 through 3.13.
 
-For the current GitHub release candidate:
+Install the stable release from PyPI:
+
+```bash
+python -m pip install "DEAPack==2.0.0"
+```
+
+For an editable source checkout:
 
 ```bash
 git clone https://github.com/daopingw/DEAPack.git
@@ -195,6 +199,6 @@ boundaries and attribution requirements.
 
 ## Release status
 
-`2.0.0rc1` is a pre-release and is not a drop-in replacement for DEAPack
-0.1.x. Release history is recorded in [CHANGELOG.md](CHANGELOG.md), and planned
-post-RC work is tracked in [ROADMAP.md](ROADMAP.md).
+`2.0.0` is the first stable 2.x release and is not a drop-in replacement for
+DEAPack 0.1.x. Release history is recorded in [CHANGELOG.md](CHANGELOG.md), and
+future work is tracked in [ROADMAP.md](ROADMAP.md).

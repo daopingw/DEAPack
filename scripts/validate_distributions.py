@@ -143,7 +143,7 @@ def _validate_sdist(path: Path) -> None:
             PurePosixPath("CITATION.cff"),
             PurePosixPath("CHANGELOG.md"),
             PurePosixPath("CITATION.md"),
-            PurePosixPath("RELEASE_NOTES_2.0.0rc1.md"),
+            PurePosixPath("RELEASE_NOTES_2.0.0.md"),
             PurePosixPath("src/deapack/__init__.py"),
             PurePosixPath("src/deapack/_registry.py"),
             PurePosixPath("src/deapack/datasets/__init__.py"),

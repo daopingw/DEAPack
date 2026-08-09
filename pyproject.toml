@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "DEAPack"
-version = "2.0.0rc1"
+version = "2.0.0"
 description = "A comprehensive Python toolkit for DEA-based efficiency and productivity analysis"
 readme = "PYPI_README.md"
 requires-python = ">=3.10,<3.14"
@@ -21,7 +21,7 @@ authors = [
   { name = "Dr Daoping Wang", email = "daopingwang@outlook.com" },
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Science/Research",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",

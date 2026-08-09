@@ -9,23 +9,20 @@ works. Cite the object that supports the claim you are making:
   interpretation, or worked case;
 - cite both when a study materially uses both.
 
-## Software release candidate
+## Software release
 
 The machine-readable software metadata are in
 [`CITATION.cff`](CITATION.cff). GitHub can render those metadata as BibTeX and
 APA text through its **Cite this repository** control.
 
-Version `2.0.0rc1` is a pre-release candidate and does not yet have a DOI.
-Until a tagged version has been archived, identify both the exact version and
-commit used and include the repository URL. Do not cite a future placeholder
-DOI.
+Version `2.0.0` is the first stable 2.x software release. It does not yet have
+a DOI, so identify the exact version and commit used and include the repository
+URL. Do not cite a future placeholder DOI.
 
-For the first stable release, the project will:
+For archival publication, the project will:
 
-1. synchronize the version in package and citation metadata;
-2. create a tagged GitHub release;
-3. archive that software release as a Zenodo **Software** record;
-4. add the assigned persistent DOI to the maintained citation guidance.
+1. archive the tagged software release as a Zenodo **Software** record; and
+2. add the assigned persistent DOI to the maintained citation guidance.
 
 A version-specific DOI should be preferred when exact computational
 reproducibility matters. A concept DOI may later identify the evolving
@@ -36,11 +33,11 @@ software family.
 *Data Envelopment Analysis: Efficiency, Productivity, and Environmental
 Performance with Python* is a bilingual English--Chinese development
 manuscript whose English text is the canonical editorial source. Its cover
-strapline is *A Unified Handbook of Theory, Methods, and Practice*. It has no
-assigned DOI, ISBN, publisher, publication date, final edition, or final
-content license. The two language renderings are one scholarly work, not two
-objects with invented identifiers. None of those fields should be inferred
-from the software metadata.
+strapline is *A Unified Handbook of Theory, Methods, and Practice*. Preview 1
+is Copyright © 2026 Daoping Wang, All Rights Reserved. It has no assigned DOI,
+ISBN, publisher, formal publication date, or final edition. The two language
+renderings are one scholarly work, not two objects with invented identifiers.
+None of those fields should be inferred from the software metadata.
 
 After editorial freeze, the book will be deposited separately as a Zenodo
 **Publication — Book** record with its own DOI and citation page. The
@@ -55,6 +52,6 @@ publication checklist.
 ## Identifiers that remain intentionally unset
 
 The repository does not invent author ORCIDs or affiliations, software or
-book DOIs, an ISBN, a publisher, a final book license, a publication date, or
-a final author/editor order. These fields will be added only after the
-responsible people or issuing service confirm them.
+book DOIs, an ISBN, a publisher, or a final author/editor order. These fields
+will be added only after the responsible people or issuing service confirm
+them.

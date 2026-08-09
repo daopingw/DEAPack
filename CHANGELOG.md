@@ -4,16 +4,29 @@ All notable changes to released versions of DEAPack will be recorded here.
 The project follows Semantic Versioning for the software package; companion
 book editions have a separate publication history.
 
-## Unreleased — 2.0.0rc1
+## 2.0.0 — 2026-08-10
+
+DEAPack 2.0.0 is the first stable release of the redesigned lowercase
+`deapack` package. It promotes the tested 2.0 release-candidate surface to a
+stable Semantic Versioning contract, supports CPython 3.10--3.13, and ships 33
+item-level licensed teaching datasets. The release includes the common model,
+result, reporting, visualization, registry, and audit architecture described
+in [`RELEASE_NOTES_2.0.0.md`](RELEASE_NOTES_2.0.0.md).
+
+The package Documentation and bilingual Handbook remain separately licensed
+publication components. The Handbook retains its independent Preview 1
+edition identity; the software version does not convert it into a final book
+edition.
+
+## 2.0.0rc1 — 2026-08-10
 
 DEAPack 2.0 is a greenfield redesign of the historical 0.1.x package. It is
-now feature-frozen at the M13 boundary for its first public release candidate.
-`2.0.0rc1` remains unreleased until a clean committed revision passes the
-remote Python matrix, strict Documentation and Handbook builds, release
-benchmarks, distribution reproduction, and installed-package smoke tests.
-The frozen capability surface, explicit deferrals, and current verification
-boundaries are recorded in [`RELEASE_NOTES_2.0.0rc1.md`](RELEASE_NOTES_2.0.0rc1.md),
-while the complete development evidence remains in [`ROADMAP.md`](ROADMAP.md).
+the first public release candidate of the redesigned 2.x line. The candidate
+was published before the stable promotion so users could test the exact
+versioned package. Its frozen capability surface, explicit deferrals, and
+verification boundaries are recorded in
+[`RELEASE_NOTES_2.0.0rc1.md`](RELEASE_NOTES_2.0.0rc1.md), while the complete
+development evidence remains in [`ROADMAP.md`](ROADMAP.md).
 
 ### Added
 
