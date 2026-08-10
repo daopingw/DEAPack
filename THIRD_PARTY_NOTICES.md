@@ -1,11 +1,9 @@
 # Third-Party Notices
 
-This page identifies third-party material that is copied into generated
-DEAPack Documentation or Handbook sites, embedded in Handbook PDFs, or adapted
-in the Handbook build configuration. These notices apply only to the named
-third-party material. They neither select nor grant a license for DEAPack's
-project-owned software, Documentation, Handbook, translations, figures, or
-data; those component decisions remain subject to the release sign-off record.
+This page identifies third-party material copied into generated DEAPack
+Documentation. These notices apply only to the named third-party material.
+They neither select nor grant a license for DEAPack's project-owned software,
+Documentation, figures, or data.
 No upstream author or project endorses or supports DEAPack merely because its
 work is acknowledged here. License text inside fenced blocks is retained in
 its upstream English form; localized narrative does not replace it.
@@ -14,45 +12,16 @@ its upstream English form; localized narrative does not replace it.
 
 | Component | Audited release-build version | Where it appears | Upstream terms |
 |---|---:|---|---|
-| Sphinx | 9.1.0 | Generated site assets; an adapted page-style fragment in `book/conf.py` | BSD-2-Clause |
+| Sphinx | 9.1.0 | Generated Documentation site assets | BSD-2-Clause |
 | PyData Sphinx Theme | 0.19.0 | Generated site CSS, JavaScript, templates, and web assets | BSD-3-Clause |
 | Bootstrap | 5.3.3, supplied by the theme | Generated site CSS and JavaScript | MIT |
 | Font Awesome Free | 7.2.0, supplied by the theme | Generated site code, icons, and webfonts | Code: MIT; icons: CC BY 4.0; fonts: SIL OFL 1.1 |
 | Pygments | 2.20.0 | Generated syntax-highlighting stylesheet | BSD-2-Clause |
 | MathJax | 4.0.0 | Loaded from the pinned jsDelivr URL at viewing time; not copied into the built site | Apache-2.0 |
-| `fncychap` | 1.34 | A modified Bjarne-style chapter-number macro in `book/conf.py` | LPPL 1.3 or any later version; this modified excerpt uses LPPL 1.3c |
-| Noto Sans/Serif CJK SC | Ubuntu 24.04 `fonts-noto-cjk` (reviewed baseline `1:20230817+repack1-3`) | Font subsets may be embedded in the Chinese Handbook PDF | SIL OFL 1.1 |
-| TeX Gyre Termes and Heros | Ubuntu 24.04 `fonts-texgyre`/`tex-gyre` (reviewed baseline `20180621-6`) | Font subsets may be embedded in both Handbook PDFs | GUST Font License 1.0 / LPPL 1.3c or later |
-| DejaVu Sans and Sans Mono | Ubuntu 24.04 `fonts-dejavu-core`/`fonts-dejavu-mono` (reviewed baseline `2.37-8`) | Font subsets may be embedded by Handbook text and vector figures | Bitstream Vera and Arev notices below; DejaVu changes are public domain |
 
-The versions in this table are reviewed Ubuntu 24.04 baselines, not general
-runtime requirements. The protected release inventory must bind the actual
-installed package version and copyright-file hash, the resolver-selected font
-path and file hash, and the complete `pdffonts` table for each final PDF. A
-baseline name or an upstream web page does not substitute for that byte-level
-runner evidence.
-
-## Adapted Handbook build fragments
-
-The `normal` page-style definition in `book/conf.py` is a partial adaptation of
-`sphinx/texinputs/sphinxlatexstylepage.sty` from Sphinx 9.1.0. It retains the
-upstream header/footer arrangement and adds `\footnotesize` to the running
-section and chapter marks. It is embedded in a differently named host file and
-does not replace the Sphinx package. The complete unmodified Sphinx 9.1.0
-source is available from the
-[Sphinx 9.1.0 tag](https://github.com/sphinx-doc/sphinx/tree/v9.1.0).
-
-The `\TheAlphaChapter` definition in `book/conf.py` is a modified excerpt from
-the Bjarne style in Ulf A. Lindgren's `fncychap` 1.34. The adaptation keeps the
-appendix branch and changes English compound chapter names from concatenated
-forms such as `TWENTYONE` to hyphenated forms such as `TWENTY-ONE`. It is
-embedded in `book/conf.py`, not distributed as a replacement named
-`fncychap.sty`. The complete unmodified package is available from the
-[CTAN `fncychap` 1.34 package](https://ctan.org/pkg/fncychap). Copyright 2007
-Ulf Lindgren. The upstream README permits distribution and modification under
-LPPL 1.3 or, at the recipient's option, any later version. DEAPack distributes
-this modified excerpt under LPPL 1.3c; the unmodified LPPL 1.3c text is
-reproduced below.
+The versions in this table are reviewed build baselines, not general runtime
+requirements. A baseline name or upstream web page does not substitute for
+the license notice shipped with the generated site.
 
 ## Sphinx 9.1.0 — BSD-2-Clause
 
@@ -189,14 +158,9 @@ The icons are supplied through PyData Sphinx Theme 0.19.0. DEAPack does not
 alter the upstream icon data or claim authorship of it; selecting an icon for a
 site control does not imply endorsement by Fonticons.
 
-## Font Awesome webfonts and Noto CJK — SIL OFL 1.1
+## Font Awesome webfonts — SIL OFL 1.1
 
-Font Awesome Free 7.2.0 webfonts are copyright 2026 Fonticons, Inc. The Noto
-faces used by the protected release lane are supplied by Ubuntu 24.04's
-`fonts-noto-cjk` package. The signed release inventory records the actual
-package version, Debian copyright-file hash, resolver-selected font paths and
-font-file hashes; current upstream metadata is not treated as evidence for the
-installed Ubuntu bytes. Font Awesome webfonts and the selected Noto faces are
+Font Awesome Free 7.2.0 webfonts are copyright 2026 Fonticons, Inc. and are
 licensed under the SIL Open Font License 1.1 reproduced below.
 
 ```text
@@ -752,8 +716,7 @@ Important Recommendations
 
 The substantive DejaVu notice distributed with Matplotlib 3.11.1 is reproduced
 below with whitespace normalized and its non-substantive RCS trailer omitted.
-The release runner may embed DejaVu Sans from vector figures and DejaVu Sans
-Mono from the Chinese Handbook's code typography.
+The historical notice is retained for vector assets produced with DejaVu.
 
 ```text
 Fonts are (c) Bitstream (see below). DejaVu changes are in public domain.

@@ -7,7 +7,7 @@ methods that are implemented in the installed package:
 from deapack import list_methods, method_info
 
 for method in list_methods():
-    print(method.method_id, method.api_symbols, method.publication_scope)
+    print(method.method_id, method.api_symbols, method.verification)
 
 radial = method_info("static.radial")
 print(radial.title, radial.verification)
@@ -24,11 +24,7 @@ ordered by canonical ID. Each record contains:
 - `title` and `category`: short discovery labels;
 - `api_symbols`: public top-level Python names that provide the method;
 - `verification`: the current evidence level;
-- `documentation`: the immutable tuple of current documentation levels; and
-- `publication_scope`: the machine-readable reader-publication role for a
-  governed entry. Current installed entries use it for productivity, network,
-  dynamic, panel, heterogeneity, diagnostics, and evaluation; categories without a
-  publication contract return `None`.
+- `documentation`: the immutable tuple of current documentation levels.
 
 The catalog is intentionally conservative. It includes implemented public
 model paths, five named reporting/constructor specializations, and eight
@@ -88,147 +84,131 @@ cross-implementation is claimed. Its historical
 free-aggregation-hull acronym `FAH` is not an API symbol because the same
 acronym also denotes Ray's distinct free affordability hull.
 
-## Productivity publication map
+## Productivity method map
 
-Implementation and Handbook placement answer different questions. A public
-API can be stable and fully tested while remaining too specialized to become a
-separate teaching route. DEAPack therefore exposes the governed registries'
-`status.publication_scope` through `MethodInfo.publication_scope`:
+The public catalog distinguishes principal method families from
+source-qualified presets, reference-policy comparisons, sensitivity
+companions, and specialized research methods. This organizational distinction
+does not change API stability or numerical verification.
 
-- `handbook_core` identifies a method used inside a retained Handbook family;
-- `supporting_reference_policy` identifies a comparison needed to explain how
-  the reference-information policy changes an empirical conclusion;
-- `handbook_sensitivity` identifies a bounded sensitivity companion used
-  within a retained route; and
-- `documentation_only` identifies an implemented research leaf described in
-  package Documentation but not promoted into the Handbook progression; and
-- `next_version` identifies a planned or prototype record whose evidence gate
-  is not closed. Such entries do not appear in the installed public catalog.
+The four principal families are:
 
-The four routes themselves are deliberately few:
-
-| Handbook route | Primary catalog ID | Package reference |
+| Method family | Primary catalog ID | Package reference |
 |---|---|---|
 | Adjacent-period Malmquist | `productivity.malmquist.adjacent_geometric` | [Malmquist](../analysis/malmquist.md) |
 | Luenberger | `productivity.luenberger` | [Luenberger](../analysis/luenberger.md) |
 | Malmquist--Luenberger with undesirable outputs | `productivity.malmquist_luenberger.chung_fare_grosskopf_1997` | [Malmquist--Luenberger](../analysis/malmquist-luenberger.md) |
 | Hicks--Moorsteen | `productivity.hicks_moorsteen.bjurek_1996` | [Hicks--Moorsteen](../analysis/hicks-moorsteen.md) |
 
-The complete productivity catalog map is below. The FGNZ core preset inherits
-the `handbook_core` scope of the adjacent-period Malmquist operator because it
-is the source-qualified constructor used inside that route; it is not a fifth
-route.
+The complete productivity catalog map is below. The FGNZ core is the
+source-qualified constructor used inside the adjacent-period Malmquist family;
+it is not a fifth principal family.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `handbook_core` | `productivity.malmquist.adjacent_geometric` | Primary Malmquist route |
-| `handbook_core` | `productivity.malmquist.decomposition.fgnz_core` | Source-qualified preset inside the Malmquist route |
-| `handbook_core` | `productivity.luenberger` | Primary Luenberger route |
-| `handbook_core` | `productivity.malmquist_luenberger.chung_fare_grosskopf_1997` | Primary undesirable-output productivity route |
-| `handbook_core` | `productivity.hicks_moorsteen.bjurek_1996` | Primary total-factor-productivity route |
-| `supporting_reference_policy` | `productivity.global_malmquist` | Common-reference comparison supporting the Malmquist route |
-| `handbook_sensitivity` | `productivity.global_malmquist_luenberger.oh_2010` | Common-reference sensitivity companion to Malmquist--Luenberger |
-| `documentation_only` | `productivity.biennial_malmquist` | Specialized reference-policy leaf |
-| `documentation_only` | `productivity.malmquist.decomposition.fgnz_pure_scale_extension` | Specialized enhanced FGNZ decomposition |
-| `documentation_only` | `productivity.malmquist.decomposition.ray_desli` | Specialized Ray--Desli decomposition |
-| `documentation_only` | `productivity.malmquist_luenberger.aparicio_pastor_zofio_2013` | Specialized APZ environmental-productivity preset |
+| Principal family | `productivity.malmquist.adjacent_geometric` | Adjacent-period Malmquist |
+| Source-qualified preset | `productivity.malmquist.decomposition.fgnz_core` | FGNZ decomposition within Malmquist |
+| Principal family | `productivity.luenberger` | Luenberger |
+| Principal family | `productivity.malmquist_luenberger.chung_fare_grosskopf_1997` | Undesirable-output productivity |
+| Principal family | `productivity.hicks_moorsteen.bjurek_1996` | Total-factor productivity |
+| Reference-policy comparison | `productivity.global_malmquist` | Common-reference Malmquist comparison |
+| Sensitivity companion | `productivity.global_malmquist_luenberger.oh_2010` | Common-reference Malmquist--Luenberger comparison |
+| Specialized method | `productivity.biennial_malmquist` | Biennial reference policy |
+| Specialized method | `productivity.malmquist.decomposition.fgnz_pure_scale_extension` | Enhanced FGNZ decomposition |
+| Specialized method | `productivity.malmquist.decomposition.ray_desli` | Ray--Desli decomposition |
+| Specialized preset | `productivity.malmquist_luenberger.aparicio_pastor_zofio_2013` | APZ environmental productivity |
 
-## Network, dynamic, and panel publication map
+## Network, dynamic, and panel method map
 
-Part V of the Handbook retains two network routes, not one route per historical
-paper. The first asks whether process-specific benchmark plans form one
+The network family asks whether process-specific benchmark plans form one
 attainable organizational plan and how much process responsibility the evidence
 supports. Färe--Grosskopf supplies the connected radial account; Kao--Hwang and
-the Chen/Cook additive family are alternative reporting institutions within
-that route. Chen is the closed two-stage member, while Cook supplies the open-
-graph generalization. The second route uses Network SBM to report variable-
-specific resource excesses and service shortfalls under link continuity.
+the Chen/Cook additive family provide alternative process-attribution
+accounts. Chen is the closed two-stage member, while Cook supplies the open-
+graph generalization. Network SBM reports variable-specific resource excesses
+and service shortfalls under link continuity.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `handbook_core` | `network.radial.fare_grosskopf_2000` | Connected-system radial account |
-| `handbook_core` | `network.relational.kao_hwang_2008` | Relational attribution inside the connected-system route |
-| `handbook_core` | `network.additive.chen_etal_2009` | Closed two-stage member of the additive attribution family |
-| `handbook_core` | `network.additive.cook_zhu_bi_yang_2010` | General additive attribution member for open graphs |
-| `handbook_core` | `network.sbm.tone_tsutsui_2009` | Network SBM route |
-| `documentation_only` | `network.sequential.lewis_sexton_2004.forward_radial` | Sequential target-propagation protocol |
-| `documentation_only` | `network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018` | Environmental-network composition |
-| `documentation_only` | `network.sbm.tone_tsutsui_2009.accountable_input_link` | Recipient-accountable link specialization |
-| `documentation_only` | `network.sbm.tone_tsutsui_2009.accountable_output_link` | Supplier-accountable link specialization |
+| Principal family | `network.radial.fare_grosskopf_2000` | Connected-system radial account |
+| Process-attribution method | `network.relational.kao_hwang_2008` | Relational attribution |
+| Process-attribution method | `network.additive.chen_etal_2009` | Closed two-stage additive account |
+| Process-attribution method | `network.additive.cook_zhu_bi_yang_2010` | General additive account for open graphs |
+| Principal family | `network.sbm.tone_tsutsui_2009` | Network SBM |
+| Specialized method | `network.sequential.lewis_sexton_2004.forward_radial` | Sequential target propagation |
+| Specialized method | `network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018` | Environmental-network composition |
+| Specialized preset | `network.sbm.tone_tsutsui_2009.accountable_input_link` | Recipient-accountable link |
+| Specialized preset | `network.sbm.tone_tsutsui_2009.accountable_output_link` | Supplier-accountable link |
 
-Part VI retains Dynamic SBM as its implemented core trajectory account.
-Dynamic Network SBM is an intersection of the network and dynamic families;
-the ex-post free-carry-over report is a selected-solution sensitivity, and the
-Park--Park estimator answers a distinct multiperiod aggregation question. All
-three remain package-Documentation entries rather than additional Handbook
-routes.
+Dynamic SBM is the principal implemented trajectory account. Dynamic Network
+SBM combines the network and dynamic families; the ex-post free-carry-over
+report is a selected-solution sensitivity, and the Park--Park estimator answers
+a distinct multiperiod aggregation question.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `handbook_core` | `dynamic.sbm.tone_tsutsui_2010` | Dynamic trajectory route |
-| `documentation_only` | `dynamic.sbm.tone_tsutsui_2010.free_adjusted_post` | Ex-post selected-solution report |
-| `documentation_only` | `dynamic.network_sbm.tone_tsutsui_2014` | Network × dynamic intersection |
-| `documentation_only` | `panel.multiperiod_aggregative.park_park_2009` | Multiperiod aggregation without a state technology |
+| Principal family | `dynamic.sbm.tone_tsutsui_2010` | Dynamic trajectory account |
+| Sensitivity companion | `dynamic.sbm.tone_tsutsui_2010.free_adjusted_post` | Ex-post selected-solution report |
+| Combined method | `dynamic.network_sbm.tone_tsutsui_2014` | Network × dynamic composition |
+| Specialized method | `panel.multiperiod_aggregative.park_park_2009` | Multiperiod aggregation without a state technology |
 
-These scope maps control reader navigation only. They neither remove an
-implemented method from the public API nor weaken its numerical verification
-contract.
+These organizational roles neither remove an implemented method from the
+public API nor weaken its numerical verification contract.
 
-## Heterogeneity publication map
+## Heterogeneity method map
 
-Part VII of the Handbook retains one field-level comparison route: declared
-groups are evaluated against their own opportunity sets and against one
-matched pooled metafrontier. The metatechnology ratio (MTR, historically also
-TGR) reports how close the represented group opportunity frontier is to that
-broader opportunity set. It is not another managerial-efficiency score, and
-the decomposition does not identify why opportunity sets differ.
+The implemented field-level comparison evaluates declared groups against
+their own opportunity sets and against one matched pooled metafrontier. The
+metatechnology ratio (MTR, historically also TGR) reports how close the
+represented group opportunity frontier is to that broader opportunity set. It
+is not another managerial-efficiency score, and the decomposition does not
+identify why opportunity sets differ.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `handbook_core` | `heterogeneity.metafrontier.radial.odonnell_rao_battese_2008` | Declared-group radial metafrontier route |
+| Principal family | `heterogeneity.metafrontier.radial.odonnell_rao_battese_2008` | Declared-group radial metafrontier |
 
-Input/output orientation and matched CRS/VRS are choices inside this route,
+Input/output orientation and matched CRS/VRS are choices inside this method,
 not additional models. A nonconvex union of separate group hulls, non-radial
 or environmental metafrontiers, inferred groups, conditional frontiers, and
 group/meta productivity accounts require separate source and numerical
-contracts and remain outside the current Handbook route.
+contracts and remain outside the current implementation.
 
-## Diagnostics publication map
+## Diagnostics method map
 
-Selected-plan reference frequency is a bounded descriptive sensitivity inside
-the study-design route, not a new DEA model. It counts how often each observed
+Selected-plan reference frequency is a bounded descriptive sensitivity for
+study design, not a new DEA model. It counts how often each observed
 organization appears through a reported active peer edge strictly above the
 source result's `peer_tolerance` in one certified solver-selected peer plan
 from a static convex global cross-section. Self and other use remain separate. The normalized
 `reference_rate` uses total selected-plan frequency--self plus other--over all
 evaluated organizations.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `handbook_sensitivity` | `analysis.reference_frequency.selected_plan` | Selected-plan benchmark-use sensitivity inside study design |
+| Sensitivity companion | `analysis.reference_frequency.selected_plan` | Selected-plan benchmark-use diagnostic |
 
 The procedure does not refit the frontier or assess alternate optima. A high
 count is not an influence, outlier, or statistical-inference claim, and one
 selected plan is not the global reference set.
 
-## Evaluation publication map
+## Evaluation method map
 
-Specialized ranking and peer-appraisal procedures have no separate current
-Handbook route. Their public APIs remain available for source-qualified
-research workflows, with assumptions and failure domains documented in the
-package reference.
+Specialized ranking and peer-appraisal procedures have public APIs for
+source-qualified research workflows, with assumptions and failure domains
+documented in the package reference.
 
-| `publication_scope` | Catalog ID | Reader placement |
+| Method role | Catalog ID | Package placement |
 |---|---|---|
-| `documentation_only` | `evaluation.cross.game_nash.liang_wu_cook_zhu_2008` | Source-qualified game cross-efficiency protocol |
-| `documentation_only` | `evaluation.super.directional.ray_2008` | Source-qualified directional super-efficiency protocol |
-| `documentation_only` | `evaluation.super.sbm.tone_2002` | Source-qualified super-SBM protocol |
+| Specialized method | `evaluation.cross.game_nash.liang_wu_cook_zhu_2008` | Source-qualified game cross-efficiency protocol |
+| Specialized method | `evaluation.super.directional.ray_2008` | Source-qualified directional super-efficiency protocol |
+| Specialized method | `evaluation.super.sbm.tone_2002` | Source-qualified super-SBM protocol |
 
 Ordinary CRS cross-efficiency and the Andersen--Petersen radial
 reconstruction remain non-public prototypes scoped to `next_version`; they
-therefore do not appear in the installed catalog. Publication scope does not
-weaken the numerical evidence of the three public methods or turn them into
-general-purpose rankings.
+therefore do not appear in the installed catalog. Their specialized role does
+not weaken the numerical evidence of the three public methods or turn them
+into general-purpose rankings.
 
 ## Implemented public entries
 

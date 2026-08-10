@@ -12,7 +12,6 @@ third-party material.
 | Software | Project-owned Python source, software build and validation code, and software-distribution metadata | `GPL-3.0-only` | Daoping Wang confirmed publication authority; separately marked material is excluded |
 | Package Documentation prose | Project-owned original prose and original visual expression under `docs/` | `CC-BY-NC-SA-4.0` | Embedded code is software, not CC-licensed; third-party quotations, logos, fonts, and assets retain their own terms |
 | Documentation code | Executable examples, code blocks, snippets, and API signatures | `GPL-3.0-only` | Same authority and third-party exclusions as the software component |
-| Bilingual Handbook Preview 1 | English manuscript, Chinese rendering, and Handbook-original expression under `book/` | All Rights Reserved; `Copyright © 2026 Daoping Wang` | Named third-party material retains its own terms |
 | Project-created datasets | The 29 project-origin records and independently selected Zhou fixture mapped by exact hash in `DATA_LICENSES.md` | `CC-BY-4.0` | Attribute Daoping Wang / DEAPack and identify modifications; any content-hash change requires a new mapping |
 | External or source-derived datasets | The three exact externally sourced records in `DATA_LICENSES.md` | Source-specific | Ren retains CC BY 4.0; the two revenue fixtures retain their upstream MIT notices |
 | Third-party material | Named copied, embedded, or adapted material | Upstream terms | See `THIRD_PARTY_NOTICES.md`; no DEAPack component license overrides those terms |
@@ -20,7 +19,7 @@ third-party material.
 ## Software distribution boundary
 
 The wheel and source distribution are configured as the software publication
-surface: package Documentation, the Handbook, repository governance material,
+surface: package Documentation, repository governance material,
 figures, tests, benchmarks, and standalone data files are excluded. Their
 license texts are therefore not folded into the PEP 639 software expression.
 Numerical datasets represented inside Python source remain separately
@@ -32,8 +31,7 @@ The PEP 639 expression for the archive is
 `GPL-3.0-only AND CC-BY-4.0 AND MIT`: GPL covers the software component, CC BY
 covers the 31 exact mapped CC BY dataset payloads, and MIT covers the two
 exact revenue payloads. It is not a blanket license for Documentation,
-Handbook material, translations, third-party dependencies, names, or
-trademarks.
+third-party dependencies, names, or trademarks.
 
 ## Documentation attribution
 

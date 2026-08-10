@@ -3,11 +3,9 @@
 DEAPack is a composable Python toolkit for DEA-based efficiency, productivity,
 and environmental-performance analysis.
 
-This site is the complete package reference. The
-[companion Handbook](https://github.com/daopingw/DEAPack/blob/main/book/index.md)
-explains theory, model choice, interpretation, and research workflow; this
-Documentation focuses on installation, precise behavior, APIs, diagnostics,
-and extension. The Handbook has its own publication and versioning route.
+This site is the complete package reference. It covers installation, model
+choice, data preparation, precise behavior, APIs, diagnostics, reporting, and
+extension for the supported DEAPack release.
 
 ```{note}
 DEAPack 2.0.0 is the first stable 2.x release. It is not a drop-in replacement
@@ -45,9 +43,8 @@ page. Historical acronyms that share a mechanism do not need separate engines.
 | How do carry-overs connect operating decisions over time? | {doc}`api/dynamic` | `DynamicData`, a carry-over specification, and `DynamicSBM` |
 | How should organizations be compared across declared operating environments? | {doc}`analysis/metafrontier` | `RadialMetafrontierDEA` |
 
-The {doc}`user-guide/method-catalog` gives the complete installed inventory
-and separates Handbook mother-model routes from source-qualified
-Documentation-only leaves.
+The {doc}`user-guide/method-catalog` gives the complete installed inventory,
+from the principal method families to source-qualified specialized methods.
 
 ## Project lifecycle
 

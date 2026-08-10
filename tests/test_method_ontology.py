@@ -20,7 +20,6 @@ TESTS_ROOT = (REPOSITORY_ROOT / "tests").resolve()
 ORACLES_ROOT = (REPOSITORY_ROOT / "specs" / "oracles").resolve()
 MANIFEST_PATH = REGISTRY_ROOT / "registry-manifest.json"
 HUMAN_REGISTRY_PATH = REPOSITORY_ROOT / "specs" / "METHODS.md"
-BOOK_INDEX_PATH = REPOSITORY_ROOT / "book" / "index.md"
 SCHEMA_VERSION = "1.0.0"
 JSON_SCHEMA_DRAFT = "https://json-schema.org/draft/2020-12/schema"
 REGISTRY_ID = re.compile(r"^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$")
@@ -2586,26 +2585,16 @@ def test_method_records_have_unique_ids_and_complete_bindings() -> None:
         for locator in record["validation"]["benchmarks"]:
             _assert_locator_exists(locator)
 
-        for channel in ("book", "docs"):
-            for placement in record["placement"][channel]:
-                if placement["state"] == "present":
-                    assert placement["path"] is not None, placement
-                    _assert_locator_exists(placement["path"])
+        for placement in record["placement"]["docs"]:
+            if placement["state"] == "present":
+                assert placement["path"] is not None, placement
+                _assert_locator_exists(placement["path"])
 
 
-def test_present_book_placements_belong_to_the_published_route() -> None:
-    """Do not let docs-only leaves re-enter the handbook through the registry."""
-    index = BOOK_INDEX_PATH.read_text(encoding="utf-8")
-    published = {
-        f"book/{entry}.md"
-        for entry in re.findall(r"(?m)^((?:chapters|appendices)/\S+)$", index)
-    }
-
+def test_book_placements_are_empty_while_book_is_withheld() -> None:
+    """Keep compatibility fields without advertising unpublished book paths."""
     for path, record in _records("methods"):
-        for placement in record["placement"]["book"]:
-            if placement["state"] != "present":
-                continue
-            assert placement["path"] in published, (path, placement)
+        assert record["placement"]["book"] == [], path
 
 
 def test_components_and_dependencies_resolve_to_the_human_method_atlas() -> None:
@@ -2718,6 +2707,7 @@ def test_shadow_status_projects_only_implemented_public_records() -> None:
 
     aliases = _alias_ids(methods)
     assert aliases.isdisjoint(catalog)
+    assert all("book" not in item.documentation for item in catalog.values())
 
     for _, record in methods:
         if record["id"] not in implemented_public:
@@ -2733,13 +2723,10 @@ def test_shadow_status_projects_only_implemented_public_records() -> None:
         symbols.extend(alias["symbol"] for alias in record["names"]["api"]["aliases"])
         assert catalog[record["id"]].api_symbols == tuple(symbols)
 
-        present_book = any(
-            placement["state"] == "present" for placement in record["placement"]["book"]
-        )
         present_docs = any(
             placement["state"] == "present" for placement in record["placement"]["docs"]
         )
-        assert ("book" in catalog[record["id"]].documentation) is present_book
+        assert "book" not in catalog[record["id"]].documentation
         assert ("api" in catalog[record["id"]].documentation) is present_docs
 
 
@@ -3063,7 +3050,7 @@ def test_productivity_records_do_not_overstate_source_or_result_contracts() -> N
 
 
 def test_productivity_publication_scope_and_reference_policy_relations() -> None:
-    """Keep handbook routes separate from executable technical leaves."""
+    """Keep compatibility scope labels separate from executable technical leaves."""
     methods = {record["id"]: record for _, record in _records("methods")}
     expected_scopes = {
         "productivity.malmquist.adjacent_geometric": "handbook_core",
@@ -3092,13 +3079,6 @@ def test_productivity_publication_scope_and_reference_policy_relations() -> None
         method_id: methods[method_id]["status"]["publication_scope"]
         for method_id in expected_scopes
     } == expected_scopes
-
-    global_book = methods["productivity.global_malmquist"]["placement"]["book"]
-    oh_book = methods["productivity.global_malmquist_luenberger.oh_2010"]["placement"][
-        "book"
-    ]
-    assert [item["role"] for item in global_book] == ["supporting_reference_policy"]
-    assert [item["role"] for item in oh_book] == ["sensitivity"]
 
     relations = {path.name: record for path, record in _records("relations")}
     adjacent_id = "productivity.malmquist.adjacent_geometric"
@@ -3139,7 +3119,7 @@ def test_productivity_publication_scope_and_reference_policy_relations() -> None
 
 
 def test_network_dynamic_panel_publication_scope_and_family_roles() -> None:
-    """Keep two network routes and one dynamic route smaller than the API."""
+    """Retain historical scope labels without exposing unpublished book paths."""
     methods = {record["id"]: record for _, record in _records("methods")}
     expected_scopes = {
         "network.radial.fare_grosskopf_2000": "handbook_core",
@@ -3167,17 +3147,8 @@ def test_network_dynamic_panel_publication_scope_and_family_roles() -> None:
         for method_id in expected_scopes
     } == expected_scopes
 
-    chen_book = methods["network.additive.chen_etal_2009"]["placement"]["book"]
-    cook_book = methods["network.additive.cook_zhu_bi_yang_2010"]["placement"]["book"]
-    assert [item["role"] for item in chen_book] == ["mention"]
-    assert [item["role"] for item in cook_book] == ["primary"]
-
-    for method_id, publication_scope in expected_scopes.items():
-        book = methods[method_id]["placement"]["book"]
-        if publication_scope == "handbook_core":
-            assert any(item["state"] == "present" for item in book), method_id
-        else:
-            assert book == [], method_id
+    for method_id in expected_scopes:
+        assert methods[method_id]["placement"]["book"] == [], method_id
 
 
 def test_heterogeneity_publication_scope_and_mtr_meaning() -> None:
@@ -3195,18 +3166,11 @@ def test_heterogeneity_publication_scope_and_mtr_meaning() -> None:
     assert scores["group_efficiency"]["direction"] == "higher_is_better"
     assert scores["metafrontier_efficiency"]["direction"] == "higher_is_better"
     assert scores["metatechnology_ratio"]["direction"] == "higher_is_closer"
-    assert record["placement"]["book"] == [
-        {
-            "doc_id": "book.heterogeneity.metafrontier",
-            "path": "book/chapters/07-heterogeneity/23-metafrontier.md",
-            "state": "present",
-            "role": "primary",
-        }
-    ]
+    assert record["placement"]["book"] == []
 
 
-def test_evaluation_publication_scope_separates_api_from_handbook_routes() -> None:
-    """Keep specialized appraisal APIs out of the key-model Handbook route."""
+def test_evaluation_publication_scope_separates_api_from_core_scope_labels() -> None:
+    """Keep specialized appraisal APIs outside historical core scope labels."""
     methods = {record["id"]: record for _, record in _records("methods")}
     expected_scopes = {
         "evaluation.cross.game_nash.liang_wu_cook_zhu_2008": ("documentation_only"),
@@ -3346,7 +3310,7 @@ def test_reference_frequency_scope_and_selected_plan_semantics_do_not_drift() ->
     assert record["validation"]["benchmarks"] == [
         "benchmarks/benchmark_reference_frequency.py"
     ]
-    assert record["placement"]["book"][0]["role"] == "sensitivity"
+    assert record["placement"]["book"] == []
 
 
 def test_governed_prototypes_are_machine_scoped_to_next_version() -> None:

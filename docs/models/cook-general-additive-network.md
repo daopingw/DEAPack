@@ -12,8 +12,7 @@ Its canonical method ID is `network.additive.cook_zhu_bi_yang_2010`.
 
 ```{note}
 This is technical Documentation for the general additive
-process-attribution route inside the existing Network DEA family. It does not
-add a handbook model family or a separate book chapter.
+process-attribution method inside the existing Network DEA family.
 ```
 
 The model allows:

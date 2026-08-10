@@ -90,6 +90,3 @@ extend-exclude = ["DEAPack"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
-
-[tool.ruff.lint.per-file-ignores]
-"book/conf.py" = ["RUF001"]

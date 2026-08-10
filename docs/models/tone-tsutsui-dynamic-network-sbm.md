@@ -15,10 +15,9 @@ continuity in one sparse programme. Its canonical method ID is
 
 `ToneTsutsuiDynamicNetworkSBM` is the explicit technical class and
 `DynamicNetworkSBM` is its exact short alias. Both return the same estimator
-and result contract. This process-by-period construction is a cross-product of
-the network and dynamic axes, so it remains in package Documentation rather
-than becoming another Handbook route. Its equations and named terminal-policy
-resolution have been audited, but an independent full joint
+and result contract. This process-by-period construction combines the network
+and dynamic axes. Its equations and named terminal-policy resolution have been
+audited, but an independent full joint
 process-by-period numerical oracle has not been located. Public availability
 must not be read as a closed literature-reproduction claim.
 ```
@@ -555,9 +554,7 @@ The K=1 and T=1 reductions still establish only internal agreement on their
 shared domains. The joint analytical certificate closes that former gap for
 its named non-oriented CRS fixture without extending the claim to other
 orientations, RTS policies, weights, link or carry-over roles, or boundary
-rules. Reader placement remains `documentation_only`: this intersection of
-two Handbook families does not need another chapter merely because its
-verification is now stronger.
+rules. Stronger verification does not broaden the method's declared scope.
 
 The published application reports 21 anonymous US electricity utilities over
 1991--1995 with three divisions. The article supplies displayed efficiency

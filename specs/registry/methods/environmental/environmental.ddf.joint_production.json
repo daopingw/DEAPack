@@ -538,14 +538,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.environmental.ddf",
-        "path": "book/chapters/03-environmental/06-undesirable-outputs-ddf.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.environmental_directional",

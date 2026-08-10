@@ -548,14 +548,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.classical.directional_distance",
-        "path": "book/chapters/02-classical/05-directional-distance.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.directional",

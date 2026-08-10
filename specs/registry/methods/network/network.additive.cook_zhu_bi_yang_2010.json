@@ -341,14 +341,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.network.core_organizations_links_responsibility",
-        "path": "book/chapters/05-network/network-dea-organizations-links-responsibility.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.general_additive_network",

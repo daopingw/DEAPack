@@ -18,13 +18,13 @@ def _load_dco_module():
 def test_public_contribution_entries_are_linked() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
-    book_index = (ROOT / "book" / "index.md").read_text(encoding="utf-8")
-    preface = (ROOT / "book" / "preface.md").read_text(encoding="utf-8")
+    development_index = (ROOT / "docs" / "developer" / "index.md").read_text(
+        encoding="utf-8"
+    )
 
     assert "[contribution guide](CONTRIBUTING.md)" in readme
-    assert "developer/contributing" in docs_index
-    assert "project-contributions" in book_index
-    assert "{doc}`project-contributions`" in preface
+    assert "developer/index" in docs_index
+    assert "contributing" in development_index
 
 
 def test_model_proposal_form_keeps_the_source_and_oracle_gate_visible() -> None:
@@ -58,42 +58,27 @@ def test_issue_forms_and_pull_request_template_cover_open_contribution_types() -
         "Dataset or provenance",
         "Visualization or reporting",
         "Package Documentation",
-        "Chinese Handbook translation",
     ):
         assert contribution in pull_request
+    assert "handbook" not in pull_request.casefold()
+    assert "english book" not in pull_request.casefold()
+    assert "chinese book" not in pull_request.casefold()
     assert "redistribution license" in pull_request
     assert "Signed-off-by" in pull_request
     assert "CC-BY-NC-SA-4.0" in pull_request
-    assert "professionally reviewed contribution agreement" in pull_request
 
 
 def test_contribution_policy_does_not_promise_automatic_authorship() -> None:
     root_guide = (ROOT / "CONTRIBUTING.md").read_text(encoding="utf-8")
-    book_page = (ROOT / "book" / "project-contributions.md").read_text(encoding="utf-8")
     docs_page = (ROOT / "docs" / "developer" / "contributing.md").read_text(
         encoding="utf-8"
     )
 
     assert "does not automatically" in root_guide
-    assert "not assigned automatically" in book_page
     assert "not automatic" in docs_page
     assert "citation alone is not permission" in root_guide
     assert "git commit --signoff" in root_guide
     assert "inbound = outbound" in root_guide
-    assert "three\n  exact external fingerprints" in root_guide
-    assert "no\n  project-created dataset has an active mapping yet" in root_guide
-    assert "not accepted" in " ".join(root_guide.split())
-
-
-def test_handbook_contribution_policy_is_fail_closed_not_a_contract() -> None:
-    policy = (ROOT / "book" / "HANDBOOK_CONTRIBUTION_POLICY.md").read_text(
-        encoding="utf-8"
-    )
-    assert "not a copyright-assignment agreement" in policy
-    assert "professional review" in policy
-    assert "only after the final reviewed instrument is" in policy
-    assert "will not merge pull requests" in policy
-    assert "does not retroactively assign" in policy
 
 
 def test_dco_status_checks_every_exact_pull_request_commit_without_running_it() -> None:

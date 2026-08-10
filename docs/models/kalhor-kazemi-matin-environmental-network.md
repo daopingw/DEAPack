@@ -452,8 +452,6 @@ construction. It also tests all four RTS restrictions, account-level unit
 invariance, custom-reference exclusion, sparse compilation, one solve per
 observation, and source-boundary metadata.
 
-An earlier economic and management treatment is retained locally in the
-private editorial archive under `specs/archive/book-drafts/`. That archive is
-excluded from the public GitHub source boundary. It is technical provenance
-for this maintained Documentation page, not a chapter in the published
-Handbook route and not a public link target.
+The maintained page records the public economic interpretation, formulation,
+source boundary, and verification claims needed to use this method without
+depending on private editorial material.

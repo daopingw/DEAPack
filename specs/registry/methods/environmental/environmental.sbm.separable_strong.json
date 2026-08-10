@@ -426,14 +426,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.environmental.sbm",
-        "path": "book/chapters/03-environmental/07-undesirable-output-sbm.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.undesirable_sbm",

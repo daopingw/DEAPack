@@ -126,7 +126,7 @@ result.plot(
 )
 ```
 
-```{figure} ../../book/_static/figures/directional-super-stress-result.svg
+```{figure} ../_static/figures/directional-super-stress-result.svg
 :name: docs-fig-ray-directional-super-result
 :alt: Project-authored multivariate stress cases ranked by Nerlove--Luenberger peer-replacement exposure
 :width: 92%

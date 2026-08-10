@@ -8,9 +8,7 @@ historical and third-party material retains its own terms.
 The repository also contains separately governed components. Project-owned
 original Documentation prose is licensed under CC-BY-NC-SA-4.0, with
 attribution to Daoping Wang / DEAPack, while code examples remain under
-GPL-3.0-only. Bilingual Handbook Preview 1 carries the notice
-"Copyright © 2026 Daoping Wang. All Rights Reserved." Named third-party
-material retains its recorded terms.
+GPL-3.0-only. Named third-party material retains its recorded terms.
 
 All 33 current dataset fingerprints have item-level mappings in
 DATA_LICENSES.md. Thirty project-created or independently selected fixtures

@@ -1,18 +1,16 @@
-name: Documentation, Handbook, or translation
-description: Suggest a clearer explanation, correction, case, figure, citation, or Chinese translation.
+name: Documentation issue
+description: Suggest a clearer explanation, correction, example, figure, or citation fix.
 title: "[Editorial]: "
 body:
   - type: markdown
     attributes:
       value: |
-        Package Documentation contributions use CC-BY-NC-SA-4.0 for original prose and GPL-3.0-only for code. For Bilingual Handbook Preview 1, please report the issue and evidence without pasting a substantial replacement passage: substantive manuscript and translation pull requests are temporarily closed pending an executed, professionally reviewed contribution agreement.
+        Package Documentation contributions use CC-BY-NC-SA-4.0 for original prose and GPL-3.0-only for code. Please identify the affected page and provide enough evidence to review the proposed correction.
   - type: dropdown
     id: kind
     attributes:
       label: Contribution type
       options:
-        - English Handbook
-        - Chinese Handbook translation
         - Package Documentation
         - Worked case or teaching dataset
         - Figure or visualization
@@ -37,7 +35,7 @@ body:
     id: evidence
     attributes:
       label: Terminology or factual evidence
-      description: For technical or Chinese terminology changes, cite an authoritative source and explain why the revision is more accurate or idiomatic.
+      description: For technical terminology changes, cite an authoritative source and explain why the revision is more accurate.
   - type: textarea
     id: rights
     attributes:

@@ -75,8 +75,6 @@ explicit next-version work rather than provisional APIs.
 ## Documentation and migration
 
 - [Package Documentation source](https://github.com/daopingw/DEAPack/tree/main/docs)
-- [English Handbook source](https://github.com/daopingw/DEAPack/tree/main/book)
-- [Chinese Handbook catalogs](https://github.com/daopingw/DEAPack/tree/main/book/locale/zh_CN/LC_MESSAGES)
 - [2.x migration guide](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/migration.md)
 - [Release notes](https://github.com/daopingw/DEAPack/blob/main/RELEASE_NOTES_2.0.0.md)
 - [Contribution guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md)
@@ -98,5 +96,3 @@ notice; it does not inherit GPL merely by being represented in a Python file.
 All 33 current dataset fingerprints have exact mappings: 30 project-created
 or independently selected fixtures and one external dataset use
 `CC-BY-4.0`, while two external datasets retain upstream `MIT` notices.
-Package Documentation and Bilingual Handbook Preview 1 are separate
-components and are cited and licensed separately.

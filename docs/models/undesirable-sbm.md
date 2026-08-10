@@ -14,7 +14,7 @@ DEAPack exposes two distinct Tone (2003) undesirable-output SBM specifications:
 Both models require strictly positive inputs, desirable outputs, and undesirable
 outputs because observed values normalize the fractional performance account.
 
-## Separable strong-disposal SBM — handbook core
+## Separable strong-disposal SBM
 
 The separable balances are
 

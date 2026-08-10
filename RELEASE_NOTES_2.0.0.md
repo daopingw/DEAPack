@@ -27,8 +27,8 @@ the optional `viz` extra.
   not defined or cannot be verified.
 - Thirty-three deterministic teaching datasets with exact content hashes,
   roles, provenance, attribution, and item-level redistribution terms.
-- English package Documentation plus a separately versioned bilingual
-  English--Chinese Handbook Preview 1.
+- English package Documentation covering installation, model choice,
+  analysis, visualization, reporting, and the public API.
 - Independent analytical, reproduced, or cross-implemented numerical evidence
   for every implemented public method record.
 
@@ -63,14 +63,10 @@ source-incomplete model variants remain future work rather than provisional
   `CC-BY-NC-SA-4.0`; executable examples remain GPL software.
 - Project-created datasets use `CC-BY-4.0` with attribution; retained
   third-party datasets keep their recorded upstream terms.
-- The bilingual Handbook Preview 1 is Copyright © 2026 Daoping Wang, All
-  Rights Reserved.
 
 Exact component boundaries and data attribution are recorded in
 [COMPONENT_LICENSES.md](COMPONENT_LICENSES.md),
 [DATA_LICENSES.md](DATA_LICENSES.md), and [NOTICE](NOTICE).
 
 Use [CITATION.cff](CITATION.cff) or [CITATION.md](CITATION.md) and record the
-exact software version used. No software DOI has yet been assigned. The
-companion Handbook is a separate scholarly object with its own edition and
-citation history.
+exact software version used. No software DOI has yet been assigned.

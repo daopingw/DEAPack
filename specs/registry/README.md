@@ -18,7 +18,7 @@ governance:
 The same checkpoint contains 43 typed relationship records. Three explicit
 Malmquist reference-policy relations connect adjacent contemporaneous,
 full-sample global, and adjacent-pair biennial designs without promoting each
-information policy to a separate handbook family.
+information policy to a separate primary method family.
 The five constructor/reporting `specialization_id` entries and the other seven
 `preset_id` entries remain catalog identities rather than being promoted to
 duplicate machine methods. Four classic-radial presets reuse the
@@ -106,9 +106,8 @@ and the printed unbounded CHP branch remain outside the identity. A typed
 contrast with the configurable common-factor DDF records that shared
 technology does not make non-radial component steps or the EPI/CPI/ECPI score
 transformations aliases of one common directional step.
-It has technical documentation placement but deliberately no book placement;
-the companion book remains focused on mainstream and structurally important
-model families.
+It has technical documentation placement but no external long-form publication
+placement.
 
 The public `static.multiplicative` record closes the classic multiplicative
 DEA development milestone without collapsing its two defining formulations.
@@ -118,10 +117,9 @@ free-intercept log-convex preset with a strictly positive domain and certified
 unit invariance. A dense source-form compiler independently checks scores,
 targets, peers, exponent-floor power, and the different unit behavior. The
 classical-foundations benchmark, package documentation, and deterministic
-technical figure are linked release evidence. The former English chapter draft
-is retained as editorial provenance but has no published-book placement under
-the handbook admission gate. This is still a shadow-registry development
-checkpoint, not a stable or formal release.
+technical figure are linked release evidence. Unpublished manuscript material
+is not represented as a live registry placement. This is still a
+shadow-registry development checkpoint, not a stable or formal release.
 
 The conventional by-production DDF and the proposed modified FGL measure
 retain distinct reproduced records. Murty--Russell--Levkoff equation (5.6)
@@ -336,10 +334,10 @@ machine record against the complete schema with the optional test dependency
 `jsonschema`; this never adds a DEAPack runtime dependency. Additional
 cross-record tests resolve aliases and typed relations, check evidence
 locators and documentation placements, and compare implemented public records
-with the Python discovery catalog. A `present` book placement must also resolve
-to a chapter or appendix in the authoritative `book/index.md`; an existing
-source file that is excluded from the reader route does not count as handbook
-publication.
+with the Python discovery catalog. The `placement.book` array remains in the
+schema for compatibility but is empty in every method record while the book is
+withheld from this repository. Public catalog entries therefore advertise only
+live package documentation.
 
 `status.publication_scope` separates implementation maturity from reader
 publication. It is required for productivity, network, dynamic, panel,
@@ -349,20 +347,21 @@ These categories use
 `handbook_core`,
 `supporting_reference_policy`, `handbook_sensitivity`, or
 `documentation_only`; a planned or prototype record in one of these
-categories must use `next_version`. Placement roles then describe how a record
-is used at its particular location.
+categories must use `next_version`. The names containing `handbook` are retained
+as compatibility metadata for the established editorial classification; they
+do not assert a live book path or publication in this repository. Placement
+roles describe only locations that are actually present.
 
 For example, Global Malmquist is a `supporting_reference_policy` inside the
 ordinary Malmquist family route, and Oh GML is a bounded `sensitivity` beside
 the CFG environmental account. Within network DEA, the Färe--Grosskopf,
 Kao--Hwang, Chen, and Cook entries are core accounts inside one connected-
-organization route rather than four independent Handbook routes. The
-Tone--Tsutsui network SBM is the second retained network route. Sequential,
+organization family rather than four independent primary families. The
+Tone--Tsutsui network SBM is the second retained network family. Sequential,
 environmental-network, dynamic-network, and multiperiod-aggregation leaves
-remain discoverable as `documentation_only`. None of these placement choices
-changes API maturity or numerical verification. The family-level route remains
-governed by `book/index.md`, `BOOK_ARCHITECTURE.md`, and the core-family
-delivery matrix.
+remain discoverable as `documentation_only`. None of these compatibility scope
+choices changes API maturity, numerical verification, or documentation
+placement.
 
 The current heterogeneity core is deliberately singular: the implemented
 O'Donnell--Rao--Battese radial group/metafrontier account. Its MTR/TGR is an
@@ -374,12 +373,12 @@ Evaluation is now governed by the same publication contract. The three
 source-qualified public leaves--Tone super-SBM, Ray directional
 super-efficiency, and Liang--Wu--Cook--Zhu game cross-efficiency--remain
 `documentation_only`: they are available, tested research procedures but do
-not become separate routes in the key-model Handbook. The ordinary CRS
+not become separate primary-family routes. The ordinary CRS
 cross-efficiency and Andersen--Petersen radial reconstructions remain
 non-public prototypes scoped to `next_version`. The reserved `decision`
 category is governed before it acquires records: any future planned or
 prototype decision procedure must be `next_version` and cannot imply a
-current API or Handbook chapter.
+current API or published documentation page.
 
 The first governed deterministic diagnostic is
 `analysis.reference_frequency.selected_plan`. It consumes one complete,
@@ -390,8 +389,8 @@ remain result metadata. The integer `reference_frequency` equals self-reference
 plus other-reference counts; `reference_rate` divides that total by the number
 of evaluated organizations. It deliberately makes no alternate-optimum, global-
 reference-set, influence, outlier, ranking, or inferential claim. Its
-`handbook_sensitivity` status embeds that safeguard in study design rather
-than promoting diagnostics into a separate model route.
+`handbook_sensitivity` compatibility status embeds that safeguard in study
+design rather than promoting diagnostics into a separate model route.
 
 Evidence-source roles are deliberately narrow. `defining` freezes the
 method's own formulation; `equivalence` supports an identity claim;
@@ -445,7 +444,7 @@ eleven-axis `expanded_spec` attached to a fitted result.
 Add evidence before promoting status. A new record should state its economic
 question, all eleven axes, data and invariance domain, target guarantee,
 backend capabilities, source and oracle status, required tests, and intended
-book/documentation placement. Equal rankings or shared matrices are not alias
+documentation placement. Equal rankings or shared matrices are not alias
 evidence. A current-release candidate needs both an original or authoritative
 defining source with frozen source-native equations and economic semantics,
 and an independent numerical oracle or equivalent exact executable

@@ -566,14 +566,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.productivity.malmquist_reference_information",
-        "path": "book/chapters/04-productivity/malmquist-productivity-reference-information.md",
-        "state": "present",
-        "role": "supporting_reference_policy"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.global_malmquist",

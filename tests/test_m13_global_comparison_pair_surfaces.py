@@ -1,4 +1,4 @@
-"""M13 evidence, registry, documentation, and Handbook synchronization."""
+"""M13 evidence, registry, and package-Documentation synchronization."""
 
 from __future__ import annotations
 
@@ -15,10 +15,6 @@ _RECORDS = (
 _DOCS = (
     "docs/analysis/global-malmquist.md",
     "docs/analysis/global-malmquist-luenberger.md",
-)
-_BOOK_CHAPTERS = (
-    "book/chapters/04-productivity/malmquist-productivity-reference-information.md",
-    "book/chapters/04-productivity/environmental-productivity-ml-common-reference.md",
 )
 
 
@@ -92,12 +88,3 @@ def test_docs_explain_pair_matching_cost_and_unambiguous_plotting() -> None:
         assert "fit the one pair" in document
         assert "base_period" in document
         assert "comparison_period" in document
-
-
-def test_handbook_integrates_management_horizons_without_a_new_chapter() -> None:
-    for relative in _BOOK_CHAPTERS:
-        chapter = _text(relative)
-        assert 'comparison_pairs="all"' in chapter
-        assert "DP(P-1)/2" in chapter
-        assert "one" in chapter and "pair" in chapter and "plot" in chapter
-        assert "management" in chapter.lower()

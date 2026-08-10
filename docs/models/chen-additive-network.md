@@ -11,10 +11,8 @@ stage 2, and final outputs leave stage 2.
 `TwoStageAdditiveDecompositionDEA` is an exact API alias.
 
 ```{note}
-This is technical Documentation for the additive process-attribution route
-inside the existing Network DEA family. It does not introduce another
-handbook model family or promote a paper-level variation to a separate
-chapter.
+This is technical Documentation for the additive process-attribution method
+inside the existing Network DEA family.
 ```
 
 The defining formulation is

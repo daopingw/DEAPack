@@ -24,9 +24,8 @@ The public class is a source preset, not a generic non-radial directional
 kernel.
 
 ```{note}
-This is a specialized, paper-specific application preset. It belongs in the
-package Documentation and method catalog rather than the companion
-handbook's sequence of principal model families.
+This is a specialized, paper-specific application preset with its own catalog
+identity and documented validity boundary.
 ```
 
 ## Supported source surface

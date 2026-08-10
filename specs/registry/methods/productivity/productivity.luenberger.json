@@ -534,14 +534,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.productivity.luenberger",
-        "path": "book/chapters/04-productivity/12-luenberger.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.luenberger",

@@ -2,8 +2,8 @@
 
 The constraint is intentionally a direct, cross-platform pin set rather than
 a platform-specific wheel freeze.  The emitted JSON records the complete
-resolved Python environment, copied HTML asset evidence, Linux package/tool
-versions, and final-PDF font tables that produced a release candidate.
+resolved Python environment, copied Documentation asset evidence, and the
+rendered Documentation site that produced a release candidate.
 """
 
 from __future__ import annotations
@@ -12,12 +12,9 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
-import os
 import platform
 import re
-import shutil
 import stat
-import subprocess
 import sys
 from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path, PurePosixPath
@@ -74,37 +71,10 @@ PROFILES = {
     "release": frozenset(EXPECTED_PINS),
 }
 
-APT_PACKAGES = (
-    "fontconfig",
-    "fonts-dejavu-core",
-    "fonts-dejavu-mono",
-    "fonts-noto-cjk",
-    "fonts-texgyre",
-    "latexmk",
-    "librsvg2-bin",
-    "poppler-utils",
-    "tex-gyre",
-    "texlive-fonts-recommended",
-    "texlive-latex-extra",
-    "texlive-latex-recommended",
-    "texlive-lang-chinese",
-    "texlive-xetex",
-)
-SYSTEM_TOOLS = (
-    "fc-match",
-    "fc-query",
-    "kpsewhich",
-    "latexmk",
-    "pdffonts",
-    "pdfinfo",
-    "rsvg-convert",
-    "xelatex",
-)
-
 INVENTORY_SCOPE = (
     "protected CPython 3.12 release lane; exact direct Python pins, resolved "
-    "transitive Python distributions, complete rendered-site byte trees, "
-    "Ubuntu/TeX/font source evidence, and final-PDF font tables"
+    "transitive Python distributions, the complete rendered Documentation "
+    "site byte tree, and exact rendered-asset producer evidence"
 )
 INVENTORY_LIMITATIONS = (
     "This file is a resolved build record, not a hash-locked wheel lock.",
@@ -113,18 +83,8 @@ INVENTORY_LIMITATIONS = (
         "pins are constrained."
     ),
     (
-        "ubuntu-24.04 apt indexes and TeX/font packages are not "
-        "snapshot-pinned; resolved package versions, Debian copyright-file "
-        "hashes, executable hashes, resolver-selected font-file hashes, "
-        "final PDF hashes, and pdffonts tables are recorded."
-    ),
-    (
         "The exact MathJax CDN URL is external at reader view time; MathJax "
         "bytes are not copied into the generated sites."
-    ),
-    (
-        "Type 3 PDF glyph programs are recorded as PDF-contained programs; "
-        "they have no external font-file resolver path."
     ),
     (
         "Ordinary DEAPack users retain the broader runtime ranges declared "
@@ -132,89 +92,11 @@ INVENTORY_LIMITATIONS = (
     ),
 )
 
-EXPECTED_MATHJAX_CONFIGURATION = ("docs/conf.py", "book/conf.py")
+EXPECTED_MATHJAX_CONFIGURATION = ("docs/conf.py",)
 SITE_CONTRACTS: dict[str, tuple[int, str]] = {
-    "_site/book/en": (33, "legal-notices.html"),
-    "_site/book/zh_CN": (33, "legal-notices.html"),
     "_site/docs/en": (98, "legal/third-party-notices.html"),
 }
-PDF_CONTRACTS = (
-    "output/review/2.0.0rc1/DEAPack-Handbook-Preview1-EN.pdf",
-    "output/review/2.0.0rc1/DEAPack-Handbook-Preview1-ZH.pdf",
-)
-
-_FONTCONFIG_FAMILIES: dict[str, dict[str, object]] = {
-    "fontconfig:dejavu-sans": {
-        "request": "DejaVu Sans",
-        "styles": ("regular", "bold", "oblique", "bold-oblique"),
-        "license": "Bitstream-Vera",
-        "packages": ("fonts-dejavu-core",),
-        "notice_marker": "## DejaVu Sans and Sans Mono — retained font notices",
-    },
-    "fontconfig:dejavu-sans-mono": {
-        "request": "DejaVu Sans Mono",
-        "styles": ("regular", "bold", "oblique", "bold-oblique"),
-        "license": "Bitstream-Vera",
-        "packages": ("fonts-dejavu-core", "fonts-dejavu-mono"),
-        "notice_marker": "## DejaVu Sans and Sans Mono — retained font notices",
-    },
-    "fontconfig:noto-sans-cjk-sc": {
-        "request": "Noto Sans CJK SC",
-        "styles": ("regular", "bold"),
-        "license": "OFL-1.1",
-        "packages": ("fonts-noto-cjk",),
-        "notice_marker": "## Font Awesome webfonts and Noto CJK — SIL OFL 1.1",
-    },
-    "fontconfig:noto-serif-cjk-sc": {
-        "request": "Noto Serif CJK SC",
-        "styles": ("regular", "bold"),
-        "license": "OFL-1.1",
-        "packages": ("fonts-noto-cjk",),
-        "notice_marker": "## Font Awesome webfonts and Noto CJK — SIL OFL 1.1",
-    },
-    "fontconfig:tex-gyre-heros": {
-        "request": "TeX Gyre Heros",
-        "styles": ("regular", "bold", "italic", "bold-italic"),
-        "license": "GUST-FONT-LICENSE-1.0",
-        "packages": ("fonts-texgyre", "tex-gyre"),
-        "notice_marker": "## TeX Gyre Termes and Heros — GUST Font License",
-    },
-    "fontconfig:tex-gyre-termes": {
-        "request": "TeX Gyre Termes",
-        "styles": ("regular", "bold", "italic", "bold-italic"),
-        "license": "GUST-FONT-LICENSE-1.0",
-        "packages": ("fonts-texgyre", "tex-gyre"),
-        "notice_marker": "## TeX Gyre Termes and Heros — GUST Font License",
-    },
-}
-
-_FONTCONFIG_STYLE_CONTRACTS: dict[str, dict[str, object]] = {
-    "regular": {
-        "request_style": "Regular",
-        "accepted_styles": ("regular", "book", "roman"),
-    },
-    "bold": {"request_style": "Bold", "accepted_styles": ("bold",)},
-    "italic": {"request_style": "Italic", "accepted_styles": ("italic",)},
-    "oblique": {"request_style": "Oblique", "accepted_styles": ("oblique",)},
-    "bold-italic": {
-        "request_style": "Bold Italic",
-        "accepted_styles": ("bolditalic",),
-    },
-    "bold-oblique": {
-        "request_style": "Bold Oblique",
-        "accepted_styles": ("boldoblique",),
-    },
-}
-
-FONTCONFIG_SOURCES: dict[str, dict[str, object]] = {
-    f"{family_id}:{style_key}": {
-        **family,
-        "style_key": style_key,
-        **_FONTCONFIG_STYLE_CONTRACTS[style_key],
-    }
-    for family_id, family in _FONTCONFIG_FAMILIES.items()
-    for style_key in family["styles"]
-}
+SYSTEM_TOOLCHAIN_STATE = "not-required-for-package-documentation"
 
 _NAME_RUN = re.compile(r"[-_.]+")
 _VERSION = re.compile(r"[A-Za-z0-9][A-Za-z0-9._+!-]*\Z")
@@ -562,7 +444,7 @@ def _static_asset_inventory(
 def _verify_mathjax_configuration(root: Path) -> list[dict[str, str]]:
     records: list[dict[str, str]] = []
     expected = f'mathjax_path = "{MATHJAX_URL}"'
-    for relative in ("docs/conf.py", "book/conf.py"):
+    for relative in EXPECTED_MATHJAX_CONFIGURATION:
         path = root / relative
         payload = _regular_bytes(path)
         source = payload.decode("utf-8")
@@ -653,540 +535,13 @@ def _site_record(
     }
 
 
-def _command_version(name: str, path: Path) -> str:
-    commands = {
-        "fc-match": [str(path), "-V"],
-        "fc-query": [str(path), "-V"],
-        "kpsewhich": [str(path), "--version"],
-        "latexmk": [str(path), "-v"],
-        "pdffonts": [str(path), "-v"],
-        "pdfinfo": [str(path), "-v"],
-        "rsvg-convert": [str(path), "--version"],
-        "xelatex": [str(path), "--version"],
-    }
-    completed = subprocess.run(
-        commands[name],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=30,
-        env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-    )
-    output = "\n".join(item for item in (completed.stdout, completed.stderr) if item)
-    first = next((line.strip() for line in output.splitlines() if line.strip()), "")
-    if completed.returncode != 0 or not first:
-        raise ValueError(f"cannot resolve version for system tool {name}")
-    return first
-
-
-def _package_record(package: str) -> dict[str, object]:
-    completed = subprocess.run(
-        ["dpkg-query", "-W", "-f=${Version}", package],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=30,
-        env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-    )
-    if completed.returncode != 0 or not completed.stdout.strip():
-        raise ValueError(f"required Ubuntu release package is missing: {package}")
-    copyright_path = Path("/usr/share/doc") / package / "copyright"
-    if not copyright_path.is_file():
-        raise ValueError(f"Ubuntu package lacks copyright evidence: {package}")
-    return {
-        "name": package,
-        "version": completed.stdout.strip(),
-        "copyright_path": copyright_path.as_posix(),
-        "copyright_sha256": _sha256_file(copyright_path),
-    }
-
-
-def _dpkg_file_evidence(path: Path) -> dict[str, object]:
-    completed = subprocess.run(
-        ["dpkg-query", "-S", path.as_posix()],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=30,
-        env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-    )
-    candidates = []
-    for line in completed.stdout.splitlines():
-        if ": " not in line:
-            continue
-        package, claimed_path = line.split(": ", maxsplit=1)
-        if Path(claimed_path).resolve() == path:
-            candidates.append(package.split(",", maxsplit=1)[0])
-    if completed.returncode != 0 or not candidates:
-        raise ValueError(f"font file has no dpkg owner: {path}")
-    binary_package = sorted(set(candidates))[0]
-    package = binary_package.split(":", maxsplit=1)[0]
-    version = subprocess.run(
-        ["dpkg-query", "-W", "-f=${Version}", binary_package],
-        check=True,
-        capture_output=True,
-        text=True,
-        timeout=30,
-        env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-    ).stdout.strip()
-    copyright_path = Path("/usr/share/doc") / package / "copyright"
-    if not version or not copyright_path.is_file():
-        raise ValueError(f"font owner lacks version/copyright evidence: {package}")
-    return {
-        "package": package,
-        "binary_package": binary_package,
-        "package_version": version,
-        "package_copyright_path": copyright_path.as_posix(),
-        "package_copyright_sha256": _sha256_file(copyright_path),
-    }
-
-
-def _notice_binding(
-    notice_sha256: str,
-    marker: str,
-    notice_payload: bytes,
-) -> dict[str, str]:
-    if marker.encode("utf-8") not in notice_payload:
-        raise ValueError(f"consolidated notice lacks font marker: {marker}")
-    return {
-        "kind": "consolidated-notice",
-        "path": "THIRD_PARTY_NOTICES.md",
-        "sha256": notice_sha256,
-        "marker": marker,
-    }
-
-
-def _fontconfig_source_records(
-    *,
-    notice_sha256: str,
-    notice_payload: bytes,
-) -> list[dict[str, object]]:
-    fc_match = shutil.which("fc-match")
-    fc_query = shutil.which("fc-query")
-    if fc_match is None or fc_query is None:
-        raise ValueError("fc-match and fc-query are required for font evidence")
-    format_string = (
-        "%{file}\\t%{index}\\t%{family}\\t%{style}\\t"
-        "%{postscriptname}\\t%{fontversion}\\t%{fontformat}\\n"
-    )
-    records: list[dict[str, object]] = []
-    for source_id, contract in sorted(FONTCONFIG_SOURCES.items()):
-        request = str(contract["request"])
-        request_style = str(contract["request_style"])
-        matched = subprocess.run(
-            [fc_match, "-f", format_string, f"{request}:style={request_style}"],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=30,
-            env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-        ).stdout.splitlines()
-        if len(matched) != 1:
-            raise ValueError(f"fc-match did not select one face for {request}")
-        match_fields = matched[0].split("\t")
-        if len(match_fields) != 7 or not match_fields[0]:
-            raise ValueError(f"fc-match returned incomplete evidence for {request}")
-        match_path = Path(match_fields[0])
-        realpath = match_path.resolve(strict=True)
-        face_index = int(match_fields[1] or "0")
-        queried = subprocess.run(
-            [
-                fc_query,
-                "-i",
-                str(face_index),
-                "-f",
-                format_string,
-                realpath.as_posix(),
-            ],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=30,
-            env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-        ).stdout.splitlines()
-        if len(queried) != 1:
-            raise ValueError(f"fc-query did not bind one face for {request}")
-        query_fields = queried[0].split("\t")
-        if len(query_fields) != 7 or not query_fields[0]:
-            raise ValueError(f"fc-query returned incomplete evidence for {request}")
-        query_realpath = Path(query_fields[0]).resolve(strict=True)
-        if query_realpath != realpath or int(query_fields[1] or "0") != face_index:
-            raise ValueError(f"fc-match/fc-query disagreed for {request}")
-        face_style = re.sub(r"[^a-z]", "", query_fields[3].casefold())
-        accepted_styles = tuple(str(item) for item in contract["accepted_styles"])
-        if face_style not in accepted_styles:
-            raise ValueError(
-                f"font {request} style {request_style} resolved to "
-                f"unexpected face style {query_fields[3]!r}"
-            )
-        owner = _dpkg_file_evidence(realpath)
-        allowed_packages = tuple(str(item) for item in contract["packages"])
-        if owner["package"] not in allowed_packages:
-            raise ValueError(
-                f"font {request} resolved to unreviewed package {owner['package']}"
-            )
-        payload = _regular_bytes(realpath, limit=64 * 1024 * 1024)
-        records.append(
-            {
-                "source_id": source_id,
-                "resolver": "fontconfig",
-                "request": request,
-                "fc_match_path": match_path.as_posix(),
-                "fc_query_path": Path(query_fields[0]).as_posix(),
-                "realpath": realpath.as_posix(),
-                "face_index": face_index,
-                "family": query_fields[2],
-                "style": query_fields[3],
-                "postscript_name": query_fields[4],
-                "font_version": query_fields[5],
-                "format": query_fields[6],
-                "size": len(payload),
-                "sha256": _sha256_bytes(payload),
-                "license": contract["license"],
-                **owner,
-                "license_binding": _notice_binding(
-                    notice_sha256,
-                    str(contract["notice_marker"]),
-                    notice_payload,
-                ),
-            }
-        )
-    return records
-
-
-def _type1_source_records(
-    source_ids: Iterable[str],
-    *,
-    notice_sha256: str,
-    notice_payload: bytes,
-) -> list[dict[str, object]]:
-    kpsewhich = shutil.which("kpsewhich")
-    if kpsewhich is None:
-        raise ValueError("kpsewhich is required for Type 1 font evidence")
-    records: list[dict[str, object]] = []
-    for source_id in sorted(set(source_ids)):
-        if not source_id.startswith("kpsewhich:"):
-            continue
-        query = source_id.removeprefix("kpsewhich:")
-        completed = subprocess.run(
-            [kpsewhich, query],
-            check=True,
-            capture_output=True,
-            text=True,
-            timeout=30,
-            env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-        )
-        lines = [line.strip() for line in completed.stdout.splitlines() if line.strip()]
-        if len(lines) != 1:
-            raise ValueError(f"kpsewhich did not select one Type 1 file: {query}")
-        realpath = Path(lines[0]).resolve(strict=True)
-        payload = _regular_bytes(realpath, limit=16 * 1024 * 1024)
-        owner = _dpkg_file_evidence(realpath)
-        if query.startswith(("qtm", "qhv")):
-            if owner["package"] not in {"fonts-texgyre", "tex-gyre"}:
-                raise ValueError(
-                    "TeX Gyre Type 1 font resolved to unreviewed package "
-                    f"{owner['package']}"
-                )
-            license_name: str | None = "GUST-FONT-LICENSE-1.0"
-            license_binding: dict[str, str] = _notice_binding(
-                notice_sha256,
-                "## TeX Gyre Termes and Heros — GUST Font License",
-                notice_payload,
-            )
-        else:
-            license_name = None
-            license_binding = {
-                "kind": "debian-package-copyright",
-                "path": str(owner["package_copyright_path"]),
-                "sha256": str(owner["package_copyright_sha256"]),
-            }
-        records.append(
-            {
-                "source_id": source_id,
-                "resolver": "kpsewhich",
-                "query": query,
-                "realpath": realpath.as_posix(),
-                "size": len(payload),
-                "sha256": _sha256_bytes(payload),
-                "license": license_name,
-                **owner,
-                "license_binding": license_binding,
-            }
-        )
-    return records
-
-
-def _system_inventory(
-    *,
-    root: Path,
-    require: bool,
-    pdf_records: Sequence[Mapping[str, object]],
-) -> dict[str, object]:
-    if platform.system() != "Linux":
-        if require:
-            raise ValueError("system release-tool inventory requires Linux")
-        return {
-            "state": "not-collected-on-non-linux",
-            "packages": [],
-            "tools": [],
-            "font_sources": [],
-        }
-
-    package_records: list[dict[str, object]] = []
-    for package in APT_PACKAGES:
-        try:
-            package_records.append(_package_record(package))
-        except ValueError:
-            if require:
-                raise
-
-    tool_records: list[dict[str, str]] = []
-    for name in SYSTEM_TOOLS:
-        resolved = shutil.which(name)
-        if resolved is None:
-            if require:
-                raise ValueError(f"required release tool is missing: {name}")
-            continue
-        path = Path(resolved).resolve(strict=True)
-        tool_records.append(
-            {
-                "name": name,
-                "path": path.as_posix(),
-                "version": _command_version(name, path),
-                "sha256": _sha256_file(path),
-            }
-        )
-    notice_payload = _regular_bytes(root / "THIRD_PARTY_NOTICES.md")
-    notice_sha256 = _sha256_bytes(notice_payload)
-    font_sources: list[dict[str, object]] = []
-    try:
-        font_sources.extend(
-            _fontconfig_source_records(
-                notice_sha256=notice_sha256,
-                notice_payload=notice_payload,
-            )
-        )
-        referenced_source_ids = {
-            str(row["source_id"])
-            for pdf in pdf_records
-            for row in pdf.get("pdffonts_rows", [])
-            if isinstance(row, Mapping)
-            and isinstance(row.get("source_id"), str)
-            and str(row["source_id"]).startswith("kpsewhich:")
-        }
-        font_sources.extend(
-            _type1_source_records(
-                referenced_source_ids,
-                notice_sha256=notice_sha256,
-                notice_payload=notice_payload,
-            )
-        )
-    except (OSError, ValueError, subprocess.SubprocessError):
-        if require:
-            raise
-    return {
-        "state": "resolved",
-        "packages": package_records,
-        "tools": tool_records,
-        "font_sources": font_sources,
-    }
-
-
-def _type1_query(base_name: str, family: str) -> str:
-    if family in {"tex-gyre-termes", "tex-gyre-heros"}:
-        suffix = base_name.rsplit("-", maxsplit=1)[-1].lower()
-        bold = "bold" in suffix
-        italic = "italic" in suffix or "oblique" in suffix
-        prefix = "qtm" if family == "tex-gyre-termes" else "qhv"
-        ending = "bi" if bold and italic else "b" if bold else "ri" if italic else "r"
-        return f"{prefix}{ending}.pfb"
-    return f"{base_name.lower()}.pfb"
-
-
-def _fontconfig_pdf_source(
-    base_name: str,
-    *,
-    prefix: str,
-    family: str,
-    source_prefix: str,
-) -> tuple[str, str]:
-    """Map one PDF face name to its exact fontconfig face contract."""
-
-    if not base_name.casefold().startswith(prefix.casefold()):
-        raise ValueError(f"font face {base_name!r} does not match {prefix!r}")
-    suffix = base_name[len(prefix) :].lstrip("-_. ")
-    token = re.sub(r"[^a-z]", "", suffix.casefold())
-    aliases = {
-        "": "regular",
-        "regular": "regular",
-        "book": "regular",
-        "roman": "regular",
-        "bold": "bold",
-        "italic": "italic",
-        "oblique": "oblique",
-        "bolditalic": "bold-italic",
-        "boldoblique": "bold-oblique",
-    }
-    style_key = aliases.get(token)
-    source_id = None if style_key is None else f"{source_prefix}:{style_key}"
-    if source_id not in FONTCONFIG_SOURCES:
-        raise ValueError(f"final PDF contains an unknown font face: {base_name}")
-    return family, source_id
-
-
-def _pdf_font_source(base_name: str, font_type: str) -> tuple[str, str]:
-    folded = base_name.casefold()
-    if base_name == "[none]" and font_type == "Type 3":
-        return "pdf-contained-type3", "pdf-contained:type3"
-    if folded.startswith("notoserifcjk"):
-        return _fontconfig_pdf_source(
-            base_name,
-            prefix="NotoSerifCJKsc",
-            family="noto-serif-cjk-sc",
-            source_prefix="fontconfig:noto-serif-cjk-sc",
-        )
-    if folded.startswith("notosanscjk"):
-        return _fontconfig_pdf_source(
-            base_name,
-            prefix="NotoSansCJKsc",
-            family="noto-sans-cjk-sc",
-            source_prefix="fontconfig:noto-sans-cjk-sc",
-        )
-    if folded.startswith("dejavusansmono"):
-        return _fontconfig_pdf_source(
-            base_name,
-            prefix="DejaVuSansMono",
-            family="dejavu-sans-mono",
-            source_prefix="fontconfig:dejavu-sans-mono",
-        )
-    if folded.startswith("dejavusans"):
-        return _fontconfig_pdf_source(
-            base_name,
-            prefix="DejaVuSans",
-            family="dejavu-sans",
-            source_prefix="fontconfig:dejavu-sans",
-        )
-    if folded.startswith("texgyretermes"):
-        family = "tex-gyre-termes"
-        source = (
-            f"kpsewhich:{_type1_query(base_name, family)}"
-            if font_type.startswith("Type 1")
-            else _fontconfig_pdf_source(
-                base_name,
-                prefix="TeXGyreTermes",
-                family=family,
-                source_prefix="fontconfig:tex-gyre-termes",
-            )[1]
-        )
-        return family, source
-    if folded.startswith("texgyreheros"):
-        family = "tex-gyre-heros"
-        source = (
-            f"kpsewhich:{_type1_query(base_name, family)}"
-            if font_type.startswith("Type 1")
-            else _fontconfig_pdf_source(
-                base_name,
-                prefix="TeXGyreHeros",
-                family=family,
-                source_prefix="fontconfig:tex-gyre-heros",
-            )[1]
-        )
-        return family, source
-    if re.fullmatch(
-        r"(?:CM[A-Z]+|MSA[BM]|MSBM|TX[A-Z]*|T1X[A-Z]*|TCX[A-Z]*|SF[A-Z]*)\d*",
-        base_name,
-        flags=re.IGNORECASE,
-    ):
-        return "tex-type1-package-font", f"kpsewhich:{_type1_query(base_name, '')}"
-    raise ValueError(f"final PDF contains an unknown font family: {base_name}")
-
-
-def _parse_pdffonts_rows(output: str) -> list[dict[str, object]]:
-    lines = [line.rstrip() for line in output.splitlines() if line.strip()]
-    data_lines = lines[2:] if len(lines) >= 2 else []
-    records: list[dict[str, object]] = []
-    for line in data_lines:
-        parts = line.split()
-        if len(parts) < 9:
-            raise ValueError(f"pdffonts returned an unparseable row: {line}")
-        name = parts[0]
-        font_type = " ".join(parts[1:-6])
-        encoding, embedded, subset, unicode_map, object_id, generation = parts[-6:]
-        if (
-            not font_type
-            or embedded != "yes"
-            or not object_id.isdigit()
-            or not generation.isdigit()
-        ):
-            raise ValueError(
-                f"final PDF contains an unembedded or invalid font row: {line}"
-            )
-        if subset not in {"yes", "no"} or unicode_map not in {"yes", "no"}:
-            raise ValueError(f"pdffonts returned invalid flags: {line}")
-        base_name = re.sub(r"^[A-Z]{6}\+", "", name)
-        family, source_id = _pdf_font_source(base_name, font_type)
-        records.append(
-            {
-                "name": name,
-                "base_name": base_name,
-                "type": font_type,
-                "encoding": encoding,
-                "emb": embedded,
-                "sub": subset,
-                "uni": unicode_map,
-                "object_id": int(object_id),
-                "generation": int(generation),
-                "family": family,
-                "source_id": source_id,
-            }
-        )
-    if not records:
-        raise ValueError("final PDF pdffonts inventory is empty")
-    return records
-
-
-def _pdf_font_record(root: Path, path: Path) -> dict[str, object]:
-    resolved = path.resolve(strict=True)
-    if _regular_bytes(resolved, limit=256 * 1024 * 1024)[:5] != b"%PDF-":
-        raise ValueError(f"font inventory input is not a PDF: {path}")
-    pdffonts = shutil.which("pdffonts")
-    if pdffonts is None:
-        raise ValueError("pdffonts is required for final-PDF font inventory")
-    completed = subprocess.run(
-        [pdffonts, str(resolved)],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=120,
-        env={**os.environ, "LC_ALL": "C", "LANG": "C"},
-    )
-    if completed.returncode != 0 or "name" not in completed.stdout.lower():
-        raise ValueError(f"pdffonts could not inspect {path}")
-    rows = _parse_pdffonts_rows(completed.stdout)
-    try:
-        label = resolved.relative_to(root.resolve()).as_posix()
-    except ValueError:
-        label = resolved.as_posix()
-    return {
-        "path": label,
-        "pdf_sha256": _sha256_file(resolved),
-        "pdffonts_output_sha256": _sha256_bytes(completed.stdout.encode("utf-8")),
-        "font_families": sorted({str(row["family"]) for row in rows}),
-        "font_source_ids": sorted({str(row["source_id"]) for row in rows}),
-        "pdffonts_rows": rows,
-    }
-
-
 def build_inventory(
     *,
     root: Path,
     constraint: Path,
     profile: str,
     require_ci_platform: bool,
-    require_system_tools: bool,
     site_roots: Iterable[Path],
-    pdfs: Iterable[Path],
 ) -> dict[str, object]:
     pins = parse_constraint(constraint)
     installed = verify_installed(
@@ -1199,10 +554,6 @@ def build_inventory(
         _distribution_record(name, distribution, direct_pins=pins)
         for name, distribution in sorted(installed.items())
     ]
-    pdf_records = sorted(
-        (_pdf_font_record(root, path) for path in pdfs),
-        key=lambda item: str(item["path"]),
-    )
     site_records = sorted(
         (
             _site_record(root, site, copied_notices=copied_notices)
@@ -1238,12 +589,13 @@ def build_inventory(
         },
         "mathjax_configuration": _verify_mathjax_configuration(root),
         "rendered_sites": site_records,
-        "system_toolchain": _system_inventory(
-            root=root,
-            require=require_system_tools,
-            pdf_records=pdf_records,
-        ),
-        "pdf_font_inventories": pdf_records,
+        "system_toolchain": {
+            "state": SYSTEM_TOOLCHAIN_STATE,
+            "packages": [],
+            "tools": [],
+            "font_sources": [],
+        },
+        "pdf_font_inventories": [],
         "limitations": list(INVENTORY_LIMITATIONS),
         "generator": {
             "path": "scripts/release_toolchain.py",
@@ -1444,10 +796,9 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
         if isinstance(mathjax, list)
         else {}
     )
-    if (
-        set(observed_mathjax) != set(EXPECTED_MATHJAX_CONFIGURATION)
-        or len(observed_mathjax) != 2
-    ):
+    if set(observed_mathjax) != set(EXPECTED_MATHJAX_CONFIGURATION) or len(
+        observed_mathjax
+    ) != len(EXPECTED_MATHJAX_CONFIGURATION):
         raise ValueError("release-toolchain MathJax configuration is incomplete")
     if any(
         set(item) != {"path", "sha256"} or not _is_sha256(item.get("sha256"))
@@ -1461,7 +812,9 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
         if isinstance(sites, list)
         else {}
     )
-    if set(observed_sites) != set(SITE_CONTRACTS) or len(observed_sites) != 3:
+    if set(observed_sites) != set(SITE_CONTRACTS) or len(observed_sites) != len(
+        SITE_CONTRACTS
+    ):
         raise ValueError("release-toolchain rendered-site set is incomplete")
     for path, (expected_count, notice_path) in SITE_CONTRACTS.items():
         site = observed_sites[path]
@@ -1525,263 +878,17 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
         ):
             raise ValueError("release-toolchain consolidated site notice is unbound")
 
-    system = parsed.get("system_toolchain")
-    if (
-        not isinstance(system, Mapping)
-        or set(system)
-        != {
-            "state",
-            "packages",
-            "tools",
-            "font_sources",
-        }
-        or system.get("state") != "resolved"
-    ):
-        raise ValueError("release-toolchain system inventory is invalid")
-    packages = system.get("packages")
-    package_map = (
-        {item.get("name"): item for item in packages if isinstance(item, Mapping)}
-        if isinstance(packages, list)
-        else {}
-    )
-    if set(package_map) != set(APT_PACKAGES) or len(package_map) != len(APT_PACKAGES):
-        raise ValueError("release-toolchain Ubuntu package inventory is incomplete")
-    for name, item in package_map.items():
-        if (
-            not isinstance(item.get("version"), str)
-            or not item.get("version")
-            or item.get("copyright_path") != f"/usr/share/doc/{name}/copyright"
-            or not _is_sha256(item.get("copyright_sha256"))
-        ):
-            raise ValueError("release-toolchain Ubuntu package evidence is invalid")
-    tools = system.get("tools")
-    tool_map = (
-        {item.get("name"): item for item in tools if isinstance(item, Mapping)}
-        if isinstance(tools, list)
-        else {}
-    )
-    if set(tool_map) != set(SYSTEM_TOOLS) or len(tool_map) != len(SYSTEM_TOOLS):
-        raise ValueError("release-toolchain system tool inventory is incomplete")
-    for item in tool_map.values():
-        if (
-            not isinstance(item.get("path"), str)
-            or not str(item.get("path")).startswith("/")
-            or not isinstance(item.get("version"), str)
-            or not item.get("version")
-            or not _is_sha256(item.get("sha256"))
-        ):
-            raise ValueError("release-toolchain system tool evidence is invalid")
-    font_sources = system.get("font_sources")
-    source_map = (
-        {
-            item.get("source_id"): item
-            for item in font_sources
-            if isinstance(item, Mapping)
-        }
-        if isinstance(font_sources, list)
-        else {}
-    )
-    if not set(FONTCONFIG_SOURCES).issubset(source_map) or len(source_map) != len(
-        font_sources if isinstance(font_sources, list) else []
-    ):
-        raise ValueError("release-toolchain font source ledger is incomplete")
-    notice_sha256 = str(notice_source["sha256"])
-    for source_id, contract in FONTCONFIG_SOURCES.items():
-        item = source_map[source_id]
-        binding = item.get("license_binding")
-        if (
-            not {
-                "source_id",
-                "resolver",
-                "request",
-                "fc_match_path",
-                "fc_query_path",
-                "realpath",
-                "face_index",
-                "family",
-                "style",
-                "postscript_name",
-                "font_version",
-                "format",
-                "size",
-                "sha256",
-                "license",
-                "package",
-                "binary_package",
-                "package_version",
-                "package_copyright_path",
-                "package_copyright_sha256",
-                "license_binding",
-            }.issubset(item)
-            or item.get("resolver") != "fontconfig"
-            or item.get("request") != contract["request"]
-            or item.get("license") != contract["license"]
-            or item.get("package") not in contract["packages"]
-            or re.sub(r"[^a-z]", "", str(item.get("style", "")).casefold())
-            not in contract["accepted_styles"]
-            or not isinstance(item.get("face_index"), int)
-            or item.get("face_index", -1) < 0
-            or not _is_sha256(item.get("sha256"))
-            or not isinstance(item.get("size"), int)
-            or item.get("size", 0) <= 0
-            or not all(
-                isinstance(item.get(field), str) and item.get(field)
-                for field in (
-                    "fc_match_path",
-                    "fc_query_path",
-                    "realpath",
-                    "family",
-                    "style",
-                    "format",
-                    "binary_package",
-                    "package_version",
-                    "package_copyright_path",
-                )
-            )
-            or not isinstance(item.get("postscript_name"), str)
-            or not isinstance(item.get("font_version"), str)
-            or not _is_sha256(item.get("package_copyright_sha256"))
-            or not isinstance(binding, Mapping)
-            or binding.get("kind") != "consolidated-notice"
-            or binding.get("path") != "THIRD_PARTY_NOTICES.md"
-            or binding.get("sha256") != notice_sha256
-            or binding.get("marker") != contract["notice_marker"]
-        ):
-            raise ValueError("release-toolchain fontconfig source is invalid")
-    for source_id, item in source_map.items():
-        if not str(source_id).startswith("kpsewhich:"):
-            continue
-        binding = item.get("license_binding")
-        query = str(source_id).removeprefix("kpsewhich:")
-        if (
-            not {
-                "source_id",
-                "resolver",
-                "query",
-                "realpath",
-                "size",
-                "sha256",
-                "license",
-                "package",
-                "binary_package",
-                "package_version",
-                "package_copyright_path",
-                "package_copyright_sha256",
-                "license_binding",
-            }.issubset(item)
-            or item.get("resolver") != "kpsewhich"
-            or item.get("query") != query
-            or not str(item.get("query")).endswith(".pfb")
-            or not isinstance(item.get("realpath"), str)
-            or not str(item.get("realpath")).startswith("/")
-            or not _is_sha256(item.get("sha256"))
-            or not isinstance(item.get("size"), int)
-            or item.get("size", 0) <= 0
-            or not all(
-                isinstance(item.get(field), str) and item.get(field)
-                for field in (
-                    "package",
-                    "binary_package",
-                    "package_version",
-                    "package_copyright_path",
-                )
-            )
-            or not _is_sha256(item.get("package_copyright_sha256"))
-            or not isinstance(binding, Mapping)
-        ):
-            raise ValueError("release-toolchain Type 1 font source is invalid")
-        if query.startswith(("qtm", "qhv")):
-            if (
-                item.get("license") != "GUST-FONT-LICENSE-1.0"
-                or item.get("package") not in {"fonts-texgyre", "tex-gyre"}
-                or binding.get("kind") != "consolidated-notice"
-                or binding.get("path") != "THIRD_PARTY_NOTICES.md"
-                or binding.get("sha256") != notice_sha256
-                or binding.get("marker")
-                != "## TeX Gyre Termes and Heros — GUST Font License"
-            ):
-                raise ValueError("release-toolchain Type 1 notice binding is invalid")
-        elif (
-            binding.get("kind") != "debian-package-copyright"
-            or binding.get("path") != item.get("package_copyright_path")
-            or binding.get("sha256") != item.get("package_copyright_sha256")
-        ):
-            raise ValueError("release-toolchain Type 1 package binding is invalid")
+    expected_system_toolchain = {
+        "state": SYSTEM_TOOLCHAIN_STATE,
+        "packages": [],
+        "tools": [],
+        "font_sources": [],
+    }
+    if parsed.get("system_toolchain") != expected_system_toolchain:
+        raise ValueError("release-toolchain system inventory must be empty")
 
-    pdfs = parsed.get("pdf_font_inventories")
-    pdf_map = (
-        {item.get("path"): item for item in pdfs if isinstance(item, Mapping)}
-        if isinstance(pdfs, list)
-        else {}
-    )
-    if set(pdf_map) != set(PDF_CONTRACTS) or len(pdf_map) != 2:
-        raise ValueError("release-toolchain final-PDF inventory set is incomplete")
-    for path, pdf in pdf_map.items():
-        rows = pdf.get("pdffonts_rows")
-        if (
-            not _is_sha256(pdf.get("pdf_sha256"))
-            or not _is_sha256(pdf.get("pdffonts_output_sha256"))
-            or not isinstance(rows, list)
-            or not rows
-        ):
-            raise ValueError("release-toolchain final-PDF font inventory is invalid")
-        families: set[str] = set()
-        source_ids: set[str] = set()
-        for row in rows:
-            if not isinstance(row, Mapping) or set(row) != {
-                "name",
-                "base_name",
-                "type",
-                "encoding",
-                "emb",
-                "sub",
-                "uni",
-                "object_id",
-                "generation",
-                "family",
-                "source_id",
-            }:
-                raise ValueError("release-toolchain final-PDF font row is incomplete")
-            if row.get("emb") != "yes":
-                raise ValueError("release-toolchain final-PDF font is not embedded")
-            name = row.get("name")
-            base_name = row.get("base_name")
-            font_type = row.get("type")
-            if (
-                not isinstance(name, str)
-                or not name
-                or not isinstance(base_name, str)
-                or base_name != re.sub(r"^[A-Z]{6}\+", "", name)
-                or not isinstance(font_type, str)
-                or not font_type
-                or not isinstance(row.get("encoding"), str)
-                or not row.get("encoding")
-                or row.get("sub") not in {"yes", "no"}
-                or row.get("uni") not in {"yes", "no"}
-                or not isinstance(row.get("object_id"), int)
-                or row.get("object_id", -1) < 0
-                or not isinstance(row.get("generation"), int)
-                or row.get("generation", -1) < 0
-            ):
-                raise ValueError("release-toolchain final-PDF font row is invalid")
-            family, source_id = _pdf_font_source(base_name, font_type)
-            if row.get("family") != family or row.get("source_id") != source_id:
-                raise ValueError("release-toolchain final-PDF font mapping is invalid")
-            families.add(family)
-            source_ids.add(source_id)
-        if pdf.get("font_families") != sorted(families) or pdf.get(
-            "font_source_ids"
-        ) != sorted(source_ids):
-            raise ValueError("release-toolchain final-PDF font summary is invalid")
-        unresolved = source_ids - set(source_map) - {"pdf-contained:type3"}
-        if unresolved:
-            raise ValueError(
-                f"release-toolchain PDF font sources are unbound: {unresolved}"
-            )
-        if path.endswith("-EN.pdf") and not any(
-            source.startswith("kpsewhich:") for source in source_ids
-        ):
-            raise ValueError("English PDF lacks kpsewhich Type 1 source evidence")
+    if parsed.get("pdf_font_inventories") != []:
+        raise ValueError("release-toolchain PDF inventory must be empty")
 
     if parsed.get("limitations") != list(INVENTORY_LIMITATIONS):
         raise ValueError("release-toolchain limitations are incomplete")
@@ -1810,9 +917,7 @@ def _parser() -> argparse.ArgumentParser:
     emit = subparsers.add_parser("emit-inventory")
     emit.add_argument("--profile", choices=sorted(PROFILES), default="release")
     emit.add_argument("--require-ci-platform", action="store_true")
-    emit.add_argument("--require-system-tools", action="store_true")
     emit.add_argument("--site-root", type=Path, action="append", default=[])
-    emit.add_argument("--pdf", type=Path, action="append", default=[])
     emit.add_argument("--output", type=Path, required=True)
 
     check = subparsers.add_parser("verify-inventory")
@@ -1840,9 +945,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 constraint=constraint,
                 profile=arguments.profile,
                 require_ci_platform=arguments.require_ci_platform,
-                require_system_tools=arguments.require_system_tools,
                 site_roots=arguments.site_root,
-                pdfs=arguments.pdf,
             )
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_text(
@@ -1852,12 +955,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         elif arguments.command == "verify-inventory":
             verify_inventory(arguments.inventory, root=root, constraint=constraint)
-    except (
-        OSError,
-        ValueError,
-        json.JSONDecodeError,
-        subprocess.SubprocessError,
-    ) as error:
+    except (OSError, ValueError, json.JSONDecodeError) as error:
         print(f"release toolchain blocked: {error}", file=sys.stderr)
         return 1
     return 0

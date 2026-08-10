@@ -25,8 +25,8 @@ jobs:
       PIP_CONSTRAINT: ${{ github.workspace }}/constraints/release-python312.txt
       PIP_DISABLE_PIP_VERSION_CHECK: "1"
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.12"
           cache: pip
@@ -36,84 +36,20 @@ jobs:
           python -m pip install --constraint "$PIP_CONSTRAINT" -e '.[docs,viz]'
           python scripts/release_toolchain.py verify-installed \
             --profile docs --require-ci-platform
-      - name: Regenerate and verify book figures
-        run: |
-          make -C book figures PYTHON=python
-          python book/figures/localize_handbook_figures_zh.py --check
-          test -z "$(git status --porcelain --untracked-files=all -- book/_static/figures)"
-      - name: Build English companion book
-        run: sphinx-build -E -a -W --keep-going -b html book _site/book/en
-      - name: Validate Chinese Handbook catalogs
-        run: |
-          sphinx-build -E -a -W --keep-going -b gettext book _build/handbook-gettext
-          python scripts/localize_handbook_math_labels.py --check
-          python scripts/check_handbook_translations.py --require-complete \
-            --template-root _build/handbook-gettext
-      - name: Build Chinese companion book
-        run: >-
-          DEAPACK_BOOK_LANGUAGE=zh_CN
-          sphinx-build -E -a -W --keep-going -b html
-          book _site/book/zh_CN
-      - name: Build English package documentation
+      - name: Build package documentation
         run: sphinx-build -E -a -W --keep-going -b html docs _site/docs/en
-      - name: Verify rendered publication titles
-        run: python scripts/verify_rendered_titles.py _site
+      - name: Verify rendered Documentation identity and notices
+        run: python scripts/verify_rendered_titles.py _site/docs/en
       - name: Execute reviewed documentation examples
         env:
           MPLBACKEND: Agg
           MPLCONFIGDIR: /tmp/deapack-matplotlib-doc-examples
           MPL_IGNORE_SYSTEM_FONTS: "1"
-        run: python scripts/run_documentation_examples.py --include-visualization --include-handbook
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        run: python scripts/run_documentation_examples.py --include-visualization
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         # Build and verify on every configured ref, but never expose the
         # rendered site from ordinary CI. Publication is a protected action.
         if: ${{ false }}
         with:
-          name: deapack-sites
-          path: _site
-
-  book-pdf:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    env:
-      PIP_CONSTRAINT: ${{ github.workspace }}/constraints/release-python312.txt
-      PIP_DISABLE_PIP_VERSION_CHECK: "1"
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
-        with:
-          python-version: "3.12"
-          cache: pip
-      - name: Install LaTeX, SVG conversion, and PDF text tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y \
-            latexmk \
-            fonts-noto-cjk \
-            librsvg2-bin \
-            poppler-utils \
-            tex-gyre \
-            texlive-fonts-recommended \
-            texlive-latex-extra \
-            texlive-latex-recommended \
-            texlive-lang-chinese \
-            texlive-xetex
-      - name: Install package and book dependencies
-        run: |
-          python -m pip install --constraint "$PIP_CONSTRAINT" pip setuptools
-          python -m pip install --constraint "$PIP_CONSTRAINT" -e '.[docs,viz]'
-          python scripts/release_toolchain.py verify-installed \
-            --profile docs --require-ci-platform
-      - name: Build and verify searchable English and Chinese book PDFs
-        run: |
-          python scripts/localize_handbook_math_labels.py --check
-          python scripts/check_handbook_translations.py --require-complete
-          make -C book pdf PYTHON=python SPHINXBUILD=sphinx-build
-          make -C book pdf-zh PYTHON=python SPHINXBUILD=sphinx-build
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        # Candidate PDFs remain runner-local until the protected release path
-        # binds them to an approved tag and review record.
-        if: ${{ false }}
-        with:
-          name: deapack-book-pdf
-          path: book/_build/pdf/*.pdf
+          name: deapack-documentation-html
+          path: _site/docs/en

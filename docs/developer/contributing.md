@@ -1,7 +1,7 @@
 # Contributing
 
 DEAPack welcomes questions, model proposals, bug reports, code, datasets,
-teaching cases, visualizations, documentation, and Handbook translations.  A
+teaching cases, visualizations, and documentation improvements. A
 contributor does not need to implement a method before suggesting it.
 
 Start with the repository's complete
@@ -17,10 +17,8 @@ Software commits require a DCO 1.1 `Signed-off-by` line and are contributed
 under `GPL-3.0-only` (inbound = outbound). Project-owned original package
 Documentation prose is contributed under `CC-BY-NC-SA-4.0`, while executable
 examples and code blocks remain GPL software. Dataset content requires a
-separate approved rights mapping. Handbook and translation issues remain open,
-but substantive text pull requests are temporarily closed pending an executed,
-professionally reviewed contribution agreement. The root guide contains the
-complete component boundary.
+separate approved rights mapping. The root guide contains the complete
+component boundary.
 
 ## How a model proposal is classified
 
@@ -29,7 +27,7 @@ locates the proposal in the unified framework and asks whether it is:
 
 - an alias, preset, or parameterization of an existing mechanism;
 - a source-qualified specialization that belongs in package Documentation;
-- a principal transferable mechanism that may also belong in the Handbook;
+- a principal transferable mechanism that expands an existing family;
 - or a candidate that must be deferred until its defining source or an
   independent numerical check is available.
 
@@ -45,8 +43,7 @@ boundaries.
 Small corrections matter.  Particularly useful contributions include a
 minimal numerical counterexample, a clearer economic interpretation, an
 accessible deterministic figure, a synthetic teaching dataset, a documented
-performance case, a missing primary-source location, or a more idiomatic and
-technically exact Chinese translation.  Dataset and figure proposals must
+performance case or a missing primary-source location. Dataset and figure proposals must
 state source, transformations, redistribution status, and license; a citation
 does not by itself grant redistribution permission.
 

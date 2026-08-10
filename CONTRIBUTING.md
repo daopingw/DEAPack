@@ -1,7 +1,7 @@
 # Contributing to DEAPack
 
-DEAPack is developed as one coordinated package, companion book, and
-documentation system. Contributions are welcome, but a new acronym or a
+DEAPack is developed as a coordinated software and package-Documentation
+project. Contributions are welcome, but a new acronym or a
 plausible optimization programme is not by itself a new supported method.
 Code, economic meaning, notation, validation, and reader-facing material must
 remain aligned.
@@ -26,32 +26,20 @@ assign an earlier contribution.
   accepted under `CC-BY-4.0` only after the contributor's identity, authority,
   origin declaration, attribution, and exact content mapping are reviewed.
   External and source-derived data follow their own terms and never inherit a
-  DEAPack license. [DATA_LICENSES.md](DATA_LICENSES.md) currently maps three
-  exact external fingerprints under reviewed upstream terms; no
-  project-created dataset has an active mapping yet.
-- **Handbook and Chinese translation:** issue-based corrections and suggestions
-  are welcome, but substantive text or translation pull requests are not
-  accepted while the copyright-assignment route is awaiting applicable-law
-  professional review and execution. See the
-  [Handbook contribution rights policy](book/HANDBOOK_CONTRIBUTION_POLICY.md).
+  DEAPack license. [DATA_LICENSES.md](DATA_LICENSES.md) records the exact
+  fingerprint, attribution, and terms for every current dataset.
 
 The complete outgoing boundary and official license-text locations are in
 [COMPONENT_LICENSES.md](COMPONENT_LICENSES.md). A sign-off records the DCO
-certification; it does not create Handbook authorship, transfer Handbook
-copyright, prove dataset clearance, or establish authority on behalf of an
-employer or co-owner.
+certification; it does not prove dataset clearance or establish authority on
+behalf of an employer or co-owner.
 
-English is the canonical source language for code, API names, package
-Documentation, and the Handbook.  The first public Handbook is also being
-prepared in Chinese through Sphinx gettext catalogs.  Chinese prose is edited
-as Chinese scholarly writing rather than sentence-by-sentence literal
-translation; equations, symbols, citations, code, and computed values remain
-shared with the English source.  Package Documentation remains English-only
-for the first public release.
+English is the canonical source language for code, API names, and package
+Documentation.
 
 You do not need to arrive with finished code.  Questions, counterexamples,
 literature leads, model proposals, data corrections, teaching cases,
-visualization ideas, and translation corrections are all useful
+visualization ideas, and documentation corrections are all useful
 contributions.  Use the structured GitHub issue forms when possible so that a
 suggestion can be evaluated without asking the contributor to learn the whole
 repository first.
@@ -80,7 +68,7 @@ exists.  Maintainers will first decide whether it is a principal transferable
 mechanism, an alias or parameterization of an existing family, a
 Documentation-only specialization, or a source-deferred candidate.  That
 classification is not a judgment about the value of the underlying research;
-it keeps the package and Handbook intelligible.
+it keeps the package coherent and discoverable.
 
 ## Evidence gate for a new executable method
 
@@ -97,15 +85,14 @@ following are available:
 6. tests covering the formulation, invariance domain, failure cases, and
    independent validation;
 7. direct performance evidence proportional to the expected workload;
-8. an aligned publication decision: family-level integration in the English
-   book only when the handbook admission gate is passed, otherwise complete
-   package Documentation without a book topic.
+8. complete package Documentation that states the supported domain, result
+   interpretation, limitations, and source-qualified identity.
 
 If any of the first three items cannot be completed, record the candidate as
 `deferred_to_next_version`. It may remain visible in the field map and retain
 a source protocol that explains what is missing, but it must not receive a
-guessed solver, public constructor, machine method record, or book claim of
-current availability. Missing original application data prevents a claim of
+guessed solver, public constructor, or machine method record. Missing original
+application data prevents a claim of
 empirical reproduction; it does not prevent a later theory release if the
 complete source and an exact independent synthetic oracle are available.
 
@@ -126,8 +113,7 @@ theory:
 6. add analytical, property, failure, and independent-oracle tests;
 7. add a direct `benchmarks/benchmark_*.py` execution contract;
 8. add the machine method record and public catalog projection;
-9. document the method in the API/model reference, and integrate it into the
-   book only when it adds a principal, transferable model-family idea.
+9. document the method in the API/model reference and method catalog.
 
 A benchmark may be attached to a method only when it directly executes that
 complete public API. Component benchmarks do not automatically certify a
@@ -148,14 +134,7 @@ ruff format --check .
 ruff check .
 make test PYTHON=.venv/bin/python
 sphinx-build -W --keep-going -E -a -b html docs docs/_build/html
-sphinx-build -W --keep-going -E -a -b html book book/_build/html
 ```
-
-Handbook prose, translation, or figure changes must also follow
-[`book/CONTRIBUTING.md`](book/CONTRIBUTING.md) and run its complete Chinese
-translation, mathematical-label, localized-figure, and strict bilingual build
-checks. The English source alone is not sufficient evidence for a bilingual
-change.
 
 Regenerate committed figures when their source changes and confirm that the
 generated assets are reproducible. Do not commit solver logs, local build
@@ -181,10 +160,9 @@ Accepted contributions remain visible in Git history and are acknowledged in
 release notes or the relevant source, dataset, example, figure, or translation
 record when that is the most useful scholarly provenance.  A substantial
 contribution can be discussed with the maintainers before submission so that
-credit expectations are explicit.  A contribution does not automatically
-create Handbook authorship, software authorship, or DOI metadata; those
-records follow the contribution's nature and the policies of the eventual
-publication venue.
+credit expectations are explicit. A contribution does not automatically
+create software authorship or DOI metadata; those records follow the
+contribution's nature and the policies of the eventual publication venue.
 
 Only submit material that you are entitled to contribute.  Dataset and figure
 contributions must identify their source, transformation, redistribution
@@ -199,9 +177,7 @@ Code contributions require DCO 1.1 sign-off and are accepted under
 `GPL-3.0-only`. Original package Documentation prose is accepted under
 `CC-BY-NC-SA-4.0`, with embedded code under GPL. Dataset contributions require
 an affirmative dataset-to-license record; `CC-BY-4.0` is the adopted default
-only for content confirmed to be wholly project-created. Substantive Handbook
-and translation pull requests remain closed until a professionally reviewed
-copyright-assignment instrument is executed by all required parties.
+only for content confirmed to be wholly project-created.
 
 For the first release candidate, the unresolved component and dataset
 decisions are recorded explicitly in

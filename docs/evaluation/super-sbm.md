@@ -25,7 +25,7 @@ than an organization with a low super score. This separation prevents one
 ranking column from mixing ordinary inefficiency with frontier
 distinctiveness.
 
-```{figure} ../../book/_static/figures/super-efficiency-radial-vs-slack.svg
+```{figure} ../_static/figures/super-efficiency-radial-vs-slack.svg
 :name: docs-fig-super-efficiency-radial-vs-slack
 :alt: A later radial leave-self-out reconstruction applies one common proportional replacement pressure, while Tone super-SBM first admits only strongly SBM-efficient organizations and then records separate resource and service replacement pressures
 :width: 100%

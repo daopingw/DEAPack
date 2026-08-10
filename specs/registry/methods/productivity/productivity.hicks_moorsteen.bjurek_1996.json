@@ -469,14 +469,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.productivity.hicks_moorsteen",
-        "path": "book/chapters/04-productivity/17-hicks-moorsteen.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.hicks_moorsteen",

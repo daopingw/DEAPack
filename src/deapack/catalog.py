@@ -37,7 +37,7 @@ _METHODS = tuple(
                 category="economic",
                 api_symbols=("AllocativeDecomposition",),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(
@@ -63,7 +63,7 @@ _METHODS = tuple(
                 category="economic",
                 api_symbols=("RevenueAllocativeDecomposition",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=("analysis.returns_to_scale.local.banker_thrall_1992"),
@@ -73,7 +73,7 @@ _METHODS = tuple(
                 category="scale",
                 api_symbols=("local_returns_to_scale",),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="analysis.reference_frequency.selected_plan",
@@ -83,7 +83,7 @@ _METHODS = tuple(
                 category="diagnostics",
                 api_symbols=("reference_frequency",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_sensitivity",
             ),
             MethodInfo(
@@ -94,7 +94,7 @@ _METHODS = tuple(
                 category="scale",
                 api_symbols=("scale_efficiency",),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="analysis.scale_elasticity.local.radial_vrs",
@@ -104,7 +104,7 @@ _METHODS = tuple(
                 category="scale",
                 api_symbols=("scale_elasticity",),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(
@@ -126,7 +126,7 @@ _METHODS = tuple(
                 category="economic",
                 api_symbols=("CostEfficiency",),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="economic.nerlovian.ccf1998",
@@ -139,7 +139,7 @@ _METHODS = tuple(
                     "NerlovianEfficiency",
                 ),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="economic.profit.maximum",
@@ -149,7 +149,7 @@ _METHODS = tuple(
                 category="economic",
                 api_symbols=("ProfitEfficiency",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="economic.profitability.return_to_dollar",
@@ -172,7 +172,7 @@ _METHODS = tuple(
                 category="economic",
                 api_symbols=("RevenueEfficiency",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=("evaluation.cross.game_nash.liang_wu_cook_zhu_2008"),
@@ -224,7 +224,7 @@ _METHODS = tuple(
                     "ByProductionDDF",
                 ),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="environmental.by_production.fgl",
@@ -249,7 +249,7 @@ _METHODS = tuple(
                 category="environmental",
                 api_symbols=("ChungFareGrosskopfDDF",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="environmental.ddf.joint_production",
@@ -262,7 +262,7 @@ _METHODS = tuple(
                     "EnvironmentalDDF",
                 ),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=("environmental.ddf.weak_disposal.activity_specific"),
@@ -285,7 +285,7 @@ _METHODS = tuple(
                 category="environmental",
                 api_symbols=("CommonFactorWeakDisposalDDF",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(
@@ -335,7 +335,7 @@ _METHODS = tuple(
                 category="environmental",
                 api_symbols=("UndesirableSlacksBasedDEA", "UndesirableSBM"),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(
@@ -347,7 +347,7 @@ _METHODS = tuple(
                 category="heterogeneity",
                 api_symbols=("RadialMetafrontierDEA", "MetafrontierDEA"),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -361,7 +361,7 @@ _METHODS = tuple(
                     "TwoStageAdditiveDecompositionDEA",
                 ),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -375,7 +375,7 @@ _METHODS = tuple(
                     "GeneralAdditiveNetworkDEA",
                 ),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -400,7 +400,7 @@ _METHODS = tuple(
                 category="network",
                 api_symbols=("FareGrosskopfNetworkRadialDEA",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -411,7 +411,7 @@ _METHODS = tuple(
                 category="network",
                 api_symbols=("KaoHwangRelationalDEA", "KaoHwangDEA"),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -422,7 +422,7 @@ _METHODS = tuple(
                 category="network",
                 api_symbols=("ToneTsutsuiNetworkSBM", "NetworkSBM"),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -472,7 +472,7 @@ _METHODS = tuple(
                 category="dynamic",
                 api_symbols=("ToneTsutsuiDynamicSBM", "DynamicSBM"),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -539,7 +539,7 @@ _METHODS = tuple(
                     "GlobalMalmquistDEA",
                 ),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="supporting_reference_policy",
             ),
             MethodInfo(
@@ -553,7 +553,7 @@ _METHODS = tuple(
                     "GlobalMalmquistLuenbergerDEA",
                 ),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_sensitivity",
             ),
             MethodInfo(
@@ -569,7 +569,7 @@ _METHODS = tuple(
                     "MoorsteenBjurekDEA",
                 ),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -580,7 +580,7 @@ _METHODS = tuple(
                 category="productivity",
                 api_symbols=("LuenbergerProductivityIndicator", "LuenbergerDEA"),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -591,7 +591,7 @@ _METHODS = tuple(
                 category="productivity",
                 api_symbols=("MalmquistProductivityIndex", "MalmquistDEA"),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -605,7 +605,7 @@ _METHODS = tuple(
                     "FGNZMalmquist",
                 ),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -654,7 +654,7 @@ _METHODS = tuple(
                     "MalmquistLuenbergerDEA",
                 ),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
                 publication_scope="handbook_core",
             ),
             MethodInfo(
@@ -683,7 +683,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("AdditiveDEA", "WeightedAdditiveDEA"),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.bam",
@@ -703,7 +703,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("DirectionalDistanceDEA", "DDF"),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.ebm.input.tone_tsutsui_2010.crs.declared",
@@ -713,7 +713,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("InputOrientedEpsilonBasedDEA",),
                 verification="cross_implementation",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.generalized_distance.chavas_cox",
@@ -737,7 +737,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("RadialDEA",),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.multiplicative",
@@ -781,7 +781,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("CCRInput",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.crs.output",
@@ -791,7 +791,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("CCROutput",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.fch.green_cook_2004",
@@ -811,7 +811,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("CCR",),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.fdh",
@@ -821,7 +821,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("FreeDisposalHullDEA", "FDH"),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.frh",
@@ -841,7 +841,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("BCC",),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.vrs.input",
@@ -851,7 +851,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("BCCInput",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.radial.vrs.output",
@@ -861,7 +861,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("BCCOutput",),
                 verification="primary_equations",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.ram",
@@ -871,7 +871,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("RangeAdjustedDEA", "RAM"),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(
@@ -897,7 +897,7 @@ _METHODS = tuple(
                     "InputRussell",
                 ),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.sbm.nonoriented.tone2001",
@@ -907,7 +907,7 @@ _METHODS = tuple(
                 category="static",
                 api_symbols=("SlacksBasedDEA", "SBM", "ERG"),
                 verification="literature_oracle",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id="static.sbm.output.tone2001",
@@ -921,7 +921,7 @@ _METHODS = tuple(
                     "OutputRussell",
                 ),
                 verification="property",
-                documentation=("api", "book"),
+                documentation=("api",),
             ),
             MethodInfo(
                 method_id=(

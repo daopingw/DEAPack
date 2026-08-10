@@ -399,14 +399,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.heterogeneity.metafrontier",
-        "path": "book/chapters/07-heterogeneity/23-metafrontier.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.metafrontier",

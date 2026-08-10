@@ -179,8 +179,7 @@ production technology. Use:
 - dynamic DEA when investment, capacity, inventory, backlog, debt, knowledge,
   or another state connects adjacent operating plans.
 
-This source-specific aggregation protocol is retained in package
-Documentation. It has no chapter in the current Handbook: the dynamic chapter
-uses the contrast only to explain why a common rating over completed periods is
-not a state-dependent production technology. The machine-readable placement is
-`publication_scope="documentation_only"`.
+This source-specific aggregation protocol is distinct from the dynamic
+technology family: a common rating over completed periods is not a
+state-dependent production technology. It therefore has its own documented
+method identity and result contract.

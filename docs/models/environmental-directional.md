@@ -118,7 +118,7 @@ more residual; the value is not a negative efficiency or a data error.
 DEAPack retains the native negative distance and leaves `efficiency` and the
 efficiency flags missing.
 
-```{figure} ../../book/_static/figures/cfg-cross-period-reference.svg
+```{figure} ../_static/figures/cfg-cross-period-reference.svg
 :name: fig-docs-cfg-cross-period-reference
 :alt: New provides more desirable service with less undesirable residual than Old and lies outside the old fixed-input technology; a dashed reverse CFG comparison reaches the old-reference target of four fifths service and eight fifths residual with beta equal to minus three fifths
 :width: 96%
@@ -181,8 +181,8 @@ $$
 r_j=\frac{\mu_j}{\mu_j+\eta_j}
 $$
 
-is its retained activity proportion. The handbook notation uses $r_j$ to avoid
-confusing this activity-specific proportion with the Farrell input score
+is its retained activity proportion. This page uses $r_j$ to avoid confusing
+the activity-specific proportion with the Farrell input score
 $\theta$. For backward-compatible table schemas, results still expose
 `retention_rate_theta` and `curtailment_share_one_minus_theta`, alongside
 `active_mu`, `abatement_tau`, and `total_intensity`. The stable name

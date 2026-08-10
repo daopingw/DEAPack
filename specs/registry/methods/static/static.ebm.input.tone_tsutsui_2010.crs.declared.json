@@ -308,14 +308,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.classical.sbm",
-        "path": "book/chapters/02-classical/04-sbm.md",
-        "state": "present",
-        "role": "mention"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.ebm",

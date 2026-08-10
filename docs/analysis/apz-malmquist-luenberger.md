@@ -88,8 +88,7 @@ multiplicative account must certify before a transition is released; thresholded
 peers retain a separate gate, and the checks add no optimization task. In each
 task diagnostic, `peer_valid` is the exact boolean alias of
 `published_peer_account_certified`; this peer-disclosure result does not alter
-the score gate. APZ remains a package-Documentation research leaf and is not a
-handbook route.
+the score gate. APZ is a source-qualified environmental-productivity preset.
 
 Cached peer weights are stored only at their material sparse positions, while
 metadata distinguishes the four logical requests per matched transition from

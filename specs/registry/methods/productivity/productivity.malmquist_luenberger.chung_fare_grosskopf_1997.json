@@ -561,14 +561,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.productivity.environmental_reference_information",
-        "path": "book/chapters/04-productivity/environmental-productivity-ml-common-reference.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.malmquist_luenberger",

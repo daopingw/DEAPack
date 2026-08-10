@@ -120,9 +120,8 @@ ledger.
 `minimum_process_share` accepts a scalar or a mapping from process ID to
 floor. See {doc}`../models/cook-general-additive-network` for the exact graph
 domain, result tables, source boundaries, process/link release gates, and
-one-primary-solve-per-organization execution contract. This open-DAG source
-leaf is complete package Documentation inside the Network DEA family; it is
-not a separate handbook route.
+one-primary-solve-per-organization execution contract. This open-DAG method is
+a source-qualified member of the Network DEA family.
 
 ## Tone--Tsutsui network SBM
 

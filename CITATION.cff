@@ -1,9 +1,6 @@
 cff-version: 1.2.0
 message: >-
   If you use DEAPack in research, please cite the software version you used.
-  The companion book, Data Envelopment Analysis: Efficiency, Productivity,
-  and Environmental Performance with Python, is a separate scholarly work
-  and will receive its own citation after archival publication.
 title: DEAPack
 type: software
 authors:

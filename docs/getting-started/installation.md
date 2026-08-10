@@ -81,7 +81,7 @@ build.
 
 ```bash
 python -m pip install -e '.[viz]'   # Matplotlib result figures
-python -m pip install -e '.[docs]'  # Sphinx package Documentation and Handbook
+python -m pip install -e '.[docs]'  # Sphinx package Documentation
 python -m pip install -e '.[test]'  # test runner and schema checks
 ```
 

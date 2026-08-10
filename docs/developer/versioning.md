@@ -1,8 +1,8 @@
 # Versioning and deprecation policy
 
-DEAPack versions four related contracts without pretending they are one
-schema: the software package, fitted-result tables and audit bundles, the
-method registry, and the companion book. This page is the navigation policy;
+DEAPack versions related contracts without pretending they are one schema:
+the software package, fitted-result tables and audit bundles, the method
+registry, and the package Documentation. This page is the navigation policy;
 the architecture, registry, changelog, and release checklist remain the
 normative records.
 
@@ -15,7 +15,7 @@ normative records.
 | Audit ZIP | `manifest.json["bundle_schema_version"]`, plus its recorded package version | archive layout, table serialization, and manifest fields |
 | Static method ontology | `ontology_schema_version` in registry records | the machine method/relation record structure, independently of fitted results |
 | Registry inventory checkpoint | `registry_release` in `specs/registry/registry-manifest.json` | one auditable shadow inventory; it is not a software release number |
-| Companion book | the edition identified by the book publication record | reader-facing theory and cases; it is cited separately from software |
+| Package Documentation | software version and documentation build commit | version-dependent calls, fields, examples, and behavior |
 
 The current checkout is the stable `2.0.0` software release. The current
 ontology record schema is `1.0.0`, the fitted compact registry schema is `2`,
@@ -117,11 +117,9 @@ caller typed.
 
 Once public, a canonical ID is not reassigned to a different economic
 question, technology, performance account, or result meaning. A materially
-different method receives a new ID or an explicitly typed relation. Editorial
-placement (`handbook_core`, `handbook_sensitivity`, or
-`documentation_only`) describes publication scope; it does not change the
-method's numerical identity. Prototype and planned records are inventory, not
-public catalog entries.
+different method receives a new ID or an explicitly typed relation. Internal
+editorial metadata does not change a method's numerical identity. Prototype
+and planned records are inventory, not public catalog entries.
 
 The static ontology's semantic version governs the JSON record structure.
 `REGISTRY_SCHEMA_VERSION` separately governs fitted `expanded_spec` metadata.
@@ -129,14 +127,13 @@ The shadow registry `registry_release` label identifies the exact inventory audi
 one checkpoint; it neither promotes prototypes nor replaces the package
 version.
 
-## Book and documentation versions
+## Documentation versions
 
 Package Documentation follows the software release because it specifies
-version-dependent calls and fields. The companion Handbook is versioned by
-edition because its theory, cases, and citation form a separately archived
-publication. A book edition can discuss multiple software releases, but every
-runnable case must state the compatible package release or commit. Software
-and book citations therefore remain separate.
+version-dependent calls, fields, and behavior. The `latest` hosted version
+tracks `main`; stable hosted versions correspond to non-prerelease software
+tags. Runnable examples should identify the compatible package version when
+they are copied outside the versioned site.
 
 ## Maintainer sources
 

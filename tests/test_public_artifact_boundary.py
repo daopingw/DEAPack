@@ -1,4 +1,4 @@
-"""Regression tests for the RC1 GitHub source and artifact boundary."""
+"""Regression tests for the public GitHub source and artifact boundary."""
 
 from __future__ import annotations
 
@@ -17,48 +17,28 @@ def _workflow(name: str) -> str:
     return (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
 
 
-def test_rc1_private_source_paths_are_ignored_but_public_book_assets_are_not() -> None:
-    private_roots = ("book/_archive", "docs/locale", "specs/archive")
+def test_private_source_paths_are_ignored() -> None:
     private_paths = (
-        "book/_archive/probe.md",
+        "book/probe.md",
+        "book/chapters/probe.md",
         "docs/locale/probe.po",
         "specs/archive/probe.md",
-    )
-    public_paths = (
-        "book/locale/zh_CN/LC_MESSAGES/probe.po",
-        "book/_static/figures/probe.svg",
-        "book/_static/figures/zh_CN/probe.svg",
     )
 
     for path in private_paths:
         result = subprocess.run(
-            ["git", "check-ignore", "--quiet", path],
+            ["git", "check-ignore", "--no-index", "--quiet", path],
             cwd=ROOT,
             check=False,
         )
         assert result.returncode == 0, path
 
-    for path in public_paths:
-        result = subprocess.run(
-            ["git", "check-ignore", "--quiet", path],
-            cwd=ROOT,
-            check=False,
-        )
-        assert result.returncode == 1, path
-
-    tracked = subprocess.run(
-        ["git", "ls-files", "--", *private_roots],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    assert tracked.stdout == ""
+    ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    assert "/book/\n" in ignore
 
 
 def test_generated_and_private_release_outputs_are_ignored() -> None:
     generated_or_private_paths = (
-        "_build/handbook-gettext/index.pot",
         "book/_build/html/index.html",
         "docs/_build/html/index.html",
         "_site/index.html",
@@ -81,6 +61,8 @@ def test_sdist_defensively_prunes_legacy_and_private_release_roots() -> None:
     manifest = (ROOT / "MANIFEST.in").read_text(encoding="utf-8")
     pruned_roots = (
         "DEAPack",
+        "docs",
+        "specs",
         "tmp",
         "output",
         "build",
@@ -113,7 +95,8 @@ def test_ordinary_ci_keeps_build_and_test_feedback_enabled() -> None:
     assert "run: python -m pytest" in tests
     assert "python -m build" in tests
     assert "sphinx-build -E -a -W --keep-going" in documentation
-    assert "make -C book pdf" in documentation
+    assert "python scripts/run_documentation_examples.py" in documentation
+    assert "book" not in documentation.casefold()
     assert "python scripts/run_benchmarks.py" in benchmarks
 
     for source in (tests, documentation):

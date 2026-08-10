@@ -11,8 +11,6 @@ Version `2.0.0` is the first stable release of the redesigned 2.x line.
   HiGHS optimization.
 - English package Documentation covering installation, models, analysis,
   reporting, visualization, and the public API.
-- The bilingual English--Chinese Handbook *Data Envelopment Analysis:
-  Efficiency, Productivity, and Environmental Performance with Python*.
 - A method registry, source protocols, independent numerical oracles, and
   reproducible benchmark definitions.
 - Thirty-three licensed teaching datasets with declared roles, provenance,
@@ -118,7 +116,7 @@ print(method_info("static.radial.fdh").api_symbols)
 
 Nine maintained [literature reviews](specs/reviews/INDEX.md), currently
 containing 148 evidence cards, connect defining sources, numerical oracles,
-package implementations, and Handbook coverage.
+and package implementations.
 
 ## Teaching datasets
 
@@ -140,23 +138,17 @@ The current catalog contains 33 datasets:
 
 Published method names and papers remain cited where relevant, but retired or
 restricted published numerical tables are not loaded by the current
-Documentation or Handbook examples. Exact dataset terms and attribution are
+Documentation examples. Exact dataset terms and attribution are
 listed in [DATA_LICENSES.md](DATA_LICENSES.md).
 
-## Documentation and Handbook
+## Documentation
 
 - [Documentation home](docs/index.md)
 - [Installation guide](docs/getting-started/installation.md)
 - [Quick start](docs/getting-started/quickstart.md)
 - [Model catalog](docs/user-guide/method-catalog.md)
 - [API reference](docs/api/index.md)
-- [Handbook home](book/index.md)
-- [English--Chinese reading guide](book/reading-guide.md)
 - [Migration from 0.1.x](docs/getting-started/migration.md)
-
-The Documentation is English for the first public release. The Handbook is
-maintained from one reviewed English source and an edited Chinese translation,
-with shared formulas, citations, examples, terminology, and figures.
 
 ## Development
 
@@ -172,7 +164,7 @@ from defining literature and independent numerical validation.
 
 Suggestions are welcome through the repository's issue forms, including model
 proposals, data and provenance contributions, bug reports, Documentation
-improvements, and Chinese translation corrections.
+improvements, and reproducible examples.
 
 ## Citation
 
@@ -186,8 +178,6 @@ method metadata.
 - Project-owned DEAPack 2.x software: `GPL-3.0-only`.
 - Project-owned Documentation prose: `CC-BY-NC-SA-4.0`; executable examples
   remain GPL software.
-- Bilingual Handbook Preview 1: Copyright © 2026 Daoping Wang. All Rights
-  Reserved.
 - Project-created datasets: `CC-BY-4.0` with attribution to Daoping Wang /
   DEAPack.
 - Third-party datasets and materials: their recorded upstream terms.

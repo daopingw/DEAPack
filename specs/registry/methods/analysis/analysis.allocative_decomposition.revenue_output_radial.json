@@ -316,14 +316,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.classical.economic_efficiency_prices",
-        "path": "book/chapters/02-classical/economic-efficiency-under-prices.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.revenue_allocative_decomposition",

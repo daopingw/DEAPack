@@ -52,5 +52,5 @@ body:
           required: true
         - label: I have not assumed that a published data table may automatically be redistributed.
           required: true
-        - label: I understand that a model proposal does not license attached third-party material or assign Handbook copyright.
+        - label: I understand that a model proposal does not license attached third-party material.
           required: true

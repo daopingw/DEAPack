@@ -11,8 +11,8 @@ include PYPI_README.md
 include README.md
 include RELEASE_NOTES_2.0.0.md
 
-# The PyPI source distribution excludes the bilingual Handbook, English
-# package Documentation, figures, tests, benchmarks, source reviews, and
+# The PyPI source distribution excludes package Documentation, figures,
+# tests, benchmarks, source reviews, and
 # contribution infrastructure. It still contains numerical dataset values
 # represented inside Python source, so GPL-3.0-only is not a blanket
 # dataset-rights declaration.
@@ -31,7 +31,6 @@ exclude SECURITY.md
 prune DEAPack
 prune .github
 prune benchmarks
-prune book
 prune docs
 prune scripts
 prune specs

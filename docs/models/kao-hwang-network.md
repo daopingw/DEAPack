@@ -15,14 +15,13 @@ The defining source is
 The target account follows
 [Lim and Zhu (2016)](https://doi.org/10.1016/j.ejor.2015.06.050).
 
-## Scope and handbook placement
+## Scope
 
-This page is method-level **package documentation inside the existing Network
-DEA family**. The historical name identifies the source-qualified API route;
-it is not a separate handbook model family or an invitation to catalogue
-paper-specific variants. In the handbook, relational accounting is integrated
-into the broader discussion of organizations, internal links, and process
-responsibility.
+This page documents a method inside the existing Network DEA family. The
+historical name identifies the source-qualified API entry and its relational
+account of organizations, internal links, and process responsibility; it is
+not an invitation to catalogue paper-specific variants without distinct
+technical content.
 
 ## Model and score convention
 

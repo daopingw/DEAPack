@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 from collections.abc import Callable, Mapping
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from numbers import Integral, Real
 from types import MappingProxyType
 from typing import Literal
@@ -183,9 +183,9 @@ class DatasetInfo:
     roles: Mapping[str, str | tuple[str, ...]]
     teaching_uses: tuple[str, ...]
     provenance: DatasetProvenance = _UNKNOWN_PROVENANCE
-    column_roles: Mapping[str, str | tuple[str, ...]] = MappingProxyType({})
-    topology: Mapping[str, str | tuple[str, ...]] = MappingProxyType({})
-    variables: Mapping[str, DatasetVariableInfo] = MappingProxyType({})
+    column_roles: Mapping[str, str | tuple[str, ...]] = field(default_factory=dict)
+    topology: Mapping[str, str | tuple[str, ...]] = field(default_factory=dict)
+    variables: Mapping[str, DatasetVariableInfo] = field(default_factory=dict)
     content_sha256: str | None = None
     fingerprint_schema: str = "deapack.dataset-content.v1"
 

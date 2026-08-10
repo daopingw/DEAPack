@@ -1,70 +1,43 @@
 # Documentation Hosting
 
-DEAPack keeps the companion book and package reference as two independent
-Sphinx source projects in one GitHub repository. The bilingual Handbook needs
-two hosted builds, while the English package reference needs one, so the
-public layout contains three hosted projects without manufacturing a third
-Sphinx source tree.
+DEAPack publishes one package-Documentation project from this repository. The
+Read the Docs project name is `deapack`, and its Sphinx source is `docs/`.
 
-## Recommended Read the Docs layout
+## Read the Docs configuration
 
-Use three Read the Docs Community projects connected to the same GitHub
-repository:
+The repository-root `.readthedocs.yaml` is the only hosted-documentation
+configuration. It points Read the Docs to `docs/conf.py`, pins the build
+operating system and Python minor version, installs the reviewed Documentation
+requirements, and treats every Sphinx warning as an error.
 
-| Hosted project | Source | Configuration file | Role |
-|---|---|---|---|
-| `deapack` | `docs/` | `.readthedocs.yaml` | primary English package Documentation |
-| `deapack-handbook` | `book/` | `book/.readthedocs.yaml` | English Handbook |
-| `deapack-handbook-zh` | `book/` | `book/.readthedocs-zh.yaml` | Chinese Handbook |
-
-The root configuration makes the primary Documentation project discoverable
-during the initial Read the Docs import. The two Handbook projects can be
-added later with their explicit subdirectory configuration paths. They remain
-separate because the package reference is English-only while both Handbook
-languages are maintained publications.
-
-The repository configuration pins the build operating system and Python
-minor version, installs the package with its documentation extra, and treats
-every Sphinx warning as a failure. The book project additionally installs the
-visualization extra and regenerates both dependency-free diagrams and
-package-native result SVGs before Sphinx reads the manuscript. This keeps
-frontier, performance, productivity, and network case figures on the same
-public result API exercised by tests.
-
-## One-time project setup
-
-Repository configuration alone cannot create or connect external Read the
-Docs projects. A project maintainer must:
+Repository configuration cannot create or connect the external project. A
+maintainer must:
 
 1. install or authorize the Read the Docs GitHub App;
-2. import this repository as each of the three projects above;
-3. let the primary `deapack` project discover `.readthedocs.yaml` at the
-   repository root;
-4. set each Handbook project's configuration-file path to the corresponding
-   file in the table;
-5. enable pull-request builds for all three projects.
+2. import this repository as the `deapack` project;
+3. keep the configuration-file path at `.readthedocs.yaml`;
+4. set `main` as the default branch; and
+5. enable pull-request builds if preview builds are wanted.
 
-Until those actions have been completed and verified, repository links must
-not claim that a public Read the Docs URL is live.
+The repository contains other project material, but Read the Docs does not
+need a documentation-only repository. The root configuration explicitly
+selects `docs/conf.py`, so only the package Documentation becomes the hosted
+site.
 
 ## Versions
 
-During development, publish only `latest` from `main`. After the first stable
-software and handbook release, activate matching semantic-version tags and
-let `stable` resolve to the highest non-prerelease version. Keep the language
-component in hosted Handbook URLs because the English and Chinese editions
-are both maintained. Package Documentation uses an English route for rc1.
+Publish `latest` from `main`. For stable software releases, activate the
+matching semantic-version tag and let `stable` resolve to the highest current
+non-prerelease version. Hosted Documentation follows the software version
+because its calls, fields, and behavior are version-dependent.
 
-## Division of responsibility
+## Verification
 
-Read the Docs supplies versioned hosting, pull-request previews, and
-parent/subproject navigation. GitHub Actions remains the independent release
-gate: it builds both Sphinx projects from a fresh environment, checks
-committed figure drift, and runs the package tests. A successful hosted build
-does not replace those checks.
+Read the Docs supplies versioned hosting and optional pull-request previews.
+GitHub Actions is an independent verification lane for the same Documentation
+source. A hosted build does not replace the strict local or CI build, and a
+Documentation workflow should not depend on unrelated publication artifacts.
 
-The three configuration files deliberately use the lower-bound dependency
-contract from `pyproject.toml` during active development. Before the first
-archival release, generate and test a fully pinned documentation lock for
-reproducible historical builds; do not hand-maintain an incomplete list of
-transitive versions.
+Before an archival software release, generate and test a fully pinned
+Documentation lock for reproducible historical builds. Do not hand-maintain an
+incomplete list of transitive versions.

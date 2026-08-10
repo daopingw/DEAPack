@@ -149,7 +149,7 @@ def test_catalog_metadata_and_collection_are_immutable() -> None:
     assert list_methods() is methods
     assert method_info("static.radial") is radial
     assert radial.identifier_role == "method_id"
-    assert radial.documentation == ("api", "book")
+    assert radial.documentation == ("api",)
     assert radial.publication_scope is None
 
 
@@ -243,12 +243,12 @@ def test_governed_publication_scope_matches_the_machine_registry() -> None:
     )
 
 
-def test_fdh_catalog_retains_its_core_book_and_exact_evidence() -> None:
+def test_fdh_catalog_retains_its_api_documentation_and_exact_evidence() -> None:
     info = method_info("static.radial.fdh")
 
     assert info.api_symbols == ("FreeDisposalHullDEA", "FDH")
     assert info.verification == "primary_equations"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_fch_catalog_exposes_its_claim_scoped_analytical_evidence() -> None:
@@ -284,15 +284,18 @@ def test_reader_facing_public_method_table_matches_the_catalog() -> None:
     assert documented_ids == {item.method_id for item in list_methods()}
 
 
-def test_reader_facing_productivity_scope_map_matches_the_catalog() -> None:
+def test_reader_facing_productivity_method_map_matches_the_catalog() -> None:
     root = Path(__file__).resolve().parents[1]
     catalog_text = (root / "docs" / "user-guide" / "method-catalog.md").read_text(
         encoding="utf-8"
     )
-    route_text = catalog_text.split(
-        "The four routes themselves are deliberately few:", maxsplit=1
-    )[1].split("The complete productivity catalog map", maxsplit=1)[0]
-    core_route_ids = {
+    method_map = catalog_text.split("## Productivity method map", maxsplit=1)[1].split(
+        "## Network, dynamic, and panel method map", maxsplit=1
+    )[0]
+    principal_text = method_map.split("The four principal families are:", maxsplit=1)[
+        1
+    ].split("The complete productivity catalog map", maxsplit=1)[0]
+    principal_ids = {
         "productivity.hicks_moorsteen.bjurek_1996",
         "productivity.luenberger",
         "productivity.malmquist.adjacent_geometric",
@@ -302,88 +305,82 @@ def test_reader_facing_productivity_scope_map_matches_the_catalog() -> None:
     for item in list_methods():
         if item.category != "productivity":
             continue
-        row_prefix = f"| `{item.publication_scope}` | `{item.method_id}` |"
-        assert catalog_text.count(row_prefix) == 1
+        assert f"`{item.method_id}`" in method_map
 
     assert {
-        method_id for method_id in core_route_ids if f"`{method_id}`" in route_text
-    } == core_route_ids
-    assert route_text.count("`productivity.") == 4
+        method_id for method_id in principal_ids if f"`{method_id}`" in principal_text
+    } == principal_ids
+    assert principal_text.count("`productivity.") == 4
 
 
-def test_reader_facing_network_dynamic_panel_scope_map_matches_catalog() -> None:
+def test_reader_facing_network_dynamic_panel_method_map_matches_catalog() -> None:
     root = Path(__file__).resolve().parents[1]
     catalog_text = (root / "docs" / "user-guide" / "method-catalog.md").read_text(
         encoding="utf-8"
     )
-    scope_map = catalog_text.split(
-        "## Network, dynamic, and panel publication map", maxsplit=1
-    )[1].split("## Implemented public entries", maxsplit=1)[0]
+    method_map = catalog_text.split(
+        "## Network, dynamic, and panel method map", maxsplit=1
+    )[1].split("## Heterogeneity method map", maxsplit=1)[0]
     governed_categories = {"network", "dynamic", "panel"}
 
     for item in list_methods():
         if item.category not in governed_categories:
             continue
-        row_prefix = f"| `{item.publication_scope}` | `{item.method_id}` |"
-        assert scope_map.count(row_prefix) == 1
+        assert method_map.count(f"`{item.method_id}`") == 1
 
-    assert "Part V of the Handbook retains two network routes" in scope_map
-    assert "Part VI retains Dynamic SBM" in scope_map
+    assert "The network family asks whether" in method_map
+    assert "Dynamic SBM is the principal implemented trajectory account" in method_map
 
 
-def test_reader_facing_heterogeneity_scope_map_matches_catalog() -> None:
+def test_reader_facing_heterogeneity_method_map_matches_catalog() -> None:
     root = Path(__file__).resolve().parents[1]
     catalog_text = (root / "docs" / "user-guide" / "method-catalog.md").read_text(
         encoding="utf-8"
     )
-    scope_map = catalog_text.split("## Heterogeneity publication map", maxsplit=1)[
-        1
-    ].split("## Implemented public entries", maxsplit=1)[0]
+    method_map = catalog_text.split("## Heterogeneity method map", maxsplit=1)[1].split(
+        "## Diagnostics method map", maxsplit=1
+    )[0]
     item = method_info("heterogeneity.metafrontier.radial.odonnell_rao_battese_2008")
 
-    row_prefix = f"| `{item.publication_scope}` | `{item.method_id}` |"
-    assert scope_map.count(row_prefix) == 1
-    assert "retains one field-level comparison route" in scope_map
-    assert "not another managerial-efficiency score" in scope_map
+    assert method_map.count(f"`{item.method_id}`") == 1
+    assert "implemented field-level comparison" in method_map
+    assert "not another managerial-efficiency score" in method_map
 
 
-def test_reader_facing_evaluation_scope_map_matches_catalog() -> None:
+def test_reader_facing_evaluation_method_map_matches_catalog() -> None:
     root = Path(__file__).resolve().parents[1]
     catalog_text = (root / "docs" / "user-guide" / "method-catalog.md").read_text(
         encoding="utf-8"
     )
-    scope_map = catalog_text.split("## Evaluation publication map", maxsplit=1)[
-        1
-    ].split("## Implemented public entries", maxsplit=1)[0]
+    method_map = catalog_text.split("## Evaluation method map", maxsplit=1)[1].split(
+        "## Implemented public entries", maxsplit=1
+    )[0]
 
     for item in list_methods():
         if item.category != "evaluation":
             continue
-        row_prefix = f"| `{item.publication_scope}` | `{item.method_id}` |"
-        assert scope_map.count(row_prefix) == 1
+        assert method_map.count(f"`{item.method_id}`") == 1
 
-    assert "no separate current" in scope_map
-    assert "Handbook route" in scope_map
-    assert "non-public prototypes" in scope_map
+    assert "source-qualified research workflows" in method_map
+    assert "non-public prototypes" in method_map
 
 
-def test_reader_facing_diagnostics_scope_map_matches_catalog() -> None:
+def test_reader_facing_diagnostics_method_map_matches_catalog() -> None:
     root = Path(__file__).resolve().parents[1]
     catalog_text = (root / "docs" / "user-guide" / "method-catalog.md").read_text(
         encoding="utf-8"
     )
-    scope_map = catalog_text.split("## Diagnostics publication map", maxsplit=1)[
-        1
-    ].split("## Evaluation publication map", maxsplit=1)[0]
+    method_map = catalog_text.split("## Diagnostics method map", maxsplit=1)[1].split(
+        "## Evaluation method map", maxsplit=1
+    )[0]
 
     item = method_info("analysis.reference_frequency.selected_plan")
-    row_prefix = f"| `{item.publication_scope}` | `{item.method_id}` |"
-    assert scope_map.count(row_prefix) == 1
-    assert "one certified solver-selected peer plan" in scope_map
-    assert "not an influence, outlier, or statistical-inference claim" in scope_map
+    assert method_map.count(f"`{item.method_id}`") == 1
+    assert "one certified solver-selected peer plan" in method_map
+    assert "not an influence, outlier, or statistical-inference claim" in method_map
 
 
-def test_docs_reference_separates_core_productivity_routes_from_technical_leaves() -> (
+def test_docs_reference_separates_principal_productivity_methods_from_specialists() -> (
     None
 ):
     index_text = (
@@ -406,7 +403,7 @@ def test_docs_reference_separates_core_productivity_routes_from_technical_leaves
         ]
 
     assert _toctree_entries(
-        "Productivity — four Handbook routes",
+        "Productivity methods",
         "Productivity — supporting and sensitivity companions",
     ) == [
         "analysis/malmquist",
@@ -427,8 +424,9 @@ def test_docs_reference_separates_core_productivity_routes_from_technical_leaves
         "analysis/biennial-malmquist",
         "analysis/apz-malmquist-luenberger",
     ]
-    assert "Enhanced FGNZ and Ray--Desli" in index_text
-    assert "it is not a fifth route" in index_text
+    normalized_text = " ".join(index_text.split())
+    assert "Enhanced FGNZ and Ray--Desli" in normalized_text
+    assert "it is not a fifth principal family" in normalized_text
 
 
 def test_erg_is_a_discoverability_alias_not_a_second_method() -> None:
@@ -517,7 +515,7 @@ def test_named_radial_recipes_are_complete_public_presets() -> None:
         assert info.kind == "preset"
         assert info.api_symbols == symbols
         assert info.verification == "primary_equations"
-        assert info.documentation == ("api", "book")
+        assert info.documentation == ("api",)
 
 
 def test_fgnz_core_is_a_named_source_qualified_preset() -> None:
@@ -531,10 +529,10 @@ def test_fgnz_core_is_a_named_source_qualified_preset() -> None:
         "FGNZMalmquist",
     )
     assert info.verification == "primary_equations"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
-def test_core_productivity_accounts_retain_book_placement_and_exact_evidence() -> None:
+def test_core_productivity_accounts_retain_api_docs_and_exact_evidence() -> None:
     for method_id in (
         "productivity.global_malmquist",
         "productivity.global_malmquist_luenberger.oh_2010",
@@ -544,7 +542,7 @@ def test_core_productivity_accounts_retain_book_placement_and_exact_evidence() -
     ):
         info = method_info(method_id)
         assert info.verification == "primary_equations"
-        assert info.documentation == ("api", "book")
+        assert info.documentation == ("api",)
 
 
 def test_enhanced_fgnz_is_a_distinct_source_qualified_operator() -> None:
@@ -577,11 +575,11 @@ def test_ray_desli_is_a_distinct_source_qualified_operator() -> None:
     assert info.documentation == ("api",)
 
 
-def test_local_rts_catalog_exposes_its_book_and_api_evidence() -> None:
+def test_local_rts_catalog_exposes_its_api_evidence() -> None:
     info = method_info("analysis.returns_to_scale.local.banker_thrall_1992")
 
     assert info.verification == "literature_oracle"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_scale_elasticity_catalog_exposes_its_oracle_and_documentation() -> None:
@@ -589,7 +587,7 @@ def test_scale_elasticity_catalog_exposes_its_oracle_and_documentation() -> None
 
     assert info.api_symbols == ("scale_elasticity",)
     assert info.verification == "literature_oracle"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 @pytest.mark.parametrize(
@@ -623,7 +621,7 @@ def test_cfg_malmquist_luenberger_exposes_primary_equation_evidence() -> None:
         "MalmquistLuenbergerDEA",
     )
     assert info.verification == "primary_equations"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_biennial_malmquist_exposes_claim_scoped_analytical_evidence() -> None:
@@ -718,7 +716,7 @@ def test_fare_grosskopf_network_radial_is_a_system_only_public_leaf() -> None:
     assert info.kind == "preset"
     assert info.category == "network"
     assert info.verification == "cross_implementation"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_kalhor_matin_environmental_network_is_a_source_reproduced_leaf() -> None:
@@ -739,7 +737,7 @@ def test_separable_environmental_sbm_exposes_its_bounded_literature_oracle() -> 
     assert info.api_symbols == ("UndesirableSlacksBasedDEA", "UndesirableSBM")
     assert info.category == "environmental"
     assert info.verification == "literature_oracle"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_radial_metafrontier_alias_and_cross_implementation_are_public() -> None:
@@ -750,7 +748,7 @@ def test_radial_metafrontier_alias_and_cross_implementation_are_public() -> None
     assert info.category == "heterogeneity"
     assert info.api_symbols == ("RadialMetafrontierDEA", "MetafrontierDEA")
     assert info.verification == "cross_implementation"
-    assert info.documentation == ("api", "book")
+    assert info.documentation == ("api",)
 
 
 def test_dynamic_sbm_alias_and_adjusted_reporting_specialization() -> None:

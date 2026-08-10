@@ -117,7 +117,7 @@ classical black-box constructors:
 | slacks based | `SlacksBasedDEA` / `SBM` / `ERG`; `InputOrientedSlacksBasedDEA` / `InputSBM` / `InputRussell`; `OutputOrientedSlacksBasedDEA` / `OutputSBM` / `OutputRussell` | evaluated-value normalization and orientation-specific objective |
 | directional | `DirectionalDistanceDEA`, `DDF` | the declared resource-saving and service-gain programme |
 
-The policy is also available on four environmental mother-model routes:
+The policy is also available on four environmental model families:
 
 | Environmental production account | Public constructors | What the restriction changes — and what it does not |
 |---|---|---|

@@ -49,11 +49,29 @@ coverage.xml
 
 # Sphinx output
 /_build/
-book/_build/
 docs/_build/
 _site/
 output/
 *.mo
+
+# The books are developed privately for later scholarly publication.  Keep
+# their complete source and build machinery out of the public software tree.
+/book/
+/scripts/check_handbook_translations.py
+/scripts/localize_handbook_math_labels.py
+/scripts/normalize_handbook_po_headers.py
+/scripts/prepare_book_latex.py
+/scripts/verify_book_pdf.py
+/specs/BOOK_ARCHITECTURE.md
+/specs/CHINESE_TRANSLATION_GUIDE.md
+/specs/HANDBOOK_CHINESE_TRANSLATION_AUDIT.md
+/specs/MAINSTREAM_BOOK_SCOPE_AUDIT.md
+/tests/test_book_editorial_contract.py
+/tests/test_handbook_examples.py
+/tests/test_handbook_figure_contract.py
+/tests/test_handbook_figure_localization.py
+/tests/test_handbook_translations.py
+/tests/test_pdf_release_quality.py
 
 # RC1 public-source boundary: historical and generated localization material
 # is retained locally but is not part of the GitHub publication surface.

@@ -117,10 +117,8 @@ sensitivity variants. This radial class accepts only desirable outputs.
 Biennial environmental productivity requires a separately named directional
 technology and undesirable-output assumptions.
 
-This operator remains a documentation-only extension rather than a separate
-Handbook route. It changes the reference-information policy of the common
-radial productivity framework; it does not add a new economic mechanism to the
-book's core progression.
+This operator is a specialized reference-policy extension of the common radial
+productivity framework; it does not add a new economic mechanism.
 
 ## Validation boundary
 
@@ -144,10 +142,8 @@ reference compilations and requires every retained LP, economic, peer, and
 multiplicative residual to remain within the declared tolerance.
 
 These checks validate the implemented computational contract, but they are not
-a reproduction of the defining article's empirical application. The method
-retains `publication_scope="documentation_only"` because it is a specialized
-reference-policy leaf rather than a separate Handbook teaching route; that
-reader-placement decision does not weaken its analytical verification.
+a reproduction of the defining article's empirical application. Its
+specialized reference-policy role does not weaken its analytical verification.
 
 ```{autosummary}
 BiennialMalmquistProductivityIndex

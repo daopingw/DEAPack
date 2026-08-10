@@ -7,6 +7,7 @@ import pytest
 import deapack.datasets as datasets_module
 from deapack import (
     BCCInput,
+    DatasetInfo,
     DatasetProvenance,
     DatasetVariableInfo,
     DEAData,
@@ -175,6 +176,41 @@ def test_dataset_metadata_is_deeply_immutable() -> None:
         info.provenance.source_kind = "unknown"  # type: ignore[misc]
 
     assert dataset_info("frontier_1x1").roles["dmu"] == "dmu"
+
+
+def test_dataset_info_empty_defaults_are_isolated_and_immutable() -> None:
+    first = DatasetInfo(
+        name="first",
+        title="First",
+        description="First metadata record",
+        roles={"dmu": "dmu"},
+        teaching_uses=("regression testing",),
+    )
+    second = DatasetInfo(
+        name="second",
+        title="Second",
+        description="Second metadata record",
+        roles={"dmu": "dmu"},
+        teaching_uses=("regression testing",),
+    )
+
+    assert first.column_roles == first.topology == first.variables == {}
+    assert first.column_roles is not second.column_roles
+    assert first.topology is not second.topology
+    assert first.variables is not second.variables
+
+    with pytest.raises(TypeError):
+        first.column_roles["dmu"] = "dmu"  # type: ignore[index]
+    with pytest.raises(TypeError):
+        first.topology["process"] = "production"  # type: ignore[index]
+    with pytest.raises(TypeError):
+        first.variables["input"] = DatasetVariableInfo(  # type: ignore[index]
+            name="input",
+            unit_status="unspecified",
+            unit=None,
+            definition_status="unspecified",
+            definition=None,
+        )
 
 
 def test_every_dataset_has_valid_scholarly_metadata_and_stable_content_hash() -> None:

@@ -405,14 +405,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.dynamic.carryovers_trajectories",
-        "path": "book/chapters/06-dynamic/dynamic-dea-carryovers-trajectories.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.dynamic_sbm",

@@ -549,14 +549,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.network.network_sbm",
-        "path": "book/chapters/05-network/20-network-sbm.md",
-        "state": "present",
-        "role": "primary"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.models.network_sbm",

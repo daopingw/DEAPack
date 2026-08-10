@@ -283,14 +283,7 @@
     ]
   },
   "placement": {
-    "book": [
-      {
-        "doc_id": "book.foundations.study_design",
-        "path": "book/chapters/01-foundations/02-study-design.md",
-        "state": "present",
-        "role": "sensitivity"
-      }
-    ],
+    "book": [],
     "docs": [
       {
         "doc_id": "docs.analysis.reference_frequency",

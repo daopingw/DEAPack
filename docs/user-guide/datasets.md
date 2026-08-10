@@ -244,8 +244,8 @@ assumption from the operating context.
 
 ## Distinct organizations available once
 
-`coordination_hulls` contains the four observations used to distinguish FDH,
-the Green--Cook FCH, FRH, CCR, and VRS in the companion book:
+`coordination_hulls` contains four project-authored observations used to
+distinguish FDH, the Green--Cook FCH, FRH, CCR, and VRS:
 
 ```python
 from deapack import DEAData, FCH, dataset_info, load_dataset

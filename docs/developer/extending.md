@@ -13,7 +13,7 @@ from looking like a source-qualified DEAPack method.
 |---|---|---:|
 | Use another LP or MILP engine | `deapack.solvers.LPSolver` or `MIPSolver` and the backend-neutral task/solution records | Structural protocol; no global registry required |
 | Compose an empirical study from supported parts | public data, model, reference, solver, analysis, and result objects | Yes, through ordinary constructors |
-| Add a new literature-defined method to DEAPack | evidence protocol, implementation, result contract, machine ontology, catalog, tests, Documentation, and possibly Handbook integration | No; reviewed repository contribution |
+| Add a new literature-defined method to DEAPack | evidence protocol, implementation, result contract, machine ontology, catalog, tests, and Documentation | No; reviewed repository contribution |
 | Build a report for an external result object | `deapack.reporting.create_result_report` | Yes, if the result supplies the documented summary/metadata contract |
 | Export a complete audit bundle for an external result object | `deapack.reporting.export_result_bundle` | Yes, if all documented public table accessors are supplied |
 | Make an application-specific figure | consume public `DEAResult` tables or backend-independent preparation data | Yes, in application code |
@@ -94,7 +94,7 @@ built-in method follows the repository
 2. freeze source-native equations, data domain, technology, score meaning,
    target policy, and non-equivalence boundaries;
 3. locate the method in the eleven-axis framework and decide whether it is a
-   new mother-model mechanism, a specialization, a preset, or a documented
+   new principal mechanism, a specialization, a preset, or a documented
    extension;
 4. implement a backend-neutral task or exact kernel and release claims only
    through independent numerical and economic certificates;
@@ -102,8 +102,8 @@ built-in method follows the repository
    canonical registry provenance;
 6. add analytical, invariance, failure, independent-oracle, performance, and
    catalog-parity tests; and
-7. document the complete package behavior. Handbook integration occurs only
-   when the family-level editorial gate is independently satisfied.
+7. document the complete package behavior and its relationship to existing
+   method families.
 
 If the source or independent oracle cannot be closed, keep the proposal in a
 `deferred_to_next_version` source protocol. An internal prototype or ontology
@@ -163,8 +163,8 @@ Before proposing any extension, answer five questions:
 3. Which schema or identity version would a consumer need to distinguish?
 4. Can a missing optional dependency or failed secondary task leave upstream
    valid claims intact?
-5. Does the contribution belong in package Documentation, or does it add a
-   transferable mother-model idea that also belongs in the Handbook?
+5. Does the contribution extend an existing method family or introduce a
+   distinct transferable mechanism that needs its own documented identity?
 
 Use {doc}`architecture`, {doc}`performance`, {doc}`versioning`, and
 {doc}`hosting` as the common review entry points.

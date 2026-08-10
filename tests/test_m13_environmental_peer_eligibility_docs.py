@@ -83,21 +83,3 @@ def test_docs_name_authorized_routes_and_preserve_exclusions() -> None:
     assert "The non-separable hybrid is not included in this extension." in " ".join(
         undesirable_sbm.split()
     )
-
-
-def test_handbook_keeps_comparison_rights_as_management_evidence() -> None:
-    ddf = (
-        ROOT
-        / "book"
-        / "chapters"
-        / "03-environmental"
-        / "06-undesirable-outputs-ddf.md"
-    ).read_text(encoding="utf-8")
-    sbm = (
-        ROOT / "book" / "chapters" / "03-environmental" / "07-undesirable-output-sbm.md"
-    ).read_text(encoding="utf-8")
-
-    assert "admissible management evidence, not a new\npollution technology" in ddf
-    assert "does not make a negative external CFG distance disappear" in ddf
-    assert "restriction changes the evidence available to the plant" in sbm
-    assert "unconditional environmental ranking" in sbm

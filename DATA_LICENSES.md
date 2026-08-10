@@ -64,7 +64,7 @@ release sign-off approves it:
 | Field | Required evidence |
 |---|---|
 | Dataset ID and content fingerprint | Exact public identifier and deterministic hash of the released values |
-| Content location | Every source, wheel, sdist, Documentation, Handbook, figure, and generated-output location |
+| Content location | Every source, wheel, sdist, Documentation, figure, and generated-output location |
 | Origin classification | Project-created, source-derived, published reproduction, or third-party data |
 | Factual creator/rightsholder | Confirmed person or entity; never inferred from Git history or a filename |
 | Authority record | Origin declaration, employment clearance, upstream license, or permission reference |
