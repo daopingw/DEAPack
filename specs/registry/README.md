@@ -57,12 +57,13 @@ published numerical table. In that mixed-evidence case, the record-level
 status continues to describe only the reproduced or cross-implemented
 claims; the certificate's exact bounds, fixtures, and result components
 govern only its named analytical claims. Candidate and `not_located` records
-cannot carry such a certificate. The Tone--Tsutsui network-SBM record uses
-this split: the fixed/free base tables are reproduced, while equations
-(26)--(27) have separate exact accountable-link certificates.
+cannot carry such a certificate. At this checkpoint, every record that carries
+an analytical certificate is classified `analytically_derived`; each claim
+still remains limited to the parameter, result, reference, and data scope
+declared inside that certificate.
 
-The 67 machine records contain 30 `analytically_derived`, 19 `reproduced`,
-14 `cross_implemented`, 4 `candidate`, and 0 `not_located` oracle records.
+The 67 machine records contain 37 `analytically_derived`, 5 `reproduced`,
+21 `cross_implemented`, 4 `candidate`, and 0 `not_located` oracle records.
 The four `candidate` records are exactly the
 deferred MPSS, physical-capacity, Andersen--Petersen, and ordinary
 cross-efficiency prototypes; candidate property evidence does not make them
@@ -84,11 +85,13 @@ Ray's public directional super-efficiency record adds a distinct
 evaluation protocol. It fixes VRS, removes exactly the evaluated row, uses the
 observed resource--service bundle as the source direction, and reports
 `NL = 1 - beta` as peer-replacement exposure rather than efficiency above
-100 percent. An independent dense LP checks the neutral
-`directional_super_multivariate_stress` case, including a substantively
-invalid projection diagnostic that is retained rather than clipped. The
-relation to the generic directional-distance compiler is recorded as
-composition, never aliasing, and no source application table is bundled.
+100 percent. An exact two-organization fixture and independently assembled
+dense equation-(8) programme check the beta bound, score, target, peer
+activity, and intensity. The larger `directional_super_multivariate_stress`
+case separately retains a substantively invalid projection diagnostic rather
+than clipping it. The relation to the generic directional-distance compiler
+is recorded as composition, never aliasing, and no source application table
+is bundled.
 
 The Zhou--Ang--Wang non-CHP record adds one specialized electricity-
 application preset and one public class, not a foundational family or three
@@ -122,22 +125,22 @@ is not represented as a live registry placement. This is still a
 shadow-registry development checkpoint, not a stable or formal release.
 
 The conventional by-production DDF and the proposed modified FGL measure
-retain distinct reproduced records. Murty--Russell--Levkoff equation (5.6)
-is reproduced under its CRS, fixed-direction, self-inclusive cross-sectional
-profile, and all five source observations are checked by an independent
-dense compiler. The FGL record reproduces the source-printed DMU 2 and 3
-components and aggregates; two separately compiled scalar CRS programmes
-close all five score vectors, targets, and unique component peers. The source
-criticism remains visible: BP-DDF can weakly indicate performance and is
-direction-sensitive, while FGL is the authors' proposed distinct response.
+retain distinct `cross_implemented` records. Independent dense programmes
+compile the source equations on project-authored cases: one joint CRS
+programme checks the DDF account, while two separately compiled scalar CRS
+programmes check the FGL component scores, targets, and peer semantics. No
+source observation table or printed component vector is claimed as
+reproduced. The source criticism remains visible: BP-DDF can weakly indicate
+performance and is direction-sensitive, while FGL is the authors' proposed
+distinct response.
 
-The CFG Malmquist--Luenberger index is the eighth analytical certificate. An
+The CFG Malmquist--Luenberger index has an analytical certificate. An
 independent dense compiler closes all four period/evaluation distance roles
 for exact pure-frontier-shift and pure-catch-up panels, including a negative
 cross-period distance and exact decomposition reconstruction. This analytical
 closure is not a reproduction of the Swedish application.
 
-The adjacent geometric Malmquist record is the ninth analytical certificate.
+The adjacent geometric Malmquist record has an analytical certificate.
 Its independent dense four-task compiler closes exact frontier-shift and
 operating-performance-change accounts for the output-oriented CRS FGNZ core,
 including every distance role and the
@@ -147,7 +150,7 @@ $\mathrm{PEFFCH}\times\mathrm{SCH}$ account, Balk, or the original Penn World
 Table application. Enhanced FGNZ and Ray--Desli now have separate method
 records and certificates; neither inherits that evidence from the FGNZ core.
 
-The Coelli material-inflow record is the tenth analytical certificate. The
+The Coelli material-inflow record has an analytical certificate. The
 authors' CEPA Working Paper 06/2005 freezes the ordinary CRS programmes and
 their explicit VRS convexity extension. An independent compiler closes exact
 input-radial $TE$, minimum-inflow $EE$, physical-content $EAE$, and
@@ -160,7 +163,7 @@ NIRS/NDRS, heterogeneous or estimated coefficients, panel/custom/external
 source equivalence, and welfare, causal, damage, or actual-emission claims
 remain outside the certificate.
 
-The Oh (2010) global Malmquist--Luenberger record is the eleventh analytical
+The Oh (2010) global Malmquist--Luenberger record has an analytical
 certificate. Exact two- and three-period panels and an independently compiled
 dense source programme close the four self-contained own-period/global
 distance roles, their nonnegative domain, the
@@ -176,7 +179,7 @@ environmental technologies, non-global reference policies, arbitrary
 nonadjacent-transition API, and inferential or welfare claims remain outside
 the certificate.
 
-The classic direct additive record is the twelfth analytical certificate.
+The classic direct additive record has an analytical certificate.
 Charnes et al.'s equations (4.5)--(4.6), the source-displayed two-DMU
 shortfall, and a separate exact four-DMU fixture freeze only VRS, effective
 unit slack weights, one self-inclusive cross-section, and ordinary
@@ -189,8 +192,8 @@ observation-specific normalization and every separately named unsupported
 leaf are `deferred_to_next_version`; no published numerical-table
 reproduction is claimed.
 
-The Cooper--Park--Pastor RAM record is the thirteenth analytical
-certificate. The complete defining article freezes equations (17), (18),
+The Cooper--Park--Pastor RAM record has an analytical certificate. The
+complete defining article freezes equations (17), (18),
 and (20)--(23) for one self-inclusive VRS cross section with finite signed
 resource/desirable-service data. Its zero-range rule omits the inactive
 coordinate and fixes its slack contribution at zero; DEAPack's retained
@@ -204,7 +207,7 @@ no published numerical-table
 reproduction, cost, welfare, causal, non-VRS, environmental, network, or
 dynamic RAM claim is made.
 
-The Ray--Desli record is the fourteenth analytical certificate. Its
+The Ray--Desli record has an analytical certificate. Its
 independent dense compiler closes four CRS and four VRS output-distance tasks,
 the source-native $\mathrm{PEFFCH}\times\mathrm{TECHCH}(v)\times\mathrm{SCH}(v)$
 identity, and a panel that distinguishes the Ray--Desli allocation from FGNZ.
@@ -214,7 +217,7 @@ and scale terms remain undefined. The certificate is limited to strictly
 positive matched panels with one or more inputs and exactly one desirable
 output; it does not reproduce the Penn World Table 5.6 application.
 
-The enhanced FGNZ record is the fifteenth analytical certificate. Its
+The enhanced FGNZ record has an analytical certificate. Its
 production-free dense compiler closes the four CRS Malmquist tasks and the
 two own-period VRS auxiliary tasks, verifies
 $\mathrm{EFFCH}=\mathrm{PEFFCH}\times\mathrm{SCH}$ and
@@ -227,7 +230,7 @@ auxiliary own-period VRS task preserves the valid CRS core as a software
 dependency policy, not as a published partial empirical account. The original
 OECD/PWT5 application is not reproduced.
 
-The APZ Malmquist--Luenberger preset is the sixteenth analytical certificate.
+The APZ Malmquist--Luenberger preset has an analytical certificate.
 The 2013 source table and the 2017 operational equations support an
 independent dense compiler for the capped bad-output inequality technology.
 It closes the exact four distances
@@ -238,8 +241,8 @@ general multi-input, multi-good, multi-bad data, period-specific component
 caps, unit changes, failure semantics, future-period stability, and cache
 counts. The processed WIOD application is not reproduced.
 
-The Pastor--Lovell Global Malmquist record is the seventeenth analytical
-certificate. A production-free dense compiler and exact upper-bound argument
+The Pastor--Lovell Global Malmquist record has an analytical certificate. A
+production-free dense compiler and exact upper-bound argument
 close all six own-period/global output-oriented CRS distances on a rational
 three-period panel, four adjacent $GM=EC_G\times BPC_G$ accounts, unique peer
 provenance, coherent unit changes, and fixed-vintage circularity. The public
@@ -273,7 +276,7 @@ derived.
 Environmental, nondiscretionary, FDH, FCH, and FRH extensions remain
 `deferred_to_next_version`.
 
-The Tone (2003) non-separable undesirable-output SBM is the seventh analytical
+The Tone (2003) non-separable undesirable-output SBM has an analytical
 certificate. Its independent dense programme closes equations (29)--(32),
 Table 4, and the source projections and common retained operating shares in
 Table 5. It does **not** call the complete Table 5 score column reproduced:

@@ -283,16 +283,147 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
-        "https://www.owlnet.rice.edu/~econ380/DEAP.PDF",
-        "tests/test_cost.py::test_cost_allocative_decomposition_reproduces_published_components"
-      ]
+        "specs/oracles/cost-allocative-analytical.md",
+        "tests/test_cost_allocative_independent_oracle.py::test_exact_cost_and_allocative_four_plan_account",
+        "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/cost-allocative-analytical.md",
+        "public_api_test_locator": "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers",
+        "claims": [
+          {
+            "claim_id": "allocative.cost_input_radial.exact_four_plan_decomposition",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_cost_allocative_independent_oracle.py::test_exact_cost_and_allocative_four_plan_account"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "matched_internal_composition"
+              ],
+              "valuation_policy": [
+                "common_strictly_positive_input_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "allocative.cost_input_radial.four_plan_o",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "cost_efficiency": "7/16",
+                    "technical_efficiency": "1/2",
+                    "allocative_efficiency": "7/8",
+                    "reconstruction_residual": 0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "cost_efficiency",
+              "technical_efficiency",
+              "allocative_efficiency",
+              "multiplicative_identity",
+              "score_valid",
+              "score_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "price"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "allocative.cost_input_radial.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "matched_internal_composition"
+              ],
+              "valuation_policy": [
+                "common_strictly_positive_input_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "cost_efficiency",
+              "technical_efficiency",
+              "allocative_efficiency",
+              "multiplicative_identity",
+              "score_valid",
+              "score_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "price"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "published_component_oracle",
+        "exact_analytical_component_account",
+        "independent_dense_crs_vrs_component_compilation",
         "multiplicative_identity",
         "crs_and_vrs",
         "component_failure_propagation",
@@ -303,6 +434,7 @@
         "metadata_contract"
       ],
       "locators": [
+        "tests/test_cost_allocative_independent_oracle.py",
         "tests/test_cost.py",
         "tests/test_radial_consumer_validity.py::test_cost_allocative_requires_the_certified_technical_component_score"
       ]

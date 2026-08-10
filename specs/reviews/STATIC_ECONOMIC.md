@@ -673,10 +673,10 @@ order, target theorem, and independent exact oracle are frozen.
   2001](https://doi.org/10.1016/S0377-2217(99)00407-5).
 - **Evidence status:** primary-checked, including the exact-equivalence domain;
   implemented/public with repository property and literature-oracle evidence.
-- **Oracle:** `sbm_slack_contrast` is a neutral analytical case that checks the
-  non-oriented CRS score, normalized slack accounts, targets, peers, and
-  radial-versus-non-radial distinction without redistributing the source
-  table.
+- **Oracle:** analytically derived — an exact three-organization VRS fixture
+  certifies the non-oriented fractional score and input/output accounts, and a
+  production-independent dense Charnes--Cooper programme checks all scores
+  under CRS and VRS. No published Tone table is redistributed or claimed.
 - **Package recipe:** `SlacksBasedDEA`, `SBM`, and `ERG`;
   `static.sbm.nonoriented.tone2001`.
 - **Book location:** **Active core placement:** `book/chapters/02-classical/04-sbm.md`; equivalence proofs and source variants remain in package documentation.
@@ -1166,10 +1166,11 @@ just solver input. Planned policies distinguish *direction.exogenous*,
   al. 1994](https://doi.org/10.1007/978-94-015-7721-2).
 - **Evidence status:** primary-checked; implemented/public with automated
   objective, target, and decomposition tests.
-- **Oracle:** `cost_mix_choice` is a neutral analytical case that checks
-  minimum-cost targets, observed/minimum cost reconstruction, and the matched
-  technical--allocative decomposition. The DEAP guide remains a method
-  reference, but its numerical example is not redistributed.
+- **Oracle:** analytically derived — an exact four-plan fixture certifies
+  minimum cost, cost efficiency, radial technical efficiency, allocative
+  efficiency, and their multiplicative identity. Independent dense cost and
+  radial programmes also check CRS/VRS scores and targets. The DEAP guide's
+  numerical example is not redistributed or claimed as reproduced.
 - **Package recipe:** `CostEfficiency` / `economic.cost`; matched
   `AllocativeDecomposition` /
   `analysis.allocative_decomposition.cost_input_radial`.

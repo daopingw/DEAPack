@@ -25,7 +25,7 @@ import sys
 import time
 import unicodedata
 from collections.abc import Mapping, Sequence
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -132,7 +132,7 @@ def _reject_duplicate_json_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def _utc_now() -> datetime:
-    return datetime.now(UTC)
+    return datetime.now(timezone.utc)
 
 
 def _iso(value: datetime) -> str:

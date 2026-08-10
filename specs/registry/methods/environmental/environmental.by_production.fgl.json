@@ -283,7 +283,7 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
         "specs/source_protocols/by_production_fgl_reference.md",
         "specs/oracles/by-production-fgl-project-case.md",

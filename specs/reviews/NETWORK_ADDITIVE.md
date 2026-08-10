@@ -76,7 +76,7 @@ appraisals.
 | **Solver form** | One sparse LP per assessed organization for the system score, plus source-qualified secondary LPs for process-priority attribution. Free VRS intercepts require split variables or a solver with bounded-free-variable support. |
 | **Defining source** | [Chen, Cook, Li, and Zhu (2009)](https://doi.org/10.1016/j.ejor.2008.05.011); projection and primal--dual correction in [Lim and Zhu (2019)](https://doi.org/10.1016/j.omega.2018.06.005). |
 | **Evidence status** | `primary-checked`: the defining paper's models (11), (13), (15), and (17)--(19), its data, and its CRS/VRS tables were checked against the open article. |
-| **Oracle** | The neutral `two_stage_public_service` case checks CRS/VRS system and process reconstruction and certified split-link projections. Source-table observations, named organizations, and disputed printed cells are not redistributed. |
+| **Oracle** | `cross-implemented` for the CRS system score and source split-link projection on the neutral `two_stage_public_service` case: an independent dense multiplier programme and an independently assembled Lim--Zhu primal agree with the public API. VRS attribution and process-priority selection remain property checks; source-table observations and named organizations are not redistributed. |
 | **Package recipe** | Implemented as `network.additive.chen_etal_2009` over `NetworkData` and `TwoStageSeriesSpec`, with explicit RTS, reference, decomposition, projection, and minimum-share policies. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`; source-exact equations and result contracts remain in package documentation. |
 
@@ -194,7 +194,7 @@ These cases must not be collapsed by a solver tolerance.
 | **Solver form** | Sparse graph-incidence multiplier LP: one component inequality for every node/reference pair, one shared valuation account per declared link, one total-component-input normalization for the assessed DMU, and optional declared share bounds. |
 | **Defining source** | [Cook, Zhu, Bi, and Yang (2010)](https://doi.org/10.1016/j.ejor.2010.05.006). |
 | **Evidence status** | `primary-checked` for the CRS open serial, branching, and non-immediate-successor constructions; the generic VRS claim remains `review-supported` pending a compiler-level primal/dual audit. |
-| **Oracle** | `open_service_chain` and `three_process_service_chain` check unrestricted, declared-share, and three-process system/component accounts on neutral project cases. Solver-selected component weights are not treated as uniqueness oracles. |
+| **Oracle** | `cross-implemented` for the CRS general-network system score on the project-authored `open_service_chain`: an independent dense process-incidence multiplier programme agrees with the public API. Declared-share, three-process attribution, and solver-selected component weights remain property checks rather than uniqueness claims. |
 | **Package recipe** | Implemented as `network.additive.cook_zhu_bi_yang_2010` through `CookZhuBiYangAdditiveDEA` over a measure-neutral compiled DAG layout. General-network VRS, cycles, shared pools, transformed links, and source projections fail closed. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`; the complete source contract remains in package documentation. |
 
@@ -289,7 +289,7 @@ stage range that the source programmes did not identify.
 | **Solver form** | Solve or recover the sparse envelopment system $X\lambda\leq E_ox_o$, $Z\lambda-Z\mu\geq(1-E_o)z_o$, $Y\mu\geq y_o$, with VRS convexity rows where applicable. |
 | **Defining source** | [Lim and Zhu (2019)](https://doi.org/10.1016/j.omega.2018.06.005); the underlying additive account is [Chen et al. (2009)](https://doi.org/10.1016/j.ejor.2008.05.011). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | The neutral `two_stage_public_service` case checks split-link target feasibility and reconstruction in addition to its system/process account. |
+| **Oracle** | `cross-implemented` for the CRS split-link projection on `two_stage_public_service`: an independently assembled Lim--Zhu envelopment programme attains the same optimum and independently verifies the upstream/downstream link inequalities. Alternate optimal intensity and target selections are not basis-locked. |
 | **Package recipe** | `projection="source"` in `network.additive.chen_etal_2009`; preserve upstream and downstream link targets separately in `targets` and `links`. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`; the full projection contract remains in package documentation. |
 

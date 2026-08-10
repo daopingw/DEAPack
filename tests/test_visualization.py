@@ -755,8 +755,7 @@ def test_directional_distance_defaults_to_native_beta_not_display_efficiency() -
     )
 
     ordinary_result = DDF().fit(ordinary_data)
-    with pytest.warns(FutureWarning, match="deprecated compatibility spelling"):
-        environmental_result = EnvironmentalDDF().fit(environmental_data)
+    environmental_result = EnvironmentalDDF().fit(environmental_data)
 
     for result in (ordinary_result, environmental_result):
         assert result.available_plots()[0].default_metric == "score"

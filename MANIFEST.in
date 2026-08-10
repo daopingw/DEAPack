@@ -9,7 +9,7 @@ include LICENSES/MIT-BenchmarkingEconomicEfficiency.jl.txt
 include LICENSES/MIT-DataEnvelopmentAnalysis.jl.txt
 include PYPI_README.md
 include README.md
-include RELEASE_NOTES_2.0.0.md
+include RELEASE_NOTES_2.0.1.md
 
 # The PyPI source distribution excludes package Documentation, figures,
 # tests, benchmarks, source reviews, and
@@ -26,7 +26,7 @@ recursive-exclude src *.csv *.json *.jsonl *.parquet *.tsv *.xlsx
 # same boundary.
 exclude CONTRIBUTING.md
 exclude Makefile
-exclude ROADMAP.md
+exclude RELEASE_NOTES_2.0.0rc1.md
 exclude SECURITY.md
 prune DEAPack
 prune .github

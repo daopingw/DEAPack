@@ -41,7 +41,7 @@ def test_software_citation_metadata_is_complete_and_version_aligned() -> None:
         pyproject,
         "version",
     )
-    assert _top_level_scalar(citation, "version") == "2.0.0"
+    assert _top_level_scalar(citation, "version") == "2.0.1"
     assert _top_level_scalar(citation, "date-released") == "2026-08-10"
     assert _toml_scalar(pyproject, "requires-python") == ">=3.10,<3.14"
     assert '"Development Status :: 5 - Production/Stable"' in pyproject
@@ -108,8 +108,8 @@ def test_pypi_description_is_stable_release_specific_and_portable() -> None:
     description = (ROOT / "PYPI_README.md").read_text(encoding="utf-8")
 
     assert 'readme = "PYPI_README.md"' in pyproject
-    assert "2.0.0" in description
-    assert "DEAPack==2.0.0" in description
+    assert "2.0.1" in description
+    assert "DEAPack==2.0.1" in description
     assert "release candidate" not in description.lower()
     assert "https://github.com/daopingw/DEAPack/" in description
     assert "](docs/" not in description
@@ -144,3 +144,5 @@ def test_package_documentation_keeps_its_public_identity() -> None:
     documentation = (ROOT / "docs" / "conf.py").read_text(encoding="utf-8")
 
     assert 'project = "DEAPack Documentation"' in documentation
+    assert 'author = "Dr Daoping Wang"' in documentation
+    assert 'copyright = "2026, Daoping Wang / DEAPack"' in documentation

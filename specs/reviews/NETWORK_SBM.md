@@ -64,7 +64,7 @@ complete the joint technology.
 | **Solver form** | Sparse block LP for the oriented models; sparse linear-fractional programme and source-compatible Charnes--Cooper transformation for the non-oriented model. |
 | **Defining source** | [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027), with complete working-paper formulation in [Tone and Tsutsui (2007)](https://doi.org/10.24545/00000978). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | `three_process_service_chain` and `crs_free_link_service_chain` check VRS fixed/free and CRS free-link accounts; exact project hand cases verify all three orientations. |
+| **Oracle** | `analytically derived` for the source equation-(26) accountable-input and equation-(27) accountable-output optima, with exact rational system, process, slack, target, and continuity accounts. `three_process_service_chain`, `crs_free_link_service_chain`, and the all-orientation hand cases provide additional bounded property checks. |
 | **Package recipe** | `graph.general_network` + `network.sbm.tone_tsutsui_2009` + orientation + RTS + link-control policy + exogenous division weights. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`; complete block programmes remain in package documentation. |
 
@@ -125,7 +125,7 @@ bilateral in all four cases.
 | **Solver form** | Fixed links add two observed-value equality blocks; free links add one cross-division equality block; as-input/as-output each add their accountable endpoint balance and the cross-division continuity block. |
 | **Defining source** | Tone and Tsutsui's equations (5a)--(5d) in the [open discussion paper](https://doi.org/10.24545/00000978), the published [2009 article](https://doi.org/10.1016/j.ejor.2008.05.027), and the formal four-case continuity statement in the later [dynamic-network article](https://doi.org/10.1016/j.omega.2013.04.002). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | The neutral service-chain case checks VRS input-oriented fixed/free system and division accounts. Independent project fixtures verify equations (26)--(27), including owner, slack, target, dimension count, and continuity. |
+| **Oracle** | `analytically derived` for equations (26)--(27): independent exact project fixtures certify owner, slack, target, dimension count, continuity, and system/process optima. The neutral VRS fixed/free service-chain comparisons remain additional property checks. |
 | **Package recipe** | `link_control="fixed"|"free"` preserves the uniform compatibility path. `link_kinds={link_id: kind}` classifies every link explicitly as `fixed`, `free`, `as_input`, or `as_output`; accountable kinds retain both endpoint continuity and named single-process score ownership. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`. |
 
@@ -157,7 +157,7 @@ $\theta_o^k$, so the system score is its weighted arithmetic mean.
 | **Solver form** | LP; no fractional transformation is needed. |
 | **Defining source** | Tone and Tsutsui's equations (7)--(9) in the [open source manuscript](https://doi.org/10.24545/00000978), published as [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | Project service-chain cases verify VRS/fixed, VRS/free, and CRS/free contracts through exact reconstruction and feasibility checks rather than source-table tolerances. |
+| **Oracle** | `analytically derived` for the equation-(26) accountable-input specialization. The broader VRS/fixed, VRS/free, and CRS/free input cases are bounded reconstruction and feasibility checks rather than a published-table reproduction or a claim of unique optima. |
 | **Package recipe** | `network.sbm.tone_tsutsui_2009` with `orientation="input"` and declared weights, RTS, and link policy. `as_input` activates the separately discoverable `accountable_input_link` specialization and revises the recipient's dimension count exactly as in equation (26). |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`; orientation-specific formulae remain in package documentation. |
 
@@ -189,7 +189,7 @@ The reported system efficiency is its reciprocal.
 | **Solver form** | LP for the expansion account followed by a deterministic reciprocal transformation. |
 | **Defining source** | Tone and Tsutsui's equations (10)--(12) in the [open source manuscript](https://doi.org/10.24545/00000978) and [published article](https://doi.org/10.1016/j.ejor.2008.05.027). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | An exact project hand oracle tests the reciprocal reconstruction identity on a solvable two-stage case; no published numerical table is used as evidence for this orientation. |
+| **Oracle** | `analytically derived` for the equation-(27) accountable-output specialization, including the exact reciprocal system account, process efficiencies, link slack, and common target. The general output-orientation hand case is an additional property check; no published numerical table is used. |
 | **Package recipe** | `network.sbm.tone_tsutsui_2009` with `orientation="output"` and explicit score/expansion-factor labels. `as_output` activates the separately discoverable `accountable_output_link` specialization and revises the supplier's dimension count exactly as in equation (27). |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`; orientation-specific formulae remain in package documentation. |
 
@@ -248,7 +248,7 @@ shares as one possible basis and use $0.4,0.2,0.4$ only for illustration.
 | **Solver form** | Fixed coefficients in the LP or fractional objective; sensitivity runs over declared weight scenarios require separate fits. |
 | **Defining source** | The weight definition and cost-share example appear in [Tone and Tsutsui (2007)](https://doi.org/10.24545/00000978), based on weighted SBM and published in [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | Declared project weight scenarios require the fitted division-weight account to reconstruct every reported system score; no source-table weight vector is bundled. |
+| **Oracle** | `candidate` for arbitrary declared-weight sensitivity: project scenarios require the fitted division-weight account to reconstruct every reported system score, but the analytical certificate is limited to the equation-(26)/(27) fixtures and does not certify all weight choices. No source-table weight vector is bundled. |
 | **Package recipe** | Declared division-importance valuation inside `network.sbm.tone_tsutsui_2009`; weights are mandatory fitted-result metadata. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`. |
 
@@ -275,7 +275,7 @@ a case where no observed DMU is efficient in one division.
 | **Solver form** | Same LP/fractional family; diagnostics count efficient observed DMUs per division after solving the complete sample. |
 | **Defining source** | Theorems 2--3, Corollary 1, and the CRS/free counterexample in [Tone and Tsutsui (2007)](https://doi.org/10.24545/00000978); published source [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | `crs_free_link_service_chain` verifies the CRS/free system and division account without interpreting the absence of a divisionally efficient observation as solver failure. |
+| **Oracle** | `candidate` for this CRS/free theorem-level claim. `crs_free_link_service_chain` supplies a bounded project regression for the system and division account, while the record's analytical certificate is limited to equations (26)--(27) and is not inherited by this branch. |
 | **Package recipe** | One source preset with explicit `returns_to_scale` and `link_control`; property tests are conditional on their combination. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`. |
 
@@ -303,7 +303,7 @@ warns that divisional scores need not be unique.
 | **Solver form** | Primary LP plus optional secondary LPs at the fixed system optimum for target, score, and attribution ranges. |
 | **Defining source** | Projection equations (15)--(16), reference equation (17), Theorem 4, and the nonuniqueness warning in [Tone and Tsutsui (2007)](https://doi.org/10.24545/00000978); later two-stage projection analysis in [Chen et al. (2016)](https://doi.org/10.1016/j.ejor.2015.09.031). |
 | **Evidence status** | `primary-checked` for source targets and nonuniqueness; secondary selection policies are `review-supported`. |
-| **Oracle** | Project-case tests require returned input/output targets and free-link plans to be jointly feasible. They deliberately do not require one particular optimal basis or target. |
+| **Oracle** | `candidate` for a general target-selection oracle. Project-case tests require returned input/output targets and free-link plans to be jointly feasible without fixing one optimal basis; exact analytical target claims remain limited to the accountable-link equation-(26)/(27) fixtures. |
 | **Package recipe** | Result contract must include external targets, one link target, division intensities/references, reconstruction residuals, and explicit alternate-optimum policy. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`. |
 
@@ -365,7 +365,7 @@ have multiple optima.
 | **Solver form** | Oracle harness should compare system/division scores, reconstruction identities, reference/link feasibility, fixed-versus-free ordering, projections, unit rescaling, and the CRS/free counterexample. |
 | **Defining source** | Open tables in [Tone and Tsutsui (2007)](https://doi.org/10.24545/00000978), published method in [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027); family boundaries reviewed by [Kao (2014)](https://doi.org/10.1016/j.ejor.2014.02.039). |
 | **Evidence status** | `primary-checked` and `reproduced` for the applicable score tables; descendant map is `review-supported`. |
-| **Oracle** | Neutral fixed/free-link cases are checked through exact account reconstruction and joint target/link feasibility rather than source-table tolerances or equality to one nonunique optimum. |
+| **Oracle** | `analytically derived` only for the claim-scoped equation-(26)/(27) accountable-link optima. Neutral fixed/free-link cases supply reconstruction and joint-feasibility property checks; the retired source-table reproduction is not claimed, and no nonunique optimum is basis-locked. |
 | **Package recipe** | Public `ToneTsutsuiNetworkSBM`, with `NetworkSBM` retained only as its exact API alias. The source empirical oracles cover input orientation; exact hand cases cover output and non-oriented programmes. |
 | **Book location** | **Documentation/source review only.** Reproducibility tables and descendant audits remain outside the handbook. |
 

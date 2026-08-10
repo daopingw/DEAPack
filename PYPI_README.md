@@ -1,40 +1,41 @@
 # DEAPack
 
-DEAPack is a source-audited Python toolkit for data envelopment analysis,
-efficiency measurement, productivity analysis, and environmental performance.
-The redesigned 2.x API uses the lowercase `deapack` import and a common data,
-technology, result, visualization, and reporting architecture.
+DEAPack is an open-source Python framework for data envelopment analysis
+(DEA), efficiency measurement, productivity analysis, and environmental
+performance.
 
-`2.0.0` is the first stable release of the redesigned DEAPack 2.x line. Its 33
-dataset fingerprints have exact item-level license and attribution mappings.
+It is designed for researchers, students, and analysts who want broad method
+coverage without writing a separate optimization program for every analysis.
+A consistent data, model, and result interface connects classical DEA with
+economic, environmental, network, dynamic, and productivity methods.
+
+## Why DEAPack?
+
+- Prepare validated data once and use a consistent estimator workflow.
+- Inspect named score, target, slack, peer, component, diagnostic, and status
+  tables.
+- Move between closely related analysis families without changing packages.
+- Create plots, reports, and reproducibility bundles from fitted results.
+- Start with documented presets and teaching datasets while keeping model
+  assumptions visible.
 
 ## Installation
 
-Install the stable release with:
+DEAPack `2.0.1` supports Python 3.10 through 3.13.
 
 ```bash
-python -m pip install "DEAPack==2.0.0"
+python -m pip install "DEAPack==2.0.1"
 ```
 
-Python 3.10, 3.11, 3.12, and 3.13 are supported. NumPy, pandas, and SciPy are
-the only required runtime dependencies; ordinary linear programmes use the
-HiGHS solver bundled through SciPy. Install `DEAPack[viz]` for the optional
-Matplotlib result views.
+NumPy, pandas, and SciPy are the required runtime dependencies. Install
+`DEAPack[viz]` for optional Matplotlib result views.
 
 ## Quick start
 
 ```python
-import pandas as pd
+from deapack import BCCInput, DEAData, load_dataset
 
-from deapack import BCCInput, DEAData
-
-frame = pd.DataFrame(
-    {
-        "dmu": ["A", "B", "C", "D"],
-        "input": [1.0, 2.0, 3.0, 4.0],
-        "output": [1.0, 3.0, 4.0, 4.0],
-    }
-)
+frame = load_dataset("frontier_1x1")
 data = DEAData.from_frame(
     frame,
     dmu="dmu",
@@ -44,55 +45,54 @@ data = DEAData.from_frame(
 
 result = BCCInput().fit(data)
 print(result.summary())
-print(result.peers("D"))
+print(result.peers("E"))
 ```
 
-Results expose named summary, target, slack, peer, dual, component, and
-diagnostic tables only when the corresponding numerical and economic account
-has been certified. They can also produce a self-contained HTML brief and a
-deterministic audit archive.
+This estimates an input-oriented variable-returns-to-scale frontier. The same
+result object provides targets, slacks, peer intensities, diagnostics,
+reporting, and visualization when those outputs are available for the chosen
+method.
 
-## Scope
+## Coverage
 
-The release covers the major classical radial and non-radial families,
-directional and generalized-distance analysis, price-informed economic
-efficiency, undesirable-output and environmental technologies, Malmquist and
-related productivity accounts, network and dynamic production, panel models,
-and radial metafrontiers. The installed discovery catalog is the authoritative
-list of public methods:
+DEAPack includes:
 
-```python
-from deapack import list_methods
+- classical radial and non-radial DEA;
+- productivity indexes and scale analysis;
+- cost, revenue, profit, and allocative-efficiency analysis;
+- undesirable-output and environmental technologies;
+- network, dynamic, dynamic-network, panel, and metafrontier models; and
+- super-efficiency, cross-efficiency, diagnostics, reporting, and
+  visualization.
 
-for method in list_methods():
-    print(method.method_id)
-```
+The installed method catalog is the authoritative inventory of executable
+methods. Planned or source-incomplete methods are not exposed as provisional
+estimators.
 
-Statistical inference, Färe--Primont productivity, generic congestion,
-automatic EBM calibration, and several source-incomplete variants remain
-explicit next-version work rather than provisional APIs.
+## Documentation
 
-## Documentation and migration
+- [Package Documentation](https://deapack.readthedocs.io/)
+- [Installation guide](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/installation.md)
+- [Quick start](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/quickstart.md)
+- [Method catalog](https://github.com/daopingw/DEAPack/blob/main/docs/user-guide/method-catalog.md)
+- [API reference](https://github.com/daopingw/DEAPack/blob/main/docs/api/index.md)
+- [Migration from 0.1.x](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/migration.md)
 
-- [Package Documentation source](https://github.com/daopingw/DEAPack/tree/main/docs)
-- [2.x migration guide](https://github.com/daopingw/DEAPack/blob/main/docs/getting-started/migration.md)
-- [Release notes](https://github.com/daopingw/DEAPack/blob/main/RELEASE_NOTES_2.0.0.md)
-- [Contribution guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md)
-- [Issue tracker](https://github.com/daopingw/DEAPack/issues)
+DEAPack 2.x is not a drop-in replacement for historical `import DEAPack` or
+ProdPack scripts; use the migration guide when updating an older project.
 
-DEAPack 2.x is a greenfield API. Historical `import DEAPack` and ProdPack
-scripts require an explicit migration; the 2.x wheel intentionally provides
-only `import deapack`.
-
-## Citation and license
+## Citation and licensing
 
 Use the repository's
 [`CITATION.cff`](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)
-and record the exact version and commit used. The DEAPack software
-component is licensed under `GPL-3.0-only`. Bundled dataset content is released
-only when its provenance record identifies confirmed licensing authority, an
-approved redistribution status, content license, attribution, and required
-notice; it does not inherit GPL merely by being represented in a Python file.
-All 33 current dataset fingerprints have exact mappings: 30 project-created
-or independently selected fixtures and one external dataset use
-`CC-BY-4.0`, while two external datasets retain upstream `MIT` notices.
+and record the exact version used. Research using a particular DEA method
+should also cite its defining literature, linked from the corresponding
+Documentation page.
+
+The software is licensed under `GPL-3.0-only`. Documentation and bundled data
+have their own recorded terms, and third-party data retain their upstream
+licenses. See the repository's
+[component-license map](https://github.com/daopingw/DEAPack/blob/main/COMPONENT_LICENSES.md)
+and
+[dataset-license map](https://github.com/daopingw/DEAPack/blob/main/DATA_LICENSES.md)
+for precise boundaries.

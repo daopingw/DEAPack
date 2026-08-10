@@ -32,6 +32,10 @@ from deapack.visualization import (
     sbm_improvement_plot_applicable,
 )
 
+_FOCAL_DMU = "Uneven"
+_ALTERNATE_DMU = "Balanced"
+_FOCAL_INPUT = "resource_a"
+
 
 def _data() -> DEAData:
     frame = load_dataset("sbm_slack_contrast")
@@ -145,29 +149,27 @@ def test_exact_joint_sbm_plan_is_reconstructed_without_mutation(
     before_slacks = joint_result.slacks.copy(deep=True)
     before_diagnostics = joint_result.diagnostics.copy(deep=True)
 
-    prepared = prepare_sbm_improvement_data(joint_result, dmu_id="A")
+    prepared = prepare_sbm_improvement_data(joint_result, dmu_id=_FOCAL_DMU)
 
     assert prepared.orientation == "non-oriented"
     assert prepared.returns_to_scale == "crs"
-    assert prepared.efficiency == pytest.approx(0.7979797979797979)
-    assert prepared.input_account == pytest.approx(0.9404761904761905)
-    assert prepared.output_expansion_account == pytest.approx(1.1785714285714286)
+    assert prepared.efficiency == pytest.approx(5.0 / 18.0)
+    assert prepared.input_account == pytest.approx(5.0 / 12.0)
+    assert prepared.output_expansion_account == pytest.approx(1.5)
     assert prepared.variable_count == 4
     assert prepared.scored_variable_count == 4
     assert prepared.selection_status == "solver_selected_primary_optimum"
     assert prepared.max_reconstruction_residual <= 1e-12
     assert prepared.variables[["role", "variable"]].apply(tuple, axis=1).tolist() == [
-        ("input", "input_1"),
-        ("input", "input_2"),
-        ("output", "output_1"),
-        ("output", "output_2"),
+        ("input", "resource_a"),
+        ("input", "resource_b"),
+        ("output", "core_service"),
+        ("output", "quality_service"),
     ]
-    assert prepared.variables["observed"].tolist() == [4.0, 3.0, 2.0, 3.0]
-    assert prepared.variables["target"].tolist() == pytest.approx(
-        [4.0, 2.642857142857143, 2.7142857142857144, 3.0]
-    )
+    assert prepared.variables["observed"].tolist() == [2.0, 3.0, 2.0, 1.0]
+    assert prepared.variables["target"].tolist() == pytest.approx([1.0, 1.0, 2.0, 2.0])
     assert prepared.variables["signed_proportional_change"].tolist() == pytest.approx(
-        [0.0, -0.119047619047619, 0.3571428571428572, 0.0]
+        [-0.5, -2.0 / 3.0, 0.0, 1.0]
     )
 
     assert_frame_equal(joint_result.summary(), before_summary)
@@ -177,10 +179,10 @@ def test_exact_joint_sbm_plan_is_reconstructed_without_mutation(
 
 
 def test_prepared_variable_ledger_is_detached(joint_result: DEAResult) -> None:
-    prepared = prepare_sbm_improvement_data(joint_result, dmu_id="A")
+    prepared = prepare_sbm_improvement_data(joint_result, dmu_id=_FOCAL_DMU)
     original = joint_result.targets.loc[
-        joint_result.targets["dmu_id"].eq("A")
-        & joint_result.targets["variable"].eq("input_1"),
+        joint_result.targets["dmu_id"].eq(_FOCAL_DMU)
+        & joint_result.targets["variable"].eq(_FOCAL_INPUT),
         "target",
     ].iloc[0]
 
@@ -188,8 +190,8 @@ def test_prepared_variable_ledger_is_detached(joint_result: DEAResult) -> None:
 
     assert (
         joint_result.targets.loc[
-            joint_result.targets["dmu_id"].eq("A")
-            & joint_result.targets["variable"].eq("input_1"),
+            joint_result.targets["dmu_id"].eq(_FOCAL_DMU)
+            & joint_result.targets["variable"].eq(_FOCAL_INPUT),
             "target",
         ].iloc[0]
         == original
@@ -272,9 +274,9 @@ def test_environmental_result_discovers_the_existing_improvement_kind(
 @pytest.mark.parametrize(
     ("model", "orientation", "scored_roles", "efficiency"),
     [
-        (InputSBM, "input", {"input"}, 0.8484848484848485),
-        (OutputSBM, "output", {"output"}, 0.8181818181818181),
-        (SBM, "non-oriented", {"input", "output"}, 0.7979797979797979),
+        (InputSBM, "input", {"input"}, 5.0 / 12.0),
+        (OutputSBM, "output", {"output"}, 1.0 / 3.0),
+        (SBM, "non-oriented", {"input", "output"}, 5.0 / 18.0),
     ],
 )
 def test_all_three_mainstream_orientations_keep_their_management_mandate(
@@ -283,7 +285,7 @@ def test_all_three_mainstream_orientations_keep_their_management_mandate(
     scored_roles: set[str],
     efficiency: float,
 ) -> None:
-    prepared = prepare_sbm_improvement_data(_fit(model), dmu_id="A")
+    prepared = prepare_sbm_improvement_data(_fit(model), dmu_id=_FOCAL_DMU)
 
     assert prepared.orientation == orientation
     assert prepared.efficiency == pytest.approx(efficiency)
@@ -292,11 +294,11 @@ def test_all_three_mainstream_orientations_keep_their_management_mandate(
 
 
 def test_input_orientation_labels_output_rows_as_feasibility_only() -> None:
-    prepared = prepare_sbm_improvement_data(_fit(InputSBM), dmu_id="D")
+    prepared = prepare_sbm_improvement_data(_fit(InputSBM), dmu_id=_FOCAL_DMU)
     output_rows = prepared.variables.loc[prepared.variables["role"].eq("output")]
 
     assert not output_rows["included_in_objective"].any()
-    assert prepared.efficiency == pytest.approx(1.0)
+    assert prepared.efficiency == pytest.approx(5.0 / 12.0)
     assert prepared.scored_variable_count == 2
 
 
@@ -305,7 +307,7 @@ def test_additive_result_does_not_receive_the_improvement_plot() -> None:
     assert not sbm_improvement_plot_applicable(additive)
     assert "improvement" not in {plot.kind for plot in additive.available_plots()}
     with pytest.raises(PlotNotAvailableError, match="classic static SBM"):
-        prepare_sbm_improvement_data(additive, dmu_id="A")
+        prepare_sbm_improvement_data(additive, dmu_id=_FOCAL_DMU)
 
 
 @pytest.mark.parametrize(
@@ -337,11 +339,11 @@ def test_improvement_dispatch_rejects_inapplicable_controls(
     with pytest.raises(PlotNotAvailableError, match="requires dmu_id"):
         joint_result.plot(kind="improvement")
     with pytest.raises(PlotNotAvailableError, match="metric and variable"):
-        joint_result.plot(kind="improvement", dmu_id="A", metric="efficiency")
+        joint_result.plot(kind="improvement", dmu_id=_FOCAL_DMU, metric="efficiency")
     with pytest.raises(PlotNotAvailableError, match="metric and variable"):
-        joint_result.plot(kind="improvement", dmu_id="A", variable="input_1")
+        joint_result.plot(kind="improvement", dmu_id=_FOCAL_DMU, variable=_FOCAL_INPUT)
     with pytest.raises(PlotNotAvailableError, match="view='auto'"):
-        joint_result.plot(kind="improvement", dmu_id="A", view="points")
+        joint_result.plot(kind="improvement", dmu_id=_FOCAL_DMU, view="points")
 
 
 def test_panel_observation_requires_an_explicit_period() -> None:
@@ -351,18 +353,19 @@ def test_panel_observation_requires_an_explicit_period() -> None:
     second = original.copy()
     second["period"] = 2021
     frame = pd.concat([first, second], ignore_index=True)
+    roles = dataset_info("sbm_slack_contrast").roles
     data = DEAData.from_frame(
         frame,
-        dmu="dmu",
+        dmu=roles["dmu"],
         period="period",
-        inputs=("input_1", "input_2"),
-        outputs=("output_1", "output_2"),
+        inputs=roles["inputs"],
+        outputs=roles["outputs"],
     )
     result = SBM(returns_to_scale="crs", reference="contemporaneous").fit(data)
 
     with pytest.raises(PlotNotAvailableError, match="requires period"):
-        prepare_sbm_improvement_data(result, dmu_id="A")
-    prepared = prepare_sbm_improvement_data(result, dmu_id="A", period=2021)
+        prepare_sbm_improvement_data(result, dmu_id=_FOCAL_DMU)
+    prepared = prepare_sbm_improvement_data(result, dmu_id=_FOCAL_DMU, period=2021)
     assert prepared.period == 2021
 
 
@@ -387,32 +390,35 @@ def test_nonfinite_or_inconsistent_plan_quantities_fail_closed(
     column: str,
 ) -> None:
     frame = getattr(joint_result, table).copy(deep=True)
-    mask = frame["dmu_id"].eq("A") & frame["variable"].eq("input_1")
+    mask = frame["dmu_id"].eq(_FOCAL_DMU) & frame["variable"].eq(_FOCAL_INPUT)
     frame.loc[mask, column] = np.nan if column != "target" else -999.0
     result = replace(joint_result, **{table: frame})
 
     assert sbm_improvement_plot_applicable(result)
     with pytest.raises(PlotNotAvailableError):
-        prepare_sbm_improvement_data(result, dmu_id="A")
-    assert prepare_sbm_improvement_data(result, dmu_id="B").dmu_id == "B"
+        prepare_sbm_improvement_data(result, dmu_id=_FOCAL_DMU)
+    assert (
+        prepare_sbm_improvement_data(result, dmu_id=_ALTERNATE_DMU).dmu_id
+        == _ALTERNATE_DMU
+    )
 
 
 def test_score_or_postsolve_certificate_corruption_fails_closed(
     joint_result: DEAResult,
 ) -> None:
     summary = joint_result.summary()
-    summary.loc[summary["dmu_id"].eq("A"), "score_valid"] = False
+    summary.loc[summary["dmu_id"].eq(_FOCAL_DMU), "score_valid"] = False
     invalid_score = replace(joint_result, summary_frame=summary)
     with pytest.raises(PlotNotAvailableError, match="score_valid=True"):
-        prepare_sbm_improvement_data(invalid_score, dmu_id="A")
+        prepare_sbm_improvement_data(invalid_score, dmu_id=_FOCAL_DMU)
 
     diagnostics = joint_result.diagnostics.copy(deep=True)
-    diagnostics.loc[diagnostics["dmu_id"].eq("A"), "economic_postsolve_certified"] = (
-        False
-    )
+    diagnostics.loc[
+        diagnostics["dmu_id"].eq(_FOCAL_DMU), "economic_postsolve_certified"
+    ] = False
     invalid_certificate = replace(joint_result, diagnostics=diagnostics)
     with pytest.raises(PlotNotAvailableError, match="both LP and operating-account"):
-        prepare_sbm_improvement_data(invalid_certificate, dmu_id="A")
+        prepare_sbm_improvement_data(invalid_certificate, dmu_id=_FOCAL_DMU)
 
 
 def test_metadata_and_result_tables_must_independently_agree(
@@ -437,32 +443,34 @@ def test_metadata_and_result_tables_must_independently_agree(
     cases.append(replace(joint_result, metadata=metadata))
 
     targets = joint_result.targets.copy(deep=True)
-    targets.loc[targets["dmu_id"].eq("A"), "selection_status"] = "unsupported"
+    targets.loc[targets["dmu_id"].eq(_FOCAL_DMU), "selection_status"] = "unsupported"
     cases.append(replace(joint_result, targets=targets))
 
     slacks = joint_result.slacks.copy(deep=True)
-    duplicate = slacks.loc[slacks["dmu_id"].eq("A") & slacks["variable"].eq("input_1")]
+    duplicate = slacks.loc[
+        slacks["dmu_id"].eq(_FOCAL_DMU) & slacks["variable"].eq(_FOCAL_INPUT)
+    ]
     cases.append(
         replace(joint_result, slacks=pd.concat([slacks, duplicate], ignore_index=True))
     )
 
     slacks = joint_result.slacks.copy(deep=True)
     slacks.loc[
-        slacks["dmu_id"].eq("A") & slacks["variable"].eq("input_1"),
+        slacks["dmu_id"].eq(_FOCAL_DMU) & slacks["variable"].eq(_FOCAL_INPUT),
         "average_weight",
     ] = 0.75
     cases.append(replace(joint_result, slacks=slacks))
 
     slacks = joint_result.slacks.copy(deep=True)
     slacks.loc[
-        slacks["dmu_id"].eq("A") & slacks["variable"].eq("input_1"),
+        slacks["dmu_id"].eq(_FOCAL_DMU) & slacks["variable"].eq(_FOCAL_INPUT),
         "included_in_objective",
     ] = False
     cases.append(replace(joint_result, slacks=slacks))
 
     for result in cases:
         with pytest.raises(PlotNotAvailableError):
-            prepare_sbm_improvement_data(result, dmu_id="A")
+            prepare_sbm_improvement_data(result, dmu_id=_FOCAL_DMU)
 
 
 @pytest.mark.parametrize(
@@ -634,7 +642,7 @@ def test_one_corrupted_dmu_does_not_hide_another_valid_plan(
     joint_result: DEAResult,
 ) -> None:
     summary = joint_result.summary()
-    summary.loc[summary["dmu_id"].eq("A"), "score_valid"] = False
+    summary.loc[summary["dmu_id"].eq(_FOCAL_DMU), "score_valid"] = False
     result = replace(joint_result, summary_frame=summary)
 
     assert sbm_improvement_plot_applicable(result)
@@ -643,7 +651,10 @@ def test_one_corrupted_dmu_does_not_hide_another_valid_plan(
         "improvement",
         "references",
     ]
-    assert prepare_sbm_improvement_data(result, dmu_id="B").dmu_id == "B"
+    assert (
+        prepare_sbm_improvement_data(result, dmu_id=_ALTERNATE_DMU).dmu_id
+        == _ALTERNATE_DMU
+    )
 
 
 def test_no_certified_plan_means_no_improvement_discovery(
@@ -680,12 +691,12 @@ def test_matplotlib_improvement_plan_renders_without_showing_or_global_mutation(
         raise AssertionError("plot() must not call pyplot.show()")
 
     monkeypatch.setattr(pyplot, "show", _show_is_forbidden)
-    figure = joint_result.plot(kind="improvement", dmu_id="A")
+    figure = joint_result.plot(kind="improvement", dmu_id=_FOCAL_DMU)
 
     assert isinstance(figure, figure_type)
     assert len(figure.axes) == 2
     assert figure._suptitle.get_text() == (
-        "Selected variable-specific operating plan for A"
+        f"Selected variable-specific operating plan for {_FOCAL_DMU}"
     )
     assert "operating gaps" in figure.axes[0].get_title(loc="left")
     assert "feasible benchmark plan" in figure.axes[1].get_title(loc="left")

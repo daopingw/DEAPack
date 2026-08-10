@@ -606,8 +606,11 @@ def test_analytically_derived_oracles_have_a_fail_closed_certificate() -> None:
         if record["validation"]["oracle"]["status"] == "analytically_derived"
     ]
     assert {record["id"] for record in analytical_records} == {
+        "analysis.allocative_decomposition.cost_input_radial",
         "analysis.scale_efficiency.radial_ratio",
         "dynamic.network_sbm.tone_tsutsui_2014",
+        "dynamic.sbm.tone_tsutsui_2010",
+        "economic.cost",
         "environmental.ddf.joint_production",
         "environmental.ddf.output.chung_fare_grosskopf_1997",
         "environmental.ddf.weak_disposal.common_factor",
@@ -616,6 +619,9 @@ def test_analytically_derived_oracles_have_a_fail_closed_certificate() -> None:
         "environmental.material_inflow.coelli2007",
         "environmental.sbm.nonseparable_hybrid.tone_2003",
         "environmental.sbm.separable_strong",
+        "evaluation.super.directional.ray_2008",
+        "evaluation.super.sbm.tone_2002",
+        "network.sbm.tone_tsutsui_2009",
         "productivity.biennial_malmquist",
         "productivity.global_malmquist",
         "productivity.global_malmquist_luenberger.oh_2010",
@@ -635,6 +641,7 @@ def test_analytically_derived_oracles_have_a_fail_closed_certificate() -> None:
         "static.radial.frh",
         "static.ram",
         "static.sbm.input.tone2001",
+        "static.sbm.nonoriented.tone2001",
         "static.sbm.output.tone2001",
     }
 
@@ -2083,32 +2090,67 @@ def test_oh_gml_certificate_freezes_source_pairwise_global_account() -> None:
     assert "`deferred_to_next_version`" in source_protocol
 
 
-def test_mixed_oracle_records_keep_analytical_certificates_claim_scoped() -> None:
-    """Do not let a reproduced base silently certify an analytical extension."""
+def test_network_sbm_analytical_certificate_remains_claim_scoped() -> None:
+    """Keep the network-SBM analytical status within its certified cases."""
     mixed_records = [
         record
         for _, record in _records("methods")
         if record["validation"]["oracle"]["status"] != "analytically_derived"
         and "analytical_certificate" in record["validation"]["oracle"]
     ]
-    assert {record["id"] for record in mixed_records} == {
-        "network.sbm.tone_tsutsui_2009"
-    }
+    assert mixed_records == []
 
-    record = mixed_records[0]
+    record = next(
+        record
+        for _, record in _records("methods")
+        if record["id"] == "network.sbm.tone_tsutsui_2009"
+    )
     oracle = record["validation"]["oracle"]
     certificate = oracle["analytical_certificate"]
-    assert oracle["status"] == "reproduced"
+    assert oracle["status"] == "analytically_derived"
     assert certificate["published_reproduction"] is False
     assert certificate["production_compiler_reused"] is False
     assert certificate["derivation_locator"] in oracle["locators"]
 
     claims = {claim["claim_id"]: claim for claim in certificate["claims"]}
     assert set(claims) == {
+        "network_sbm.fixed_link_base_exact_orientations",
         "network_sbm.eq26.accountable_input_exact_optimum",
         "network_sbm.eq27.accountable_output_exact_optimum",
     }
     expected_cases = {
+        "network_sbm.fixed_link_base_exact_orientations": [
+            {
+                "case_id": "fixed_link_input_a",
+                "orientation": "input",
+                "evaluated_dmu_id": "A",
+                "expected": {
+                    "system_efficiency": "1/2",
+                    "upstream_efficiency": "1/2",
+                    "downstream_efficiency": "1/2",
+                },
+            },
+            {
+                "case_id": "fixed_link_output_a",
+                "orientation": "output",
+                "evaluated_dmu_id": "A",
+                "expected": {
+                    "system_efficiency": "1/2",
+                    "upstream_efficiency": "1/2",
+                    "downstream_efficiency": "1/2",
+                },
+            },
+            {
+                "case_id": "fixed_link_nonoriented_a",
+                "orientation": "nonoriented",
+                "evaluated_dmu_id": "A",
+                "expected": {
+                    "system_efficiency": "1/4",
+                    "upstream_efficiency": "1/4",
+                    "downstream_efficiency": "1/4",
+                },
+            },
+        ],
         "network_sbm.eq26.accountable_input_exact_optimum": {
             "case_id": "equation_26_input_a",
             "orientation": "input",
@@ -2136,11 +2178,13 @@ def test_mixed_oracle_records_keep_analytical_certificates_claim_scoped() -> Non
     }
     for claim_id, claim in claims.items():
         assert claim["evidence_kind"] == "exact_primal_upper_bound"
+        cases = expected_cases[claim_id]
+        if isinstance(cases, dict):
+            cases = [cases]
         assert claim["evaluation_scope"] == {
             "kind": "named_cases",
-            "cases": [expected_cases[claim_id]],
+            "cases": cases,
         }
-        assert certificate["public_api_test_locator"] in claim["test_locators"]
         assert claim["reference_scope"] == {
             "requested_kind": "auto",
             "resolved_kind": "global",
@@ -2160,6 +2204,9 @@ def test_mixed_oracle_records_keep_analytical_certificates_claim_scoped() -> Non
         }
         for locator in claim["test_locators"]:
             _assert_pytest_node_exists(locator)
+    assert certificate["public_api_test_locator"] in {
+        locator for claim in claims.values() for locator in claim["test_locators"]
+    }
     _assert_pytest_nodes_are_collected(
         sorted(
             {locator for claim in claims.values() for locator in claim["test_locators"]}
@@ -2946,7 +2993,8 @@ def test_ray_directional_super_record_freezes_source_and_non_alias_boundary() ->
     )
 
     assert record["validation"]["evidence_status"] == "primary_checked"
-    assert record["validation"]["oracle"]["status"] == "reproduced"
+    assert record["validation"]["oracle"]["status"] == "analytically_derived"
+    assert "analytical_certificate" in record["validation"]["oracle"]
     source_ids = {source["id"] for source in record["validation"]["sources"]}
     assert "doi:10.1057/palgrave.jors.2602392" in source_ids
 
@@ -3503,7 +3551,7 @@ def test_by_production_ddf_is_locked_to_the_source_crs_fixed_direction() -> None
     record = methods["environmental.by_production.ddf"]
 
     assert record["validation"]["evidence_status"] == "primary_checked"
-    assert record["validation"]["oracle"]["status"] == "reproduced"
+    assert record["validation"]["oracle"]["status"] == "cross_implemented"
     assert record["composition"]["technology"]["defaults"] == {
         "intended_returns_to_scale": "crs",
         "residual_returns_to_scale": "crs",

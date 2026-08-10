@@ -81,23 +81,12 @@ verification, but they preserve different evidence claims: an analytically
 derived oracle needs an exact, independently compiled certificate and does not
 imply that a published dataset or result table has been reproduced.
 
-The **Book location** field is a publication decision, not a future-writing
-wish list. It must use exactly one of these three statuses:
-
-- **Active core placement** -- name an exact source path that currently appears
-  in [`book/index.md`](../../book/index.md). A source-specific card may point to
-  that path only when its reusable family idea is actually taught there.
-- **Documentation/source review only** -- retain the formulation, provenance,
-  and reproducibility record outside the handbook. Implementation does not
-  change this status automatically.
-- **Evidence-deferred candidate** -- reserve a potentially field-level family
-  whose admission gate is not yet closed. State the missing gate, but do not
-  reserve a chapter number or appendix.
-
-[`book/index.md`](../../book/index.md) is the sole authoritative handbook route.
-Review ledgers must not invent future chapter numbers, named appendices, or
-parallel routes. Handbook appendices pass the same admission gate as chapters;
-they are not an overflow destination for specialized methods.
+The legacy **Book location** field is retained only as compatibility metadata
+in historical review cards. It does not identify a live path or a public
+publication in this software repository. Current reader-facing placement is
+established only by an existing package Documentation path; private long-form
+publication planning cannot promote a method, reserve a chapter, or substitute
+for source and numerical evidence.
 
 ## Merge rule
 
@@ -124,10 +113,9 @@ The registry therefore distinguishes:
 4. Record compatibility, failure, numerical, and solver consequences.
 5. Add a hand-checkable example and a published or independent oracle before
    promoting public implementation.
-6. Update the complete package documentation with the code. Update the book
-   only if the handbook admission gate is independently passed and the exact
-   source path is added to `book/index.md`; otherwise record documentation-only
-   or evidence-deferred status here.
+6. Update the complete package Documentation with the code. Long-form
+   publication planning remains private and cannot substitute for the public
+   source, implementation, and numerical-evidence gates.
 
 This order is deliberate: a class name or solver formulation is never the
 first evidence that a model belongs in DEAPack.

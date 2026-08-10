@@ -19,8 +19,7 @@ productivity (TFP) account.
 This document reconciles the productivity corpus in
 [`LITERATURE_BASELINE.md`](../LITERATURE_BASELINE.md) with the scope in
 [`METHOD_UNIVERSE.md`](../METHOD_UNIVERSE.md), the canonical IDs in
-[`METHODS.md`](../METHODS.md), and the current publication policy in
-[`BOOK_ARCHITECTURE.md`](../BOOK_ARCHITECTURE.md). It does not invent
+[`METHODS.md`](../METHODS.md), and the current package publication policy. It does not invent
 numerical examples or treat a planned registry entry as implemented.
 
 ## Evidence protocol
@@ -44,7 +43,7 @@ Every evidence record contains the following fields.
 | **Evidence status** | `primary-checked`, `review-supported`, or `registry-provisional`. |
 | **Oracle** | Current DEAPack numerical-verification state using `not located`, `candidate`, `analytically derived`, `reproduced`, or `cross-implemented`. Repository property evidence is stated separately; analytical derivation does not claim a published-data reproduction, and no numerical oracle is inferred from a citation alone. |
 | **Package recipe** | Canonical operator, reference, measure, and decomposition IDs. |
-| **Book location** | One audited status: active core placement, documentation/source review only, or evidence-deferred candidate. Only an exact path in `book/index.md` establishes active placement. |
+| **Book location** | Legacy compatibility metadata only. It does not identify a live path or public long-form publication in this software repository. |
 
 `primary-checked` confirms the defining identity and principal assumptions,
 not reproduction of an empirical table. `review-supported` identifies a

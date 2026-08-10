@@ -43,7 +43,7 @@ validated registry without rewriting its substance.
 | **Evidence status** | `primary-checked`, `review-supported`, or `registry-provisional`. |
 | **Oracle** | Current numerical-verification state using the review-programme vocabulary: `not located`, `candidate`, `analytically derived`, `reproduced`, or `cross-implemented`. Repository property evidence is stated separately, and analytical derivation does not claim a published-data reproduction. |
 | **Package recipe** | Canonical components or method ID expected in DEAPack. |
-| **Book location** | One audited status: active core placement, documentation/source review only, or evidence-deferred candidate. Only an exact path in `book/index.md` establishes active placement. |
+| **Book location** | Legacy compatibility metadata only. It does not identify a live path or public long-form publication in this software repository. |
 
 `primary-checked` means that the defining source has been checked far enough
 to identify the production account, measure, native result, and major domain
@@ -155,7 +155,7 @@ intersection of plans admitted by both accounts.
 | **Solver form** | Sparse block LP for directional forms; multiple LPs or source-specific non-radial programmes for component analysis. The compiler may share matrix blocks but must retain both intensity systems and any coupling constraints. |
 | **Defining source** | [Murty, Russell, and Levkoff (2012)](https://doi.org/10.1016/j.jeem.2012.02.005); review and computational context in [Dakpo, Jeanneaux, and Latruffe (2016)](https://doi.org/10.1016/j.ejor.2015.07.024). |
 | **Evidence status** | `primary-checked` for the classical production account; later coupled variants remain source-qualified leaves. |
-| **Oracle** | `by_production_component_bottleneck` is a neutral project case. BP-DDF is checked against an independently compiled CRS programme, while two separately compiled scalar CRS programmes verify the FGL component accounts, targets, and peer semantics. The defining equations and paper citation remain; its numerical example is not redistributed. |
+| **Oracle** | Cross-implemented — `by_production_component_bottleneck` is a neutral project case. BP-DDF is checked against an independently compiled CRS programme, while two separately compiled scalar CRS programmes verify the FGL component accounts, targets, and peer semantics. The defining equations and paper citation remain; its numerical example is not redistributed. |
 | **Package recipe** | `environmental.by_production` + (`environmental.by_production.ddf` or `environmental.by_production.fgl`) + explicit `coupling_policy`. |
 | **Book location** | **Active core placement:** the transferable by-production account is consolidated in `book/chapters/03-environmental/06-undesirable-outputs-ddf.md`; FGL and coupling variants remain in package documentation. |
 
@@ -257,7 +257,7 @@ identities still require the environmental components below.
 | **Solver form** | Sparse LP after the source activity-specific linearization; process blocks and graph incidence are reusable, but a conventional network-SBM compiler is not the model. |
 | **Defining source** | [Kalhor and Kazemi Matin (2018), “Performance evaluation of general network production processes with undesirable outputs: A DEA approach”](https://doi.org/10.1051/ro/2017022). |
 | **Evidence status** | `primary-checked` for the corrected technology, input-radial VRS programme, source-described process-level CRS/NIRS/NDRS restrictions, and common-factor boundary. The DDF leaf and Spanish-airport data/result closure are `deferred_to_next_version`. |
-| **Oracle** | An independent dense compiler for equations (3.2)--(3.4) checks `environmental_recovery_chain` and `environmental_circular_chain`, including VRS/CRS scores, process accounts, and target reconstruction. NIRS/NDRS parity is package verification; no source numerical table is redistributed. |
+| **Oracle** | Cross-implemented — an independent dense compiler for equations (3.2)--(3.4) checks `environmental_recovery_chain` and `environmental_circular_chain`, including VRS/CRS scores, process accounts, and target reconstruction. NIRS/NDRS parity is package verification; no source numerical table is redistributed. |
 | **Package recipe** | Implemented/public as `network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018`, with explicit environmental product accounts and a source-specific sparse compiler over the general process graph. |
 | **Book location** | **Documentation/source review only.** This environmental-network composition has no independent placement in the current handbook. |
 
@@ -529,7 +529,7 @@ name of one constraint.
 | **Solver form** | Charnes--Cooper transformed sparse LP for the canonical fractional formulation; alternate variants retain their source-specific transformations. |
 | **Defining source** | Base SBM in [Tone (2001)](https://doi.org/10.1016/S0377-2217(99)00407-5); open undesirable-output report in [Tone (2003)](https://doi.org/10.24545/00000955); non-radial equivalence cautions in [Färe and Grosskopf (2009)](https://doi.org/10.1016/j.ejor.2009.01.031) and their [clarification](https://doi.org/10.1016/j.ejor.2010.02.033). |
 | **Evidence status** | `primary-checked` and implemented/public for the separable preset. Non-separability and weak-disposal compositions remain distinct method identities rather than switches on this leaf. |
-| **Oracle** | An analytical project fixture checks the equal-dimension fractional score, component accounts, targets, peers, unit invariance, and failure closure. The defining equation is retained, but no source numerical table or alternate source-weight column is redistributed. |
+| **Oracle** | Analytically derived — a project fixture checks the equal-dimension fractional score, component accounts, targets, peers, unit invariance, and failure closure. The defining equation is retained, but no source numerical table or alternate source-weight column is redistributed. |
 | **Package recipe** | `environmental.sbm.separable_strong`; the separate Tone hybrid belongs to `environmental.sbm.nonseparable_hybrid.tone_2003`, while composing an SBM measure with a named `environmental.weak_disposal.*` technology requires its own source-qualified leaf. `environmental.directional_nonradial` remains another distinct measure family. |
 | **Book location** | **Active core placement:** `book/chapters/03-environmental/07-undesirable-output-sbm.md`; technology-sensitive variants remain in package documentation. |
 

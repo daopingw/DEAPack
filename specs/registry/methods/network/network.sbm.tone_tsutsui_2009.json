@@ -336,24 +336,114 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
         "specs/oracles/tone_tsutsui_2009_accountable_links.md",
         "tests/test_three_process_service_chain_sbm.py::test_project_service_chain_vrs_input_scores_are_certified",
         "tests/test_three_process_service_chain_sbm.py::test_input_process_accounts_reconstruct_project_system_score",
         "tests/test_three_process_service_chain_sbm.py::test_crs_project_service_chain_scores_are_certified",
         "tests/test_three_process_service_chain_sbm.py::test_crs_process_accounts_reconstruct_without_peer_basis_claim",
-        "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+        "tests/test_three_process_service_chain_sbm.py::test_two_stage_exact_hand_oracle_for_all_source_orientations",
+        "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles",
+        "tests/test_network_sbm_accountable_links_project_case.py::test_equation_26_accountable_input_exact_hand_oracle",
+        "tests/test_network_sbm_accountable_links_project_case.py::test_equation_27_accountable_output_exact_hand_oracle"
       ],
       "analytical_certificate": {
         "derivation_locator": "specs/oracles/tone_tsutsui_2009_accountable_links.md",
-        "public_api_test_locator": "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles",
+        "public_api_test_locator": "tests/test_network_sbm_accountable_links_project_case.py::test_equation_26_accountable_input_exact_hand_oracle",
         "claims": [
+          {
+            "claim_id": "network_sbm.fixed_link_base_exact_orientations",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_three_process_service_chain_sbm.py::test_two_stage_exact_hand_oracle_for_all_source_orientations"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input",
+                "output",
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "fixed_link_base_score"
+              ],
+              "network_structure": [
+                "two_process_one_link"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "fixed_link_input_a",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "system_efficiency": "1/2",
+                    "upstream_efficiency": "1/2",
+                    "downstream_efficiency": "1/2"
+                  }
+                },
+                {
+                  "case_id": "fixed_link_output_a",
+                  "orientation": "output",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "system_efficiency": "1/2",
+                    "upstream_efficiency": "1/2",
+                    "downstream_efficiency": "1/2"
+                  }
+                },
+                {
+                  "case_id": "fixed_link_nonoriented_a",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "system_efficiency": "1/4",
+                    "upstream_efficiency": "1/4",
+                    "downstream_efficiency": "1/4"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "system_efficiency",
+              "process_efficiency",
+              "input_account",
+              "output_expansion_account",
+              "transform_scale",
+              "reconstruction_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "intermediate"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
           {
             "claim_id": "network_sbm.eq26.accountable_input_exact_optimum",
             "evidence_kind": "exact_primal_upper_bound",
             "test_locators": [
-              "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+              "tests/test_network_sbm_accountable_links_project_case.py::test_equation_26_accountable_input_exact_hand_oracle"
             ],
             "parameter_scope": {
               "orientation": [
@@ -421,7 +511,7 @@
             "claim_id": "network_sbm.eq27.accountable_output_exact_optimum",
             "evidence_kind": "exact_primal_upper_bound",
             "test_locators": [
-              "tests/test_network_sbm_accountable_links_project_case.py::test_equations_26_and_27_exact_hand_oracles"
+              "tests/test_network_sbm_accountable_links_project_case.py::test_equation_27_accountable_output_exact_hand_oracle"
             ],
             "parameter_scope": {
               "orientation": [
@@ -493,9 +583,9 @@
     "tests": {
       "status": "present",
       "coverage": [
-        "published_vrs_fixed_and_free_input_oracles",
-        "published_crs_free_input_oracle",
-        "published_process_score_oracles",
+        "project_vrs_fixed_and_free_input_regressions",
+        "project_crs_free_input_regression",
+        "project_process_score_regressions",
         "all_three_source_orientations_exact_hand_oracles",
         "source_equation_26_recipient_accountable_input_link_oracle",
         "source_equation_27_supplier_accountable_output_link_oracle",
@@ -505,7 +595,7 @@
         "accountable_link_unit_invariance",
         "orientation_and_link_kind_failure_matrix",
         "orientation_specific_system_process_reconstruction",
-        "source_table_7_joint_target_feasibility_without_basis_lock",
+        "joint_target_feasibility_without_basis_lock",
         "fixed_link_observed_balance",
         "free_link_shared_target_balance",
         "fixed_score_not_below_free_score",

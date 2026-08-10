@@ -100,35 +100,27 @@ def _fit(
     ).fit(_data(frame))
 
 
-@pytest.mark.parametrize(
+_EXACT_HAND_CASES = [
     (
-        "orientation",
-        "link_kind",
-        "frame_factory",
-        "expected_system",
-        "expected_process",
-        "expected_target",
+        "input",
+        "as_input",
+        _input_oracle_frame,
+        Fraction(5, 8),
+        {"supplier": Fraction(1, 2), "recipient": Fraction(3, 4)},
+        Fraction(1, 1),
     ),
-    [
-        (
-            "input",
-            "as_input",
-            _input_oracle_frame,
-            Fraction(5, 8),
-            {"supplier": Fraction(1, 2), "recipient": Fraction(3, 4)},
-            Fraction(1, 1),
-        ),
-        (
-            "output",
-            "as_output",
-            _output_oracle_frame,
-            Fraction(4, 7),
-            {"supplier": Fraction(2, 3), "recipient": Fraction(1, 2)},
-            Fraction(2, 1),
-        ),
-    ],
-)
-def test_equations_26_and_27_exact_hand_oracles(
+    (
+        "output",
+        "as_output",
+        _output_oracle_frame,
+        Fraction(4, 7),
+        {"supplier": Fraction(2, 3), "recipient": Fraction(1, 2)},
+        Fraction(2, 1),
+    ),
+]
+
+
+def _assert_exact_hand_oracle(
     orientation: str,
     link_kind: str,
     frame_factory,
@@ -192,6 +184,57 @@ def test_equations_26_and_27_exact_hand_oracles(
         "network.sbm.tone_tsutsui_2009.accountable_input_link"
         if link_kind == "as_input"
         else "network.sbm.tone_tsutsui_2009.accountable_output_link"
+    )
+
+
+@pytest.mark.parametrize(
+    (
+        "orientation",
+        "link_kind",
+        "frame_factory",
+        "expected_system",
+        "expected_process",
+        "expected_target",
+    ),
+    _EXACT_HAND_CASES,
+)
+def test_equations_26_and_27_exact_hand_oracles(
+    orientation: str,
+    link_kind: str,
+    frame_factory,
+    expected_system: Fraction,
+    expected_process: dict[str, Fraction],
+    expected_target: Fraction,
+) -> None:
+    _assert_exact_hand_oracle(
+        orientation,
+        link_kind,
+        frame_factory,
+        expected_system,
+        expected_process,
+        expected_target,
+    )
+
+
+def test_equation_26_accountable_input_exact_hand_oracle() -> None:
+    _assert_exact_hand_oracle(
+        "input",
+        "as_input",
+        _input_oracle_frame,
+        Fraction(5, 8),
+        {"supplier": Fraction(1, 2), "recipient": Fraction(3, 4)},
+        Fraction(1, 1),
+    )
+
+
+def test_equation_27_accountable_output_exact_hand_oracle() -> None:
+    _assert_exact_hand_oracle(
+        "output",
+        "as_output",
+        _output_oracle_frame,
+        Fraction(4, 7),
+        {"supplier": Fraction(2, 3), "recipient": Fraction(1, 2)},
+        Fraction(2, 1),
     )
 
 

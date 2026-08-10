@@ -9,7 +9,7 @@ import zipfile
 from pathlib import Path
 
 import deapack
-from deapack import BCC, DEAData, dataset_info, load_dataset
+from deapack import BCCInput, DEAData, dataset_info, load_dataset
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
         inputs=roles["inputs"],
         outputs=roles["outputs"],
     )
-    result = BCC(compute_slacks=False).fit(data)
+    result = BCCInput().fit(data)
     if result.metadata["method_id"] != "static.radial":
         raise RuntimeError("installed radial fit lost its canonical method identity")
     frequency = result.reference_frequency()

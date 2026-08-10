@@ -1,7 +1,8 @@
 # Shared specifications
 
-Files in this directory are normative for DEAPack 2.0. Package code, the book,
-and package documentation must use the same terms and conventions.
+Files in this directory are normative for DEAPack 2.x package code and package
+Documentation. They record the mathematical, numerical, and evidence
+contracts behind the public implementation.
 
 - [`CONVENTIONS.md`](CONVENTIONS.md): notation, signs, score direction, and
   names used in public results.
@@ -14,7 +15,7 @@ and package documentation must use the same terms and conventions.
   thematic review programme, and editorial evidence requirements.
 - [`reviews/`](reviews/): nine maintainable, field-level literature reviews
   using one evidence schema and mapping methods to canonical recipes, tests,
-  book chapters, and documentation.
+  and technical Documentation.
 - [`LEGACY_AUDIT.md`](LEGACY_AUDIT.md): migration map for the historical
   DEAPack and ProdPack ideas, data, and behaviors.
 - [`UNIFIED_FRAMEWORK.md`](UNIFIED_FRAMEWORK.md): the compositional model
@@ -34,12 +35,6 @@ and package documentation must use the same terms and conventions.
 - [`PATH_MODEL_DESIGN.md`](PATH_MODEL_DESIGN.md): canonical and numerical
   boundaries for hyperbolic, generalized-path, Chavas--Cox, and
   multiplicative DEA.
-- [`BOOK_ARCHITECTURE.md`](BOOK_ARCHITECTURE.md): the reader-oriented English
-  book plan, handbook admission gate, and migration of existing chapters.
-- [`CORE_FAMILY_DELIVERY_MATRIX.md`](CORE_FAMILY_DELIVERY_MATRIX.md): inverse
-  audit of the frozen 18-chapter route against public implementations,
-  independent evidence, technical Documentation, and teaching cases; it is
-  the authoritative core-gap queue and does not authorize chapter expansion.
 - [`ARCHITECTURE.md`](ARCHITECTURE.md): software layers, solver policy, result
   contract, compatibility, and package layout.
 - [`PERFORMANCE.md`](PERFORMANCE.md): large-sample design and benchmark gates.
@@ -49,5 +44,5 @@ pull request:
 
 1. an explanation of the theoretical reason;
 2. package tests for the changed behavior;
-3. corresponding book and documentation updates;
+3. corresponding package Documentation updates;
 4. a migration note if public output or API semantics change.

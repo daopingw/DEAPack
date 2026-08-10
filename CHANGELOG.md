@@ -1,8 +1,18 @@
 # Changelog
 
 All notable changes to released versions of DEAPack will be recorded here.
-The project follows Semantic Versioning for the software package; companion
-book editions have a separate publication history.
+The software package follows Semantic Versioning.
+
+## 2.0.1 — 2026-08-10
+
+DEAPack 2.0.1 is a compatibility and release-safety patch for the first stable
+2.x line. It restores package imports on Python 3.11 and benchmark tooling on
+Python 3.10, makes audit CSV quoting portable across supported Python versions,
+and validates the exact release wheel on CPython 3.10--3.13 before PyPI
+publication. It also corrects public method-verification metadata and removes
+a spurious warning from the supported default environmental DDF configuration.
+Public estimator and result APIs are unchanged. See
+[`RELEASE_NOTES_2.0.1.md`](RELEASE_NOTES_2.0.1.md).
 
 ## 2.0.0 — 2026-08-10
 
@@ -13,27 +23,21 @@ item-level licensed teaching datasets. The release includes the common model,
 result, reporting, visualization, registry, and audit architecture described
 in [`RELEASE_NOTES_2.0.0.md`](RELEASE_NOTES_2.0.0.md).
 
-The package Documentation and bilingual Handbook remain separately licensed
-publication components. The Handbook retains its independent Preview 1
-edition identity; the software version does not convert it into a final book
-edition.
-
 ## 2.0.0rc1 — 2026-08-10
 
 DEAPack 2.0 is a greenfield redesign of the historical 0.1.x package. It is
 the first public release candidate of the redesigned 2.x line. The candidate
 was published before the stable promotion so users could test the exact
 versioned package. Its frozen capability surface, explicit deferrals, and
-verification boundaries are recorded in
-[`RELEASE_NOTES_2.0.0rc1.md`](RELEASE_NOTES_2.0.0rc1.md), while the complete
-development evidence remains in [`ROADMAP.md`](ROADMAP.md).
+verification boundaries are retained in the immutable
+[`v2.0.0rc1` tag](https://github.com/daopingw/DEAPack/tree/v2.0.0rc1).
 
 ### Added
 
 - M14-A first-public-candidate release boundary. The software metadata is
   synchronized to the PEP 440 candidate `2.0.0rc1`, the supported interpreter
   interval is CPython 3.10--3.13, and the M13 scientific surface is frozen.
-  Candidate scope, release notes, bilingual maintainer review packets, scoped
+  Candidate scope, release notes, English/Chinese maintainer review packets, scoped
   archive rules, fail-closed dataset-rights auditing, and separated
   TestPyPI/PyPI trusted-publishing workflows are prepared locally. No commit,
   tag, upload, hosted project, DOI, or release is claimed.
@@ -46,14 +50,13 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
   credit without treating every contribution as automatic software or book
   authorship.
 
-- M14-C bilingual Handbook production. The English manuscript remains the
-  canonical source, while Sphinx/gettext now builds a reader-edited Chinese
-  edition governed by an 85-term DEA terminology table and a Chinese editorial
+- M14-C parallel English and Chinese book production. Sphinx/gettext builds the
+  Chinese publication using a reviewed 85-term DEA terminology table and editorial
   guide. All 2,731 messages across 28 reader catalogs and one UI catalog are
   translated; formula, code, citation, link, and identifier invariants pass;
-  and all 52 Handbook figures have deterministic, fail-closed Chinese SVG
+  and all 52 book figures have deterministic, fail-closed Chinese SVG
   counterparts. Strict English and Chinese HTML and LaTeX-source routes pass.
-  Final bilingual PDFs remain a clean Linux-CI and visual-review gate.
+  Final English and Chinese PDFs remain a clean Linux-CI and visual-review gate.
 
 - M14-D final local engineering preflight. The synchronized dirty worktree
   passed 3,239 of 3,240 collected tests with one expected dependency-branch
@@ -120,7 +123,7 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
   and 877 blocked matches, while release mode cannot substitute an empty or
   minimized catalog. A separate candidate gate validates 156 current
   review-surface single-page PDFs and all 156 pages through Poppler text
-  extraction and bounded one-page rendering. Final bilingual PDFs and human
+  extraction and bounded one-page rendering. Final English and Chinese PDFs and human
   page review are post-tag evidence: an external claim must bind the immutable
   tag, live toolchain and PDF inventory, distinct English/Chinese page
   ledgers, full payload/numeric reports, artifact digest, protected gate-code
@@ -144,7 +147,7 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
   the HMAC secret nor OIDC. The protected job creates an owner-only external
   key file and machine-verifies the HMAC, peeled tag OID, tag-pinned key
   fingerprint, sign-off, candidate manifest, protected code, workflow,
-  bilingual evidence, bundle digest, and cumulative action ledger before OIDC.
+  two-book evidence, bundle digest, and cumulative action ledger before OIDC.
   GitHub must already be approve/executed and PyPI approve/pending or executed;
   a normal Release or environment approval is insufficient. The exact wheel
   and sdist from that authenticated bundle are compared with the prepared
@@ -170,7 +173,7 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
   signed machine-readable pre-tag clearances, action-specific tagged workflow
   path/hash/run/head/success bindings, sign-off/protected-code hashes (including
   the dynamically imported dataset-release gate), fixed bundle membership and
-  bilingual PDF cross-hashes, bilingual page evidence,
+  English/Chinese PDF cross-hashes, separate page evidence,
   and both release data gates remain mandatory; TestPyPI remains independent
   staging. Claims now carry a monotonic sequence, the full preceding
   HMAC-authenticated claim, and its canonical digest; recursive verification
@@ -181,7 +184,7 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
 - M14-K reachable GitHub-first prerelease state machine. A single manual,
   exact-tag `publish-github-release.yml` now supports two separately approved
   runs. `prepare` runs the signed pre-tag, dataset, propagation, strict
-  Documentation/Handbook, bilingual PDF, reviewed-example, test, release-
+  Documentation and book, two-PDF, reviewed-example, test, release-
   benchmark, distribution, and installed-wheel gates before creating or
   safely reusing only a private draft prerelease. It uploads a deterministic
   four-member bundle plus its four readable members, rejects unknown,
@@ -226,8 +229,8 @@ development evidence remains in [`ROADMAP.md`](ROADMAP.md).
   source-checked but independent-oracle-unresolved public methods are frozen
   by an exact rc1 allowlist: no fourth exception may enter, and all three must
   gain independent validation or leave the public surface before stable 2.0.
-  The root contribution guide now routes bilingual changes through the full
-  Handbook translation and figure gates. Final component licenses, inbound
+  The root contribution guide now routes shared technical changes through the full
+  English/Chinese book and figure gates. Final component licenses, inbound
   contribution terms, dataset clearance, and any Git or external publication
   action remain pending maintainer decisions.
 

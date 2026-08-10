@@ -73,6 +73,32 @@ output/
 /tests/test_handbook_translations.py
 /tests/test_pdf_release_quality.py
 
+# Historical 2.0 release-candidate review machinery is retained locally for
+# audit provenance.  The stable software repository exposes only the active
+# package release path and must not accidentally republish these private
+# approval packets, candidate payloads, or superseded workflows.
+/.github/workflows/publish-github-release.yml
+/.github/workflows/publish-testpypi.yml
+/RELEASE_REVIEW_2.0.0rc1.md
+/RELEASE_REVIEW_2.0.0rc1.zh-CN.md
+/scripts/release_candidates/
+/specs/PUBLIC_SOURCE_AND_CI_ARTIFACT_BOUNDARY_RC1.md
+/RELEASE_NOTES_2.0.0rc1.md
+/ROADMAP.md
+/specs/CORE_FAMILY_DELIVERY_MATRIX.md
+/specs/RELEASE_*_2_0_RC1*.md
+/specs/SOFTWARE_PROVENANCE_AND_DEPENDENCY_AUDIT_2_0_RC1.md
+/specs/dataset_candidates/
+/specs/dataset_promotions/
+/tests/release_candidates/
+/tests/test_build_automation.py
+/tests/test_release_dataset_audit.py
+/tests/test_release_signoff_record.py
+
+# The JOSS manuscript is a separate scholarly work in local development, not
+# part of a DEAPack wheel/source release or the current public software tree.
+/paper/
+
 # RC1 public-source boundary: historical and generated localization material
 # is retained locally but is not part of the GitHub publication surface.
 book/_archive/

@@ -328,8 +328,8 @@ def test_renderer_separates_self_and_other_and_states_claim_boundaries(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setenv("MPL_IGNORE_SYSTEM_FONTS", "1")
-    import matplotlib
-    import matplotlib.pyplot as pyplot
+    matplotlib = pytest.importorskip("matplotlib")
+    pyplot = pytest.importorskip("matplotlib.pyplot")
 
     result = _large_certified_result(MAX_REFERENCE_BARS + 2)
     before = {

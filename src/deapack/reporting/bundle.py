@@ -356,7 +356,7 @@ def _stream_csv_entry(
                 lineterminator="\n",
                 na_rep="",
                 float_format="%.17g",
-                quoting=csv.QUOTE_MINIMAL,
+                quoting=csv.QUOTE_ALL,
             )
         else:
             for start in range(0, len(frame), _CSV_CHUNK_ROWS):
@@ -372,7 +372,7 @@ def _stream_csv_entry(
                     lineterminator="\n",
                     na_rep="",
                     float_format="%.17g",
-                    quoting=csv.QUOTE_MINIMAL,
+                    quoting=csv.QUOTE_ALL,
                 )
     return sink.record(), safe_columns
 
@@ -627,6 +627,7 @@ def export_result_bundle(
                                 "spreadsheet_formula_escape": (
                                     "apostrophe_prefix_cells_and_headers"
                                 ),
+                                "quoting": "all_fields",
                                 "structured_value": "canonical_json_text",
                             },
                             "jsonl": {

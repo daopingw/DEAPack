@@ -268,16 +268,144 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
-        "https://www.owlnet.rice.edu/~econ380/DEAP.PDF",
-        "tests/test_cost.py::test_cost_efficiency_reproduces_coelli_deap_21_example_3"
-      ]
+        "specs/oracles/cost-allocative-analytical.md",
+        "tests/test_cost_allocative_independent_oracle.py::test_exact_cost_and_allocative_four_plan_account",
+        "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/cost-allocative-analytical.md",
+        "public_api_test_locator": "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers",
+        "claims": [
+          {
+            "claim_id": "cost.exact_four_plan_minimum",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_cost_allocative_independent_oracle.py::test_exact_cost_and_allocative_four_plan_account"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "minimum_cost_envelopment"
+              ],
+              "valuation_policy": [
+                "common_strictly_positive_input_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "cost.four_plan_o",
+                  "orientation": "input",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "observed_cost": 16,
+                    "minimum_cost": 7,
+                    "cost_efficiency": "7/16"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "observed_cost",
+              "minimum_cost",
+              "cost_efficiency",
+              "score_valid",
+              "score_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "price"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 2,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "cost.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_cost_allocative_independent_oracle.py::test_cost_and_allocative_match_independent_dense_compilers"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "input"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "minimum_cost_envelopment"
+              ],
+              "valuation_policy": [
+                "common_strictly_positive_input_prices"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "minimum_cost",
+              "cost_efficiency",
+              "cost_minimizing_target",
+              "score_valid",
+              "score_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "price"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "published_numerical_oracle",
+        "exact_analytical_minimum_cost_account",
+        "independent_dense_crs_vrs_cost_compilation",
         "cost_identity",
         "crs_and_vrs",
         "price_and_quantity_unit_invariance",
@@ -292,6 +420,7 @@
         "metadata_contract"
       ],
       "locators": [
+        "tests/test_cost_allocative_independent_oracle.py",
         "tests/test_cost.py",
         "tests/test_cost_postsolve_certification.py"
       ]

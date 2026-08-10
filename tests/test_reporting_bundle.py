@@ -245,6 +245,8 @@ def test_bundle_csv_neutralizes_formulas_while_jsonl_preserves_exact_strings(
     for source, row in zip(formula_values, diagnostic_csv[1:], strict=True):
         expected = "'" + source if source != "ordinary" else source
         assert row == [expected, expected, expected]
+    assert b'"\'\r=RETURN"' in payloads["tables/diagnostics.csv"]
+    assert b'"\'\n=NEWLINE"' in payloads["tables/diagnostics.csv"]
     assert diagnostic_jsonl[0]["=UNTRUSTED_HEADER"] == "=CATEGORY"
     assert diagnostic_jsonl[6]["=UNTRUSTED_HEADER"] == "\n=NEWLINE"
     diagnostic_manifest = next(
@@ -252,6 +254,7 @@ def test_bundle_csv_neutralizes_formulas_while_jsonl_preserves_exact_strings(
     )
     assert diagnostic_manifest["columns"][0] == "=UNTRUSTED_HEADER"
     assert diagnostic_manifest["csv"]["columns"][0] == "'=UNTRUSTED_HEADER"
+    assert diagnostic_manifest["csv"]["quoting"] == "all_fields"
 
 
 def test_bundle_encodes_missing_and_nonfinite_values_without_invalid_json(

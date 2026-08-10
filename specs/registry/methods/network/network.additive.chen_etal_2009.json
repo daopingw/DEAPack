@@ -295,16 +295,17 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
-        "tests/test_chen_additive_network.py::test_lim_zhu_24_insurer_score_oracles_and_additive_identity",
-        "tests/test_chen_additive_network.py::test_lim_zhu_split_link_projection_oracles"
+        "specs/oracles/network-project-cross-implementation.md",
+        "tests/test_network_panel_project_independent_oracles.py::test_chen_score_and_projection_match_independent_dense_compilers"
       ]
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "crs_and_vrs_oracles",
+        "project_crs_independent_dense_multiplier_and_projection_compilers",
+        "project_vrs_regression_contract",
         "weighted_additive_identity",
         "stage_priority",
         "split_link_projection",
@@ -323,6 +324,7 @@
             ],
             "locators": [
                 "tests/test_chen_additive_network.py",
+                "tests/test_network_panel_project_independent_oracles.py",
                 "tests/test_network_additive_postsolve_certification.py",
                 "tests/test_benchmark_network_additive.py"
             ]

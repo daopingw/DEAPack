@@ -18,10 +18,10 @@ the supported range for a release.
 
 ## Stable 2.0 installation
 
-Install the stable `2.0.0` release from PyPI:
+Install the stable `2.0.1` release from PyPI:
 
 ```bash
-python -m pip install "DEAPack==2.0.0"
+python -m pip install "DEAPack==2.0.1"
 ```
 
 DEAPack 2.x is not a drop-in replacement for DEAPack 0.1.x. To work from the
@@ -64,7 +64,7 @@ python -c "import deapack; print(deapack.__version__); print(deapack.__file__)"
 For a reproducible stable installation, pin the exact release:
 
 ```bash
-python -m pip install "DEAPack==2.0.0"
+python -m pip install "DEAPack==2.0.1"
 ```
 
 For contribution work, prefer an editable checkout. For research, record the

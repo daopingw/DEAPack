@@ -340,10 +340,15 @@ class EnvironmentalDirectionalDistanceDEA:
         self.input_direction = input_direction
         self.output_direction = output_direction
         self.bad_output_direction = bad_output_direction
+        legacy_weak_spelling = (
+            isinstance(disposability, str)
+            and not isinstance(disposability, BadOutputDisposability)
+            and disposability.strip().lower() == BadOutputDisposability.WEAK.value
+        )
         self.disposability = parse_enum(
             disposability, BadOutputDisposability, "bad-output disposability"
         )
-        if self.disposability is BadOutputDisposability.WEAK and self._warn_legacy_weak:
+        if legacy_weak_spelling and self._warn_legacy_weak:
             warnings.warn(
                 "disposability='weak' is a deprecated compatibility spelling "
                 "for the bad-output directional equality only; it does not "

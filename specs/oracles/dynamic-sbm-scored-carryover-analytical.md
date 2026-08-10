@@ -5,6 +5,8 @@
 **Validation kind:** `analytically_derived`  
 **Published reproduction:** no
 
+**Production compiler reused:** no
+
 This certificate validates the good- and bad-carry-over accounts of the
 existing Tone--Tsutsui dynamic SBM implementation. The four observations are
 theory-led synthetic values chosen for hand reconstruction; they are not

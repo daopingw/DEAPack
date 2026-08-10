@@ -24,6 +24,10 @@ FORBIDDEN_PARTS = {
     ".ruff_cache",
 }
 FORBIDDEN_SUFFIXES = {".mo", ".pyc", ".pyo"}
+FORBIDDEN_ROOT_FILES = {
+    PurePosixPath("RELEASE_NOTES_2.0.0rc1.md"),
+    PurePosixPath("ROADMAP.md"),
+}
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_LICENSE_EXPRESSION = "GPL-3.0-only AND CC-BY-4.0 AND MIT"
 EXPECTED_LICENSE_FILES = frozenset(
@@ -143,7 +147,7 @@ def _validate_sdist(path: Path) -> None:
             PurePosixPath("CITATION.cff"),
             PurePosixPath("CHANGELOG.md"),
             PurePosixPath("CITATION.md"),
-            PurePosixPath("RELEASE_NOTES_2.0.0.md"),
+            PurePosixPath("RELEASE_NOTES_2.0.1.md"),
             PurePosixPath("src/deapack/__init__.py"),
             PurePosixPath("src/deapack/_registry.py"),
             PurePosixPath("src/deapack/datasets/__init__.py"),
@@ -151,6 +155,14 @@ def _validate_sdist(path: Path) -> None:
         missing = sorted(str(member) for member in required.difference(relative))
         if missing:
             raise RuntimeError(f"sdist {root!r} is missing: {', '.join(missing)}")
+        leaked_root_files = sorted(
+            str(member) for member in FORBIDDEN_ROOT_FILES.intersection(relative)
+        )
+        if leaked_root_files:
+            raise RuntimeError(
+                "private or historical root file leaked into sdist: "
+                + ", ".join(leaked_root_files)
+            )
 
         by_path = {member: info for info, member in relative_pairs if info.isfile()}
         metadata_stream = archive.extractfile(by_path[PurePosixPath("PKG-INFO")])

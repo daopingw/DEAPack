@@ -9,7 +9,7 @@ The machine-readable software metadata are in
 [`CITATION.cff`](CITATION.cff). GitHub can render those metadata as BibTeX and
 APA text through its **Cite this repository** control.
 
-Version `2.0.0` is the first stable 2.x software release. It does not yet have
+Version `2.0.1` is the current stable 2.x software release. It does not yet have
 a DOI, so identify the exact version and commit used and include the repository
 URL. Do not cite a future placeholder DOI.
 

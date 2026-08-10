@@ -278,11 +278,133 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
-        "src/deapack/datasets/__init__.py::_sbm_slack_contrast",
-        "tests/test_sbm.py::test_tone_table_2_non_oriented_crs_oracle"
-      ]
+        "specs/oracles/tone-2001-nonoriented-sbm-analytical.md",
+        "tests/test_nonoriented_sbm_independent_oracle.py::test_exact_vrs_nonoriented_sbm_fractional_account",
+        "tests/test_nonoriented_sbm_independent_oracle.py::test_nonoriented_sbm_matches_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/tone-2001-nonoriented-sbm-analytical.md",
+        "public_api_test_locator": "tests/test_nonoriented_sbm_independent_oracle.py::test_nonoriented_sbm_matches_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "sbm.nonoriented.exact_vrs_fractional_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_nonoriented_sbm_independent_oracle.py::test_exact_vrs_nonoriented_sbm_fractional_account"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "charnes_cooper_transformed_primary_lp"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "sbm.nonoriented.vrs_o",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "O",
+                  "expected": {
+                    "native_score": "1/2",
+                    "input_inefficiency": "1/4",
+                    "output_inefficiency": "1/2",
+                    "transform_scale": "2/3"
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "native_score",
+              "input_inefficiency",
+              "output_inefficiency",
+              "transform_scale",
+              "score_valid",
+              "score_status",
+              "strong_efficiency_status"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "sbm.nonoriented.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_nonoriented_sbm_independent_oracle.py::test_nonoriented_sbm_matches_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "crs",
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "charnes_cooper_transformed_primary_lp"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "native_score",
+              "harmonized_efficiency",
+              "distance",
+              "score_valid",
+              "score_status",
+              "execution_accounting"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 6,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
@@ -290,7 +412,8 @@
         "alias_identity",
         "domain",
         "failure",
-        "published_score_and_slack_oracle",
+        "exact_analytical_vrs_fractional_account",
+        "independent_dense_crs_vrs_compilation",
         "score",
         "target",
         "unit_invariance",
@@ -307,6 +430,7 @@
       ],
       "locators": [
         "tests/test_catalog.py::test_erg_is_a_discoverability_alias_not_a_second_method",
+        "tests/test_nonoriented_sbm_independent_oracle.py",
         "tests/test_sbm.py",
         "tests/test_sbm_postsolve_certification.py",
         "tests/test_sbm_postsolve_certification.py::test_uncertified_optimal_solution_withholds_every_semantic_table",

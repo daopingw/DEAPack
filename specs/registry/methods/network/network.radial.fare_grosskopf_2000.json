@@ -346,7 +346,8 @@
     "oracle": {
       "status": "cross_implemented",
       "locators": [
-        "tests/test_fare_grosskopf_network_radial.py::test_crs_system_scores_equal_kao_hwang_primary_on_published_data",
+        "specs/oracles/fare-grosskopf-network-output.md",
+        "tests/test_fare_grosskopf_network_radial.py::test_crs_system_scores_equal_kao_hwang_primary_on_project_data",
         "tests/test_fare_grosskopf_network_radial.py::test_output_matches_independent_dense_source_equation_compiler",
         "tests/test_fare_grosskopf_network_radial.py::test_output_vrs_hand_oracle_is_not_the_reciprocal_input_programme"
       ]

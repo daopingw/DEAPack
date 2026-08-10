@@ -100,8 +100,8 @@
         "desirable_and_undesirable_output_generation": "alpha",
         "process_intensities": "separate",
         "returns_to_scale_evidence": {
-          "vrs": "source_primary_programme_and_published_numerical_reproduction",
-          "crs": "source_described_restriction_and_published_numerical_reproduction",
+          "vrs": "source_primary_programme_and_project_dense_cross_implementation",
+          "crs": "source_described_restriction_and_project_dense_cross_implementation",
           "nirs": "source_described_restriction_and_package_verified_without_published_numerical_reproduction",
           "ndrs": "source_described_restriction_and_package_verified_without_published_numerical_reproduction"
         }
@@ -295,21 +295,22 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
-        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_table_1_published_vrs_solution_and_public_sparse_model",
-        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_table_3_published_crs_scores_match_independent_oracle"
+        "specs/oracles/environmental-network-project-cases.md",
+        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_project_recovery_vrs_matches_dense_oracle_and_sparse_model",
+        "tests/test_kalhor_matin_environmental_network_2018_oracle.py::test_project_circular_crs_scores_match_independent_oracle"
       ]
     },
     "tests": {
       "status": "present",
       "coverage": [
         "independent_dense_equation_compiler",
-        "published_table_1_and_table_2_reproduction",
-        "published_table_3_and_table_4_reproduction",
+        "project_recovery_vrs_independent_compilation",
+        "project_circular_crs_independent_compilation",
         "internal_desirable_and_undesirable_products",
-        "published_vrs_primary_programme_reproduction",
-        "published_crs_score_reproduction",
+        "source_vrs_primary_programme_compilation",
+        "source_crs_score_compilation",
         "source_described_package_verified_nirs_ndrs_without_published_numerical_reproduction",
         "economic_account_unit_invariance",
         "custom_reference_semantics",

@@ -294,16 +294,17 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
-        "tests/test_kao_hwang.py::test_published_24_insurer_score_oracle_and_product_identity",
-        "tests/test_kao_hwang.py::test_lim_zhu_source_midpoint_projection_oracle"
+        "specs/oracles/network-project-cross-implementation.md",
+        "tests/test_network_panel_project_independent_oracles.py::test_kao_hwang_system_scores_match_independent_dense_compiler"
       ]
     },
     "tests": {
       "status": "present",
       "coverage": [
         "domain",
+        "project_crs_independent_dense_multiplier_compiler",
         "product_identity",
         "stage_nonuniqueness",
         "two_stage_link_account",
@@ -329,6 +330,7 @@
       ],
       "locators": [
         "tests/test_kao_hwang.py",
+        "tests/test_network_panel_project_independent_oracles.py",
         "tests/test_kao_hwang_postsolve_certification.py",
         "tests/test_benchmark_network_relational.py",
         "tests/test_network_data.py"

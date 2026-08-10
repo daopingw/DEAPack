@@ -719,10 +719,11 @@ otherwise.
 - **Evidence status:** primary-checked and implemented/public on the bounded
   source surface above; unsupported orientation/RTS/data variants fail before
   optimization.
-- **Oracle:** the neutral `super_sbm_peer_replacement` case checks the
-  non-oriented CRS peer-replacement account and a direct non-oriented VRS
-  branch alongside eligibility, domain, invariance, and failure tests. No
-  source numerical table is redistributed.
+- **Oracle:** analytically derived — an exact two-organization VRS fixture
+  certifies the peer-replacement score, targets, and intensity, while an
+  independently assembled dense Charnes--Cooper programme checks both units.
+  Broader project cases retain eligibility, domain, invariance, and failure
+  checks; no source numerical table is redistributed or claimed.
 - **Package recipe:** `ToneSuperSBM` with exact alias `SuperSBM` as
   `evaluation.super.sbm.tone_2002`; extensions receive separate
   source-qualified leaves.
@@ -767,9 +768,10 @@ otherwise.
 - **Evidence status:** primary-checked and implemented/public for the fixed VRS
   observed-bundle-direction protocol; other direction or feasibility rules
   require named variants.
-- **Oracle:** `directional_super_multivariate_stress` is a neutral project
-  case checked against an independent dense leave-one-out compiler, including
-  score/ranking validity and an invalid-projection diagnostic. No application
+- **Oracle:** analytically derived — an exact two-organization fixture proves
+  the directional beta bound, reported score, target, and peer intensity, and
+  an independently assembled dense equation-(8) programme checks both units.
+  The multivariate project case adds stress and failure checks; no application
   observations, organization labels, or source score vector are bundled.
 - **Package recipe:** `RayDirectionalSuperEfficiency` with exact alias
   `NerloveLuenbergerSuperEfficiency` under
@@ -972,7 +974,7 @@ protocol.
   dedicated API, failure-closed certification, package Documentation, and a
   benchmark. Its current publication scope is `documentation_only`; it has no
   Handbook chapter.
-- **Oracle:** `strategic_peer_service` supplies a neutral protected--focal
+- **Oracle:** cross-implemented — `strategic_peer_service` supplies a neutral protected--focal
   appraisal case. Tests independently verify the synchronous map, fixed-point
   residual, starting-policy invariance, streamed-storage path, suspected-cycle
   diagnostics, and failure closure without retaining a source observation or

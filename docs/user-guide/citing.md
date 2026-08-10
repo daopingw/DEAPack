@@ -4,7 +4,7 @@ Treat each DEAPack software release as a versioned research object.
 
 Use the root [`CITATION.cff`](https://github.com/daopingw/DEAPack/blob/main/CITATION.cff)
 metadata when a paper relies on the software implementation, a computed
-result, or a reproducible workflow. For the stable `2.0.0` release, identify
+result, or a reproducible workflow. For the stable `2.0.1` release, identify
 the exact version and commit. No DOI has yet been assigned, so include the
 repository URL rather than inventing an archival identifier.
 

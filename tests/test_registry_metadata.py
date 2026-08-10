@@ -583,8 +583,7 @@ def test_complete_radial_presets_freeze_result_identity_and_target_policy(
 def test_environmental_result_paths_have_canonical_method_metadata() -> None:
     environmental = _environmental_cross_section()
     by_production = _environmental_cross_section(by_production=True)
-    with pytest.warns(FutureWarning):
-        equality_result = EnvironmentalDirectionalDistanceDEA().fit(environmental)
+    equality_result = EnvironmentalDirectionalDistanceDEA().fit(environmental)
     equality_technology = equality_result.metadata["expanded_spec"]["technology"]
     assert equality_technology["bad_output_treatment"] == (
         "directional_equality_legacy"

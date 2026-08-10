@@ -22,8 +22,8 @@ This source-facing review reconciles the network and dynamic corpus in
 [`LITERATURE_BASELINE.md`](../LITERATURE_BASELINE.md) with the graph,
 network, and dynamic entries in
 [`METHOD_UNIVERSE.md`](../METHOD_UNIVERSE.md) and
-[`METHODS.md`](../METHODS.md), and the network/dynamic chapters of
-[`BOOK_ARCHITECTURE.md`](../BOOK_ARCHITECTURE.md). It does not create
+[`METHODS.md`](../METHODS.md), and the maintained network/dynamic package
+specifications. It does not create
 executable status from a literature label alone: every public leaf still
 requires an equation audit, numerical oracle, implementation, and tests.
 
@@ -48,7 +48,7 @@ Each evidence record uses the following fields.
 | **Evidence status** | `primary-checked`, `review-supported`, or `registry-provisional`. |
 | **Oracle** | Current DEAPack verification state using `not located`, `candidate`, `analytically derived`, `reproduced`, or `cross-implemented`; repository property evidence is stated separately, and analytical derivation does not claim a published-data reproduction. |
 | **Package recipe** | Graph, technology, measure, governance, and canonical method ID. |
-| **Book location** | One audited status: active core placement, documentation/source review only, or evidence-deferred candidate. Only an exact path in `book/index.md` establishes active placement. |
+| **Book location** | Legacy compatibility metadata only. It does not identify a live path or public long-form publication in this software repository. |
 
 `primary-checked` means that the source has been checked for its defining
 graph, link/transition account, and native performance identity.
@@ -258,7 +258,7 @@ ratio.
 | **Solver form** | One sparse envelopment LP per organization and one compiled quantity block per distinct reference set, followed by independent primal, bound, objective, dual, and reconstructed economic-constraint certification. |
 | **Defining source** | Two-node CRS technology and output-distance programme in [Färe and Grosskopf (1996)](https://doi.org/10.1016/0165-1765(95)00729-6); CRS network lineage in [Färe and Grosskopf (2000)](https://doi.org/10.1016/S0038-0121(99)00012-9); explicit VRS polyhedral programme in [Podinovski and Bouzdine-Chameeva (2021)](https://doi.org/10.1007/s11123-021-00610-3). |
 | **Evidence status** | `primary-checked`; `implemented/public` as `FareGrosskopfNetworkRadialDEA`. |
-| **Oracle** | The conditional input-CRS score identity is checked on the neutral `two_stage_public_service` case against the independently compiled Kao--Hwang primary programme. Output orientation has an independent dense source-equation compiler, exact disposal and VRS orientation-separation cases, and shared implementation/property/failure checks. No published numerical table is redistributed. |
+| **Oracle** | Cross-implemented — the conditional input-CRS score identity is checked on the neutral `two_stage_public_service` case against the independently compiled Kao--Hwang primary programme. Output orientation has an independent dense source-equation compiler, exact disposal and VRS orientation-separation cases, and shared implementation/property/failure checks. No published numerical table is redistributed. |
 | **Package recipe** | `NetworkData` + `TwoStageSeriesSpec` + `FareGrosskopfNetworkRadialDEA(orientation="input" or "output", returns_to_scale="crs" or "vrs")`; result contract includes one native system factor, harmonized efficiency, one system component, process-specific intensities, complete-intensity external/link targets, link endpoints/surplus, observed-handoff conditioning flags, omitted-intensity sums, and diagnostics, but no stage efficiencies. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`. |
 
@@ -298,7 +298,7 @@ specific CRS ratio structure and treatment of the intermediate.
 | **Solver form** | Source-normalized multiplier LP or its proven envelopment equivalent; secondary programmes may be required to identify stage-score ranges. |
 | **Defining source** | [Kao and Hwang (2008)](https://doi.org/10.1016/j.ejor.2006.11.041). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | The neutral `two_stage_public_service` case checks the system/stage identity, decomposition choices, and feasible split-link projection without retaining a published observation table. |
+| **Oracle** | `cross-implemented` for the CRS system score on the neutral `two_stage_public_service` case: an independent dense Kao--Hwang multiplier programme agrees with the public API. Stage decomposition and projection choices remain property checks, and no published observation table is retained. |
 | **Package recipe** | Implemented as `KaoHwangRelationalDEA` over `NetworkData` and `TwoStageSeriesSpec`: one shared intermediate multiplier account, process-specific intensities, source-qualified stage selection/bounds, and a certified Lim--Zhu dual projection. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`; source algebra remains in package documentation. |
 
@@ -354,7 +354,7 @@ presentation choices.
 | **Solver form** | Sparse source-normalized multiplier LP with free VRS process intercepts, optional source secondary stage-priority LPs, deterministic weighted-sum reconstruction, and the certified Lim--Zhu primal--dual split-link projection. |
 | **Defining source** | [Chen, Cook, Li, and Zhu (2009)](https://doi.org/10.1016/j.ejor.2008.05.011); primal--dual projection and complete corrected numerical account in [Lim and Zhu (2019)](https://doi.org/10.1016/j.omega.2018.06.005). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | The neutral `two_stage_public_service` case checks CRS/VRS system and process reconstruction plus certified split-link projections. The defining papers remain cited for the formulation; their numerical tables and named organizations are not redistributed. |
+| **Oracle** | `cross-implemented` for the CRS system score and split-link projection on `two_stage_public_service`: independent dense multiplier and Lim--Zhu envelopment programmes agree with the public API. VRS process attribution remains a property check; the defining papers remain cited, but their numerical tables and named organizations are not redistributed. |
 | **Package recipe** | Implemented as `ChenCookLiZhuAdditiveDEA` over `NetworkData` and `TwoStageSeriesSpec`: one shared intermediate value account, endogenous virtual-resource shares, CRS/VRS process intercepts, process-specific intensities, source-qualified priority selection, and split upstream/downstream link targets. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/network-dea-organizations-links-responsibility.md`; the formal source contract remains in package documentation. |
 
@@ -381,7 +381,7 @@ radial models.
 | **Solver form** | Sparse block linear-fractional programme transformed by the source-compatible Charnes--Cooper construction; secondary optimization for alternate stage targets where required. |
 | **Defining source** | [Tone and Tsutsui (2009)](https://doi.org/10.1016/j.ejor.2008.05.027). |
 | **Evidence status** | `primary-checked`. |
-| **Oracle** | `three_process_service_chain` and `crs_free_link_service_chain` check VRS fixed/free and CRS free-link accounts, while project hand fixtures check accountable links and joint target feasibility without claiming one unique LP basis. |
+| **Oracle** | Analytically derived — exact hand certificates independently establish the equation-(26) and equation-(27) accountable-link optima. `three_process_service_chain` and `crs_free_link_service_chain` provide additional project-case property checks without claiming one unique LP basis. |
 | **Package recipe** | Implemented as `ToneTsutsuiNetworkSBM` (`NetworkSBM`) over `NetworkData`: general connected graph, division-specific intensities, CRS/VRS, input/output/non-oriented accounts, fixed/free continuity, named division weights, one sparse compilation per reference cohort, and solver-selected alternate optima disclosed. |
 | **Book location** | **Active core placement:** `book/chapters/05-network/20-network-sbm.md`; the formal programme remains in package documentation. |
 
@@ -749,7 +749,7 @@ production technologies.
 | **Solver form** | Source linear programme after the stated multi-period radial construction, followed by the source slack phase. Explicit time preferences and assurance-region restrictions are mentioned as future research rather than options in the 2009 base model. |
 | **Defining source** | [Park and Park (2009)](https://doi.org/10.1016/j.ejor.2007.11.028). |
 | **Evidence status** | `primary-equation-checked` and implemented/public: Eqs. (14) and (16), the per-period VRS/CRS construction, two-phase objective, no-transition boundary, and pp. 568--580 interpretation have been checked. |
-| **Oracle** | `multiperiod_trajectory_contrast` checks the VRS output-oriented factors, full/weak/inefficient classifications, period slack accounts, and projection identities while deliberately not basis-locking alternate peers or individual slacks. |
+| **Oracle** | `cross-implemented` on `multiperiod_trajectory_contrast`: a production-independent dense programme checks the common radial factor for input and output orientations under CRS and VRS. Classification, period slack, projection, and alternate-peer details remain property checks and are not basis-locked. |
 | **Package recipe** | Public `panel.multiperiod_aggregative.park_park_2009`, exposed as `ParkParkMultiperiodAggregativeDEA` and exact alias `MultiperiodAggregativeDEA`, with explicit input/output orientation, uniform CRS/VRS choice, contemporaneous period technologies, strict two-phase solution, and fail-closed certification. |
 | **Book location** | **Documentation/source review only.** This multiperiod aggregation protocol has no current handbook placement. |
 
@@ -785,7 +785,7 @@ helps future production and whether management can change it.
 | **Solver form** | One compiled sparse time-block LP for input/output orientations and the Charnes--Cooper form of the non-oriented model; one primary solve per trajectory. Period-range analysis and the source free-carry-over MIP are separate future procedures. |
 | **Defining source** | [Tone and Tsutsui (2010)](https://doi.org/10.1016/j.omega.2009.07.003). |
 | **Evidence status** | `primary-checked`; the open discussion-paper text and published source boundaries were reconciled, and the later critique remains a distinct method leaf. |
-| **Oracle** | `dynamic_carryover_portfolio` checks overall and period accounts for the named ex-post free-carry-over adjustment, with project hand cases for all three orientations and all four carry-over roles. |
+| **Oracle** | Analytically derived — the exact `dynamic_capacity_backlog` certificate establishes the non-oriented VRS good/bad-carry-over account independently. `dynamic_carryover_portfolio` adds property checks for the named ex-post free-carry-over adjustment and the wider orientation/role surface. |
 | **Package recipe** | Implemented as `ToneTsutsuiDynamicSBM` (`DynamicSBM`) over `DynamicData`, `DynamicSBMSpec`, `PeriodProductionSpec`, and typed `CarryOverSpec`; CRS/VRS, three orientations, base and named ex-post adjustment, fixed external accounts, full result tables, and source-qualified metadata are public. |
 | **Book location** | **Active core placement:** `book/chapters/06-dynamic/dynamic-dea-carryovers-trajectories.md`; the exact source contract remains in package documentation. |
 

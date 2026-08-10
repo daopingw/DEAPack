@@ -146,23 +146,10 @@ def test_review_index_inventory_matches_the_evidence_cards() -> None:
     assert f"| **Total** | **{expected_total}** |" in index
 
 
-def test_readme_reports_the_current_review_and_card_inventory() -> None:
+def test_readme_links_the_maintained_literature_review_inventory() -> None:
     readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
-    expected_total = sum(
-        len(_evidence_records((REVIEW_ROOT / filename).read_text(encoding="utf-8")))
-        for filename in REVIEW_FILES
-    )
 
-    review_count_label = {9: "Nine"}.get(
-        len(REVIEW_FILES),
-        str(len(REVIEW_FILES)),
-    )
-    assert re.search(
-        rf"\b{review_count_label} maintained\b",
-        readme,
-        flags=re.IGNORECASE,
-    )
-    assert f"containing {expected_total} evidence cards" in readme
+    assert "[literature-review index](specs/reviews/INDEX.md)" in readme
 
 
 def test_review_canonical_ids_resolve_to_the_method_registry() -> None:
@@ -183,9 +170,7 @@ def test_review_canonical_ids_resolve_to_the_method_registry() -> None:
 def test_m6_current_edition_scope_and_internal_components_are_unambiguous() -> None:
     methods = (REPOSITORY_ROOT / "specs" / "METHODS.md").read_text(encoding="utf-8")
     review = (REVIEW_ROOT / "STATISTICS_UNCERTAINTY.md").read_text(encoding="utf-8")
-    roadmap = (REPOSITORY_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
     normalized_review = " ".join(review.split())
-    normalized_roadmap = " ".join(roadmap.split())
 
     for component in ("technology.meta.pooled_convex", "reference.group"):
         row = next(
@@ -206,25 +191,25 @@ def test_m6_current_edition_scope_and_internal_components_are_unambiguous() -> N
         "`inference.subsampling` is a non-executable namespace umbrella"
         in normalized_review
     )
-    assert "no current-edition inferential API or Handbook route" in normalized_review
-    assert "sole Milestone 6 Handbook route" in normalized_roadmap
+    assert (
+        "no current-edition inferential API or reader-facing Documentation route"
+        in normalized_review
+    )
     for gate in (
-        "a source protocol freezing its estimator, DGP, and permitted claim",
-        "an independent numerical oracle",
-        "a typed result/failure contract",
+        "source protocol freezes the estimator and DGP",
+        "an independent numerical oracle verifies the permitted claims",
+        "a typed result and failure contract",
     ):
-        assert gate in normalized_roadmap
+        assert gate in normalized_review
 
 
 def test_metafrontier_public_docs_use_the_canonical_api_and_ratio_semantics() -> None:
-    readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
     api = (REPOSITORY_ROOT / "docs" / "api" / "analysis.md").read_text(encoding="utf-8")
     guide = (REPOSITORY_ROOT / "docs" / "analysis" / "metafrontier.md").read_text(
         encoding="utf-8"
     )
     normalized_guide = " ".join(guide.split())
 
-    assert "`RadialMetafrontierDEA` (concise exact alias `MetafrontierDEA`)" in readme
     assert "```{autoclass} deapack.RadialMetafrontierDEA" in api
     assert "`MetafrontierDEA` is the concise exact alias" in api
     assert "`RadialMetafrontierDEA` is the canonical API symbol" in normalized_guide

@@ -17,7 +17,7 @@ normative records.
 | Registry inventory checkpoint | `registry_release` in `specs/registry/registry-manifest.json` | one auditable shadow inventory; it is not a software release number |
 | Package Documentation | software version and documentation build commit | version-dependent calls, fields, examples, and behavior |
 
-The current checkout is the stable `2.0.0` software release. The current
+The current checkout is the stable `2.0.1` software release. The current
 ontology record schema is `1.0.0`, the fitted compact registry schema is `2`,
 and audit bundles use their own integer schema version. Consumers must read
 these fields rather than infer one from another.

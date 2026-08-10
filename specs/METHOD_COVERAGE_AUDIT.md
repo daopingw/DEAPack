@@ -636,20 +636,17 @@ The source DOI ledger is maintained in `reviews/NETWORK_DYNAMIC.md`; the
 global presence here closes the planning-visibility gap, not the equation or
 oracle gaps.
 
-### 6.3 Book and documentation gap
+### 6.3 Reader publication and documentation gap
 
-[`BOOK_ARCHITECTURE.md`](BOOK_ARCHITECTURE.md) fixes the current English
-handbook at an 18-chapter route through the principal DEA model families. It
-is not a mirror of this source-leaf coverage ledger. A reviewed or implemented
-method enters that route only after it passes the independent field-level,
-transferability, pedagogical-necessity, and evidence-readiness gates. Adding
-an atlas, registry, or API entry therefore does not justify a placeholder
-chapter, case, figure, or appendix.
+Long-form publication planning is maintained outside this software repository
+and is not a mirror of this source-leaf coverage ledger. It cannot promote a
+method or substitute for the independent field-level, transferability,
+pedagogical-necessity, and evidence-readiness gates.
 
 Every public executable leaf needs complete package documentation stating its
 constructor, parameters, data contract, score fields, diagnostics, errors,
-complexity, examples, and source boundary. The book has a different duty: it
-explains the economic question, assumptions, interpretation, evidence, and a
+complexity, examples, and source boundary. A future long-form publication may
+explain the economic question, assumptions, interpretation, evidence, and a
 selected DEAPack laboratory for admitted core families. Paper-specific
 directions, weights, reference windows, decompositions, combinations, and
 application accounts remain in package Documentation even when their code and

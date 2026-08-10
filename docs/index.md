@@ -1,16 +1,18 @@
 # DEAPack Documentation
 
-DEAPack is a composable Python toolkit for DEA-based efficiency, productivity,
-and environmental-performance analysis.
+DEAPack is a Python framework for data envelopment analysis (DEA), efficiency
+measurement, productivity analysis, and environmental performance.
 
-This site is the complete package reference. It covers installation, model
-choice, data preparation, precise behavior, APIs, diagnostics, reporting, and
-extension for the supported DEAPack release.
+It gives researchers, students, and analysts a consistent way to prepare data,
+choose an appropriate model, fit it, and interpret the resulting scores,
+targets, slacks, and peers. It is especially useful when a study extends
+beyond classical DEA into economic, environmental, network, dynamic, or
+productivity analysis.
 
 ```{note}
-DEAPack 2.0.0 is the first stable 2.x release. It is not a drop-in replacement
-for DEAPack 0.1.x; start with the installation and migration guides if you are
-upgrading an existing project.
+DEAPack 2.0.1 is the current stable release of the redesigned 2.x API. If you are
+upgrading from DEAPack 0.1.x or ProdPack, begin with the
+{doc}`getting-started/migration` guide.
 ```
 
 ```{toctree}
@@ -24,33 +26,80 @@ api/index
 developer/index
 ```
 
-## Choose a mainstream starting point
+## Start here
 
-Start from the managerial or economic question, then refine technology,
-reference population, data domain, and validity requirements in the linked
-page. Historical acronyms that share a mechanism do not need separate engines.
+1. {doc}`getting-started/installation` — install DEAPack and optional extras.
+2. {doc}`getting-started/quickstart` — fit a first model and inspect its result.
+3. {doc}`user-guide/results` — understand scores, targets, peers, validity, and
+   diagnostics before reporting them.
 
-| Question | Mainstream family | First package entry point |
-|---|---|---|
-| How much could resources fall, or services rise, proportionally? | {doc}`models/radial` | `BCCInput`, `BCCOutput`, `CCRInput`, or `CCROutput` |
-| Which individual input excesses and output shortfalls remain? | {doc}`models/sbm` | `SBM`, `InputSBM`, or `OutputSBM` |
-| What improvement is feasible along an economically chosen direction? | {doc}`models/directional` | `DirectionalDistanceDEA` |
-| How should undesirable outputs change the production account? | {doc}`models/environmental-directional` and {doc}`models/undesirable-sbm` | Choose a named disposal technology and DDF or undesirable-output SBM |
-| How does observed price information change the performance question? | {doc}`api/economics` | `CostEfficiency`, `RevenueEfficiency`, `ProfitEfficiency`, or a documented decomposition |
-| Which units remain favourable when self-selected valuations must respect a declared policy cone? | {doc}`models/polyhedral-cone-ratio` | `ConeRestrictionProvenance` and `PolyhedralConeRatioDEA` |
-| How did performance and best-practice opportunity change over time? | {doc}`analysis/malmquist`, {doc}`analysis/luenberger`, or {doc}`analysis/hicks-moorsteen` | Select the productivity identity before selecting its reference policy |
-| Where do performance gaps arise inside a multi-process organization? | {doc}`api/network` | Declare a production graph, then choose a system or process account |
-| How do carry-overs connect operating decisions over time? | {doc}`api/dynamic` | `DynamicData`, a carry-over specification, and `DynamicSBM` |
-| How should organizations be compared across declared operating environments? | {doc}`analysis/metafrontier` | `RadialMetafrontierDEA` |
+## Why DEAPack?
 
-The {doc}`user-guide/method-catalog` gives the complete installed inventory,
-from the principal method families to source-qualified specialized methods.
+A DEA study involves more than selecting a model acronym. The production
+technology, orientation, returns to scale, reference population, data roles,
+and treatment of undesirable outputs all affect the question being answered.
+DEAPack keeps those choices visible while providing a common workflow:
 
-## Project lifecycle
+- prepare a validated `DEAData` object;
+- fit a model through a consistent estimator interface;
+- inspect named result tables instead of unpacking solver arrays; and
+- create plots, reports, and reproducibility bundles from the fitted result.
 
-Contributors and research users can review the
-[contribution guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md),
-[changelog](https://github.com/daopingw/DEAPack/blob/main/CHANGELOG.md), and
-{doc}`developer/versioning` policy directly. Citation guidance is in
-{doc}`user-guide/citing`; publication operations are reviewed separately from
-the public Documentation source.
+You can therefore begin with a documented preset such as `BCCInput` and move
+to more specialized analyses without abandoning the same data and result
+conventions.
+
+## A first model
+
+```python
+from deapack import BCCInput, DEAData, load_dataset
+
+frame = load_dataset("frontier_1x1")
+data = DEAData.from_frame(
+    frame,
+    dmu="dmu",
+    inputs="input",
+    outputs="output",
+)
+
+result = BCCInput().fit(data)
+result.summary()
+```
+
+This fits an input-oriented variable-returns-to-scale frontier. Continue with
+the {doc}`getting-started/quickstart` to inspect peers and targets, use your own
+data, and visualize the result.
+
+## What can I analyze?
+
+| Area | Start with |
+|---|---|
+| Classical radial and non-radial DEA | {doc}`reference/core-models` |
+| Productivity change and scale | {doc}`reference/productivity-analysis` and {doc}`reference/scale-capacity-decomposition` |
+| Cost, revenue, profit, and allocative efficiency | {doc}`api/economics` |
+| Undesirable outputs and environmental performance | {doc}`reference/environmental-models` |
+| Network, dynamic, panel, and metafrontier structures | {doc}`reference/network-dynamic` and {doc}`analysis/metafrontier` |
+| Super-efficiency, cross-efficiency, diagnostics, and communication | {doc}`reference/evaluation`, {doc}`user-guide/reporting`, and {doc}`user-guide/visualization` |
+
+The {doc}`user-guide/method-catalog` is the authoritative inventory of methods
+available in the installed release. It distinguishes principal families,
+presets, and specialized methods without implying that planned work is already
+executable.
+
+## Documentation map
+
+| Section | Use it for |
+|---|---|
+| {doc}`getting-started/index` | Installation, the first analysis, and migration from older releases |
+| {doc}`user-guide/index` | Data preparation, model discovery, result interpretation, reporting, and datasets |
+| {doc}`reference/index` | Concepts, assumptions, equations, and method-specific behavior |
+| {doc}`api/index` | Public classes, functions, parameters, and return contracts |
+| {doc}`developer/index` | Architecture, extension points, contribution, and versioning policies |
+
+## Citation and contributions
+
+Use {doc}`user-guide/citing` when reporting a DEAPack computation, and cite the
+defining literature for the particular method used. Questions, reproducible
+bug reports, model proposals, and Documentation improvements are welcome
+through the project
+[contribution guide](https://github.com/daopingw/DEAPack/blob/main/CONTRIBUTING.md).

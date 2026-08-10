@@ -48,7 +48,7 @@ an independent numerical oracle verifies the permitted claims, and a typed
 result and failure contract keeps the base estimate, uncertainty statement,
 replication diagnostics, and invalid states distinct. Until all three gates
 close, a name in this review is a planning identity rather than a callable API
-or a Handbook route.
+or a reader-facing Documentation route.
 
 ## 1. What is random in a deterministic frontier estimate?
 
@@ -1049,6 +1049,6 @@ than claiming reproduction of any numerical table in those papers.
 9. Spatially eligible peers, spatial conditioning, physical production
    spillovers, and dependence-aware inference belong to different layers and
    cannot share one unqualified spatial-DEA flag.
-10. This review authorizes no current-edition inferential API or Handbook
-    route. Every future executable leaf must close its source protocol,
+10. This review authorizes no current-edition inferential API or reader-facing
+    Documentation route. Every future executable leaf must close its source protocol,
     independent numerical oracle, and typed result/failure contract first.

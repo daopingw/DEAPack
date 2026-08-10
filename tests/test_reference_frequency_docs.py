@@ -54,10 +54,14 @@ def test_reference_frequency_documentation_preserves_narrow_claim() -> None:
 
 def test_reference_frequency_page_and_generated_api_are_navigable() -> None:
     docs_index = (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
+    analysis_landing = (
+        ROOT / "docs" / "reference" / "scale-capacity-decomposition.md"
+    ).read_text(encoding="utf-8")
     api = (ROOT / "docs" / "api" / "analysis.md").read_text(encoding="utf-8")
     normalized_api = " ".join(api.split())
 
-    assert "analysis/reference-frequency" in docs_index
+    assert "reference/index" in docs_index
+    assert "/analysis/reference-frequency" in analysis_landing
     assert "{autofunction} deapack.reference_frequency" in api
     assert "{autoclass} deapack.ReferenceFrequencyResult" in api
     assert "{doc}`../analysis/reference-frequency`" in api

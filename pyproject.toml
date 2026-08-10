@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "DEAPack"
-version = "2.0.0"
+version = "2.0.1"
 description = "A comprehensive Python toolkit for DEA-based efficiency and productivity analysis"
 readme = "PYPI_README.md"
 requires-python = ">=3.10,<3.14"
@@ -69,7 +69,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/daopingw/DEAPack"
-Documentation = "https://github.com/daopingw/DEAPack"
+Documentation = "https://deapack.readthedocs.io/"
 Issues = "https://github.com/daopingw/DEAPack/issues"
 Source = "https://github.com/daopingw/DEAPack"
 

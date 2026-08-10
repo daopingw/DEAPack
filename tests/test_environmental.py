@@ -1,3 +1,5 @@
+import warnings
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -36,8 +38,7 @@ def _environmental_example(
 
 
 def test_weak_environmental_ddf_expands_good_and_contracts_bad() -> None:
-    with pytest.warns(FutureWarning, match="deprecated compatibility spelling"):
-        result = EnvironmentalDirectionalDistanceDEA().fit(_environmental_example())
+    result = EnvironmentalDirectionalDistanceDEA().fit(_environmental_example())
     summary = result.summary().set_index("dmu_id")
 
     assert EnvironmentalDDF is EnvironmentalDirectionalDistanceDEA
@@ -54,6 +55,20 @@ def test_weak_environmental_ddf_expands_good_and_contracts_bad() -> None:
     assert result.metadata["bad_output_disposability"] == "not_identified"
     assert result.metadata["bad_output_formulation"] == ("directional_equality_legacy")
     assert result.metadata["null_jointness"] is True
+
+
+def test_only_legacy_weak_string_warns() -> None:
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", FutureWarning)
+        default = EnvironmentalDDF()
+        explicit_enum = EnvironmentalDDF(disposability=BadOutputDisposability.WEAK)
+
+    with pytest.warns(FutureWarning, match="deprecated compatibility spelling"):
+        legacy_string = EnvironmentalDDF(disposability="weak")
+
+    assert default.disposability is BadOutputDisposability.WEAK
+    assert explicit_enum.disposability is BadOutputDisposability.WEAK
+    assert legacy_string.disposability is BadOutputDisposability.WEAK
 
 
 def _generic_external_membership_example() -> DEAData:
@@ -120,16 +135,12 @@ def test_generic_strong_disposal_directional_plan_proves_membership() -> None:
 
 
 def test_observed_environmental_directions_are_units_invariant() -> None:
-    with pytest.warns(FutureWarning):
-        baseline = (
-            EnvironmentalDDF().fit(_environmental_example()).summary()["distance"]
-        )
-    with pytest.warns(FutureWarning):
-        rescaled = (
-            EnvironmentalDDF()
-            .fit(_environmental_example(output_scale=100.0, bad_scale=0.01))
-            .summary()["distance"]
-        )
+    baseline = EnvironmentalDDF().fit(_environmental_example()).summary()["distance"]
+    rescaled = (
+        EnvironmentalDDF()
+        .fit(_environmental_example(output_scale=100.0, bad_scale=0.01))
+        .summary()["distance"]
+    )
 
     assert np.allclose(rescaled, baseline)
 
@@ -248,10 +259,7 @@ def test_environmental_model_requires_declared_bad_outputs() -> None:
     frame = pd.DataFrame({"dmu": ["A"], "x": [1.0], "y": [1.0]})
     data = DEAData.from_frame(frame, dmu="dmu", inputs="x", outputs="y")
 
-    with (
-        pytest.warns(FutureWarning, match="deprecated compatibility spelling"),
-        pytest.raises(ModelSpecificationError, match="requires declared"),
-    ):
+    with pytest.raises(ModelSpecificationError, match="requires declared"):
         EnvironmentalDDF().fit(data)
 
 
@@ -266,8 +274,7 @@ def test_environmental_panel_reuses_contemporaneous_references() -> None:
         bad_outputs="co2",
     )
 
-    with pytest.warns(FutureWarning):
-        result = EnvironmentalDDF(reference="contemporaneous").fit(data)
+    result = EnvironmentalDDF(reference="contemporaneous").fit(data)
 
     assert result.metadata["compiled_reference_sets"] == 4
     assert set(result.summary()["solver_status"]) == {"optimal"}
@@ -277,8 +284,7 @@ def test_environmental_panel_reuses_contemporaneous_references() -> None:
 def test_common_factor_weak_disposal_is_a_crs_named_technology() -> None:
     data = _environmental_example()
     named = CommonFactorWeakDisposalDDF().fit(data)
-    with pytest.warns(FutureWarning):
-        compatibility = EnvironmentalDDF(returns_to_scale="crs").fit(data)
+    compatibility = EnvironmentalDDF(returns_to_scale="crs").fit(data)
 
     assert np.allclose(
         named.summary()["distance"],

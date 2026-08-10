@@ -5,8 +5,8 @@ from __future__ import annotations
 import deapack
 
 project = "DEAPack Documentation"
-author = "DEAPack contributors"
-copyright = "2026, DEAPack contributors"
+author = "Dr Daoping Wang"
+copyright = "2026, Daoping Wang / DEAPack"
 release = deapack.__version__
 
 extensions = [

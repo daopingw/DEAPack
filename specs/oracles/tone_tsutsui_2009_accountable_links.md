@@ -1,15 +1,18 @@
-# Tone--Tsutsui accountable-link analytical oracle
+# Tone--Tsutsui network SBM analytical oracle
 
 **Method ID:** `network.sbm.tone_tsutsui_2009`  
-**Certificate scope:** equations (26)--(27) named accountable-link claims only  
+**Certificate scope:** fixed-link base account and equations (26)--(27) accountable-link claims
+
 **Published reproduction:** no  
 **Production compiler reused:** no
 
 ## Claim boundary
 
-This certificate covers the two oriented link-scoring extensions in the
-equation-complete Tone--Tsutsui discussion paper:
+This certificate covers one exact base Network SBM account and the two
+oriented link-scoring extensions in the equation-complete Tone--Tsutsui
+discussion paper:
 
+- the fixed-link base score under the three source orientations;
 - equation (26), where an incoming link is an input responsibility of the
   recipient process; and
 - equation (27), where an outgoing link is an output responsibility of the
@@ -19,9 +22,9 @@ It does not claim a reproduction of a published numerical table. The source
 provides the complete programmes but no dedicated accountable-link table that
 can be replayed from printed data and results. The fixtures below are derived
 independently as exact fractions directly from the source
-balances, not from the production implementation. The record-level
-`reproduced` status belongs to the separate fixed/free published tables; it
-does not transfer to the two claims certified here.
+balances, not from the production implementation. The project service-chain
+regressions are not published numerical reproductions and do not inherit a
+literature-table claim.
 
 Both fixtures contain two organizations, `A` and `B`, and two connected
 processes:
@@ -33,6 +36,46 @@ supplier -- handoff_quantity --> recipient
 Each process receives equal declared importance weight, the technology is VRS,
 and the one handoff remains one physical organizational account at both
 endpoints.
+
+## Fixed-link base account under all three orientations
+
+The base certificate uses a fixed handoff of one and the following two
+processes, each with one external input and one external output:
+
+| DMU | upstream input | upstream output | handoff | downstream input | downstream output |
+|---|---:|---:|---:|---:|---:|
+| A | 2 | 1 | 1 | 2 | 1 |
+| B | 1 | 2 | 1 | 1 | 2 |
+
+Under VRS, B is an attainable reference for A in both processes. The fixed
+handoff is already one for both organizations and therefore has no slack. In
+each process, A's external input can fall from two to one and its external
+output can rise from one to two.
+
+For the input-oriented account, each process therefore has normalized input
+slack $1/2$ and efficiency
+
+$$
+1-\frac{1}{2}=\frac{1}{2}.
+$$
+
+No convex reference can use less than the minimum observed input one, so this
+is the exact lower bound and B attains it. Any positive division weights sum
+to one and combine two identical process scores, giving system efficiency
+$1/2$.
+
+For the output-oriented account, the maximum observed output is two. Thus
+each process has expansion account two and reciprocal efficiency $1/2$;
+again B attains the exact bound. For the non-oriented account, each process
+combines input account $1/2$ with output expansion account two, giving
+
+$$
+\rho=\frac{1/2}{2}=\frac{1}{4}.
+$$
+
+The input-, output-, and non-oriented exact system scores for A are therefore
+$(1/2,1/2,1/4)$; B has score one in every orientation. This fixed-link claim
+does not certify free-link target uniqueness or any published table.
 
 ## Equation (26): recipient input responsibility
 

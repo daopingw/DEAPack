@@ -97,8 +97,7 @@ empirical reproduction; it does not prevent a later theory release if the
 complete source and an exact independent synthetic oracle are available.
 
 The full promotion policy is specified in the
-[coverage audit](specs/METHOD_COVERAGE_AUDIT.md) and
-[roadmap](ROADMAP.md).
+[coverage audit](specs/METHOD_COVERAGE_AUDIT.md).
 
 ## Method contribution sequence
 
@@ -167,23 +166,16 @@ contribution's nature and the policies of the eventual publication venue.
 Only submit material that you are entitled to contribute.  Dataset and figure
 contributions must identify their source, transformation, redistribution
 status, and license; a citation alone is not permission to redistribute.
-For an independently constructed theoretical or synthetic dataset, use the
-[project-created dataset origin template](specs/dataset_candidates/ORIGIN_DECLARATION_TEMPLATE.md)
-to record the management question, complete numerical recipe, contributors,
-content license, oracle, and propagation checks. A passing numerical example
-remains a candidate until that factual record and its release boundary are
-approved.
+For an independently constructed theoretical or synthetic dataset, record the
+management question, complete numerical recipe, contributors, content
+license, oracle, and propagation checks in the contribution itself. A passing
+numerical example remains a candidate until that factual record and its
+release boundary are approved.
 Code contributions require DCO 1.1 sign-off and are accepted under
 `GPL-3.0-only`. Original package Documentation prose is accepted under
 `CC-BY-NC-SA-4.0`, with embedded code under GPL. Dataset contributions require
 an affirmative dataset-to-license record; `CC-BY-4.0` is the adopted default
 only for content confirmed to be wholly project-created.
-
-For the first release candidate, the unresolved component and dataset
-decisions are recorded explicitly in
-[the rights review worksheet](specs/RELEASE_RIGHTS_REVIEW_2_0_RC1.md). That
-worksheet is a maintainer decision record, not a claim that currently
-uncleared material may be redistributed.
 
 Please report security or result-integrity vulnerabilities through the private
 route in [SECURITY.md](SECURITY.md), not through a public issue containing

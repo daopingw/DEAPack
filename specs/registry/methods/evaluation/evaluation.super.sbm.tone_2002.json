@@ -319,18 +319,144 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
-        "tests/test_super_sbm.py"
-      ]
+        "specs/oracles/tone-2002-super-sbm-analytical.md",
+        "tests/test_tone_super_sbm_independent_oracle.py::test_exact_two_unit_vrs_scores_and_replacement_targets",
+        "tests/test_tone_super_sbm_independent_oracle.py::test_public_vrs_scores_and_targets_match_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/tone-2002-super-sbm-analytical.md",
+        "public_api_test_locator": "tests/test_tone_super_sbm_independent_oracle.py::test_public_vrs_scores_and_targets_match_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "super_sbm.vrs.exact_score_target",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_tone_super_sbm_independent_oracle.py::test_exact_two_unit_vrs_scores_and_replacement_targets"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "non-oriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "strong_sbm_screen_then_leave_one_out_super_sbm"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "two_unit_a",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "super_sbm_score": 2.0,
+                    "input_target": 2.0,
+                    "output_target": 1.0
+                  }
+                },
+                {
+                  "case_id": "two_unit_b",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "super_sbm_score": 3.0,
+                    "input_target": 2.0,
+                    "output_target": 1.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "super_sbm_score",
+              "input_replacement_target",
+              "output_replacement_target",
+              "is_sbm_eligible"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "leave_one_out",
+              "self_membership": "excluded"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "super_sbm.vrs.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_tone_super_sbm_independent_oracle.py::test_public_vrs_scores_and_targets_match_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "non-oriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "strong_sbm_screen_then_leave_one_out_super_sbm"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "super_sbm_score",
+              "input_replacement_target",
+              "output_replacement_target",
+              "peer_intensity"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "leave_one_out",
+              "self_membership": "excluded"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
       "coverage": [
         "public_alias_and_method_metadata",
-        "source_table_one_non_oriented_crs_scores_and_targets",
-        "source_input_crs_scores",
-        "vrs_non_oriented_analytic_oracle",
+        "exact_two_unit_vrs_nonoriented_score_and_target_oracle",
+        "independent_dense_vrs_nonoriented_source_compiler",
+        "project_case_nonoriented_crs_scores_and_targets",
         "ordinary_strong_sbm_applicability_screen",
         "strict_positive_desirable_quantity_domain",
         "supported_orientation_returns_to_scale_matrix",
@@ -339,7 +465,8 @@
         "failure_and_applicability_closure"
       ],
       "locators": [
-        "tests/test_super_sbm.py"
+        "tests/test_super_sbm.py",
+        "tests/test_tone_super_sbm_independent_oracle.py"
       ]
     },
     "benchmarks": [

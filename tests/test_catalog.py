@@ -3,11 +3,20 @@ from __future__ import annotations
 import json
 from dataclasses import FrozenInstanceError
 from pathlib import Path
+from typing import Any
 
 import pytest
 
 import deapack
 from deapack import MethodInfo, list_methods, method_info
+
+ORACLE_STATUS_TO_CATALOG_VERIFICATION = {
+    "analytically_derived": "primary_equations",
+    "cross_implemented": "cross_implementation",
+    "reproduced": "literature_oracle",
+    "candidate": "property",
+    "not_located": "property",
+}
 
 EXPECTED_METHOD_IDS = {
     "analysis.allocative_decomposition.cost_input_radial",
@@ -88,6 +97,20 @@ EXPECTED_METHOD_IDS = {
 }
 
 
+def _load_machine_registry_records() -> dict[str, dict[str, Any]]:
+    registry_root = Path(__file__).resolve().parents[1] / "specs" / "registry"
+    manifest = json.loads(
+        (registry_root / "registry-manifest.json").read_text(encoding="utf-8")
+    )
+    return {
+        record["id"]: record
+        for relative in manifest["methods"]
+        for record in [
+            json.loads((registry_root / relative).read_text(encoding="utf-8"))
+        ]
+    }
+
+
 def test_catalog_contains_only_the_declared_implemented_public_methods() -> None:
     methods = list_methods()
 
@@ -154,7 +177,6 @@ def test_catalog_metadata_and_collection_are_immutable() -> None:
 
 
 def test_governed_publication_scope_matches_the_machine_registry() -> None:
-    root = Path(__file__).resolve().parents[1]
     governed_categories = {
         "productivity",
         "network",
@@ -167,16 +189,9 @@ def test_governed_publication_scope_matches_the_machine_registry() -> None:
         "inference",
         "uncertainty",
     }
-    registry_root = root / "specs" / "registry"
-    manifest = json.loads(
-        (registry_root / "registry-manifest.json").read_text(encoding="utf-8")
-    )
     registry_records = {
-        record["id"]: record
-        for relative in manifest["methods"]
-        for record in [
-            json.loads((registry_root / relative).read_text(encoding="utf-8"))
-        ]
+        method_id: record
+        for method_id, record in _load_machine_registry_records().items()
         if record["category"] in governed_categories
     }
     public_registry_records = {
@@ -241,6 +256,22 @@ def test_governed_publication_scope_matches_the_machine_registry() -> None:
         for item in list_methods()
         if item.category not in governed_categories
     )
+
+
+def test_machine_registry_oracle_status_matches_catalog_verification() -> None:
+    registry_records = _load_machine_registry_records()
+    catalog = {item.method_id: item for item in list_methods()}
+    machine_backed_catalog_ids = sorted(catalog.keys() & registry_records.keys())
+
+    assert machine_backed_catalog_ids
+    for method_id in machine_backed_catalog_ids:
+        oracle_status = registry_records[method_id]["validation"]["oracle"]["status"]
+        expected_verification = ORACLE_STATUS_TO_CATALOG_VERIFICATION[oracle_status]
+        assert catalog[method_id].verification == expected_verification, (
+            method_id,
+            oracle_status,
+            catalog[method_id].verification,
+        )
 
 
 def test_fdh_catalog_retains_its_api_documentation_and_exact_evidence() -> None:
@@ -454,7 +485,7 @@ def test_by_production_fgl_catalog_exposes_source_oracle_status() -> None:
     assert info.title == (
         "Modified Färe--Grosskopf--Lovell efficiency under by-production"
     )
-    assert info.verification == "literature_oracle"
+    assert info.verification == "cross_implementation"
     assert info.documentation == ("api",)
 
 
@@ -663,7 +694,7 @@ def test_only_source_qualified_cross_appraisal_is_public() -> None:
         "LiangWuCookZhuGameCrossEfficiency",
         "GameCrossEfficiency",
     )
-    assert game.verification == "literature_oracle"
+    assert game.verification == "cross_implementation"
     assert game.documentation == ("api",)
 
 
@@ -674,13 +705,13 @@ def test_ap_super_efficiency_is_deferred_from_the_public_surface() -> None:
         method_info("evaluation.super.ap_radial")
 
 
-def test_frh_is_a_cross_implemented_public_technology_variant() -> None:
+def test_frh_exposes_its_analytical_verification() -> None:
     assert deapack.FRH is deapack.FreeReplicabilityHullDEA
     info = method_info("static.radial.frh")
 
     assert info.kind == "variant"
     assert info.api_symbols == ("FreeReplicabilityHullDEA", "FRH")
-    assert info.verification == "cross_implementation"
+    assert info.verification == "primary_equations"
     assert info.documentation == ("api",)
 
 
@@ -719,7 +750,7 @@ def test_fare_grosskopf_network_radial_is_a_system_only_public_leaf() -> None:
     assert info.documentation == ("api",)
 
 
-def test_kalhor_matin_environmental_network_is_a_source_reproduced_leaf() -> None:
+def test_kalhor_matin_environmental_network_is_cross_implemented() -> None:
     info = method_info(
         "network.environmental.weak_activity_specific.kalhor_kazemi_matin_2018"
     )
@@ -727,16 +758,16 @@ def test_kalhor_matin_environmental_network_is_a_source_reproduced_leaf() -> Non
     assert info.api_symbols == ("KalhorKazemiMatinNetworkDEA",)
     assert info.kind == "preset"
     assert info.category == "network"
-    assert info.verification == "literature_oracle"
+    assert info.verification == "cross_implementation"
     assert info.documentation == ("api",)
 
 
-def test_separable_environmental_sbm_exposes_its_bounded_literature_oracle() -> None:
+def test_separable_environmental_sbm_exposes_its_analytical_verification() -> None:
     info = method_info("environmental.sbm.separable_strong")
 
     assert info.api_symbols == ("UndesirableSlacksBasedDEA", "UndesirableSBM")
     assert info.category == "environmental"
-    assert info.verification == "literature_oracle"
+    assert info.verification == "primary_equations"
     assert info.documentation == ("api",)
 
 
@@ -791,7 +822,7 @@ def test_multiperiod_aggregative_alias_is_one_source_method() -> None:
         "MultiperiodAggregativeDEA",
     )
     assert info.category == "panel"
-    assert info.verification == "literature_oracle"
+    assert info.verification == "cross_implementation"
     assert info.documentation == ("api",)
     assert not hasattr(deapack, "MDEA")
 

@@ -322,19 +322,148 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
         "specs/oracles/ray-directional-super-efficiency.md",
-        "tests/test_ray_directional_super_efficiency.py"
-      ]
+        "tests/test_ray_directional_super_independent_oracle.py::test_exact_two_unit_beta_scores_and_directional_boundaries",
+        "tests/test_ray_directional_super_independent_oracle.py::test_public_scores_targets_and_peers_match_independent_dense_compiler"
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/ray-directional-super-efficiency.md",
+        "public_api_test_locator": "tests/test_ray_directional_super_independent_oracle.py::test_public_scores_targets_and_peers_match_independent_dense_compiler",
+        "claims": [
+          {
+            "claim_id": "ray_directional_super.exact_beta_target",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_ray_directional_super_independent_oracle.py::test_exact_two_unit_beta_scores_and_directional_boundaries"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "leave_one_out_directional_super_efficiency"
+              ],
+              "direction_policy": [
+                "observed_input_output_bundle"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "named_cases",
+              "cases": [
+                {
+                  "case_id": "two_unit_a",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "A",
+                  "expected": {
+                    "beta": -1.0,
+                    "nl_super_efficiency": 2.0,
+                    "input_target": 2.0,
+                    "output_target": 0.0
+                  }
+                },
+                {
+                  "case_id": "two_unit_b",
+                  "orientation": "nonoriented",
+                  "evaluated_dmu_id": "B",
+                  "expected": {
+                    "beta": -0.3333333333333333,
+                    "nl_super_efficiency": 1.3333333333333333,
+                    "input_target": 2.6666666666666665,
+                    "output_target": 2.0
+                  }
+                }
+              ]
+            },
+            "result_components": [
+              "beta",
+              "nl_super_efficiency",
+              "input_directional_boundary",
+              "output_directional_boundary",
+              "source_projection_nonnegative"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "leave_one_out",
+              "self_membership": "excluded"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 2,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          },
+          {
+            "claim_id": "ray_directional_super.independent_dense_compilation",
+            "evidence_kind": "independent_problem_compilation",
+            "test_locators": [
+              "tests/test_ray_directional_super_independent_oracle.py::test_public_scores_targets_and_peers_match_independent_dense_compiler"
+            ],
+            "parameter_scope": {
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "leave_one_out_directional_super_efficiency"
+              ],
+              "direction_policy": [
+                "observed_input_output_bundle"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "beta",
+              "nl_super_efficiency",
+              "input_directional_boundary",
+              "output_directional_boundary",
+              "peer_activity",
+              "peer_intensity"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "leave_one_out",
+              "self_membership": "excluded"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "cross_sectional",
+              "fixture_shape": {
+                "observations": 3,
+                "inputs": 2,
+                "desirable_outputs": 2,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "published_ten_organization_scores",
-        "published_twenty_eight_airline_beta_values",
-        "published_negative_output_projection_boundary",
+        "exact_two_unit_beta_score_and_directional_boundary_oracle",
         "independent_dense_source_compiler",
+        "project_case_negative_output_projection_boundary",
         "public_alias_and_method_metadata",
         "source_directional_targets_and_peer_reconstruction",
         "strictly_positive_input_domain",
@@ -345,7 +474,8 @@
         "solver_and_certificate_failure_closure"
       ],
       "locators": [
-        "tests/test_ray_directional_super_efficiency.py"
+        "tests/test_ray_directional_super_efficiency.py",
+        "tests/test_ray_directional_super_independent_oracle.py"
       ]
     },
     "benchmarks": [

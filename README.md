@@ -1,53 +1,57 @@
 # DEAPack
 
-DEAPack is a Python toolkit for data envelopment analysis (DEA), efficiency,
-productivity, environmental-performance, network, and dynamic analysis.
+[![PyPI](https://img.shields.io/pypi/v/DEAPack.svg)](https://pypi.org/project/DEAPack/) [![Python 3.10–3.13](https://img.shields.io/badge/python-3.10--3.13-blue.svg)](pyproject.toml) [![Documentation](https://readthedocs.org/projects/deapack/badge/?version=latest)](https://deapack.readthedocs.io/) [![Tests](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml/badge.svg)](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml) [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 
-Version `2.0.0` is the first stable release of the redesigned 2.x line.
+DEAPack is an open-source Python framework for data envelopment analysis
+(DEA), efficiency measurement, productivity analysis, and environmental
+performance.
 
-## What is included
+It is designed for researchers, students, and analysts who want to compare the
+performance of organizations without writing a new optimization model for
+every method. A consistent data, model, and result interface connects
+classical DEA with closely related economic, environmental, network, dynamic,
+and productivity analyses.
 
-- A composable numerical package built on NumPy, pandas, SciPy, and sparse
-  HiGHS optimization.
-- English package Documentation covering installation, models, analysis,
-  reporting, visualization, and the public API.
-- A method registry, source protocols, independent numerical oracles, and
-  reproducible benchmark definitions.
-- Thirty-three licensed teaching datasets with declared roles, provenance,
-  teaching uses, and exact content fingerprints.
+[Documentation](https://deapack.readthedocs.io/) ·
+[Installation](docs/getting-started/installation.md) ·
+[Quick start](docs/getting-started/quickstart.md) ·
+[Method catalog](docs/user-guide/method-catalog.md) ·
+[API reference](docs/api/index.md)
 
-The full executable-method inventory is in the
-[method catalog](docs/user-guide/method-catalog.md). Design boundaries and
-mathematical conventions are recorded in [specs](specs/README.md).
+## Why DEAPack?
 
-## Installation
+DEA applications often combine several decisions: the production technology,
+orientation, returns to scale, reference population, treatment of undesirable
+outputs, and interpretation of the resulting targets and peers. DEAPack keeps
+those choices explicit while giving them a common Python workflow.
 
-DEAPack supports Python 3.10 through 3.13.
+- **One familiar interface:** prepare `DEAData`, fit a model, then inspect a
+  `DEAResult`.
+- **Connected method coverage:** move from classical efficiency measurement to
+  productivity, economic, environmental, network, dynamic, and
+  heterogeneity analysis without changing packages.
+- **Interpretable results:** work with named score, target, slack, peer,
+  component, diagnostic, and status tables.
+- **Research-ready outputs:** create plots, reports, and reproducibility
+  bundles from the same fitted result.
+- **Accessible starting points:** use documented presets and bundled teaching
+  datasets while keeping the underlying assumptions visible.
 
-Install the stable release from PyPI:
+## Install
+
+DEAPack `2.0.1` supports Python 3.10 through 3.13.
 
 ```bash
-python -m pip install "DEAPack==2.0.0"
+python -m pip install "DEAPack==2.0.1"
 ```
 
-For an editable source checkout:
+Install optional visualization support with:
 
 ```bash
-git clone https://github.com/daopingw/DEAPack.git
-cd DEAPack
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -e .
+python -m pip install "DEAPack[viz]==2.0.1"
 ```
 
-Install the visualization and development extras when needed:
-
-```bash
-python -m pip install -e '.[viz]'
-python -m pip install -e '.[test,docs,viz]'
-```
-
-## Quick example
+## Quick start
 
 ```python
 from deapack import BCCInput, DEAData, load_dataset
@@ -61,134 +65,80 @@ data = DEAData.from_frame(
 )
 
 result = BCCInput().fit(data)
+
 print(result.summary())
 print(result.peers("E"))
 ```
 
-Results can also produce a self-contained management brief and a deterministic
-audit bundle:
+The example estimates an input-oriented variable-returns-to-scale frontier.
+The same result object provides targets, slacks, peer intensities, diagnostics,
+reporting, and visualization when those outputs are available for the chosen
+method.
 
-```python
-result.report().save("bcc-result-brief.html")
-result.export_bundle("bcc-result-audit.zip")
-```
+## What you can analyze
 
-With the visualization extra installed:
+| Area | Examples |
+|---|---|
+| Classical DEA | CCR and BCC radial models, FDH, additive models, RAM, BAM, SBM, EBM, and directional-distance models |
+| Productivity and scale | Malmquist-family indexes, Luenberger and Hicks--Moorsteen productivity, returns to scale, and scale elasticity |
+| Economic performance | Cost, revenue, profit, allocative efficiency, profitability, and decompositions |
+| Environmental performance | Undesirable outputs, weak disposal, by-production, material balance, and environmental productivity |
+| Organizational structure | Network, dynamic, dynamic-network, panel, and radial metafrontier models |
+| Evaluation and communication | Super-efficiency, cross-efficiency, peer diagnostics, plots, reports, and audit bundles |
 
-```python
-figure = result.plot(kind="frontier")
-figure.savefig("bcc-frontier.svg", bbox_inches="tight")
-```
+The installed [method catalog](docs/user-guide/method-catalog.md) is the
+authoritative inventory of executable methods. Planned or source-incomplete
+methods are not exposed as provisional estimators.
 
-## Main capabilities
+## Find the right documentation
 
-DEAPack groups methods by the analytical question they answer rather than by
-paper-specific class names.
+- **New to DEAPack?** Follow the [installation guide](docs/getting-started/installation.md)
+  and [quick start](docs/getting-started/quickstart.md).
+- **Choosing a method?** Browse the [models and analysis guide](docs/reference/index.md)
+  or search the [method catalog](docs/user-guide/method-catalog.md).
+- **Working with data or results?** Use the [user guide](docs/user-guide/index.md).
+- **Looking up an object?** Go directly to the [API reference](docs/api/index.md).
+- **Upgrading old code?** Read the
+  [0.1.x migration guide](docs/getting-started/migration.md); 2.x is not a
+  drop-in replacement.
 
-- **Classical frontier models:** CCR/BCC radial DEA, FDH, FCH, FRH, additive
-  DEA, RAM, BAM, SBM, EBM, directional and generalized-distance models.
-- **Economic analysis:** cost, revenue, profit, allocative efficiency,
-  Nerlovian efficiency, profitability, and decomposition.
-- **Environmental analysis:** undesirable-output technologies, weak disposal,
-  by-production, material balance, and environmental productivity.
-- **Network and dynamic analysis:** relational, additive, radial, sequential,
-  SBM, carry-over, and dynamic-network formulations.
-- **Productivity and scale:** Malmquist-family indexes, Luenberger,
-  Hicks--Moorsteen, metafrontier, local returns to scale, scale elasticity,
-  MPSS, and reference-frequency analysis.
-- **Evaluation and communication:** super-efficiency, cross-efficiency,
-  target completion, peer diagnostics, publication tables, reports, bundles,
-  and plots.
+## Data and reproducibility
 
-The metafrontier API uses
-`RadialMetafrontierDEA` (concise exact alias `MetafrontierDEA`).
+Bundled datasets have documented roles, provenance, redistribution status,
+and attribution. See the [dataset guide](docs/user-guide/datasets.md) and
+[dataset license map](DATA_LICENSES.md) before reusing them outside the
+package.
 
-Some research families remain documented prototypes rather than public
-estimators. Use `list_methods()` to inspect what is executable in the
-installed version:
+DEAPack's implementation claims are linked to defining sources, analytical
+checks, and independent numerical evidence where available. The maintained
+[literature-review index](specs/reviews/INDEX.md) records that evidence; the
+[method catalog](docs/user-guide/method-catalog.md) reports the verification
+level of each public entry.
 
-```python
-from deapack import list_methods, method_info
+## Citation and licensing
 
-print([item.method_id for item in list_methods()])
-print(method_info("static.radial.fdh").api_symbols)
-```
+Use [CITATION.cff](CITATION.cff) or [CITATION.md](CITATION.md) and record the
+exact DEAPack version used. Research using a particular DEA method should also
+cite its defining literature, linked from the corresponding Documentation
+page.
 
-Nine maintained [literature reviews](specs/reviews/INDEX.md), currently
-containing 148 evidence cards, connect defining sources, numerical oracles,
-and package implementations.
+The software is licensed under `GPL-3.0-only`. Project-owned Documentation
+prose and bundled datasets have separate terms; third-party data retain their
+recorded upstream terms. See [COMPONENT_LICENSES.md](COMPONENT_LICENSES.md),
+[DATA_LICENSES.md](DATA_LICENSES.md), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+for the exact boundaries.
 
-## Teaching datasets
+## Contributing
 
-```python
-from deapack import list_datasets, load_dataset
+Questions, reproducible bug reports, model proposals, documentation
+improvements, and data-provenance contributions are welcome. Start with the
+[contribution guide](CONTRIBUTING.md).
 
-for info in list_datasets():
-    print(info.name, info.teaching_uses)
-
-frame = load_dataset("strategic_peer_service")
-```
-
-The current catalog contains 33 datasets:
-
-- project-created neutral theory, synthetic, and replacement cases;
-- the independently selected Zhou equation fixture;
-- the Ren directional-scale table under upstream CC BY 4.0; and
-- two revenue examples retained under their upstream MIT terms.
-
-Published method names and papers remain cited where relevant, but retired or
-restricted published numerical tables are not loaded by the current
-Documentation examples. Exact dataset terms and attribution are
-listed in [DATA_LICENSES.md](DATA_LICENSES.md).
-
-## Documentation
-
-- [Documentation home](docs/index.md)
-- [Installation guide](docs/getting-started/installation.md)
-- [Quick start](docs/getting-started/quickstart.md)
-- [Model catalog](docs/user-guide/method-catalog.md)
-- [API reference](docs/api/index.md)
-- [Migration from 0.1.x](docs/getting-started/migration.md)
-
-## Development
+For a source checkout:
 
 ```bash
 python -m pip install -e '.[test,docs,viz]'
-python -m pytest
+make test PYTHON=python
 ```
 
-The [contribution guide](CONTRIBUTING.md) describes the source, oracle,
-compatibility, testing, documentation, and DCO requirements. The
-[benchmark contract](benchmarks/README.md) separates computational evidence
-from defining literature and independent numerical validation.
-
-Suggestions are welcome through the repository's issue forms, including model
-proposals, data and provenance contributions, bug reports, Documentation
-improvements, and reproducible examples.
-
-## Citation
-
-Use [CITATION.cff](CITATION.cff) or [CITATION.md](CITATION.md) to cite
-DEAPack. Research using a particular DEA method should also cite that method's
-defining literature, as recorded in the corresponding Documentation page and
-method metadata.
-
-## Licensing
-
-- Project-owned DEAPack 2.x software: `GPL-3.0-only`.
-- Project-owned Documentation prose: `CC-BY-NC-SA-4.0`; executable examples
-  remain GPL software.
-- Project-created datasets: `CC-BY-4.0` with attribution to Daoping Wang /
-  DEAPack.
-- Third-party datasets and materials: their recorded upstream terms.
-
-See [COMPONENT_LICENSES.md](COMPONENT_LICENSES.md),
-[DATA_LICENSES.md](DATA_LICENSES.md), [NOTICE](NOTICE), and
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the precise component
-boundaries and attribution requirements.
-
-## Release status
-
-`2.0.0` is the first stable 2.x release and is not a drop-in replacement for
-DEAPack 0.1.x. Release history is recorded in [CHANGELOG.md](CHANGELOG.md), and
-future work is tracked in [ROADMAP.md](ROADMAP.md).
+Release history is in [CHANGELOG.md](CHANGELOG.md).

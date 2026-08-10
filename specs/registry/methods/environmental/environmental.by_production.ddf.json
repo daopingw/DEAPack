@@ -313,7 +313,7 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
         "specs/source_protocols/by_production_ddf_reference.md",
         "specs/oracles/by-production-ddf-project-case.md",
@@ -324,8 +324,8 @@
     "tests": {
       "status": "present",
       "coverage": [
-                "component_decomposition",
-                "external_reference_membership_and_appraisal",
+        "component_decomposition",
+        "external_reference_membership_and_appraisal",
         "component_lp_kkt_and_economic_account_certification",
         "atomic_joint_failure_isolation",
         "direction_validation",
@@ -333,7 +333,7 @@
         "fixed_direction_source_scope",
         "independent_dense_crs_compiler",
         "joint_and_component_efficiency_separation",
-        "murty_russell_levkoff_equation_5_6_reproduction",
+        "murty_russell_levkoff_equation_5_6_independent_compilation",
         "panel_reference_reuse",
         "required_data_roles",
         "source_profile_boundaries",

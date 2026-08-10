@@ -295,18 +295,17 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
-        "tests/test_cook_general_additive.py::test_seller_buyer_table_2_oracle_and_additive_identity",
-        "tests/test_cook_general_additive.py::test_seller_buyer_table_3_equal_share_oracle",
-        "tests/test_cook_general_additive.py::test_three_stage_tables_6_and_7_oracle"
+        "specs/oracles/network-project-cross-implementation.md",
+        "tests/test_network_panel_project_independent_oracles.py::test_cook_general_additive_scores_match_independent_dense_compiler"
       ]
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "published_two_stage_oracles",
-        "published_three_stage_oracles",
+        "project_open_chain_independent_dense_crs_compiler",
+        "project_three_stage_regression_contract",
         "weighted_additive_identity",
         "graph_and_column_order_independence",
         "unit_invariance",
@@ -328,6 +327,7 @@
             ],
             "locators": [
                 "tests/test_cook_general_additive.py",
+                "tests/test_network_panel_project_independent_oracles.py",
                 "tests/test_cook_general_additive.py::test_uncertified_primary_programme_fails_closed",
                 "tests/test_lp_certificates.py",
                 "tests/test_general_additive_compiler.py",

@@ -342,18 +342,83 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "analytically_derived",
       "locators": [
         "tests/test_dynamic_carryover_portfolio_sbm.py::test_project_portfolio_free_carryover_scores_are_certified",
         "specs/oracles/dynamic-sbm-scored-carryover-analytical.md",
         "tests/test_dynamic_sbm_scored_carryover_case.py::test_exact_horizon_and_period_accounts_for_scored_carryovers",
         "tests/test_dynamic_sbm_scored_carryover_case.py::test_good_and_bad_carryovers_reconstruct_the_exact_management_account"
-      ]
+      ],
+      "analytical_certificate": {
+        "derivation_locator": "specs/oracles/dynamic-sbm-scored-carryover-analytical.md",
+        "public_api_test_locator": "tests/test_dynamic_sbm_scored_carryover_case.py::test_exact_horizon_and_period_accounts_for_scored_carryovers",
+        "claims": [
+          {
+            "claim_id": "dynamic.sbm.tone_tsutsui_2010.scored_carryover_exact_account",
+            "evidence_kind": "exact_primal_upper_bound",
+            "test_locators": [
+              "tests/test_dynamic_sbm_scored_carryover_case.py::test_exact_horizon_and_period_accounts_for_scored_carryovers",
+              "tests/test_dynamic_sbm_scored_carryover_case.py::test_good_and_bad_carryovers_reconstruct_the_exact_management_account"
+            ],
+            "parameter_scope": {
+              "orientation": [
+                "nonoriented"
+              ],
+              "returns_to_scale": [
+                "vrs"
+              ],
+              "evaluation_protocol": [
+                "joint_horizon_base_score"
+              ],
+              "time_aggregation": [
+                "equal_period_weights"
+              ]
+            },
+            "evaluation_scope": {
+              "kind": "all_fixture_observations"
+            },
+            "result_components": [
+              "horizon_efficiency",
+              "period_efficiency",
+              "input_account",
+              "output_expansion_account",
+              "good_carryover_slack",
+              "bad_carryover_slack",
+              "carryover_target",
+              "continuity_residual",
+              "reconstruction_residual"
+            ],
+            "reference_scope": {
+              "requested_kind": "auto",
+              "resolved_kind": "global",
+              "comparison_population": "full_eligible_sample",
+              "self_membership": "allowed"
+            },
+            "data_scope": {
+              "roles": [
+                "input",
+                "desirable_output",
+                "carry_over"
+              ],
+              "sign_domain": "strictly_positive",
+              "time_structure": "panel",
+              "fixture_shape": {
+                "observations": 4,
+                "inputs": 1,
+                "desirable_outputs": 1,
+                "undesirable_outputs": 0
+              }
+            }
+          }
+        ],
+        "published_reproduction": false,
+        "production_compiler_reused": false
+      }
     },
     "tests": {
       "status": "present",
       "coverage": [
-        "published_crs_input_base_and_ex_post_adjusted_oracles",
+        "project_crs_input_base_and_ex_post_adjusted_regressions",
         "all_three_source_orientations_exact_hand_oracles",
         "orientation_specific_horizon_period_reconstruction",
         "all_four_carryover_types",

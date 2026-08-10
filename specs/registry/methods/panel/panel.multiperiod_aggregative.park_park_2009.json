@@ -349,17 +349,17 @@
       }
     ],
     "oracle": {
-      "status": "reproduced",
+      "status": "cross_implemented",
       "locators": [
-        "Park and Park (2009), defining multiperiod aggregative equations and classification semantics",
-        "tests/test_multiperiod_aggregative_project_case.py::test_project_panel_exercises_all_efficiency_classes_and_sparse_phases",
-        "tests/test_multiperiod_aggregative_project_case.py::test_result_accounts_are_complete_and_respect_projection_identities"
+        "specs/oracles/park-park-multiperiod-project-cross-implementation.md",
+        "tests/test_network_panel_project_independent_oracles.py::test_park_park_common_factor_matches_independent_dense_compiler"
       ]
     },
     "tests": {
       "status": "present",
       "coverage": [
         "project_case_factors_and_efficiency_classes",
+        "independent_dense_input_output_crs_vrs_common_factor_compiler",
         "project_case_period_slack_accounts",
         "strict_two_programmes_per_successful_organization",
         "sparse_period_block_programmes",
@@ -373,7 +373,8 @@
         "canonical_alias_and_eleven_axis_result_metadata"
       ],
       "locators": [
-        "tests/test_multiperiod_aggregative_project_case.py"
+        "tests/test_multiperiod_aggregative_project_case.py",
+        "tests/test_network_panel_project_independent_oracles.py"
       ]
     },
     "benchmarks": [
