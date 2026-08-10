@@ -54,6 +54,7 @@ docs = [
   "sphinx>=8",
   "myst-parser>=4",
   "sphinx-intl>=2.3",
+  "sphinx-copybutton>=0.5.2",
   "sphinxcontrib-bibtex>=2.6",
   "pydata-sphinx-theme>=0.16",
   "sphinx-autodoc-typehints>=2.5",

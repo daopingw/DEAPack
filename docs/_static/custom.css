@@ -7,3 +7,13 @@
   max-width: 58rem;
 }
 
+/* Keep code copying discoverable without requiring a hover first. */
+.highlight button.copybtn {
+  opacity: 0.72;
+}
+
+.highlight button.copybtn:hover,
+.highlight button.copybtn:focus-visible,
+button.copybtn.success {
+  opacity: 1;
+}

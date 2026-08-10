@@ -15,7 +15,12 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
+    "sphinx_copybutton",
 ]
+
+# Copy ordinary code blocks in full while dropping Pygments line numbers and
+# interactive prompts such as ``>>>``, ``...``, and ``$``.
+copybutton_exclude = ".linenos, .gp"
 
 # Sphinx's default follows the floating ``mathjax@4`` CDN tag.  Release builds
 # use an exact upstream version so already-reviewed HTML cannot silently change.

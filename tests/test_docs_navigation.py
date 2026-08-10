@@ -42,3 +42,17 @@ def test_documentation_theme_keeps_section_and_page_navigation_separate() -> Non
         "developer/index.md",
     ):
         assert "```{toctree}" in (ROOT / "docs" / landing).read_text(encoding="utf-8")
+
+
+def test_documentation_code_blocks_enable_one_click_copying() -> None:
+    conf_text = (ROOT / "docs" / "conf.py").read_text(encoding="utf-8")
+
+    assert '"sphinx_copybutton"' in conf_text
+    assert 'copybutton_exclude = ".linenos, .gp"' in conf_text
+
+    project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    constraint = (ROOT / "constraints" / "release-python312.txt").read_text(
+        encoding="utf-8"
+    )
+    assert '"sphinx-copybutton>=0.5.2"' in project
+    assert "sphinx-copybutton==0.5.2" in constraint

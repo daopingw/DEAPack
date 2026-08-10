@@ -11,6 +11,9 @@ def test_consolidated_notice_covers_every_audited_publication_component() -> Non
     for marker in (
         "Sphinx | 9.1.0",
         "PyData Sphinx Theme | 0.19.0",
+        "Sphinx Copybutton | 0.5.2",
+        "ClipboardJS | 2.0.8",
+        "Tabler Icons | Copy/check SVG controls",
         "Bootstrap | 5.3.3",
         "Font Awesome Free | 7.2.0",
         "Pygments | 2.20.0",

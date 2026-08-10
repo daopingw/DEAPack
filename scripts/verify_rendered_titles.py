@@ -12,8 +12,29 @@ _NOTICE_MARKERS = (
     "Third-Party Notices",
     "Sphinx 9.1.0",
     "PyData Sphinx Theme 0.19.0",
+    "Sphinx Copybutton 0.5.2",
+    "ClipboardJS 2.0.8",
+    "Tabler Icons",
     "Font Awesome Free 7.2.0",
 )
+
+_COPYBUTTON_ASSETS = {
+    "custom.css": (".highlight button.copybtn", "opacity: 0.72"),
+    "copybutton.css": (
+        "button.copybtn",
+        "position: absolute",
+        "top: .3em",
+        "right: .3em",
+        "div.highlight",
+        "position: relative",
+    ),
+    "clipboard.min.js": ("clipboard.js v2.0.8", "Licensed MIT"),
+    "copybutton.js": (
+        "div.highlight pre",
+        'class="copybtn',
+        "let exclude = '.linenos, .gp';",
+    ),
+}
 
 
 class _TextExtractor(HTMLParser):
@@ -46,6 +67,30 @@ def verify(site_root: Path) -> None:
     for path, required in pages.items():
         text = _page_text(path)
         missing = [phrase for phrase in required if phrase not in text]
+        if missing:
+            failures.append(
+                f"{path}: missing {', '.join(repr(item) for item in missing)}"
+            )
+
+    quickstart = site_root / "getting-started" / "quickstart.html"
+    if not quickstart.is_file():
+        failures.append(f"rendered page is missing: {quickstart}")
+    else:
+        source = quickstart.read_text(encoding="utf-8")
+        missing_assets = [name for name in _COPYBUTTON_ASSETS if name not in source]
+        if missing_assets:
+            failures.append(
+                f"{quickstart}: missing copy-button assets {missing_assets}"
+            )
+
+    static = site_root / "_static"
+    for name, required in _COPYBUTTON_ASSETS.items():
+        path = static / name
+        if not path.is_file():
+            failures.append(f"rendered copy-button asset is missing: {path}")
+            continue
+        source = path.read_text(encoding="utf-8")
+        missing = [marker for marker in required if marker not in source]
         if missing:
             failures.append(
                 f"{path}: missing {', '.join(repr(item) for item in missing)}"

@@ -14,6 +14,9 @@ its upstream English form; localized narrative does not replace it.
 |---|---:|---|---|
 | Sphinx | 9.1.0 | Generated Documentation site assets | BSD-2-Clause |
 | PyData Sphinx Theme | 0.19.0 | Generated site CSS, JavaScript, templates, and web assets | BSD-3-Clause |
+| Sphinx Copybutton | 0.5.2 | Generated copy-control CSS, JavaScript, and SVG controls | MIT |
+| ClipboardJS | 2.0.8, supplied by Sphinx Copybutton | Generated copy-to-clipboard JavaScript | MIT |
+| Tabler Icons | Copy/check SVG controls supplied by Sphinx Copybutton 0.5.2 | Generated copy controls | MIT |
 | Bootstrap | 5.3.3, supplied by the theme | Generated site CSS and JavaScript | MIT |
 | Font Awesome Free | 7.2.0, supplied by the theme | Generated site code, icons, and webfonts | Code: MIT; icons: CC BY 4.0; fonts: SIL OFL 1.1 |
 | Pygments | 2.20.0 | Generated syntax-highlighting stylesheet | BSD-2-Clause |
@@ -123,11 +126,14 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
-## Bootstrap and Font Awesome code — MIT
+## Copy controls, Bootstrap, and Font Awesome code — MIT
 
-Bootstrap 5.3.3 is copyright 2011-2024 The Bootstrap Authors. Font Awesome
-Free 7.2.0 code is copyright 2026 Fonticons, Inc. Each is distributed under
-the following MIT License:
+Sphinx Copybutton 0.5.2 is copyright 2018 Chris Holdgraf. Its bundled
+ClipboardJS 2.0.8 asset is copyright Zeno Rocha, and its copy/check SVG
+controls come from Tabler Icons, copyright 2020-2026 Paweł Kuna. Bootstrap
+5.3.3 is copyright 2011-2024 The Bootstrap Authors. Font Awesome Free 7.2.0
+code is copyright 2026 Fonticons, Inc. Each is distributed under the following
+MIT License:
 
 ```text
 Permission is hereby granted, free of charge, to any person obtaining a copy

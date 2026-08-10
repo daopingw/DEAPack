@@ -116,6 +116,32 @@ def _inventory_payload() -> dict[str, object]:
                 "source_notice_sha256": "b" * 64,
             },
             {
+                "name": "Sphinx Copybutton",
+                "version": "0.5.2",
+                "license": "MIT",
+                "source_distribution": "sphinx-copybutton",
+                "source_license_files": [
+                    {"path": "LICENSE", "sha256": "9" * 64, "size": 1}
+                ],
+                "bundled_assets": [
+                    {
+                        "name": "ClipboardJS 2.0.8",
+                        "path": "sphinx_copybutton/_static/clipboard.min.js",
+                        "sha256": "8" * 64,
+                    },
+                    {
+                        "name": "Tabler copy icon",
+                        "path": "sphinx_copybutton/_static/copy-button.svg",
+                        "sha256": "8" * 64,
+                    },
+                    {
+                        "name": "Tabler check icon",
+                        "path": "sphinx_copybutton/_static/check-solid.svg",
+                        "sha256": "8" * 64,
+                    },
+                ],
+            },
+            {
                 "name": "Pygments generated stylesheet",
                 "version": "2.20.0",
                 "license": "BSD-2-Clause",
@@ -167,6 +193,7 @@ def test_release_constraint_is_exact_complete_and_direct_only() -> None:
     assert pins["sphinx"] == "9.1.0"
     assert pins["pydata-sphinx-theme"] == "0.19.0"
     assert pins["pygments"] == "2.20.0"
+    assert pins["sphinx-copybutton"] == "0.5.2"
 
 
 @pytest.mark.parametrize(

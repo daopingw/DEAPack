@@ -44,6 +44,7 @@ EXPECTED_PINS = {
     "setuptools": "84.0.0",
     "sphinx": "9.1.0",
     "sphinx-autodoc-typehints": "3.11.0",
+    "sphinx-copybutton": "0.5.2",
     "sphinx-intl": "2.3.2",
     "sphinxcontrib-bibtex": "2.7.0",
     "twine": "7.0.0",
@@ -64,6 +65,7 @@ PROFILES = {
             "setuptools",
             "sphinx",
             "sphinx-autodoc-typehints",
+            "sphinx-copybutton",
             "sphinx-intl",
             "sphinxcontrib-bibtex",
         }
@@ -94,7 +96,7 @@ INVENTORY_LIMITATIONS = (
 
 EXPECTED_MATHJAX_CONFIGURATION = ("docs/conf.py",)
 SITE_CONTRACTS: dict[str, tuple[int, str]] = {
-    "_site/docs/en": (98, "legal/third-party-notices.html"),
+    "_site/docs/en": (108, "legal/third-party-notices.html"),
 }
 SYSTEM_TOOLCHAIN_STATE = "not-required-for-package-documentation"
 
@@ -367,6 +369,7 @@ def _static_asset_inventory(
 ) -> tuple[list[dict[str, object]], dict[str, bytes]]:
     pydata = installed["pydata-sphinx-theme"]
     sphinx = installed["sphinx"]
+    copybutton = installed["sphinx-copybutton"]
     pygments = installed["pygments"]
     bootstrap_path, bootstrap_notice = _distribution_file(
         pydata,
@@ -385,9 +388,39 @@ def _static_asset_inventory(
 
     sphinx_licenses = _license_file_records(sphinx)
     pydata_licenses = _license_file_records(pydata)
+    copybutton_licenses = _license_file_records(copybutton)
     pygments_licenses = _license_file_records(pygments)
-    if not sphinx_licenses or not pydata_licenses or not pygments_licenses:
+    if (
+        not sphinx_licenses
+        or not pydata_licenses
+        or not copybutton_licenses
+        or not pygments_licenses
+    ):
         raise ValueError("rendered-asset producer license evidence is incomplete")
+    copybutton_bundled_assets: list[dict[str, str]] = []
+    for name, suffix, markers in (
+        (
+            "ClipboardJS 2.0.8",
+            "sphinx_copybutton/_static/clipboard.min.js",
+            (b"clipboard.js v2.0.8", b"Licensed MIT"),
+        ),
+        (
+            "Tabler copy icon",
+            "sphinx_copybutton/_static/copy-button.svg",
+            (b"icon-tabler-copy",),
+        ),
+        (
+            "Tabler check icon",
+            "sphinx_copybutton/_static/check-solid.svg",
+            (b"icon-tabler-check",),
+        ),
+    ):
+        path, payload = _distribution_file(copybutton, suffix)
+        if any(marker not in payload for marker in markers):
+            raise ValueError(f"Sphinx Copybutton bundled asset drifted: {name}")
+        copybutton_bundled_assets.append(
+            {"name": name, "path": path, "sha256": _sha256_bytes(payload)}
+        )
     assets = [
         {
             "name": "Sphinx generated HTML assets",
@@ -418,6 +451,14 @@ def _static_asset_inventory(
             "source_distribution": "pydata-sphinx-theme",
             "source_notice_path": fontawesome_path,
             "source_notice_sha256": _sha256_bytes(fontawesome_notice),
+        },
+        {
+            "name": "Sphinx Copybutton",
+            "version": copybutton.version,
+            "license": "MIT",
+            "source_distribution": "sphinx-copybutton",
+            "source_license_files": copybutton_licenses,
+            "bundled_assets": copybutton_bundled_assets,
         },
         {
             "name": "Pygments generated stylesheet",
@@ -505,6 +546,9 @@ def _site_record(
     for marker in (
         b"Sphinx 9.1.0",
         b"PyData Sphinx Theme 0.19.0",
+        b"Sphinx Copybutton 0.5.2",
+        b"ClipboardJS 2.0.8",
+        b"Tabler Icons",
         b"Bootstrap 5.3.3",
         b"Font Awesome Free 7.2.0",
         b"MathJax 4.0.0",
@@ -739,6 +783,7 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
         "PyData Sphinx Theme": "0.19.0",
         "Bootstrap": "5.3.3",
         "Font Awesome Free": "7.2.0",
+        "Sphinx Copybutton": "0.5.2",
         "Pygments generated stylesheet": "2.20.0",
         "MathJax": MATHJAX_VERSION,
     }
@@ -764,6 +809,7 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
         if name in {
             "Sphinx generated HTML assets",
             "PyData Sphinx Theme",
+            "Sphinx Copybutton",
             "Pygments generated stylesheet",
         }:
             files = item.get("source_license_files")
@@ -778,6 +824,32 @@ def validate_inventory_payload(value: object) -> dict[str, object]:
                     or record.get("size", 0) <= 0
                 ):
                     raise ValueError("rendered component license file is invalid")
+            if name == "Sphinx Copybutton":
+                bundled = item.get("bundled_assets")
+                expected_bundled = {
+                    "ClipboardJS 2.0.8",
+                    "Tabler copy icon",
+                    "Tabler check icon",
+                }
+                observed_bundled = (
+                    {record.get("name") for record in bundled}
+                    if isinstance(bundled, list)
+                    and all(isinstance(record, Mapping) for record in bundled)
+                    else set()
+                )
+                if (
+                    not isinstance(bundled, list)
+                    or observed_bundled != expected_bundled
+                    or len(bundled) != 3
+                ):
+                    raise ValueError("Sphinx Copybutton bundled assets are incomplete")
+                if any(
+                    set(record) != {"name", "path", "sha256"}
+                    or not _safe_relative_path(record.get("path"))
+                    or not _is_sha256(record.get("sha256"))
+                    for record in bundled
+                ):
+                    raise ValueError("Sphinx Copybutton bundled asset is invalid")
         elif name in {"Bootstrap", "Font Awesome Free"}:
             if not _safe_relative_path(
                 item.get("source_notice_path")
