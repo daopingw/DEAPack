@@ -11,6 +11,8 @@ Python 3.10, makes audit CSV quoting portable across supported Python versions,
 and validates the exact release wheel on CPython 3.10--3.13 before PyPI
 publication. It also corrects public method-verification metadata and removes
 a spurious warning from the supported default environmental DDF configuration.
+The SciPy floor is now 1.15, avoiding older HiGHS presolve releases that can
+misclassify feasible FRH/FCH mixed-integer programmes as infeasible.
 Public estimator and result APIs are unchanged. See
 [`RELEASE_NOTES_2.0.1.md`](RELEASE_NOTES_2.0.1.md).
 

@@ -19,6 +19,9 @@ not require an API migration.
   read-only mappings.
 - Replaced the `datetime.UTC` benchmark spelling introduced in Python 3.11
   with `timezone.utc`, restoring benchmark execution on Python 3.10.
+- Raised the SciPy floor to 1.15. Earlier SciPy releases can incorrectly have
+  HiGHS presolve classify feasible FRH/FCH mixed-integer programmes as
+  infeasible; the affected fixed nesting cases pass from SciPy 1.15 onward.
 - Made audit-bundle CSV output quote every field so embedded carriage returns
   and line feeds remain one spreadsheet-safe cell on every supported Python
   version.

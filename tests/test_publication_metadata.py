@@ -81,6 +81,16 @@ def test_distribution_uses_supported_pep639_license_metadata() -> None:
     )
 
 
+def test_minimum_dependency_job_exercises_the_declared_scipy_floor() -> None:
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    workflow = (ROOT / ".github" / "workflows" / "tests.yml").read_text(
+        encoding="utf-8"
+    )
+
+    assert '"scipy>=1.15"' in pyproject
+    assert "'scipy==1.15.0'" in workflow
+
+
 def test_component_licenses_are_scoped_and_data_mapping_fails_closed() -> None:
     component_map = (ROOT / "COMPONENT_LICENSES.md").read_text(encoding="utf-8")
     data_map = (ROOT / "DATA_LICENSES.md").read_text(encoding="utf-8")
