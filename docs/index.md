@@ -7,12 +7,23 @@ This site is the complete package reference. The
 [companion Handbook](https://github.com/daopingw/DEAPack/blob/main/book/index.md)
 explains theory, model choice, interpretation, and research workflow; this
 Documentation focuses on installation, precise behavior, APIs, diagnostics,
-and extension. The link opens the maintained English manuscript source while
-public Read the Docs deployment is still being verified.
+and extension. The Handbook has its own publication and versioning route.
 
-```{warning}
-Version 2.0 is under active development and is not yet a drop-in replacement
-for DEAPack 0.1.x.
+```{note}
+DEAPack 2.0.0 is the first stable 2.x release. It is not a drop-in replacement
+for DEAPack 0.1.x; start with the installation and migration guides if you are
+upgrading an existing project.
+```
+
+```{toctree}
+:hidden:
+:maxdepth: 3
+
+getting-started/index
+user-guide/index
+reference/index
+api/index
+developer/index
 ```
 
 ## Choose a mainstream starting point
@@ -37,154 +48,6 @@ page. Historical acronyms that share a mechanism do not need separate engines.
 The {doc}`user-guide/method-catalog` gives the complete installed inventory
 and separates Handbook mother-model routes from source-qualified
 Documentation-only leaves.
-
-```{toctree}
-:maxdepth: 2
-:caption: Getting started
-
-getting-started/installation
-getting-started/quickstart
-getting-started/migration
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: User guide
-
-user-guide/data
-user-guide/method-catalog
-user-guide/reference-sets
-user-guide/results
-user-guide/visualization
-user-guide/reporting
-user-guide/datasets
-user-guide/citing
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Model and analysis reference
-
-models/radial
-models/fdh
-models/fch
-models/frh
-models/cost
-models/revenue
-models/profit
-models/nerlovian
-models/profitability
-models/generalized-distance
-models/multiplicative
-models/polyhedral-cone-ratio
-models/additive
-models/bam
-models/sbm
-models/ebm
-models/directional
-models/range-directional
-models/environmental-directional
-models/zhou-ang-wang-non-chp
-models/undesirable-sbm
-models/by-production
-models/by-production-fgl
-models/material-balance
-evaluation/cross-efficiency
-evaluation/super-efficiency
-evaluation/directional-super-efficiency
-evaluation/super-sbm
-analysis/metafrontier
-analysis/reference-frequency
-models/fare-grosskopf-network-radial
-models/kao-hwang-network
-models/chen-additive-network
-models/cook-general-additive-network
-models/tone-tsutsui-network-sbm
-models/kalhor-kazemi-matin-environmental-network
-network/sequential
-panel/multiperiod-aggregative
-models/tone-tsutsui-dynamic-sbm
-models/tone-tsutsui-dynamic-network-sbm
-analysis/scale-efficiency
-analysis/local-returns-to-scale
-analysis/scale-elasticity
-analysis/relative-directional-scale-elasticity
-analysis/mpss
-analysis/physical-capacity
-analysis/allocative-decomposition
-analysis/revenue-allocative-decomposition
-analysis/profitability-decomposition
-```
-
-## Productivity documentation map
-
-The companion Handbook develops four productivity routes: adjacent-period
-Malmquist, Luenberger, Malmquist--Luenberger with undesirable outputs, and
-Hicks--Moorsteen. The package Documentation also records reference-policy
-companions and specialized research leaves so an implemented public method is
-discoverable without turning every technical variation into another Handbook
-route.
-
-The FGNZ constructor is the source-qualified preset inside the retained
-Malmquist route; it is not a fifth route. Enhanced FGNZ and Ray--Desli are
-specialized sections of the [Malmquist package reference](analysis/malmquist.md).
-Their availability in Python likewise does not promote them into the Handbook
-progression. The exact machine-readable placement of every productivity entry
-appears in the [method catalog](user-guide/method-catalog.md).
-
-```{toctree}
-:maxdepth: 2
-:caption: Productivity — four Handbook routes
-
-analysis/malmquist
-analysis/luenberger
-analysis/malmquist-luenberger
-analysis/hicks-moorsteen
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Productivity — supporting and sensitivity companions
-
-analysis/global-malmquist
-analysis/global-malmquist-luenberger
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Productivity — specialized Documentation leaves
-
-analysis/biennial-malmquist
-analysis/apz-malmquist-luenberger
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: API
-
-api/index
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Development
-
-developer/architecture
-developer/contributing
-developer/extending
-developer/performance
-developer/versioning
-developer/hosting
-developer/translations
-```
-
-```{toctree}
-:maxdepth: 1
-:caption: Legal and notices
-
-legal/component-licensing
-legal/third-party-notices
-```
 
 ## Project lifecycle
 

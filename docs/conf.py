@@ -23,7 +23,14 @@ mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"
 
 source_suffix = {".md": "markdown", ".rst": "restructuredtext"}
 root_doc = "index"
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build",
+    # Local release operations are intentionally outside the public reader
+    # documentation tree.
+    "developer/releasing.md",
+    "Thumbs.db",
+    ".DS_Store",
+]
 
 language = "en"
 locale_dirs = ["locale/"]
@@ -53,6 +60,15 @@ html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_theme_options = {
     "logo": {"text": "DEAPack Documentation"},
+    # Keep the header at the level of the five reader-facing sections.  Their
+    # children belong in the primary (left) sidebar, not in a giant ``More``
+    # menu in the navbar.
+    "header_links_before_dropdown": 5,
+    "navigation_depth": 3,
+    # Open the active branch only; expanding every model family would merely
+    # move the former navbar overload into the left sidebar.
+    "show_nav_level": 1,
+    "collapse_navigation": False,
     "show_toc_level": 2,
     "navigation_with_keys": True,
     "use_edit_page_button": True,

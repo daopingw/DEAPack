@@ -383,19 +383,26 @@ def test_reader_facing_diagnostics_scope_map_matches_catalog() -> None:
     assert "not an influence, outlier, or statistical-inference claim" in scope_map
 
 
-def test_docs_index_separates_core_productivity_routes_from_technical_leaves() -> None:
-    index_text = (Path(__file__).resolve().parents[1] / "docs" / "index.md").read_text(
-        encoding="utf-8"
-    )
+def test_docs_reference_separates_core_productivity_routes_from_technical_leaves() -> (
+    None
+):
+    index_text = (
+        Path(__file__).resolve().parents[1]
+        / "docs"
+        / "reference"
+        / "productivity-analysis.md"
+    ).read_text(encoding="utf-8")
 
-    def _toctree_entries(caption: str, next_caption: str) -> list[str]:
-        block = index_text.split(f":caption: {caption}", maxsplit=1)[1].split(
-            f":caption: {next_caption}", maxsplit=1
-        )[0]
+    def _toctree_entries(caption: str, next_caption: str | None = None) -> list[str]:
+        block = index_text.split(f":caption: {caption}", maxsplit=1)[1]
+        if next_caption is None:
+            block = block.split("```", maxsplit=1)[0]
+        else:
+            block = block.split(f":caption: {next_caption}", maxsplit=1)[0]
         return [
-            line.strip()
+            line.strip().lstrip("/")
             for line in block.splitlines()
-            if line.strip().startswith("analysis/")
+            if line.strip().lstrip("/").startswith("analysis/")
         ]
 
     assert _toctree_entries(
@@ -416,7 +423,6 @@ def test_docs_index_separates_core_productivity_routes_from_technical_leaves() -
     ]
     assert _toctree_entries(
         "Productivity — specialized Documentation leaves",
-        "API",
     ) == [
         "analysis/biennial-malmquist",
         "analysis/apz-malmquist-luenberger",
