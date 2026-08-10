@@ -17,8 +17,7 @@ inside the existing Network DEA family.
 
 The defining formulation is
 [Chen, Cook, Li, and Zhu (2009)](https://doi.org/10.1016/j.ejor.2008.05.011).
-The implemented envelopment projection and the 24-insurer numerical oracle
-follow
+The implemented envelopment projection follows
 [Lim and Zhu (2019)](https://doi.org/10.1016/j.omega.2018.06.005).
 
 ```{important}
@@ -112,21 +111,20 @@ from deapack import (
     ChenCookLiZhuAdditiveDEA,
     NetworkData,
     TwoStageSeriesSpec,
+    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
+roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=("operation_expenses", "insurance_expenses"),
-    intermediates=(
-        "direct_written_premiums",
-        "reinsurance_premiums",
-    ),
-    outputs=("underwriting_profit", "investment_profit"),
-    stage_names=("premium_acquisition", "profit_generation"),
-    link_id="premium_handoff",
+    inputs=roles["inputs"],
+    intermediates=roles["intermediates"],
+    outputs=roles["outputs"],
+    stage_names=("screening", "service_delivery"),
+    link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu="company", spec=spec)
+data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
 
 result = ChenCookLiZhuAdditiveDEA(
     returns_to_scale="vrs",
@@ -151,10 +149,10 @@ result.summary()[[
 ]]
 ```
 
-The complete CRS and VRS system/stage tables reproduce the Lim--Zhu
-24-insurer oracle to four decimal places. Under VRS, for example, Taiwan
-Fire’s system, acquisition, and profit-generation scores are approximately
-0.8673, 0.9902, and 0.7426.
+The project-authored case exercises both CRS and VRS system/stage accounts,
+including scale, resource-drag, conversion-drag, and service-mix behavior.
+Independent source-equation and cross-implementation tests validate the
+certified scope without claiming reproduction of a published data table.
 
 ## Stage-attribution policy
 
@@ -220,7 +218,7 @@ $Z\mu$. The generic `target` is missing because this source account does
 not select one common handoff target.
 
 ```python
-result.links_for("Taiwan Fire")[[
+result.links_for("balanced")[[
     "variable",
     "source_target",
     "target_target",

@@ -167,20 +167,20 @@ from deapack import (
     KaoHwangRelationalDEA,
     NetworkData,
     TwoStageSeriesSpec,
+    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
+roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=("operation_expenses", "insurance_expenses"),
-    intermediates=(
-        "direct_written_premiums",
-        "reinsurance_premiums",
-    ),
-    outputs=("underwriting_profit", "investment_profit"),
-    stage_names=("premium_acquisition", "profit_generation"),
+    inputs=roles["inputs"],
+    intermediates=roles["intermediates"],
+    outputs=roles["outputs"],
+    stage_names=("screening", "service_delivery"),
+    link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu="company", spec=spec)
+data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
 result = KaoHwangRelationalDEA().fit(data)
 ```
 

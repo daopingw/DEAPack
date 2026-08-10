@@ -52,6 +52,26 @@ SEQUENCES = (
         expected_fences=1,
         core_indices=(0,),
     ),
+    DocumentSequence(
+        path="docs/api/network.md",
+        expected_fences=3,
+        core_indices=(0, 1, 2),
+    ),
+    DocumentSequence(
+        path="docs/models/fare-grosskopf-network-radial.md",
+        expected_fences=2,
+        core_indices=(0, 1),
+    ),
+    DocumentSequence(
+        path="docs/models/kao-hwang-network.md",
+        expected_fences=3,
+        core_indices=(0, 1, 2),
+    ),
+    DocumentSequence(
+        path="docs/models/chen-additive-network.md",
+        expected_fences=2,
+        core_indices=(0, 1),
+    ),
 )
 
 

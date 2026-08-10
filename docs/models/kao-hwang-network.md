@@ -78,21 +78,20 @@ from deapack import (
     KaoHwangRelationalDEA,
     NetworkData,
     TwoStageSeriesSpec,
+    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
+roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=("operation_expenses", "insurance_expenses"),
-    intermediates=(
-        "direct_written_premiums",
-        "reinsurance_premiums",
-    ),
-    outputs=("underwriting_profit", "investment_profit"),
-    stage_names=("premium_acquisition", "profit_generation"),
-    link_id="premium_handoff",
+    inputs=roles["inputs"],
+    intermediates=roles["intermediates"],
+    outputs=roles["outputs"],
+    stage_names=("screening", "service_delivery"),
+    link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu="company", spec=spec)
+data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
 
 result = KaoHwangRelationalDEA(
     decomposition="maximize_stage_1",
@@ -115,9 +114,10 @@ result.summary()[[
 ]]
 ```
 
-The 24 system/stage triples reproduce the published insurance oracle. For
-example, Fubon's system, acquisition, and profit-generation efficiencies are
-approximately $0.7670$, $0.8307$, and $0.9233$.
+The five project-authored observations exercise a proportional scale pair,
+resource and conversion drag, and a different service mix. The repository
+checks the CRS system account against an independent Färe--Grosskopf radial
+implementation; the example does not reproduce a published data table.
 
 ## Stage-attribution policy
 
@@ -149,13 +149,12 @@ bounded.summary()[[
 ]]
 ```
 
-The bundled insurance data produce coincident bounds for every insurer.
-Other data can produce a unique system score and a nonunique process
-attribution. The selected process scores are accounting attributions under
-the declared policy, not estimates of causal contributions. If a requested
-secondary programme or its postsolve account is not certified, the system
-score may remain available while both process scores and their component rows
-are withheld atomically.
+The selected process scores are accounting attributions under the declared
+policy, not estimates of causal contributions. Inspect
+`decomposition_unique` rather than assuming that a unique system score also
+identifies unique process scores. If a requested secondary programme or its
+postsolve account is not certified, the system score may remain available
+while both process scores and their component rows are withheld atomically.
 
 ## Link-feasible targets and peers
 
@@ -182,7 +181,7 @@ dual account. The midpoint is a deterministic source-qualified selection, not
 a uniquely preferred management plan.
 
 ```python
-result.links.query("dmu_id == 'Fubon'")[[
+result.links.query("dmu_id == 'balanced'")[[
     "link_id",
     "variable",
     "downstream_requirement",

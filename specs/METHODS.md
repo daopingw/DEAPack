@@ -1117,8 +1117,10 @@ Implemented public foundations include:
   oracle, and a conditional input-CRS score-only cross-implementation check
   against the Kao--Hwang primary programme;
 - Kao--Hwang CRS relational and Chen--Cook--Li--Zhu CRS/VRS additive
-  closed two-stage network accounts, each with the complete 24-insurer score
-  oracle and source-qualified Lim--Zhu projections;
+  closed two-stage network accounts, validated on a project-authored service
+  case through independent source-equation and cross-implementation oracles,
+  with source-qualified Lim--Zhu projections and no published-data
+  reproduction claim;
 - Cook--Zhu--Bi--Yang CRS additive accounting for open DAGs, with the
   published seller--buyer and three-stage oracles;
 - Tone--Tsutsui network SBM under CRS/VRS and fixed/free link control, with

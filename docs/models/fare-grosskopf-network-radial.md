@@ -38,31 +38,30 @@ Kao--Hwang relational stage account.
 
 ## Complete example
 
-The insurance data used by Kao and Hwang supply a familiar two-process
-organization. Expenses support premium acquisition; the two premium measures
-are internal products; and underwriting and investment profits are final
-outcomes.
+The project-authored public-service case supplies a compact two-process
+organization. Staff time and platform capacity support case screening; the
+two screening measures are internal products; and timely closures and public
+value are final outcomes.
 
 ```python
 from deapack import (
     FareGrosskopfNetworkRadialDEA,
     NetworkData,
     TwoStageSeriesSpec,
+    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
+roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=("operation_expenses", "insurance_expenses"),
-    intermediates=(
-        "direct_written_premiums",
-        "reinsurance_premiums",
-    ),
-    outputs=("underwriting_profit", "investment_profit"),
-    stage_names=("premium_acquisition", "profit_generation"),
-    link_id="premium_handoff",
+    inputs=roles["inputs"],
+    intermediates=roles["intermediates"],
+    outputs=roles["outputs"],
+    stage_names=("screening", "service_delivery"),
+    link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu="company", spec=spec)
+data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
 
 result = FareGrosskopfNetworkRadialDEA(
     orientation="output",
@@ -83,12 +82,13 @@ result.summary()[[
 ```
 
 The default is `orientation="input"`; the example makes the output choice
-explicit. The repository verifies the matched CRS system account against an
-independently compiled Kao--Hwang primary programme on all 24 insurers and
-checks the output programme against a production-independent dense compiler.
-That is conditional equation, duality, and cross-implementation evidence. It
-is **not** a claim that Färe and Grosskopf published this insurance table or
-that an original Färe--Grosskopf numerical table has been reproduced.
+explicit. The five project-authored observations include a proportional
+scale pair, resource and conversion drag, and a different service mix. The
+repository verifies the matched CRS system account against an independently
+compiled Kao--Hwang primary programme and checks the output programme against
+a production-independent dense compiler. This is cross-implementation
+evidence on a synthetic case, not a reproduction of a published numerical
+table.
 
 ## Technology and score
 
@@ -235,7 +235,7 @@ when the primary LP has residual slack. No residual-slack completion is used,
 and neither orientation turns these targets into process-efficiency scores.
 
 ```python
-result.links_for("Fubon")[[
+result.links_for("balanced")[[
     "variable",
     "observed",
     "upstream_supply",
