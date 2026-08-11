@@ -130,11 +130,14 @@ retains `group_theta` and `meta_theta`.
 Group membership is part of `DEAData`:
 
 ```python
+from deapack import DEAData, load_dataset
+
+frame = load_dataset("metafrontier_groups")
 data = DEAData.from_frame(
     frame,
-    dmu="organization",
+    dmu="dmu",
     group="technology_group",
-    inputs=["labor", "capital"],
+    inputs=["resource"],
     outputs=["service"],
 )
 ```

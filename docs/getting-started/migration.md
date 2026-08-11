@@ -27,15 +27,17 @@ attributes. In 2.x, declare roles once, fit a model, and retain the returned
 result:
 
 ```python
-from deapack import BCCInput, DEAData, ReferenceSpec
-
-data = DEAData.from_frame(
-    frame,
-    dmu="organization",
-    period="year",
-    inputs=["labour", "capital"],
-    outputs="service",
+from deapack import (
+    BCCInput,
+    DEAData,
+    ReferenceSpec,
+    dataset_info,
+    load_dataset,
 )
+
+dataset_name = "multiperiod_trajectory_contrast"
+frame = load_dataset(dataset_name)
+data = DEAData.from_frame(frame, **dataset_info(dataset_name).roles)
 model = BCCInput(
     reference=ReferenceSpec(kind="contemporaneous"),
 )

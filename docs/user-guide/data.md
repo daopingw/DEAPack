@@ -1,19 +1,24 @@
 # Data schema
 
 `DEAData` separates the user-facing table from immutable numerical arrays used
-by the solver. DMUs are rows in a DataFrame; the numerical compiler performs
-the matrix orientation once.
+by the solver. A cross-section has one row per DMU; a panel has one row per
+`(DMU, period)` observation. The numerical compiler performs the matrix
+orientation once. Every example below defines its own input table and can be
+run independently.
 
 ```python
-from deapack import DEAData
+from deapack import DEAData, load_dataset
 
-data = DEAData.from_frame(
-    frame,
-    dmu="region",
-    period="year",
-    inputs=["capital", "labor", "energy"],
+panel_frame = load_dataset("environmental_panel")
+print(panel_frame.head())
+
+panel_data = DEAData.from_frame(
+    panel_frame,
+    dmu="dmu",
+    period="period",
+    inputs=["energy", "labor"],
     polluting_inputs=["energy"],
-    outputs=["gdp"],
+    outputs=["electricity"],
     bad_outputs=["co2"],
 )
 ```
@@ -49,15 +54,17 @@ room to the best values in the same VRS comparison population. It does not
 pre-shift the data. Use:
 
 ```python
-from deapack import DEAData, RDM
+from deapack import DEAData, RDM, load_dataset
 
-data = DEAData.from_frame(
-    frame,
-    dmu="branch",
-    inputs=["net_resource_account"],
-    outputs=["change_in_service_balance"],
+signed_frame = load_dataset("range_directional_signed")
+
+signed_data = DEAData.from_frame(
+    signed_frame,
+    dmu="dmu",
+    inputs="input",
+    outputs="output",
 )
-result = RDM().fit(data)
+result = RDM().fit(signed_data)
 ```
 
 The variable documentation must still say why less input and more output are
@@ -76,11 +83,14 @@ from deapack import (
     DynamicData,
     DynamicSBMSpec,
     PeriodProductionSpec,
+    load_dataset,
 )
+
+dynamic_frame = load_dataset("dynamic_capacity_backlog")
 
 spec = DynamicSBMSpec(
     production=PeriodProductionSpec(
-        inputs=("labor", "capital"),
+        inputs="resource",
         outputs="service",
     ),
     carryovers=(
@@ -89,11 +99,11 @@ spec = DynamicSBMSpec(
     ),
 )
 dynamic_data = DynamicData.from_frame(
-    frame,
+    dynamic_frame,
     spec=spec,
     dmu="organization",
-    period="year",
-    period_order=(2021, 2022, 2023, 2024),
+    period="period",
+    period_order=(1, 2),
 )
 ```
 

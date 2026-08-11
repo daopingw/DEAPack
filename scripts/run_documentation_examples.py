@@ -37,10 +37,31 @@ SEQUENCES = (
         core_indices=(0, 1, 2),
     ),
     DocumentSequence(
+        path="docs/getting-started/migration.md",
+        expected_fences=2,
+        core_indices=(0, 1),
+    ),
+    DocumentSequence(
+        path="docs/user-guide/data.md",
+        expected_fences=4,
+        core_indices=(0, 1, 2, 3),
+    ),
+    DocumentSequence(
         path="docs/analysis/reference-frequency.md",
         expected_fences=4,
         core_indices=(0, 1, 2),
         visualization_indices=(3,),
+    ),
+    DocumentSequence(
+        path="docs/analysis/local-returns-to-scale.md",
+        expected_fences=1,
+        core_indices=(0,),
+    ),
+    DocumentSequence(
+        path="docs/analysis/metafrontier.md",
+        expected_fences=8,
+        core_indices=(0, 1, 2, 3, 4),
+        visualization_indices=(5, 7),
     ),
     DocumentSequence(
         path="docs/user-guide/reference-sets.md",

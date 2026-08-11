@@ -54,14 +54,16 @@ and RTS classification are withheld.
 ## Example
 
 ```python
-from deapack import DEAData, local_returns_to_scale
-
-data = DEAData.from_frame(
-    frame,
-    dmu="unit",
-    inputs=["labour", "capital"],
-    outputs="service",
+from deapack import (
+    DEAData,
+    dataset_info,
+    load_dataset,
+    local_returns_to_scale,
 )
+
+dataset_name = "frontier_1x1"
+frame = load_dataset(dataset_name)
+data = DEAData.from_frame(frame, **dataset_info(dataset_name).roles)
 
 result = local_returns_to_scale(data, orientation="input")
 result.summary()[
