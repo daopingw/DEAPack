@@ -33,8 +33,8 @@ class DocumentSequence:
 SEQUENCES = (
     DocumentSequence(
         path="docs/getting-started/quickstart.md",
-        expected_fences=5,
-        core_indices=(0, 1, 2, 3, 4),
+        expected_fences=3,
+        core_indices=(0, 1, 2),
     ),
     DocumentSequence(
         path="docs/analysis/reference-frequency.md",
