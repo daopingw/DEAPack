@@ -1,6 +1,12 @@
 # DEAPack
 
-[![PyPI](https://img.shields.io/pypi/v/DEAPack.svg)](https://pypi.org/project/DEAPack/) [![Python 3.10–3.13](https://img.shields.io/badge/python-3.10--3.13-blue.svg)](pyproject.toml) [![Documentation](https://readthedocs.org/projects/deapack/badge/?version=latest)](https://deapack.readthedocs.io/) [![Tests](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml/badge.svg)](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml) [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/DEAPack.svg)](https://pypi.org/project/DEAPack/)
+[![PyPI downloads](https://api.pepy.tech/badge/deapack)](https://pepy.tech/projects/deapack)
+[![PyPI downloads/month](https://api.pepy.tech/badge/deapack/month)](https://pepy.tech/projects/deapack)
+[![Python 3.10–3.13](https://img.shields.io/badge/python-3.10--3.13-blue.svg)](pyproject.toml)
+[![Documentation](https://readthedocs.org/projects/deapack/badge/?version=latest)](https://deapack.readthedocs.io/)
+[![Tests](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml/badge.svg)](https://github.com/daopingw/DEAPack/actions/workflows/tests.yml)
+[![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 
 DEAPack is an open-source Python framework for data envelopment analysis
 (DEA), efficiency measurement, productivity analysis, and environmental
