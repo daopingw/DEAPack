@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,10 +14,6 @@ def test_reference_frequency_documentation_preserves_narrow_claim() -> None:
         "which observed organizations recur in the peer plans selected by the solver",
         "result.reference_frequency()",
         "reference_frequency(result)",
-        '"reference_frequency"',
-        '"self_reference_frequency"',
-        '"other_reference_frequency"',
-        '"reference_rate"',
         "active edges",
         "$\\tau_{\\mathrm{peer}}$",
         "\\lambda_{oj}>\\tau_{\\mathrm{peer}}",
@@ -42,6 +39,14 @@ def test_reference_frequency_documentation_preserves_narrow_claim() -> None:
         "../user-guide/visualization",
     ):
         assert " ".join(statement.split()) in normalized
+    # Result fields may be explained in prose instead of a quoted column list.
+    for field in (
+        "reference_frequency",
+        "self_reference_frequency",
+        "other_reference_frequency",
+        "reference_rate",
+    ):
+        assert re.search(rf"\b{re.escape(field)}\b", text), field
     for forbidden in (
         "reference_share",
         "Share of 8 evaluations",

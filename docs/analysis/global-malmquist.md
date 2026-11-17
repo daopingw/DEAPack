@@ -87,8 +87,9 @@ historical indexes must be recomputed.
 
 ## Selecting the dates to compare
 
-By default, the model compares consecutive periods. Using the same `data`,
-request every forward pair or choose a particular pair:
+By default, the model compares consecutive periods
+(`comparison_pairs="adjacent"`). Using the same `data`, request every forward
+pair or choose a particular pair:
 
 ```python
 # Compare all forward pairs.

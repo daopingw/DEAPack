@@ -90,6 +90,10 @@ so that $F_j=F_j^{\mathrm{self}}+F_j^{\mathrm{other}}$. The reported
 `reference_rate` is $F_j/n$, where $n$ is the complete number of evaluated
 organizations.
 
+In `frequency.reference_frame`, `reference_frequency` is the total count;
+`self_reference_frequency` counts the organization's own evaluation, and
+`other_reference_frequency` counts evaluations of other organizations.
+
 The statistic counts **reported active edges above the source peer-reporting
 threshold**, not intensity magnitudes. It is not an exact mathematical-support
 count at or below that threshold. DEAPack does not add $\lambda_{oj}$ across
