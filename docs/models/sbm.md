@@ -29,6 +29,27 @@ All three models support CRS, VRS, NIRS, and NDRS, use the shared reference
 layer, compile each distinct reference set once, and solve one sparse linear
 program per evaluated observation. VRS is the default.
 
+## Example data
+
+The examples below use one three-unit teaching dataset throughout. It has
+two resources and two service outputs. Prepare it once, then choose the
+orientation that matches your question:
+
+```python
+from deapack import DEAData, load_dataset
+
+frame = load_dataset("sbm_slack_contrast")
+data = DEAData.from_frame(
+    frame,
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["core_service", "quality_service"],
+)
+```
+
+The three fits below use CRS so that only orientation changes between them.
+This dataset was constructed for DEAPack; it is not Tone's original sample.
+
 ## Common production account
 
 For evaluated observation $o$, let $x_o\in\mathbb{R}_{++}^{m}$ contain
@@ -143,6 +164,7 @@ from deapack import InputSBM
 input_result = InputSBM(
     returns_to_scale="crs",
 ).fit(data)
+input_result.summary()
 ```
 
 `InputSBM` and `InputRussell` are exact aliases for
@@ -186,6 +208,7 @@ from deapack import OutputSBM
 output_result = OutputSBM(
     returns_to_scale="crs",
 ).fit(data)
+output_result.summary()
 ```
 
 `OutputSBM` and `OutputRussell` are exact aliases for
@@ -218,90 +241,51 @@ from deapack import SBM
 joint_result = SBM(
     returns_to_scale="crs",
 ).fit(data)
+joint_result.summary()
 ```
 
 `SBM` and `ERG` are exact aliases for `SlacksBasedDEA`.
 
-## Tone's five units: published and package evidence
+## Compare the three orientations
 
-`sbm_slack_contrast` contains a neutral two-resource, two-service contrast.
-Tone (2001), Table 1:
-
-```python
-import pandas as pd
-
-from deapack import (
-    DEAData,
-    InputSBM,
-    OutputSBM,
-    SBM,
-    dataset_info,
-    load_dataset,
-)
-
-frame = load_dataset("sbm_slack_contrast")
-roles = dataset_info("sbm_slack_contrast").roles
-data = DEAData.from_frame(
-    frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
-)
-
-input_result = InputSBM(returns_to_scale="crs").fit(data)
-output_result = OutputSBM(returns_to_scale="crs").fit(data)
-joint_result = SBM(returns_to_scale="crs").fit(data)
-
-scores = pd.concat(
-    {
-        "input": input_result.summary().set_index("dmu_id")["score"],
-        "output": output_result.summary().set_index("dmu_id")["score"],
-        "non_oriented": joint_result.summary().set_index("dmu_id")["score"],
-    },
-    axis=1,
-)
-```
-
-The calibrated output is:
+Read the `score` column from each fitted result. For the teaching dataset,
+the three CRS comparisons give:
 
 | DMU | Input | Output | Non-oriented |
 |---|---:|---:|---:|
-| A | 0.848485 | 0.818182 | 0.797980 |
-| B | 0.719697 | 0.606061 | 0.568182 |
-| C | 1.000000 | 1.000000 | 1.000000 |
-| D | 1.000000 | 0.666667 | 0.666667 |
-| E | 1.000000 | 1.000000 | 1.000000 |
+| Anchor | 1.000000 | 1.000000 | 1.000000 |
+| Balanced | 0.500000 | 0.500000 | 0.500000 |
+| Uneven | 0.416667 | 0.333333 | 0.277778 |
 
-Only the non-oriented column is a published numerical reproduction: it
-reproduces Tone's Table 2 CRS scores within solver tolerance. The input- and
-output-oriented columns are DEAPack calculations from the checked equations,
-not reproductions of published table values. A published numerical oracle for
-those two columns has not been located and is deferred to a future version.
+Uneven's scores differ because each orientation values a different set of
+improvements. They are not alternative estimates of one common efficiency
+percentage. These are calculations from DEAPack's analytical teaching data,
+not a reproduction of a published empirical table.
 
-The published non-oriented slack reproduction is:
+The non-oriented model reports the following slacks in original units:
 
-| DMU | `input_1` | `input_2` | `output_1` | `output_2` |
+| DMU | `resource_a` | `resource_b` | `core_service` | `quality_service` |
 |---|---:|---:|---:|---:|
-| A | 0.000000 | 0.357143 | 0.714286 | 0.000000 |
-| B | 0.000000 | 0.642857 | 2.285714 | 0.000000 |
-| C | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
-| D | 0.000000 | 0.000000 | 0.000000 | 1.000000 |
-| E | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| Anchor | 0 | 0 | 0 | 0 |
+| Balanced | 1 | 1 | 0 | 0 |
+| Uneven | 1 | 2 | 0 | 1 |
 
-Use the long-form outputs to audit the account:
+View the slack table:
 
 ```python
-joint_result.slacks[[
-    "dmu_id",
-    "role",
-    "variable",
-    "slack",
-    "normalizer",
-    "normalized_slack",
-    "average_weight",
-]]
-joint_result.targets_for("A")
-joint_result.peers("A")
+joint_result.slacks
+```
+
+Inspect Uneven's target:
+
+```python
+joint_result.targets_for("Uneven")
+```
+
+Find the reference units that form that target:
+
+```python
+joint_result.peers("Uneven")
 ```
 
 ### Exact VRS orientation oracle
@@ -309,7 +293,12 @@ joint_result.peers("A")
 The following small VRS case provides exact values for all three operating
 questions:
 
+<details>
+<summary>Optional: an exact VRS comparison</summary>
+
 ```python
+import pandas as pd
+
 audit_frame = pd.DataFrame({
     "dmu": ["A", "B", "O"],
     "x1": [2.0, 4.0, 4.0],
@@ -359,6 +348,8 @@ $$
 `output_o["efficiency"] * output_o["output_expansion_factor"]` reconstructs
 one. The three exact values prevent the oriented and joint measures from
 being treated as aliases.
+
+</details>
 
 ## Efficiency flags and normalized diagnostics
 
@@ -456,7 +447,7 @@ view:
 ```python
 figure = joint_result.plot(
     kind="improvement",
-    dmu_id="A",
+    dmu_id="Uneven",
 )
 ```
 
@@ -477,6 +468,14 @@ average account, and headline score. A panel result requires `period=...`
 when the same DMU occurs more than once.
 
 ## Postsolve certification and fail-closed release
+
+DEAPack validates the fitted solution automatically. Check `score_valid`
+before interpreting the reported efficiency; a missing score is not zero.
+The common workflow for results and status fields is described in
+{doc}`../user-guide/results`.
+
+<details>
+<summary>Technical details: numerical validation</summary>
 
 DEAPack does not publish a classic SBM result merely because a backend labels
 an incumbent `optimal`. For every evaluated observation it first applies the
@@ -507,6 +506,8 @@ observation does not prevent later observations from being evaluated.
 does not make the returned peers or target unique, causal, or prescriptive; it
 certifies that the published solver-selected plan is numerically optimal and
 internally consistent with the fitted SBM institution.
+
+</details>
 
 ## Direct oriented programmes and Charnes--Cooper
 
@@ -605,22 +606,9 @@ classes.
 
 ## Constructor contract
 
-All three canonical classes inherit the same constructor parameters:
-
-```python
-InputOrientedSlacksBasedDEA(
-    returns_to_scale="vrs",
-    reference=None,
-    peer_eligibility=None,
-    solver=None,
-    solver_options=None,
-    tolerance=1e-7,
-    peer_tolerance=None,
-)
-```
-
-Replace the class name with `OutputOrientedSlacksBasedDEA` or
-`SlacksBasedDEA` for the other operating questions. Passing both `solver` and
+The three classes share the reference, comparison-eligibility, solver, and
+tolerance options documented in {doc}`../api/models`. You do not need to
+specify unchanged defaults in a normal fit. Passing both `solver` and
 `solver_options` is invalid.
 
 ```{autosummary}

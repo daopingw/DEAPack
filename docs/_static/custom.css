@@ -17,3 +17,25 @@
 button.copybtn.success {
   opacity: 1;
 }
+
+/* Keep advanced notes available without interrupting the first example. */
+.bd-article details {
+  margin-block: 1rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--pst-color-border);
+  border-radius: 0.25rem;
+}
+
+.bd-article details > summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bd-article details[open] > summary {
+  margin-bottom: 0.75rem;
+}
+
+.bd-article details > summary:focus-visible {
+  outline: 2px solid var(--pst-color-primary);
+  outline-offset: 0.2rem;
+}

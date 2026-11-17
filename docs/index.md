@@ -9,12 +9,6 @@ targets, slacks, and peers. It is especially useful when a study extends
 beyond classical DEA into economic, environmental, network, dynamic, or
 productivity analysis.
 
-```{note}
-DEAPack 2.0.1 is the current stable release of the redesigned 2.x API. If you are
-upgrading from DEAPack 0.1.x or ProdPack, begin with the
-{doc}`getting-started/migration` guide.
-```
-
 ```{toctree}
 :hidden:
 :maxdepth: 3
@@ -30,8 +24,11 @@ developer/index
 
 1. {doc}`getting-started/installation` — install DEAPack and optional extras.
 2. {doc}`getting-started/quickstart` — fit a first model and inspect its result.
-3. {doc}`user-guide/results` — understand scores, targets, peers, validity, and
-   diagnostics before reporting them.
+3. {doc}`user-guide/results` — understand your scores, targets, and peers.
+
+Upgrading an existing DEAPack 0.1.x or ProdPack study? Follow the
+{doc}`getting-started/migration` guide. New users can start directly with the
+installation and quickstart pages.
 
 ## Why DEAPack?
 
@@ -81,10 +78,9 @@ data, and visualize the result.
 | Network, dynamic, panel, and metafrontier structures | {doc}`reference/network-dynamic` and {doc}`analysis/metafrontier` |
 | Super-efficiency, cross-efficiency, diagnostics, and communication | {doc}`reference/evaluation`, {doc}`user-guide/reporting`, and {doc}`user-guide/visualization` |
 
-The {doc}`user-guide/method-catalog` is the authoritative inventory of methods
-available in the installed release. It distinguishes principal families,
-presets, and specialized methods without implying that planned work is already
-executable.
+Use {doc}`user-guide/method-catalog` to choose a method for your research question
+and find its example. The installed catalog lists available methods, not planned
+features.
 
 ## Documentation map
 

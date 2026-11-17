@@ -1,25 +1,17 @@
-# Share a result without losing its meaning
+(share-a-result-without-losing-its-meaning)=
+# Saving and sharing results
 
-A fitted DEA result often has two audiences. Analysts need the complete public
-tables, diagnostics, metadata, and alternative-optimum qualifications.
-Decision makers usually need a shorter first view: what was estimated, which
-performance measure is being shown, how many observations solved
-successfully, and what must not be inferred from the numbers.
+A short report is useful for reading and sharing a fitted analysis. A complete
+export is useful when another analyst needs all the result tables. Neither
+requires fitting the model again.
 
-Every `DEAResult` can prepare that first view directly:
+Start with `result` from the {doc}`../getting-started/quickstart`, or from your
+own fitted model. Run the following two examples in the same session. The
+later panel example requires a separate panel result, as explained there.
+
+## View a short report
 
 ```python
-from deapack import BCC, DEAData, load_dataset
-
-frame = load_dataset("frontier_1x1")
-data = DEAData.from_frame(
-    frame,
-    dmu="dmu",
-    inputs="input",
-    outputs="output",
-)
-result = BCC(orientation="input").fit(data)
-
 brief = result.report()
 brief
 ```
@@ -30,7 +22,11 @@ declared, uses the result's registered performance semantics, and reports
 solver coverage separately from performance. It does not turn a failed solve
 into an inefficient observation.
 
-## Save one self-contained file
+The reading table is limited to 24 rows. Use the complete export below when
+you need every observation rather than a compact overview.
+
+(save-one-self-contained-file)=
+## Save an HTML report
 
 The brief contains its own styling and has no JavaScript or external asset
 dependency:
@@ -38,6 +34,12 @@ dependency:
 ```python
 brief.save("bcc-result-brief.html")
 ```
+
+Open the saved file in a browser, or send it to a colleague. This saves a
+local file; it does not upload or publish anything online.
+
+<details>
+<summary>Technical details: HTML output and embedding</summary>
 
 `save()` accepts `.html` and `.htm` paths only. It returns the path after the
 file has been written. The document is encoded before the destination is
@@ -54,14 +56,34 @@ All labels and result values are escaped before insertion into the document.
 This matters when DMU identifiers or metadata originated outside the
 application.
 
-## Select a declared measure, period, or organization
+</details>
 
-Omitting `metric` asks DEAPack to choose the safest registered performance
-measure available in the result:
+(select-a-declared-measure-period-or-organization)=
+## Select a measure, period, or organization
+
+The default report selects the model's declared performance measure. You can
+request another supported measure explicitly; for example, with a BCC result:
 
 ```python
 brief = result.report(metric="efficiency")
 ```
+
+For panel results, select a period, optionally followed by one organization.
+Here `panel_result` means a fitted panel analysis containing 2024 and
+`"Hospital A"`, not the Quickstart's cross-sectional result. Replace those
+selectors with values from your study:
+
+```python
+period_brief = panel_result.report(period=2024)
+hospital_brief = panel_result.report(period=2024, dmu_id="Hospital A")
+```
+
+An unknown selection or a selection with no valid performance value raises an
+error instead of producing a misleading report. The detailed selection rules
+are below.
+
+<details>
+<summary>Technical details: measure validity and panel coverage</summary>
 
 An explicit metric must have declared result semantics. DEAPack does not guess
 whether an arbitrary numerical column is a score, whether larger or smaller
@@ -81,14 +103,6 @@ completion has another final status. The report keeps that completion status
 in its solver-coverage audit while requiring `primary_solver_status="optimal"`
 and `score_valid=True` for the performance table.
 
-Panel results can be narrowed to one period, and any result can be narrowed to
-one DMU:
-
-```python
-period_brief = panel_result.report(period=2024)
-hospital_brief = panel_result.report(period=2024, dmu_id="Hospital A")
-```
-
 Unlike the performance plot, a brief is not limited to four periods. It can
 summarize the complete selected panel and samples its 24 displayed finite
 rows across periods so a later period does not disappear merely because
@@ -99,6 +113,8 @@ audit categories.
 Unknown periods, DMUs, report kinds, themes, details, and undeclared metrics
 fail with `ReportNotAvailableError`. Available values are included in
 selection errors where that is safe and useful.
+
+</details>
 
 ## What the brief deliberately does not claim
 
@@ -126,7 +142,8 @@ result.metadata
 The brief is therefore a reliable entry point to the result, not a replacement
 for the empirical study record.
 
-## Publish an illustrated result in one call
+(publish-an-illustrated-result-in-one-call)=
+## Save a package with figures
 
 When readers need both an attractive entry point and the evidence behind it,
 create a publication bundle directly from the fitted result:
@@ -134,6 +151,30 @@ create a publication bundle directly from the fitted result:
 ```python
 publication_path = result.publish("bcc-result-publication.zip")
 ```
+
+Despite the method name, `publish()` creates a local ZIP file; it does not
+upload the study. Extract it, then open `index.html` to read the report with
+its figures. The archive also includes the complete result tables.
+
+Install plotting support if you have not already done so:
+
+```bash
+python -m pip install 'DEAPack[viz]'
+```
+
+To include applicable plots for one selected organization:
+
+```python
+focused_path = result.publish("bcc-result-publication-E.zip", dmu_id="E")
+```
+
+Only plots supported by the fitted result are included. Plots needing a
+period, organization, or carry-over choice are not silently guessed; supply
+those choices when they are part of your study. The archive records why a
+plot was included or omitted.
+
+<details>
+<summary>Technical details: publication contents, selection, and safe export</summary>
 
 That single call creates an atomic ZIP containing:
 
@@ -145,26 +186,10 @@ That single call creates an atomic ZIP containing:
 - `audit/result-audit.zip`, the complete ordinary audit bundle described in
   the next section.
 
-Extract the archive before opening `index.html`, so its relative figure and
-audit links remain available. Matplotlib is needed only for this illustrated
-output:
-
-```bash
-python -m pip install 'DEAPack[viz]'
-```
-
 The default is deliberately conservative. DEAPack uses
 `result.available_plots()` as the semantic authority and includes only views
 that need no unreported analyst choice. It does not silently choose an
-organization, period, or carry-over. Supply those selectors when the research
-question has already made the choice:
-
-```python
-focused_path = result.publish(
-    "bcc-result-publication-E.zip",
-    dmu_id="E",
-)
-```
+organization, period, or carry-over.
 
 For an applicable panel or dynamic result, the same API accepts `period=` and
 `variable=`. `metric=` selects a registered performance measure; it does not
@@ -197,7 +222,10 @@ occurred, which operating change managers prefer, whether a displayed selected
 optimum is unique, or whether its implementation is feasible outside the
 model.
 
-## Hand off the complete audit record in one file
+</details>
+
+(hand-off-the-complete-audit-record-in-one-file)=
+## Export all result tables
 
 The brief is intentionally compact: its reading table is bounded at 24 rows.
 When another analyst needs the complete fitted record, create a deterministic
@@ -213,6 +241,12 @@ imports no plotting backend. Use `publish` when the recipient needs an
 illustrated reading layer as well: the publication ZIP is larger, but embeds
 that same complete audit bundle unchanged rather than replacing it with
 figures. In both cases the numerical result is fitted only once.
+
+This is also the appropriate export for investigating a failed fit: it keeps
+the available diagnostics without presenting failed values as performance.
+
+<details>
+<summary>Technical details: archive contents and reproducibility</summary>
 
 The archive contains:
 
@@ -258,7 +292,13 @@ metadata remain in the archive; the manifest records
 `substantive_brief=false`. The audit view does not promote a failed numerical
 value into a performance result.
 
-## Stable first-version boundary
+</details>
+
+(stable-first-version-boundary)=
+## Advanced interface and extension reference
+
+<details>
+<summary>Reporting defaults, supported outputs, and third-party results</summary>
 
 Version 1 of the reporting interface has one kind, detail level, and theme:
 
@@ -288,3 +328,5 @@ exporter itself, not arbitrary code hidden inside a third-party property. Do
 not mutate result tables concurrently while an export is running. This
 extension protocol applies to `export_result_bundle`, not `publish_result`;
 illustrated publication remains restricted to the exact built-in `DEAResult`.
+
+</details>

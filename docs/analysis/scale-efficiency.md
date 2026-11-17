@@ -26,16 +26,16 @@ data = DEAData.from_frame(
 )
 
 result = scale_efficiency(data, orientation="input")
-columns = [
-    "dmu_id",
-    "crs_efficiency",
-    "vrs_efficiency",
-    "scale_efficiency",
-    "score_valid",
-    "is_scale_efficient",
-]
-print(result.summary()[columns].to_string(index=False))
+result.summary()
 ```
+
+Compare `crs_efficiency` with `vrs_efficiency`; their ratio is
+`scale_efficiency`. A ratio of one indicates scale efficiency under this
+comparison, not necessarily technical efficiency. Check `score_valid` before
+interpreting the ratio. See {doc}`../user-guide/results` for result tables and
+validity fields.
+
+## Computation and validity
 
 This analysis performs two score-only component fits: one under CRS and one
 under VRS. The economic technologies and scores remain distinct, while the

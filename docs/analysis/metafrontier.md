@@ -33,35 +33,26 @@ technology groups:
 from deapack import (
     DEAData,
     RadialMetafrontierDEA,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("metafrontier_groups")
-roles = dataset_info("metafrontier_groups").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    group=roles["group"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    group="technology_group",
+    inputs="resource",
+    outputs="service",
 )
 
 result = RadialMetafrontierDEA().fit(data)
-result.summary()[
-    [
-        "dmu_id",
-        "group",
-        "group_efficiency",
-        "meta_efficiency",
-        "metatechnology_ratio",
-        "decomposition_certified",
-    ]
-]
+result.summary()
 ```
 
 The default profile is output oriented and VRS, matching the primary
-article's main DEA specification.
+article's main DEA specification. Read `group_efficiency`, `meta_efficiency`,
+and `metatechnology_ratio`; check `decomposition_certified` before reporting
+their multiplicative relation.
 
 | DMU | Group efficiency | Meta efficiency | MTR/TGR |
 |---|---:|---:|---:|
@@ -390,14 +381,10 @@ the ledger, or does not reconstruct the bounded identity causes plotting to
 fail closed rather than display a repaired account. If no certified rows
 remain, no figure is produced.
 
-For a multi-period panel, select the displayed period explicitly:
-
-```python
-panel_figure = panel_result.plot(
-    kind="metafrontier",
-    period=2025,
-)
-```
+If you have fitted a multi-period panel and stored it as `panel_result`, select
+one of its periods explicitly, for example
+`panel_result.plot(kind="metafrontier", period=2025)` when 2025 is present.
+The cross-sectional example above does not create such a panel result.
 
 This selection does not refit a contemporaneous frontier: the source profile
 still uses the all-study-period pooled reference policy described above. The

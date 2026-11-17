@@ -47,18 +47,12 @@ prices = PriceData.common(
 )
 
 result = RevenueEfficiency(returns_to_scale="vrs").fit(data, prices)
-result.summary()[
-    [
-        "dmu_id",
-        "observed_revenue",
-        "maximum_revenue",
-        "revenue_efficiency",
-    ]
-]
+result.summary()
 ```
 
-The bundled example is also an exact regression oracle. Under VRS its maximum
-revenues are $45,46,44,46,46$; under CRS they are
+Read `observed_revenue`, `maximum_revenue`, and `revenue_efficiency`
+together. Under the example's VRS assumption, maximum revenues are
+$45,46,44,46,46$; under CRS they are
 $59,46,44,92,121$. The difference is economically material: CRS permits
 scaling observed activities, whereas VRS restricts the comparison to their
 convex hull.
@@ -96,6 +90,14 @@ observed market price or a causal estimate.
 
 ## Certified release contract
 
+Validation runs automatically. Check `score_valid` before using the revenue
+efficiency ratio, and check the corresponding validity field before using
+targets, peers, or duals. See {doc}`../user-guide/results` for interpreting
+missing results and status fields.
+
+<details>
+<summary>Technical details: validation and numerical precision</summary>
+
 DEAPack does not treat a backend `optimal` label as a complete economic
 certificate. It checks primal and dual optimality and then reconstructs the
 input-capacity account, target outputs, maximum revenue, revenue gap, expansion
@@ -114,6 +116,8 @@ The published maximum, gap, and ratios are the same raw account that passed
 certification. They are not independently rounded or set to zero afterward;
 this preserves the public identities even when valid monetary values are very
 small.
+
+</details>
 
 ## External references and undefined ratios
 

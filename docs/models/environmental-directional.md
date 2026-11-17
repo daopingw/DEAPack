@@ -16,6 +16,40 @@ and positive $g^b$ undesirable-output reduction. The direction states the
 counterfactual; the technology states which counterfactuals are attainable.
 Those two choices are recorded separately.
 
+## First example
+
+The Chung--Färe--Grosskopf preset keeps inputs fixed while expanding
+desirable outputs and reducing undesirable outputs in their observed
+proportions. It uses constant returns to scale and common-factor weak
+disposal. In this panel example, each period supplies its own reference
+observations (`"contemporaneous"`).
+
+```python
+from deapack import ChungFareGrosskopfDDF, DEAData, load_dataset
+
+frame = load_dataset("environmental_panel")
+data = DEAData.from_frame(
+    frame,
+    dmu="dmu",
+    period="period",
+    inputs=["energy", "labor"],
+    outputs="electricity",
+    bad_outputs="co2",
+)
+
+cfg = ChungFareGrosskopfDDF(reference="contemporaneous").fit(data)
+cfg.summary()
+```
+
+Read `distance` ($\beta$) as the amount of joint output expansion and emissions
+reduction available under this comparison. For example, $\beta=0.10$ means
+10% more desirable output and 10% less undesirable output with the inputs fixed.
+Check `score_valid` before interpreting a value. The bundled data are
+synthetic teaching data, not the original article's empirical sample.
+
+For a different production assumption or improvement direction, choose the
+appropriate model below; these models are not interchangeable shortcuts.
+
 ## Choose the production account first
 
 DEAPack exposes distinct public paths because weak disposability is an
@@ -29,13 +63,10 @@ economic axiom, not one universal linear equation.
 | `ActivitySpecificWeakDisposalDDF` | Kuosmanen activity-specific weak disposal with a user-declared DDF direction | VRS, fixed |
 | `KuosmanenWeakDisposalDDF` | source-name alias of `ActivitySpecificWeakDisposalDDF` | VRS, fixed |
 | `EnvironmentalDirectionalDistanceDEA(disposability="strong")` | strong bad-output disposal | declared RTS |
-| `EnvironmentalDirectionalDistanceDEA(disposability="weak")` | legacy bad-output equality only | declared RTS; deprecated spelling |
 
-The last row is retained temporarily so existing projects reproduce their
-old numbers. It emits `FutureWarning`, reports
-`bad_output_disposability="not_identified"`, and records
-`compatibility_alias="weak"`. It must not be cited as either of the two named
-weak-disposal technologies.
+If you used the old `disposability="weak"` selector, see the migration
+section at the end of this page. Do not use that deprecated spelling for a
+new analysis.
 
 The Zhou--Ang--Wang method is documented separately because it replaces one
 common directional step with account-specific fuel, electricity, and carbon
@@ -60,8 +91,11 @@ this domain. Adding $\mathbf 1^\top\lambda=1$ would invalidate that argument;
 `CommonFactorWeakDisposalDDF` therefore has no `returns_to_scale` parameter.
 
 `ChungFareGrosskopfDDF` additionally fixes the source direction
-$(g^x,g^y,g^b)=(0,y_o,b_o)`. It asks how far desirable outputs can rise while
+$(g^x,g^y,g^b)=(0,y_o,b_o)$. It asks how far desirable outputs can rise while
 undesirable outputs fall in observed proportions, holding inputs fixed.
+
+<details>
+<summary>Source editions and teaching-data provenance</summary>
 
 The fixed-input choice has a documented source-edition boundary. The 1997
 journal article defines the output set $P(x)$ and uses the signed direction
@@ -79,27 +113,16 @@ and results computed from it are not a published numerical reproduction. A
 published CFG numerical reproduction is unavailable and deferred to a later
 version.
 
-```python
-from deapack import ChungFareGrosskopfDDF, DEAData, load_dataset
-
-frame = load_dataset("environmental_panel")
-data = DEAData.from_frame(
-    frame,
-    dmu="dmu",
-    period="period",
-    inputs=["energy", "labor"],
-    outputs="electricity",
-    bad_outputs="co2",
-)
-
-cfg = ChungFareGrosskopfDDF(reference="contemporaneous").fit(data)
-```
+</details>
 
 Null jointness is a separate restriction. The source preset requests it and
 validates that an observed activity with positive desirable output does not
 have zero total bad output.
 
 ### Exact reference-set audit
+
+<details>
+<summary>Worked comparison with an external reference</summary>
 
 Consider two operating plans in a DEAPack analytical teaching fixture. These
 numbers are not a numerical example published in the source:
@@ -136,7 +159,12 @@ global Malmquist--Luenberger index is a different operator over a fixed
 full-sample technology. In particular,
 `ChungFareGrosskopfDDF(reference="global")` is not GML.
 
+</details>
+
 ## Comparable operating populations
+
+<details>
+<summary>Optional: restrict eligible reference units</summary>
 
 An environmental benchmark is credible only when its operating comparison is
 credible. `PeerEligibility` can therefore be supplied to the generic
@@ -159,6 +187,8 @@ available on activity-specific weak disposal, by-production, material-balance,
 or Zhou--Ang--Wang routes, whose distinct production accounts require their
 own evidence and audit. See {doc}`../user-guide/reference-sets` for the
 declared-policy schema and reporting checklist.
+
+</details>
 
 ## Activity-specific weak disposal
 
@@ -205,6 +235,9 @@ This class is deliberately VRS. Dropping its convexity equation makes
 $\tau$ redundant and reduces the technology to the CRS equality
 construction; that reduction is not a separate “Kuosmanen CRS” method.
 
+<details>
+<summary>Technical details: activity-specific verification</summary>
+
 The repository's claim-scoped analytical certificate checks the VRS
 activity-specific programme independently of the production compiler. On an
 exact three-activity fixture it supplies a primal--dual proof of
@@ -216,6 +249,8 @@ disposal, alternative directions, temporal references, or inference. The shared
 common-factor and strong-disposal kernel has its own separately bounded core-policy
 certificate described below. See
 `specs/oracles/activity-specific-weak-disposal-analytical.md`.
+
+</details>
 
 ## Strong disposal
 
@@ -236,6 +271,9 @@ engineering effort, or causal regulatory burden.
 Strong disposal is incompatible with the package's null-jointness restriction
 and the conflicting combination is rejected.
 
+<details>
+<summary>Technical details: common-factor and strong-disposal verification</summary>
+
 The separate core-policy certificate assembles the generic environmental DDF
 programmes without importing DEAPack's production compiler. It checks a non-CFG
 direction on the CRS common-factor technology, all four supported strong-disposal
@@ -245,7 +283,24 @@ reproduction, and it does not certify the deprecated equality-plus-general-RTS
 compatibility path. See
 `specs/oracles/environmental-ddf-core-disposal-policies-analytical.md`.
 
+</details>
+
 ## Results and efficiency flags
+
+Start with `distance` ($\beta$) and `score_valid`. For the first example, a
+positive distance represents scope for the stated joint improvement. The
+`efficiency` field is the display transformation `1 / (1 + beta)`, not a
+different environmental DEA estimate. Check the corresponding validity
+field before using targets, slacks, or peers; missing results are not zeros.
+See {doc}`../user-guide/results` for the common result workflow.
+
+With an external or cross-period reference, a negative distance can be a
+valid signed comparison: the assessed production plan lies outside that
+reference technology. Do not interpret it as negative efficiency or replace
+it with zero.
+
+<details>
+<summary>Technical details: validity, membership, and solver metadata</summary>
 
 A certified primary programme reports the native distance $\beta$, declared
 directions, solver diagnostics, and complete technology identity. Targets and
@@ -299,35 +354,23 @@ otherwise certified row. `certificate_extra_solver_calls` is separately
 zero because LP and economic release certification reuses returned solutions;
 it must not be read as the total number of membership tasks.
 
-### Open one certified operating plan
+</details>
 
-The existing `improvement` plot turns a certified nonnegative common-factor
-DDF result into an original-unit operating ledger. It separates the common
-commitment $\beta g$ from any additional variable-specific slack found by the
-completion programme, then reports the selected target without putting energy,
-labour, electricity, and emissions on a fictitious common quantity scale.
+### View one unit's improvement plan
+
+Use `cfg` from the first example to see Central's 2020 result. The plot
+separates the directional change $\beta g$ from any remaining slack adjustment
+and shows the resulting target. Each variable keeps its original unit.
 
 ```python
-from deapack import CommonFactorWeakDisposalDDF, DEAData, load_dataset
-
-frame = load_dataset("environmental_panel")
-data = DEAData.from_frame(
-    frame,
-    dmu="dmu",
-    period="period",
-    inputs=["energy", "labor"],
-    outputs="electricity",
-    bad_outputs="co2",
-)
-result = CommonFactorWeakDisposalDDF(
-    input_direction="zeros",
-    output_direction="observed",
-    bad_output_direction="observed",
-    reference="contemporaneous",
-).fit(data)
-
-result.plot(kind="improvement", dmu_id="Central", period=2020)
+cfg.plot(kind="improvement", dmu_id="Central", period=2020)
 ```
+
+The target is one feasible benchmark under the selected model, not an
+engineering design, a least-cost plan, or evidence of a causal effect.
+
+<details>
+<summary>Supported models and plot validation</summary>
 
 This reporting contract is deliberately narrow. It accepts the family-level
 CRS common-factor weak-disposal model and the exact
@@ -355,6 +398,8 @@ returns to scale, and reference information. It is one solver-selected
 feasible benchmark, not a uniqueness claim, causal estimate, engineering
 design, investment recommendation, or cost calculation.
 
+</details>
+
 `is_directionally_efficient` means that the selected operating programme
 cannot be enlarged. It is not automatically a general
 Pareto--Koopmans certificate. Equality-based weak-disposal paths do not add
@@ -366,6 +411,9 @@ positive distance or remaining permitted slack can still establish
 Null jointness is optional on the generic and activity-specific classes. When
 requested, DEAPack checks the observed activities explicitly; it is never
 inferred merely from the word “weak.”
+
+<details>
+<summary>Technical details: numerical solution checks</summary>
 
 The shared environmental kernel used by
 `EnvironmentalDirectionalDistanceDEA`, `CommonFactorWeakDisposalDDF`, and
@@ -389,7 +437,18 @@ to original units before `dual_valid=True`. These postsolve checks use no additi
 optimization task. They do not turn the deprecated `"weak"` compatibility selector
 into a named weak-disposal technology.
 
+</details>
+
 ## Migration from the old selector
+
+<details>
+<summary>For code written with the deprecated weak-disposal selector</summary>
+
+`EnvironmentalDirectionalDistanceDEA(disposability="weak")` is retained
+temporarily to reproduce old results. It emits `FutureWarning`, reports
+`bad_output_disposability="not_identified"`, and records
+`compatibility_alias="weak"`. It must not be cited as either of the two named
+weak-disposal technologies.
 
 Old code continues to run for one compatibility cycle:
 
@@ -416,6 +475,8 @@ new score happens to be numerically closest:
 
 By-production, material-balance, explicit-treatment, and undesirable-output
 SBM models remain different production accounts.
+
+</details>
 
 ```{autosummary}
 ChungFareGrosskopfDDF

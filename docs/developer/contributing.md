@@ -13,6 +13,26 @@ and an
 [editorial or translation suggestion](https://github.com/daopingw/DEAPack/issues/new?template=documentation-translation.yml).
 Blank issues remain available when none of those forms fits.
 
+## Install a development checkout
+
+Ordinary users should follow {doc}`../getting-started/installation`. To edit
+the source or build its tests and documentation, use a separate environment:
+
+```bash
+git clone https://github.com/daopingw/DEAPack.git
+cd DEAPack
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[dev,docs,test,viz]"
+```
+
+On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
+The `-e` option makes source changes visible without reinstalling the package.
+The checkout contains the lowercase `deapack` package; historical uppercase
+code is retained in Git history, not exposed by the current installation.
+
+## Contribution terms
+
 Software commits require a DCO 1.1 `Signed-off-by` line and are contributed
 under `GPL-3.0-only` (inbound = outbound). Project-owned original package
 Documentation prose is contributed under `CC-BY-NC-SA-4.0`, while executable

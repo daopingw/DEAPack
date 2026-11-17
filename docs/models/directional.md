@@ -40,9 +40,14 @@ result = DDF(
     output_direction="observed",
     returns_to_scale="vrs",
 ).fit(data)
+result.summary()
 ```
 
 `DDF` is the discoverability alias for `DirectionalDistanceDEA`.
+In this example, inputs contract and outputs expand in their observed
+proportions under variable returns to scale. Read `distance` ($\beta$) as
+the attainable amount of this joint improvement, not as a percentage
+efficiency score.
 
 ## Direction specifications
 
@@ -69,7 +74,61 @@ component. These choices change the estimand; they are not neutral plotting
 options. Custom mappings and arrays should therefore be accompanied by their
 economic rationale and provenance.
 
-## Keep the operating programme and comparison rights distinct
+(three-observed-direction-contracts)=
+## Compare three improvement directions
+
+Holding the data, eligible references, and VRS technology fixed does not make
+different directions interchangeable. The same data can answer three
+different questions. First, how much can inputs fall while outputs are
+maintained?
+
+```python
+resource_result = DDF(
+    input_direction="observed",
+    output_direction="zeros",
+    returns_to_scale="vrs",
+).fit(data)
+resource_result.summary()
+```
+
+Second, how much can outputs rise without increasing inputs?
+
+```python
+service_result = DDF(
+    input_direction="zeros",
+    output_direction="observed",
+    returns_to_scale="vrs",
+).fit(data)
+service_result.summary()
+```
+
+Third, how far can both improvements be made together?
+
+```python
+joint_result = DDF(
+    input_direction="observed",
+    output_direction="observed",
+    returns_to_scale="vrs",
+).fit(data)
+joint_result.summary()
+```
+
+A zero direction means that the first-stage comparison requires no change in
+that role; the input cap or output floor is still maintained. It does not rule
+out an additional
+resource saving or service gain during optional slack completion.
+
+The three native `beta` values must remain attached to their directions. Even
+when every direction uses observed quantities, a larger beta for one contract
+is not evidence that the organization is generically less efficient, that the
+contract is economically preferable, or that its changes are easier to
+implement.
+
+(keep-the-operating-programme-and-comparison-rights-distinct)=
+## Optional: restrict eligible reference units
+
+<details>
+<summary>Comparison groups and reference eligibility</summary>
 
 `DirectionalDistanceDEA` and `DDF` accept an observation-specific
 `PeerEligibility` declaration. `ReferenceSpec` first determines the base
@@ -88,47 +147,7 @@ See {doc}`../user-guide/reference-sets` for construction, audit export, and the
 boundary between this generic policy and named categorical or specialist DEA
 models.
 
-## Three observed-direction contracts
-
-Holding the data, eligible references, and VRS technology fixed does not make
-different directions interchangeable. The following calls declare three
-different first-stage operating contracts:
-
-```python
-programmes = {
-    "save_resources": DDF(
-        input_direction="observed",
-        output_direction="zeros",
-        returns_to_scale="vrs",
-    ),
-    "expand_services": DDF(
-        input_direction="zeros",
-        output_direction="observed",
-        returns_to_scale="vrs",
-    ),
-    "improve_jointly": DDF(
-        input_direction="observed",
-        output_direction="observed",
-        returns_to_scale="vrs",
-    ),
-}
-
-results = {name: model.fit(data) for name, model in programmes.items()}
-```
-
-The first programme requires proportional resource saving while protecting
-the recorded service commitments. The second requires proportional service
-addition without declaring a resource saving; its input inequalities still
-protect the recorded resource budget. The third requires both sides of the
-package to be feasible together. A zero direction means that the first-stage
-package requires no change in that role. It does not rule out an additional
-resource saving or service gain during optional slack completion.
-
-The three native `beta` values must remain attached to their directions. Even
-when every direction uses observed quantities, a larger beta for one contract
-is not evidence that the organization is generically less efficient, that the
-contract is economically preferable, or that its changes are easier to
-implement.
+</details>
 
 ## Result semantics
 
@@ -139,6 +158,13 @@ implement.
   measure;
 - `is_directionally_efficient`: whether $\beta=0$;
 - `is_efficient`: whether $\beta=0$ and all second-phase slacks are zero.
+
+Numerical checks run automatically. Check `score_valid` before interpreting
+the distance, and the corresponding validity field before using a target,
+peer, or dual table. See {doc}`../user-guide/results` for the common workflow.
+
+<details>
+<summary>Technical details: solution validation</summary>
 
 An `optimal` backend label is not by itself a release certificate. The primary
 programme is row-scaled for numerical stability and independently checks
@@ -158,11 +184,16 @@ when the complete input, output, and non-CRS scale account is available.
 Diagnostics retain the raw backend status and certificate residuals. These
 checks are postsolve reconstructions and add no optimization task.
 
+</details>
+
 The target table adds `direction` and `directional_change` columns. With
 `compute_slacks=False`, strong efficiency and targets are intentionally
 missing. A reported target is a benchmark-feasible operating plan under the
 analyst's counterfactual, not automatically a recommendation or an authorized
 commitment.
+
+<details>
+<summary>Technical details: slack completion and provenance</summary>
 
 When slack completion is requested, the second stage holds the optimal
 $\beta$ fixed and maximizes a row-scaled slack sum. The physical slacks remain
@@ -189,6 +220,8 @@ amount of the declared direction package is attainable.
 result.metadata["target_completion_id"]
 # "evaluation.target_completion.pareto_koopmans"
 ```
+
+</details>
 
 When completion succeeds, the selected target is strongly efficient under the
 same ordinary convex input/desirable-output technology. It is one optimum
@@ -242,6 +275,9 @@ free-disposal technology. Extending that protocol identity to weakly disposable
 quantities, fixed or non-discretionary variables, or non-convex technologies
 is deferred to the next version.
 
+<details>
+<summary>Technical details: scope of the analytical verification</summary>
+
 The repository's analytical certificate covers a deliberately narrower
 domain: a self-inclusive cross-sectional global reference, nonnegative
 distance policy, three observed-direction programmes, all four supported
@@ -249,6 +285,8 @@ returns-to-scale assumptions, and separately compiled small dense fixtures.
 It does not certify negative distances, custom or panel reference policies,
 undesirable outputs, every direction resolver, unique peers, or inference.
 See `specs/oracles/directional-distance-analytical.md` for the exact cases.
+
+</details>
 
 ```{autosummary}
 DirectionalDistanceDEA

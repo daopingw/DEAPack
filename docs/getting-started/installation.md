@@ -1,105 +1,93 @@
 # Installation
 
-## Supported Python versions
-
-DEAPack declares support for CPython 3.10, 3.11, 3.12, and 3.13. Use an
-isolated environment and confirm which interpreter created it:
+DEAPack works with Python 3.10–3.13. In a terminal, install it with:
 
 ```bash
-python --version
+python -m pip install DEAPack
+```
+
+In a Jupyter notebook, use `%pip install DEAPack` in a cell instead, then
+restart the kernel if you have just upgraded an imported package. This installs
+into the notebook's active Python environment.
+
+The numerical dependencies and the HiGHS optimization solver are installed
+with DEAPack. You do not need a separate solver executable or a commercial
+solver license for the standard LP models. Continue to the {doc}`quickstart`
+to run your first analysis.
+
+## Add plotting
+
+To create figures from your results, install the plotting extra:
+
+```bash
+python -m pip install "DEAPack[viz]"
+```
+
+Plotting is optional; it is not needed to fit a model. See
+{doc}`../user-guide/visualization` for a first figure.
+
+## Optional: use a separate environment
+
+If you do not already have a project environment, a virtual environment keeps
+its packages separate from other Python projects:
+
+```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
+python -m pip install DEAPack
 ```
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
-The complete test matrix, rather than an unlisted interpreter version, defines
-the supported range for a release.
+If you already use a conda environment, install DEAPack inside that environment;
+there is no need to create a second environment for this guide.
 
-## Stable 2.0 installation
+## Upgrading from an older project
 
-Install the stable `2.0.1` release from PyPI:
+DEAPack 2.x combines efficiency and productivity analysis in the lowercase
+`deapack` package. It is not a drop-in replacement for DEAPack 0.1.x or
+ProdPack. Existing studies should follow the {doc}`migration` guide;
+`import DEAPack` is not an alias for the new API.
+
+## Recording an analysis for reproduction
+
+For a paper or archived study, record the version used:
+
+```python
+import deapack
+
+print(deapack.__version__)
+```
+
+Someone reproducing that study should install the recorded version, for example:
 
 ```bash
 python -m pip install "DEAPack==2.0.1"
 ```
 
-DEAPack 2.x is not a drop-in replacement for DEAPack 0.1.x. To work from the
-current source, clone the repository and install the package in editable form:
+The unpinned installation at the top of this page is convenient for learning;
+it does not freeze future package updates. For source checkouts, also record
+the commit. Cite the software and model as described in
+{doc}`../user-guide/citing`. Use a specific pre-release only when the study
+requires it, and record its full version rather than using `--pre` to select
+an unspecified candidate.
 
-```bash
-git clone https://github.com/daopingw/DEAPack.git
-cd DEAPack
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e .
+## Troubleshooting
+
+If Python cannot import DEAPack, check that your terminal or notebook uses the
+environment where you installed it. In that Python session, inspect:
+
+```python
+import deapack
+
+print(deapack.__version__)
+print(deapack.__file__)
 ```
 
-Contributors should install the development and documentation tools used by
-the repository checks:
+- After an upgrade in a notebook, restart the kernel before importing again.
+- If a plotting import fails, install `DEAPack[viz]` in that same environment.
+- If an ordinary LP asks for a separate solver executable, check that you are
+  using the intended 2.x installation.
 
-```bash
-python -m pip install -e '.[dev,docs,viz]'
-```
-
-The current source checkout and built 2.x wheel contain the lowercase
-`deapack` package only. The historical uppercase runtime remains available in
-Git history, not in the current source tree. Existing 0.1.x and ProdPack
-studies therefore require the manual review in {doc}`migration`; do not rely
-on `import DEAPack` forwarding to the new API.
-
-The base numerical installation uses NumPy, pandas, SciPy, and the HiGHS LP
-solver bundled through SciPy. It does not require users to locate a separate
-CBC or commercial-solver executable.
-
-Verify the active environment and imported source:
-
-```bash
-python -c "import deapack; print(deapack.__version__); print(deapack.__file__)"
-```
-
-## Stable, pre-release, and exact research installs
-
-For a reproducible stable installation, pin the exact release:
-
-```bash
-python -m pip install "DEAPack==2.0.1"
-```
-
-For contribution work, prefer an editable checkout. For research, record the
-installed version and commit or release tag; do not cite a moving branch as if
-it were an archival release.
-
-An alpha, beta, or release candidate remains a pre-release even when it is
-installable. Record its full version and commit, read the migration notes, and
-do not use `--pre` as a substitute for selecting and auditing an exact
-release. A tagged release remains distinct from a passing local candidate
-build.
-
-## Optional features
-
-```bash
-python -m pip install -e '.[viz]'   # Matplotlib result figures
-python -m pip install -e '.[docs]'  # Sphinx package Documentation
-python -m pip install -e '.[test]'  # test runner and schema checks
-```
-
-Static plotting and documentation are optional so that the numerical
-installation stays predictable. The current public visualization backend is
-Matplotlib. Interactive graphics and geospatial maps remain next-version
-backends; DEAPack does not advertise installation extras that merely install
-Plotly or GeoPandas without a public result adapter.
-
-## Troubleshooting the environment
-
-- If `deapack.__file__` points outside the intended environment, deactivate
-  it, remove the unintended installation from that environment, and reinstall
-  from the repository root.
-- If plotting imports fail, install the `viz` extra; the numerical package
-  deliberately does not import Matplotlib during fitting.
-- If a solver executable is requested for an ordinary LP, check that the
-  intended 2.x environment is active. The default backend is SciPy/HiGHS and
-  needs no separate executable.
-- If legacy imports fail, use the migration guide. Installing from the 2.x
-  repository does not expose the historical uppercase package.
+Installing from GitHub, editable installs, and developer dependencies are
+covered in {doc}`../developer/contributing`; they are not required to use the
+package.

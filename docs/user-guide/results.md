@@ -1,13 +1,76 @@
-# Result contract
+(result-contract)=
+# Understanding results
 
-Every model returns a `DEAResult`. Native model values are kept separate from
-standardized display efficiency.
+After fitting a model, use the returned `result` to view its scores, targets,
+and reference units. You do not need to work with solver arrays or format a
+table yourself.
+
+The examples below continue from the {doc}`../getting-started/quickstart`:
+run its data preparation and `BCCInput().fit(data)` first, in the same Python
+session. That example includes a unit named `"E"`; replace this identifier
+with one from your own data when needed.
+
+## Read the summary
 
 ```python
-summary = result.summary()
-peers = result.peers("E")
-targets = result.targets_for("E")
+result.summary()
 ```
+
+This returns one row per evaluated observation. In a notebook, the final
+expression displays the table; in a script, use `print(result.summary())`.
+For the input-oriented BCC example, `efficiency` is the proportional input
+factor: 0.8 means that the reference technology supports a 20% proportional
+input reduction while maintaining outputs. It is not the proportion of
+employees who are productive or the probability of success.
+
+Other models can report different quantities. A directional distance, profit
+gap, and productivity index do not have the same interpretation. The model's
+own page explains its units, preferred direction, and benchmark. The
+model-specific reference below gives the corresponding result fields.
+
+## View targets and reference units
+
+To see the observed and target quantities for E:
+
+```python
+result.targets_for("E")
+```
+
+To see which reference units contribute to its selected benchmark:
+
+```python
+result.peers("E")
+```
+
+Targets describe a feasible improvement under the fitted model. Peers explain
+how that benchmark is constructed. Neither is necessarily unique, and a
+target is not, by itself, an implementation plan or a causal explanation.
+
+## Check before reporting
+
+Read the status and validity fields alongside the values:
+
+- A failed or undefined result is not an inefficient unit, and a missing
+  value must not be replaced by zero.
+- A valid score does not automatically validate every target, peer, or dual
+  result. Use the corresponding validity field when reporting those tables.
+- A missing `is_efficient` means that strong efficiency was not certified;
+  it does not mean that the unit is inefficient.
+
+If a row is unavailable, inspect the explanation:
+
+```python
+result.diagnostics
+```
+
+For a compact reading view, see {doc}`reporting`; to make a figure, see
+{doc}`visualization`. Both use the result's validity information automatically.
+The remaining sections are a reference for comparing models, investigating
+unusual results, or building software around `DEAResult`.
+
+## Detailed result reference
+
+### Available tables
 
 The result contains tidy tables:
 
@@ -25,6 +88,8 @@ The result contains tidy tables:
   convergence is part of the result;
 - `diagnostics`: statuses, messages, iterations, and residuals;
 - `metadata`: all technology, measure, reference, solver, and tolerance choices.
+
+### Method identity and metadata
 
 Every built-in result also contains a canonical identity block:
 
@@ -102,8 +167,14 @@ equality and encoding behavior but reject mutation. This prevents downstream
 plotting or reporting code from silently changing the assumptions attached to
 a result.
 
+### Appraisal roles and extension compatibility
+
 Appraisal protocols use explicit organizational roles rather than overloading
 `dmu_id`. The query helpers accept the relevant identifier column:
+
+These are separate, protocol-specific examples, not a continuation of the
+ordinary BCC example above. Use each call only with the corresponding fitted
+appraisal result; the internal prototype is not a public fitting route.
 
 ```python
 # Internal/deferred ordinary cross-efficiency prototype
@@ -123,6 +194,8 @@ of guessing.
 For backward compatibility, third-party code may still construct a
 `DEAResult` without this identity block. Consumers should therefore use
 `metadata.get("method_id")` when accepting external result providers.
+
+### Scores and validity fields
 
 `score` is the model-native quantity. `efficiency` is always higher-is-better
 when a valid standardized mapping exists. `distance` is reserved for a native
@@ -161,6 +234,8 @@ available while `completion_valid`, `target_valid`, and the strong-efficiency
 claim fail closed. Consumers of targets or peer accounts must check their own
 validity fields instead of inferring them from a finite score.
 
+### Strong efficiency and target completion
+
 `is_efficient` has a deliberately narrower meaning than “this model's score
 is at its best value.” It is a nullable Pareto--Koopmans status: `True` or
 `False` is reported only when a compatible completion task or another
@@ -195,6 +270,8 @@ change the first-stage score or the strong-efficiency certificate. This reusable
 Pareto--Koopmans completion protocol does not currently extend to weak-disposal,
 non-discretionary, or non-convex technologies.
 
+### Radial, additive, RAM, and FDH results
+
 For example, radial input DEA reports $\theta$ as both `score` and
 `efficiency`. Additive DEA reports its weighted slack sum as both `score` and
 `distance`, while `efficiency` is missing because raw additive distance is not
@@ -228,6 +305,8 @@ reference that excludes the evaluated unit, the result also reports whether
 the observation lies inside that external reference technology before making
 an efficiency classification.
 
+### SBM results
+
 The three standard SBM contracts report a native higher-is-better value in
 `score` and `efficiency`, with its complement in `distance`.
 `InputSBM` uses the retained-input account
@@ -259,6 +338,8 @@ optimize a second managerial objective. They may change under another
 optimal solution and should not be reported as uniquely prescribed savings
 or expansions.
 
+### Directional and generalized-distance results
+
 DDF reports native $\beta$ in both `score` and `distance`: it is the attainable
 amount of an analyst-declared operating counterfactual under the fitted
 technology and direction. The bounded `efficiency` field is retained for API
@@ -284,6 +365,8 @@ while nullable `is_efficient` also requires row-scaled slack completion.
 Targets keep the algebraic `path_target`, the score-stage peer activity, and
 the completed strong target separate. Interior-VRS results additionally
 retain certified search bounds, gap, solve count, and convergence status.
+
+### Environmental results
 
 Environmental DDF retains the same native-distance convention and records the
 exact production account rather than relying on a generic “bad output” label.
@@ -355,6 +438,8 @@ observed inflow, and a fixed desirable-output commitment.
 Material-minimizing targets and peers can be nonunique. The source-defined
 multi-material aggregation and panel/custom/external source equivalence
 remain outside that independent certificate.
+
+### Economic efficiency results
 
 Cost DEA reports `cost_efficiency` in both `score` and `efficiency`, with
 `observed_cost`, `minimum_cost`, and `cost_gap` retained beside it.
@@ -430,6 +515,8 @@ retain their score-stage and slack-completed stages. Because
 `is_allocatively_efficient` answers only the priced mix question, the
 composite result leaves generic `is_efficient` missing.
 
+### Network results
+
 Kao--Hwang relational network analysis reports
 `system_efficiency`, `stage_1_efficiency`, and `stage_2_efficiency`.
 `reconstruction_residual` audits the source-specific product identity. The
@@ -496,6 +583,8 @@ profit gap and `direction_value`, plus `technical_inefficiency`,
 from the direct directional programme and optional slack-completed activity.
 `decomposition_slack_status` says whether residual slacks were absent,
 present, unchecked, or not certified because completion failed.
+
+### Productivity results
 
 Malmquist analysis uses one summary row per matched adjacent-period
 transition. `score` and `productivity_change` contain the multiplicative

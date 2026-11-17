@@ -12,8 +12,7 @@ economically different sources:
 - a remaining mismatch between the technically improved plan and the
   price-responsive profit maximum.
 
-It implements the Chambers--Chung--Färe (1998) composition identified by
-`economic.nerlovian.ccf1998`.
+It implements the Chambers--Chung--Färe (1998) decomposition.
 
 For nonnegative directions $g_o^x,g_o^y$, not both zero, define
 
@@ -40,28 +39,50 @@ profit shortfall should be read.
 
 ## Example
 
+Use the same production data and prices as in {doc}`profit`. If you have
+already run that example, keep `data` and `prices`; otherwise run the setup
+below before fitting the model.
+
+<details>
+<summary>Prepare the example data and prices</summary>
+
+```python
+import pandas as pd
+from deapack import DEAData, PriceData
+
+frame = pd.DataFrame({
+    "unit": ["A", "B", "C", "D"],
+    "staff": [4, 5, 3, 6],
+    "standard": [6, 4, 5, 3],
+    "specialist": [2, 5, 1, 2],
+})
+data = DEAData.from_frame(
+    frame, dmu="unit", inputs="staff", outputs=["standard", "specialist"]
+)
+prices = PriceData.common(
+    input_prices={"staff": 2},
+    output_prices={"standard": 3, "specialist": 5},
+)
+```
+
+</details>
+
+Here one unit of directional improvement means saving one unit of staff
+input and gaining one unit of each service output. The named direction
+`"ones"` expresses that choice without a separate dictionary for every variable.
+
 ```python
 from deapack import NerlovianProfitInefficiency
 
-model = NerlovianProfitInefficiency(
-    input_direction={"staff": 1.0},
-    output_direction={"standard": 1.0, "specialist": 1.0},
-)
-result = model.fit(data, prices)
-
-result.summary()[
-    [
-        "dmu_id",
-        "profit_gap",
-        "direction_value",
-        "nerlovian_inefficiency",
-        "technical_inefficiency",
-        "allocative_inefficiency",
-    ]
-]
+result = NerlovianProfitInefficiency(
+    input_direction="ones",
+    output_direction="ones",
+).fit(data, prices)
+result.summary()
 ```
 
-Using the data and prices from the maximum-profit page gives
+Read `nerlovian_inefficiency` alongside `technical_inefficiency` and
+`allocative_inefficiency`. With these data and prices,
 $\nu=2+3+5=10$. For unit D, current profit is $7$, the declared operating
 programme can restore $16$, and changing the resource/output mix restores a
 further $4$:
@@ -92,6 +113,11 @@ failed profit-score certificate, directional score certificate, membership check
 nonnegative allocative residual withholds the headline `score` rather than
 leaving a finite but invalid value for downstream ranking.
 
+<details>
+<summary>Technical details: component validity and provenance</summary>
+
+The registered method identity is `economic.nerlovian.ccf1998`.
+
 The two source programmes retain separate evidence. `profit_score_valid` and
 `profit_score_status` describe the maximum-profit account;
 `directional_score_valid` and `directional_score_status` describe the DDF
@@ -113,6 +139,8 @@ DDF phase-one value, or additive identity. It does make the
 Pareto--Koopmans status nullable, and
 `decomposition_slack_status` records that the residual-slack check failed or
 was skipped.
+
+</details>
 
 ## Direction and comparability
 

@@ -9,7 +9,7 @@ spend if it adopted a cost-minimizing feasible activity while preserving its
 observed desirable-output commitment. Supplied prices are held separately
 from production quantities in `PriceData`.
 
-For observation $o$, input prices $w_o$, and a compiled reference technology
+For observation $o$, input prices $w_o$, and reference data
 $(X,Y)$, the model solves
 
 $$
@@ -25,7 +25,7 @@ $$
 CE_o=\frac{C_o^*}{w_o^\top x_o}.
 $$
 
-`score`, `efficiency`, and `cost_efficiency` all contain $CE_o`; higher is
+`score`, `efficiency`, and `cost_efficiency` all contain $CE_o$; higher is
 better. The summary also contains `observed_cost`, `minimum_cost`, and
 `cost_gap`. `distance` is missing because cost efficiency is not reported as
 a distance-function value. `is_cost_efficient` tests whether the observed
@@ -33,9 +33,10 @@ cost equals minimum attainable cost. It is not copied into `is_efficient`:
 a least-cost plan can still leave a desirable-output expansion opportunity,
 and the current model does not run a Pareto--Koopmans completion.
 
-## Price contract
+## Example
 
-Common prices are declared by exact quantity-variable names:
+This example compares units using two inputs and one output. Supply each
+input's price once, using the same column names as the production data:
 
 ```python
 from deapack import CostEfficiency, DEAData, PriceData, load_dataset
@@ -43,17 +44,23 @@ from deapack import CostEfficiency, DEAData, PriceData, load_dataset
 frame = load_dataset("cost_mix_choice")
 data = DEAData.from_frame(
     frame,
-    dmu="dmu",
-    inputs=["x1", "x2"],
-    outputs="output",
+    dmu="unit_id",
+    inputs=["capital", "labor"],
+    outputs="service",
 )
-prices = PriceData.common(input_prices={"x1": 1.0, "x2": 3.0})
+prices = PriceData.common(input_prices={"capital": 1, "labor": 3})
 
 result = CostEfficiency(returns_to_scale="crs").fit(data, prices)
-result.summary()[
-    ["dmu_id", "observed_cost", "minimum_cost", "cost_efficiency"]
-]
+result.summary()
 ```
+
+Read `observed_cost`, `minimum_cost`, and `cost_efficiency` together: they
+show current spending, the model's least-cost benchmark, and their ratio.
+The example assumes constant returns to scale (`"crs"`).
+It explicitly uses prices of 1 for capital and 3 for labor; `PriceData`
+does not automatically read the price columns present in `frame`.
+
+## Price contract
 
 Observation-specific prices use `PriceData.from_frame`. They align by
 `dmu_id`, or by `(dmu_id, period)` for panel data; source row position is
@@ -90,6 +97,14 @@ records `target_uniqueness="unknown"`.
 
 ## Certified release contract
 
+DEAPack checks the solution automatically. Before reporting a score, check
+`score_valid`; use `target_valid`, `peer_valid`, or `dual_valid` for the
+corresponding tables. A missing result should be investigated, not replaced
+with zero. See {doc}`../user-guide/results` for the common result workflow.
+
+<details>
+<summary>Technical details: validation and numerical precision</summary>
+
 An `optimal` backend status is necessary but not sufficient for publication.
 DEAPack independently checks the LP rows, variable bounds, objective,
 dual feasibility, complementarity, and strong duality. It then reconstructs
@@ -109,6 +124,8 @@ The public monetary values are the values that were certified. DEAPack does
 not independently round or zero the minimum cost, gap, or ratio after the
 certificate has been computed. Efficiency classification uses the declared
 numerical tolerance without rewriting those identities.
+
+</details>
 
 ## Dual values
 

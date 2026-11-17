@@ -7,17 +7,8 @@
 Tone and Tsutsui’s dynamic slacks-based measure evaluates one organization’s
 complete multi-period operating trajectory while enforcing continuity of
 assets, capabilities, inventories, burdens, and other accounts carried
-between adjacent periods. Its canonical method ID is
-`dynamic.sbm.tone_tsutsui_2010`.
-
-```{admonition} Public implementation
-:class: important
-
-`ToneTsutsuiDynamicSBM` is the source-qualified public class.
-`DynamicSBM` is its exact short alias. The built-in
-`dynamic_carryover_portfolio` dataset contains four neutral,
-four-period numerical example.
-```
+between adjacent periods. Use `DynamicSBM` to fit the model;
+`ToneTsutsuiDynamicSBM` is the full name of the same estimator.
 
 Defining and boundary sources:
 
@@ -28,7 +19,13 @@ Defining and boundary sources:
   for a distinct improved dynamic-SBM proposal, which is not silently
   substituted for the Tone--Tsutsui equations.
 
-## Complete public example
+## Fit a dynamic model
+
+The built-in `dynamic_carryover_portfolio` data describe four fictional
+organizations over three periods. Here, `operating_input` is the resource,
+`service_output` is the service, and `redeployable_stock` is a freely adjustable
+stock carried between periods. The dataset's other stock columns are not used
+in this particular model.
 
 ```python
 from deapack import (
@@ -43,17 +40,17 @@ from deapack import (
 frame = load_dataset("dynamic_carryover_portfolio")
 spec = DynamicSBMSpec(
     production=PeriodProductionSpec(
-        inputs="input",
-        outputs="output",
+        inputs="operating_input",
+        outputs="service_output",
     ),
     carryovers=(
-        CarryOverSpec("free_carryover", kind="free"),
+        CarryOverSpec("redeployable_stock", kind="free"),
     ),
 )
 data = DynamicData.from_frame(
     frame,
     spec=spec,
-    dmu="dmu",
+    dmu="unit_id",
     period="period",
 )
 
@@ -62,12 +59,58 @@ result = DynamicSBM(
     returns_to_scale="crs",
     score_variant="free_adjusted_post",
 ).fit(data)
+result.summary()
 ```
 
-`ToneTsutsuiDynamicSBM(...)` returns the same result because `DynamicSBM`
-is an alias, not another estimator.
+This example uses input orientation, CRS, and the post-solve free-carry-over
+adjustment. These are model choices, not display options: keep them when
+reproducing the following results.
 
-## Data contract
+| Organization | Reported efficiency | Base optimization efficiency |
+|---|---:|---:|
+| path_01 | 1.000000 | 1.000000 |
+| path_02 | 0.883175 | 0.909206 |
+| path_03 | 0.619659 | 0.565849 |
+| path_04 | 0.856690 | 0.795391 |
+
+All four scores are valid in this run. The two efficiency columns differ
+because the selected free-carry-over adjustment is applied after optimizing
+the base model. A larger reported value indicates better performance under
+this chosen criterion; it is not a uniform percentage reduction in every
+input. The adjusted result can depend on the selected optimum, as explained
+under [Free-carry-over score variants](#free-carry-over-score-variants).
+These are synthetic teaching results, not a reproduction of a published
+empirical sample.
+
+## Inspect a trajectory
+
+Use the same `result` to inspect one organization's period contributions,
+targets, peers, and carry-over links:
+
+```python
+result.components_for("path_03")
+result.targets_for("path_03", period=3)
+result.peers("path_03", period=3)
+result.links_for("path_03")
+```
+
+With the optional plotting dependency installed, show the complete carry-over
+path:
+
+```python
+result.plot(
+    kind="trajectory",
+    dmu_id="path_03",
+    variable="redeployable_stock",
+)
+```
+
+The figure shows the selected benchmark trajectory, not a uniquely determined
+operating prescription. A single year is not a separate observation in this
+model: the organization is evaluated over the complete horizon. See
+{doc}`../user-guide/visualization` for installation and plotting options.
+
+## Data requirements
 
 `DynamicData.from_frame` requires:
 
@@ -149,7 +192,7 @@ $$
 
 The same $Z_t^\alpha$ block appears on both sides. Replacing the right
 side with $Z_{t+1}^\alpha\lambda^{t+1}$ defines a different transition
-model and fails the published numerical oracle.
+model rather than the Tone--Tsutsui continuity equation used here.
 
 The terminal period retains its observed-to-target balance. There is no
 outgoing continuity equation to an unobserved $T+1$, and the source preset
@@ -244,32 +287,31 @@ from deapack import (
     DynamicSBM,
     DynamicSBMSpec,
     PeriodProductionSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("dynamic_capacity_backlog")
-roles = dataset_info("dynamic_capacity_backlog").roles
 spec = DynamicSBMSpec(
     production=PeriodProductionSpec(
-        inputs=roles["inputs"],
-        outputs=roles["outputs"],
+        inputs="resource",
+        outputs="service",
     ),
     carryovers=(
-        CarryOverSpec(roles["good_carryovers"][0], "good"),
-        CarryOverSpec(roles["bad_carryovers"][0], "bad"),
+        CarryOverSpec("capacity", "good"),
+        CarryOverSpec("backlog", "bad"),
     ),
 )
 data = DynamicData.from_frame(
     frame,
     spec=spec,
-    dmu=roles["dmu"],
-    period=roles["period"],
+    dmu="organization",
+    period="period",
 )
-result = DynamicSBM(
+capacity_result = DynamicSBM(
     orientation="non-oriented",
     returns_to_scale="vrs",
 ).fit(data)
+capacity_result.summary()
 ```
 
 Prepared scores one. For Strained, ordinary resource and service slacks are
@@ -317,27 +359,6 @@ one-sided deviations with binary decisions. It is not exposed by this LP
 estimator. Passing an MIP-like variant raises an error rather than applying
 a continuous relaxation or an arbitrary hard-coded big-M.
 
-## Published numerical oracle
-
-The bundled sample has one input, one output, one free carry-over, four
-periods, eight DMUs, and CRS. The input-oriented
-`free_adjusted_post` result reproduces the paper’s Table 2:
-
-| DMU | Overall | T1 | T2 | T3 | T4 |
-|---|---:|---:|---:|---:|---:|
-| A | .706 | .544 | .833 | .750 | .694 |
-| B | .746 | .683 | .917 | .750 | .635 |
-| C | 1 | 1 | 1 | 1 | 1 |
-| D | .846 | .842 | .875 | .833 | .833 |
-| E | .567 | .625 | .642 | .558 | .444 |
-| F | .917 | 1 | 1 | .833 | .833 |
-| G | .749 | .767 | .782 | .672 | .775 |
-| H | .851 | .850 | .778 | 1 | .778 |
-
-Regression tests use absolute tolerance `5.1e-4` and zero relative tolerance
-for printed values. Internal reconstruction, balance, fixed-account, and
-continuity identities use tighter tolerances.
-
 ## Result-table contract
 
 `fit()` returns the common `DEAResult`.
@@ -353,31 +374,12 @@ continuity identities use tighter tolerances.
 | `duals` | certified equality-row marginal values with their source constraint roles |
 | `diagnostics` | one primary-solve record per trajectory, with semantic/backend/raw status; LP, canonical and original-unit trajectory certificates; claim-gate reasons; peer omitted mass; and reconstruction residuals |
 
-Convenience filters include:
-
-```python
-result.components_for("E")
-result.targets_for("E", period=3)
-result.peers("E", period=3)
-result.links_for("E")
-```
-
 Default period accounts, peers, slacks, and targets describe the solver’s
 selected optimum. Only the overall objective value is asserted to be unique.
 
-## Plot one certified carry-over path
+## How the trajectory plot is checked
 
-The result-native trajectory view keeps the complete horizon intact:
-
-```python
-result.plot(
-    kind="trajectory",
-    dmu_id="E",
-    variable="free_carryover",
-)
-```
-
-It combines the selected carry-over's observed and outgoing target rows with
+The trajectory plot combines the selected carry-over's observed and outgoing target rows with
 the `links` table's inherited target, so a next-period handoff is never guessed
 from two adjacent target rows. A separate panel reports complete period
 accounts only after their efficiencies and the native horizon result

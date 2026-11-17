@@ -111,20 +111,18 @@ from deapack import (
     ChenCookLiZhuAdditiveDEA,
     NetworkData,
     TwoStageSeriesSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
-roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=roles["inputs"],
-    intermediates=roles["intermediates"],
-    outputs=roles["outputs"],
+    inputs=("staff_hours", "platform_cost_units"),
+    intermediates=("screened_cases", "verified_value"),
+    outputs=("timely_closures", "public_value"),
     stage_names=("screening", "service_delivery"),
     link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
+data = NetworkData.from_frame(frame, dmu="unit", spec=spec)
 
 result = ChenCookLiZhuAdditiveDEA(
     returns_to_scale="vrs",
@@ -132,22 +130,13 @@ result = ChenCookLiZhuAdditiveDEA(
     projection="source",
 ).fit(data)
 
-result.summary()[[
-    "dmu_id",
-    "system_efficiency",
-    "stage_1_efficiency",
-    "stage_2_efficiency",
-    "stage_1_weight",
-    "stage_2_weight",
-    "reconstruction_residual",
-    "score_valid",
-    "process_account_valid",
-    "decomposition_unique",
-    "target_valid",
-    "target_status",
-    "peer_valid",
-]]
+result.summary()
 ```
+
+Start with `system_efficiency`, then read the two stage efficiencies and their
+weights. The weighted stage contributions add to the system score when
+`process_account_valid` is true. Check `score_valid` before interpreting the
+system result; the sections below explain decomposition and target validity.
 
 The project-authored case exercises both CRS and VRS system/stage accounts,
 including scale, resource-drag, conversion-drag, and service-mix behavior.

@@ -1,20 +1,17 @@
 # Built-in datasets
 
-Built-in datasets are deterministic. They support teaching,
-figures, regression tests, and examples with analytically transparent
-frontiers.
+DEAPack includes small datasets for trying models without preparing a file.
+Load a dataset as a pandas table, then inspect its columns:
 
 ```python
-from deapack import dataset_info, list_datasets, load_dataset
-
-for info in list_datasets():
-    print(info.name, info.teaching_uses)
+from deapack import load_dataset
 
 frame = load_dataset("environmental_panel")
-roles = dataset_info("environmental_panel").roles
+frame.head()
 ```
 
-The 33 current datasets are grouped by teaching purpose:
+The examples below write out the actual column names so you can see what is
+being modeled. They are grouped by teaching purpose:
 
 - foundations and economic accounts: `frontier_1x1`, `slacks_2x2`,
   `economic_efficiency_4`, `cost_mix_choice`, `coordination_hulls`,
@@ -44,7 +41,7 @@ attributed open numerical datasets retained in the catalogue are
 metadata state roles and intended teaching uses; a dataset name is not a
 claim that its variables or results transfer to another empirical setting.
 
-## One dataset, four economic questions
+## Comparing cost, revenue, and profit
 
 `economic_efficiency_4` is the common teaching case for price-informed
 efficiency. Its one resource, two services, and common prices stay fixed while
@@ -57,17 +54,15 @@ from deapack import (
     PriceData,
     ProfitEfficiency,
     RevenueEfficiency,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("economic_efficiency_4")
-roles = dataset_info("economic_efficiency_4").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="plan",
+    inputs=["resource"],
+    outputs=["standard_service", "premium_service"],
 )
 prices = PriceData.common(
     input_prices={"resource": 2.0},
@@ -93,16 +88,15 @@ synthetic and analytically checked; it is not a published-data reproduction.
 electricity systems without combined heat and power:
 
 ```python
-from deapack import DEAData, NonCHPEnergyCarbonDEA, dataset_info, load_dataset
+from deapack import DEAData, NonCHPEnergyCarbonDEA, load_dataset
 
 frame = load_dataset("zhou_ang_wang_non_chp_3")
-roles = dataset_info("zhou_ang_wang_non_chp_3").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
-    bad_outputs=roles["bad_outputs"],
+    dmu="dmu",
+    inputs=["fossil_energy"],
+    outputs=["electricity"],
+    bad_outputs=["co2"],
 )
 
 result = NonCHPEnergyCarbonDEA(
@@ -133,25 +127,24 @@ chain. They support structural checks, not empirical claims or unique targets.
 See
 {doc}`../models/kalhor-kazemi-matin-environmental-network`.
 
-## Signed range-directional oracle
+## Signed data for a range directional measure
 
 `range_directional_signed` contains one signed input and one signed desirable
 output:
 
 ```python
-from deapack import DEAData, RDM, dataset_info, load_dataset
+from deapack import DEAData, RDM, load_dataset
 
 frame = load_dataset("range_directional_signed")
-roles = dataset_info("range_directional_signed").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    inputs=["input"],
+    outputs=["output"],
 )
 
 result = RDM().fit(data)
-result.summary()[["dmu_id", "beta", "rdm_efficiency", "solver_status"]]
+result.summary()
 ```
 
 The three rows are small enough to verify without another package. C has
@@ -166,33 +159,25 @@ not declare the output undesirable. The dataset is synthetic and theory-led;
 Portela, Thanassoulis, and Simpson's bank-branch observations are
 confidential and are not reproduced. See {doc}`../models/range-directional`.
 
-## Declared-group metafrontier oracle
+## Comparing declared technology groups
 
 `metafrontier_groups` contains six organizations in two declared technology
 groups:
 
 ```python
-from deapack import DEAData, MetafrontierDEA, dataset_info, load_dataset
+from deapack import DEAData, MetafrontierDEA, load_dataset
 
 frame = load_dataset("metafrontier_groups")
-roles = dataset_info("metafrontier_groups").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    group=roles["group"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    group="technology_group",
+    inputs=["resource"],
+    outputs=["service"],
 )
 
 result = MetafrontierDEA().fit(data)
-result.summary()[
-    [
-        "dmu_id",
-        "group_efficiency",
-        "meta_efficiency",
-        "metatechnology_ratio",
-    ]
-]
+result.summary()
 ```
 
 Group 1 demonstrates one service per resource unit; group 2 demonstrates
@@ -223,15 +208,14 @@ contrasting indivisible peer choice, integer replication, and continuous
 relaxation:
 
 ```python
-from deapack import DEAData, FRH, dataset_info, load_dataset
+from deapack import DEAData, FRH, load_dataset
 
 frame = load_dataset("integer_coordination_hulls")
-roles = dataset_info("integer_coordination_hulls").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    inputs=["resource"],
+    outputs=["service"],
 )
 
 result = FRH(orientation="input").fit(data)
@@ -248,22 +232,21 @@ assumption from the operating context.
 distinguish FDH, the Green--Cook FCH, FRH, CCR, and VRS:
 
 ```python
-from deapack import DEAData, FCH, dataset_info, load_dataset
+from deapack import DEAData, FCH, load_dataset
 
 frame = load_dataset("coordination_hulls")
-roles = dataset_info("coordination_hulls").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="organization",
+    inputs=["resource"],
+    outputs=["service"],
 )
 
 result = FCH(orientation="input").fit(data)
-result.summary().query("dmu_id == 'E'")[["score", "coalition_size"]]
+result.summary()
 ```
 
-The resulting input factor is $0.70$, supported by the binary coalition
+For E, the input factor is $0.70$, supported by the binary coalition
 A+B. The data are synthetic and isolate the activity-combination assumption;
 they do not recommend a merger or assert that the variables of a real
 application are additive.
@@ -276,18 +259,16 @@ et al. (2021):
 ```python
 from deapack import (
     DEAData,
-    dataset_info,
     load_dataset,
     relative_directional_scale_elasticity,
 )
 
 frame = load_dataset("ren_cas_directional_scale")
-roles = dataset_info("ren_cas_directional_scale").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    inputs=["staff", "research_expenditure"],
+    outputs=["external_funding", "high_sci_publications", "granted_patents"],
 )
 
 result = relative_directional_scale_elasticity(
@@ -314,17 +295,15 @@ from deapack import (
     InputSBM,
     OutputSBM,
     SBM,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("sbm_slack_contrast")
-roles = dataset_info("sbm_slack_contrast").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["core_service", "quality_service"],
 )
 
 input_result = InputSBM(returns_to_scale="crs").fit(data)
@@ -348,18 +327,16 @@ from deapack import (
     DEAData,
     ToneNonSeparableSBM,
     UndesirableSBM,
-    dataset_info,
     load_dataset,
 )
 
 separable_frame = load_dataset("environmental_disposability_contrast")
-separable_roles = dataset_info("environmental_disposability_contrast").roles
 separable_data = DEAData.from_frame(
     separable_frame,
-    dmu=separable_roles["dmu"],
-    inputs=separable_roles["inputs"],
-    outputs=separable_roles["outputs"],
-    bad_outputs=separable_roles["bad_outputs"],
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["joint_service", "independent_service"],
+    bad_outputs=["joint_residual", "independent_residual"],
 )
 separable_result = UndesirableSBM(
     returns_to_scale="vrs",
@@ -367,28 +344,27 @@ separable_result = UndesirableSBM(
 ```
 
 The same frame exposes a jointly changing service/residual pair and an
-independently adjustable pair. The role metadata can be passed directly to the
-public hybrid estimator:
+independently adjustable pair. Declare the jointly changing variables explicitly
+in the hybrid estimator. Continue in the same session:
 
 ```python
 hybrid_frame = load_dataset("environmental_disposability_contrast")
-hybrid_roles = dataset_info("environmental_disposability_contrast").roles
 hybrid_data = DEAData.from_frame(
     hybrid_frame,
-    dmu=hybrid_roles["dmu"],
-    inputs=hybrid_roles["inputs"],
-    outputs=hybrid_roles["outputs"],
-    bad_outputs=hybrid_roles["bad_outputs"],
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["joint_service", "independent_service"],
+    bad_outputs=["joint_residual", "independent_residual"],
 )
 
 hybrid_result = ToneNonSeparableSBM(
-    nonseparable_outputs=hybrid_roles["nonseparable_good_outputs"],
-    nonseparable_bad_outputs=hybrid_roles["nonseparable_bad_outputs"],
+    nonseparable_outputs=["joint_service"],
+    nonseparable_bad_outputs=["joint_residual"],
     alpha_min=0.7,
     returns_to_scale="vrs",
 ).fit(hybrid_data)
 
-hybrid_result.summary()[["dmu_id", "efficiency", "alpha"]]
+hybrid_result.summary()
 ```
 
 Here `alpha` is the retained share of the declared joint operating process,
@@ -406,24 +382,21 @@ not establish an environmental partition for another production process. See
 dominated plan for self-exclusion diagnostics.
 
 ```python
-from deapack import DEAData, ToneSuperSBM, dataset_info, load_dataset
+from deapack import DEAData, ToneSuperSBM, load_dataset
 
 frame = load_dataset("super_sbm_peer_replacement")
-roles = dataset_info("super_sbm_peer_replacement").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["service"],
 )
 
 result = ToneSuperSBM(
     orientation="non-oriented",
     returns_to_scale="crs",
 ).fit(data)
-result.summary()[
-    ["dmu_id", "is_sbm_eligible", "super_sbm_score", "applicability_status"]
-]
+result.summary()
 ```
 
 The score ranks how difficult a strongly SBM-efficient record is for the
@@ -441,21 +414,19 @@ multivariate schedule for leave-one-out directional appraisal:
 from deapack import (
     DEAData,
     RayDirectionalSuperEfficiency,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("directional_super_multivariate_stress")
-roles = dataset_info("directional_super_multivariate_stress").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    inputs=["input_1", "input_2", "input_3", "input_4"],
+    outputs=["output_1", "output_2"],
 )
 
 result = RayDirectionalSuperEfficiency().fit(data)
-result.summary()[["dmu_id", "beta", "nl_super_efficiency", "score_valid"]]
+result.summary()
 ```
 
 The case distinguishes a joint peer-replacement concession from an efficiency
@@ -475,22 +446,20 @@ from deapack import (
     KaoHwangRelationalDEA,
     NetworkData,
     TwoStageSeriesSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
-roles = dataset_info("two_stage_public_service").roles
 
 spec = TwoStageSeriesSpec(
-    inputs=roles["inputs"],
-    intermediates=roles["intermediates"],
-    outputs=roles["outputs"],
+    inputs=["staff_hours", "platform_cost_units"],
+    intermediates=["screened_cases", "verified_value"],
+    outputs=["timely_closures", "public_value"],
     stage_names=("screening", "service_delivery"),
 )
 data = NetworkData.from_frame(
     frame,
-    dmu=roles["dmu"],
+    dmu="unit",
     spec=spec,
 )
 result = KaoHwangRelationalDEA().fit(data)
@@ -522,22 +491,20 @@ from deapack import (
     NetworkData,
     NetworkSpec,
     ProcessSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("open_service_chain")
-roles = dataset_info("open_service_chain").roles
-handoffs = roles["links"]
+handoffs = ["standard_orders", "priority_orders", "bulk_orders"]
 sourcing = ProcessSpec(
     "sourcing",
-    inputs=roles["sourcing_inputs"],
+    inputs=["sourcing_hours", "platform_units", "transport_units"],
     outputs=handoffs,
 )
 delivery = ProcessSpec(
     "delivery",
-    inputs=(*handoffs, *roles["service_inputs"]),
-    outputs=roles["outputs"],
+    inputs=["standard_orders", "priority_orders", "bulk_orders", "service_hours"],
+    outputs=["delivered_value", "retained_margin"],
 )
 spec = NetworkSpec(
     processes=(sourcing, delivery),
@@ -550,7 +517,7 @@ spec = NetworkSpec(
         ),
     ),
 )
-data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
+data = NetworkData.from_frame(frame, dmu="unit", spec=spec)
 result = CookZhuBiYangAdditiveDEA().fit(data)
 ```
 
@@ -571,13 +538,11 @@ VRS/input network-SBM fixed/free comparison.
 `crs_free_link_service_chain` exposes a compact CRS/free-link contrast:
 
 ```python
-from deapack import dataset_info, load_dataset
+from deapack import load_dataset
 
 service_chain = load_dataset("three_process_service_chain")
-service_chain_roles = dataset_info("three_process_service_chain").roles
 
 crs_example = load_dataset("crs_free_link_service_chain")
-crs_roles = dataset_info("crs_free_link_service_chain").roles
 ```
 
 The first case supports process and system reconstruction, fixed/free link
@@ -611,27 +576,25 @@ from deapack import (
     DynamicSBM,
     DynamicSBMSpec,
     PeriodProductionSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("dynamic_capacity_backlog")
-roles = dataset_info("dynamic_capacity_backlog").roles
 spec = DynamicSBMSpec(
     production=PeriodProductionSpec(
-        inputs=roles["inputs"],
-        outputs=roles["outputs"],
+        inputs=["resource"],
+        outputs=["service"],
     ),
     carryovers=(
-        CarryOverSpec(roles["good_carryovers"][0], "good"),
-        CarryOverSpec(roles["bad_carryovers"][0], "bad"),
+        CarryOverSpec("capacity", "good"),
+        CarryOverSpec("backlog", "bad"),
     ),
 )
 data = DynamicData.from_frame(
     frame,
     spec=spec,
-    dmu=roles["dmu"],
-    period=roles["period"],
+    dmu="organization",
+    period="period",
 )
 result = DynamicSBM(
     orientation="non-oriented",
@@ -658,26 +621,24 @@ from deapack import (
     DynamicSBM,
     DynamicSBMSpec,
     PeriodProductionSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("dynamic_carryover_portfolio")
-roles = dataset_info("dynamic_carryover_portfolio").roles
 spec = DynamicSBMSpec(
     production=PeriodProductionSpec(
-        inputs=roles["inputs"],
-        outputs=roles["outputs"],
+        inputs=["operating_input"],
+        outputs=["service_output"],
     ),
     carryovers=(
-        CarryOverSpec(roles["free_carryovers"][0], "free"),
+        CarryOverSpec("redeployable_stock", "free"),
     ),
 )
 data = DynamicData.from_frame(
     frame,
     spec=spec,
-    dmu=roles["dmu"],
-    period=roles["period"],
+    dmu="unit_id",
+    period="period",
 )
 result = DynamicSBM(
     orientation="input",
@@ -704,13 +665,11 @@ gross-power and delivered-power handoffs. The panel also contains:
 - service obligation as a fixed carry-over.
 
 ```python
-from deapack import dataset_info, load_dataset
+from deapack import load_dataset
 
 frame = load_dataset("dynamic_network_power_demo")
-roles = dataset_info("dynamic_network_power_demo").roles
 
-print(frame[[roles["dmu"], roles["period"]]].drop_duplicates())
-print(dataset_info("dynamic_network_power_demo").teaching_uses)
+frame.head()
 ```
 
 The data are deterministic and theory-led. They are suitable for explaining
@@ -721,3 +680,24 @@ raw panel or utility identities needed to bundle that case.
 
 See {doc}`../models/tone-tsutsui-dynamic-network-sbm` for a complete model
 specification and executable fit.
+
+## Find datasets and inspect their descriptions
+
+To list the available names:
+
+```python
+from deapack import dataset_info, list_datasets
+
+for info in list_datasets():
+    print(info.name)
+```
+
+To inspect a dataset's variables, provenance, and suggested uses:
+
+```python
+dataset_info("environmental_panel")
+```
+
+Its `.roles` mapping is also useful when writing reusable analysis scripts.
+The examples above spell out the column names to make the first analysis
+easier to follow.

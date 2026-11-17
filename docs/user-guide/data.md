@@ -1,17 +1,62 @@
-# Data schema
+(data-schema)=
 
-`DEAData` separates the user-facing table from immutable numerical arrays used
-by the solver. A cross-section has one row per DMU; a panel has one row per
-`(DMU, period)` observation. The numerical compiler performs the matrix
-orientation once. Every example below defines its own input table and can be
-run independently.
+# Preparing data
+
+Start with a table: one row per decision-making unit (DMU), and one column
+for each input or output. `DEAData.from_frame()` tells DEAPack what those
+columns mean. It does not estimate a model yet.
+
+## A simple input–output table
+
+This complete example uses the same small dataset as the {doc}`../getting-started/quickstart`:
+
+```python
+from deapack import DEAData, load_dataset
+
+frame = load_dataset("slacks_2x2")
+print(frame.head())
+
+data = DEAData.from_frame(
+    frame,
+    dmu="dmu",
+    inputs=["labor", "capital"],
+    outputs=["service", "quality"],
+)
+```
+
+Here `dmu` identifies the organization, `labor` and `capital` are resources,
+and `service` and `quality` are desirable outputs. Use the exact column names
+from your own table. A single column can be written as a string, such as
+`inputs="labor"`; use a list for several columns.
+
+## Read your own data
+
+For a CSV file, read it with pandas, then use `DEAData.from_frame()` as above:
+
+```python
+import pandas as pd
+
+frame = pd.read_csv("my_data.csv")
+print(frame.head())
+```
+
+This block requires your own file. Replace `my_data.csv` with its path and
+replace the DMU, input, and output names in the preceding example with your
+actual column names. For an Excel file, use `pd.read_excel("my_data.xlsx")`
+instead; pandas may ask you to install an Excel reader such as `openpyxl`.
+
+The sections below are independent examples for more specific data layouts.
+You only need the layout that matches your study.
+
+## Panel data and undesirable outputs
+
+For repeated observations, add a period column. For pollution or other outputs
+you want to reduce, use `bad_outputs`:
 
 ```python
 from deapack import DEAData, load_dataset
 
 panel_frame = load_dataset("environmental_panel")
-print(panel_frame.head())
-
 panel_data = DEAData.from_frame(
     panel_frame,
     dmu="dmu",
@@ -23,41 +68,26 @@ panel_data = DEAData.from_frame(
 )
 ```
 
-`polluting_inputs` is an explicit subset of `inputs`. It is used only by
-technologies such as by-production that distinguish ordinary inputs from
-inputs that trigger residual generation. Declaring `energy` as polluting does
-not remove it from the intended-production input matrix.
+Each row is now one organization in one period. `polluting_inputs` identifies
+the subset of inputs responsible for residual generation; it is used by models
+such as by-production. It does not remove energy from the input list. Most
+ordinary DEA studies do not need this extra role. See
+{doc}`../reference/environmental-models` for model choices.
 
-Validation includes:
+## Zero and negative observations
 
-- unique DMU keys for cross sections;
-- unique `(dmu, period)` keys for panels;
-- distinct columns for each variable role;
-- polluting-input names that are also declared as inputs;
-- numeric and finite measurement values;
-- explicit period ordering when labels cannot be sorted safely.
+Do not shift negative values or add small constants just to make a model run.
+Different measures support different data ranges. A negative value is not, by
+itself, an undesirable output: the variable's economic meaning determines
+whether more or less is preferred.
 
-Negative values are not silently shifted. Each measure validates whether its
-theory supports zero or negative observations.
-
-## Signed accounting values need declared economic roles
-
-A negative observation does not by itself identify an undesirable output. A
-negative change in deposits or net service balance may still be a desirable
-account for which a larger value is preferred. Conversely, emissions remain
-a burden to contract even when an accounting adjustment produces a negative
-entry.
-
-`RangeDirectionalDEA` accepts finite signed inputs and desirable outputs
-because it measures change relative to each focal observation's remaining
-room to the best values in the same VRS comparison population. It does not
-pre-shift the data. Use:
+For example, the range directional measure accepts finite signed inputs and
+desirable outputs:
 
 ```python
 from deapack import DEAData, RDM, load_dataset
 
 signed_frame = load_dataset("range_directional_signed")
-
 signed_data = DEAData.from_frame(
     signed_frame,
     dmu="dmu",
@@ -65,17 +95,17 @@ signed_data = DEAData.from_frame(
     outputs="output",
 )
 result = RDM().fit(signed_data)
+result.summary()
 ```
 
-The variable documentation must still say why less input and more output are
-economically preferred. Common translation invariance under VRS is not
-permission to shift selected observations or to relabel a burden as a
-desirable service. See {doc}`../models/range-directional`.
+See {doc}`../models/range-directional` for the comparison this model makes.
+Its ability to use signed values does not justify changing a variable's role.
 
-## Dynamic trajectories are not row-level panel observations
+## Dynamic data with carry-overs
 
-`DynamicData` stores a complete balanced trajectory for every DMU and an
-explicit production/carry-over specification:
+A panel column alone does not create a dynamic model. When resources or
+burdens connect consecutive periods, use `DynamicData` and declare those
+carry-overs:
 
 ```python
 from deapack import (
@@ -87,12 +117,8 @@ from deapack import (
 )
 
 dynamic_frame = load_dataset("dynamic_capacity_backlog")
-
 spec = DynamicSBMSpec(
-    production=PeriodProductionSpec(
-        inputs="resource",
-        outputs="service",
-    ),
+    production=PeriodProductionSpec(inputs="resource", outputs="service"),
     carryovers=(
         CarryOverSpec("capacity", "good"),
         CarryOverSpec("backlog", "bad"),
@@ -107,31 +133,43 @@ dynamic_data = DynamicData.from_frame(
 )
 ```
 
-One observation in a dynamic fit is the organization’s whole trajectory.
-Every DMU must appear exactly once in every declared period. Missing periods
-are not imputed, and a row-level `ReferenceSpec` is not silently applied to
-the trajectory cohort. See {doc}`../models/tone-tsutsui-dynamic-sbm`.
+One evaluated unit is the organization's entire trajectory. Every DMU must
+appear once in every declared period; missing periods are not filled in.
+A row-level `ReferenceSpec` is not automatically applied to this trajectory
+comparison. Continue with {doc}`../models/tone-tsutsui-dynamic-sbm` to fit it.
 
-## Prices remain valuation data
+## Prices for economic efficiency
 
-Input and output prices do not become columns in `DEAData`'s production
-technology. Economic models receive a separate immutable `PriceData`:
+Keep quantities and prices separate. For prices shared by all organizations:
 
 ```python
 from deapack import PriceData
 
 prices = PriceData.common(
-    input_prices={
-        "capital": 0.08,
-        "labor": 25.0,
-        "energy": 0.12,
-    }
+    input_prices={"capital": 0.08, "labor": 25.0, "energy": 0.12},
 )
 ```
 
-Observation-specific prices are constructed with `PriceData.from_frame` and
-aligned to quantities by exact DMU or `(DMU, period)` keys. Quantity names
-must match exactly; positional matching, silent broadcasting across missing
-variables, price imputation, and automatic currency conversion are not
-performed. Panel monetary comparisons additionally require an explicit
-currency and base period in `PriceSpec`.
+Price names must match the corresponding quantity names in your study. This
+example defines prices only; it is not paired with the earlier two-input table.
+Use `PriceData.from_frame()` when prices differ by observation. It matches
+prices to quantities by DMU, or by DMU and period, not by row position. No
+missing prices or currency conversions are inferred. Panel monetary
+comparisons also require the currency and base period in `PriceSpec`.
+See {doc}`../models/cost` for a complete economic-efficiency example.
+
+## If data validation fails
+
+Check that:
+
+- DMU identifiers are unique, or DMU–period pairs are unique for a panel;
+- measured quantities are numeric and finite;
+- column names and variable roles match your table;
+- every polluting input also appears in `inputs`; and
+- periods have a clear order; provide `period_order` if their labels do not
+  sort in the intended order.
+
+DEAPack performs these checks when it prepares the data and fits the chosen
+model. You do not need to write a separate validation routine for the examples.
+Internally, the package protects the numerical arrays and handles their matrix
+orientation; these implementation details do not change how you prepare a table.

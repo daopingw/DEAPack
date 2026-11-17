@@ -46,56 +46,32 @@ from deapack import (
     NetworkSpec,
     ProcessCarryOverSpec,
     ProcessSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("dynamic_network_power_demo")
-roles = dataset_info("dynamic_network_power_demo").roles
 
 network = NetworkSpec(
     processes=(
         ProcessSpec(
             "generation",
-            inputs=roles["generation_inputs"],
-            outputs=(
-                *roles["generation_outputs"],
-                *roles["generation_to_grid"],
-            ),
+            inputs=("fuel", "generation_labor"),
+            outputs=("generation_reliability", "gross_power"),
         ),
         ProcessSpec(
             "grid",
-            inputs=(
-                *roles["generation_to_grid"],
-                *roles["grid_inputs"],
-            ),
-            outputs=(
-                *roles["grid_outputs"],
-                *roles["grid_to_service"],
-            ),
+            inputs=("gross_power", "grid_labor"),
+            outputs=("grid_reliability", "delivered_power"),
         ),
         ProcessSpec(
             "customer_service",
-            inputs=(
-                *roles["grid_to_service"],
-                *roles["service_inputs"],
-            ),
-            outputs=roles["service_outputs"],
+            inputs=("delivered_power", "service_labor"),
+            outputs=("customers_served", "service_quality"),
         ),
     ),
     links=(
-        LinkSpec(
-            "generation_handoff",
-            "generation",
-            "grid",
-            roles["generation_to_grid"],
-        ),
-        LinkSpec(
-            "service_handoff",
-            "grid",
-            "customer_service",
-            roles["grid_to_service"],
-        ),
+        LinkSpec("generation_handoff", "generation", "grid", "gross_power"),
+        LinkSpec("service_handoff", "grid", "customer_service", "delivered_power"),
     ),
 )
 
@@ -106,34 +82,18 @@ spec = DynamicNetworkSBMSpec(
         "service_handoff": "fixed",
     },
     carryovers=(
-        ProcessCarryOverSpec(
-            "generation",
-            roles["good_carryovers"][0],
-            "good",
-        ),
-        ProcessCarryOverSpec(
-            "grid",
-            roles["bad_carryovers"][0],
-            "bad",
-        ),
-        ProcessCarryOverSpec(
-            "generation",
-            roles["free_carryovers"][0],
-            "free",
-        ),
-        ProcessCarryOverSpec(
-            "customer_service",
-            roles["fixed_carryovers"][0],
-            "fixed",
-        ),
+        ProcessCarryOverSpec("generation", "generation_capacity", "good"),
+        ProcessCarryOverSpec("grid", "maintenance_backlog", "bad"),
+        ProcessCarryOverSpec("generation", "fuel_inventory", "free"),
+        ProcessCarryOverSpec("customer_service", "service_obligation", "fixed"),
     ),
 )
 
 data = DynamicNetworkData.from_frame(
     frame,
     spec=spec,
-    dmu=roles["dmu"],
-    period=roles["period"],
+    dmu="dmu",
+    period="period",
 )
 
 result = DynamicNetworkSBM(
@@ -145,7 +105,14 @@ result = DynamicNetworkSBM(
         "customer_service": 0.3,
     },
 ).fit(data)
+result.summary()
 ```
+
+The specification states which variables enter each process, which quantities
+connect processes, and which stocks connect periods. These assignments, link
+kinds, and process weights are part of the model and should remain explicit.
+Start with the system efficiency and `score_valid` in the summary; the result
+tables below provide process and period detail.
 
 ## Specification and data contract
 

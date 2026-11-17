@@ -1,17 +1,39 @@
 # Method catalog
 
-DEAPack exposes a small, read-only catalog so applications can discover the
-methods that are implemented in the installed package:
+Start with the question your study needs to answer:
+
+| Question | Example and explanation |
+|---|---|
+| Can inputs be reduced or outputs expanded? | {doc}`../models/radial` and {doc}`../models/sbm` |
+| Can costs be reduced or revenue increased? | {doc}`../models/cost` and {doc}`../models/revenue` |
+| How should pollution or other undesirable outputs be included? | {doc}`../reference/environmental-models` |
+| How has productivity changed over time? | {doc}`../reference/productivity-analysis` |
+| How do linked processes or carry-overs affect performance? | {doc}`../reference/network-dynamic` |
+
+For your first analysis, follow the {doc}`../getting-started/quickstart`.
+The method pages explain the assumptions behind each choice. You do not need
+to look up an internal method identifier to fit a model.
+
+## Find methods in Python
+
+The catalog lists methods available in your installed package:
 
 ```python
 from deapack import list_methods, method_info
 
 for method in list_methods():
-    print(method.method_id, method.api_symbols, method.verification)
+    print(method.title, method.api_symbols)
 
 radial = method_info("static.radial")
-print(radial.title, radial.verification)
+radial
 ```
+
+The `api_symbols` are the Python names you can import. The remaining sections
+explain method identities and implementation evidence for readers who need
+to compare or audit exact specifications.
+
+<details>
+<summary>Catalog fields, presets, and verification labels</summary>
 
 `list_methods()` returns an immutable tuple of immutable `MethodInfo` records,
 ordered by canonical ID. Each record contains:
@@ -83,6 +105,8 @@ ordering. No published numerical-table reproduction or third-party
 cross-implementation is claimed. Its historical
 free-aggregation-hull acronym `FAH` is not an API symbol because the same
 acronym also denotes Ray's distinct free affordability hull.
+
+</details>
 
 ## Productivity method map
 

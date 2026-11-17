@@ -130,22 +130,7 @@ input_result = RadialDEA(
     orientation="input",
     returns_to_scale="vrs",
 ).fit(data)
-output_result = RadialDEA(
-    orientation="output",
-    returns_to_scale="vrs",
-).fit(data)
-
-columns = [
-    "dmu_id",
-    "score",
-    "efficiency",
-    "is_radially_efficient",
-    "is_efficient",
-]
-print(input_result.summary()[columns].to_string(index=False))
-print(output_result.summary()[columns].to_string(index=False))
-print(input_result.slacks.query("dmu_id == 'C'").to_string(index=False))
-print(input_result.targets_for("C").to_string(index=False))
+input_result.summary()
 ```
 
 Under the VRS input model, branch C has $\theta=1$: it cannot reduce its one
@@ -155,10 +140,24 @@ one unit of service rather than one half. The second phase records C's service
 shortfall as output slack $0.5$, targets service at $1$, and correctly leaves
 `is_efficient=False`.
 
+Inspect C's target directly:
+
+```python
+input_result.targets_for("C")
+```
+
 The VRS output model answers the complementary question. C has
 $\phi=2$ and harmonized efficiency $1/2$, because its current resource could
 support twice its service. These findings do not conflict: one concerns common
 resource contraction and the other common service expansion.
+
+```python
+output_result = RadialDEA(
+    orientation="output",
+    returns_to_scale="vrs",
+).fit(data)
+output_result.summary()
+```
 
 `CCR` and `BCC` are convenient constructors for the CRS and VRS cases of this
 same family. They fix only RTS. Orientation remains a separate empirical
@@ -172,6 +171,9 @@ explicit CCR-I, CCR-O, BCC-I, or BCC-O recipe.
 `is_efficient` additionally requires the second-phase slack completion. With
 the default `compute_slacks=True`, `slacks`, `targets`, and peers make the
 remaining component-specific improvement auditable.
+
+<details>
+<summary>Technical details: slack completion and its recorded identity</summary>
 
 The released protocol identity is
 `evaluation.target_completion.pareto_koopmans`. It is not a standalone model
@@ -194,6 +196,8 @@ units. This is DEAPack's declared target-selection rule, not a claim that the
 foundational literature prescribes one unique secondary objective. It is not
 a price system, a statement of managerial priorities, or a closest-target
 criterion.
+
+</details>
 
 When phase two succeeds, the completed target is strongly efficient under the
 same ordinary convex input/desirable-output technology: no feasible plan uses
@@ -257,7 +261,6 @@ score_only = RadialDEA(
     compute_slacks=False,
 ).fit(data)
 
-assert score_only.metadata["target_completion_id"] is None
 ```
 
 This is a performance choice with a substantive reporting consequence.
@@ -279,6 +282,15 @@ boundary; both efficiency classifications remain missing outside it rather
 than labeling a superior external activity inefficient.
 
 ## Phase-specific result validity
+
+Check `score_valid` before interpreting a radial score. A usable score does
+not by itself guarantee a usable target: check `target_valid` for targets,
+and the corresponding field for peers or duals. DEAPack performs the
+numerical checks automatically; see {doc}`../user-guide/results` for the
+common result workflow.
+
+<details>
+<summary>Technical details: phase-specific validation and diagnostics</summary>
 
 The proportional score and the completed operating plan are two separate
 claims. DEAPack checks them separately after the solver returns:
@@ -327,6 +339,8 @@ later completion attempt fails, even though the final semantic status records
 that failure. DEAPack's performance reporting uses this phase-specific score
 contract. A high `peer_tolerance` may separately withhold a thresholded peer
 display without invalidating an otherwise certified target.
+
+</details>
 
 ## Verification boundary
 

@@ -10,7 +10,35 @@ Chung--Färe--Grosskopf environmental productivity index.
 source-qualified preset, not a configurable label for arbitrary bad-output
 productivity models.
 
-## Frozen model contract
+## Fit an environmental productivity model
+
+This example compares adjacent years while holding inputs fixed, expanding
+desirable output and reducing undesirable output. The model uses CRS and
+common-factor weak disposal; the assumptions are explained below.
+
+```python
+from deapack import DEAData, MalmquistLuenbergerDEA, load_dataset
+
+frame = load_dataset("environmental_panel")
+data = DEAData.from_frame(
+    frame,
+    dmu="dmu",
+    period="period",
+    inputs=["energy", "labor"],
+    outputs="electricity",
+    bad_outputs="co2",
+)
+result = MalmquistLuenbergerDEA().fit(data)
+result.summary()
+```
+
+Read `productivity_change`, `efficiency_change`, and `technical_change` in
+the summary. Values above one indicate improvement; one means no measured
+change. Check `score_valid` before interpreting a transition. A missing index
+is not zero productivity change: see
+[Signed distances, failed solves, and admissibility](#signed-distances-failed-solves-and-admissibility).
+
+## Model assumptions
 
 The preset fixes:
 
@@ -163,34 +191,6 @@ fixture's $TC_{ML}=1$ result.
 
 The method is analytically validated, not presented as an empirical
 reproduction of the source application.
-
-## Example
-
-```python
-from deapack import DEAData, MalmquistLuenbergerDEA, load_dataset
-
-frame = load_dataset("environmental_panel")
-data = DEAData.from_frame(
-    frame,
-    dmu="dmu",
-    period="period",
-    inputs=["energy", "labor"],
-    outputs="electricity",
-    bad_outputs="co2",
-)
-result = MalmquistLuenbergerDEA().fit(data)
-
-result.summary()[[
-    "dmu_id",
-    "base_period",
-    "comparison_period",
-    "productivity_change",
-    "efficiency_change",
-    "technical_change",
-    "score_valid",
-    "peer_valid",
-]]
-```
 
 ```{autosummary}
 MalmquistLuenbergerProductivityIndex

@@ -9,6 +9,42 @@ index. `GlobalMalmquistDEA` is its discoverability alias. One pooled frontier
 contains observations from every sample period; contemporaneous frontiers are
 retained for the decomposition.
 
+## Fit a global productivity model
+
+The synthetic panel below contains five organizations over three periods,
+with one resource input and one service output:
+
+```python
+from deapack import DEAData, GlobalMalmquistDEA, load_dataset
+
+frame = load_dataset("multiperiod_trajectory_contrast")
+data = DEAData.from_frame(
+    frame,
+    dmu="unit_id",
+    period="period",
+    inputs="resource_index",
+    outputs="service_units",
+)
+result = GlobalMalmquistDEA(
+    orientation="output",
+    returns_to_scale="crs",
+).fit(data)
+result.summary()
+```
+
+Read `productivity_change`, `efficiency_change`, and `best_practice_change`.
+Values above one indicate improvement; check `score_valid` before interpreting
+them. For `trajectory_02`, the example gives:
+
+| Transition | Productivity change | Efficiency change | Best-practice change |
+|---|---:|---:|---:|
+| 1 to 2 | 2.00 | 1.60 | 1.25 |
+| 2 to 3 | 1.50 | 1.25 | 1.20 |
+
+The two components multiply to the headline index. These results describe
+the project's fictional trajectories, not a reproduction of the source
+article's empirical application.
+
 ## Definition and decomposition
 
 Let $d^G(z)$ be the selected input- or output-oriented Farrell
@@ -51,18 +87,15 @@ historical indexes must be recomputed.
 
 ## Selecting the dates to compare
 
-`comparison_pairs="adjacent"` is the backward-compatible default. It reports
-consecutive pairs in `data.period_order`, just as earlier DEAPack releases did.
-Two opt-in forms expose the source's fixed-vintage pairwise account. Assuming
-`data` is a validated panel:
+By default, the model compares consecutive periods. Using the same `data`,
+request every forward pair or choose a particular pair:
 
 ```python
-# Every forward base/comparison pair in the declared period order.
+# Compare all forward pairs.
 all_pairs = GlobalMalmquistDEA(comparison_pairs="all").fit(data)
 
-# Only the first-to-last management comparison.
-endpoint_pair = ((data.period_order[0], data.period_order[-1]),)
-endpoint = GlobalMalmquistDEA(comparison_pairs=endpoint_pair).fit(data)
+# Compare period 1 with period 3.
+endpoint = GlobalMalmquistDEA(comparison_pairs=[(1, 3)]).fit(data)
 ```
 
 An explicit selection must be a nonempty ordered sequence of unique
@@ -98,7 +131,7 @@ to communicate:
 endpoint.plot(
     kind="performance",
     metric="productivity_change",
-    period=data.period_order[-1],
+    period=3,
     view="points",
 )
 ```
@@ -108,42 +141,24 @@ and comparison period. Filter both period columns for tables, or refit that
 single explicit pair before plotting rather than allowing a chart to hide the
 base-date distinction.
 
-## Example
+## Comparison with adjacent-period Malmquist
 
 ```python
-from deapack import DEAData, GlobalMalmquistDEA, MalmquistDEA, load_dataset
+from deapack import MalmquistDEA
 
-frame = load_dataset("multiperiod_trajectory_contrast")
-data = DEAData.from_frame(
-    frame,
-    dmu="dmu",
-    period="period",
-    inputs="input",
-    outputs=["output_1", "output_2"],
-)
 adjacent = MalmquistDEA(
     orientation="output",
     returns_to_scale="crs",
 ).fit(data)
-result = GlobalMalmquistDEA(
-    orientation="output",
-    returns_to_scale="crs",
-).fit(data)
+adjacent.summary()
 ```
 
-DMU1 uses the same one unit of resource in both periods, while its two-service
-bundle changes from $(3,5)$ to $(5,3)$. For period 1 to period 2, the global
-result reports productivity change $1$, efficiency change $1$, and
-best-practice change $1$. Both bundles attain the full-horizon benchmark.
-
-The adjacent result on the same data reports productivity change
-$0.774596669241$, efficiency change $1$, and technical change
-$0.774596669241$. Its two contemporaneous technologies give different
-assessments of the changing service mix. The common efficiency-change value is
-intentional because both decompositions use the same two own-period efficiency
-scores. The different headline and opportunity components are not a numerical
-contradiction: adjacent and global estimators impose different
-reference-information policies.
+For this one-input, one-output CRS example, adjacent and global Malmquist
+give the same numerical headline and components. That equality is not a
+general property: the adjacent index uses the two period-specific
+technologies, whereas the global index uses one full-horizon reference.
+With a different production geometry, these reference choices can lead to
+different productivity accounts.
 
 All available observations form the global frontier, including identifiers
 that cannot be paired in every transition. `unbalanced="drop"` and `"raise"`

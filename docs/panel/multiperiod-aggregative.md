@@ -58,32 +58,23 @@ reported with `target_uniqueness="not_tested"`.
 from deapack import (
     DEAData,
     ParkParkMultiperiodAggregativeDEA,
-    dataset_info,
     load_dataset,
 )
 
-dataset_name = "multiperiod_trajectory_contrast"
-frame = load_dataset(dataset_name)
-roles = dataset_info(dataset_name).roles
+frame = load_dataset("multiperiod_trajectory_contrast")
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    period=roles["period"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    period="period",
+    inputs="resource_index",
+    outputs="service_units",
 )
 
 result = ParkParkMultiperiodAggregativeDEA(
     orientation="output",
     returns_to_scale="vrs",
 ).fit(data)
-result.summary()[[
-    "dmu_id",
-    "score",
-    "efficiency",
-    "efficiency_class",
-    "is_efficient",
-]]
+result.summary()
 ```
 
 The project-authored panel deliberately contains full, weak, and inefficient

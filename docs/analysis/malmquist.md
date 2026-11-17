@@ -4,32 +4,14 @@
 .. currentmodule:: deapack
 ```
 
-DEAPack separates source-qualified methods from a configurable calculator:
+The Malmquist index measures productivity change between periods and separates
+it into efficiency change and technical change. Start with `FGNZMalmquist`
+for the classical output-oriented, constant-returns-to-scale specification
+of Färe, Grosskopf, Norris, and Zhang.
 
-- `FGNZMalmquistProductivityIndex` (alias `FGNZMalmquist`) fixes the
-  output-oriented, constant-returns-to-scale specification used by Färe,
-  Grosskopf, Norris, and Zhang. It reports their core two-component account
-  $M=EC\times TC$.
-- `FGNZEnhancedMalmquistProductivityIndex` (alias
-  `FGNZEnhancedMalmquist`) retains the four CRS tasks and adds exactly two
-  own-period VRS tasks. It reports the enhanced account
-  $M=PEFFCH\times SCH\times TECHCH_C$.
-- `RayDesliMalmquistProductivityIndex` (alias `RayDesliMalmquist`) retains
-  that CRS Malmquist index and adds Ray and Desli's source-qualified VRS
-  allocation $M=PEFFCH\times TECHCH_V\times SCH_V$.
-- `MalmquistProductivityIndex` (alias `MalmquistDEA`) exposes orientation and
-  returns to scale for explicit sensitivity analysis. A configurable result
-  does not claim the source-qualified preset identity.
+## Fit the classical model
 
-All four classes match adjacent-period observations by identifier. The FGNZ
-core and configurable estimators use four distances under one declared
-returns-to-scale technology. Enhanced FGNZ uses four CRS distances and two
-own-period VRS distances. Ray--Desli uses four CRS and four VRS distances
-because its allocation also requires cross-period VRS appraisals.
-
-## Source-qualified FGNZ preset
-
-Use the preset when the empirical claim is the classic FGNZ core:
+The example uses a panel with two inputs and one desirable output:
 
 ```python
 from deapack import DEAData, FGNZMalmquist, load_dataset
@@ -43,27 +25,34 @@ data = DEAData.from_frame(
     outputs="output",
 )
 result = FGNZMalmquist().fit(data)
+result.summary()
 ```
 
-The result records both identities:
+Read `productivity_change`, `efficiency_change`, and `technical_change` in the
+summary. Each uses one as the no-change reference: values above one indicate
+improvement, and values below one indicate decline. The two components
+multiply to give the productivity index; they are not additive percentages.
+Check `score_valid` before interpreting a transition. See
+{doc}`../user-guide/results` if a result is missing or invalid.
 
-```python
-result.metadata["method_id"]
-# "productivity.malmquist.adjacent_geometric"
+The preset fixes output orientation and CRS, so these choices do not need to
+be repeated in the code. A different reference technology or decomposition
+answers a different question.
 
-result.metadata["preset_id"]
-# "productivity.malmquist.decomposition.fgnz_core"
-```
+## Choosing a formulation
 
-`orientation="output"` and `returns_to_scale="crs"` are fixed by the preset.
-They are not constructor options. The short alias and canonical class are the
-same implementation:
+| Estimator | Use it for |
+|---|---|
+| `FGNZMalmquist` | Classical CRS index with $M=EC\times TC$ |
+| `FGNZEnhancedMalmquist` | Further separate efficiency change into pure-efficiency and scale components |
+| `RayDesliMalmquist` | Use Ray--Desli's distinct CRS/VRS decomposition |
+| `MalmquistDEA` | Set orientation and returns to scale explicitly for sensitivity analysis |
 
-```python
-from deapack import FGNZMalmquistProductivityIndex
-
-assert FGNZMalmquist is FGNZMalmquistProductivityIndex
-```
+All four match adjacent-period observations by identifier. The classical
+and configurable estimators use four distances under one declared technology.
+Enhanced FGNZ adds two own-period VRS distances; Ray--Desli adds four VRS
+distances, including cross-period comparisons. Their formulas and supported
+data domains are explained below.
 
 ## Four distance roles
 
@@ -122,16 +111,14 @@ decline. `score` contains $M$. `efficiency` and `is_efficient` are deliberately
 missing because productivity change is not a bounded efficiency level.
 `decomposition_residual` checks $M-EC\times TC$ before display rounding.
 
-The balanced `multiperiod_trajectory_contrast` data give a compact reference-policy
-comparison. DMU1 uses one unit of resource in both periods while its two-service
-bundle changes from $(3,5)$ to $(5,3)$. With explicit output orientation and CRS,
-`MalmquistDEA` reports productivity change $0.774596669241$, efficiency change
-$1$, and technical change $0.774596669241$ for period 1 to period 2. DMU1 reaches
-its own-period benchmark at both dates; the decline comes from how the two
-period-specific opportunity sets assess the changing service mix. On the same
-data, `GlobalMalmquistDEA` reports $GM=1$, $EC=1$, and $BPC=1$ because both
-bundles attain the common full-horizon benchmark. Neither result is an error:
-the estimators apply different reference-information policies.
+The {doc}`global-malmquist` example uses the current synthetic
+`multiperiod_trajectory_contrast` panel to compare period-specific and pooled
+references. For `trajectory_02` from period 1 to 2 under output orientation
+and CRS, both methods give productivity change $2$, efficiency change $1.6$,
+and an opportunity-change component of $1.25$. This equality is specific to
+that one-input, one-output example, not an equivalence of the two methods.
+Their reference technologies differ and need not give the same account on
+other data.
 
 ## Core four-distance release contract
 
@@ -192,19 +179,7 @@ between pure-efficiency change and scale-efficiency change:
 from deapack import FGNZEnhancedMalmquist
 
 enhanced = FGNZEnhancedMalmquist().fit(data)
-```
-
-The result has an independent method identity:
-
-```python
-enhanced.metadata["method_id"]
-# "productivity.malmquist.decomposition.fgnz_pure_scale_extension"
-
-enhanced.metadata["parent_operator_id"]
-# "productivity.malmquist.adjacent_geometric"
-
-"preset_id" in enhanced.metadata
-# False
+enhanced.summary()
 ```
 
 Let $d_C$ and $d_V$ denote output-oriented CRS and VRS distances. The four
@@ -276,28 +251,12 @@ run with `returns_to_scale="vrs"`:
 from deapack import RayDesliMalmquist
 
 ray_desli = RayDesliMalmquist().fit(data)
+ray_desli.summary()
 ```
 
-The method has its own fixed source identity because its eight-task CRS--VRS
-graph, result fields, and partial-failure contract differ from the generic
-four-task calculator:
-
-```python
-ray_desli.metadata["method_id"]
-# "productivity.malmquist.decomposition.ray_desli"
-
-ray_desli.metadata["parent_operator_id"]
-# "productivity.malmquist.adjacent_geometric"
-
-ray_desli.metadata["headline_returns_to_scale"]
-# "crs"
-
-ray_desli.metadata["auxiliary_returns_to_scale"]
-# "vrs"
-
-"preset_id" in ray_desli.metadata
-# False
-```
+The method has its own source identity because its CRS--VRS construction,
+result fields, and partial-failure behavior differ from the configurable
+four-distance calculator.
 
 `RayDesliMalmquist` is the exact alias of
 `RayDesliMalmquistProductivityIndex`. The method fixes output orientation and
@@ -512,6 +471,22 @@ certificate does not reproduce the Penn World Table 5.6 application. Enhanced
 FGNZ is checked against a separate production-free six-task compiler with a
 non-unit pure-efficiency factor and two exact reconstruction identities; it
 does not reproduce the original OECD/PWT5 application.
+
+## Implementation identities
+
+The short names used in the examples are exact aliases of the full class
+names listed below; they do not select different estimators. For automated
+provenance checks, identities remain available in each result's `metadata`:
+
+| Example result | `method_id` | Preset or parent identity |
+|---|---|---|
+| `result` | `productivity.malmquist.adjacent_geometric` | `preset_id="productivity.malmquist.decomposition.fgnz_core"` |
+| `enhanced` | `productivity.malmquist.decomposition.fgnz_pure_scale_extension` | `parent_operator_id="productivity.malmquist.adjacent_geometric"` |
+| `ray_desli` | `productivity.malmquist.decomposition.ray_desli` | `parent_operator_id="productivity.malmquist.adjacent_geometric"` |
+
+The enhanced and Ray--Desli methods have independent method identities rather
+than a `preset_id`. Ray--Desli metadata records CRS for its headline index and
+VRS for its auxiliary decomposition.
 
 ```{autosummary}
 FGNZMalmquistProductivityIndex

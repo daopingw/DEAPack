@@ -1,28 +1,75 @@
-# Communicating performance results
+(communicating-performance-results)=
+# Plotting results
 
-A DEA table is the audit record; a figure helps readers see the operational
-pattern in that record. DEAPack therefore plots directly from `DEAResult` and
-keeps the fitted method, reference policy, solver status, and reported
-efficiency classification attached to the display.
+DEAPack can plot a fitted result directly: there is no need to reshape the
+result table or build a chart from scratch. The first examples use `result`
+from the {doc}`../getting-started/quickstart`; run that analysis first in the
+same Python session.
 
-Visualization is optional. Install the Matplotlib backend with:
+If you have not installed plotting support, install it once:
 
 ```bash
 python -m pip install 'DEAPack[viz]'
 ```
+
+## Make a first plot
+
+```python
+figure = result.plot()
+figure
+```
+
+In a notebook, the final expression displays the figure. The default plot
+shows the model's declared performance measure; for the Quickstart's BCC
+result, this is efficiency. It uses individual points for a small study and
+a distribution plot for a larger one. You do not need to repeat the default
+plot kind, theme, or view in the call.
+
+`plot()` returns a Matplotlib `Figure`; the method itself does not display or
+save it. In a Python script, you can import `matplotlib.pyplot as plt` and
+call `plt.show()`, or simply save the figure as below.
+
+## Save the figure
+
+```python
+figure.savefig("efficiency-performance.png")
+```
+
+Use a `.pdf` or `.svg` filename for a vector figure. If needed,
+`figure.savefig("efficiency-performance.png", dpi=200, bbox_inches="tight")`
+sets the raster resolution and trims surrounding whitespace. These are
+presentation choices; they do not change the fitted result.
+
+Read the measure label and any note about unavailable observations. A failed
+or undefined result is not plotted as zero and does not enter the substantive
+ranking. The full result remains available through {doc}`results`.
+
+(discover-what-is-available)=
+## Discover other plot types
+
+The later sections are separate examples for different fitted model types,
+not a single script to run from top to bottom. Each section identifies the
+result it needs or includes its own data preparation and fit. To see the plot
+types supported by your current result:
+
+```python
+result.available_plots()
+```
+
+Not every model supports every plot. For example, a two-dimensional frontier
+needs one input and one output, while a network process plot needs a fitted
+network model. Choose the relevant example below; the detailed availability
+rules are here when you need them.
+
+<details>
+<summary>Technical details: plot availability and supported result types</summary>
 
 The numerical package does not import Matplotlib when a model is fitted or
 when plots are discovered. This keeps numerical-only installations light and
 lets automated analyses inspect the visualization contract without a graphics
 backend.
 
-## Discover what is available
-
-```python
-result.available_plots()
-```
-
-This returns immutable `PlotInfo` descriptions for plots that can be
+`result.available_plots()` returns immutable `PlotInfo` descriptions for plots that can be
 constructed faithfully from this particular result. The `performance` kind
 provides `points`, `ecdf`, and `auto` views. A result advertises it only when
 at least one declared performance measure has a valid finite value from an
@@ -83,19 +130,11 @@ argument, lists registered plot kinds only. It is useful for interface
 discovery, but it does not promise that a particular result contains the
 measures needed by every listed kind.
 
-## Plot the measure that answers the question
+</details>
 
-```python
-figure = result.plot(
-    kind="performance",
-    theme="deapack",
-    view="auto",
-)
-figure.savefig("efficiency-performance.png", dpi=200, bbox_inches="tight")
-```
+(plot-the-measure-that-answers-the-question)=
+## Choose a different measure
 
-`plot()` returns a Matplotlib `Figure` and does not display or save it. This
-makes the same call usable in a notebook, a report pipeline, or a test.
 When `metric` is omitted, DEAPack chooses the safest declared native measure
 for that result. For example, it selects a weighted slack sum for the
 classical additive model, the directional distance rather than a convenience
@@ -136,11 +175,11 @@ of the declared common programme, not in percentages and not as a ratio around
 one. In the two-hospital example in {doc}`../analysis/luenberger`, values of 1
 and 2 mean one and two additional treatment-batch programme units at unchanged
 staff input; 2 does not mean “twice as productive.” The result can be plotted
-directly with:
+directly with the following call, after fitting that page's Luenberger
+example. Here `result` is the Luenberger result, not a static BCC result:
 
 ```python
 figure = result.plot(
-    kind="performance",
     metric="productivity_change",
     period=2021,
     view="points",
@@ -219,7 +258,8 @@ distribution.
 ## Compare within-group performance with pooled opportunities
 
 A radial metafrontier result has three linked quantities, so its dedicated
-view is more informative than plotting the MTR alone:
+view is more informative than plotting the MTR alone. First run the example
+in {doc}`../analysis/metafrontier`; use its fitted `result` here:
 
 ```python
 figure = result.plot(kind="metafrontier")
@@ -240,7 +280,9 @@ $$
 visible without turning either component into a causal attribution of
 management or operating environment.
 
-For a multi-period panel, select exactly one reporting period:
+For a separately fitted multi-period metafrontier panel containing 2025,
+select exactly one reporting period. This is not a continuation of the
+cross-sectional example above:
 
 ```python
 figure = result.plot(kind="metafrontier", period=2025)
@@ -271,10 +313,7 @@ The generic performance plot remains available when the reporting question
 concerns only one measure. For example:
 
 ```python
-mtr_figure = result.plot(
-    kind="performance",
-    metric="metatechnology_ratio",
-)
+mtr_figure = result.plot(metric="metatechnology_ratio")
 ```
 
 Use `group_efficiency` or `metafrontier_efficiency` instead when one of those
@@ -284,8 +323,8 @@ contract.
 
 ## See which organizations are used as reported peers
 
-A certified static result can turn its complete peer ledger into a compact
-management account:
+A certified static result, such as the Quickstart's `result`, can show how
+often its reference units are used:
 
 ```python
 figure = result.plot(kind="references")
@@ -328,15 +367,14 @@ For a scalar teaching case or a genuinely one-input/one-output study, the
 frontier view joins each certified operating plan to its fitted DEA target:
 
 ```python
-from deapack import DEAData, RadialDEA, dataset_info, load_dataset
+from deapack import DEAData, RadialDEA, load_dataset
 
 frame = load_dataset("frontier_1x1")
-roles = dataset_info("frontier_1x1").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    inputs="input",
+    outputs="output",
 )
 result = RadialDEA(
     orientation="input",
@@ -438,25 +476,22 @@ Classic SBM is designed for variable-specific gaps, so its result view does
 not force a multidimensional operation onto a two-dimensional frontier:
 
 ```python
-from deapack import DEAData, SBM, dataset_info, load_dataset
+from deapack import DEAData, SBM, load_dataset
 
 frame = load_dataset("sbm_slack_contrast")
-roles = dataset_info("sbm_slack_contrast").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="unit_id",
+    inputs=["resource_a", "resource_b"],
+    outputs=["core_service", "quality_service"],
 )
 result = SBM(returns_to_scale="crs").fit(data)
 
-figure = result.plot(
-    kind="improvement",
-    dmu_id="A",
-)
+figure = result.plot(kind="improvement", dmu_id="Uneven")
 ```
 
-The proportional panel answers where the selected plan locates resource
+`Uneven` is one of the three units in this teaching dataset. The proportional
+panel answers where the selected plan locates resource
 excesses and service shortfalls relative to the focal operation. The ledger
 answers the operational follow-up: what current and selected benchmark
 quantities generated those percentages? Rows can use different physical
@@ -674,13 +709,15 @@ presented as supported plotting workflows.
 
 ## Read one connected organization without breaking it into separate departments
 
-An input-oriented Network-SBM result can turn one fitted organization into a
-connected management account:
+An input-oriented Network-SBM result can show the connected processes of one
+organization. Run the example in {doc}`../models/tone-tsutsui-network-sbm`
+first, then use its fitted `result`. The selected unit below is `balanced`
+in the `three_process_service_chain` dataset:
 
 ```python
 figure = result.plot(
     kind="process",
-    dmu_id="A",
+    dmu_id="balanced",
 )
 ```
 
@@ -735,14 +772,16 @@ unreadable.
 ## Read one carry-over as an intertemporal commitment
 
 A Dynamic-SBM trajectory joins what one period leaves to what the next period
-inherits. Select one organization and one carry-over so unrelated quantities
-in different units are not normalized onto a misleading common axis:
+inherits. First fit the example in {doc}`../models/tone-tsutsui-dynamic-sbm`;
+here `result` is that dynamic result. Select its unit `path_03` and the free
+carry-over `redeployable_stock`. Choosing one carry-over keeps quantities in
+different units off a misleading common axis:
 
 ```python
 figure = result.plot(
     kind="trajectory",
-    dmu_id="E",
-    variable="free_carryover",
+    dmu_id="path_03",
+    variable="redeployable_stock",
 )
 ```
 
@@ -801,15 +840,14 @@ default because it is the estimator's direct optimization result. For a
 management-facing efficiency display, name the complementary account:
 
 ```python
-from deapack import DEAData, RDM, dataset_info, load_dataset
+from deapack import DEAData, RDM, load_dataset
 
 frame = load_dataset("range_directional_signed")
-roles = dataset_info("range_directional_signed").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    inputs="input",
+    outputs="output",
 )
 result = RDM().fit(data)
 
@@ -823,8 +861,10 @@ therefore shows reported values without marking them strongly efficient.
 
 ## Periods are compared deliberately
 
-For panel data, omit `period` to create one panel per period when the result
-contains no more than four periods:
+These examples require a fitted panel result with a declared `efficiency`
+measure, not the cross-sectional RDM result above. For panel data, omit
+`period` to create one panel per period when the result contains no more than
+four periods:
 
 ```python
 figure = result.plot(metric="efficiency")

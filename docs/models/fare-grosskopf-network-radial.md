@@ -48,38 +48,31 @@ from deapack import (
     FareGrosskopfNetworkRadialDEA,
     NetworkData,
     TwoStageSeriesSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
-roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=roles["inputs"],
-    intermediates=roles["intermediates"],
-    outputs=roles["outputs"],
+    inputs=("staff_hours", "platform_cost_units"),
+    intermediates=("screened_cases", "verified_value"),
+    outputs=("timely_closures", "public_value"),
     stage_names=("screening", "service_delivery"),
     link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
+data = NetworkData.from_frame(frame, dmu="unit", spec=spec)
 
 result = FareGrosskopfNetworkRadialDEA(
     orientation="output",
     returns_to_scale="crs",
 ).fit(data)
 
-result.summary()[[
-    "dmu_id",
-    "system_score",
-    "system_efficiency",
-    "is_system_radially_efficient",
-    "has_link_disposal",
-    "score_valid",
-    "target_valid",
-    "peer_valid",
-    "score_status",
-]]
+result.summary()
 ```
+
+Start with `system_efficiency`: higher is better, and one indicates radial
+system efficiency. In this output-oriented fit, `system_score` is instead
+the feasible output-expansion factor. Check `score_valid` before interpreting
+either value; detailed targets and internal flows are explained below.
 
 The default is `orientation="input"`; the example makes the output choice
 explicit. The five project-authored observations include a proportional

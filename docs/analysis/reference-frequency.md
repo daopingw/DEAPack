@@ -22,28 +22,19 @@ The bundled `slacks_2x2` teaching data contain eight service organizations,
 two resources, and two services:
 
 ```python
-from deapack import BCC, DEAData, dataset_info, load_dataset
+from deapack import BCC, DEAData, load_dataset
 
 frame = load_dataset("slacks_2x2")
-roles = dataset_info("slacks_2x2").roles
 data = DEAData.from_frame(
     frame,
-    dmu=roles["dmu"],
-    inputs=roles["inputs"],
-    outputs=roles["outputs"],
+    dmu="dmu",
+    inputs=["labor", "capital"],
+    outputs=["service", "quality"],
 )
 
 result = BCC(compute_slacks=False).fit(data)
 frequency = result.reference_frequency()
-frequency.reference_frame[
-    [
-        "reference_dmu_id",
-        "reference_frequency",
-        "self_reference_frequency",
-        "other_reference_frequency",
-        "reference_rate",
-    ]
-]
+frequency.reference_frame
 ```
 
 The convenience method is exactly equivalent to the functional API:

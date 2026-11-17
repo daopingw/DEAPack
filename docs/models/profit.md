@@ -59,11 +59,10 @@ prices = PriceData.common(
 )
 
 result = ProfitEfficiency().fit(data, prices)
-result.summary()[
-    ["dmu_id", "observed_profit", "maximum_profit", "profit_gap"]
-]
+result.summary()
 ```
 
+Read `observed_profit`, `maximum_profit`, and `profit_gap` together.
 The observed profits are $20,27,14,7$, and the maximum is $27$. Unit D
 therefore forgoes $20$ monetary units. Its selected
 `profit_maximizing_activity` is an economic counterfactual, not a technical
@@ -117,6 +116,14 @@ evaluated quantities. DEAPack therefore reuses the complete LP solution for
 common prices and a common reference; metadata reports `solver_calls` and
 cache counts.
 
+Check `score_valid` before interpreting a score, and use `target_valid`,
+`peer_valid`, or `dual_valid` for those result tables. These checks are part
+of the fitted result; no extra validation code is needed for this example.
+See {doc}`../user-guide/results` for the common result workflow.
+
+<details>
+<summary>Technical details: solution checks and retained precision</summary>
+
 An optimum is released only after two linked certificates. The first checks
 the LP and reconstructs the cached target quantities, target cost, target
 revenue, and maximum profit. The second reconstructs each evaluated
@@ -134,6 +141,8 @@ The reported `maximum_profit` and `profit_gap` are exactly the monetary account
 that was certified. `monetary_tolerance` may classify a sufficiently small gap
 as economically indistinguishable from zero; it does not rewrite the maximum,
 gap, or target-value identities after certification.
+
+</details>
 
 ```{autosummary}
 ProfitEfficiency

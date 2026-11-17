@@ -78,41 +78,31 @@ from deapack import (
     KaoHwangRelationalDEA,
     NetworkData,
     TwoStageSeriesSpec,
-    dataset_info,
     load_dataset,
 )
 
 frame = load_dataset("two_stage_public_service")
-roles = dataset_info("two_stage_public_service").roles
 spec = TwoStageSeriesSpec(
-    inputs=roles["inputs"],
-    intermediates=roles["intermediates"],
-    outputs=roles["outputs"],
+    inputs=("staff_hours", "platform_cost_units"),
+    intermediates=("screened_cases", "verified_value"),
+    outputs=("timely_closures", "public_value"),
     stage_names=("screening", "service_delivery"),
     link_id="service_handoff",
 )
-data = NetworkData.from_frame(frame, dmu=roles["dmu"], spec=spec)
+data = NetworkData.from_frame(frame, dmu="unit", spec=spec)
 
 result = KaoHwangRelationalDEA(
     decomposition="maximize_stage_1",
     projection="source_midpoint",
 ).fit(data)
 
-result.summary()[[
-    "dmu_id",
-    "system_efficiency",
-    "score_valid",
-    "stage_1_efficiency",
-    "stage_2_efficiency",
-    "reconstruction_residual",
-    "decomposition_valid",
-    "decomposition_status",
-    "target_valid",
-    "target_status",
-    "peer_valid",
-    "peer_status",
-]]
+result.summary()
 ```
+
+Read `system_efficiency` first, then `stage_1_efficiency` and
+`stage_2_efficiency`. The stage values multiply to the system value when
+`decomposition_valid` is true. Check `score_valid` for the system result and
+the corresponding validity field before reporting its decomposition or targets.
 
 The five project-authored observations exercise a proportional scale pair,
 resource and conversion drag, and a different service mix. The repository

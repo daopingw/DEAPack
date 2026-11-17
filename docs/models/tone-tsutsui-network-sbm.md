@@ -6,17 +6,8 @@
 
 Tone and Tsutsui’s network slacks-based measure evaluates one connected
 organization while retaining process-specific resources, results, slacks,
-and peer intensities. Its canonical method ID is
-`network.sbm.tone_tsutsui_2009`.
-
-```{admonition} Public implementation
-:class: important
-
-`ToneTsutsuiNetworkSBM` is the public source-faithful class and `NetworkSBM`
-is its exact short alias. Both names are exported from `deapack`. The public
-datasets `three_process_service_chain` and `crs_free_link_service_chain` provide the
-two source-oracle samples described below.
-```
+and peer intensities. Use `NetworkSBM` to fit the model;
+`ToneTsutsuiNetworkSBM` is the full name of the same estimator.
 
 Defining sources:
 
@@ -26,10 +17,10 @@ Defining sources:
 - [Kao’s network DEA review](https://doi.org/10.1016/j.ejor.2014.02.039)
   for family boundaries.
 
-## Complete public example
+## Fit a three-process network
 
-This example evaluates the ten source utilities as connected
-generation--transmission--distribution systems. The input orientation asks
+This example evaluates five fictional public-service organizations with
+intake, resolution, and delivery processes. The input orientation asks
 where external resources could be conserved; VRS permits a different
 process-level scale environment; and `free` treats both handoffs as
 quantities the divisions may redesign jointly.
@@ -49,18 +40,18 @@ spec = NetworkSpec(
     processes=(
         ProcessSpec(
             "stage_1",
-            inputs="stage_1_input",
-            outputs="link_1_2",
+            inputs="intake_hours",
+            outputs="verified_requests",
         ),
         ProcessSpec(
             "stage_2",
-            inputs=("link_1_2", "stage_2_input"),
-            outputs=("stage_2_output", "link_2_3"),
+            inputs=("verified_requests", "resolution_hours"),
+            outputs=("same_day_resolutions", "scheduled_cases"),
         ),
         ProcessSpec(
             "stage_3",
-            inputs=("link_2_3", "stage_3_input"),
-            outputs="stage_3_output",
+            inputs=("scheduled_cases", "delivery_hours"),
+            outputs="completed_services",
         ),
     ),
     links=(
@@ -68,17 +59,17 @@ spec = NetworkSpec(
             "handoff_1_2",
             source="stage_1",
             target="stage_2",
-            variables="link_1_2",
+            variables="verified_requests",
         ),
         LinkSpec(
             "handoff_2_3",
             source="stage_2",
             target="stage_3",
-            variables="link_2_3",
+            variables="scheduled_cases",
         ),
     ),
 )
-data = NetworkData.from_frame(frame, dmu="dmu", spec=spec)
+data = NetworkData.from_frame(frame, dmu="unit", spec=spec)
 
 result = NetworkSBM(
     orientation="input",
@@ -90,10 +81,24 @@ result = NetworkSBM(
         "stage_3": 0.4,
     },
 ).fit(data)
+result.summary()
 ```
 
-`ToneTsutsuiNetworkSBM(...)` produces the same result because `NetworkSBM`
-is an alias, not a second estimator.
+Read `system_efficiency` first and check `score_valid` before interpreting it.
+The example gives:
+
+| Organization | System efficiency |
+|---|---:|
+| balanced | 0.975 |
+| scale_2 | 1.000 |
+| resource_drag | 0.650 |
+| rapid_resolution | 0.960 |
+| scheduled_focus | 1.000 |
+
+All five scores are valid in this run. These are results for the project's
+synthetic service data, not the electricity-utility sample from the article.
+The process weights, link policy, orientation, and returns to scale are
+substantive model choices; changing them can change the results.
 
 ## Source production technology
 
@@ -516,77 +521,15 @@ attribution, internal coordination, and external operating targets:
 Use the one-DMU accessors when preparing a management case:
 
 ```python
-system_report = result.summary()[[
-    "dmu_id",
-    "system_efficiency",
-    "score_valid",
-    "target_valid",
-    "link_valid",
-    "peer_valid",
-    "dual_valid",
-    "solver_status",
-    "backend_solver_status",
-    "reconstruction_residual",
-    "max_link_continuity_residual",
-    "decomposition_status",
-]]
-
-division_report = result.components_for("A")[[
-    "component_kind",
-    "component_id",
-    "efficiency",
-    "division_weight",
-    "input_account",
-    "attribution_status",
-]]
-
-handoff_report = result.links_for("A")[[
-    "link_id",
-    "link_kind",
-    "source_process_id",
-    "recipient_process_id",
-    "responsibility_owner_process_id",
-    "responsibility_role",
-    "observed",
-    "target",
-    "link_slack",
-    "continuity_residual",
-    "accountability_balance_residual",
-    "selection_status",
-]]
-
-external_targets = result.targets_for("A")[[
-    "process_id",
-    "role",
-    "variable",
-    "observed",
-    "target",
-    "balance_residual",
-    "selection_status",
-]]
-
-assumptions = {
-    key: result.metadata[key]
-    for key in (
-        "method_id",
-        "orientation",
-        "returns_to_scale",
-        "link_control",
-        "link_kinds",
-        "division_weights",
-        "score_direction",
-        "attribution_status",
-        "target_selection",
-        "base_objective_includes_link_slacks",
-        "tolerance",
-    )
-}
+result.components_for("balanced")
+result.links_for("balanced")
+result.targets_for("balanced")
 ```
 
-For utility A, the example reports system efficiency of approximately
-`0.385273`; its selected stage efficiencies are approximately `0.383055`,
-`0.382763`, and `0.388747`. The two selected free-link targets are
-approximately `0.836000` and `0.354574`. `links` stores those internal
+For `balanced`, the example reports system efficiency `0.975`; the selected
+stage efficiencies are `0.9375`, `1`, and `1`. Their weighted sum is
+$0.4(0.9375)+0.2(1)+0.4(1)=0.975$. The selected free-link targets are
+`7.5` verified requests and `6.5` scheduled cases. `links` stores those internal
 targets, while `targets` stores only external-input and external-output
 projections. `intensities` separately records process-specific positive peer
 weights.
@@ -610,7 +553,7 @@ be displayed without turning the network into separate departmental DEA
 studies:
 
 ```python
-figure = result.plot(kind="process", dmu_id="A")
+result.plot(kind="process", dmu_id="balanced")
 ```
 
 The process bars read the selected input accounts, while the system panel
@@ -695,42 +638,20 @@ intermediates, carry-overs, common intensities, intensity-connectivity
 restrictions, super-efficiency, and dynamic network SBM require separate
 contracts.
 
-## Source reproduction and numerical boundary
+## Teaching data and validation boundary
 
-```{admonition} Tables 3, 4, and 6 reproduced
-:class: important
+`three_process_service_chain` and `crs_free_link_service_chain` are
+project-authored synthetic datasets. They illustrate process roles, fixed and
+free links, proportional scaling, and resource-use contrasts. They are not
+renamed copies of the published electricity-utility observations, and their
+results should not be compared with the article's numerical tables as a
+reproduction check. Dataset descriptions and provenance are available in
+{doc}`../user-guide/datasets`.
 
-DEAPack reproduces the printed system efficiencies in Tables 3 and 4
-(VRS/input, fixed and free links) and Table 6 (CRS/input/free) with absolute
-tolerance `5.1e-4` and zero relative tolerance. The corresponding three
-process efficiencies reproduce within absolute tolerance `7.5e-4` and zero
-relative tolerance. The slightly wider process tolerance accommodates the
-source’s finite-decimal reporting; it is not an economic tolerance.
-```
-
-The first oracle contains ten 1994 U.S. vertically integrated electricity
-utilities, three series processes, two links, VRS input orientation,
-$(0.4,0.2,0.4)$ weights, and both fixed- and free-link results. The second
-contains four synthetic DMUs under CRS/input/free and illustrates the absence
-of an observed efficient exemplar in one process.
-
-The corresponding public data loaders are:
-
-```python
-from deapack import dataset_info, load_dataset
-
-utilities = load_dataset("three_process_service_chain")
-utility_roles = dataset_info("three_process_service_chain").roles
-
-crs_example = load_dataset("crs_free_link_service_chain")
-crs_roles = dataset_info("crs_free_link_service_chain").roles
-```
-
-The source-oracle checks also reconstruct the input-oriented system account
-from the declared weights and selected process accounts within
-$2\times10^{-9}$, and enforce supplier--recipient link continuity within
-$2\times10^{-8}$. These are software accounting checks, distinct from the
-rounding tolerance applied to printed source scores.
+For the example above, the selected process scores reconstruct the weighted
+system score, and the supplier and recipient report the same target for each
+link. These are checks of the fitted production account, not evidence that a
+particular historical empirical application has been reproduced.
 
 The accountable-link extensions use a separate analytical certificate rather
 than borrowing those utility tables. Under VRS with equal process weights,
@@ -741,26 +662,18 @@ verify zero endpoint-continuity and owner-balance residuals, single-count
 dimension weights, unit invariance, invalid orientation failures, one sparse
 compile per reference population, and one primary solve per observation.
 
-Table 7 reports one selected CRS/free projection. DEAPack verifies that its
-returned external targets and link targets are jointly feasible, but does
-not force the solver to return that particular peer basis or target vector.
+DEAPack checks that its returned external targets and link targets are jointly
+feasible; a primary optimum need not identify one unique peer basis or target
+vector.
 Alternative process scores, peer intensities, and targets may support the
 same primary system efficiency. The public labels
 `solver_selected_primary_optimum` and
 `solver_selected_not_uniqueness_certified` preserve that boundary.
 
-The source’s numerical application is an input-oriented oracle. Its first
-process has no external output, so the article does not provide an
-output-oriented or non-oriented numerical table for this dataset. Those
-public orientations are validated with exact hand-worked cases and their
-native aggregation identities; they must not be described as reproductions
-of an absent source table.
-
-The paper’s prose refers to its later empirical tables as Tables 6--8, while
-the actual displayed tables are numbered 5--7. Table 4’s printed reference
-entry for utility I also has an ambiguous `I(1)` layout. Those provenance
-notes must remain attached; alternate-optimal references and targets must not
-be promoted to unique source facts.
+The article's utility application is input-oriented. Output-oriented and
+non-oriented implementations are instead checked with analytical cases and
+their own aggregation identities, not by claiming reproduction of an absent
+empirical table.
 
 ## Constructor and validation contract
 
